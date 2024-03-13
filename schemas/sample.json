@@ -1,0 +1,21 @@
+{
+  "name": "sampe",
+  "description": "A description",
+  "fields": [
+    {
+      "name": "id",
+      "valueType": "string",
+      "description": "A description",
+      "meta": {
+        "validationDependency": true,
+        "primaryId": true,
+        "examples": "ABC",
+        "notes": "A not",
+        "displayName": "ID"
+      },
+      "restrictions": {
+        "required": true
+      }
+    }
+  ]
+}
