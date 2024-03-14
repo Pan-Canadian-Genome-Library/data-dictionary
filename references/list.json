@@ -13,5 +13,40 @@
         "Whole cell - protein",
         "Whole cell - RNA",
         "Whole cell (B-cell depleted)"
+    ],
+    "vital_status":[
+        "Alive",
+        "Deceased"
+    ],
+    "sex_at_birth":[
+        "Male",
+        "Female"
+    ],
+    "gender":[
+        "Man",
+        "Woman",
+        "Non-binary person"
+    ],
+    "ethnicity":["North American",
+        "European",
+        "Caribbean",
+        "Latin, Central and South American",
+        "African",
+        "Asian",
+        "Oceanian",
+        "Other ethnic and cultural"
+    ],
+    "race":[
+        "Black",
+        "East Asian",
+        "Indigenous (First Nations, Inuk/Inuit, Métis)",
+        "Latin American",
+        "Middle Eastern",
+        "South Asian ",
+        "Southeast Asian",
+        "White",
+        "Another race category",
+        "Do not know",
+        "Prefer not to answer"
     ]
 }
