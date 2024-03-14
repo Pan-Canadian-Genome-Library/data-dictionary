@@ -1,0 +1,53 @@
+{
+    "name": "participant",
+    "description": "The collection of data elements related to a specific donor in an ARGO program.",
+    "meta": {
+        "parent": "study"
+        },
+    "fields": [
+        {
+            "name": "study_id",
+            "valueType": "string",
+            "description": "Unique identifier of the study..",
+            "meta": {
+              "primaryId": true,
+              "examples": "TEST-CA",
+              "foreignKey": "study.study_id",
+              "notes": "Source:MOH/ARGO",
+              "displayName": "Study ID"
+            },
+            "restrictions": {
+              "required": true
+            }
+          },
+        {
+        "description": "Unique identifier of the donor, assigned by the data provider.",
+        "name": "submitter_donor_id",
+        "valueType": "string",
+        "meta": {
+            "validationDependency": true,
+            "primaryId": true,
+            "foreignKey": "sample_registration.submitter_donor_id",
+            "displayName": "Submitter Donor ID"
+        },
+        "restrictions": {
+            "required": true,
+            "regex": "#/regex/submitter_id"
+        }
+        },
+        {
+        "description": "Donor's last known state of living or deceased.",
+        "name": "vital_status",
+        "restrictions": {
+            "codeList": ["Alive", "Deceased"],
+            "required": true
+        },
+        "valueType": "string",
+        "meta": {
+            "validationDependency": true,
+            "core": true,
+            "displayName": "Vital Status"
+        }
+        }
+    ]
+}

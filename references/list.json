@@ -1,1 +1,17 @@
-{}
+{
+    "sample_type":[
+        "Amplified DNA",
+        "ctDNA",
+        "Other DNA enrichments",
+        "Other RNA fractions",
+        "polyA+ RNA",
+        "Protein",
+        "rRNA-depleted RNA",
+        "Total DNA",
+        "Total RNA",
+        "Whole cell - DNA",
+        "Whole cell - protein",
+        "Whole cell - RNA",
+        "Whole cell (B-cell depleted)"
+    ]
+}
