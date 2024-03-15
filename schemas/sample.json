@@ -8,7 +8,7 @@
     {
       "name": "study_id",
       "valueType": "string",
-      "description": "Unique identifier of the study..",
+      "description": "Unique identifier of the study.",
       "meta": {
         "primaryId": true,
         "examples": "TEST-CA",
@@ -28,7 +28,7 @@
         "examples": "90234,BLD_donor_89,AML-90",
         "foreignKey": "participant.submitter_participant_id",
         "displayName": "Submitter Participant ID",
-        "notes": "Source:MOH/ARGO;mCODE STU1: Patient.Identifer;mCODE2 STU2: Patient.Identifier;Phenopacket: Individual.id; Beacon V2: Individual.id"
+        "notes": "Source: MOH/ARGO;mCODE STU1: Patient.Identifer;mCODE2 STU2: Patient.Identifier;Phenopacket: Individual.id; Beacon V2: Individual.id"
       },
       "restrictions": {
         "required": true,

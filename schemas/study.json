@@ -1,0 +1,45 @@
+{
+  "name": "specimen",
+  "description": "The collection of data elements required to register the study program.",
+  "fields": [
+       {
+            "name": "study_id",
+            "valueType": "string",
+            "description": "Unique identifier of the study.",
+            "meta": {
+                "primaryId": true,
+                "examples": "TEST-CA",
+                "displayName": "Study ID",
+                "notes": "Source: ARGO;CQDG: study_id"
+            },
+            "restrictions": {
+                "required": true
+            }
+        },
+        {
+            "name": "name",
+            "valueType": "string",
+            "description": "Study name",
+            "meta": {
+                "core": true,
+                "displayName": "Name",
+                "notes": "Source: ARGO;CQDG: name" 
+            },
+            "restrictions": {
+                "required": true
+            }
+        },
+        {
+            "name": "description",
+            "valueType": "string",
+            "description": "Information about the study",
+            "meta": {
+                "displayName": "Description",
+                "notes": "Source: ARGO;CQDG: description"
+            },
+            "restrictions": {
+                "required": true
+            }
+        }
+  ]
+}
