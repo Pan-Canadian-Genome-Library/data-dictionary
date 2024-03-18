@@ -12,6 +12,7 @@
             "meta": {
                 "primaryId": true,
                 "examples": "TEST-CA",
+                "foreignKey": "study.study_id",
                 "notes": "Source: MOH/ARGO;CQDG: study_id",
                 "displayName": "Study ID"
             },
@@ -43,7 +44,7 @@
                 "primaryId": true,
                 "examples": "LAML_PO,00445,THY_099-tumour",
                 "displayName": "Submitter Specimen ID",
-                "notes": "Source:MOH/ARGO;CQDG: submitter_biospecimen_id;mCODE STU3: Specimen.Identifer;Phenopacket: Biosample.id;Beacon V2: Biosample.id"
+                "notes": "Source:MOH/ARGO;CQDG: submitter_biospecimen_id;mCODE STU3: Specimen.Identifier;Phenopacket: Biosample.id;Beacon V2: Biosample.id"
             },
             "restrictions": {
                 "required": true,

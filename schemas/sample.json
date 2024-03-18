@@ -12,6 +12,7 @@
       "meta": {
         "primaryId": true,
         "examples": "TEST-CA",
+        "foreignKey": "study.study_id",
         "notes": "Source:MOH/ARGO",
         "displayName": "Study ID"
       },
