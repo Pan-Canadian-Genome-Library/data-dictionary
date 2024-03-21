@@ -1,6 +1,6 @@
 {
   "name": "sample",
-  "description": "The collection of data elements required to register the required Donor-Specimen-Sample data to the ARGO Data Platform. Registration of samples is required before molecular and clinical data submission can proceed.",
+  "description": "The collection of data elements required to register the required Donor-Specimen-Sample data to the PCGL Data Platform. Registration of samples is required before molecular and clinical data submission can proceed.",
   "meta": {
     "parent": "participant"
   },
