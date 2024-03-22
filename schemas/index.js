@@ -4,7 +4,4 @@ import participant from "./participant.json" assert { type: "json" };
 import sample from "./sample.json" assert { type: "json" };
 import specimen from "./specimen.json" assert { type: "json" };
 
-export default { study };
-export default { participant };
-export default { sample };
-export default { specimen };
+export default { study, participant, sample, specimen };
