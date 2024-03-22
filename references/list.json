@@ -1,1 +1,88 @@
-{}
+{
+    "sample_type":[
+        "Amplified DNA",
+        "ctDNA",
+        "Other DNA enrichments",
+        "Other RNA fractions",
+        "polyA+ RNA",
+        "Protein",
+        "rRNA-depleted RNA",
+        "Total DNA",
+        "Total RNA",
+        "Whole cell - DNA",
+        "Whole cell - protein",
+        "Whole cell - RNA",
+        "Whole cell (B-cell depleted)"
+    ],
+    "vital_status":[
+        "Alive",
+        "Deceased"
+    ],
+    "sex_at_birth":[
+        "Male",
+        "Female"
+    ],
+    "gender":[
+        "Man",
+        "Woman",
+        "Non-binary person"
+    ],
+    "ethnicity":["North American",
+        "European",
+        "Caribbean",
+        "Latin, Central and South American",
+        "African",
+        "Asian",
+        "Oceanian",
+        "Other ethnic and cultural"
+    ],
+    "race":[
+        "Black",
+        "East Asian",
+        "Indigenous (First Nations, Inuk/Inuit, Métis)",
+        "Latin American",
+        "Middle Eastern",
+        "South Asian ",
+        "Southeast Asian",
+        "White",
+        "Another race category",
+        "Do not know",
+        "Prefer not to answer"
+    ],
+    "specimen_tissue_source": [
+        "Abdominal fluid",
+        "Amniotic fluid",
+        "Arterial blood",
+        "Bile",
+        "Blood derived - bone marrow",
+        "Blood derived - peripheral blood",
+        "Bone marrow fluid",
+        "Bone marrow derived mononuclear cells",
+        "Buccal cell",
+        "Buffy coat",
+        "Cerebrospinal fluid",
+        "Cervical mucus",
+        "Convalescent plasma",
+        "Cord blood",
+        "Duodenal fluid",
+        "Female genital fluid",
+        "Fetal blood",
+        "Hydrocele fluid",
+        "Male genital fluid",
+        "Pancreatic fluid",
+        "Pericardial effusion",
+        "Pleural fluid",
+        "Renal cyst fluid",
+        "Saliva",
+        "Seminal fluid",
+        "Serum",
+        "Solid tissue",
+        "Sputum",
+        "Synovial fluid",
+        "Urine",
+        "Venous blood",
+        "Vitreous fluid",
+        "Whole blood",
+        "Wound"
+    ]
+}
