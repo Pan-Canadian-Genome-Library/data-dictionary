@@ -56,7 +56,6 @@
             "valueType": "string",
             "description": "Tissue source of the biospecimen.",
             "meta": {
-                "core": true,
                 "displayName": "Specimen Tissue Source",
                 "notes": "Source: MOH;mCODE STU3: Specimen.Type;Phenopacket: Biosample.sampled_tissue;Beacon V2: Biosample.sampled_tissue"
             },
@@ -70,7 +69,6 @@
             "valueType": "string",
             "description": "Indicate the date when the specimen was collected from donor.",
             "meta": {
-                "core": true,
                 "displayName": "Specimen Collection Date",
                 "notes": "Source: MOH;mCODE STU2: Specimen.collection.collected[x].dateTime;Phenopacket: Biosample.time_of_collection;Beacon V2: Biosample.time_of_collection"
             },
@@ -84,7 +82,6 @@
             "valueType": "string",
             "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Refer to the guidelines provided in the ICD-O-3 manual at https://apps.who.int/iris/handle/10665/42344",
             "meta": {
-                "core": true,
                 "examples": "C50.1,C18",
                 "displayName": "Specimen Anatomic Location",
                 "notes": "Source: MOH/ARGO;mCODE STU3: Specimen.collection.bodySite"

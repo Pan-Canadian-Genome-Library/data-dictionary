@@ -14,7 +14,8 @@
         "examples": "TEST-CA",
         "foreignKey": "study.study_id",
         "notes": "Source:MOH/ARGO",
-        "displayName": "Study ID"
+        "displayName": "Study ID",
+        "source": "MOH/ARGO"
       },
       "restrictions": {
         "required": true
@@ -29,7 +30,26 @@
         "examples": "90234,BLD_donor_89,AML-90",
         "foreignKey": "participant.submitter_participant_id",
         "displayName": "Submitter Participant ID",
-        "notes": "Source: MOH/ARGO;mCODE STU1: Patient.Identifer;mCODE2 STU2: Patient.Identifier;Phenopacket: Individual.id; Beacon V2: Individual.id"
+        "notes": null,
+        "mappings": [
+          {
+            "standard": "mCODE STU1",
+            "field": "Patient.Identifer"
+          },
+          {
+            "standard": "mCODE2 STU2",
+            "field": "Patient.Identifier"
+          },
+          {
+            "standard": "Phenopacket",
+            "field": "Individual.id"
+          },
+          {
+            "standard": "Beacon V2",
+            "field": "Individual.id"
+          }
+        ],
+        "source": "MOH/ARGO"
       },
       "restrictions": {
         "required": true,
@@ -44,7 +64,26 @@
         "primaryId": true,
         "examples": "LAML_PO,00445,THY_099-tumour",
         "displayName": "Submitter Specimen ID",
-        "notes": "Source:MOH/ARGO;mCODE STU1: Specimen.Identifer;mCODE2 STU2: Specimen.Identifier;Phenopacket: Biosample.id; Beacon V2: Biosample.id"
+        "notes": null,
+        "mappings": [
+          {
+            "standard": "mCODE STU1",
+            "field": "Specimen.Identifer"
+          },
+          {
+            "standard": "mCODE2 STU2",
+            "field": "Specimen.Identifier"
+          },
+          {
+            "standard": "Phenopacket",
+            "field": "Biosample.id"
+          },
+          {
+            "standard": "Beacon V2",
+            "field": "Biosample.id"
+          }
+        ],
+        "source": "MOH/ARGO"
       },
       "restrictions": {
         "required": true,
@@ -59,7 +98,14 @@
         "primaryId": true,
         "examples": "hnc_12,CCG_34_94583,BRCA47832-3239",
         "displayName": "Submitter Sample ID",
-        "notes": "Source:MOH/ARGO;mCODE : submitter_sample_id"
+        "notes": null,
+        "mappings": [
+          {
+            "standard": "mCODE",
+            "field": "submitter_sample_id"
+          }
+        ],
+        "source": "MOH/ARGO"
       },
       "restrictions": {
         "required": true,
@@ -73,7 +119,18 @@
       "meta": {
         "core": true,
         "displayName": "Sample Type",
-        "notes": "Source:MOH/ARGO; Phenopacket : Biosample.sample_type; Beacon V2: Biosample.sample_type"
+        "notes": null,
+        "mappings": [
+          {
+            "standard": "Phenopacket",
+            "field": "Biosample.sample_type"
+          },
+          {
+            "standard": "Beacon V2",
+            "field": "Biosample.sample_type"
+          }
+        ],
+        "source": "MOH/ARGO"
       },
       "restrictions": {
         "required": true,
