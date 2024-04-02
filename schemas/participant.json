@@ -30,25 +30,7 @@
           "examples": "90234,BLD_donor_89,AML-90",
           "displayName": "Submitter Participant ID",
           "source": "MOH/ARGO",
-          "mappings": [
-            {
-              "standard": "CQDG",
-              "field": "submitter_participant_id"
-            },
-            {
-              "standard": "mCODE STU3",
-              "field": "Patient.Identifer"
-            },
-            {
-              "standard": "Phenopacket",
-              "field": "Individual.id"
-            },
-            {
-              "standard": " Beacon V2",
-              "field": "Individual.id"
-            }
-          ],
-          "notes": null
+          "mappings": "CQDG: submitter_participant_id;mCODE STU3: Patient.Identifer;Phenopacket: Individual.id; Beacon V2: Individual.id"
         },
         "restrictions": {
           "required": true,
@@ -62,28 +44,7 @@
         "meta": {
           "displayName": "Sex At Birth",
           "notes": "EDI indicator",
-          "mappings": [
-            {
-              "standard": "All4One",
-              "field": "Biological Sex"
-            },
-            {
-              "standard": "CQDG",
-              "field": "Sex"
-            },
-            {
-              "standard": "mCODE3",
-              "field": "Patient.extension.birthsex"
-            },
-            {
-              "standard": "Phenopacket",
-              "field": "Individual.sex"
-            },
-            {
-              "standard": "Beacon V2",
-              "field": "Individual.sex"
-            }
-          ],
+          "mappings": "All4One: Biological Sex;CQDG: Sex;mCODE3: Patient.extension.birthsex;Phenopacket: Individual.sex;Beacon V2: Individual.sex",
           "source": "MOH"
         },
         "restrictions": {
@@ -98,20 +59,7 @@
         "meta": {
           "displayName": "Gender",
           "notes": "EDI indicator",
-          "mappings": [
-            {
-              "standard": "mCODE3",
-              "field": "Patientgender"
-            },
-            {
-              "standard": "Phenopacket",
-              "field": "Individual.gender"
-            },
-            {
-              "standard": "Beacon V2",
-              "field": "Individual.gender"
-            }
-          ],
+          "mappings": "mCODE3: Patientgender;Phenopacket: Individual.gender;Beacon V2: Individual.gender",
           "source": "MOH"
         },
         "restrictions": {
@@ -126,12 +74,7 @@
         "meta": {
           "displayName": "Ethnicity",
           "notes": "EDI indicator",
-          "mappings": [
-            {
-              "standard": "mCODE3",
-              "field": "Patient.extension:ethnicity"
-            }
-            ]
+          "mappings": "mCODE3: Patient.extension:ethnicity"
         },
         "restrictions": {
           "codeList": "#/list/ethnicity",
@@ -145,12 +88,7 @@
         "meta": {
           "displayName": "Race",
           "notes": "EDI indicator",
-          "mappings": [
-            {
-              "standard": "mCODE3",
-              "field": "Patient.extension:race"
-            }
-            ]
+          "mappings": "mCODE3: Patient.extension:race"
         },
         "restrictions": {
           "codeList": "#/list/race",
@@ -163,21 +101,7 @@
         "valueType": "string",
         "meta": {
           "displayName": "Vital Status",
-          "notes": null,
-          "mappings": [
-            {
-              "standard": "CQDG",
-              "field": "vital_status"
-            },
-            {
-              "standard": "Phenopacket",
-              "field": "vital_status.id"
-            },
-            {
-              "standard": "Beacon V2",
-              "field": "vital_status.id"
-            }
-          ],
+          "mappings": "CQDG: vital_status;Phenopacket: vital_status.id;Beacon V2: vital_status.id",
           "source": "ARGO"
         },
         "restrictions": {
@@ -191,25 +115,7 @@
         "valueType": "string",
         "meta": {
           "displayName": "Date Of Birth",
-          "notes": null,
-          "mappings": [
-            {
-              "standard": "All4One",
-              "field": "Month,year of birth"
-            },
-            {
-              "standard": "mCODE STU3",
-              "field": "Patient.birthDate"
-            },
-            {
-              "standard": "Phenopacket",
-              "field": "Individual.date_of_birth"
-            },
-            {
-              "standard": "Beacon V2",
-              "field": "Individual.date_of_birth"
-            }
-          ],
+          "mappings": "All4One: Month,year of birth;mCODE STU3: Patient.birthDate;Phenopacket: Individual.date_of_birth;Beacon V2: Individual.date_of_birth",
           "source": "MOH"
         },
         "restrictions": {
@@ -224,12 +130,7 @@
         "meta": {
           "displayName": "Date Of Death",
           "notes": "Validation_rule: Value present only when participant.vital_status==deceased'",
-          "mappings": [
-            {
-              "standard": "mCODE STU3",
-              "field": "Patient.deceased.dateTime"
-            }
-          ],
+          "mappings": "mCODE STU3: Patient.deceased.dateTime",
           "source": "MOH"
         },
         "restrictions": {

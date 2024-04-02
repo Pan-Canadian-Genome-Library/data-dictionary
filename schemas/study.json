@@ -10,13 +10,7 @@
           "primaryId": true,
           "examples": "TEST-CA",
           "displayName": "Study ID",
-          "notes": null,
-          "mappings": [
-            {
-              "standard": "CQDG",
-              "field": "study_id"
-            }
-          ],
+          "mappings": "CQDG: study_id",
           "source": "ARGO"
         },
         "restrictions": {
@@ -29,13 +23,7 @@
         "description": "Study name",
         "meta": {
           "displayName": "Name",
-          "notes": null,
-          "mappings": [
-            {
-              "standard": "CQDG",
-              "field": "name"
-            }
-          ],
+          "mappings": "CQDG: name",
           "source": "ARGO"
         },
         "restrictions": {
@@ -48,13 +36,7 @@
         "description": "Information about the study",
         "meta": {
           "displayName": "Description",
-          "notes": null,
-          "mappings": [
-            {
-              "standard": "CQDG",
-              "field": "description"
-            }
-          ],
+          "mappings": "CQDG: description",
           "source": "ARGO"
         },
         "restrictions": {
