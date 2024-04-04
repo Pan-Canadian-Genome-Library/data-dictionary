@@ -39,7 +39,7 @@
       },
       {
         "name": "sex_at_birth",
-        "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
+        "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categories defined by Statistics Canada",
         "valueType": "string",
         "meta": {
           "displayName": "Sex At Birth",
