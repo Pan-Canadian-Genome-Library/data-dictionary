@@ -54,7 +54,7 @@
       },
       {
         "name": "gender",
-        "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categoried defined by Statistics Canada",
+        "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
         "valueType": "string",
         "meta": {
           "displayName": "Gender",
