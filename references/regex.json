@@ -1,1 +1,5 @@
-{}
+{
+    "submitter_id": "^[A-Za-z0-9\\-\\._]+$",
+    "yyyy_mm": "^\\d{4}-(0[1-9]|1[012])$",
+    "specimen_anatomic_location": "^[C][0-9]{2}(.[0-9]{1})?$"
+}

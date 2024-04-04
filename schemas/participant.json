@@ -1,0 +1,142 @@
+{
+    "name": "participant",
+    "description": "The collection of data elements related to a specific donor in a PCGL program.",
+    "meta": {
+      "parent": "study"
+    },
+    "fields": [
+      {
+        "name": "study_id",
+        "valueType": "string",
+        "description": "Unique identifier of the study.",
+        "meta": {
+          "primaryId": true,
+          "examples": "TEST-CA",
+          "foreignKey": "study.study_id",
+          "notes": "Source:MOH/ARGO",
+          "displayName": "Study ID",
+          "source": "MOH/ARGO"
+        },
+        "restrictions": {
+          "required": true
+        }
+      },
+      {
+        "name": "submitter_participant_id",
+        "valueType": "string",
+        "description": "Unique identifier for the participant, assigned by the data provider.",
+        "meta": {
+          "primaryId": true,
+          "examples": "90234,BLD_donor_89,AML-90",
+          "displayName": "Submitter Participant ID",
+          "source": "MOH/ARGO",
+          "mappings": "CQDG: submitter_participant_id;mCODE STU3: Patient.Identifer;Phenopacket: Individual.id; Beacon V2: Individual.id"
+        },
+        "restrictions": {
+          "required": true,
+          "regex": "#/regex/submitter_id"
+        }
+      },
+      {
+        "name": "sex_at_birth",
+        "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categories defined by Statistics Canada",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Sex At Birth",
+          "notes": "EDI indicator",
+          "mappings": "All4One: Biological Sex;CQDG: Sex;mCODE3: Patient.extension.birthsex;Phenopacket: Individual.sex;Beacon V2: Individual.sex",
+          "source": "MOH"
+        },
+        "restrictions": {
+          "codeList": "#/list/sex_at_birth",
+          "required": true
+        }
+      },
+      {
+        "name": "gender",
+        "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Gender",
+          "notes": "EDI indicator",
+          "mappings": "mCODE3: Patientgender;Phenopacket: Individual.gender;Beacon V2: Individual.gender",
+          "source": "MOH"
+        },
+        "restrictions": {
+          "codeList": "#/list/gender",
+          "required": false
+        }
+      },
+      {
+        "name": "ethnicity",
+        "description": "Refers to the ethnic or cultural origins of a person\u2019s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Ethnicity",
+          "notes": "EDI indicator",
+          "mappings": "mCODE3: Patient.extension:ethnicity"
+        },
+        "restrictions": {
+          "codeList": "#/list/ethnicity",
+          "required": false
+        }
+      },
+      {
+        "name": "race",
+        "description": "A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance ",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Race",
+          "notes": "EDI indicator",
+          "mappings": "mCODE3: Patient.extension:race"
+        },
+        "restrictions": {
+          "codeList": "#/list/race",
+          "required": false
+        }
+      },
+      {
+        "name": "vital_status",
+        "description": "Donor's last known state of living or deceased.",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Vital Status",
+          "mappings": "CQDG: vital_status;Phenopacket: vital_status.id;Beacon V2: vital_status.id",
+          "source": "ARGO"
+        },
+        "restrictions": {
+          "codeList": "#/list/vital_status",
+          "required": true
+        }
+      },
+      {
+        "name": "date_of_birth",
+        "description": "Indicate participant's date of birth.",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Date Of Birth",
+          "mappings": "All4One: Month,year of birth;mCODE STU3: Patient.birthDate;Phenopacket: Individual.date_of_birth;Beacon V2: Individual.date_of_birth",
+          "source": "MOH"
+        },
+        "restrictions": {
+          "regex": "#/regex/yyyy_mm",
+          "required": true
+        }
+      },
+      {
+        "name": "date_of_death",
+        "description": "Indicate participant's date of death.",
+        "valueType": "string",
+        "meta": {
+          "displayName": "Date Of Death",
+          "notes": "Validation_rule: Value present only when participant.vital_status==deceased'",
+          "mappings": "mCODE STU3: Patient.deceased.dateTime",
+          "source": "MOH"
+        },
+        "restrictions": {
+          "regex": "#/regex/yyyy_mm",
+          "dependsOn": "participant.vital_status"
+        }
+      }
+    ]
+  }

@@ -7,3 +7,4 @@ populated_dictionary.json
 
 # Tests
 /coverage
+.DS_Store
