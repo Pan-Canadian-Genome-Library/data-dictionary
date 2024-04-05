@@ -2,7 +2,7 @@
 node_modules
 
 # Compilation files
-# dictionary.json
+dictionary.json
 populated_dictionary.json
 
 # Tests
