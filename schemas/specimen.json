@@ -12,13 +12,23 @@
         "meta": {
           "primaryId": true,
           "examples": "TEST-CA",
-          "foreignKey": "study.study_id",
           "displayName": "Study ID",
           "mappings": "CQDG: study_id",
           "source": "MOH/ARGO"
         },
         "restrictions": {
-          "required": true
+          "required": true,
+          "foreignKeys":[
+            {
+              "schema": "study",
+              "mappings": [
+                {
+                  "local": "study_id", 
+                  "foreign": "study_id"
+                }
+              ]
+            }
+          ]
         }
       },
       {
@@ -28,14 +38,24 @@
         "meta": {
           "primaryId": true,
           "examples": "90234,BLD_donor_89,AML-90",
-          "foreignKey": "participant.submitter_participant_id",
           "displayName": "Submitter Participant ID",
           "mappings": "CQDG: submitter_participant_id;mCODE STU3: Patient.Identifier;Phenopacket: Individual.id;Beacon V2: Individual.id",
           "source": "MOH/ARGO"
         },
         "restrictions": {
           "required": true,
-          "regex": "#/regex/submitter_id"
+          "regex": "#/regex/submitter_id",
+          "foreignKeys":[
+            {
+              "schema": "participant",
+              "mappings": [
+                {
+                  "local": "submitter_participant_id", 
+                  "foreign": "submitter_participant_id"
+                }
+              ]
+            }
+          ]
         }
       },
       {

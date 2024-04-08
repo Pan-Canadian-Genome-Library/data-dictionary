@@ -12,13 +12,23 @@
         "meta": {
           "primaryId": true,
           "examples": "TEST-CA",
-          "foreignKey": "study.study_id",
           "notes": "Source:MOH/ARGO",
           "displayName": "Study ID",
           "source": "MOH/ARGO"
         },
         "restrictions": {
-          "required": true
+          "required": true,
+          "foreignKeys":[
+            {
+              "schema": "study",
+              "mappings": [
+                {
+                  "local": "study_id", 
+                  "foreign": "study_id"
+                }
+              ]
+            }
+          ]
         }
       },
       {
