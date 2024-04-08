@@ -67,7 +67,7 @@ def validate_columns(df, schema, schema_name, data):
         print(f"All validations passed for {schema_name} schema.")
 
 # read JSON data
-with open("dictionary.json") as json_file:
+with open("../script/dictionary.json") as json_file:
     data = json.load(json_file)
 
 # read data for validation

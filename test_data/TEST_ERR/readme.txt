@@ -1,4 +1,4 @@
-$ python3 validate.py
+$ python3 ../script/validate.py
 All required columns present in study schema: True
 All required columns present in participant schema: True
 All required columns present in specimen schema: True
