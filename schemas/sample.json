@@ -12,7 +12,6 @@
       "meta": {
         "primaryId": true,
         "examples": "TEST-CA",
-        "foreignKey": "study.study_id",
         "notes": "Source:MOH/ARGO",
         "displayName": "Study ID",
         "source": "MOH/ARGO"
@@ -28,7 +27,6 @@
       "meta": {
         "primaryId": true,
         "examples": "90234,BLD_donor_89,AML-90",
-        "foreignKey": "participant.submitter_participant_id",
         "displayName": "Submitter Participant ID",
         "mappings": "mCODE STU1: Patient.Identifer;mCODE2 STU2: Patient.Identifier;Phenopacket: Individual.id;Beacon V2: Individual.id",
         "source": "MOH/ARGO"
@@ -84,5 +82,36 @@
         "codeList": "#/list/sample_type"
       }
     }
-  ]
+  ],
+  "restrictions":{
+    "foreignKey":[
+      {
+        "schema": "study",
+        "mappings": [
+          {
+            "local": "study_id", 
+            "foreign": "study_id"
+          }
+        ]
+      },
+      {
+        "schema": "participant",
+        "mappings": [
+          {
+            "local": "submitter_participant_id", 
+            "foreign": "submitter_participant_id"
+          }
+        ]
+      },
+      {
+        "schema": "specimen",
+        "mappings": [
+          {
+            "local": "submitter_specimen_id", 
+            "foreign": "submitter_specimen_id"
+          }
+        ]
+      }
+    ]
+  }
 }
