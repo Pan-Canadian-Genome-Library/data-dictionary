@@ -17,18 +17,7 @@
           "source": "MOH/ARGO"
         },
         "restrictions": {
-          "required": true,
-          "foreignKeys":[
-            {
-              "schema": "study",
-              "mappings": [
-                {
-                  "local": "study_id", 
-                  "foreign": "study_id"
-                }
-              ]
-            }
-          ]
+          "required": true
         }
       },
       {
@@ -44,18 +33,7 @@
         },
         "restrictions": {
           "required": true,
-          "regex": "#/regex/submitter_id",
-          "foreignKeys":[
-            {
-              "schema": "participant",
-              "mappings": [
-                {
-                  "local": "submitter_participant_id", 
-                  "foreign": "submitter_participant_id"
-                }
-              ]
-            }
-          ]
+          "regex": "#/regex/submitter_id"
         }
       },
       {
@@ -117,5 +95,27 @@
           "regex": "#/regex/specimen_anatomic_location"
         }
       }
-    ]
+    ],
+    "restrictions":{
+      "foreignKey":[
+        {
+          "schema": "study",
+          "mappings": [
+            {
+              "local": "study_id", 
+              "foreign": "study_id"
+            }
+          ]
+        },
+        {
+          "schema": "participant",
+          "mappings": [
+            {
+              "local": "submitter_participant_id", 
+              "foreign": "submitter_participant_id"
+            }
+          ]
+        }
+      ]
+    }
   }

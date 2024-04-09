@@ -17,18 +17,7 @@
           "source": "MOH/ARGO"
         },
         "restrictions": {
-          "required": true,
-          "foreignKeys":[
-            {
-              "schema": "study",
-              "mappings": [
-                {
-                  "local": "study_id", 
-                  "foreign": "study_id"
-                }
-              ]
-            }
-          ]
+          "required": true
         }
       },
       {
@@ -148,5 +137,18 @@
           "dependsOn": "participant.vital_status"
         }
       }
-    ]
+    ],
+    "restrictions":{
+      "foreignKey":[
+        {
+          "schema": "study",
+          "mappings": [
+            {
+              "local": "study_id", 
+              "foreign": "study_id"
+            }
+          ]
+        }
+      ]
+    }
   }
