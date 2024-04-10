@@ -1,0 +1,5 @@
+study_id	submitter_participant_id	submitter_specimen_id	specimen_tissue_source	specimen_collection_date	specimen_anatomic_location
+TEST_ERR	JU-01	LOM-01	Saliva	2000-01	C33.2
+TEST_ERR	JU-01	LOM-02	Blood derived - bone marrow	2000-02	C20.1
+TEST_ERR	JU-02	LOM-03	Hydrocele fluid	2001-08	C18
+TEST_ERR	JU-02	LOM-04	Urine	2001-08	C9

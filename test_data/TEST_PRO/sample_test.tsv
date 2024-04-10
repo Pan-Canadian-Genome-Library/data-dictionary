@@ -1,0 +1,5 @@
+study_id	submitter_participant_id	submitter_specimen_id	submitter_sample_id	sample_type
+TEST_PRO	NR-01	LOD-01	TM-01-1	Whole cell - RNA
+TEST_PRO	NR-01	LOD-02	TM-02-1	polyA+ RNA
+TEST_PRO	NR-02	LOD-03	TM-03-1	ctDNA
+TEST_PRO	NR-02	LOD-04	TM-04-1	Protein

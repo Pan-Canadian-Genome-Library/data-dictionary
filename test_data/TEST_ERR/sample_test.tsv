@@ -1,0 +1,5 @@
+study_id	submitter_participant_id	submitter_specimen_id	submitter_sample_id	sample_type
+TEST_ERR	JU-01	LOM-01	MM-01-1	Whole cell - RNA
+TEST_ERR	JU-01	LOM-02	MM-02-1	polyA+ RNA
+TEST_ERR	JU-02	LOM-03	MM-03-1	ctDNA
+TEST_ERR	JU-02	LOM-04	MM-04-1	Proteins
