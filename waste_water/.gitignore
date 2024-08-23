@@ -1,0 +1,10 @@
+# Dependency directories
+node_modules
+
+# Compilation files
+dictionary.json
+populated_dictionary.json
+
+# Tests
+/coverage
+.DS_Store
