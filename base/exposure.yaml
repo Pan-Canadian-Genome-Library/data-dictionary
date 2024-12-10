@@ -1,0 +1,122 @@
+classes:
+  base_exposure:
+    name: base_exposure
+    slots:
+    - submitter_participant_id
+    - alcohol_consumption
+    - smoking_status
+    - physical_activity
+    title: exposure
+    slot_usage:
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+      alcohol_consumption:
+        rank: 2
+        slot_group: exposure
+      smoking_status:
+        rank: 3
+        slot_group: exposure
+      physical_activity:
+        rank: 4
+        slot_group: exposure
+description: '...'
+enums:
+  AlcoholConsumptionMenu:
+    name: AlcoholConsumptionMenu
+    permissible_values:
+      Alcohol consumption unknown:
+        text: Alcohol consumption unknown
+      Alcohol intake exceeds recommended daily limit:
+        text: Alcohol intake exceeds recommended daily limit
+      Alcohol intake within recommended daily limit:
+        text: Alcohol intake within recommended daily limit
+      No alcohol consumption:
+        text: No alcohol consumption
+    title: alcohol consumption menu
+  PhysicalActivityMenu:
+    name: PhysicalActivityMenu
+    permissible_values:
+      1-3 times a month:
+        text: 1-3 times a month
+      Every day:
+        text: Every day
+      Less than once a month:
+        text: Less than once a month
+      Most days but not every day:
+        text: Most days but not every day
+      Never:
+        text: Never
+      Not applicable:
+        text: Not applicable
+      Once or twice a week:
+        text: Once or twice a week
+      Unknown:
+        text: Unknown
+    title: physical activity menu
+  SmokingStatusMenu:
+    name: SmokingStatusMenu
+    permissible_values:
+      Current reformed smoker for <= 15 years:
+        text: Current reformed smoker for <= 15 years
+      Current reformed smoker for > 15 years:
+        text: Current reformed smoker for > 15 years
+      Current reformed smoker, duration not specified:
+        text: Current reformed smoker, duration not specified
+      Current smoker:
+        text: Current smoker
+      Lifelong non-smoker (<100 cigarettes smoked in lifetime):
+        text: Lifelong non-smoker (<100 cigarettes smoked in lifetime)
+      Not applicable:
+        text: Not applicable
+      Smoking history not documented:
+        text: Smoking history not documented
+    title: smoking status menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  alcohol_consumption:
+    comments: Refer to the Canadian Centre on Substance Abuse, for men, no more than
+      15 drinks a week, with no more than 3 drinks a day most days. No more than 4
+      drinks on any single occasion. For women, no more than 10 drinks a week, with
+      no more than 2 drinks a day most days. No more than 3 drinks on any single occasion.
+    description: Indicate current alcohol consumtion based on recommended daily limit.
+    name: alcohol_consumption
+    range: AlcoholConsumptionMenu
+    title: Alcohol Consumption
+    todos: '["CQDG", "ARGO", "MOH"]'
+  physical_activity:
+    description: Indicate how many times per week the participant exercises for at
+      least 30 minutes.
+    name: physical_activity
+    range: PhysicalActivityMenu
+    title: Physical Activity
+  smoking_status:
+    description: Indicate smoking status and history of a participant at the time
+      of the data collection.
+    name: smoking_status
+    range: SmokingStatusMenu
+    title: Smoking Status
+    todos: '["CQDG", "ARGO", "MOH"]'
+  submitter_participant_id:
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    exact_mappings:
+    - CQDG:submitter_participant_id
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_participant_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    range: string
+    required: true
+    title: Submitter Participant Id
+    todos: '["MOH", "ARGO"]'
+version: 2.0.0

@@ -1,0 +1,440 @@
+version: 1.0.0
+id: https://example.com/hostseq.yaml
+in_language:
+- en
+name: Hostseq_extended_schema
+description: 'Clinical schema that incorporates PCGL base entities and Hostseq extended fields'
+imports:
+- linkml:types 
+- base/comorbidity
+- base/demographic
+- base/diagnosis
+- base/exposure
+- base/follow_up
+- base/medication
+- base/participant
+- base/procedure
+- base/radiation
+- base/specimen
+- base/treatment
+classes:
+  comorbidity:
+    is_a: base_comorbidity
+  demographic:
+    is_a: base_demographic
+  diagnosis:
+    is_a: base_diagnosis
+    slots:
+    - primary_site
+    - basis_of_diagnosis
+    - laterality
+    - clinical_cancer_staging_system
+    - clinical_stage_group
+    - clinical_t_category
+    - clinical_n_category
+    - clinical_m_category
+    - pathological_cancer_staging_system
+    - pathological_stage_group
+    - pathological_t_category
+    - pathological_n_category
+    - pathological_m_category
+    slot_usage:
+      primary_site:
+        rank: 8
+        slot_group: extended diagnosis
+      basis_of_diagnosis:
+        rank: 9
+        slot_group: extended diagnosis
+      laterality:
+        rank: 10
+        slot_group: extended diagnosis
+      clinical_cancer_staging_system:
+        rank: 11
+        slot_group: extended diagnosis
+      clinical_stage_group:
+        rank: 12
+        slot_group: extended diagnosis
+      clinical_t_category:
+        rank: 13
+        slot_group: extended diagnosis
+      clinical_n_category:
+        rank: 14
+        slot_group: extended diagnosis
+      clinical_m_category:
+        rank: 15
+        slot_group: extended diagnosis
+      pathological_cancer_staging_system:
+        rank: 16
+        slot_group: extended diagnosis
+      pathological_stage_group:
+        rank: 17
+        slot_group: extended diagnosis
+      pathological_t_category:
+        rank: 18
+        slot_group: extended diagnosis
+      pathological_n_category:
+        rank: 19
+        slot_group: extended diagnosis
+      pathological_m_category:
+        rank: 20
+        slot_group: extended diagnosis
+  exposure:
+    is_a: base_exposure
+  follow_up:
+    is_a: base_follow_up
+  medication:
+    is_a: base_medication
+  participant:
+    is_a: base_participant
+  procedure:
+    is_a: base_procedure
+  radiation:
+    is_a: base_radiation
+  specimen:
+    is_a: base_specimen
+    slots:
+      - tumour_histological_type_code
+      - tumour_histological_type_label
+      - tumour_histological_type_source_text
+      - tumour_grading_system
+      - tumour_grade
+      - percent_tumour_cells_range
+      - percent_tumour_cells_measurement_method
+    slot_usage:
+      tumour_histological_type_code:
+        rank: 13
+        slot_group: extended specimen
+      tumour_histological_type_label:
+        rank: 14
+        slot_group: extended specimen
+      tumour_histological_type_source_text:
+        rank: 15
+        slot_group: extended specimen
+      tumour_grading_system:
+        rank: 16
+        slot_group: extended specimen
+      tumour_grade:
+        rank: 17
+        slot_group: extended specimen
+      percent_tumour_cells_range:
+        rank: 18
+        slot_group: extended specimen
+      percent_tumour_cells_measurement_method:
+        rank: 19
+        slot_group: extended specimen
+  treatment:
+    is_a: base_treatment
+enums:
+  BasisOfDiagnosisMenu:
+    name: BasisOfDiagnosisMenu
+    permissible_values:
+      Clinical:
+        text: Clinical
+      Clinical investigation:
+        text: Clinical investigation
+      Cytology:
+        text: Cytology
+      Death certificate only:
+        text: Death certificate only
+      Histology of a metastasis:
+        text: Histology of a metastasis
+      Histology of a primary tumour:
+        text: Histology of a primary tumour
+      Not available:
+        text: Not available
+      Specific tumour markers:
+        text: Specific tumour markers
+    title: basis of diagnosis menu
+  ClinicalCancerStagingSystemMenu:
+    name: ClinicalCancerStagingSystemMenu
+    permissible_values:
+      AJCC cancer staging system:
+        text: AJCC cancer staging system
+      Ann Arbor staging system:
+        text: Ann Arbor staging system
+      Binet staging system:
+        text: Binet staging system
+      Durie-Salmon staging system:
+        text: Durie-Salmon staging system
+      FIGO staging system:
+        text: FIGO staging system
+      International Neuroblastoma Risk Group Staging System:
+        text: International Neuroblastoma Risk Group Staging System
+      International Neuroblastoma Staging System:
+        text: International Neuroblastoma Staging System
+      Lugano staging system:
+        text: Lugano staging system
+      Not available:
+        text: Not available
+      Rai staging system:
+        text: Rai staging system
+      Revised International staging system (R-ISS):
+        text: Revised International staging system (R-ISS)
+      SEER staging system:
+        text: SEER staging system
+      St Jude staging system:
+        text: St Jude staging system
+    title: clinical cancer staging system menu
+  LateralityMenu:
+    name: LateralityMenu
+    permissible_values:
+      Bilateral:
+        text: Bilateral
+      Left:
+        text: Left
+      Midline:
+        text: Midline
+      Not a paired site:
+        text: Not a paired site
+      Not available:
+        text: Not available
+      Right:
+        text: Right
+      Unilateral, side not specified:
+        text: Unilateral, side not specified
+    title: laterality menu
+  PercentTumourCellsMeasurementMethodMenu:
+    name: PercentTumourCellsMeasurementMethodMenu
+    permissible_values:
+      Genomics:
+        text: Genomics
+      Image analysis:
+        text: Image analysis
+      Pathology estimate by percent nuclei:
+        text: Pathology estimate by percent nuclei
+    title: percent tumour cells measurement method menu
+  PercentTumourCellsRangeMenu:
+    name: PercentTumourCellsRangeMenu
+    permissible_values:
+      0-19%:
+        text: 0-19%
+      20-50%:
+        text: 20-50%
+      51-100%:
+        text: 51-100%
+    title: percent tumour cells range menu
+  TumourGradeMenu:
+    name: TumourGradeMenu
+    permissible_values:
+      G1:
+        text: G1
+      G2:
+        text: G2
+      G3:
+        text: G3
+      G4:
+        text: G4
+      GX:
+        text: GX
+      Grade 1:
+        text: Grade 1
+      Grade 2:
+        text: Grade 2
+      Grade 3:
+        text: Grade 3
+      Grade 4:
+        text: Grade 4
+      Grade Group 1:
+        text: Grade Group 1
+      Grade Group 2:
+        text: Grade Group 2
+      Grade Group 3:
+        text: Grade Group 3
+      Grade Group 4:
+        text: Grade Group 4
+      Grade Group 5:
+        text: Grade Group 5
+      Grade I:
+        text: Grade I
+      Grade II:
+        text: Grade II
+      Grade III:
+        text: Grade III
+      Grade IV:
+        text: Grade IV
+      High:
+        text: High
+      High grade:
+        text: High grade
+      Low:
+        text: Low
+      Low grade:
+        text: Low grade
+    title: tumour grade menu
+  TumourGradingSystemMenu:
+    name: TumourGradingSystemMenu
+    permissible_values:
+      FNCLCC grading system:
+        text: FNCLCC grading system
+      Four-tier grading system:
+        text: Four-tier grading system
+      Gleason grade group system:
+        text: Gleason grade group system
+      Grading system for GISTs:
+        text: Grading system for GISTs
+      Grading system for GNETs:
+        text: Grading system for GNETs
+      IASLC grading system:
+        text: IASLC grading system
+      ISUP grading system:
+        text: ISUP grading system
+      Nottingham grading system:
+        text: Nottingham grading system
+      Nuclear grading system for DCIS:
+        text: Nuclear grading system for DCIS
+      Scarff-Bloom-Richardson grading system:
+        text: Scarff-Bloom-Richardson grading system
+      Three-tier grading system:
+        text: Three-tier grading system
+      Two-tier grading system:
+        text: Two-tier grading system
+      WHO grading system for CNS tumours:
+        text: WHO grading system for CNS tumours
+    title: tumour grading system menu
+slots:
+  basis_of_diagnosis:
+    description: Indicate the most valid basis of how the primary diagnosis was identified.
+      Terms are ordered in hierarchical order according to IACR guidelines, with the
+      term at the top of the list ("Histology of primary tumour") being the more valid
+      basis. If more than one diagnosis technique was used, select the most valid
+      basis.
+    name: basis_of_diagnosis
+    range: BasisOfDiagnosisMenu
+    required: true
+    title: Basis Of Diagnosis
+  clinical_cancer_staging_system:
+    description: Indicate the cancer staging system used to stage the cancer at the
+      time of diagnosis (prior to treatment).
+    name: clinical_cancer_staging_system
+    range: ClinicalCancerStagingSystemMenu
+    title: Clinical Cancer Staging System
+  clinical_m_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the distant metastasis (M) for the cancer based on evidence obtained from clinical
+      assessment parameters determined at time of primary diagnosis and prior to treatment,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual. MX is NOT a valid category and cannot be assigned.
+    name: clinical_m_category
+    range: string
+    title: Clinical M Category
+  clinical_n_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the regional lymph node (N) involvement for the cancer based on evidence obtained
+      from clinical assessment parameters determined at time of primary diagnosis
+      and prior to treatment, according to criteria based on multiple editions of
+      the AJCC's Cancer Staging Manual.
+    name: clinical_n_category
+    range: string
+    title: Clinical N Category
+  clinical_stage_group:
+    description: Stage group of the cancer, as assigned by the reporting clinical_cancer_staging_system,
+      that indicates the overall prognostic cancer stage (ie. Stage I, Stage II, Stage
+      III etc.).
+    name: clinical_stage_group
+    range: string
+    title: Clinical Stage Group
+  clinical_t_category:
+    description: The code to represent the extent of the primary tumour (T) based
+      on evidence obtained from clinical assessment parameters determined at time
+      of primary diagnosis and prior to treatment, according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: clinical_t_category
+    range: string
+    title: Clinical T Category
+  laterality:
+    description: For cancer in a paired organ, indicate the side of the body on which
+      the primary tumour or cancer first developed at the time of primary diagnosis.
+      (Reference caDSR CDE ID 827)
+    name: laterality
+    range: LateralityMenu
+    title: Laterality
+  pathological_cancer_staging_system:
+    description: Specify the cancer staging system used to assess the cancer at the
+      time the tumour specimen was resected. Pathological classification is based
+      on the clinical stage information (acquired before treatment) and supplemented/modified
+      by operative findings and pathological evaluation of the resected specimen.
+    name: pathological_cancer_staging_system
+    range: string
+    title: Pathological Cancer Staging System
+  pathological_m_category:
+    description: The code to represent the stage of cancer defined by whether there
+      are distant metastases (M), meaning spread of cancer to other parts of the body,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual.
+    name: pathological_m_category
+    range: string
+    title: Pathological M Category
+  pathological_n_category:
+    description: The code to represent the stage of cancer defined by whether or not
+      the cancer has reached nearby lymph nodes (N), according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_n_category
+    range: string
+    title: Pathological N Category
+  pathological_stage_group:
+    description: Specify the cancer stage, based on pathological_cancer_staging_system,
+      used to assess the cancer at the time the tumour specimen was resected.
+    name: pathological_stage_group
+    range: string
+    title: Pathological Stage Group
+  pathological_t_category:
+    description: The code to represent the stage of cancer defined by the size or
+      contiguous extension of the primary tumour (T), according to criteria based
+      on multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_t_category
+    range: string
+    title: Pathological T Category
+  primary_site:
+    description: The text term used to describe the primary site of disease, as categorized
+      by the World Health Organization's (WHO) International Classification of Diseases
+      for Oncology (ICD-O). This categorization groups cases into general categories.
+    name: primary_site
+    range: string
+    title: Primary Site
+  percent_tumour_cells_measurement_method:
+    description: Indicate method used to measure percent_tumour_cells.
+    name: percent_tumour_cells_measurement_method
+    range: PercentTumourCellsMeasurementMethodMenu
+    title: Percent Tumour Cells Measurement Method
+  percent_tumour_cells_range:
+    description: 'Select the range representing the percent of tumour cells compared
+      to the number of total cells in a specimen. (Reference: NCIt: C159484)'
+    name: percent_tumour_cells_range
+    range: PercentTumourCellsRangeMenu
+    title: Percent Tumour Cells Range
+  tumour_grade:
+    description: Grade of the tumour as assigned by the reporting tumour_grading_system.
+    name: tumour_grade
+    range: TumourGradeMenu
+    title: Tumour Grade
+  tumour_grading_system:
+    description: Specify the tumour grading system used to assess the description
+      of a tumour based on how abnormal the tumour cells and the tumour tissue look
+      under a microscope. Tumour grade is an indicator of how quickly a tumour is
+      likely to grow.
+    name: tumour_grading_system
+    range: TumourGradingSystemMenu
+    title: Tumour Grading System
+  tumour_histological_type_code:
+    description: Indicate the ICD-O-3 morphology code for the histological type and
+      degree of neoplasms that are usually obtained from a pathology report.  Refer
+      to the International Classification of Diseases for Oncology, 3rd Edition (WHO
+      ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
+    examples:
+    - value: 8260/3
+    - value: 9691/36
+    name: tumour_histological_type_code
+    pattern: ^[8,9]{1}[0-9]{3}/[0,1,2,3,6,9]{1}[1-9]{0,1}$
+    range: string
+    title: Tumour Histological Type Code
+  tumour_histological_type_label:
+    description: Provide the human readable label for the histological type code
+    name: tumour_histological_type_label
+    range: string
+    title: Tumour Histological Type Label
+  tumour_histological_type_source_text:
+    description: Provide the histological type as reported in the participant's source
+      data if applicable
+    name: tumour_histological_type_source_text
+    range: string
+    title: Tumour Histological Type Source Text

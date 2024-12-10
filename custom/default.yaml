@@ -1,0 +1,54 @@
+version: 1.0.0
+id: https://example.com/hostseq.yaml
+in_language:
+- en
+name: default_schema
+description: 'Base clinical schema that incorporates all PCGL base entities'
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_curi_maps:
+  - semweb_context
+
+imports:
+- linkml:types
+- base/phenotype 
+- base/comorbidity
+- base/demographic
+- base/diagnosis
+- base/exposure
+- base/follow_up
+- base/measurement
+- base/medication
+- base/participant
+- base/procedure
+- base/radiation
+- base/specimen
+- base/treatment
+classes:
+  phenotype:
+    is_a: base_phenotype
+  demographic:
+    is_a: base_demographic
+  comorbidity:
+    is_a: base_comorbidity
+  diagnosis:
+   is_a: base_diagnosis
+  exposure:
+   is_a: base_exposure
+  follow_up:
+    is_a: base_follow_up
+  measurement:
+    is_a: base_measurement
+  medication:
+    is_a: base_medication
+  participant:
+    is_a: base_participant
+  procedure:
+    is_a: base_procedure
+  radiation:
+    is_a: base_radiation
+  specimen:
+    is_a: base_specimen
+  treatment:
+    is_a: base_treatment

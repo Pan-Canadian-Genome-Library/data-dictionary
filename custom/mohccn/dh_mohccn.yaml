@@ -1,0 +1,1772 @@
+classes:
+  comorbidity:
+    is_a: dh_interface
+    name: comorbidity
+    slot_usage:
+      age_at_comorbidity_diagnosis:
+        rank: 2
+        slot_group: comorbidity
+      comorbidity_code:
+        rank: 3
+        slot_group: comorbidity
+      comorbidity_source_text:
+        rank: 5
+        slot_group: comorbidity
+      comorbidity_status:
+        rank: 7
+        slot_group: comorbidity
+      comorbidity_term:
+        rank: 4
+        slot_group: comorbidity
+      comorbidity_treatment_status:
+        rank: 6
+        slot_group: comorbidity
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_term
+    - comorbidity_source_text
+    - comorbidity_treatment_status
+    - comorbidity_status
+    title: comorbidity
+  demographic:
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    is_a: dh_interface
+    name: demographic
+    slot_usage:
+      ethnicity:
+        rank: 5
+        slot_group: Demographic
+      gender:
+        rank: 3
+        slot_group: Demographic
+      race:
+        rank: 6
+        slot_group: Demographic
+      sex_at_birth:
+        rank: 4
+        slot_group: Demographic
+      study_id:
+        rank: 2
+        slot_group: v
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - study_id
+    - submitter_participant_id
+    - gender
+    - sex_at_birth
+    - ethnicity
+    - race
+    title: demographic
+    todos: '{"reference": "GDC", "status": "v2"}'
+  dh_interface:
+    description: A DataHarmonizer interface
+    from_schema: https://example.com/base_schema.yaml
+    name: dh_interface
+  diagnosis:
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    is_a: dh_interface
+    name: diagnosis
+    slot_usage:
+      age_at_diagnosis:
+        rank: 3
+        slot_group: diagnosis
+      basis_of_diagnosis:
+        rank: 9
+        slot_group: extended diagnosis
+      clinical_cancer_staging_system:
+        rank: 11
+        slot_group: extended diagnosis
+      clinical_m_category:
+        rank: 15
+        slot_group: extended diagnosis
+      clinical_n_category:
+        rank: 14
+        slot_group: extended diagnosis
+      clinical_stage_group:
+        rank: 12
+        slot_group: extended diagnosis
+      clinical_t_category:
+        rank: 13
+        slot_group: extended diagnosis
+      disease_category:
+        rank: 7
+        slot_group: diagnosis
+      disease_code:
+        rank: 5
+        slot_group: diagnosis
+      disease_source_text:
+        rank: 4
+        slot_group: diagnosis
+      disease_term:
+        rank: 6
+        slot_group: diagnosis
+      laterality:
+        rank: 10
+        slot_group: extended diagnosis
+      pathological_cancer_staging_system:
+        rank: 16
+        slot_group: extended diagnosis
+      pathological_m_category:
+        rank: 20
+        slot_group: extended diagnosis
+      pathological_n_category:
+        rank: 19
+        slot_group: extended diagnosis
+      pathological_stage_group:
+        rank: 17
+        slot_group: extended diagnosis
+      pathological_t_category:
+        rank: 18
+        slot_group: extended diagnosis
+      primary_site:
+        rank: 8
+        slot_group: extended diagnosis
+      submitter_diagnosis_id:
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - age_at_diagnosis
+    - disease_source_text
+    - disease_code
+    - disease_term
+    - disease_category
+    - primary_site
+    - basis_of_diagnosis
+    - laterality
+    - clinical_cancer_staging_system
+    - clinical_stage_group
+    - clinical_t_category
+    - clinical_n_category
+    - clinical_m_category
+    - pathological_cancer_staging_system
+    - pathological_stage_group
+    - pathological_t_category
+    - pathological_n_category
+    - pathological_m_category
+    title: diagnosis
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_diagnosis_id
+  exposure:
+    is_a: dh_interface
+    name: exposure
+    slot_usage:
+      alcohol_consumption:
+        rank: 2
+        slot_group: exposure
+      physical_activity:
+        rank: 4
+        slot_group: exposure
+      smoking_status:
+        rank: 3
+        slot_group: exposure
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_participant_id
+    - alcohol_consumption
+    - smoking_status
+    - physical_activity
+    title: exposure
+  follow_up:
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    is_a: dh_interface
+    name: follow_up
+    slot_usage:
+      age_at_followup:
+        rank: 2
+        slot_group: follow_up
+      disease_status_at_followup:
+        rank: 3
+        slot_group: follow_up
+      submitter_participant_id:
+        rank: 1
+        slot_group: follow_up
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    title: follow up
+    todos: '{"reference": "ARGO", "status": "v2"}'
+  medication:
+    description: An agent such as a drug (pharmaceutical agent), broadly defined as
+      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
+      therapies.
+    is_a: dh_interface
+    name: medication
+    slot_usage:
+      actual_cumulative_drug_dose:
+        rank: 7
+        slot_group: medication
+      drug_code:
+        rank: 3
+        slot_group: medication
+      drug_dose_units:
+        rank: 5
+        slot_group: medication
+      drug_source_text:
+        rank: 2
+        slot_group: medication
+      drug_term:
+        rank: 4
+        slot_group: medication
+      prescribed_cumulative_drug_dose:
+        rank: 6
+        slot_group: medication
+      submitter_treatment_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_treatment_id
+    - drug_source_text
+    - drug_code
+    - drug_term
+    - drug_dose_units
+    - prescribed_cumulative_drug_dose
+    - actual_cumulative_drug_dose
+    title: medication
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+  participant:
+    description: The collection of all data related to a specific individual human
+      in the context of a specific study.
+    is_a: dh_interface
+    name: participant
+    slot_usage:
+      age_at_death:
+        rank: 6
+        slot_group: Participant
+      age_at_enrollment:
+        rank: 3
+        slot_group: Participant
+      cause_of_death:
+        rank: 5
+        slot_group: Participant
+      study_id:
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        rank: 2
+        slot_group: Database Identifiers
+      vital_status:
+        rank: 4
+        slot_group: Participant
+    slots:
+    - study_id
+    - submitter_participant_id
+    - age_at_enrollment
+    - vital_status
+    - cause_of_death
+    - age_at_death
+    title: participant
+    todos: '{"reference": "Phenopacket / GDC", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_participant_id
+  procedure:
+    description: A clinical procedure performed on a subject. For example a surgical
+      or diagnostic procedure such as a biopsy.
+    is_a: dh_interface
+    name: procedure
+    slot_usage:
+      procedure_body_site_code:
+        rank: 5
+        slot_group: procedure
+      procedure_body_site_source_text:
+        rank: 7
+        slot_group: procedure
+      procedure_body_site_term:
+        rank: 6
+        slot_group: procedure
+      procedure_code:
+        rank: 3
+        slot_group: procedure
+      procedure_source_text:
+        rank: 2
+        slot_group: procedure
+      procedure_term:
+        rank: 4
+        slot_group: procedure
+      submitter_treatment_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_treatment_id
+    - procedure_source_text
+    - procedure_code
+    - procedure_term
+    - procedure_body_site_code
+    - procedure_body_site_term
+    - procedure_body_site_source_text
+    title: procedure
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+  radiation:
+    is_a: dh_interface
+    name: radiation
+    slot_usage:
+      anatomical_site_irradiated_code:
+        rank: 5
+        slot_group: radiation
+      anatomical_site_irradiated_source_text:
+        rank: 7
+        slot_group: radiation
+      anatomical_site_irradiated_term:
+        rank: 6
+        slot_group: radiation
+      radiation_dosage:
+        rank: 4
+        slot_group: radiation
+      radiation_fractions:
+        rank: 3
+        slot_group: radiation
+      radiation_modality:
+        rank: 2
+        slot_group: radiation
+      submitter_treatment_id:
+        rank: 1
+        slot_group: Database Identifiers
+    slots:
+    - submitter_treatment_id
+    - radiation_modality
+    - radiation_fractions
+    - radiation_dosage
+    - anatomical_site_irradiated_code
+    - anatomical_site_irradiated_term
+    - anatomical_site_irradiated_source_text
+    title: radiation
+  specimen:
+    description: Any material sample taken from a biological entity, living or dead,
+      from physical object or the environment
+    is_a: dh_interface
+    name: specimen
+    slot_usage:
+      age_at_specimen_collection:
+        rank: 8
+        slot_group: specimen
+      percent_tumour_cells_measurement_method:
+        rank: 19
+        slot_group: extended specimen
+      percent_tumour_cells_range:
+        rank: 18
+        slot_group: extended specimen
+      specimen_anatomic_location_code:
+        rank: 9
+        slot_group: specimen
+      specimen_anatomic_location_label:
+        rank: 10
+        slot_group: specimen
+      specimen_anatomic_location_source_text:
+        rank: 11
+        slot_group: specimen
+      specimen_laterality:
+        rank: 12
+        slot_group: specimen
+      specimen_processing:
+        rank: 7
+        slot_group: specimen
+      specimen_storage:
+        rank: 6
+        slot_group: specimen
+      specimen_tissue_source_code:
+        rank: 3
+        slot_group: specimen
+      specimen_tissue_source_term:
+        rank: 4
+        slot_group: specimen
+      specimen_tissue_source_text:
+        rank: 5
+        slot_group: specimen
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        rank: 2
+        slot_group: Database Identifiers
+      tumour_grade:
+        rank: 17
+        slot_group: extended specimen
+      tumour_grading_system:
+        rank: 16
+        slot_group: extended specimen
+      tumour_histological_type_code:
+        rank: 13
+        slot_group: extended specimen
+      tumour_histological_type_label:
+        rank: 14
+        slot_group: extended specimen
+      tumour_histological_type_source_text:
+        rank: 15
+        slot_group: extended specimen
+    slots:
+    - submitter_participant_id
+    - submitter_specimen_id
+    - specimen_tissue_source_code
+    - specimen_tissue_source_term
+    - specimen_tissue_source_text
+    - specimen_storage
+    - specimen_processing
+    - age_at_specimen_collection
+    - specimen_anatomic_location_code
+    - specimen_anatomic_location_label
+    - specimen_anatomic_location_source_text
+    - specimen_laterality
+    - tumour_histological_type_code
+    - tumour_histological_type_label
+    - tumour_histological_type_source_text
+    - tumour_grading_system
+    - tumour_grade
+    - percent_tumour_cells_range
+    - percent_tumour_cells_measurement_method
+    title: specimen
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_specimen_id
+  treatment:
+    description: Medications, procedures, other actions taken for clinical management
+    is_a: dh_interface
+    name: treatment
+    slot_usage:
+      age_at_treatment:
+        rank: 4
+        slot_group: treatment
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_treatment_id:
+        rank: 2
+        slot_group: Database Identifiers
+      treatment_duration:
+        rank: 5
+        slot_group: treatment
+      treatment_intent:
+        rank: 6
+        slot_group: treatment
+      treatment_response:
+        rank: 7
+        slot_group: treatment
+      treatment_status:
+        rank: 8
+        slot_group: treatment
+      treatment_type:
+        rank: 3
+        slot_group: treatment
+    slots:
+    - submitter_participant_id
+    - submitter_treatment_id
+    - treatment_type
+    - age_at_treatment
+    - treatment_duration
+    - treatment_intent
+    - treatment_response
+    - treatment_status
+    title: treatment
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_treatment_id
+description: Clinical schema that incorporates PCGL base entities and Hostseq extended
+  fields
+enums:
+  AlcoholConsumptionMenu:
+    name: AlcoholConsumptionMenu
+    permissible_values:
+      Alcohol consumption unknown:
+        text: Alcohol consumption unknown
+      Alcohol intake exceeds recommended daily limit:
+        text: Alcohol intake exceeds recommended daily limit
+      Alcohol intake within recommended daily limit:
+        text: Alcohol intake within recommended daily limit
+      No alcohol consumption:
+        text: No alcohol consumption
+    title: alcohol consumption menu
+  BasisOfDiagnosisMenu:
+    name: BasisOfDiagnosisMenu
+    permissible_values:
+      Clinical:
+        text: Clinical
+      Clinical investigation:
+        text: Clinical investigation
+      Cytology:
+        text: Cytology
+      Death certificate only:
+        text: Death certificate only
+      Histology of a metastasis:
+        text: Histology of a metastasis
+      Histology of a primary tumour:
+        text: Histology of a primary tumour
+      Not available:
+        text: Not available
+      Specific tumour markers:
+        text: Specific tumour markers
+    title: basis of diagnosis menu
+  CauseOfDeathMenu:
+    name: CauseOfDeathMenu
+    permissible_values:
+      Died of cancer:
+        text: Died of cancer
+      Died of other reasons:
+        text: Died of other reasons
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+    title: cause of death menu
+  ClinicalCancerStagingSystemMenu:
+    name: ClinicalCancerStagingSystemMenu
+    permissible_values:
+      AJCC cancer staging system:
+        text: AJCC cancer staging system
+      Ann Arbor staging system:
+        text: Ann Arbor staging system
+      Binet staging system:
+        text: Binet staging system
+      Durie-Salmon staging system:
+        text: Durie-Salmon staging system
+      FIGO staging system:
+        text: FIGO staging system
+      International Neuroblastoma Risk Group Staging System:
+        text: International Neuroblastoma Risk Group Staging System
+      International Neuroblastoma Staging System:
+        text: International Neuroblastoma Staging System
+      Lugano staging system:
+        text: Lugano staging system
+      Not available:
+        text: Not available
+      Rai staging system:
+        text: Rai staging system
+      Revised International staging system (R-ISS):
+        text: Revised International staging system (R-ISS)
+      SEER staging system:
+        text: SEER staging system
+      St Jude staging system:
+        text: St Jude staging system
+    title: clinical cancer staging system menu
+  ComorbidityStatusMenu:
+    name: ComorbidityStatusMenu
+    permissible_values:
+      Active:
+        text: Active
+      In Remission:
+        text: In Remission
+      Resolved:
+        text: Resolved
+      Unknown:
+        text: Unknown
+    title: comorbidity status menu
+  ComorbidityTreatmentStatusMenu:
+    name: ComorbidityTreatmentStatusMenu
+    permissible_values:
+      Treated and resolved:
+        text: Treated and resolved
+      Under treatment:
+        text: Under treatment
+      Unknown:
+        text: Unknown
+      Untreated:
+        text: Untreated
+    title: comorbidity treatment status menu
+  DiseaseCategoryMenu:
+    name: DiseaseCategoryMenu
+    permissible_values:
+      Autoimmune disorder:
+        text: Autoimmune disorder
+      Cancer:
+        text: Cancer
+      Infectious disease:
+        text: Infectious disease
+    title: disease category menu
+  DiseaseStatusAtFollowupMenu:
+    name: DiseaseStatusAtFollowupMenu
+    permissible_values:
+      Complete remission:
+        text: Complete remission
+      Distant progression:
+        text: Distant progression
+      Loco-regional progression:
+        text: Loco-regional progression
+      No evidence of disease:
+        text: No evidence of disease
+      Partial remission:
+        text: Partial remission
+      Progression NOS:
+        text: Progression NOS
+      Relapse or recurrence:
+        text: Relapse or recurrence
+      Stable:
+        text: Stable
+    title: disease status at followup menu
+  DrugDoseUnitsMenu:
+    name: DrugDoseUnitsMenu
+    permissible_values:
+      IU/kg:
+        text: IU/kg
+      IU/m2:
+        text: IU/m2
+      Not available:
+        text: Not available
+      g/m2:
+        text: g/m2
+      mg:
+        text: mg
+      mg/kg:
+        text: mg/kg
+      mg/m2:
+        text: mg/m2
+      ug/m2:
+        text: ug/m2
+    title: drug dose units menu
+  EthnicityMenu:
+    name: EthnicityMenu
+    permissible_values:
+      African:
+        text: African
+      Asian:
+        text: Asian
+      Caribbean:
+        text: Caribbean
+      European:
+        text: European
+      Latin, Central and South American:
+        text: Latin, Central and South American
+      Missing:
+        text: Missing
+      North American:
+        text: North American
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Oceanian:
+        text: Oceanian
+      Other ethnic and cultural:
+        text: Other ethnic and cultural
+      Restricted Access:
+        text: Restricted Access
+    title: ethnicity menu
+  GenderMenu:
+    name: GenderMenu
+    permissible_values:
+      Man:
+        text: Man
+      Missing:
+        text: Missing
+      Non-binary person:
+        text: Non-binary person
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+      Woman:
+        text: Woman
+    title: gender menu
+  LateralityMenu:
+    name: LateralityMenu
+    permissible_values:
+      Bilateral:
+        text: Bilateral
+      Left:
+        text: Left
+      Midline:
+        text: Midline
+      Not a paired site:
+        text: Not a paired site
+      Not available:
+        text: Not available
+      Right:
+        text: Right
+      Unilateral, side not specified:
+        text: Unilateral, side not specified
+    title: laterality menu
+  PercentTumourCellsMeasurementMethodMenu:
+    name: PercentTumourCellsMeasurementMethodMenu
+    permissible_values:
+      Genomics:
+        text: Genomics
+      Image analysis:
+        text: Image analysis
+      Pathology estimate by percent nuclei:
+        text: Pathology estimate by percent nuclei
+    title: percent tumour cells measurement method menu
+  PercentTumourCellsRangeMenu:
+    name: PercentTumourCellsRangeMenu
+    permissible_values:
+      0-19%:
+        text: 0-19%
+      20-50%:
+        text: 20-50%
+      51-100%:
+        text: 51-100%
+    title: percent tumour cells range menu
+  PhysicalActivityMenu:
+    name: PhysicalActivityMenu
+    permissible_values:
+      1-3 times a month:
+        text: 1-3 times a month
+      Every day:
+        text: Every day
+      Less than once a month:
+        text: Less than once a month
+      Most days but not every day:
+        text: Most days but not every day
+      Never:
+        text: Never
+      Not applicable:
+        text: Not applicable
+      Once or twice a week:
+        text: Once or twice a week
+      Unknown:
+        text: Unknown
+    title: physical activity menu
+  RaceMenu:
+    name: RaceMenu
+    permissible_values:
+      Another race category:
+        text: Another race category
+      Black:
+        text: Black
+      Do not know:
+        text: Do not know
+      East Asian:
+        text: East Asian
+      "Indigenous (First Nations, Inuk/Inuit, M\xE9tis)":
+        text: "Indigenous (First Nations, Inuk/Inuit, M\xE9tis)"
+      Latin American:
+        text: Latin American
+      Middle Eastern:
+        text: Middle Eastern
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Prefer not to answer:
+        text: Prefer not to answer
+      Restricted Access:
+        text: Restricted Access
+      South Asian:
+        text: South Asian
+      Southeast Asian:
+        text: Southeast Asian
+      White:
+        text: White
+    title: race menu
+  RadiationModalityMenu:
+    name: RadiationModalityMenu
+    permissible_values:
+      Electron Beam (NCIT:C28039):
+        text: Electron Beam (NCIT:C28039)
+      High-LET Heavy Ion Therapy (NCIT:C15458):
+        text: High-LET Heavy Ion Therapy (NCIT:C15458)
+      Internal Radiation Therapy (NCIT:C15195):
+        text: Internal Radiation Therapy (NCIT:C15195)
+      Photon Beam Radiation Therapy (NCIT:C104914):
+        text: Photon Beam Radiation Therapy (NCIT:C104914)
+      Proton Radiation (NCIT:C40431).:
+        text: Proton Radiation (NCIT:C40431).
+    title: radiation modality menu
+  SexAtBirthMenu:
+    name: SexAtBirthMenu
+    permissible_values:
+      Female:
+        text: Female
+      Male:
+        text: Male
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+    title: sex at birth menu
+  SmokingStatusMenu:
+    name: SmokingStatusMenu
+    permissible_values:
+      Current reformed smoker for <= 15 years:
+        text: Current reformed smoker for <= 15 years
+      Current reformed smoker for > 15 years:
+        text: Current reformed smoker for > 15 years
+      Current reformed smoker, duration not specified:
+        text: Current reformed smoker, duration not specified
+      Current smoker:
+        text: Current smoker
+      Lifelong non-smoker (<100 cigarettes smoked in lifetime):
+        text: Lifelong non-smoker (<100 cigarettes smoked in lifetime)
+      Not applicable:
+        text: Not applicable
+      Smoking history not documented:
+        text: Smoking history not documented
+    title: smoking status menu
+  SpecimenLateralityMenu:
+    name: SpecimenLateralityMenu
+    permissible_values:
+      Left:
+        text: Left
+      Not applicable:
+        text: Not applicable
+      Right:
+        text: Right
+      Unknown:
+        text: Unknown
+    title: specimen laterality menu
+  SpecimenProcessingMenu:
+    name: SpecimenProcessingMenu
+    permissible_values:
+      Cryopreservation - other:
+        text: Cryopreservation - other
+      Cryopreservation in dry ice (dead tissue):
+        text: Cryopreservation in dry ice (dead tissue)
+      Cryopreservation in liquid nitrogen (dead tissue):
+        text: Cryopreservation in liquid nitrogen (dead tissue)
+      Cryopreservation of live cells in liquid nitrogen:
+        text: Cryopreservation of live cells in liquid nitrogen
+      Formalin fixed & paraffin embedded:
+        text: Formalin fixed & paraffin embedded
+      Formalin fixed - buffered:
+        text: Formalin fixed - buffered
+      Formalin fixed - unbuffered:
+        text: Formalin fixed - unbuffered
+      Fresh:
+        text: Fresh
+      Other:
+        text: Other
+      Unknown:
+        text: Unknown
+    title: specimen processing menu
+  SpecimenStorageMenu:
+    name: SpecimenStorageMenu
+    permissible_values:
+      Cut slide:
+        text: Cut slide
+      Frozen in -70 freezer:
+        text: Frozen in -70 freezer
+      Frozen in liquid nitrogen:
+        text: Frozen in liquid nitrogen
+      Frozen in vapour phase:
+        text: Frozen in vapour phase
+      Not Applicable:
+        text: Not Applicable
+      Other:
+        text: Other
+      Paraffin block:
+        text: Paraffin block
+      RNA later frozen:
+        text: RNA later frozen
+      Unknown:
+        text: Unknown
+    title: specimen storage menu
+  StudyIdMenu:
+    name: StudyIdMenu
+    title: study id menu
+  TreatmentIntentMenu:
+    name: TreatmentIntentMenu
+    permissible_values:
+      Curative:
+        text: Curative
+      Diagnostic:
+        text: Diagnostic
+      Forensic:
+        text: Forensic
+      Guidance:
+        text: Guidance
+      Palliative:
+        text: Palliative
+      Preventative:
+        text: Preventative
+      Screening:
+        text: Screening
+      Supportive:
+        text: Supportive
+    title: treatment intent menu
+  TreatmentResponseMenu:
+    name: TreatmentResponseMenu
+    permissible_values:
+      Clinical remission:
+        text: Clinical remission
+      Disease Progression:
+        text: Disease Progression
+      Improvement of symptoms:
+        text: Improvement of symptoms
+      No improvement of symptoms:
+        text: No improvement of symptoms
+      No sign of disease:
+        text: No sign of disease
+      Not applicable:
+        text: Not applicable
+      Partial Response:
+        text: Partial Response
+      Stable Disease:
+        text: Stable Disease
+      Treatment cessation due to toxicity:
+        text: Treatment cessation due to toxicity
+      Worsening of symptoms:
+        text: Worsening of symptoms
+    title: treatment response menu
+  TreatmentStatusMenu:
+    name: TreatmentStatusMenu
+    permissible_values:
+      Not available:
+        text: Not available
+      Other:
+        text: Other
+      Patient choice (stopped or interrupted treatment):
+        text: Patient choice (stopped or interrupted treatment)
+      Physician decision (stopped or interrupted treatment):
+        text: Physician decision (stopped or interrupted treatment)
+      Treatment completed as prescribed:
+        text: Treatment completed as prescribed
+      Treatment incomplete because patient died:
+        text: Treatment incomplete because patient died
+      Treatment incomplete due to technical or organizational problems:
+        text: Treatment incomplete due to technical or organizational problems
+      Treatment ongoing:
+        text: Treatment ongoing
+      Treatment stopped due to acute toxicity:
+        text: Treatment stopped due to acute toxicity
+      Treatment stopped due to lack of efficacy (disease progression):
+        text: Treatment stopped due to lack of efficacy (disease progression)
+    title: treatment status menu
+  TreatmentTypeMenu:
+    name: TreatmentTypeMenu
+    permissible_values:
+      Medication:
+        text: Medication
+      Pharmacotherapy:
+        text: Pharmacotherapy
+      Procedure:
+        text: Procedure
+      Radiation therapy:
+        text: Radiation therapy
+    title: treatment type menu
+  TumourGradeMenu:
+    name: TumourGradeMenu
+    permissible_values:
+      G1:
+        text: G1
+      G2:
+        text: G2
+      G3:
+        text: G3
+      G4:
+        text: G4
+      GX:
+        text: GX
+      Grade 1:
+        text: Grade 1
+      Grade 2:
+        text: Grade 2
+      Grade 3:
+        text: Grade 3
+      Grade 4:
+        text: Grade 4
+      Grade Group 1:
+        text: Grade Group 1
+      Grade Group 2:
+        text: Grade Group 2
+      Grade Group 3:
+        text: Grade Group 3
+      Grade Group 4:
+        text: Grade Group 4
+      Grade Group 5:
+        text: Grade Group 5
+      Grade I:
+        text: Grade I
+      Grade II:
+        text: Grade II
+      Grade III:
+        text: Grade III
+      Grade IV:
+        text: Grade IV
+      High:
+        text: High
+      High grade:
+        text: High grade
+      Low:
+        text: Low
+      Low grade:
+        text: Low grade
+    title: tumour grade menu
+  TumourGradingSystemMenu:
+    name: TumourGradingSystemMenu
+    permissible_values:
+      FNCLCC grading system:
+        text: FNCLCC grading system
+      Four-tier grading system:
+        text: Four-tier grading system
+      Gleason grade group system:
+        text: Gleason grade group system
+      Grading system for GISTs:
+        text: Grading system for GISTs
+      Grading system for GNETs:
+        text: Grading system for GNETs
+      IASLC grading system:
+        text: IASLC grading system
+      ISUP grading system:
+        text: ISUP grading system
+      Nottingham grading system:
+        text: Nottingham grading system
+      Nuclear grading system for DCIS:
+        text: Nuclear grading system for DCIS
+      Scarff-Bloom-Richardson grading system:
+        text: Scarff-Bloom-Richardson grading system
+      Three-tier grading system:
+        text: Three-tier grading system
+      Two-tier grading system:
+        text: Two-tier grading system
+      WHO grading system for CNS tumours:
+        text: WHO grading system for CNS tumours
+    title: tumour grading system menu
+  VitalStatusMenu:
+    name: VitalStatusMenu
+    permissible_values:
+      Alive:
+        text: Alive
+      Deceased:
+        text: Deceased
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+    title: vital status menu
+id: https://example.com/hostseq.yaml
+imports:
+- linkml:types
+in_language:
+- en
+name: Hostseq_extended_schema
+slots:
+  actual_cumulative_drug_dose:
+    description: Indicate the total actual cumulative drug dose in the same units
+      specified in drug_dose_units.
+    name: actual_cumulative_drug_dose
+    range: decimal
+    title: Actual Cumulative Drug Dose
+  age_at_comorbidity_diagnosis:
+    description: Indicate the age (in days) of comorbidity diagnosis.
+    minimum_value: 0
+    name: age_at_comorbidity_diagnosis
+    range: integer
+    title: Age At Comorbidity Diagnosis
+  age_at_death:
+    description: Age of participant (in days) at time of death
+    name: age_at_death
+    range: integer
+    title: Age At Death
+  age_at_diagnosis:
+    description: Age of participant (in days) at time of diagnosis of the condition.
+    exact_mappings:
+    - mCODE.STU3:condition.onset
+    - FHIR:condition.onset
+    - Phenopacket:disease.onset
+    name: age_at_diagnosis
+    range: integer
+    title: Age At Diagnosis
+    todos: '["MOH", "ARGO"]'
+  age_at_enrollment:
+    description: Age (in days) of participant at time of enrollment into the study
+    name: age_at_enrollment
+    range: integer
+    title: Age At Enrollment
+  age_at_followup:
+    description: Participant's age (in days) at time of the follow up event
+    name: age_at_followup
+    range: string
+    title: Age At Followup
+  age_at_specimen_collection:
+    description: Indicate participant's age( in days) when specimen was collected.
+    name: age_at_specimen_collection
+    range: integer
+    title: Age At Specimen Collection
+  age_at_treatment:
+    description: Age (in days) of the participant at the time the treatment was administered.
+    name: age_at_treatment
+    range: integer
+    title: Age At Treatment
+  alcohol_consumption:
+    comments: Refer to the Canadian Centre on Substance Abuse, for men, no more than
+      15 drinks a week, with no more than 3 drinks a day most days. No more than 4
+      drinks on any single occasion. For women, no more than 10 drinks a week, with
+      no more than 2 drinks a day most days. No more than 3 drinks on any single occasion.
+    description: Indicate current alcohol consumtion based on recommended daily limit.
+    name: alcohol_consumption
+    range: AlcoholConsumptionMenu
+    title: Alcohol Consumption
+    todos: '["CQDG", "ARGO", "MOH"]'
+  anatomical_site_irradiated_code:
+    comments: Refer to the International Classification of Diseases for Oncology,
+      3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
+    description: Indicate the ICD-O-3 topography code to describe the irradiated site
+      of radiation if applicable. Please use C80.9 if the site is Unkown.
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    examples:
+    - value: C50.1
+    - value: C18
+    name: anatomical_site_irradiated_code
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+    range: string
+    title: Anatomical Site Irradiated Code
+    todos: '["MOH", "ARGO"]'
+  anatomical_site_irradiated_source_text:
+    description: Provide the original textual description of the irradiated body site
+      of the radiation as reported in the participant's clinical or medical records
+      if applicable
+    name: anatomical_site_irradiated_source_text
+    range: string
+    title: Anatomical Site Irradiated Source Text
+  anatomical_site_irradiated_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the anatomical_site_irradiated_code
+    name: anatomical_site_irradiated_term
+    range: string
+    title: Anatomical Site Irradiated Term
+  basis_of_diagnosis:
+    description: Indicate the most valid basis of how the primary diagnosis was identified.
+      Terms are ordered in hierarchical order according to IACR guidelines, with the
+      term at the top of the list ("Histology of primary tumour") being the more valid
+      basis. If more than one diagnosis technique was used, select the most valid
+      basis.
+    name: basis_of_diagnosis
+    range: BasisOfDiagnosisMenu
+    required: true
+    title: Basis Of Diagnosis
+  cause_of_death:
+    description: Indicate the cause of a participant's death.
+    name: cause_of_death
+    range: CauseOfDeathMenu
+    title: Cause Of Death
+    todos: '["ARGO ", " MOH"]'
+  clinical_cancer_staging_system:
+    description: Indicate the cancer staging system used to stage the cancer at the
+      time of diagnosis (prior to treatment).
+    name: clinical_cancer_staging_system
+    range: ClinicalCancerStagingSystemMenu
+    title: Clinical Cancer Staging System
+  clinical_m_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the distant metastasis (M) for the cancer based on evidence obtained from clinical
+      assessment parameters determined at time of primary diagnosis and prior to treatment,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual. MX is NOT a valid category and cannot be assigned.
+    name: clinical_m_category
+    range: string
+    title: Clinical M Category
+  clinical_n_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the regional lymph node (N) involvement for the cancer based on evidence obtained
+      from clinical assessment parameters determined at time of primary diagnosis
+      and prior to treatment, according to criteria based on multiple editions of
+      the AJCC's Cancer Staging Manual.
+    name: clinical_n_category
+    range: string
+    title: Clinical N Category
+  clinical_stage_group:
+    description: Stage group of the cancer, as assigned by the reporting clinical_cancer_staging_system,
+      that indicates the overall prognostic cancer stage (ie. Stage I, Stage II, Stage
+      III etc.).
+    name: clinical_stage_group
+    range: string
+    title: Clinical Stage Group
+  clinical_t_category:
+    description: The code to represent the extent of the primary tumour (T) based
+      on evidence obtained from clinical assessment parameters determined at time
+      of primary diagnosis and prior to treatment, according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: clinical_t_category
+    range: string
+    title: Clinical T Category
+  comorbidity_code:
+    comments: 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to
+      https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+    name: comorbidity_code
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+    range: string
+    required: true
+    title: Comorbidity Code
+  comorbidity_source_text:
+    description: Provide the original textual description of the diagnosed comorbidity
+      as reported in the participant's clinical or medical records if applicable
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: comorbidity_source_text
+    range: string
+    title: Comorbidity Source Text
+  comorbidity_status:
+    description: Indicate the current state or activity of the comorbid condition.
+    name: comorbidity_status
+    range: ComorbidityStatusMenu
+    title: Comorbidity Status
+  comorbidity_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the comorbidity_code
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: comorbidity_term
+    range: string
+    title: Comorbidity Term
+  comorbidity_treatment_status:
+    description: Indicate whether the comorbid condition is currently being treated
+      or not.
+    name: comorbidity_treatment_status
+    range: ComorbidityTreatmentStatusMenu
+    title: Comorbidity Treatment Status
+  disease_category:
+    description: A broader classification that groups diseases into categories.
+    name: disease_category
+    range: DiseaseCategoryMenu
+    required: true
+    title: Disease Category
+  disease_code:
+    comments: 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to
+      https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_code
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+    range: string
+    required: true
+    title: Disease Code
+    todos: '["MOH ", " ARGO ", " CQDG"]'
+  disease_source_text:
+    description: Provide the original textual description of the diagnosed disease
+      as reported in the participant's clinical or medical records if applicable
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_source_text
+    range: string
+    title: Disease Source Text
+  disease_status_at_followup:
+    description: Indicate the participant's disease status at time of follow-up
+    name: disease_status_at_followup
+    range: DiseaseStatusAtFollowupMenu
+    required: true
+    title: Disease Status At Followup
+  disease_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the disease_code
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_term
+    range: string
+    title: Disease Term
+  drug_code:
+    comments: 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
+      URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
+      URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
+    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
+      to represent the drug.
+    name: drug_code
+    pattern: ^RxNorm:\d{1,8}$||^KEGG:D\\d{5}$||^PubChem:\\d{1,9}$||^NCIt:C\\d{1,7}$
+    range: string
+    required: true
+    title: Drug Code
+  drug_dose_units:
+    description: Indicate units used to record drug dose.
+    name: drug_dose_units
+    range: DrugDoseUnitsMenu
+    title: Drug Dose Units
+  drug_source_text:
+    description: Provide the original text from medical records describing the drug
+      used in the treatment if applicable.
+    name: drug_source_text
+    range: string
+    title: Drug Source Text
+  drug_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the drug_code
+    name: drug_term
+    range: string
+    title: Drug Term
+  ethnicity:
+    comments: EDI indicator
+    description: "Refers to the ethnic or cultural origins of a person\u2019s ancestors.\
+      \ The provided values are based on the list of ethnic or cultural origins 2021\
+      \ defined by Statistics Canada"
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.ethnicity
+    - FHIR:Patient.extension.ethnicity
+    name: ethnicity
+    range: EthnicityMenu
+    required: true
+    title: Ethnicity
+  gender:
+    comments: EDI indicator
+    description: Refers to an individual's personal and social identity as a man,
+      woman or non-binary person (a person who is not exclusively a man or a woman).
+      The provided values are based on the categories defined by Statistics Canada
+    exact_mappings:
+    - mCODE.STU3:Patient.gender
+    - FHIR:Patient.gender
+    - Phenopacket:individual.gender
+    - BeaconV2:individual.gender
+    name: gender
+    range: GenderMenu
+    required: true
+    title: Gender
+  laterality:
+    description: For cancer in a paired organ, indicate the side of the body on which
+      the primary tumour or cancer first developed at the time of primary diagnosis.
+      (Reference caDSR CDE ID 827)
+    name: laterality
+    range: LateralityMenu
+    title: Laterality
+  pathological_cancer_staging_system:
+    description: Specify the cancer staging system used to assess the cancer at the
+      time the tumour specimen was resected. Pathological classification is based
+      on the clinical stage information (acquired before treatment) and supplemented/modified
+      by operative findings and pathological evaluation of the resected specimen.
+    name: pathological_cancer_staging_system
+    range: string
+    title: Pathological Cancer Staging System
+  pathological_m_category:
+    description: The code to represent the stage of cancer defined by whether there
+      are distant metastases (M), meaning spread of cancer to other parts of the body,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual.
+    name: pathological_m_category
+    range: string
+    title: Pathological M Category
+  pathological_n_category:
+    description: The code to represent the stage of cancer defined by whether or not
+      the cancer has reached nearby lymph nodes (N), according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_n_category
+    range: string
+    title: Pathological N Category
+  pathological_stage_group:
+    description: Specify the cancer stage, based on pathological_cancer_staging_system,
+      used to assess the cancer at the time the tumour specimen was resected.
+    name: pathological_stage_group
+    range: string
+    title: Pathological Stage Group
+  pathological_t_category:
+    description: The code to represent the stage of cancer defined by the size or
+      contiguous extension of the primary tumour (T), according to criteria based
+      on multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_t_category
+    range: string
+    title: Pathological T Category
+  percent_tumour_cells_measurement_method:
+    description: Indicate method used to measure percent_tumour_cells.
+    name: percent_tumour_cells_measurement_method
+    range: PercentTumourCellsMeasurementMethodMenu
+    title: Percent Tumour Cells Measurement Method
+  percent_tumour_cells_range:
+    description: 'Select the range representing the percent of tumour cells compared
+      to the number of total cells in a specimen. (Reference: NCIt: C159484)'
+    name: percent_tumour_cells_range
+    range: PercentTumourCellsRangeMenu
+    title: Percent Tumour Cells Range
+  physical_activity:
+    description: Indicate how many times per week the participant exercises for at
+      least 30 minutes.
+    name: physical_activity
+    range: PhysicalActivityMenu
+    title: Physical Activity
+  prescribed_cumulative_drug_dose:
+    description: Indicate the total prescribed cumulative drug dose in the same units
+      specified in drug_dose_units.
+    name: prescribed_cumulative_drug_dose
+    range: decimal
+    title: Prescribed Cumulative Drug Dose
+  primary_site:
+    description: The text term used to describe the primary site of disease, as categorized
+      by the World Health Organization's (WHO) International Classification of Diseases
+      for Oncology (ICD-O). This categorization groups cases into general categories.
+    name: primary_site
+    range: string
+    title: Primary Site
+  procedure_body_site_code:
+    comments: Refer to the International Classification of Diseases for Oncology,
+      3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
+    description: Indicate the ICD-O-3 topography code to describe the site of the
+      surgery if applicable. Please use C80.9 if the site is Unkown.
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    examples:
+    - value: C50.1
+    - value: C18
+    name: procedure_body_site_code
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+    range: string
+    title: Procedure Body Site Code
+    todos: '["MOH", "ARGO"]'
+  procedure_body_site_source_text:
+    description: Provide the original textual description of the body site of the
+      procedure as reported in the participant's clinical or medical records if applicable
+    name: procedure_body_site_source_text
+    range: string
+    title: Procedure Body Site Source Text
+  procedure_body_site_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the procedure_body_site_code
+    name: procedure_body_site_term
+    range: string
+    title: Procedure Body Site Term
+  procedure_code:
+    comments: 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
+      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>'
+    description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
+      performed.
+    name: procedure_code
+    pattern: ^NCIt:C\\d{1,7}$||^SNOMEDCT:\\d{6,9}$||^UMLS:C\\d{7}$||^CCI:\\d\\.[A-Z]{2}\\.\\d{2}\\.[A-Z]{2}$
+    range: string
+    required: true
+    title: Procedure Code
+  procedure_source_text:
+    description: The original texual description of the procedure performed, as recorded
+      in clinical notes or medical records if applicable.
+    name: procedure_source_text
+    range: string
+    title: Procedure Source Text
+  procedure_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the procedure_code
+    name: procedure_term
+    range: string
+    title: Procedure Term
+  race:
+    comments: EDI indicator
+    description: A social construct used to judge and categorize people based on perceived
+      differences in physical appearance in ways that create and maintain power differentials
+      within social hierarchies. There is no scientifically supported biological basis
+      for discrete racial groups. The provided values are based on race-based data
+      standard defined by CIHI guidance
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.race
+    - FHIR:Patient.extension.race
+    name: race
+    range: RaceMenu
+    required: true
+    title: Race
+  radiation_dosage:
+    description: Indicate the total dose given in units of Gray (Gy).
+    name: radiation_dosage
+    range: integer
+    title: Radiation Dosage
+  radiation_fractions:
+    description: Indicate the total number of fractions delivered as part of treatment.
+    name: radiation_fractions
+    range: integer
+    title: Radiation Fractions
+  radiation_modality:
+    description: Indicate NCIt code to denote the modality of radiation therapy.
+    name: radiation_modality
+    range: RadiationModalityMenu
+    required: true
+    title: Radiation Modality
+  sex_at_birth:
+    comments: EDI indicator
+    description: Refers to sex assigned at birth. Sex at birth is typically assigned
+      based on a person's reproductive system and other physical characteristics.
+      The provided values are based on the categoried defined by Statistics Canada
+    exact_mappings:
+    - All4One:Biological_sex
+    - CQDG:Sex
+    - mCODE.STU3:Patient.extension.birthsex
+    - FHIR:Patient.extension.birthsex
+    - Phenopacket:individual.sex
+    - BeaconV2:individual.sex
+    name: sex_at_birth
+    range: SexAtBirthMenu
+    required: true
+    title: Sex At Birth
+  smoking_status:
+    description: Indicate smoking status and history of a participant at the time
+      of the data collection.
+    name: smoking_status
+    range: SmokingStatusMenu
+    title: Smoking Status
+    todos: '["CQDG", "ARGO", "MOH"]'
+  specimen_anatomic_location_code:
+    comments: Refer to the International Classification of Diseases for Oncology,
+      3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
+    description: Indicate the ICD-O-3 topography code for the anatomic location of
+      a specimen when it was collected. Please use C80.9 if the primary site of a
+      specimen is Unkown.
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    examples:
+    - value: C50.1
+    - value: C18
+    name: specimen_anatomic_location_code
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+    range: string
+    title: Specimen Anatomic Location Code
+    todos: '["MOH", "ARGO"]'
+  specimen_anatomic_location_label:
+    description: Provide the human readable label for the specimen anatomic location
+      code.
+    name: specimen_anatomic_location_label
+    range: string
+    title: Specimen Anatomic Location Label
+  specimen_anatomic_location_source_text:
+    description: Provide the specimen anatomic location as reported in the participant's
+      source data if applicable
+    name: specimen_anatomic_location_source_text
+    range: string
+    title: Specimen Anatomic Location Source Text
+  specimen_laterality:
+    comments: Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
+    description: For cancer in a paired organ, indicate the side on which the specimen
+      was obtained.
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier
+    - FHIR:Specimen.collection.bodySite.extension.lateralityQualifier
+    name: specimen_laterality
+    range: SpecimenLateralityMenu
+    title: Specimen Laterality
+  specimen_processing:
+    description: Indicate the technique used to process specimen.
+    exact_mappings:
+    - Phenopacket:biosample.sample_processing
+    - BeaconV2:biosample.sample_processing
+    name: specimen_processing
+    range: SpecimenProcessingMenu
+    title: Specimen Processing
+    todos: '["MOH", "ARGO"]'
+  specimen_storage:
+    description: Indicate the method of long term storage for specimen that were not
+      extracted freshly or immediately cultured.
+    exact_mappings:
+    - Phenopacket:biosample.sample_storage
+    - BeaconV2:biosample.sample_storage
+    name: specimen_storage
+    range: SpecimenStorageMenu
+    title: Specimen Storage
+    todos: '["MOH", "ARGO"]'
+  specimen_tissue_source_code:
+    description: Indicate the tissue source of the specimen from which a biopsy or
+      other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
+      SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
+    exact_mappings:
+    - CQDG:biospecimen_tissue_source
+    - mCODE.STU3:Specimen.type
+    - FHIR:Specimen.type
+    - Phenopacket:biosample.sampled_tissue
+    - BeaconV2:biosample.sampled_tissue
+    name: specimen_tissue_source_code
+    pattern: ^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$
+    range: string
+    required: true
+    title: Specimen Tissue Source Code
+  specimen_tissue_source_term:
+    description: Indicate the human readable label for the specimen tissue source
+      code.
+    name: specimen_tissue_source_term
+    range: string
+    title: Specimen Tissue Source Term
+  specimen_tissue_source_text:
+    description: Indicate the specimen tissue source as reported in the participant's
+      source data.
+    name: specimen_tissue_source_text
+    range: string
+    title: Specimen Tissue Source Text
+  study_id:
+    description: Unique identifier of the study.
+    exact_mappings:
+    - CQDG:study_id
+    name: study_id
+    required: true
+    title: Study Id
+  submitter_diagnosis_id:
+    description: Unique identifier of the primary diagnosis event, assigned by the
+      data provider.
+    exact_mappings:
+    - mCODE.STU1:Condition.identifier
+    - mCODE.STU2:Condition.identifier
+    - FHIR:condition.code
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_diagnosis_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Diagnosis Id
+    todos: '["MOH", "ARGO"]'
+  submitter_participant_id:
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    exact_mappings:
+    - CQDG:submitter_participant_id
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_participant_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    range: string
+    required: true
+    title: Submitter Participant Id
+    todos: '["MOH", "ARGO"]'
+  submitter_specimen_id:
+    description: Unique identifier of the specimen within the study, assigned by the
+      data provider.
+    exact_mappings:
+    - CQDG:submitter_biospecimen_id
+    - mCODE.STU3:Specimen.Identifier
+    - FHIR:Specimen.Identifier
+    - Phenopacket:biosample.id
+    - BeaconV2:biosample.id
+    examples:
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
+    name: submitter_specimen_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Specimen Id
+    todos: '["ARGO", "MOH"]'
+  submitter_treatment_id:
+    description: Unique identifier of the treatment, assigned by the data provider.
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_treatment_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Treatment Id
+  treatment_duration:
+    description: The length of time (in days) over which the treatment was administered.
+    name: treatment_duration
+    range: integer
+    title: Treatment Duration
+  treatment_intent:
+    description: The purpose of the treatment or the desired effect or outcome resulting
+      from the treatment.
+    name: treatment_intent
+    range: TreatmentIntentMenu
+    title: Treatment Intent
+  treatment_response:
+    description: The outcome of the treatment, indicating how the patient responded
+      to the intervention
+    name: treatment_response
+    range: TreatmentResponseMenu
+    title: Treatment Response
+    todos: '["CQDG", "ARGO", "MOH"]'
+  treatment_status:
+    description: Indicate the donor's status of the prescribed treatment.
+    name: treatment_status
+    range: TreatmentStatusMenu
+    title: Treatment Status
+    todos: '["ARGO", "MOH"]'
+  treatment_type:
+    description: The category or method of treatment administered
+    name: treatment_type
+    range: TreatmentTypeMenu
+    required: true
+    title: Treatment Type
+  tumour_grade:
+    description: Grade of the tumour as assigned by the reporting tumour_grading_system.
+    name: tumour_grade
+    range: TumourGradeMenu
+    title: Tumour Grade
+  tumour_grading_system:
+    description: Specify the tumour grading system used to assess the description
+      of a tumour based on how abnormal the tumour cells and the tumour tissue look
+      under a microscope. Tumour grade is an indicator of how quickly a tumour is
+      likely to grow.
+    name: tumour_grading_system
+    range: TumourGradingSystemMenu
+    title: Tumour Grading System
+  tumour_histological_type_code:
+    description: Indicate the ICD-O-3 morphology code for the histological type and
+      degree of neoplasms that are usually obtained from a pathology report.  Refer
+      to the International Classification of Diseases for Oncology, 3rd Edition (WHO
+      ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
+    examples:
+    - value: 8260/3
+    - value: 9691/36
+    name: tumour_histological_type_code
+    pattern: ^[8,9]{1}[0-9]{3}/[0,1,2,3,6,9]{1}[1-9]{0,1}$
+    range: string
+    title: Tumour Histological Type Code
+  tumour_histological_type_label:
+    description: Provide the human readable label for the histological type code
+    name: tumour_histological_type_label
+    range: string
+    title: Tumour Histological Type Label
+  tumour_histological_type_source_text:
+    description: Provide the histological type as reported in the participant's source
+      data if applicable
+    name: tumour_histological_type_source_text
+    range: string
+    title: Tumour Histological Type Source Text
+  vital_status:
+    description: Participant's last known state of living or deceased.
+    exact_mappings:
+    - CQDG:vital_status
+    - Phenopacket:individual.vital_status
+    - BeaconV2:individual.vital_status
+    name: vital_status
+    range: VitalStatusMenu
+    title: Vital Status
+version: 1.0.0

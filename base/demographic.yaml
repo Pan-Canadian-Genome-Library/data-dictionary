@@ -1,0 +1,230 @@
+classes:
+  base_demographic:
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    name: base_demographic
+    slots:
+    - study_id
+    - submitter_participant_id
+    - gender
+    - sex_at_birth
+    - ethnicity
+    - race
+    title: demographic
+    slot_usage:
+      study_id:
+          rank: 2
+          slot_group:  v
+      submitter_participant_id:
+          rank: 1
+          slot_group: Database Identifiers
+      gender:
+          rank: 3
+          slot_group: Demographic
+      sex_at_birth:
+          rank: 4
+          slot_group: Demographic
+      ethnicity:
+          rank: 5
+          slot_group: Demographic  
+      race:
+          rank: 6
+          slot_group: Demographic
+    todos: '{"reference": "GDC", "status": "v2"}'
+description: '...'
+enums:
+  EthnicityMenu:
+    name: EthnicityMenu
+    permissible_values:
+      African:
+        text: African
+      Asian:
+        text: Asian
+      Caribbean:
+        text: Caribbean
+      European:
+        text: European
+      Latin, Central and South American:
+        text: Latin, Central and South American
+      Missing:
+        text: Missing
+      North American:
+        text: North American
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Oceanian:
+        text: Oceanian
+      Other ethnic and cultural:
+        text: Other ethnic and cultural
+      Restricted Access:
+        text: Restricted Access
+    title: ethnicity menu
+  GenderMenu:
+    name: GenderMenu
+    permissible_values:
+      Man:
+        text: Man
+      Missing:
+        text: Missing
+      Non-binary person:
+        text: Non-binary person
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+      Woman:
+        text: Woman
+    title: gender menu
+  RaceMenu:
+    name: RaceMenu
+    permissible_values:
+      Another race category:
+        text: Another race category
+      Black:
+        text: Black
+      Do not know:
+        text: Do not know
+      East Asian:
+        text: East Asian
+      "Indigenous (First Nations, Inuk/Inuit, M\xE9tis)":
+        text: "Indigenous (First Nations, Inuk/Inuit, M\xE9tis)"
+      Latin American:
+        text: Latin American
+      Middle Eastern:
+        text: Middle Eastern
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Prefer not to answer:
+        text: Prefer not to answer
+      Restricted Access:
+        text: Restricted Access
+      South Asian:
+        text: South Asian
+      Southeast Asian:
+        text: Southeast Asian
+      White:
+        text: White
+    title: race menu
+  SexAtBirthMenu:
+    name: SexAtBirthMenu
+    permissible_values:
+      Female:
+        text: Female
+      Male:
+        text: Male
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+    title: sex at birth menu
+  StudyIdMenu:
+    name: StudyIdMenu
+    title: study id menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  ethnicity:
+    comments: EDI indicator
+    description: "Refers to the ethnic or cultural origins of a person\u2019s ancestors.\
+      \ The provided values are based on the list of ethnic or cultural origins 2021\
+      \ defined by Statistics Canada"
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.ethnicity
+    - FHIR:Patient.extension.ethnicity
+    name: ethnicity
+    range: EthnicityMenu
+    required: true
+    title: Ethnicity
+  gender:
+    comments: EDI indicator
+    description: Refers to an individual's personal and social identity as a man,
+      woman or non-binary person (a person who is not exclusively a man or a woman).
+      The provided values are based on the categories defined by Statistics Canada
+    exact_mappings:
+    - mCODE.STU3:Patient.gender
+    - FHIR:Patient.gender
+    - Phenopacket:individual.gender
+    - BeaconV2:individual.gender
+    name: gender
+    range: GenderMenu
+    required: true
+    title: Gender
+  race:
+    comments: EDI indicator
+    description: A social construct used to judge and categorize people based on perceived
+      differences in physical appearance in ways that create and maintain power differentials
+      within social hierarchies. There is no scientifically supported biological basis
+      for discrete racial groups. The provided values are based on race-based data
+      standard defined by CIHI guidance
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.race
+    - FHIR:Patient.extension.race
+    name: race
+    range: RaceMenu
+    required: true
+    title: Race
+  sex_at_birth:
+    comments: EDI indicator
+    description: Refers to sex assigned at birth. Sex at birth is typically assigned
+      based on a person's reproductive system and other physical characteristics.
+      The provided values are based on the categoried defined by Statistics Canada
+    exact_mappings:
+    - All4One:Biological_sex
+    - CQDG:Sex
+    - mCODE.STU3:Patient.extension.birthsex
+    - FHIR:Patient.extension.birthsex
+    - Phenopacket:individual.sex
+    - BeaconV2:individual.sex
+    name: sex_at_birth
+    range: SexAtBirthMenu
+    required: true
+    title: Sex At Birth
+  study_id:
+    description: Unique identifier of the study.
+    exact_mappings:
+    - CQDG:study_id
+    name: study_id
+    required: true
+    title: Study Id
+  submitter_participant_id:
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    exact_mappings:
+    - CQDG:submitter_participant_id
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_participant_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    range: string
+    required: true
+    title: Submitter Participant Id
+    todos: '["MOH", "ARGO"]'
+version: 2.0.0

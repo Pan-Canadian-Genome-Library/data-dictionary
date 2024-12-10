@@ -1,0 +1,78 @@
+classes:
+  base_follow_up:
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    name: base_follow_up
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    title: follow up
+    todos: '{"reference": "ARGO", "status": "v2"}'
+    slot_usage:
+      submitter_participant_id:
+        rank: 1
+        slot_group: follow_up
+      age_at_followup:
+        rank: 2
+        slot_group: follow_up
+      disease_status_at_followup:
+        rank: 3
+        slot_group: follow_up
+description: '...'
+enums:
+  DiseaseStatusAtFollowupMenu:
+    name: DiseaseStatusAtFollowupMenu
+    permissible_values:
+      Complete remission:
+        text: Complete remission
+      Distant progression:
+        text: Distant progression
+      Loco-regional progression:
+        text: Loco-regional progression
+      No evidence of disease:
+        text: No evidence of disease
+      Partial remission:
+        text: Partial remission
+      Progression NOS:
+        text: Progression NOS
+      Relapse or recurrence:
+        text: Relapse or recurrence
+      Stable:
+        text: Stable
+    title: disease status at followup menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  age_at_followup:
+    description: Participant's age (in days) at time of the follow up event
+    name: age_at_followup
+    range: string
+    title: Age At Followup
+  disease_status_at_followup:
+    description: Indicate the participant's disease status at time of follow-up
+    name: disease_status_at_followup
+    range: DiseaseStatusAtFollowupMenu
+    required: true
+    title: Disease Status At Followup
+  submitter_participant_id:
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    exact_mappings:
+    - CQDG:submitter_participant_id
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_participant_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    range: string
+    required: true
+    title: Submitter Participant Id
+    todos: '["MOH", "ARGO"]'
+version: 2.0.0
