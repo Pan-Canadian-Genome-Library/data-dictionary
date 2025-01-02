@@ -1,8 +1,8 @@
 classes:
-  base_diagnosis:
+  base_Diagnosis:
     description: The disease that is inferred to be present in the individual, family
       or cohort being analyzed.
-    name: base_diagnosis
+    name: base_Diagnosis
     slots:
     - submitter_participant_id
     - submitter_diagnosis_id
@@ -11,7 +11,7 @@ classes:
     - disease_code
     - disease_term
     - disease_category
-    title: diagnosis
+    title: Diagnosis
     todos: '{"reference": "Phenopacket", "status": "v2"}'
     unique_keys:
       main:
@@ -66,6 +66,7 @@ slots:
     range: integer
     title: Age At Diagnosis
     todos: '["MOH", "ARGO"]'
+    required : false
   disease_category:
     description: A broader classification that groups diseases into categories.
     name: disease_category
@@ -81,7 +82,7 @@ slots:
     - FHIR:condition.code
     - Phenopacket:disease.term
     name: disease_code
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
     range: string
     required: true
     title: Disease Code
@@ -95,6 +96,7 @@ slots:
     - Phenopacket:disease.term
     name: disease_source_text
     range: string
+    required: false
     title: Disease Source Text
   disease_term:
     description: Provide the standardized and human readable term derived from the
@@ -105,6 +107,7 @@ slots:
     - Phenopacket:disease.term
     name: disease_term
     range: string
+    required: false
     title: Disease Term
   submitter_diagnosis_id:
     description: Unique identifier of the primary diagnosis event, assigned by the

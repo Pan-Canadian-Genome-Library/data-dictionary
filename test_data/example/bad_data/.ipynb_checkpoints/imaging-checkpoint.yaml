@@ -1,0 +1,30 @@
+image_hosted_url : "www.bad_example.com/1.png" ###Incorrect Pipeline Enum
+image_hosted_format : "PNG"
+image_processing_pipeline : "pipelineF" 
+image_processing_personel : "Bob"
+---
+image_hosted_url : "www.bad_example.com/1.png" ###Incorrect Pipeline Enum
+image_hosted_format : "SVG"
+image_processing_pipeline : "pipelineF" 
+image_processing_personel : "Bob"
+---
+image_hosted_url : "www.bad_example.com/1.png" ###Incorrect Pipeline Enum
+image_hosted_format : "PDF"
+image_processing_pipeline : "pipelineB" 
+image_processing_personel : "Bob"
+---
+image_hosted_url : "www.bad_example.com/1.png" ###Cannot have both image_processing_personel and image_processing_null_reason
+image_hosted_format : "PNG"
+image_processing_pipeline : "pipelineB" 
+image_processing_personel : "Bob"
+image_processing_null_reason: "Unknown"
+---
+image_hosted_url : "www.bad_example.com/1.png" ###image_processing_null_reason required if image_processing_personel not present
+image_hosted_format : "PNG"
+image_processing_pipeline : "pipelineB" 
+---
+image_hosted_url : "www.bad_example.com/1.png" ###Incorrect null reason enum
+image_hosted_format : "PNG"
+image_processing_pipeline : "pipelineB" 
+image_processing_null_reason: "Bob"
+---

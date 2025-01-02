@@ -1,8 +1,8 @@
 classes:
-  base_specimen:
+  base_Specimen:
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
-    name: base_specimen
+    name: base_Specimen
     slots:
     - submitter_participant_id
     - submitter_specimen_id
@@ -16,7 +16,7 @@ classes:
     - specimen_anatomic_location_label
     - specimen_anatomic_location_source_text
     - specimen_laterality
-    title: specimen
+    title: Specimen
     todos: '{"reference": "HL7/FHIR", "status": "v2"}'
     unique_keys:
       main:
@@ -129,6 +129,7 @@ slots:
     name: age_at_specimen_collection
     range: integer
     title: Age At Specimen Collection
+    required: false
   specimen_anatomic_location_code:
     comments: Refer to the International Classification of Diseases for Oncology,
       3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
@@ -146,18 +147,21 @@ slots:
     range: string
     title: Specimen Anatomic Location Code
     todos: '["MOH", "ARGO"]'
+    required: false
   specimen_anatomic_location_label:
     description: Provide the human readable label for the specimen anatomic location
       code.
     name: specimen_anatomic_location_label
     range: string
     title: Specimen Anatomic Location Label
+    required: false
   specimen_anatomic_location_source_text:
     description: Provide the specimen anatomic location as reported in the participant's
       source data if applicable
     name: specimen_anatomic_location_source_text
     range: string
     title: Specimen Anatomic Location Source Text
+    required: false
   specimen_laterality:
     comments: Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
     description: For cancer in a paired organ, indicate the side on which the specimen
@@ -168,6 +172,7 @@ slots:
     name: specimen_laterality
     range: SpecimenLateralityMenu
     title: Specimen Laterality
+    required: false
   specimen_processing:
     description: Indicate the technique used to process specimen.
     exact_mappings:
@@ -177,6 +182,7 @@ slots:
     range: SpecimenProcessingMenu
     title: Specimen Processing
     todos: '["MOH", "ARGO"]'
+    required: false
   specimen_storage:
     description: Indicate the method of long term storage for specimen that were not
       extracted freshly or immediately cultured.
@@ -187,6 +193,7 @@ slots:
     range: SpecimenStorageMenu
     title: Specimen Storage
     todos: '["MOH", "ARGO"]'
+    required: false
   specimen_tissue_source_code:
     description: Indicate the tissue source of the specimen from which a biopsy or
       other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
@@ -198,7 +205,7 @@ slots:
     - Phenopacket:biosample.sampled_tissue
     - BeaconV2:biosample.sampled_tissue
     name: specimen_tissue_source_code
-    pattern: ^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$
+    pattern: ^NCIT:C[0-9]+$|^SNOMEDCT:[0-9]+$
     range: string
     required: true
     title: Specimen Tissue Source Code
@@ -208,12 +215,14 @@ slots:
     name: specimen_tissue_source_term
     range: string
     title: Specimen Tissue Source Term
+    required: false
   specimen_tissue_source_text:
     description: Indicate the specimen tissue source as reported in the participant's
       source data.
     name: specimen_tissue_source_text
     range: string
     title: Specimen Tissue Source Text
+    required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.

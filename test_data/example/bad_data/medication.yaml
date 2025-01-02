@@ -1,0 +1,17 @@
+###Missing required columns:
+#submitter_treatment_id
+#drug_code
+drug_source_text: "INVALID VALUE"
+drug_term: "INVALID VALUE"
+drug_dose_units: "INVALID ENUM" ###Invalid enum
+prescribed_cumulative_drug_dose: "INVALID DATATYPE" ###Invalid Datatype
+actual_cumulative_drug_dose: "INVALID DATATYPE" ###Invalid Datatype
+---
+submitter_treatment_id: "TREATMENT_01"
+drug_code: "INVALID REGEX" ###Invalid Regex
+---
+submitter_treatment_id: "TREATMENT_01" ###Duplicate ID
+drug_code: "RxNorm:243670"
+---
+submitter_treatment_id: "TREATMENT_01" ###Duplicate ID
+drug_code: "RxNorm:243670"

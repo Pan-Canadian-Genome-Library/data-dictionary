@@ -1,12 +1,12 @@
 classes:
-  base_follow_up:
+  base_Follow_up:
     description: 'Any point of contact with a patient after primary diagnosis. '
-    name: base_follow_up
+    name: base_Follow_up
     slots:
     - submitter_participant_id
     - age_at_followup
     - disease_status_at_followup
-    title: follow up
+    title: Follow up
     todos: '{"reference": "ARGO", "status": "v2"}'
     slot_usage:
       submitter_participant_id:
@@ -48,8 +48,9 @@ slots:
   age_at_followup:
     description: Participant's age (in days) at time of the follow up event
     name: age_at_followup
-    range: string
+    range: integer
     title: Age At Followup
+    required: false
   disease_status_at_followup:
     description: Indicate the participant's disease status at time of follow-up
     name: disease_status_at_followup

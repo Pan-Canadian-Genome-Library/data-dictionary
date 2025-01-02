@@ -1,0 +1,25 @@
+###Missing required fields:
+# submitter_participant_id
+# submitter_diagnosis_id
+# disease_code
+# disease_category
+age_at_diagnosis : "INVALID DATATYPE" ### Incorrect datatype
+disease_source_text : "INVALID VALUE"
+disease_term : "INVALID VALUE"
+covid19_severity : "INVALID ENUM"
+covid19_vaccine_doses : "INVALID ENUM" ### Incorrect enum value
+---
+submitter_participant_id : "DONOR1"
+submitter_diagnosis_id : "DIAGNOSIS01"
+disease_code : "INCORRECT REGEX"  ### Incorrect regex
+disease_category : "INVALID ENUM" ### Incorrect enum value
+---
+submitter_participant_id : "DONOR1"
+submitter_diagnosis_id : "DIAGNOSIS01" ###Duplicate IDs
+disease_code : "ICD10:F88.89" 
+disease_category : "Autoimmune disorder"
+---
+submitter_participant_id : "DONOR1" 
+submitter_diagnosis_id : "DIAGNOSIS01" ###Duplicate IDs
+disease_code : "ICD10:F88.89" 
+disease_category : "Autoimmune disorder"

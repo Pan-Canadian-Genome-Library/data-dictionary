@@ -1,0 +1,17 @@
+[
+    {
+        "image_hosted_url" : "www.bad_example.com/1.png",
+        "image_hosted_format" : "PNG",
+        "image_processing_pipeline" : "pipelineF",
+        "image_processing_personel" : "Bob",
+        "image_processing_null_reason" : null,
+        "comments":"IGNORE"
+    },
+    {
+        "image_hosted_url" : "www.bad_example.com/1.png",
+        "image_hosted_format" : "SVG",
+        "image_processing_pipeline" : "pipelineF",
+        "image_processing_personel" : "Bob",
+        "image_processing_null_reason" : null
+    }
+]

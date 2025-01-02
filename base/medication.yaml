@@ -1,9 +1,9 @@
 classes:
-  base_medication:
+  base_Medication:
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
       prescription and over-the-counter medicines, vaccines, and large-molecule biologic
       therapies.
-    name: base_medication
+    name: base_Medication
     slots:
     - submitter_treatment_id
     - drug_source_text
@@ -12,7 +12,7 @@ classes:
     - drug_dose_units
     - prescribed_cumulative_drug_dose
     - actual_cumulative_drug_dose
-    title: medication
+    title: Medication
     todos: '{"reference": "Phenopacket", "status": "v2"}'
     slot_usage:
       submitter_treatment_id:
@@ -76,7 +76,7 @@ slots:
     description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
       to represent the drug.
     name: drug_code
-    pattern: ^RxNorm:\d{1,8}$||^KEGG:D\\d{5}$||^PubChem:\\d{1,9}$||^NCIt:C\\d{1,7}$
+    pattern: ^RxNorm:\d{1,8}$|^KEGG:D\\d{5}$|^PubChem:\\d{1,9}$|^NCIt:C\\d{1,7}$
     range: string
     required: true
     title: Drug Code
@@ -84,11 +84,13 @@ slots:
     description: Indicate units used to record drug dose.
     name: drug_dose_units
     range: DrugDoseUnitsMenu
+    required: false
     title: Drug Dose Units
   drug_source_text:
     description: Provide the original text from medical records describing the drug
       used in the treatment if applicable.
     name: drug_source_text
+    required: false
     range: string
     title: Drug Source Text
   drug_term:
@@ -96,12 +98,14 @@ slots:
       coding system associated with the drug_code
     name: drug_term
     range: string
+    required: false
     title: Drug Term
   prescribed_cumulative_drug_dose:
     description: Indicate the total prescribed cumulative drug dose in the same units
       specified in drug_dose_units.
     name: prescribed_cumulative_drug_dose
     range: decimal
+    required: false
     title: Prescribed Cumulative Drug Dose
   submitter_treatment_id:
     description: Unique identifier of the treatment, assigned by the data provider.

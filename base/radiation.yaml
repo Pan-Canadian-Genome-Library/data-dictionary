@@ -1,6 +1,7 @@
 classes:
-  base_radiation:
-    name: base_radiation
+  base_Radiation:
+    name: base_Radiation
+    description: "TBA..."
     slots:
     - submitter_treatment_id
     - radiation_modality
@@ -9,7 +10,7 @@ classes:
     - anatomical_site_irradiated_code
     - anatomical_site_irradiated_term
     - anatomical_site_irradiated_source_text
-    title: radiation
+    title: Radiation
     slot_usage:
       submitter_treatment_id:
         rank: 1
@@ -69,6 +70,7 @@ slots:
     range: string
     title: Anatomical Site Irradiated Code
     todos: '["MOH", "ARGO"]'
+    required: false
   anatomical_site_irradiated_source_text:
     description: Provide the original textual description of the irradiated body site
       of the radiation as reported in the participant's clinical or medical records
@@ -76,12 +78,14 @@ slots:
     name: anatomical_site_irradiated_source_text
     range: string
     title: Anatomical Site Irradiated Source Text
+    required: false
   anatomical_site_irradiated_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the anatomical_site_irradiated_code
     name: anatomical_site_irradiated_term
     range: string
     title: Anatomical Site Irradiated Term
+    required: false
   radiation_dosage:
     description: Indicate the total dose given in units of Gray (Gy).
     name: radiation_dosage

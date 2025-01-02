@@ -1,0 +1,175 @@
+enums:
+    ImageHostedFormatMenu:
+        name: ImageHostedFormatMenu
+        permissible_values:
+            'PNG':
+                text: 'PNG'
+            'SVG':
+                text: 'SVG'
+            'PDF':
+                text: 'PDF'
+            'JPEG':
+                text: 'JPEG'
+        title: Image Hosted Format Menu
+    ImageProcessPipelineMenu:
+            name: ImageProcessPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text:'pipelineA'
+                'pipelineB':
+                    text:'pipelineB'
+                'pipelineC':
+                    text:'pipelineC'
+                'pipelineD':
+                    text:'pipelineD'
+                'pipelineF':
+                    text:'pipelineF'
+            title: Image Process Pipeline Menu
+    ImageProcessPngPipelineMenu:
+            name: ImageProcessPngPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text:'pipelineA'
+                'pipelineB':
+                    text:'pipelineB'
+                'pipelineC':
+                    text:'pipelineC'
+            title: Image Process Png Pipeline Menu
+    ImageProcessSvgPipelineMenu:
+            name: ImageProcessSvgPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text:'pipelineA'
+                'pipelineD':
+                    text:'pipelineD'
+                'pipelineE':
+                    text:'pipelineE'
+            title: Image Process Svg Pipeline Menu
+    ImageProcessPdfJpegPipelineMenu:
+            name: ImageProcessPdfJpegPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text:'pipelineA'
+                'pipelineD':
+                    text:'pipelineD'
+                'pipelineF':
+                    text:'pipelineF'
+            title: Image Process Pdf and Jpeg Pipeline Menu
+    ImageProcessingNullReasonMenu:
+            name: ImageProcessingNullReasonMenu
+            permissible_values:
+                'Unknown':
+                    text:'Unknown'
+                'Not Provided':
+                    text:'Not Provided'
+                'Revoked':
+                    text:'Revoked'
+            title: Image Processing Null Reason Menu           
+classes:
+  extension_imaging:
+    description: An imaging test 
+    name: extension_imaging
+    slots:
+    - image_hosted_url
+    - image_hosted_format
+    - image_processing_pipeline
+    - image_processing_personel
+    - image_processing_null_reason
+    title: imaging
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+    slot_usage:
+      image_hosted_url:
+        rank: 1
+        slot_group: Extended Imaging
+      image_hosted_format:
+        rank: 2
+        slot_group: Extended Imaging
+      image_processing_pipeline:
+        rank: 3
+        slot_group: Extended Imaging  
+    rules:
+      - preconditions:
+          slot_conditions:
+              image_hosted_format:
+                  any_of:
+                      - equals_string: "PNG"
+        postconditions:
+            slot_conditions:
+                image_processing_pipeline:
+                    range: ImageProcessPngPipelineMenu
+      - preconditions:
+          slot_conditions:
+              image_hosted_format:
+                  any_of:
+                      - equals_string: "SVG"
+        postconditions:
+            slot_conditions:
+                image_processing_pipeline:
+                    range: ImageProcessSvgPipelineMenu
+      - preconditions:
+          slot_conditions:
+              image_hosted_format:
+                  any_of:
+                      - equals_string: "PDF"
+                      - equals_string: "JPEG"
+        postconditions:
+            slot_conditions:
+                image_processing_pipeline:
+                    range: ImageProcessPdfJpegPipelineMenu
+      - preconditions:
+          slot_conditions:
+              image_processing_personel:
+                  any_of:
+                      - pattern: "[a-zA-Z]+"
+        postconditions:
+            slot_conditions:
+                image_processing_null_reason:
+                    range: null
+        elseconditions:
+            slot_conditions:
+                image_processing_null_reason:
+                    range: ImageProcessingNullReasonMenu
+                    required: True
+                image_processing_personel:
+                    required: False
+                    range: null
+        
+                
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  image_hosted_url:
+    description: A URL for where the image is hosted
+    name: image_hosted_url
+    range: string
+    title: Image Hosted URL
+  image_hosted_format:
+    description: Accepted data types for images
+    name:  image_hosted_format
+    range: ImageHostedFormatMenu
+    title: Image Hosted Format
+  image_processing_pipeline:
+    description: Post processing pipeline dependent on image_hosted_format where 
+        image_hosted_format is PNG, choices are PipelineA,PipelineB,PipelineC
+        image_hosted_format is SVG, choices are PipelineA,PipelineD,PipelineE
+        image_hosted_format is PDF or JPEG, choices are PipelineA,PipelineD,PipelineF
+    name: image_processing_pipeline
+    range: ImageProcessPipelineMenu
+    title: Image Hosted URL
+  image_processing_personel:
+    description: Accepted data types for images
+    name:  image_processing_personel
+    range: 
+    - string
+    title: Image Processing Personel
+    required: True
+  image_processing_null_reason:
+    description: A reason why the person who processed the image was not provided
+    name:  image_processing_null_reason
+    range: 
+    - ImageProcessingNullReasonMenu
+    - null
+    title: Image Processing Null Reason
+version: 2.0.0

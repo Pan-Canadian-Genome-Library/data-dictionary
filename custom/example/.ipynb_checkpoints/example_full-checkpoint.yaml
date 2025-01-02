@@ -1,0 +1,1760 @@
+name: example_extended_schema
+description: '...'
+in_language: '[''en'']'
+id: https://example.com/hostseq.yaml
+version: 1.0.0
+imports:
+- linkml:types
+default_prefix: https://example.com/hostseq.yaml/
+enums:
+  ComorbidityStatusMenu:
+    name: ComorbidityStatusMenu
+    title: comorbidity status menu
+    permissible_values:
+      Active:
+        text: Active
+      In Remission:
+        text: In Remission
+      Resolved:
+        text: Resolved
+      Unknown:
+        text: Unknown
+  ComorbidityTreatmentStatusMenu:
+    name: ComorbidityTreatmentStatusMenu
+    title: comorbidity treatment status menu
+    permissible_values:
+      Treated and resolved:
+        text: Treated and resolved
+      Under treatment:
+        text: Under treatment
+      Unknown:
+        text: Unknown
+      Untreated:
+        text: Untreated
+  EthnicityMenu:
+    name: EthnicityMenu
+    title: ethnicity menu
+    permissible_values:
+      African:
+        text: African
+      Asian:
+        text: Asian
+      Caribbean:
+        text: Caribbean
+      European:
+        text: European
+      Latin, Central and South American:
+        text: Latin, Central and South American
+      Missing:
+        text: Missing
+      North American:
+        text: North American
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Oceanian:
+        text: Oceanian
+      Other ethnic and cultural:
+        text: Other ethnic and cultural
+      Restricted Access:
+        text: Restricted Access
+  GenderMenu:
+    name: GenderMenu
+    title: gender menu
+    permissible_values:
+      Man:
+        text: Man
+      Missing:
+        text: Missing
+      Non-binary person:
+        text: Non-binary person
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+      Woman:
+        text: Woman
+  RaceMenu:
+    name: RaceMenu
+    title: race menu
+    permissible_values:
+      Another race category:
+        text: Another race category
+      Black:
+        text: Black
+      Do not know:
+        text: Do not know
+      East Asian:
+        text: East Asian
+      Indigenous (First Nations, Inuk/Inuit, Métis):
+        text: Indigenous (First Nations, Inuk/Inuit, Métis)
+      Latin American:
+        text: Latin American
+      Middle Eastern:
+        text: Middle Eastern
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Prefer not to answer:
+        text: Prefer not to answer
+      Restricted Access:
+        text: Restricted Access
+      South Asian:
+        text: South Asian
+      Southeast Asian:
+        text: Southeast Asian
+      White:
+        text: White
+  SexAtBirthMenu:
+    name: SexAtBirthMenu
+    title: sex at birth menu
+    permissible_values:
+      Female:
+        text: Female
+      Male:
+        text: Male
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+  StudyIdMenu:
+    name: StudyIdMenu
+    title: study id menu
+  PregnancyMenu:
+    name: PregnancyMenu
+    title: pregnancy menu
+    permissible_values:
+      'No':
+        text: 'No'
+      Unknown:
+        text: Unknown
+      'Yes':
+        text: 'Yes'
+  DiseaseCategoryMenu:
+    name: DiseaseCategoryMenu
+    title: disease category menu
+    permissible_values:
+      Autoimmune disorder:
+        text: Autoimmune disorder
+      Cancer:
+        text: Cancer
+      Infectious disease:
+        text: Infectious disease
+  Covid19SeverityMenu:
+    name: Covid19SeverityMenu
+    title: covid19 severity menu
+    permissible_values:
+      Ambulatory (limitation of activities):
+        text: Ambulatory (limitation of activities)
+      Ambulatory (no limitation of activities):
+        text: Ambulatory (no limitation of activities)
+      Ambulatory (with or without limitation of activities):
+        text: Ambulatory (with or without limitation of activities)
+      Dead - death:
+        text: Dead - death
+      Hospitalized - mild disease (hospitalized, no oxygen therapy):
+        text: Hospitalized - mild disease (hospitalized, no oxygen therapy)
+      Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs):
+        text: Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
+      Hospitalized - severe disease (intubation and mechanical ventilation):
+        text: Hospitalized - severe disease (intubation and mechanical ventilation)
+      Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen):
+        text: Hospitalized - severe disease (non-invasive ventilation or high-flow
+          oxygen)
+      Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO):
+        text: Hospitalized - severe disease (ventilation and additional organ support,
+          i.e. pressors, RRT, ECMO)
+      Uninfected (no clinical or virological evidence of infection):
+        text: Uninfected (no clinical or virological evidence of infection)
+  Covid19VaccineDosesMenu:
+    name: Covid19VaccineDosesMenu
+    title: covid19 vaccine doses menu
+    permissible_values:
+      'No':
+        text: 'No'
+      Unknown:
+        text: Unknown
+      Yes, four doses:
+        text: Yes, four doses
+      Yes, one dose:
+        text: Yes, one dose
+      Yes, three doses:
+        text: Yes, three doses
+      Yes, two doses:
+        text: Yes, two doses
+  AlcoholConsumptionMenu:
+    name: AlcoholConsumptionMenu
+    title: alcohol consumption menu
+    permissible_values:
+      Alcohol consumption unknown:
+        text: Alcohol consumption unknown
+      Alcohol intake exceeds recommended daily limit:
+        text: Alcohol intake exceeds recommended daily limit
+      Alcohol intake within recommended daily limit:
+        text: Alcohol intake within recommended daily limit
+      No alcohol consumption:
+        text: No alcohol consumption
+  PhysicalActivityMenu:
+    name: PhysicalActivityMenu
+    title: physical activity menu
+    permissible_values:
+      1-3 times a month:
+        text: 1-3 times a month
+      Every day:
+        text: Every day
+      Less than once a month:
+        text: Less than once a month
+      Most days but not every day:
+        text: Most days but not every day
+      Never:
+        text: Never
+      Not applicable:
+        text: Not applicable
+      Once or twice a week:
+        text: Once or twice a week
+      Unknown:
+        text: Unknown
+  SmokingStatusMenu:
+    name: SmokingStatusMenu
+    title: smoking status menu
+    permissible_values:
+      Current reformed smoker for <= 15 years:
+        text: Current reformed smoker for <= 15 years
+      Current reformed smoker for > 15 years:
+        text: Current reformed smoker for > 15 years
+      Current reformed smoker, duration not specified:
+        text: Current reformed smoker, duration not specified
+      Current smoker:
+        text: Current smoker
+      Lifelong non-smoker (<100 cigarettes smoked in lifetime):
+        text: Lifelong non-smoker (<100 cigarettes smoked in lifetime)
+      Not applicable:
+        text: Not applicable
+      Smoking history not documented:
+        text: Smoking history not documented
+  DiseaseStatusAtFollowupMenu:
+    name: DiseaseStatusAtFollowupMenu
+    title: disease status at followup menu
+    permissible_values:
+      Complete remission:
+        text: Complete remission
+      Distant progression:
+        text: Distant progression
+      Loco-regional progression:
+        text: Loco-regional progression
+      No evidence of disease:
+        text: No evidence of disease
+      Partial remission:
+        text: Partial remission
+      Progression NOS:
+        text: Progression NOS
+      Relapse or recurrence:
+        text: Relapse or recurrence
+      Stable:
+        text: Stable
+  DrugDoseUnitsMenu:
+    name: DrugDoseUnitsMenu
+    title: drug dose units menu
+    permissible_values:
+      IU/kg:
+        text: IU/kg
+      IU/m2:
+        text: IU/m2
+      Not available:
+        text: Not available
+      g/m2:
+        text: g/m2
+      mg:
+        text: mg
+      mg/kg:
+        text: mg/kg
+      mg/m2:
+        text: mg/m2
+      ug/m2:
+        text: ug/m2
+  CauseOfDeathMenu:
+    name: CauseOfDeathMenu
+    title: cause of death menu
+    permissible_values:
+      Died of cancer:
+        text: Died of cancer
+      Died of other reasons:
+        text: Died of other reasons
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+  VitalStatusMenu:
+    name: VitalStatusMenu
+    title: vital status menu
+    permissible_values:
+      Alive:
+        text: Alive
+      Deceased:
+        text: Deceased
+      Missing:
+        text: Missing
+      Not Applicable:
+        text: Not Applicable
+      Not Collected:
+        text: Not Collected
+      Not Provided:
+        text: Not Provided
+      Restricted Access:
+        text: Restricted Access
+  PhenotypeObservedMenu:
+    name: PhenotypeObservedMenu
+    title: phenotype observed menu
+    permissible_values:
+      'No':
+        text: 'No'
+      Unknown:
+        text: Unknown
+      'Yes':
+        text: 'Yes'
+  PhenotypeSeverityMenu:
+    name: PhenotypeSeverityMenu
+    title: phenotype severity menu
+    permissible_values:
+      Borderline:
+        text: Borderline
+      Mild:
+        text: Mild
+      Moderate:
+        text: Moderate
+      Profound:
+        text: Profound
+      Severe:
+        text: Severe
+  SpecimenLateralityMenu:
+    name: SpecimenLateralityMenu
+    title: specimen laterality menu
+    permissible_values:
+      Left:
+        text: Left
+      Not applicable:
+        text: Not applicable
+      Right:
+        text: Right
+      Unknown:
+        text: Unknown
+  SpecimenProcessingMenu:
+    name: SpecimenProcessingMenu
+    title: specimen processing menu
+    permissible_values:
+      Cryopreservation - other:
+        text: Cryopreservation - other
+      Cryopreservation in dry ice (dead tissue):
+        text: Cryopreservation in dry ice (dead tissue)
+      Cryopreservation in liquid nitrogen (dead tissue):
+        text: Cryopreservation in liquid nitrogen (dead tissue)
+      Cryopreservation of live cells in liquid nitrogen:
+        text: Cryopreservation of live cells in liquid nitrogen
+      Formalin fixed & paraffin embedded:
+        text: Formalin fixed & paraffin embedded
+      Formalin fixed - buffered:
+        text: Formalin fixed - buffered
+      Formalin fixed - unbuffered:
+        text: Formalin fixed - unbuffered
+      Fresh:
+        text: Fresh
+      Other:
+        text: Other
+      Unknown:
+        text: Unknown
+  SpecimenStorageMenu:
+    name: SpecimenStorageMenu
+    title: specimen storage menu
+    permissible_values:
+      Cut slide:
+        text: Cut slide
+      Frozen in -70 freezer:
+        text: Frozen in -70 freezer
+      Frozen in liquid nitrogen:
+        text: Frozen in liquid nitrogen
+      Frozen in vapour phase:
+        text: Frozen in vapour phase
+      Not Applicable:
+        text: Not Applicable
+      Other:
+        text: Other
+      Paraffin block:
+        text: Paraffin block
+      RNA later frozen:
+        text: RNA later frozen
+      Unknown:
+        text: Unknown
+  TreatmentIntentMenu:
+    name: TreatmentIntentMenu
+    title: treatment intent menu
+    permissible_values:
+      Curative:
+        text: Curative
+      Diagnostic:
+        text: Diagnostic
+      Forensic:
+        text: Forensic
+      Guidance:
+        text: Guidance
+      Palliative:
+        text: Palliative
+      Preventative:
+        text: Preventative
+      Screening:
+        text: Screening
+      Supportive:
+        text: Supportive
+  TreatmentResponseMenu:
+    name: TreatmentResponseMenu
+    title: treatment response menu
+    permissible_values:
+      Clinical remission:
+        text: Clinical remission
+      Disease Progression:
+        text: Disease Progression
+      Improvement of symptoms:
+        text: Improvement of symptoms
+      No improvement of symptoms:
+        text: No improvement of symptoms
+      No sign of disease:
+        text: No sign of disease
+      Not applicable:
+        text: Not applicable
+      Partial Response:
+        text: Partial Response
+      Stable Disease:
+        text: Stable Disease
+      Treatment cessation due to toxicity:
+        text: Treatment cessation due to toxicity
+      Worsening of symptoms:
+        text: Worsening of symptoms
+  TreatmentStatusMenu:
+    name: TreatmentStatusMenu
+    title: treatment status menu
+    permissible_values:
+      Not available:
+        text: Not available
+      Other:
+        text: Other
+      Patient choice (stopped or interrupted treatment):
+        text: Patient choice (stopped or interrupted treatment)
+      Physician decision (stopped or interrupted treatment):
+        text: Physician decision (stopped or interrupted treatment)
+      Treatment completed as prescribed:
+        text: Treatment completed as prescribed
+      Treatment incomplete because patient died:
+        text: Treatment incomplete because patient died
+      Treatment incomplete due to technical or organizational problems:
+        text: Treatment incomplete due to technical or organizational problems
+      Treatment ongoing:
+        text: Treatment ongoing
+      Treatment stopped due to acute toxicity:
+        text: Treatment stopped due to acute toxicity
+      Treatment stopped due to lack of efficacy (disease progression):
+        text: Treatment stopped due to lack of efficacy (disease progression)
+  TreatmentTypeMenu:
+    name: TreatmentTypeMenu
+    title: treatment type menu
+    permissible_values:
+      Medication:
+        text: Medication
+      Pharmacotherapy:
+        text: Pharmacotherapy
+      Procedure:
+        text: Procedure
+      Radiation therapy:
+        text: Radiation therapy
+slots:
+  age_at_comorbidity_diagnosis:
+    name: age_at_comorbidity_diagnosis
+    description: Indicate the age (in days) of comorbidity diagnosis.
+    title: Age At Comorbidity Diagnosis
+    range: integer
+    minimum_value: 0
+  comorbidity_code:
+    name: comorbidity_code
+    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+    title: Comorbidity Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
+      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    range: string
+    required: true
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+  comorbidity_source_text:
+    name: comorbidity_source_text
+    description: Provide the original textual description of the diagnosed comorbidity
+      as reported in the participant's clinical or medical records if applicable
+    title: Comorbidity Source Text
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+  comorbidity_status:
+    name: comorbidity_status
+    description: Indicate the current state or activity of the comorbid condition.
+    title: Comorbidity Status
+    range: ComorbidityStatusMenu
+  comorbidity_term:
+    name: comorbidity_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the comorbidity_code
+    title: Comorbidity Term
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+  comorbidity_treatment_status:
+    name: comorbidity_treatment_status
+    description: Indicate whether the comorbid condition is currently being treated
+      or not.
+    title: Comorbidity Treatment Status
+    range: ComorbidityTreatmentStatusMenu
+  submitter_participant_id:
+    name: submitter_participant_id
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    title: Submitter Participant Id
+    todos:
+    - '["MOH", "ARGO"]'
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    exact_mappings:
+    - CQDG:submitter_participant_id
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+  ethnicity:
+    name: ethnicity
+    description: Refers to the ethnic or cultural origins of a person’s ancestors.
+      The provided values are based on the list of ethnic or cultural origins 2021
+      defined by Statistics Canada
+    title: Ethnicity
+    comments:
+    - EDI indicator
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.ethnicity
+    - FHIR:Patient.extension.ethnicity
+    range: EthnicityMenu
+    required: true
+  gender:
+    name: gender
+    description: Refers to an individual's personal and social identity as a man,
+      woman or non-binary person (a person who is not exclusively a man or a woman).
+      The provided values are based on the categories defined by Statistics Canada
+    title: Gender
+    comments:
+    - EDI indicator
+    exact_mappings:
+    - mCODE.STU3:Patient.gender
+    - FHIR:Patient.gender
+    - Phenopacket:individual.gender
+    - BeaconV2:individual.gender
+    range: GenderMenu
+    required: true
+  race:
+    name: race
+    description: A social construct used to judge and categorize people based on perceived
+      differences in physical appearance in ways that create and maintain power differentials
+      within social hierarchies. There is no scientifically supported biological basis
+      for discrete racial groups. The provided values are based on race-based data
+      standard defined by CIHI guidance
+    title: Race
+    comments:
+    - EDI indicator
+    exact_mappings:
+    - mCODE.STU3:Patient.extension.race
+    - FHIR:Patient.extension.race
+    range: RaceMenu
+    required: true
+  sex_at_birth:
+    name: sex_at_birth
+    description: Refers to sex assigned at birth. Sex at birth is typically assigned
+      based on a person's reproductive system and other physical characteristics.
+      The provided values are based on the categoried defined by Statistics Canada
+    title: Sex At Birth
+    comments:
+    - EDI indicator
+    exact_mappings:
+    - All4One:Biological_sex
+    - CQDG:Sex
+    - mCODE.STU3:Patient.extension.birthsex
+    - FHIR:Patient.extension.birthsex
+    - Phenopacket:individual.sex
+    - BeaconV2:individual.sex
+    range: SexAtBirthMenu
+    required: true
+  study_id:
+    name: study_id
+    description: Unique identifier of the study.
+    title: Study Id
+    exact_mappings:
+    - CQDG:study_id
+    required: true
+  ancestry:
+    name: ancestry
+    description: The genetic or genomic heritage of an individual, typically tracing
+      the origins of one's ancestors.
+    title: Ancestry
+    range: string
+  country_of_birth:
+    name: country_of_birth
+    description: The country where an individual was born, typically defined by current
+      geopolitical borders.
+    title: Country Of Birth
+    range: string
+  employment:
+    name: employment
+    description: The current work status of an individual.
+    title: Employment
+    range: string
+  highest_education_level_achieved:
+    name: highest_education_level_achieved
+    description: The highest level of formal education an individual has completed.
+    title: Highest Education Level Achieved
+    range: string
+  height:
+    name: height
+    description: The measurement of an individual from head to toe recorded in centimeters
+      (cm).
+    title: Hight
+    range: decimal
+  number_of_other_people_in_household:
+    name: number_of_other_people_in_household
+    description: The total number of individuals living in the same household as the
+      participant, excluding the participant.
+    title: Number Of Other People In Household
+    range: integer
+  pregnancy:
+    name: pregnancy
+    description: Indicates whether an individual is currently pregnant.
+    title: Pregnancy
+    range: PregnancyMenu
+  type_of_residence:
+    name: type_of_residence
+    description: The kind of dwelling in which an individual lives.
+    title: Type Of Residence
+    range: string
+  weight:
+    name: weight
+    description: The mass or body weight of an individual measured in kilograms (kg).
+    title: Weight
+    range: decimal
+  age_at_diagnosis:
+    name: age_at_diagnosis
+    description: Age of participant (in days) at time of diagnosis of the condition.
+    title: Age At Diagnosis
+    todos:
+    - '["MOH", "ARGO"]'
+    exact_mappings:
+    - mCODE.STU3:condition.onset
+    - FHIR:condition.onset
+    - Phenopacket:disease.onset
+    range: integer
+  disease_category:
+    name: disease_category
+    description: A broader classification that groups diseases into categories.
+    title: Disease Category
+    range: DiseaseCategoryMenu
+    required: true
+  disease_code:
+    name: disease_code
+    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    title: Disease Code
+    todos:
+    - '["MOH ", " ARGO ", " CQDG"]'
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
+      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+    required: true
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+  disease_source_text:
+    name: disease_source_text
+    description: Provide the original textual description of the diagnosed disease
+      as reported in the participant's clinical or medical records if applicable
+    title: Disease Source Text
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+  disease_term:
+    name: disease_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the disease_code
+    title: Disease Term
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+  submitter_diagnosis_id:
+    name: submitter_diagnosis_id
+    description: Unique identifier of the primary diagnosis event, assigned by the
+      data provider.
+    title: Submitter Diagnosis Id
+    todos:
+    - '["MOH", "ARGO"]'
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    exact_mappings:
+    - mCODE.STU1:Condition.identifier
+    - mCODE.STU2:Condition.identifier
+    - FHIR:condition.code
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  covid19_severity:
+    name: covid19_severity
+    description: A measure of the severity of a COVID-19 infection, which can range
+      from mild to severe or critical.
+    title: Covid19 Severity
+    range: Covid19SeverityMenu
+  covid19_vaccine_doses:
+    name: covid19_vaccine_doses
+    description: The number of COVID-19 vaccine doses the patient has received.
+    title: Covid19 Vaccine Doses
+    range: Covid19VaccineDosesMenu
+  alcohol_consumption:
+    name: alcohol_consumption
+    description: Indicate current alcohol consumtion based on recommended daily limit.
+    title: Alcohol Consumption
+    todos:
+    - '["CQDG", "ARGO", "MOH"]'
+    comments:
+    - Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks
+      a week, with no more than 3 drinks a day most days. No more than 4 drinks on
+      any single occasion. For women, no more than 10 drinks a week, with no more
+      than 2 drinks a day most days. No more than 3 drinks on any single occasion.
+    range: AlcoholConsumptionMenu
+  physical_activity:
+    name: physical_activity
+    description: Indicate how many times per week the participant exercises for at
+      least 30 minutes.
+    title: Physical Activity
+    range: PhysicalActivityMenu
+  smoking_status:
+    name: smoking_status
+    description: Indicate smoking status and history of a participant at the time
+      of the data collection.
+    title: Smoking Status
+    todos:
+    - '["CQDG", "ARGO", "MOH"]'
+    range: SmokingStatusMenu
+  age_at_followup:
+    name: age_at_followup
+    description: Participant's age (in days) at time of the follow up event
+    title: Age At Followup
+    range: string
+  disease_status_at_followup:
+    name: disease_status_at_followup
+    description: Indicate the participant's disease status at time of follow-up
+    title: Disease Status At Followup
+    range: DiseaseStatusAtFollowupMenu
+    required: true
+  age_at_measurement:
+    name: age_at_measurement
+    description: Age (in days) of the participant at the time the lab test or measurement
+      was conducted.
+    title: Age At Measurement
+    range: integer
+  measurement_code:
+    name: measurement_code
+    description: Use standartized LOINC (Logical Observation Identifiers Names and
+      Codes) code to represent quantitative, ordinal, or categorical measurements.
+    title: Measurement Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
+    range: string
+    required: true
+    pattern: ^LOINC:[0-9]{1,5}-[0-9]$
+  measurement_result_categorical:
+    name: measurement_result_categorical
+    description: The categorical result of the lab test or measurement.
+    title: Measurement Result Categorical
+    range: string
+  measurement_result_numeric:
+    name: measurement_result_numeric
+    description: The numeric result of the lab test or measurement.
+    title: Measurement Result Numeric
+    range: decimal
+  measurement_source_text:
+    name: measurement_source_text
+    description: Provide the original textual description of the measurement as reported
+      in the participant's clinical or medical records if applicable
+    title: Measurement Source Text
+    range: string
+  measurement_term:
+    name: measurement_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the measurement_code
+    title: Measurement Term
+    range: string
+  measurement_unit:
+    name: measurement_unit
+    description: Indicate the unit of measurement for the result using LOINC code.
+    title: Measurement Unit
+    range: string
+  actual_cumulative_drug_dose:
+    name: actual_cumulative_drug_dose
+    description: Indicate the total actual cumulative drug dose in the same units
+      specified in drug_dose_units.
+    title: Actual Cumulative Drug Dose
+    range: decimal
+  drug_code:
+    name: drug_code
+    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
+      to represent the drug.
+    title: Drug Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
+      URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
+      URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
+    range: string
+    required: true
+    pattern: ^RxNorm:\d{1,8}$||^KEGG:D\\d{5}$||^PubChem:\\d{1,9}$||^NCIt:C\\d{1,7}$
+  drug_dose_units:
+    name: drug_dose_units
+    description: Indicate units used to record drug dose.
+    title: Drug Dose Units
+    range: DrugDoseUnitsMenu
+  drug_source_text:
+    name: drug_source_text
+    description: Provide the original text from medical records describing the drug
+      used in the treatment if applicable.
+    title: Drug Source Text
+    range: string
+  drug_term:
+    name: drug_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the drug_code
+    title: Drug Term
+    range: string
+  prescribed_cumulative_drug_dose:
+    name: prescribed_cumulative_drug_dose
+    description: Indicate the total prescribed cumulative drug dose in the same units
+      specified in drug_dose_units.
+    title: Prescribed Cumulative Drug Dose
+    range: decimal
+  submitter_treatment_id:
+    name: submitter_treatment_id
+    description: Unique identifier of the treatment, assigned by the data provider.
+    title: Submitter Treatment Id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  age_at_death:
+    name: age_at_death
+    description: Age of participant (in days) at time of death
+    title: Age At Death
+    range: integer
+  age_at_enrollment:
+    name: age_at_enrollment
+    description: Age (in days) of participant at time of enrollment into the study
+    title: Age At Enrollment
+    range: integer
+  cause_of_death:
+    name: cause_of_death
+    description: Indicate the cause of a participant's death.
+    title: Cause Of Death
+    todos:
+    - '["ARGO ", " MOH"]'
+    range: CauseOfDeathMenu
+  vital_status:
+    name: vital_status
+    description: Participant's last known state of living or deceased.
+    title: Vital Status
+    exact_mappings:
+    - CQDG:vital_status
+    - Phenopacket:individual.vital_status
+    - BeaconV2:individual.vital_status
+    range: VitalStatusMenu
+  age_at_phenotype:
+    name: age_at_phenotype
+    description: Participant's age (in days) when phenotype was observed
+    title: Age At Phenotype
+    range: integer
+  phenotype_code:
+    name: phenotype_code
+    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
+      the phenotype.
+    title: Phenotype Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
+    range: string
+    required: true
+    pattern: ^HP:[0-9]{7}$
+  phenotype_duration:
+    name: phenotype_duration
+    description: Indicate the length of time (in days) over which the phenotype was
+      observed in the participant.
+    title: Phenotype Duration
+    range: integer
+  phenotype_observed:
+    name: phenotype_observed
+    description: Indicate whether the phenotype was observed in the participant.
+    title: Phenotype Observed
+    range: PhenotypeObservedMenu
+    required: true
+  phenotype_severity:
+    name: phenotype_severity
+    description: The degree or severity of the observed phenotype.
+    title: Phenotype Severity
+    comments:
+    - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
+    range: PhenotypeSeverityMenu
+  phenotype_source_text:
+    name: phenotype_source_text
+    description: Provide the original textual description of the phenotype as reported
+      in the participant's clinical or medical records if applicable
+    title: Phenotype Source Text
+    range: string
+  phenotype_term:
+    name: phenotype_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the phenotype_code.
+    title: Phenotype Term
+    range: string
+  procedure_body_site_code:
+    name: procedure_body_site_code
+    description: Indicate the ICD-O-3 topography code to describe the site of the
+      surgery if applicable. Please use C80.9 if the site is Unkown.
+    title: Procedure Body Site Code
+    todos:
+    - '["MOH", "ARGO"]'
+    comments:
+    - Refer to the International Classification of Diseases for Oncology, 3rd Edition
+      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
+    examples:
+    - value: C50.1
+    - value: C18
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    range: string
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+  procedure_body_site_source_text:
+    name: procedure_body_site_source_text
+    description: Provide the original textual description of the body site of the
+      procedure as reported in the participant's clinical or medical records if applicable
+    title: Procedure Body Site Source Text
+    range: string
+  procedure_body_site_term:
+    name: procedure_body_site_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the procedure_body_site_code
+    title: Procedure Body Site Term
+    range: string
+  procedure_code:
+    name: procedure_code
+    description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
+      performed.
+    title: Procedure Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
+      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>'
+    range: string
+    required: true
+    pattern: ^NCIt:C\\d{1,7}$||^SNOMEDCT:\\d{6,9}$||^UMLS:C\\d{7}$||^CCI:\\d\\.[A-Z]{2}\\.\\d{2}\\.[A-Z]{2}$
+  procedure_source_text:
+    name: procedure_source_text
+    description: The original texual description of the procedure performed, as recorded
+      in clinical notes or medical records if applicable.
+    title: Procedure Source Text
+    range: string
+  procedure_term:
+    name: procedure_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the procedure_code
+    title: Procedure Term
+    range: string
+  age_at_specimen_collection:
+    name: age_at_specimen_collection
+    description: Indicate participant's age( in days) when specimen was collected.
+    title: Age At Specimen Collection
+    range: integer
+  specimen_anatomic_location_code:
+    name: specimen_anatomic_location_code
+    description: Indicate the ICD-O-3 topography code for the anatomic location of
+      a specimen when it was collected. Please use C80.9 if the primary site of a
+      specimen is Unkown.
+    title: Specimen Anatomic Location Code
+    todos:
+    - '["MOH", "ARGO"]'
+    comments:
+    - Refer to the International Classification of Diseases for Oncology, 3rd Edition
+      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
+    examples:
+    - value: C50.1
+    - value: C18
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    range: string
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+  specimen_anatomic_location_label:
+    name: specimen_anatomic_location_label
+    description: Provide the human readable label for the specimen anatomic location
+      code.
+    title: Specimen Anatomic Location Label
+    range: string
+  specimen_anatomic_location_source_text:
+    name: specimen_anatomic_location_source_text
+    description: Provide the specimen anatomic location as reported in the participant's
+      source data if applicable
+    title: Specimen Anatomic Location Source Text
+    range: string
+  specimen_laterality:
+    name: specimen_laterality
+    description: For cancer in a paired organ, indicate the side on which the specimen
+      was obtained.
+    title: Specimen Laterality
+    comments:
+    - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier
+    - FHIR:Specimen.collection.bodySite.extension.lateralityQualifier
+    range: SpecimenLateralityMenu
+  specimen_processing:
+    name: specimen_processing
+    description: Indicate the technique used to process specimen.
+    title: Specimen Processing
+    todos:
+    - '["MOH", "ARGO"]'
+    exact_mappings:
+    - Phenopacket:biosample.sample_processing
+    - BeaconV2:biosample.sample_processing
+    range: SpecimenProcessingMenu
+  specimen_storage:
+    name: specimen_storage
+    description: Indicate the method of long term storage for specimen that were not
+      extracted freshly or immediately cultured.
+    title: Specimen Storage
+    todos:
+    - '["MOH", "ARGO"]'
+    exact_mappings:
+    - Phenopacket:biosample.sample_storage
+    - BeaconV2:biosample.sample_storage
+    range: SpecimenStorageMenu
+  specimen_tissue_source_code:
+    name: specimen_tissue_source_code
+    description: Indicate the tissue source of the specimen from which a biopsy or
+      other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
+      SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
+    title: Specimen Tissue Source Code
+    exact_mappings:
+    - CQDG:biospecimen_tissue_source
+    - mCODE.STU3:Specimen.type
+    - FHIR:Specimen.type
+    - Phenopacket:biosample.sampled_tissue
+    - BeaconV2:biosample.sampled_tissue
+    range: string
+    required: true
+    pattern: ^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$
+  specimen_tissue_source_term:
+    name: specimen_tissue_source_term
+    description: Indicate the human readable label for the specimen tissue source
+      code.
+    title: Specimen Tissue Source Term
+    range: string
+  specimen_tissue_source_text:
+    name: specimen_tissue_source_text
+    description: Indicate the specimen tissue source as reported in the participant's
+      source data.
+    title: Specimen Tissue Source Text
+    range: string
+  submitter_specimen_id:
+    name: submitter_specimen_id
+    description: Unique identifier of the specimen within the study, assigned by the
+      data provider.
+    title: Submitter Specimen Id
+    todos:
+    - '["ARGO", "MOH"]'
+    examples:
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
+    exact_mappings:
+    - CQDG:submitter_biospecimen_id
+    - mCODE.STU3:Specimen.Identifier
+    - FHIR:Specimen.Identifier
+    - Phenopacket:biosample.id
+    - BeaconV2:biosample.id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  age_at_treatment:
+    name: age_at_treatment
+    description: Age (in days) of the participant at the time the treatment was administered.
+    title: Age At Treatment
+    range: integer
+  treatment_duration:
+    name: treatment_duration
+    description: The length of time (in days) over which the treatment was administered.
+    title: Treatment Duration
+    range: integer
+  treatment_intent:
+    name: treatment_intent
+    description: The purpose of the treatment or the desired effect or outcome resulting
+      from the treatment.
+    title: Treatment Intent
+    range: TreatmentIntentMenu
+  treatment_response:
+    name: treatment_response
+    description: The outcome of the treatment, indicating how the patient responded
+      to the intervention
+    title: Treatment Response
+    todos:
+    - '["CQDG", "ARGO", "MOH"]'
+    range: TreatmentResponseMenu
+  treatment_status:
+    name: treatment_status
+    description: Indicate the donor's status of the prescribed treatment.
+    title: Treatment Status
+    todos:
+    - '["ARGO", "MOH"]'
+    range: TreatmentStatusMenu
+  treatment_type:
+    name: treatment_type
+    description: The category or method of treatment administered
+    title: Treatment Type
+    range: TreatmentTypeMenu
+    required: true
+  image_hosted_url:
+    name: image_hosted_url
+    description: A URL for where the image is hosted
+    title: Image Hosted URL
+    range: string
+classes:
+  comorbidity:
+    name: comorbidity
+    title: comorbidity
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_term
+    - comorbidity_source_text
+    - comorbidity_treatment_status
+    - comorbidity_status
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
+        rank: 2
+        slot_group: comorbidity
+      comorbidity_code:
+        name: comorbidity_code
+        rank: 3
+        slot_group: comorbidity
+      comorbidity_term:
+        name: comorbidity_term
+        rank: 4
+        slot_group: comorbidity
+      comorbidity_source_text:
+        name: comorbidity_source_text
+        rank: 5
+        slot_group: comorbidity
+      comorbidity_treatment_status:
+        name: comorbidity_treatment_status
+        rank: 6
+        slot_group: comorbidity
+      comorbidity_status:
+        name: comorbidity_status
+        rank: 7
+        slot_group: comorbidity
+  demographic:
+    name: demographic
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    title: demographic
+    todos:
+    - '{"reference": "GDC", "status": "v2"}'
+    slots:
+    - study_id
+    - submitter_participant_id
+    - gender
+    - sex_at_birth
+    - ethnicity
+    - race
+    - country_of_birth
+    - ancestry
+    - height
+    - weight
+    - highest_education_level_achieved
+    - employment
+    - type_of_residence
+    - number_of_other_people_in_household
+    - pregnancy
+    slot_usage:
+      study_id:
+        name: study_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      gender:
+        name: gender
+        rank: 3
+        slot_group: Demographic
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 4
+        slot_group: Demographic
+      ethnicity:
+        name: ethnicity
+        rank: 5
+        slot_group: Demographic
+      race:
+        name: race
+        rank: 6
+        slot_group: Demographic
+      country_of_birth:
+        name: country_of_birth
+        rank: 7
+        slot_group: Extended omorbidity
+      ancestry:
+        name: ancestry
+        rank: 8
+        slot_group: Extended comorbidity
+      height:
+        name: height
+        rank: 9
+        slot_group: Extended comorbidity
+      weight:
+        name: weight
+        rank: 10
+        slot_group: Extended comorbidity
+      highest_education_level_achieved:
+        name: highest_education_level_achieved
+        rank: 11
+        slot_group: comorbidity
+      employment:
+        name: employment
+        rank: 12
+        slot_group: Extended comorbidity
+      type_of_residence:
+        name: type_of_residence
+        rank: 13
+        slot_group: Extended comorbidity
+      number_of_other_people_in_household:
+        name: number_of_other_people_in_household
+        rank: 14
+        slot_group: Extended comorbidity
+      pregnancy:
+        name: pregnancy
+        rank: 15
+        slot_group: Extended comorbidity
+  diagnosis:
+    name: diagnosis
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    title: diagnosis
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - age_at_diagnosis
+    - disease_source_text
+    - disease_code
+    - disease_term
+    - disease_category
+    - covid19_severity
+    - covid19_vaccine_doses
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_diagnosis_id:
+        name: submitter_diagnosis_id
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_diagnosis:
+        name: age_at_diagnosis
+        rank: 3
+        slot_group: diagnosis
+      disease_source_text:
+        name: disease_source_text
+        rank: 4
+        slot_group: diagnosis
+      disease_code:
+        name: disease_code
+        rank: 5
+        slot_group: diagnosis
+      disease_term:
+        name: disease_term
+        rank: 6
+        slot_group: diagnosis
+      disease_category:
+        name: disease_category
+        rank: 7
+        slot_group: diagnosis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_diagnosis_id
+  exposure:
+    name: exposure
+    title: exposure
+    slots:
+    - submitter_participant_id
+    - alcohol_consumption
+    - smoking_status
+    - physical_activity
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      alcohol_consumption:
+        name: alcohol_consumption
+        rank: 2
+        slot_group: exposure
+      smoking_status:
+        name: smoking_status
+        rank: 3
+        slot_group: exposure
+      physical_activity:
+        name: physical_activity
+        rank: 4
+        slot_group: exposure
+  follow_up:
+    name: follow_up
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    title: follow up
+    todos:
+    - '{"reference": "ARGO", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: follow_up
+      age_at_followup:
+        name: age_at_followup
+        rank: 2
+        slot_group: follow_up
+      disease_status_at_followup:
+        name: disease_status_at_followup
+        rank: 3
+        slot_group: follow_up
+  measurement:
+    name: measurement
+    description: Record individual measurements to capture quantitative, ordinal (e.g.,
+      absent/present), or categorical measurements.
+    title: measurement
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_measurement
+    - measurement_code
+    - measurement_term
+    - measurement_source_text
+    - measurement_result_numeric
+    - measurement_unit
+    - measurement_result_categorical
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_measurement:
+        name: age_at_measurement
+        rank: 2
+        slot_group: measurement
+      measurement_code:
+        name: measurement_code
+        rank: 3
+        slot_group: measurement
+      measurement_term:
+        name: measurement_term
+        rank: 4
+        slot_group: measurement
+      measurement_source_text:
+        name: measurement_source_text
+        rank: 5
+        slot_group: measurement
+      measurement_result_numeric:
+        name: measurement_result_numeric
+        rank: 6
+        slot_group: measurement
+      measurement_unit:
+        name: measurement_unit
+        rank: 7
+        slot_group: measurement
+      measurement_result_categorical:
+        name: measurement_result_categorical
+        rank: 8
+        slot_group: measurement
+  medication:
+    name: medication
+    description: An agent such as a drug (pharmaceutical agent), broadly defined as
+      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
+      therapies.
+    title: medication
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_treatment_id
+    - drug_source_text
+    - drug_code
+    - drug_term
+    - drug_dose_units
+    - prescribed_cumulative_drug_dose
+    - actual_cumulative_drug_dose
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      drug_source_text:
+        name: drug_source_text
+        rank: 2
+        slot_group: medication
+      drug_code:
+        name: drug_code
+        rank: 3
+        slot_group: medication
+      drug_term:
+        name: drug_term
+        rank: 4
+        slot_group: medication
+      drug_dose_units:
+        name: drug_dose_units
+        rank: 5
+        slot_group: medication
+      prescribed_cumulative_drug_dose:
+        name: prescribed_cumulative_drug_dose
+        rank: 6
+        slot_group: medication
+      actual_cumulative_drug_dose:
+        name: actual_cumulative_drug_dose
+        rank: 7
+        slot_group: medication
+  participant:
+    name: participant
+    description: The collection of all data related to a specific individual human
+      in the context of a specific study.
+    title: participant
+    todos:
+    - '{"reference": "Phenopacket / GDC", "status": "v2"}'
+    slots:
+    - study_id
+    - submitter_participant_id
+    - age_at_enrollment
+    - vital_status
+    - cause_of_death
+    - age_at_death
+    slot_usage:
+      study_id:
+        name: study_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_enrollment:
+        name: age_at_enrollment
+        rank: 3
+        slot_group: Participant
+      vital_status:
+        name: vital_status
+        rank: 4
+        slot_group: Participant
+      cause_of_death:
+        name: cause_of_death
+        rank: 5
+        slot_group: Participant
+      age_at_death:
+        name: age_at_death
+        rank: 6
+        slot_group: Participant
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_participant_id
+  phenotype:
+    name: phenotype
+    description: Individual phenotypic features, observed as either present or absent
+      (excluded), with possible onset, modifiers and frequency
+    title: phenotype
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_phenotype
+    - phenotype_code
+    - phenotype_term
+    - phenotype_source_text
+    - phenotype_observed
+    - phenotype_duration
+    - phenotype_severity
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_phenotype:
+        name: age_at_phenotype
+        rank: 2
+        slot_group: Phenotype
+      phenotype_code:
+        name: phenotype_code
+        rank: 3
+        slot_group: Phenotype
+      phenotype_term:
+        name: phenotype_term
+        rank: 4
+        slot_group: Phenotype
+      phenotype_source_text:
+        name: phenotype_source_text
+        rank: 5
+        slot_group: Phenotype
+      phenotype_observed:
+        name: phenotype_observed
+        rank: 6
+        slot_group: Phenotype
+      phenotype_duration:
+        name: phenotype_duration
+        rank: 7
+        slot_group: Phenotype
+      phenotype_severity:
+        name: phenotype_severity
+        rank: 8
+        slot_group: Phenotype
+  procedure:
+    name: procedure
+    description: A clinical procedure performed on a subject. For example a surgical
+      or diagnostic procedure such as a biopsy.
+    title: procedure
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_treatment_id
+    - procedure_source_text
+    - procedure_code
+    - procedure_term
+    - procedure_body_site_code
+    - procedure_body_site_term
+    - procedure_body_site_source_text
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      procedure_source_text:
+        name: procedure_source_text
+        rank: 2
+        slot_group: procedure
+      procedure_code:
+        name: procedure_code
+        rank: 3
+        slot_group: procedure
+      procedure_term:
+        name: procedure_term
+        rank: 4
+        slot_group: procedure
+      procedure_body_site_code:
+        name: procedure_body_site_code
+        rank: 5
+        slot_group: procedure
+      procedure_body_site_term:
+        name: procedure_body_site_term
+        rank: 6
+        slot_group: procedure
+      procedure_body_site_source_text:
+        name: procedure_body_site_source_text
+        rank: 7
+        slot_group: procedure
+  specimen:
+    name: specimen
+    description: Any material sample taken from a biological entity, living or dead,
+      from physical object or the environment
+    title: specimen
+    todos:
+    - '{"reference": "HL7/FHIR", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - submitter_specimen_id
+    - specimen_tissue_source_code
+    - specimen_tissue_source_term
+    - specimen_tissue_source_text
+    - specimen_storage
+    - specimen_processing
+    - age_at_specimen_collection
+    - specimen_anatomic_location_code
+    - specimen_anatomic_location_label
+    - specimen_anatomic_location_source_text
+    - specimen_laterality
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
+        rank: 2
+        slot_group: Database Identifiers
+      specimen_tissue_source_code:
+        name: specimen_tissue_source_code
+        rank: 3
+        slot_group: specimen
+      specimen_tissue_source_term:
+        name: specimen_tissue_source_term
+        rank: 4
+        slot_group: specimen
+      specimen_tissue_source_text:
+        name: specimen_tissue_source_text
+        rank: 5
+        slot_group: specimen
+      specimen_storage:
+        name: specimen_storage
+        rank: 6
+        slot_group: specimen
+      specimen_processing:
+        name: specimen_processing
+        rank: 7
+        slot_group: specimen
+      age_at_specimen_collection:
+        name: age_at_specimen_collection
+        rank: 8
+        slot_group: specimen
+      specimen_anatomic_location_code:
+        name: specimen_anatomic_location_code
+        rank: 9
+        slot_group: specimen
+      specimen_anatomic_location_label:
+        name: specimen_anatomic_location_label
+        rank: 10
+        slot_group: specimen
+      specimen_anatomic_location_source_text:
+        name: specimen_anatomic_location_source_text
+        rank: 11
+        slot_group: specimen
+      specimen_laterality:
+        name: specimen_laterality
+        rank: 12
+        slot_group: specimen
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_specimen_id
+  treatment:
+    name: treatment
+    description: Medications, procedures, other actions taken for clinical management
+    title: treatment
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - submitter_treatment_id
+    - treatment_type
+    - age_at_treatment
+    - treatment_duration
+    - treatment_intent
+    - treatment_response
+    - treatment_status
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 2
+        slot_group: Database Identifiers
+      treatment_type:
+        name: treatment_type
+        rank: 3
+        slot_group: treatment
+      age_at_treatment:
+        name: age_at_treatment
+        rank: 4
+        slot_group: treatment
+      treatment_duration:
+        name: treatment_duration
+        rank: 5
+        slot_group: treatment
+      treatment_intent:
+        name: treatment_intent
+        rank: 6
+        slot_group: treatment
+      treatment_response:
+        name: treatment_response
+        rank: 7
+        slot_group: treatment
+      treatment_status:
+        name: treatment_status
+        rank: 8
+        slot_group: treatment
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_treatment_id
+  imaging:
+    name: imaging
+    description: An imaging test
+    title: imaging
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - image_hosted_url

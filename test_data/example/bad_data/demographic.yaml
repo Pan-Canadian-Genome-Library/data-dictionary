@@ -1,0 +1,46 @@
+###Missing the following required fields:
+# submitter_participant_id
+# study_id
+# gender
+# sex_at_birth
+# ethnicity
+# race
+country_of_birth : "MISSING VALUE1"
+ancestry : "MISSING VALUE2"
+height : "MISSING VALUE3" ### Incorrect datatype
+weight : "MISSING VALUE4" ### Incorrect datatype
+employment : "MISSING VALUE5"
+type_of_residence : "MISSING VALUE6" 
+number_of_other_people_in_household : "MISSING VALUE7" ### Incorrect datatype
+pregnancy : "INCORRECT ENUM" ### Incorrect enum value
+highest_education_level_achieved : "MISSING VALUE9"
+---
+submitter_participant_id : "DONOR1"
+study_id : "Example-CA"
+gender : "INCORRECT ENUM" ### Incorrect enum value
+sex_at_birth : "INCORRECT ENUM" ### Incorrect enum value
+ethnicity : "INCORRECT ENUM" ### Incorrect enum value
+race : "INCORRECT ENUM" ### Incorrect enum value
+country_of_birth : "MISSING VALUE1"
+ancestry : "MISSING VALUE2"
+height : 50
+weight : 50
+employment : "MISSING VALUE3"
+type_of_residence : "MISSING VALUE4"
+number_of_other_people_in_household : 5
+pregnancy : "INCORRECT ENUM" ### Incorrect enum value
+highest_education_level_achieved : "MISSING VALUE5"
+---
+submitter_participant_id : "DONOR1"
+study_id : "Example-CA"
+gender : "Missing"
+sex_at_birth : "Missing"
+ethnicity : "Missing"
+race : "Missing"
+---
+submitter_participant_id : "DONOR1" ### Duplicate ID
+study_id : "Example-CA"
+gender : "Missing"
+sex_at_birth : "Missing"
+ethnicity : "Missing"
+race : "Missing"

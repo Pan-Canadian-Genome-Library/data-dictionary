@@ -1,0 +1,50 @@
+version: 1.0
+id: https://example.com/hostseq.yaml
+in_language:
+- en
+name: example_extended_schema
+description: '...'
+prefixes:
+  linkml: https://w3id.org/linkml/
+imports:
+  - linkml:types
+  - base/comorbidity
+  - extension/example/demographic
+  - extension/example/diagnosis
+  - base/exposure
+  - base/follow_up
+  - base/measurement
+  - base/medication
+  - base/participant
+  - base/phenotype
+  - base/procedure
+  - base/specimen
+  - base/treatment
+  - extension/example/imaging
+classes:
+  Comorbidity:
+    is_a: base_Comorbidity
+  Demographic:
+    is_a: extension_Demographic
+  Diagnosis:
+    is_a: extension_Diagnosis
+  Exposure:
+    is_a: base_Exposure
+  Follow_up:
+    is_a: base_Follow_up
+  Measurement:
+    is_a: base_Measurement
+  Medication:
+    is_a: base_Medication
+  Participant:
+    is_a: base_Participant
+  Phenotype:
+    is_a: base_Phenotype
+  Procedure:
+    is_a: base_Procedure
+  Specimen:
+    is_a: base_Specimen
+  Treatment:
+    is_a: base_Treatment
+  Imaging:
+    is_a: extension_Imaging

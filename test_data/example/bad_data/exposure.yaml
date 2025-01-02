@@ -1,0 +1,9 @@
+### Missing required fields
+#submitter_participant_id
+alcohol_consumption :  "INVALID ENUM" ### Invalid ENUM value
+smoking_status : "INVALID ENUM"  ### Invalid ENUM value
+physical_activity : "INVALID ENUM" ### Invalid ENUM value
+---
+submitter_participant_id : "DONOR_01" ### Duplciate ID
+---
+submitter_participant_id : "DONOR_01" ### Duplciate ID

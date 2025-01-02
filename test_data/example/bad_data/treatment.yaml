@@ -1,0 +1,25 @@
+submitter_treatment_id : "DONOR1_T2" ###Missing required submitter_participant_id
+treatment_type : "Radiation therapy"
+--- 
+submitter_participant_id : "DONOR1" ###Missing required submitter_treatment_id
+treatment_type : "Radiation therapy"
+--- 
+submitter_treatment_id : "DONOR1_T2" ###Missing required treatment_type
+submitter_participant_id : "DONOR1"
+--- 
+submitter_participant_id : "DONOR1" 
+submitter_treatment_id : "DONOR1_T2" ###Duplicate ID
+treatment_type : "Radiation therapy"
+--- 
+submitter_participant_id : "DONOR1" 
+submitter_treatment_id : "DONOR1_T2" ###Duplicate ID
+treatment_type : "Radiation therapy"
+--- 
+submitter_participant_id : "DONOR1" 
+submitter_treatment_id : "DONOR1_T3"
+treatment_type : "Radiation therapy"
+age_at_treatment : "Unknown" ### Incorrect datatype
+treatment_duration : "Unknown" ### Incorrect datatype
+treatment_intent : "Unknown" ### Incorrect enum field
+treatment_response : "Unknown" ### Incorrect enum field
+treatment_status : "Unknown" ### Incorrect enum field

@@ -1,8 +1,8 @@
 classes:
-  base_procedure:
+  base_Procedure:
     description: A clinical procedure performed on a subject. For example a surgical
       or diagnostic procedure such as a biopsy.
-    name: base_procedure
+    name: base_Procedure
     slots:
     - submitter_treatment_id
     - procedure_source_text
@@ -11,7 +11,7 @@ classes:
     - procedure_body_site_code
     - procedure_body_site_term
     - procedure_body_site_source_text
-    title: procedure
+    title: Procedure
     todos: '{"reference": "Phenopacket", "status": "v2"}'
     slot_usage:
       submitter_treatment_id:
@@ -57,17 +57,20 @@ slots:
     pattern: ^[C][0-9]{2}(.[0-9]{1})?$
     range: string
     title: Procedure Body Site Code
+    required: false
     todos: '["MOH", "ARGO"]'
   procedure_body_site_source_text:
     description: Provide the original textual description of the body site of the
       procedure as reported in the participant's clinical or medical records if applicable
     name: procedure_body_site_source_text
+    required: false
     range: string
     title: Procedure Body Site Source Text
   procedure_body_site_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_body_site_code
     name: procedure_body_site_term
+    required: false
     range: string
     title: Procedure Body Site Term
   procedure_code:
@@ -76,7 +79,7 @@ slots:
     description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
       performed.
     name: procedure_code
-    pattern: ^NCIt:C\\d{1,7}$||^SNOMEDCT:\\d{6,9}$||^UMLS:C\\d{7}$||^CCI:\\d\\.[A-Z]{2}\\.\\d{2}\\.[A-Z]{2}$
+    pattern: '^NCIt:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:\d\.[A-Z]{2}\.\d{2}\.[A-Z]{2}$'
     range: string
     required: true
     title: Procedure Code
@@ -90,6 +93,7 @@ slots:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_code
     name: procedure_term
+    required: false
     range: string
     title: Procedure Term
   submitter_treatment_id:

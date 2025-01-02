@@ -1,6 +1,6 @@
 classes:
-  speciment:
-    name: speciment
+  specimen:
+    name: specimen
     slots:
     - tumour_histological_type_code
     - tumour_histological_type_label
@@ -9,7 +9,7 @@ classes:
     - tumour_grade
     - percent_tumour_cells_range
     - percent_tumour_cells_measurement_method
-    title: speciment
+    title: specimen
 description: '...'
 enums:
   PercentTumourCellsMeasurementMethodMenu:

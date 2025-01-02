@@ -1,6 +1,7 @@
 classes:
-  base_comorbidity:
-    name: base_comorbidity
+  base_Comorbidity:
+    name: base_Comorbidity
+    description: "TBA..."
     slots:
     - submitter_participant_id
     - age_at_comorbidity_diagnosis
@@ -9,7 +10,7 @@ classes:
     - comorbidity_source_text
     - comorbidity_treatment_status
     - comorbidity_status
-    title: comorbidity
+    title: Comorbidity
     slot_usage:
       submitter_participant_id:
         rank: 1
@@ -61,14 +62,8 @@ enums:
 id: https://example.com/base_schema.yaml
 in_language:
 - en
-prefixes:
-  linkml: https://w3id.org/linkml/
-
 default_curi_maps:
   - semweb_context
-
-imports:
-  - linkml:types
 name: PCGL_Base_Schema
 slots:
   age_at_comorbidity_diagnosis:
@@ -77,12 +72,13 @@ slots:
     range: integer
     minimum_value: 0
     title: Age At Comorbidity Diagnosis
+    required: false
   comorbidity_code:
     comments: 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to
       https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
     description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
     name: comorbidity_code
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
     range: string
     required: true
     title: Comorbidity Code
@@ -96,11 +92,13 @@ slots:
     name: comorbidity_source_text
     range: string
     title: Comorbidity Source Text
+    required: false
   comorbidity_status:
     description: Indicate the current state or activity of the comorbid condition.
     name: comorbidity_status
     range: ComorbidityStatusMenu
     title: Comorbidity Status
+    required: false
   comorbidity_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the comorbidity_code
@@ -111,12 +109,14 @@ slots:
     name: comorbidity_term
     range: string
     title: Comorbidity Term
+    required: false
   comorbidity_treatment_status:
     description: Indicate whether the comorbid condition is currently being treated
       or not.
     name: comorbidity_treatment_status
     range: ComorbidityTreatmentStatusMenu
     title: Comorbidity Treatment Status
+    required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.

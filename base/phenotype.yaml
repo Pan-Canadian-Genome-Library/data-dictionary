@@ -1,10 +1,10 @@
 imports:
 - linkml:types
 classes:
-  base_phenotype:
+  base_Phenotype:
     description: Individual phenotypic features, observed as either present or absent
       (excluded), with possible onset, modifiers and frequency
-    name: base_phenotype
+    name: base_Phenotype
     slots:
     - submitter_participant_id
     - age_at_phenotype
@@ -14,7 +14,7 @@ classes:
     - phenotype_observed
     - phenotype_duration
     - phenotype_severity
-    title: phenotype
+    title: Phenotype
     slot_usage:
       submitter_participant_id:
         rank: 1
@@ -92,6 +92,7 @@ slots:
     name: phenotype_duration
     range: integer
     title: Phenotype Duration
+    required: false
   phenotype_observed:
     description: Indicate whether the phenotype was observed in the participant.
     name: phenotype_observed
@@ -104,18 +105,21 @@ slots:
     name: phenotype_severity
     range: PhenotypeSeverityMenu
     title: Phenotype Severity
+    required: false
   phenotype_source_text:
     description: Provide the original textual description of the phenotype as reported
       in the participant's clinical or medical records if applicable
     name: phenotype_source_text
     range: string
     title: Phenotype Source Text
+    required: false
   phenotype_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the phenotype_code.
     name: phenotype_term
     range: string
     title: Phenotype Term
+    required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.

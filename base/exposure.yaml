@@ -1,12 +1,13 @@
 classes:
-  base_exposure:
-    name: base_exposure
+  base_Exposure:
+    name: base_Exposure
+    description: "TBA..."
     slots:
     - submitter_participant_id
     - alcohol_consumption
     - smoking_status
     - physical_activity
-    title: exposure
+    title: Exposure
     slot_usage:
       submitter_participant_id:
         rank: 1
@@ -87,12 +88,14 @@ slots:
     range: AlcoholConsumptionMenu
     title: Alcohol Consumption
     todos: '["CQDG", "ARGO", "MOH"]'
+    required: false
   physical_activity:
     description: Indicate how many times per week the participant exercises for at
       least 30 minutes.
     name: physical_activity
     range: PhysicalActivityMenu
     title: Physical Activity
+    required: false
   smoking_status:
     description: Indicate smoking status and history of a participant at the time
       of the data collection.
@@ -100,6 +103,7 @@ slots:
     range: SmokingStatusMenu
     title: Smoking Status
     todos: '["CQDG", "ARGO", "MOH"]'
+    required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.

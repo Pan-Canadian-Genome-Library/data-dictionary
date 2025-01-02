@@ -1,0 +1,25 @@
+###Misisng required fields:
+#submitter_participant_id
+#submitter_specimen_id
+#specimen_tissue_source_code
+specimen_tissue_source_term: "INVALID TERM"
+specimen_tissue_source_text: "INVALID TERM"
+specimen_storage: "INVALID ENUM" ###Invalid enum
+specimen_processing: "INVALID ENUM" ###Invalid enum
+age_at_specimen_collection: "INVALID DATATYPE" ###Invalid datatype
+specimen_anatomic_location_code: "INVALID REGEX" ###Invalid regex
+specimen_anatomic_location_label: "INVALID TERM"
+specimen_anatomic_location_source_text: "INVALID TERM"
+specimen_laterality: "INVALID ENUM"
+---
+submitter_participant_id : "DONOR01"
+submitter_specimen_id: "SPEICMEN01"
+specimen_tissue_source_code: "INVALID REGEX" ###Invalid regex
+---
+submitter_participant_id : "DONOR01" 
+submitter_specimen_id: "SPEICMEN01" ###Duplicate ID
+specimen_tissue_source_code: "NCIT:C0003617"
+---
+submitter_participant_id : "DONOR01" 
+submitter_specimen_id: "SPEICMEN01" ###Duplicate ID
+specimen_tissue_source_code: "NCIT:C0003617" 

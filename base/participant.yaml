@@ -1,8 +1,8 @@
 classes:
-  base_participant:
+  base_Participant:
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
-    name: base_participant
+    name: base_Participant
     slots:
     - study_id
     - submitter_participant_id
@@ -10,7 +10,7 @@ classes:
     - vital_status
     - cause_of_death
     - age_at_death
-    title: participant
+    title: Participant
     todos: '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slot_usage:
       study_id:
@@ -91,17 +91,20 @@ slots:
     name: age_at_death
     range: integer
     title: Age At Death
+    required : false
   age_at_enrollment:
     description: Age (in days) of participant at time of enrollment into the study
     name: age_at_enrollment
     range: integer
     title: Age At Enrollment
+    required : false
   cause_of_death:
     description: Indicate the cause of a participant's death.
     name: cause_of_death
     range: CauseOfDeathMenu
     title: Cause Of Death
     todos: '["ARGO ", " MOH"]'
+    required : false
   study_id:
     description: Unique identifier of the study.
     exact_mappings:
@@ -109,6 +112,7 @@ slots:
     name: study_id
     required: true
     title: Study Id
+    range: string
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.
@@ -137,4 +141,5 @@ slots:
     name: vital_status
     range: VitalStatusMenu
     title: Vital Status
+    required : false
 version: 2.0.0

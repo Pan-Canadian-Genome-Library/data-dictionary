@@ -1,0 +1,190 @@
+enums:
+    ImageHostedFormatMenu:
+        name: ImageHostedFormatMenu
+        permissible_values:
+            'PNG':
+                text: 'PNG'
+            'SVG':
+                text: 'SVG'
+            'PDF':
+                text: 'PDF'
+            'JPEG':
+                text: 'JPEG'
+        title: Image Hosted Format Menu
+    ImageProcessPipelineMenu:
+            name: ImageProcessPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text: 'pipelineA'
+                'pipelineB':
+                    text: 'pipelineB'
+                'pipelineC':
+                    text: 'pipelineC'
+                'pipelineD':
+                    text: 'pipelineD'
+                'pipelineE':
+                    text: 'pipelineE'
+                'pipelineF':
+                    text: 'pipelineF'
+            title: Image Process Pipeline Menu
+    ImageProcessPngPipelineMenu:
+            name: ImageProcessPngPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text: 'pipelineA'
+                'pipelineB':
+                    text: 'pipelineB'
+                'pipelineC':
+                    text: 'pipelineC'
+            title: Image Process Png Pipeline Menu
+    ImageProcessSvgPipelineMenu:
+            name: ImageProcessSvgPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text: 'pipelineA'
+                'pipelineD':
+                    text: 'pipelineD'
+                'pipelineE':
+                    text: 'pipelineE'
+            title: Image Process Svg Pipeline Menu
+    ImageProcessPdfJpegPipelineMenu:
+            name: ImageProcessPdfJpegPipelineMenu
+            permissible_values:
+                'pipelineA':
+                    text: 'pipelineA'
+                'pipelineD':
+                    text: 'pipelineD'
+                'pipelineF':
+                    text: 'pipelineF'
+            title: Image Process Pdf and Jpeg Pipeline Menu
+    ImageProcessingNullReasonMenu:
+            name: ImageProcessingNullReasonMenu
+            permissible_values:
+                'Unknown':
+                    text: 'Unknown'
+                'Not Provided':
+                    text: 'Not Provided'
+                'Revoked':
+                    text: 'Revoked'
+            title: Image Processing Null Reason Menu           
+classes:
+    extension_Imaging:
+        description: An imaging test 
+        name: extension_Imaging
+        slots:
+            - image_hosted_url
+            - image_hosted_format
+            - image_processing_pipeline
+            - image_processing_personel
+            - image_processing_null_reason
+        title: Imaging
+        todos: '{"reference": "Phenopacket", "status": "v2"}'
+        slot_usage:
+            image_hosted_url:
+                rank: 1
+                slot_group: Extended Imaging
+            image_hosted_format:
+                rank: 2
+                slot_group: Extended Imaging
+            image_processing_pipeline:
+                rank: 3
+                slot_group: Extended Imaging 
+            image_processing_personel:
+                rank: 4
+                slot_group: Extended Imaging 
+            image_processing_null_reason:
+                rank: 5
+                slot_group: Extended Imaging 
+        rules:
+        - preconditions:
+            description: 'An example of if value==''A'' must follow enum
+
+                1/3 conditions'
+            slot_conditions:
+                image_hosted_format:
+                    equals_string: "PNG"
+          postconditions:
+                slot_conditions:
+                    image_processing_pipeline:
+                        any_of:
+                            - range: ImageProcessPngPipelineMenu
+        - preconditions:
+            description: 'An example of if value==''A'' must follow enum
+
+                1/3 conditions'
+            slot_conditions:
+                image_hosted_format:
+                    equals_string: "SVG"
+          postconditions:
+                slot_conditions:
+                    image_processing_pipeline:
+                        any_of:
+                            - range: ImageProcessSvgPipelineMenu
+        - preconditions:
+            description: "An example of if value=='A' must follow enum\n1/3 conditions"
+            slot_conditions:
+                image_hosted_format:
+                    any_of:
+                        - equals_string: "PDF"
+                        - equals_string: "JPEG"
+          postconditions:
+                slot_conditions:
+                    image_processing_pipeline:
+                        any_of:
+                            - range: ImageProcessPdfJpegPipelineMenu
+        - preconditions:
+            description: An example of if fieldA is missing provide fieldA_null_reason.
+                Common in virus-seq
+            slot_conditions:
+                image_processing_personel:
+                    value_presence: ABSENT 
+          postconditions:
+                slot_conditions:
+                    image_processing_null_reason:
+                        any_of:
+                            - range: ImageProcessingNullReasonMenu
+                    image_processing_personel:
+                        required: false
+                        value_presence: ABSENT
+          elseconditions:
+                slot_conditions:
+                    image_processing_personel:
+                        range: string
+                        required: true
+                    image_processing_null_reason:
+                        value_presence: ABSENT
+
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  image_hosted_url:
+    description: A URL for where the image is hosted
+    name: image_hosted_url
+    range: string
+    title: Image Hosted URL
+  image_hosted_format:
+    description: Accepted data types for images
+    name:  image_hosted_format
+    range: ImageHostedFormatMenu
+    title: Image Hosted Format
+  image_processing_pipeline:
+    description: "Post processing pipeline dependent on image_hosted_format where:\n 
+        - image_hosted_format is PNG, choices are \n* PipelineA\n* PipelineB\n* PipelineC\n
+        - image_hosted_format is SVG, choices are \n* PipelineA\n* PipelineD\n* PipelineE\n
+        - image_hosted_format is PDF or JPEG, choices are \n* PipelineA\n* PipelineD\n* PipelineF\n"
+    name: image_processing_pipeline
+    range: ImageProcessPipelineMenu
+    title: Image Processing Pipeline
+  image_processing_personel:
+    description: "String value for the person who processed the image.\nMust be provided.If not 'image_processing_null_reason' must be provided"
+    name:  image_processing_personel
+    title: Image Processing Personel
+    range: string
+  image_processing_null_reason:
+    description: "Tracks reason for why image processing personnel was not provided.\nOnly applicable if image_processing_personnel is not provided.\nPossible values:\n* Unknown\n* Revoked\n* Not Provided\nOtherwise leave empty"
+    name:  image_processing_null_reason
+    title: Image Processing Null Reason
+    range: ImageProcessingNullReasonMenu
+version: 2.0.0
