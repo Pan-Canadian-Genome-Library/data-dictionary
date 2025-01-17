@@ -1,0 +1,114 @@
+imports:
+    - base/demographic
+classes:
+  extension_demographic:
+    is_a : "base_demographic"
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    name: extension_demographic
+    slots:
+    - country_of_birth
+    - ancestry
+    - height
+    - weight
+    - highest_education_level_achieved
+    - employment
+    - type_of_residence
+    - number_of_other_people_in_household
+    - pregnancy
+    title: demographic
+    todos: '{"reference": "GDC", "status": "v2"}'
+    slot_usage:
+      country_of_birth:
+        rank: 7
+        slot_group: Extended omorbidity
+      ancestry:
+        rank: 8
+        slot_group: Extended comorbidity
+      height:
+        rank: 9
+        slot_group: Extended comorbidity
+      weight:
+        rank: 10
+        slot_group: Extended comorbidity
+      highest_education_level_achieved:
+        rank: 11
+        slot_group: comorbidity
+      employment:
+        rank: 12
+        slot_group: Extended comorbidity
+      type_of_residence:
+        rank: 13
+        slot_group: Extended comorbidity
+      number_of_other_people_in_household:
+        rank: 14
+        slot_group: Extended comorbidity
+      pregnancy:
+        rank: 15
+        slot_group: Extended comorbidity
+enums:
+  PregnancyMenu:
+    name: PregnancyMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      Unknown:
+        text: Unknown
+      'Yes':
+        text: 'Yes'
+    title: pregnancy menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  ancestry:
+    description: The genetic or genomic heritage of an individual, typically tracing
+      the origins of one's ancestors.
+    name: ancestry
+    range: string
+    title: Ancestry
+  country_of_birth:
+    description: The country where an individual was born, typically defined by current
+      geopolitical borders.
+    name: country_of_birth
+    range: string
+    title: Country Of Birth
+  employment:
+    description: The current work status of an individual.
+    name: employment
+    range: string
+    title: Employment
+  highest_education_level_achieved:
+    description: The highest level of formal education an individual has completed.
+    name: highest_education_level_achieved
+    range: string
+    title: Highest Education Level Achieved
+  height:
+    description: The measurement of an individual from head to toe recorded in centimeters
+      (cm).
+    name: height
+    range: decimal
+    title: Hight
+  number_of_other_people_in_household:
+    description: The total number of individuals living in the same household as the
+      participant, excluding the participant.
+    name: number_of_other_people_in_household
+    range: integer
+    title: Number Of Other People In Household
+  pregnancy:
+    description: Indicates whether an individual is currently pregnant.
+    name: pregnancy
+    range: PregnancyMenu
+    title: Pregnancy
+  type_of_residence:
+    description: The kind of dwelling in which an individual lives.
+    name: type_of_residence
+    range: string
+    title: Type Of Residence
+  weight:
+    description: The mass or body weight of an individual measured in kilograms (kg).
+    name: weight
+    range: decimal
+    title: Weight
+version: 2.0.0

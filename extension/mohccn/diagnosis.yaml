@@ -1,0 +1,196 @@
+classes:
+  base_diagnosis:
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    name: base_diagnosis
+    slots:
+    - primary_site
+    - basis_of_diagnosis
+    - laterality
+    - clinical_cancer_staging_system
+    - clinical_stage_group
+    - clinical_t_category
+    - clinical_n_category
+    - clinical_m_category
+    - pathological_cancer_staging_system
+    - pathological_stage_group
+    - pathological_t_category
+    - pathological_n_category
+    - pathological_m_category
+    title: diagnosis
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+description: '...'
+enums:
+  BasisOfDiagnosisMenu:
+    name: BasisOfDiagnosisMenu
+    permissible_values:
+      Clinical:
+        text: Clinical
+      Clinical investigation:
+        text: Clinical investigation
+      Cytology:
+        text: Cytology
+      Death certificate only:
+        text: Death certificate only
+      Histology of a metastasis:
+        text: Histology of a metastasis
+      Histology of a primary tumour:
+        text: Histology of a primary tumour
+      Not available:
+        text: Not available
+      Specific tumour markers:
+        text: Specific tumour markers
+    title: basis of diagnosis menu
+  ClinicalCancerStagingSystemMenu:
+    name: ClinicalCancerStagingSystemMenu
+    permissible_values:
+      AJCC cancer staging system:
+        text: AJCC cancer staging system
+      Ann Arbor staging system:
+        text: Ann Arbor staging system
+      Binet staging system:
+        text: Binet staging system
+      Durie-Salmon staging system:
+        text: Durie-Salmon staging system
+      FIGO staging system:
+        text: FIGO staging system
+      International Neuroblastoma Risk Group Staging System:
+        text: International Neuroblastoma Risk Group Staging System
+      International Neuroblastoma Staging System:
+        text: International Neuroblastoma Staging System
+      Lugano staging system:
+        text: Lugano staging system
+      Not available:
+        text: Not available
+      Rai staging system:
+        text: Rai staging system
+      Revised International staging system (R-ISS):
+        text: Revised International staging system (R-ISS)
+      SEER staging system:
+        text: SEER staging system
+      St Jude staging system:
+        text: St Jude staging system
+    title: clinical cancer staging system menu
+  LateralityMenu:
+    name: LateralityMenu
+    permissible_values:
+      Bilateral:
+        text: Bilateral
+      Left:
+        text: Left
+      Midline:
+        text: Midline
+      Not a paired site:
+        text: Not a paired site
+      Not available:
+        text: Not available
+      Right:
+        text: Right
+      Unilateral, side not specified:
+        text: Unilateral, side not specified
+    title: laterality menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  basis_of_diagnosis:
+    description: Indicate the most valid basis of how the primary diagnosis was identified.
+      Terms are ordered in hierarchical order according to IACR guidelines, with the
+      term at the top of the list ("Histology of primary tumour") being the more valid
+      basis. If more than one diagnosis technique was used, select the most valid
+      basis.
+    name: basis_of_diagnosis
+    range: BasisOfDiagnosisMenu
+    required: true
+    title: Basis Of Diagnosis
+  clinical_cancer_staging_system:
+    description: Indicate the cancer staging system used to stage the cancer at the
+      time of diagnosis (prior to treatment).
+    name: clinical_cancer_staging_system
+    range: ClinicalCancerStagingSystemMenu
+    title: Clinical Cancer Staging System
+  clinical_m_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the distant metastasis (M) for the cancer based on evidence obtained from clinical
+      assessment parameters determined at time of primary diagnosis and prior to treatment,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual. MX is NOT a valid category and cannot be assigned.
+    name: clinical_m_category
+    range: string
+    title: Clinical M Category
+  clinical_n_category:
+    description: The code to represent the stage of cancer defined by the extent of
+      the regional lymph node (N) involvement for the cancer based on evidence obtained
+      from clinical assessment parameters determined at time of primary diagnosis
+      and prior to treatment, according to criteria based on multiple editions of
+      the AJCC's Cancer Staging Manual.
+    name: clinical_n_category
+    range: string
+    title: Clinical N Category
+  clinical_stage_group:
+    description: Stage group of the cancer, as assigned by the reporting clinical_cancer_staging_system,
+      that indicates the overall prognostic cancer stage (ie. Stage I, Stage II, Stage
+      III etc.).
+    name: clinical_stage_group
+    range: string
+    title: Clinical Stage Group
+  clinical_t_category:
+    description: The code to represent the extent of the primary tumour (T) based
+      on evidence obtained from clinical assessment parameters determined at time
+      of primary diagnosis and prior to treatment, according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: clinical_t_category
+    range: string
+    title: Clinical T Category
+  laterality:
+    description: For cancer in a paired organ, indicate the side of the body on which
+      the primary tumour or cancer first developed at the time of primary diagnosis.
+      (Reference caDSR CDE ID 827)
+    name: laterality
+    range: LateralityMenu
+    title: Laterality
+  pathological_cancer_staging_system:
+    description: Specify the cancer staging system used to assess the cancer at the
+      time the tumour specimen was resected. Pathological classification is based
+      on the clinical stage information (acquired before treatment) and supplemented/modified
+      by operative findings and pathological evaluation of the resected specimen.
+    name: pathological_cancer_staging_system
+    range: string
+    title: Pathological Cancer Staging System
+  pathological_m_category:
+    description: The code to represent the stage of cancer defined by whether there
+      are distant metastases (M), meaning spread of cancer to other parts of the body,
+      according to criteria based on multiple editions of the AJCC's Cancer Staging
+      Manual.
+    name: pathological_m_category
+    range: string
+    title: Pathological M Category
+  pathological_n_category:
+    description: The code to represent the stage of cancer defined by whether or not
+      the cancer has reached nearby lymph nodes (N), according to criteria based on
+      multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_n_category
+    range: string
+    title: Pathological N Category
+  pathological_stage_group:
+    description: Specify the cancer stage, based on pathological_cancer_staging_system,
+      used to assess the cancer at the time the tumour specimen was resected.
+    name: pathological_stage_group
+    range: string
+    title: Pathological Stage Group
+  pathological_t_category:
+    description: The code to represent the stage of cancer defined by the size or
+      contiguous extension of the primary tumour (T), according to criteria based
+      on multiple editions of the AJCC's Cancer Staging Manual.
+    name: pathological_t_category
+    range: string
+    title: Pathological T Category
+  primary_site:
+    description: The text term used to describe the primary site of disease, as categorized
+      by the World Health Organization's (WHO) International Classification of Diseases
+      for Oncology (ICD-O). This categorization groups cases into general categories.
+    name: primary_site
+    range: string
+    title: Primary Site
+version: 2.0.0

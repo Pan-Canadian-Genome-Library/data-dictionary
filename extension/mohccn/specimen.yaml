@@ -1,0 +1,165 @@
+classes:
+  specimen:
+    name: specimen
+    slots:
+    - tumour_histological_type_code
+    - tumour_histological_type_label
+    - tumour_histological_type_source_text
+    - tumour_grading_system
+    - tumour_grade
+    - percent_tumour_cells_range
+    - percent_tumour_cells_measurement_method
+    title: specimen
+description: '...'
+enums:
+  PercentTumourCellsMeasurementMethodMenu:
+    name: PercentTumourCellsMeasurementMethodMenu
+    permissible_values:
+      Genomics:
+        text: Genomics
+      Image analysis:
+        text: Image analysis
+      Pathology estimate by percent nuclei:
+        text: Pathology estimate by percent nuclei
+    title: percent tumour cells measurement method menu
+  PercentTumourCellsRangeMenu:
+    name: PercentTumourCellsRangeMenu
+    permissible_values:
+      0-19%:
+        text: 0-19%
+      20-50%:
+        text: 20-50%
+      51-100%:
+        text: 51-100%
+    title: percent tumour cells range menu
+  TumourGradeMenu:
+    name: TumourGradeMenu
+    permissible_values:
+      G1:
+        text: G1
+      G2:
+        text: G2
+      G3:
+        text: G3
+      G4:
+        text: G4
+      GX:
+        text: GX
+      Grade 1:
+        text: Grade 1
+      Grade 2:
+        text: Grade 2
+      Grade 3:
+        text: Grade 3
+      Grade 4:
+        text: Grade 4
+      Grade Group 1:
+        text: Grade Group 1
+      Grade Group 2:
+        text: Grade Group 2
+      Grade Group 3:
+        text: Grade Group 3
+      Grade Group 4:
+        text: Grade Group 4
+      Grade Group 5:
+        text: Grade Group 5
+      Grade I:
+        text: Grade I
+      Grade II:
+        text: Grade II
+      Grade III:
+        text: Grade III
+      Grade IV:
+        text: Grade IV
+      High:
+        text: High
+      High grade:
+        text: High grade
+      Low:
+        text: Low
+      Low grade:
+        text: Low grade
+    title: tumour grade menu
+  TumourGradingSystemMenu:
+    name: TumourGradingSystemMenu
+    permissible_values:
+      FNCLCC grading system:
+        text: FNCLCC grading system
+      Four-tier grading system:
+        text: Four-tier grading system
+      Gleason grade group system:
+        text: Gleason grade group system
+      Grading system for GISTs:
+        text: Grading system for GISTs
+      Grading system for GNETs:
+        text: Grading system for GNETs
+      IASLC grading system:
+        text: IASLC grading system
+      ISUP grading system:
+        text: ISUP grading system
+      Nottingham grading system:
+        text: Nottingham grading system
+      Nuclear grading system for DCIS:
+        text: Nuclear grading system for DCIS
+      Scarff-Bloom-Richardson grading system:
+        text: Scarff-Bloom-Richardson grading system
+      Three-tier grading system:
+        text: Three-tier grading system
+      Two-tier grading system:
+        text: Two-tier grading system
+      WHO grading system for CNS tumours:
+        text: WHO grading system for CNS tumours
+    title: tumour grading system menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  percent_tumour_cells_measurement_method:
+    description: Indicate method used to measure percent_tumour_cells.
+    name: percent_tumour_cells_measurement_method
+    range: PercentTumourCellsMeasurementMethodMenu
+    title: Percent Tumour Cells Measurement Method
+  percent_tumour_cells_range:
+    description: 'Select the range representing the percent of tumour cells compared
+      to the number of total cells in a specimen. (Reference: NCIt: C159484)'
+    name: percent_tumour_cells_range
+    range: PercentTumourCellsRangeMenu
+    title: Percent Tumour Cells Range
+  tumour_grade:
+    description: Grade of the tumour as assigned by the reporting tumour_grading_system.
+    name: tumour_grade
+    range: TumourGradeMenu
+    title: Tumour Grade
+  tumour_grading_system:
+    description: Specify the tumour grading system used to assess the description
+      of a tumour based on how abnormal the tumour cells and the tumour tissue look
+      under a microscope. Tumour grade is an indicator of how quickly a tumour is
+      likely to grow.
+    name: tumour_grading_system
+    range: TumourGradingSystemMenu
+    title: Tumour Grading System
+  tumour_histological_type_code:
+    description: Indicate the ICD-O-3 morphology code for the histological type and
+      degree of neoplasms that are usually obtained from a pathology report.  Refer
+      to the International Classification of Diseases for Oncology, 3rd Edition (WHO
+      ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
+    examples:
+    - value: 8260/3
+    - value: 9691/36
+    name: tumour_histological_type_code
+    pattern: ^[8,9]{1}[0-9]{3}/[0,1,2,3,6,9]{1}[1-9]{0,1}$
+    range: string
+    title: Tumour Histological Type Code
+  tumour_histological_type_label:
+    description: Provide the human readable label for the histological type code
+    name: tumour_histological_type_label
+    range: string
+    title: Tumour Histological Type Label
+  tumour_histological_type_source_text:
+    description: Provide the histological type as reported in the participant's source
+      data if applicable
+    name: tumour_histological_type_source_text
+    range: string
+    title: Tumour Histological Type Source Text
+version: 2.0.0

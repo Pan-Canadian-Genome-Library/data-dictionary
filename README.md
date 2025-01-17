@@ -1,85 +1,110 @@
-# data-dictionary
+# Pan Canadian Genome Library Clinical Metadata Schema Repository
+## About 
+The repository serves as a resource for researchers and data coordination team to harmonize clinical metadata collection, utilizing existing ontologies and standards, provide an extensible interoperable framework for ease of data sharing.
 
-## Folder Structure
+### Schema Framework
+The Schema framework is divided into three parts and defined as follows:
+<table>
+    <thead>
+        <tr>
+            <th>Term</th>
+            <th>Definition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=3>Base</td>
+            <td>Contains common data fields shared across all domains (e.g., patient demographics, vital status, laboratory results).</td>    
+        </tr>
+        <tr>
+            <td>Defined and maintained by PCGL.</td>    
+        </tr>
+        <tr>
+            <td>Drive the Research portal for data exploration to ensure all users interact with a consistent set of data elements and enhance the data interoperability</td>    
+        </tr>
+        <tr>
+            <td rowspan=3>Extension</td>
+            <td>Include domain-specific data fields unique to each study or disease area.</td>    
+        </tr>
+        <tr>
+            <td>Collaboratively developed by individual Program/Study according to guidelines and templates provided by PCGL</td>    
+        </tr>
+        <tr>
+            <td>Extend the base schema to meet the precise needs of each study without affecting the base schema</td>
+        </tr>
+        <tr>
+            <td rowspan=4>Custom</td>
+            <td>The result of merging the base schema and the extension schema.</td>    
+        </tr>
+        <tr>
+            <td>Represents the complete schema used by a program or study.</td>    
+        </tr>
+        <tr>
+            <td>Register to Lectern (Schema Registry)</td>
+        </tr>
+        <tr>
+            <td>Stored, managed and versioned by Lectern</td>
+        </tr>
+    </tbody>
+</table>
 
-- File Schemas
+** INSERT Extensible schema DIAGRAM HERE **
 
-File Schemas are found in `/schemas`
+### Schema Overview
 
-- Variables, Scripts, Regex, Code list
+Within Base, Extension and Custom are **Entities** that represent objects within the schema and serve as the basis for information collection. Types of entities include : participant, sample, treatment, etc...
 
-Variables, such as recurring scripts, regex, or code lists are found in `/references`. These values can be used in the restrictions section of a schema by refering to them with this pattern: `#/path/to/value`.
+Entities will contain fields which serve to collect a specific type of information for example a status, metric, a measurement or ID.
 
-Scripts for validating field values fall under `/references/validationFunctions/{schema name}/`. If a validation script is common in many schemas, it can be added under `/references/validationFunctions/common/`. The filename of the script should not contain dashes/dots (ideally be in camelCase).
+** INSERT ER DIAGRAM HERE **
 
-Example variable usage:
+### LinkML
+The schemas are coded in linkML format. The following are reasons for utilizing linkML
+- schemas can be used with DataHarmonizer, a browser spreadsheet editor locally and offline
+- Data can validated through command line command locally and offline
+- linkML supports object like inheritance
+- Supports mapping for establish onotologies.
 
-```
-{
-  "name": "submitter_donor_id",
-  "valueType": "string",
-  "description": "Unique identifier of the donor, assigned by the data provider.",
-  "meta": {
-    "examples": "90234,BLD,donor_89,AML-90"
-  },
-  "restrictions": {
-      "required": true,
-      "regex": "#/regex/submitter_id",
-  }
-},
-{
-  "name": "cause_of_death",
-  "valueType": "string",
-  "description": "Indicate the cause of a donor's death.",
-  "meta": {
-    "dependsOn": "donor.vital_status"
-  },
-  "restrictions": {
-      "script": "#/script/donor/ensureDeceased",
-  }
-}
-```
+### Lectern and Lyric support
+Both are overture products where lectern manages schemas while lyric manages data ingestion and validation.
 
-More information on writing schemas can be found [here](https://wiki.oicr.on.ca/pages/viewpage.action?pageId=134938807).
+Lectern utilizes a custom JSON formatted syntax that requires conversion from linkML format to Lectern accepted. We keep schemas in linkML format due to the previously mentioned strengths. For more details on downsides see `restrictions/README.md`.
 
-## Scripts
+## Repository Layout
 
-Scripts are provided in NodeJS, requiring npm and Node installed locally.
 
-To use these commands first install the npm dependencies by running: `npm install`
+|Folder|Purpose|
+|--|--|
+|Base| Contains YAML files of base entities|
+|Extension| Sub-divided per project, contains YAML files that extend base entities|
+|Custom| Sub-divided per project, contains 3 YAMLs. See README.md within folder for more details |
+|Scripts| Scripts for aggregating schemas and exporting into various types.  See `README.md` within folder for more details |
+|Lectern| Sub-divided per project,JSON schema files containing aggregated entities into a signle schema. See README.md within folder for more details |
+|Restrictions| Sub-divided per project,JSON schema files containing specialized restrictions for entities. |
+|Test_data| Sub-divided per project, contains examples of good and bad data for testing.|
+|CSV| Sub-divided per project, contains the flattened CSV version of custom YAML|
+|DataHarmonizer| Sub-divided per project, contains the zip packaged dataharmonizer for local offline validation.|
+|Typescript_export| Sub-divided per project, contains the export typescript used for data harmonizer.|
 
-## Unit Testing
+## Data Coordination Center Admin Happy Path
 
-Unit tests go in the `/tests` folder, and are created with Jest.
+Update to any of the following schema will require a full regeneration of resource:
+- Base Schema (e.g. `base/participant.yaml`)
+- Extension Schema (e.g. `extension/example/participant.yaml`)
 
-To run all unit tests, you can use : `npm run test`.
+1. Update Custom Schema (e.g. `extension/custom/participant.yaml`)
+2. Use `scripts/generateCustomLinkmlFromReference.py` to generate `extension/custom/example_dh.yaml` and `extension/custom/example_full.yaml`
 
-[More information about unit tests.](/tests/README.md)
+### Lectern resources
 
-## Compile Dictionary
+1. Use `scripts/generateFlatCsvFromFullLinkml.py` and `extension/custom/example_full.yaml` to generate `csv/example/example.yaml`
+2. Use `scripts/generateLecternJsonFromCustomLinkml` and `extension/custom/example_full.yaml` to generate `lectern/example/example.json`
+3. Register `lectern/example/example.json` in lectern per project
+4. Register Lectern provided IDs in Lyric
 
-1. Install dependencies via npm.
-   `npm ci`
+### Dataharmonizer resources
 
-2. Then run the dictionary building script:
-   `npm run compile`
-
-This will check that all units tests pass, and then will collect all schemas and references and format them into a full dictionary object that could be uploaded to lectern. An abridged version of the dictionary will be printed to the console, and the full compiled dictionary will be output to the file `./dictionary.json`
-
-You will be prompted to provide the dictionary name and version number, or leave them blank and accept the defaults (`PCGL Data Dictionary` and `0.0` respectively).
-
-If all tests do not pass, the dictionary will not be compiled.
-
-> Note: The dictionary.json file is ignored by git. This file can be uploaded to Lectern, for example, but it shouldn't appear in this repo.
-
-## Testing your dictionary locally
-
-`node populateReferences.js` will create `populated_dictionary.json`. The output of the script is **not** intended to be uploaded to Lectern. Instead, it is to aid in testing with the [Submission repo](https://github.com/overture-stack/lyric). It can be used to add/overwrite the contents of the sample-schema, when the Lectern URL in the .env file is set to said file's path.
-
-### Adding new schemas
-
-When a new schema is added to the dictionary, you must:
-
-- Add the new schema into `/schemas` directory.
-- Update `/schemas/index.js` to include the new json schema. The sequence in `module.exports` determines the schema sequence in the dictionary.
-- Run `node populateReferences.js` to create `populated_dictionary.json`.
+1. Pull latest version of https://github.com/cidgoh/DataHarmonizer locally
+2. Run `scripts/dh-validate.py` from `DataHarmonizer` folder on `extension/custom/example_dh.yaml` to generate `web/templates/examples/schema.json`
+3. Copy `typescript_export/example/export.js` to `web/templates/examples`
+4. Compress folder and copy over to `dataHarmonizer/example/example.tar.gz`

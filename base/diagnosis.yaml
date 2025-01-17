@@ -1,0 +1,146 @@
+classes:
+  base_Diagnosis:
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    name: base_Diagnosis
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - age_at_diagnosis
+    - disease_source_text
+    - disease_code
+    - disease_term
+    - disease_category
+    title: Diagnosis
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_diagnosis_id
+    slot_usage:
+      submitter_participant_id:
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_diagnosis_id:
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_diagnosis:
+        rank: 3
+        slot_group: diagnosis
+      disease_source_text:
+        rank: 4
+        slot_group: diagnosis
+      disease_code:
+        rank: 5
+        slot_group: diagnosis
+      disease_term:
+        rank: 6
+        slot_group: diagnosis
+      disease_category:
+        rank: 7
+        slot_group: diagnosis
+description: '...'
+enums:
+  DiseaseCategoryMenu:
+    name: DiseaseCategoryMenu
+    permissible_values:
+      Autoimmune disorder:
+        text: Autoimmune disorder
+      Cancer:
+        text: Cancer
+      Infectious disease:
+        text: Infectious disease
+    title: disease category menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  age_at_diagnosis:
+    description: Age of participant (in days) at time of diagnosis of the condition.
+    exact_mappings:
+    - mCODE.STU3:condition.onset
+    - FHIR:condition.onset
+    - Phenopacket:disease.onset
+    name: age_at_diagnosis
+    range: integer
+    title: Age At Diagnosis
+    todos: '["MOH", "ARGO"]'
+    required : false
+  disease_category:
+    description: A broader classification that groups diseases into categories.
+    name: disease_category
+    range: DiseaseCategoryMenu
+    required: true
+    title: Disease Category
+  disease_code:
+    comments: 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to
+      https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_code
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+    range: string
+    required: true
+    title: Disease Code
+    todos: '["MOH ", " ARGO ", " CQDG"]'
+  disease_source_text:
+    description: Provide the original textual description of the diagnosed disease
+      as reported in the participant's clinical or medical records if applicable
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_source_text
+    range: string
+    required: false
+    title: Disease Source Text
+  disease_term:
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the disease_code
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    name: disease_term
+    range: string
+    required: false
+    title: Disease Term
+  submitter_diagnosis_id:
+    description: Unique identifier of the primary diagnosis event, assigned by the
+      data provider.
+    exact_mappings:
+    - mCODE.STU1:Condition.identifier
+    - mCODE.STU2:Condition.identifier
+    - FHIR:condition.code
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_diagnosis_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Diagnosis Id
+    todos: '["MOH", "ARGO"]'
+  submitter_participant_id:
+    description: Unique identifier of the donor, assigned by the data provider.
+    exact_mappings:
+    - mCODE.STU3:Patient.Identifier
+    - FHIR:Patient.Identifier
+    - Phenopacket:individual.id
+    - BeaconV2:individual.id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    name: submitter_participant_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Participant Id
+    todos: '["MOH", "ARGO"]'
+version: 2.0.0

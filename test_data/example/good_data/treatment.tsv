@@ -1,0 +1,3 @@
+submitter_participant_id	submitter_treatment_id	treatment_type	age_at_treatment	treatment_duration	treatment_intent	treatment_response	treatment_status
+DONOR_1	TREATMENT_DA1	Medication	50	50	Curative	Stable Disease	Not available
+DONOR_1	TREATMENT_DA2	Radiation therapy					

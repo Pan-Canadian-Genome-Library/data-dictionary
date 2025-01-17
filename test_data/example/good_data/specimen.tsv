@@ -1,0 +1,3 @@
+submitter_participant_id	submitter_specimen_id	specimen_tissue_source_code	specimen_tissue_source_term	specimen_tissue_source_text	specimen_storage	specimen_processing	age_at_specimen_collection	specimen_anatomic_location_code	specimen_anatomic_location_label	specimen_anatomic_location_source_text	specimen_laterality
+DONOR_01	SPECIMEN_01	NCIT:C0003617	Appendix	NCIT	Frozen in vapour phase	Cryopreservation in liquid nitrogen (dead tissue)	5	C80.9	Unknown	ICD-0-3	Unknown
+DONOR_01	SPECIMEN_02	NCIT:C0003617									

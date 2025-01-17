@@ -1,0 +1,47 @@
+version: 1.0.0
+id: https://example.com/hostseq.yaml
+in_language:
+- en
+name: example_extended_schema
+description: '...'
+imports: 
+- base/comorbidity
+- extension/example/demographic
+- extension/example/diagnosis
+- base/exposure
+- base/follow_up
+- base/measurement
+- base/medication
+- base/participant
+- base/phenotype
+- base/procedure
+- base/specimen
+- base/treatment
+- extension/example/imaging
+classes:
+  comorbidity:
+    is_a: base_comorbidity
+  demographic:
+    is_a: extension_demographic
+  diagnosis:
+    is_a: extension_diagnosis
+  exposure:
+    is_a: base_exposure
+  follow_up:
+    is_a: base_follow_up
+  measurement:
+    is_a: base_measurement
+  medication:
+    is_a: base_medication
+  participant:
+    is_a: base_participant
+  phenotype:
+    is_a: base_phenotype
+  procedure:
+    is_a: base_procedure
+  specimen:
+    is_a: base_specimen
+  treatment:
+    is_a: base_treatment
+  imaging:
+    is_a: extension_imaging

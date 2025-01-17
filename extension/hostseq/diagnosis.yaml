@@ -1,0 +1,71 @@
+classes:
+  diagnosis:
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    name: diagnosis
+    slots:
+    - covid19_severity
+    - covid19_vaccine_doses
+    title: diagnosis
+    todos: '{"reference": "Phenopacket", "status": "v2"}'
+description: '...'
+enums:
+  Covid19SeverityMenu:
+    name: Covid19SeverityMenu
+    permissible_values:
+      Ambulatory (limitation of activities):
+        text: Ambulatory (limitation of activities)
+      Ambulatory (no limitation of activities):
+        text: Ambulatory (no limitation of activities)
+      Ambulatory (with or without limitation of activities):
+        text: Ambulatory (with or without limitation of activities)
+      Dead - death:
+        text: Dead - death
+      Hospitalized - mild disease (hospitalized, no oxygen therapy):
+        text: Hospitalized - mild disease (hospitalized, no oxygen therapy)
+      Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs):
+        text: Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
+      Hospitalized - severe disease (intubation and mechanical ventilation):
+        text: Hospitalized - severe disease (intubation and mechanical ventilation)
+      Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen):
+        text: Hospitalized - severe disease (non-invasive ventilation or high-flow
+          oxygen)
+      Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO):
+        text: Hospitalized - severe disease (ventilation and additional organ support,
+          i.e. pressors, RRT, ECMO)
+      Uninfected (no clinical or virological evidence of infection):
+        text: Uninfected (no clinical or virological evidence of infection)
+    title: covid19 severity menu
+  Covid19VaccineDosesMenu:
+    name: Covid19VaccineDosesMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      Unknown:
+        text: Unknown
+      Yes, four doses:
+        text: Yes, four doses
+      Yes, one dose:
+        text: Yes, one dose
+      Yes, three doses:
+        text: Yes, three doses
+      Yes, two doses:
+        text: Yes, two doses
+    title: covid19 vaccine doses menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  covid19_severity:
+    description: A measure of the severity of a COVID-19 infection, which can range
+      from mild to severe or critical.
+    name: covid19_severity
+    range: Covid19SeverityMenu
+    title: Covid19 Severity
+  covid19_vaccine_doses:
+    description: The number of COVID-19 vaccine doses the patient has received.
+    name: covid19_vaccine_doses
+    range: Covid19VaccineDosesMenu
+    title: Covid19 Vaccine Doses
+version: 2.0.0

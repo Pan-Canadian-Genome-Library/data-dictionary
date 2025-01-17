@@ -1,0 +1,8 @@
+﻿###Missing required fields
+#submitter_participant_id
+#disease_status_at_followup
+age_at_followup: 7
+---
+submitter_participant_id : "DONOR01"
+age_at_followup : "Unknown" ### Incorrect data type
+disease_status_at_followup: "INVALID ENUM" ###Incorrect enum

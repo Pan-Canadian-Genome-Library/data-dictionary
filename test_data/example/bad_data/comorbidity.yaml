@@ -1,0 +1,14 @@
+﻿submitter_participant_id : "DONOR1" ### Missing required field comorbidity_code
+--- 
+comorbidity_code: "C09.01" ### Missing required field submitter_participant_id
+---
+submitter_participant_id: "DONOR1" 
+comorbidity_code: "MONDO:00191400000" ### Invalid regex
+---
+submitter_participant_id : "DONOR1"
+age_at_comorbidity_diagnosis : "BLANK1" ### Incorrect data type
+comorbidity_code : "MONDO:0019140"
+comorbidity_term : "BLANK2"
+comorbidity_source_text : "BLANK3"
+comorbidity_treatment_status : "BLANK4" ### Incorrect enum value
+comorbidity_status : "BLANK5" ### Incorrect enum value

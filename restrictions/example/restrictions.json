@@ -1,0 +1,124 @@
+{
+  "name": "example_extended_schema",
+  "description": "...",
+  "schemas": [
+    {
+      "name": "imaging",
+      "fields": [
+        {
+          "name": "image_processing_pipeline",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "field": "image_hosted_format",
+                  "match": {
+                    "value": "PNG"
+                  }
+                }
+              ],
+              "case": "all"
+            },
+            "then": {
+              "required": true,
+              "valueType": "string",
+              "codeList": [
+                "pipelineA",
+                "pipelineB",
+                "pipelineC"
+              ]
+            },
+            "else": {
+              "if": {
+                "conditions": [
+                  {
+                    "field": "image_hosted_format",
+                    "match": {
+                      "value": "SVG"
+                    }
+                  }
+                ],
+                "case": "all"
+              },
+              "then": {
+                "required": true,
+                "valueType": "string",
+                "codeList": [
+                  "pipelineA",
+                  "pipelineD",
+                  "pipelineE"
+                ]
+              },
+              "else": {
+                "if": {
+                  "conditions": [
+                    {
+                      "field": "image_hosted_format",
+                      "match": {
+                        "value": "JPEG"
+                      }
+                    }
+                  ],
+                  "case": "any"
+                },
+                "then": {
+                  "required": true,
+                  "valueType": "string",
+                  "codeList": [
+                    "pipelineA",
+                    "pipelineD",
+                    "pipelineF"
+                  ]
+                },
+                "else": {}
+              }
+            }
+          }
+        },
+        {
+          "name": "image_processing_personel",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "field": "Image Processing Null Reason",
+                  "exists": false
+                }
+              ],
+              "case": "all"
+            },
+            "then": {
+              "required": true,
+              "valueType": "string"
+            }
+          }
+        },
+        {
+          "name": "image_processing_null_reason",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "field": "Image Processing Personel",
+                  "exists": false
+                }
+              ],
+              "case": "all"
+            },
+            "then": {
+              "required": true,
+              "codeList": [
+                "Unknown",
+                "Not Provided",
+                "Revoked"
+              ]
+            },
+            "else": {
+              "empty": true
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

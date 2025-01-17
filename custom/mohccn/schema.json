@@ -1,0 +1,4877 @@
+{
+  "name": "Hostseq_extended_schema",
+  "description": "Clinical schema that incorporates PCGL base entities and Hostseq extended fields",
+  "in_language": "['en']",
+  "id": "https://example.com/hostseq.yaml",
+  "version": "1.0.0",
+  "prefixes": {
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    }
+  },
+  "default_prefix": "https://example.com/hostseq.yaml/",
+  "types": {
+    "string": {
+      "name": "string",
+      "description": "A character string",
+      "notes": [
+        "In RDF serializations, a slot with range of string is treated as a literal or type xsd:string.   If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"string\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
+    "integer": {
+      "name": "integer",
+      "description": "An integer",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"integer\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "xsd:integer"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"boolean\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    },
+    "float": {
+      "name": "float",
+      "description": "A real number that conforms to the xsd:float specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"float\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:float"
+    },
+    "double": {
+      "name": "double",
+      "description": "A real number that conforms to the xsd:double specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"double\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "close_mappings": [
+        "schema:Float"
+      ],
+      "base": "float",
+      "uri": "xsd:double"
+    },
+    "decimal": {
+      "name": "decimal",
+      "description": "A real number with arbitrary precision that conforms to the xsd:decimal specification",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"decimal\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "broad_mappings": [
+        "schema:Number"
+      ],
+      "base": "Decimal",
+      "uri": "xsd:decimal"
+    },
+    "time": {
+      "name": "time",
+      "description": "A time object represents a (local) time of day, independent of any particular day",
+      "notes": [
+        "URI is dateTime because OWL reasoners do not work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"time\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Time"
+      ],
+      "base": "XSDTime",
+      "uri": "xsd:time",
+      "repr": "str"
+    },
+    "date": {
+      "name": "date",
+      "description": "a date (year, month and day) in an idealized calendar",
+      "notes": [
+        "URI is dateTime because OWL reasoners don't work with straight date or time",
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:Date"
+      ],
+      "base": "XSDDate",
+      "uri": "xsd:date",
+      "repr": "str"
+    },
+    "datetime": {
+      "name": "datetime",
+      "description": "The combination of a date and time",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"datetime\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "schema:DateTime"
+      ],
+      "base": "XSDDateTime",
+      "uri": "xsd:dateTime",
+      "repr": "str"
+    },
+    "date_or_datetime": {
+      "name": "date_or_datetime",
+      "description": "Either a date or a datetime",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"date_or_datetime\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "str",
+      "uri": "linkml:DateOrDatetime",
+      "repr": "str"
+    },
+    "uriorcurie": {
+      "name": "uriorcurie",
+      "description": "a URI or a CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uriorcurie\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "URIorCURIE",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "curie": {
+      "name": "curie",
+      "conforms_to": "https://www.w3.org/TR/curie/",
+      "description": "a compact URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"curie\"."
+      ],
+      "comments": [
+        "in RDF serializations this MUST be expanded to a URI",
+        "in non-RDF serializations MAY be serialized as the compact representation"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "Curie",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "uri": {
+      "name": "uri",
+      "conforms_to": "https://www.ietf.org/rfc/rfc3987.txt",
+      "description": "a complete URI",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"uri\"."
+      ],
+      "comments": [
+        "in RDF serializations a slot with range of uri is treated as a literal or type xsd:anyURI unless it is an identifier or a reference to an identifier, in which case it is translated directly to a node"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "close_mappings": [
+        "schema:URL"
+      ],
+      "base": "URI",
+      "uri": "xsd:anyURI",
+      "repr": "str"
+    },
+    "ncname": {
+      "name": "ncname",
+      "description": "Prefix part of CURIE",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"ncname\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "NCName",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "objectidentifier": {
+      "name": "objectidentifier",
+      "description": "A URI or CURIE that represents an object in the model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"objectidentifier\"."
+      ],
+      "comments": [
+        "Used for inheritance and type checking"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "ElementIdentifier",
+      "uri": "shex:iri",
+      "repr": "str"
+    },
+    "nodeidentifier": {
+      "name": "nodeidentifier",
+      "description": "A URI, CURIE or BNODE that represents a node in a model.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"nodeidentifier\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "NodeIdentifier",
+      "uri": "shex:nonLiteral",
+      "repr": "str"
+    },
+    "jsonpointer": {
+      "name": "jsonpointer",
+      "conforms_to": "https://datatracker.ietf.org/doc/html/rfc6901",
+      "description": "A string encoding a JSON Pointer. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to a valid object within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpointer\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "jsonpath": {
+      "name": "jsonpath",
+      "conforms_to": "https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html",
+      "description": "A string encoding a JSON Path. The value of the string MUST conform to JSON Point syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded in tree form.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"jsonpath\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    },
+    "sparqlpath": {
+      "name": "sparqlpath",
+      "conforms_to": "https://www.w3.org/TR/sparql11-query/#propertypaths",
+      "description": "A string encoding a SPARQL Property Path. The value of the string MUST conform to SPARQL syntax and SHOULD dereference to zero or more valid objects within the current instance document when encoded as RDF.",
+      "notes": [
+        "If you are authoring schemas in LinkML YAML, the type is referenced with the lower case \"sparqlpath\"."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "base": "str",
+      "uri": "xsd:string",
+      "repr": "str"
+    }
+  },
+  "enums": {
+    "AlcoholConsumptionMenu": {
+      "name": "AlcoholConsumptionMenu",
+      "title": "alcohol consumption menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Alcohol consumption unknown": {
+          "text": "Alcohol consumption unknown"
+        },
+        "Alcohol intake exceeds recommended daily limit": {
+          "text": "Alcohol intake exceeds recommended daily limit"
+        },
+        "Alcohol intake within recommended daily limit": {
+          "text": "Alcohol intake within recommended daily limit"
+        },
+        "No alcohol consumption": {
+          "text": "No alcohol consumption"
+        }
+      }
+    },
+    "BasisOfDiagnosisMenu": {
+      "name": "BasisOfDiagnosisMenu",
+      "title": "basis of diagnosis menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Clinical": {
+          "text": "Clinical"
+        },
+        "Clinical investigation": {
+          "text": "Clinical investigation"
+        },
+        "Cytology": {
+          "text": "Cytology"
+        },
+        "Death certificate only": {
+          "text": "Death certificate only"
+        },
+        "Histology of a metastasis": {
+          "text": "Histology of a metastasis"
+        },
+        "Histology of a primary tumour": {
+          "text": "Histology of a primary tumour"
+        },
+        "Not available": {
+          "text": "Not available"
+        },
+        "Specific tumour markers": {
+          "text": "Specific tumour markers"
+        }
+      }
+    },
+    "CauseOfDeathMenu": {
+      "name": "CauseOfDeathMenu",
+      "title": "cause of death menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Died of cancer": {
+          "text": "Died of cancer"
+        },
+        "Died of other reasons": {
+          "text": "Died of other reasons"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        }
+      }
+    },
+    "ClinicalCancerStagingSystemMenu": {
+      "name": "ClinicalCancerStagingSystemMenu",
+      "title": "clinical cancer staging system menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "AJCC cancer staging system": {
+          "text": "AJCC cancer staging system"
+        },
+        "Ann Arbor staging system": {
+          "text": "Ann Arbor staging system"
+        },
+        "Binet staging system": {
+          "text": "Binet staging system"
+        },
+        "Durie-Salmon staging system": {
+          "text": "Durie-Salmon staging system"
+        },
+        "FIGO staging system": {
+          "text": "FIGO staging system"
+        },
+        "International Neuroblastoma Risk Group Staging System": {
+          "text": "International Neuroblastoma Risk Group Staging System"
+        },
+        "International Neuroblastoma Staging System": {
+          "text": "International Neuroblastoma Staging System"
+        },
+        "Lugano staging system": {
+          "text": "Lugano staging system"
+        },
+        "Not available": {
+          "text": "Not available"
+        },
+        "Rai staging system": {
+          "text": "Rai staging system"
+        },
+        "Revised International staging system (R-ISS)": {
+          "text": "Revised International staging system (R-ISS)"
+        },
+        "SEER staging system": {
+          "text": "SEER staging system"
+        },
+        "St Jude staging system": {
+          "text": "St Jude staging system"
+        }
+      }
+    },
+    "ComorbidityStatusMenu": {
+      "name": "ComorbidityStatusMenu",
+      "title": "comorbidity status menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Active": {
+          "text": "Active"
+        },
+        "In Remission": {
+          "text": "In Remission"
+        },
+        "Resolved": {
+          "text": "Resolved"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        }
+      }
+    },
+    "ComorbidityTreatmentStatusMenu": {
+      "name": "ComorbidityTreatmentStatusMenu",
+      "title": "comorbidity treatment status menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Treated and resolved": {
+          "text": "Treated and resolved"
+        },
+        "Under treatment": {
+          "text": "Under treatment"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        },
+        "Untreated": {
+          "text": "Untreated"
+        }
+      }
+    },
+    "DiseaseCategoryMenu": {
+      "name": "DiseaseCategoryMenu",
+      "title": "disease category menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Autoimmune disorder": {
+          "text": "Autoimmune disorder"
+        },
+        "Cancer": {
+          "text": "Cancer"
+        },
+        "Infectious disease": {
+          "text": "Infectious disease"
+        }
+      }
+    },
+    "DiseaseStatusAtFollowupMenu": {
+      "name": "DiseaseStatusAtFollowupMenu",
+      "title": "disease status at followup menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Complete remission": {
+          "text": "Complete remission"
+        },
+        "Distant progression": {
+          "text": "Distant progression"
+        },
+        "Loco-regional progression": {
+          "text": "Loco-regional progression"
+        },
+        "No evidence of disease": {
+          "text": "No evidence of disease"
+        },
+        "Partial remission": {
+          "text": "Partial remission"
+        },
+        "Progression NOS": {
+          "text": "Progression NOS"
+        },
+        "Relapse or recurrence": {
+          "text": "Relapse or recurrence"
+        },
+        "Stable": {
+          "text": "Stable"
+        }
+      }
+    },
+    "DrugDoseUnitsMenu": {
+      "name": "DrugDoseUnitsMenu",
+      "title": "drug dose units menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "IU/kg": {
+          "text": "IU/kg"
+        },
+        "IU/m2": {
+          "text": "IU/m2"
+        },
+        "Not available": {
+          "text": "Not available"
+        },
+        "g/m2": {
+          "text": "g/m2"
+        },
+        "mg": {
+          "text": "mg"
+        },
+        "mg/kg": {
+          "text": "mg/kg"
+        },
+        "mg/m2": {
+          "text": "mg/m2"
+        },
+        "ug/m2": {
+          "text": "ug/m2"
+        }
+      }
+    },
+    "EthnicityMenu": {
+      "name": "EthnicityMenu",
+      "title": "ethnicity menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "African": {
+          "text": "African"
+        },
+        "Asian": {
+          "text": "Asian"
+        },
+        "Caribbean": {
+          "text": "Caribbean"
+        },
+        "European": {
+          "text": "European"
+        },
+        "Latin, Central and South American": {
+          "text": "Latin, Central and South American"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "North American": {
+          "text": "North American"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Oceanian": {
+          "text": "Oceanian"
+        },
+        "Other ethnic and cultural": {
+          "text": "Other ethnic and cultural"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        }
+      }
+    },
+    "GenderMenu": {
+      "name": "GenderMenu",
+      "title": "gender menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Man": {
+          "text": "Man"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "Non-binary person": {
+          "text": "Non-binary person"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        },
+        "Woman": {
+          "text": "Woman"
+        }
+      }
+    },
+    "LateralityMenu": {
+      "name": "LateralityMenu",
+      "title": "laterality menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Bilateral": {
+          "text": "Bilateral"
+        },
+        "Left": {
+          "text": "Left"
+        },
+        "Midline": {
+          "text": "Midline"
+        },
+        "Not a paired site": {
+          "text": "Not a paired site"
+        },
+        "Not available": {
+          "text": "Not available"
+        },
+        "Right": {
+          "text": "Right"
+        },
+        "Unilateral, side not specified": {
+          "text": "Unilateral, side not specified"
+        }
+      }
+    },
+    "PercentTumourCellsMeasurementMethodMenu": {
+      "name": "PercentTumourCellsMeasurementMethodMenu",
+      "title": "percent tumour cells measurement method menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Genomics": {
+          "text": "Genomics"
+        },
+        "Image analysis": {
+          "text": "Image analysis"
+        },
+        "Pathology estimate by percent nuclei": {
+          "text": "Pathology estimate by percent nuclei"
+        }
+      }
+    },
+    "PercentTumourCellsRangeMenu": {
+      "name": "PercentTumourCellsRangeMenu",
+      "title": "percent tumour cells range menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "0-19%": {
+          "text": "0-19%"
+        },
+        "20-50%": {
+          "text": "20-50%"
+        },
+        "51-100%": {
+          "text": "51-100%"
+        }
+      }
+    },
+    "PhysicalActivityMenu": {
+      "name": "PhysicalActivityMenu",
+      "title": "physical activity menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "1-3 times a month": {
+          "text": "1-3 times a month"
+        },
+        "Every day": {
+          "text": "Every day"
+        },
+        "Less than once a month": {
+          "text": "Less than once a month"
+        },
+        "Most days but not every day": {
+          "text": "Most days but not every day"
+        },
+        "Never": {
+          "text": "Never"
+        },
+        "Not applicable": {
+          "text": "Not applicable"
+        },
+        "Once or twice a week": {
+          "text": "Once or twice a week"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        }
+      }
+    },
+    "RaceMenu": {
+      "name": "RaceMenu",
+      "title": "race menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Another race category": {
+          "text": "Another race category"
+        },
+        "Black": {
+          "text": "Black"
+        },
+        "Do not know": {
+          "text": "Do not know"
+        },
+        "East Asian": {
+          "text": "East Asian"
+        },
+        "Indigenous (First Nations, Inuk/Inuit, Métis)": {
+          "text": "Indigenous (First Nations, Inuk/Inuit, Métis)"
+        },
+        "Latin American": {
+          "text": "Latin American"
+        },
+        "Middle Eastern": {
+          "text": "Middle Eastern"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Prefer not to answer": {
+          "text": "Prefer not to answer"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        },
+        "South Asian": {
+          "text": "South Asian"
+        },
+        "Southeast Asian": {
+          "text": "Southeast Asian"
+        },
+        "White": {
+          "text": "White"
+        }
+      }
+    },
+    "RadiationModalityMenu": {
+      "name": "RadiationModalityMenu",
+      "title": "radiation modality menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Electron Beam (NCIT:C28039)": {
+          "text": "Electron Beam (NCIT:C28039)"
+        },
+        "High-LET Heavy Ion Therapy (NCIT:C15458)": {
+          "text": "High-LET Heavy Ion Therapy (NCIT:C15458)"
+        },
+        "Internal Radiation Therapy (NCIT:C15195)": {
+          "text": "Internal Radiation Therapy (NCIT:C15195)"
+        },
+        "Photon Beam Radiation Therapy (NCIT:C104914)": {
+          "text": "Photon Beam Radiation Therapy (NCIT:C104914)"
+        },
+        "Proton Radiation (NCIT:C40431).": {
+          "text": "Proton Radiation (NCIT:C40431)."
+        }
+      }
+    },
+    "SexAtBirthMenu": {
+      "name": "SexAtBirthMenu",
+      "title": "sex at birth menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Female": {
+          "text": "Female"
+        },
+        "Male": {
+          "text": "Male"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        }
+      }
+    },
+    "SmokingStatusMenu": {
+      "name": "SmokingStatusMenu",
+      "title": "smoking status menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Current reformed smoker for <= 15 years": {
+          "text": "Current reformed smoker for <= 15 years"
+        },
+        "Current reformed smoker for > 15 years": {
+          "text": "Current reformed smoker for > 15 years"
+        },
+        "Current reformed smoker, duration not specified": {
+          "text": "Current reformed smoker, duration not specified"
+        },
+        "Current smoker": {
+          "text": "Current smoker"
+        },
+        "Lifelong non-smoker (<100 cigarettes smoked in lifetime)": {
+          "text": "Lifelong non-smoker (<100 cigarettes smoked in lifetime)"
+        },
+        "Not applicable": {
+          "text": "Not applicable"
+        },
+        "Smoking history not documented": {
+          "text": "Smoking history not documented"
+        }
+      }
+    },
+    "SpecimenLateralityMenu": {
+      "name": "SpecimenLateralityMenu",
+      "title": "specimen laterality menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Left": {
+          "text": "Left"
+        },
+        "Not applicable": {
+          "text": "Not applicable"
+        },
+        "Right": {
+          "text": "Right"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        }
+      }
+    },
+    "SpecimenProcessingMenu": {
+      "name": "SpecimenProcessingMenu",
+      "title": "specimen processing menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Cryopreservation - other": {
+          "text": "Cryopreservation - other"
+        },
+        "Cryopreservation in dry ice (dead tissue)": {
+          "text": "Cryopreservation in dry ice (dead tissue)"
+        },
+        "Cryopreservation in liquid nitrogen (dead tissue)": {
+          "text": "Cryopreservation in liquid nitrogen (dead tissue)"
+        },
+        "Cryopreservation of live cells in liquid nitrogen": {
+          "text": "Cryopreservation of live cells in liquid nitrogen"
+        },
+        "Formalin fixed & paraffin embedded": {
+          "text": "Formalin fixed & paraffin embedded"
+        },
+        "Formalin fixed - buffered": {
+          "text": "Formalin fixed - buffered"
+        },
+        "Formalin fixed - unbuffered": {
+          "text": "Formalin fixed - unbuffered"
+        },
+        "Fresh": {
+          "text": "Fresh"
+        },
+        "Other": {
+          "text": "Other"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        }
+      }
+    },
+    "SpecimenStorageMenu": {
+      "name": "SpecimenStorageMenu",
+      "title": "specimen storage menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Cut slide": {
+          "text": "Cut slide"
+        },
+        "Frozen in -70 freezer": {
+          "text": "Frozen in -70 freezer"
+        },
+        "Frozen in liquid nitrogen": {
+          "text": "Frozen in liquid nitrogen"
+        },
+        "Frozen in vapour phase": {
+          "text": "Frozen in vapour phase"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Other": {
+          "text": "Other"
+        },
+        "Paraffin block": {
+          "text": "Paraffin block"
+        },
+        "RNA later frozen": {
+          "text": "RNA later frozen"
+        },
+        "Unknown": {
+          "text": "Unknown"
+        }
+      }
+    },
+    "StudyIdMenu": {
+      "name": "StudyIdMenu",
+      "title": "study id menu",
+      "from_schema": "https://example.com/hostseq.yaml"
+    },
+    "TreatmentIntentMenu": {
+      "name": "TreatmentIntentMenu",
+      "title": "treatment intent menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Curative": {
+          "text": "Curative"
+        },
+        "Diagnostic": {
+          "text": "Diagnostic"
+        },
+        "Forensic": {
+          "text": "Forensic"
+        },
+        "Guidance": {
+          "text": "Guidance"
+        },
+        "Palliative": {
+          "text": "Palliative"
+        },
+        "Preventative": {
+          "text": "Preventative"
+        },
+        "Screening": {
+          "text": "Screening"
+        },
+        "Supportive": {
+          "text": "Supportive"
+        }
+      }
+    },
+    "TreatmentResponseMenu": {
+      "name": "TreatmentResponseMenu",
+      "title": "treatment response menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Clinical remission": {
+          "text": "Clinical remission"
+        },
+        "Disease Progression": {
+          "text": "Disease Progression"
+        },
+        "Improvement of symptoms": {
+          "text": "Improvement of symptoms"
+        },
+        "No improvement of symptoms": {
+          "text": "No improvement of symptoms"
+        },
+        "No sign of disease": {
+          "text": "No sign of disease"
+        },
+        "Not applicable": {
+          "text": "Not applicable"
+        },
+        "Partial Response": {
+          "text": "Partial Response"
+        },
+        "Stable Disease": {
+          "text": "Stable Disease"
+        },
+        "Treatment cessation due to toxicity": {
+          "text": "Treatment cessation due to toxicity"
+        },
+        "Worsening of symptoms": {
+          "text": "Worsening of symptoms"
+        }
+      }
+    },
+    "TreatmentStatusMenu": {
+      "name": "TreatmentStatusMenu",
+      "title": "treatment status menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Not available": {
+          "text": "Not available"
+        },
+        "Other": {
+          "text": "Other"
+        },
+        "Patient choice (stopped or interrupted treatment)": {
+          "text": "Patient choice (stopped or interrupted treatment)"
+        },
+        "Physician decision (stopped or interrupted treatment)": {
+          "text": "Physician decision (stopped or interrupted treatment)"
+        },
+        "Treatment completed as prescribed": {
+          "text": "Treatment completed as prescribed"
+        },
+        "Treatment incomplete because patient died": {
+          "text": "Treatment incomplete because patient died"
+        },
+        "Treatment incomplete due to technical or organizational problems": {
+          "text": "Treatment incomplete due to technical or organizational problems"
+        },
+        "Treatment ongoing": {
+          "text": "Treatment ongoing"
+        },
+        "Treatment stopped due to acute toxicity": {
+          "text": "Treatment stopped due to acute toxicity"
+        },
+        "Treatment stopped due to lack of efficacy (disease progression)": {
+          "text": "Treatment stopped due to lack of efficacy (disease progression)"
+        }
+      }
+    },
+    "TreatmentTypeMenu": {
+      "name": "TreatmentTypeMenu",
+      "title": "treatment type menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Medication": {
+          "text": "Medication"
+        },
+        "Pharmacotherapy": {
+          "text": "Pharmacotherapy"
+        },
+        "Procedure": {
+          "text": "Procedure"
+        },
+        "Radiation therapy": {
+          "text": "Radiation therapy"
+        }
+      }
+    },
+    "TumourGradeMenu": {
+      "name": "TumourGradeMenu",
+      "title": "tumour grade menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "G1": {
+          "text": "G1"
+        },
+        "G2": {
+          "text": "G2"
+        },
+        "G3": {
+          "text": "G3"
+        },
+        "G4": {
+          "text": "G4"
+        },
+        "GX": {
+          "text": "GX"
+        },
+        "Grade 1": {
+          "text": "Grade 1"
+        },
+        "Grade 2": {
+          "text": "Grade 2"
+        },
+        "Grade 3": {
+          "text": "Grade 3"
+        },
+        "Grade 4": {
+          "text": "Grade 4"
+        },
+        "Grade Group 1": {
+          "text": "Grade Group 1"
+        },
+        "Grade Group 2": {
+          "text": "Grade Group 2"
+        },
+        "Grade Group 3": {
+          "text": "Grade Group 3"
+        },
+        "Grade Group 4": {
+          "text": "Grade Group 4"
+        },
+        "Grade Group 5": {
+          "text": "Grade Group 5"
+        },
+        "Grade I": {
+          "text": "Grade I"
+        },
+        "Grade II": {
+          "text": "Grade II"
+        },
+        "Grade III": {
+          "text": "Grade III"
+        },
+        "Grade IV": {
+          "text": "Grade IV"
+        },
+        "High": {
+          "text": "High"
+        },
+        "High grade": {
+          "text": "High grade"
+        },
+        "Low": {
+          "text": "Low"
+        },
+        "Low grade": {
+          "text": "Low grade"
+        }
+      }
+    },
+    "TumourGradingSystemMenu": {
+      "name": "TumourGradingSystemMenu",
+      "title": "tumour grading system menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "FNCLCC grading system": {
+          "text": "FNCLCC grading system"
+        },
+        "Four-tier grading system": {
+          "text": "Four-tier grading system"
+        },
+        "Gleason grade group system": {
+          "text": "Gleason grade group system"
+        },
+        "Grading system for GISTs": {
+          "text": "Grading system for GISTs"
+        },
+        "Grading system for GNETs": {
+          "text": "Grading system for GNETs"
+        },
+        "IASLC grading system": {
+          "text": "IASLC grading system"
+        },
+        "ISUP grading system": {
+          "text": "ISUP grading system"
+        },
+        "Nottingham grading system": {
+          "text": "Nottingham grading system"
+        },
+        "Nuclear grading system for DCIS": {
+          "text": "Nuclear grading system for DCIS"
+        },
+        "Scarff-Bloom-Richardson grading system": {
+          "text": "Scarff-Bloom-Richardson grading system"
+        },
+        "Three-tier grading system": {
+          "text": "Three-tier grading system"
+        },
+        "Two-tier grading system": {
+          "text": "Two-tier grading system"
+        },
+        "WHO grading system for CNS tumours": {
+          "text": "WHO grading system for CNS tumours"
+        }
+      }
+    },
+    "VitalStatusMenu": {
+      "name": "VitalStatusMenu",
+      "title": "vital status menu",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "permissible_values": {
+        "Alive": {
+          "text": "Alive"
+        },
+        "Deceased": {
+          "text": "Deceased"
+        },
+        "Missing": {
+          "text": "Missing"
+        },
+        "Not Applicable": {
+          "text": "Not Applicable"
+        },
+        "Not Collected": {
+          "text": "Not Collected"
+        },
+        "Not Provided": {
+          "text": "Not Provided"
+        },
+        "Restricted Access": {
+          "text": "Restricted Access"
+        }
+      }
+    }
+  },
+  "slots": {
+    "actual_cumulative_drug_dose": {
+      "name": "actual_cumulative_drug_dose",
+      "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
+      "title": "Actual Cumulative Drug Dose",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "decimal"
+    },
+    "age_at_comorbidity_diagnosis": {
+      "name": "age_at_comorbidity_diagnosis",
+      "description": "Indicate the age (in days) of comorbidity diagnosis.",
+      "title": "Age At Comorbidity Diagnosis",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "integer",
+      "minimum_value": 0
+    },
+    "age_at_death": {
+      "name": "age_at_death",
+      "description": "Age of participant (in days) at time of death",
+      "title": "Age At Death",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "participant"
+      ],
+      "range": "integer"
+    },
+    "age_at_diagnosis": {
+      "name": "age_at_diagnosis",
+      "description": "Age of participant (in days) at time of diagnosis of the condition.",
+      "title": "Age At Diagnosis",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.onset",
+        "FHIR:condition.onset",
+        "Phenopacket:disease.onset"
+      ],
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "integer"
+    },
+    "age_at_enrollment": {
+      "name": "age_at_enrollment",
+      "description": "Age (in days) of participant at time of enrollment into the study",
+      "title": "Age At Enrollment",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "participant"
+      ],
+      "range": "integer"
+    },
+    "age_at_followup": {
+      "name": "age_at_followup",
+      "description": "Participant's age (in days) at time of the follow up event",
+      "title": "Age At Followup",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "follow_up"
+      ],
+      "range": "string"
+    },
+    "age_at_specimen_collection": {
+      "name": "age_at_specimen_collection",
+      "description": "Indicate participant's age( in days) when specimen was collected.",
+      "title": "Age At Specimen Collection",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "integer"
+    },
+    "age_at_treatment": {
+      "name": "age_at_treatment",
+      "description": "Age (in days) of the participant at the time the treatment was administered.",
+      "title": "Age At Treatment",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "integer"
+    },
+    "alcohol_consumption": {
+      "name": "alcohol_consumption",
+      "description": "Indicate current alcohol consumtion based on recommended daily limit.",
+      "title": "Alcohol Consumption",
+      "todos": [
+        "[\"CQDG\", \"ARGO\", \"MOH\"]"
+      ],
+      "comments": [
+        "Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion."
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "exposure"
+      ],
+      "range": "AlcoholConsumptionMenu"
+    },
+    "anatomical_site_irradiated_code": {
+      "name": "anatomical_site_irradiated_code",
+      "description": "Indicate the ICD-O-3 topography code to describe the irradiated site of radiation if applicable. Please use C80.9 if the site is Unkown.",
+      "title": "Anatomical Site Irradiated Code",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "comments": [
+        "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
+      ],
+      "examples": [
+        {
+          "value": "C50.1"
+        },
+        {
+          "value": "C18"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Specimen.collection.bodySite",
+        "FHIR:Specimen.collection.bodySite"
+      ],
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "string",
+      "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+    },
+    "anatomical_site_irradiated_source_text": {
+      "name": "anatomical_site_irradiated_source_text",
+      "description": "Provide the original textual description of the irradiated body site of the radiation as reported in the participant's clinical or medical records if applicable",
+      "title": "Anatomical Site Irradiated Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "string"
+    },
+    "anatomical_site_irradiated_term": {
+      "name": "anatomical_site_irradiated_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
+      "title": "Anatomical Site Irradiated Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "string"
+    },
+    "basis_of_diagnosis": {
+      "name": "basis_of_diagnosis",
+      "description": "Indicate the most valid basis of how the primary diagnosis was identified. Terms are ordered in hierarchical order according to IACR guidelines, with the term at the top of the list (\"Histology of primary tumour\") being the more valid basis. If more than one diagnosis technique was used, select the most valid basis.",
+      "title": "Basis Of Diagnosis",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "BasisOfDiagnosisMenu",
+      "required": true
+    },
+    "cause_of_death": {
+      "name": "cause_of_death",
+      "description": "Indicate the cause of a participant's death.",
+      "title": "Cause Of Death",
+      "todos": [
+        "[\"ARGO \", \" MOH\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "participant"
+      ],
+      "range": "CauseOfDeathMenu"
+    },
+    "clinical_cancer_staging_system": {
+      "name": "clinical_cancer_staging_system",
+      "description": "Indicate the cancer staging system used to stage the cancer at the time of diagnosis (prior to treatment).",
+      "title": "Clinical Cancer Staging System",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "ClinicalCancerStagingSystemMenu"
+    },
+    "clinical_m_category": {
+      "name": "clinical_m_category",
+      "description": "The code to represent the stage of cancer defined by the extent of the distant metastasis (M) for the cancer based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual. MX is NOT a valid category and cannot be assigned.",
+      "title": "Clinical M Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "clinical_n_category": {
+      "name": "clinical_n_category",
+      "description": "The code to represent the stage of cancer defined by the extent of the regional lymph node (N) involvement for the cancer based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+      "title": "Clinical N Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "clinical_stage_group": {
+      "name": "clinical_stage_group",
+      "description": "Stage group of the cancer, as assigned by the reporting clinical_cancer_staging_system, that indicates the overall prognostic cancer stage (ie. Stage I, Stage II, Stage III etc.).",
+      "title": "Clinical Stage Group",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "clinical_t_category": {
+      "name": "clinical_t_category",
+      "description": "The code to represent the extent of the primary tumour (T) based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+      "title": "Clinical T Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "comorbidity_code": {
+      "name": "comorbidity_code",
+      "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.",
+      "title": "Comorbidity Code",
+      "comments": [
+        "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$"
+    },
+    "comorbidity_source_text": {
+      "name": "comorbidity_source_text",
+      "description": "Provide the original textual description of the diagnosed comorbidity as reported in the participant's clinical or medical records if applicable",
+      "title": "Comorbidity Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.code",
+        "FHIR:condition.code",
+        "Phenopacket:disease.term"
+      ],
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "string"
+    },
+    "comorbidity_status": {
+      "name": "comorbidity_status",
+      "description": "Indicate the current state or activity of the comorbid condition.",
+      "title": "Comorbidity Status",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "ComorbidityStatusMenu"
+    },
+    "comorbidity_term": {
+      "name": "comorbidity_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code",
+      "title": "Comorbidity Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.code",
+        "FHIR:condition.code",
+        "Phenopacket:disease.term"
+      ],
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "string"
+    },
+    "comorbidity_treatment_status": {
+      "name": "comorbidity_treatment_status",
+      "description": "Indicate whether the comorbid condition is currently being treated or not.",
+      "title": "Comorbidity Treatment Status",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "comorbidity"
+      ],
+      "range": "ComorbidityTreatmentStatusMenu"
+    },
+    "disease_category": {
+      "name": "disease_category",
+      "description": "A broader classification that groups diseases into categories.",
+      "title": "Disease Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "DiseaseCategoryMenu",
+      "required": true
+    },
+    "disease_code": {
+      "name": "disease_code",
+      "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
+      "title": "Disease Code",
+      "todos": [
+        "[\"MOH \", \" ARGO \", \" CQDG\"]"
+      ],
+      "comments": [
+        "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.code",
+        "FHIR:condition.code",
+        "Phenopacket:disease.term"
+      ],
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$"
+    },
+    "disease_source_text": {
+      "name": "disease_source_text",
+      "description": "Provide the original textual description of the diagnosed disease as reported in the participant's clinical or medical records if applicable",
+      "title": "Disease Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.code",
+        "FHIR:condition.code",
+        "Phenopacket:disease.term"
+      ],
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "disease_status_at_followup": {
+      "name": "disease_status_at_followup",
+      "description": "Indicate the participant's disease status at time of follow-up",
+      "title": "Disease Status At Followup",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "follow_up"
+      ],
+      "range": "DiseaseStatusAtFollowupMenu",
+      "required": true
+    },
+    "disease_term": {
+      "name": "disease_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the disease_code",
+      "title": "Disease Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:condition.code",
+        "FHIR:condition.code",
+        "Phenopacket:disease.term"
+      ],
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "drug_code": {
+      "name": "drug_code",
+      "description": "Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt to represent the drug.",
+      "title": "Drug Code",
+      "comments": [
+        "Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^RxNorm:\\d{1,8}$||^KEGG:D\\\\d{5}$||^PubChem:\\\\d{1,9}$||^NCIt:C\\\\d{1,7}$"
+    },
+    "drug_dose_units": {
+      "name": "drug_dose_units",
+      "description": "Indicate units used to record drug dose.",
+      "title": "Drug Dose Units",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "DrugDoseUnitsMenu"
+    },
+    "drug_source_text": {
+      "name": "drug_source_text",
+      "description": "Provide the original text from medical records describing the drug used in the treatment if applicable.",
+      "title": "Drug Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "string"
+    },
+    "drug_term": {
+      "name": "drug_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
+      "title": "Drug Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "string"
+    },
+    "ethnicity": {
+      "name": "ethnicity",
+      "description": "Refers to the ethnic or cultural origins of a person’s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+      "title": "Ethnicity",
+      "comments": [
+        "EDI indicator"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Patient.extension.ethnicity",
+        "FHIR:Patient.extension.ethnicity"
+      ],
+      "domain_of": [
+        "demographic"
+      ],
+      "range": "EthnicityMenu",
+      "required": true
+    },
+    "gender": {
+      "name": "gender",
+      "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+      "title": "Gender",
+      "comments": [
+        "EDI indicator"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Patient.gender",
+        "FHIR:Patient.gender",
+        "Phenopacket:individual.gender",
+        "BeaconV2:individual.gender"
+      ],
+      "domain_of": [
+        "demographic"
+      ],
+      "range": "GenderMenu",
+      "required": true
+    },
+    "laterality": {
+      "name": "laterality",
+      "description": "For cancer in a paired organ, indicate the side of the body on which the primary tumour or cancer first developed at the time of primary diagnosis. (Reference caDSR CDE ID 827)",
+      "title": "Laterality",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "LateralityMenu"
+    },
+    "pathological_cancer_staging_system": {
+      "name": "pathological_cancer_staging_system",
+      "description": "Specify the cancer staging system used to assess the cancer at the time the tumour specimen was resected. Pathological classification is based on the clinical stage information (acquired before treatment) and supplemented/modified by operative findings and pathological evaluation of the resected specimen.",
+      "title": "Pathological Cancer Staging System",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "pathological_m_category": {
+      "name": "pathological_m_category",
+      "description": "The code to represent the stage of cancer defined by whether there are distant metastases (M), meaning spread of cancer to other parts of the body, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+      "title": "Pathological M Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "pathological_n_category": {
+      "name": "pathological_n_category",
+      "description": "The code to represent the stage of cancer defined by whether or not the cancer has reached nearby lymph nodes (N), according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+      "title": "Pathological N Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "pathological_stage_group": {
+      "name": "pathological_stage_group",
+      "description": "Specify the cancer stage, based on pathological_cancer_staging_system, used to assess the cancer at the time the tumour specimen was resected.",
+      "title": "Pathological Stage Group",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "pathological_t_category": {
+      "name": "pathological_t_category",
+      "description": "The code to represent the stage of cancer defined by the size or contiguous extension of the primary tumour (T), according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+      "title": "Pathological T Category",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "percent_tumour_cells_measurement_method": {
+      "name": "percent_tumour_cells_measurement_method",
+      "description": "Indicate method used to measure percent_tumour_cells.",
+      "title": "Percent Tumour Cells Measurement Method",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "PercentTumourCellsMeasurementMethodMenu"
+    },
+    "percent_tumour_cells_range": {
+      "name": "percent_tumour_cells_range",
+      "description": "Select the range representing the percent of tumour cells compared to the number of total cells in a specimen. (Reference: NCIt: C159484)",
+      "title": "Percent Tumour Cells Range",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "PercentTumourCellsRangeMenu"
+    },
+    "physical_activity": {
+      "name": "physical_activity",
+      "description": "Indicate how many times per week the participant exercises for at least 30 minutes.",
+      "title": "Physical Activity",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "exposure"
+      ],
+      "range": "PhysicalActivityMenu"
+    },
+    "prescribed_cumulative_drug_dose": {
+      "name": "prescribed_cumulative_drug_dose",
+      "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
+      "title": "Prescribed Cumulative Drug Dose",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication"
+      ],
+      "range": "decimal"
+    },
+    "primary_site": {
+      "name": "primary_site",
+      "description": "The text term used to describe the primary site of disease, as categorized by the World Health Organization's (WHO) International Classification of Diseases for Oncology (ICD-O). This categorization groups cases into general categories.",
+      "title": "Primary Site",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string"
+    },
+    "procedure_body_site_code": {
+      "name": "procedure_body_site_code",
+      "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.",
+      "title": "Procedure Body Site Code",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "comments": [
+        "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
+      ],
+      "examples": [
+        {
+          "value": "C50.1"
+        },
+        {
+          "value": "C18"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Specimen.collection.bodySite",
+        "FHIR:Specimen.collection.bodySite"
+      ],
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string",
+      "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+    },
+    "procedure_body_site_source_text": {
+      "name": "procedure_body_site_source_text",
+      "description": "Provide the original textual description of the body site of the procedure as reported in the participant's clinical or medical records if applicable",
+      "title": "Procedure Body Site Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string"
+    },
+    "procedure_body_site_term": {
+      "name": "procedure_body_site_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
+      "title": "Procedure Body Site Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string"
+    },
+    "procedure_code": {
+      "name": "procedure_code",
+      "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.",
+      "title": "Procedure Code",
+      "comments": [
+        "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^NCIt:C\\\\d{1,7}$||^SNOMEDCT:\\\\d{6,9}$||^UMLS:C\\\\d{7}$||^CCI:\\\\d\\\\.[A-Z]{2}\\\\.\\\\d{2}\\\\.[A-Z]{2}$"
+    },
+    "procedure_source_text": {
+      "name": "procedure_source_text",
+      "description": "The original texual description of the procedure performed, as recorded in clinical notes or medical records if applicable.",
+      "title": "Procedure Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string"
+    },
+    "procedure_term": {
+      "name": "procedure_term",
+      "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
+      "title": "Procedure Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "procedure"
+      ],
+      "range": "string"
+    },
+    "race": {
+      "name": "race",
+      "description": "A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance",
+      "title": "Race",
+      "comments": [
+        "EDI indicator"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Patient.extension.race",
+        "FHIR:Patient.extension.race"
+      ],
+      "domain_of": [
+        "demographic"
+      ],
+      "range": "RaceMenu",
+      "required": true
+    },
+    "radiation_dosage": {
+      "name": "radiation_dosage",
+      "description": "Indicate the total dose given in units of Gray (Gy).",
+      "title": "Radiation Dosage",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "integer"
+    },
+    "radiation_fractions": {
+      "name": "radiation_fractions",
+      "description": "Indicate the total number of fractions delivered as part of treatment.",
+      "title": "Radiation Fractions",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "integer"
+    },
+    "radiation_modality": {
+      "name": "radiation_modality",
+      "description": "Indicate NCIt code to denote the modality of radiation therapy.",
+      "title": "Radiation Modality",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "radiation"
+      ],
+      "range": "RadiationModalityMenu",
+      "required": true
+    },
+    "sex_at_birth": {
+      "name": "sex_at_birth",
+      "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
+      "title": "Sex At Birth",
+      "comments": [
+        "EDI indicator"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "All4One:Biological_sex",
+        "CQDG:Sex",
+        "mCODE.STU3:Patient.extension.birthsex",
+        "FHIR:Patient.extension.birthsex",
+        "Phenopacket:individual.sex",
+        "BeaconV2:individual.sex"
+      ],
+      "domain_of": [
+        "demographic"
+      ],
+      "range": "SexAtBirthMenu",
+      "required": true
+    },
+    "smoking_status": {
+      "name": "smoking_status",
+      "description": "Indicate smoking status and history of a participant at the time of the data collection.",
+      "title": "Smoking Status",
+      "todos": [
+        "[\"CQDG\", \"ARGO\", \"MOH\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "exposure"
+      ],
+      "range": "SmokingStatusMenu"
+    },
+    "specimen_anatomic_location_code": {
+      "name": "specimen_anatomic_location_code",
+      "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
+      "title": "Specimen Anatomic Location Code",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "comments": [
+        "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
+      ],
+      "examples": [
+        {
+          "value": "C50.1"
+        },
+        {
+          "value": "C18"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Specimen.collection.bodySite",
+        "FHIR:Specimen.collection.bodySite"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string",
+      "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+    },
+    "specimen_anatomic_location_label": {
+      "name": "specimen_anatomic_location_label",
+      "description": "Provide the human readable label for the specimen anatomic location code.",
+      "title": "Specimen Anatomic Location Label",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "specimen_anatomic_location_source_text": {
+      "name": "specimen_anatomic_location_source_text",
+      "description": "Provide the specimen anatomic location as reported in the participant's source data if applicable",
+      "title": "Specimen Anatomic Location Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "specimen_laterality": {
+      "name": "specimen_laterality",
+      "description": "For cancer in a paired organ, indicate the side on which the specimen was obtained.",
+      "title": "Specimen Laterality",
+      "comments": [
+        "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier",
+        "FHIR:Specimen.collection.bodySite.extension.lateralityQualifier"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "SpecimenLateralityMenu"
+    },
+    "specimen_processing": {
+      "name": "specimen_processing",
+      "description": "Indicate the technique used to process specimen.",
+      "title": "Specimen Processing",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "Phenopacket:biosample.sample_processing",
+        "BeaconV2:biosample.sample_processing"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "SpecimenProcessingMenu"
+    },
+    "specimen_storage": {
+      "name": "specimen_storage",
+      "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
+      "title": "Specimen Storage",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "Phenopacket:biosample.sample_storage",
+        "BeaconV2:biosample.sample_storage"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "SpecimenStorageMenu"
+    },
+    "specimen_tissue_source_code": {
+      "name": "specimen_tissue_source_code",
+      "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
+      "title": "Specimen Tissue Source Code",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "CQDG:biospecimen_tissue_source",
+        "mCODE.STU3:Specimen.type",
+        "FHIR:Specimen.type",
+        "Phenopacket:biosample.sampled_tissue",
+        "BeaconV2:biosample.sampled_tissue"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$"
+    },
+    "specimen_tissue_source_term": {
+      "name": "specimen_tissue_source_term",
+      "description": "Indicate the human readable label for the specimen tissue source code.",
+      "title": "Specimen Tissue Source Term",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "specimen_tissue_source_text": {
+      "name": "specimen_tissue_source_text",
+      "description": "Indicate the specimen tissue source as reported in the participant's source data.",
+      "title": "Specimen Tissue Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "study_id": {
+      "name": "study_id",
+      "description": "Unique identifier of the study.",
+      "title": "Study Id",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "CQDG:study_id"
+      ],
+      "domain_of": [
+        "demographic",
+        "participant"
+      ],
+      "required": true
+    },
+    "submitter_diagnosis_id": {
+      "name": "submitter_diagnosis_id",
+      "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+      "title": "Submitter Diagnosis Id",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "examples": [
+        {
+          "value": "90234"
+        },
+        {
+          "value": "BLD_donor_89"
+        },
+        {
+          "value": "AML-90"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "mCODE.STU1:Condition.identifier",
+        "mCODE.STU2:Condition.identifier",
+        "FHIR:condition.code"
+      ],
+      "domain_of": [
+        "diagnosis"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+    },
+    "submitter_participant_id": {
+      "name": "submitter_participant_id",
+      "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+      "title": "Submitter Participant Id",
+      "todos": [
+        "[\"MOH\", \"ARGO\"]"
+      ],
+      "examples": [
+        {
+          "value": "90234"
+        },
+        {
+          "value": "BLD_donor_89"
+        },
+        {
+          "value": "AML-90"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "CQDG:submitter_participant_id",
+        "mCODE.STU3:Patient.Identifier",
+        "FHIR:Patient.Identifier",
+        "Phenopacket:individual.id",
+        "BeaconV2:individual.id"
+      ],
+      "domain_of": [
+        "comorbidity",
+        "demographic",
+        "diagnosis",
+        "exposure",
+        "follow_up",
+        "participant",
+        "specimen",
+        "treatment"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+    },
+    "submitter_specimen_id": {
+      "name": "submitter_specimen_id",
+      "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
+      "title": "Submitter Specimen Id",
+      "todos": [
+        "[\"ARGO\", \"MOH\"]"
+      ],
+      "examples": [
+        {
+          "value": "LAML_PO"
+        },
+        {
+          "value": "00445"
+        },
+        {
+          "value": "THY_099-tumour"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "CQDG:submitter_biospecimen_id",
+        "mCODE.STU3:Specimen.Identifier",
+        "FHIR:Specimen.Identifier",
+        "Phenopacket:biosample.id",
+        "BeaconV2:biosample.id"
+      ],
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+    },
+    "submitter_treatment_id": {
+      "name": "submitter_treatment_id",
+      "description": "Unique identifier of the treatment, assigned by the data provider.",
+      "title": "Submitter Treatment Id",
+      "examples": [
+        {
+          "value": "90234"
+        },
+        {
+          "value": "BLD_donor_89"
+        },
+        {
+          "value": "AML-90"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "medication",
+        "procedure",
+        "radiation",
+        "treatment"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+    },
+    "treatment_duration": {
+      "name": "treatment_duration",
+      "description": "The length of time (in days) over which the treatment was administered.",
+      "title": "Treatment Duration",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "integer"
+    },
+    "treatment_intent": {
+      "name": "treatment_intent",
+      "description": "The purpose of the treatment or the desired effect or outcome resulting from the treatment.",
+      "title": "Treatment Intent",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "TreatmentIntentMenu"
+    },
+    "treatment_response": {
+      "name": "treatment_response",
+      "description": "The outcome of the treatment, indicating how the patient responded to the intervention",
+      "title": "Treatment Response",
+      "todos": [
+        "[\"CQDG\", \"ARGO\", \"MOH\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "TreatmentResponseMenu"
+    },
+    "treatment_status": {
+      "name": "treatment_status",
+      "description": "Indicate the donor's status of the prescribed treatment.",
+      "title": "Treatment Status",
+      "todos": [
+        "[\"ARGO\", \"MOH\"]"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "TreatmentStatusMenu"
+    },
+    "treatment_type": {
+      "name": "treatment_type",
+      "description": "The category or method of treatment administered",
+      "title": "Treatment Type",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "treatment"
+      ],
+      "range": "TreatmentTypeMenu",
+      "required": true
+    },
+    "tumour_grade": {
+      "name": "tumour_grade",
+      "description": "Grade of the tumour as assigned by the reporting tumour_grading_system.",
+      "title": "Tumour Grade",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "TumourGradeMenu"
+    },
+    "tumour_grading_system": {
+      "name": "tumour_grading_system",
+      "description": "Specify the tumour grading system used to assess the description of a tumour based on how abnormal the tumour cells and the tumour tissue look under a microscope. Tumour grade is an indicator of how quickly a tumour is likely to grow.",
+      "title": "Tumour Grading System",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "TumourGradingSystemMenu"
+    },
+    "tumour_histological_type_code": {
+      "name": "tumour_histological_type_code",
+      "description": "Indicate the ICD-O-3 morphology code for the histological type and degree of neoplasms that are usually obtained from a pathology report.  Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.",
+      "title": "Tumour Histological Type Code",
+      "examples": [
+        {
+          "value": "8260/3"
+        },
+        {
+          "value": "9691/36"
+        }
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string",
+      "pattern": "^[8,9]{1}[0-9]{3}/[0,1,2,3,6,9]{1}[1-9]{0,1}$"
+    },
+    "tumour_histological_type_label": {
+      "name": "tumour_histological_type_label",
+      "description": "Provide the human readable label for the histological type code",
+      "title": "Tumour Histological Type Label",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "tumour_histological_type_source_text": {
+      "name": "tumour_histological_type_source_text",
+      "description": "Provide the histological type as reported in the participant's source data if applicable",
+      "title": "Tumour Histological Type Source Text",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "domain_of": [
+        "specimen"
+      ],
+      "range": "string"
+    },
+    "vital_status": {
+      "name": "vital_status",
+      "description": "Participant's last known state of living or deceased.",
+      "title": "Vital Status",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "exact_mappings": [
+        "CQDG:vital_status",
+        "Phenopacket:individual.vital_status",
+        "BeaconV2:individual.vital_status"
+      ],
+      "domain_of": [
+        "participant"
+      ],
+      "range": "VitalStatusMenu"
+    }
+  },
+  "classes": {
+    "comorbidity": {
+      "name": "comorbidity",
+      "title": "comorbidity",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_comorbidity_diagnosis": {
+          "name": "age_at_comorbidity_diagnosis",
+          "rank": 2,
+          "slot_group": "comorbidity"
+        },
+        "comorbidity_code": {
+          "name": "comorbidity_code",
+          "rank": 3,
+          "slot_group": "comorbidity"
+        },
+        "comorbidity_source_text": {
+          "name": "comorbidity_source_text",
+          "rank": 5,
+          "slot_group": "comorbidity"
+        },
+        "comorbidity_status": {
+          "name": "comorbidity_status",
+          "rank": 7,
+          "slot_group": "comorbidity"
+        },
+        "comorbidity_term": {
+          "name": "comorbidity_term",
+          "rank": 4,
+          "slot_group": "comorbidity"
+        },
+        "comorbidity_treatment_status": {
+          "name": "comorbidity_treatment_status",
+          "rank": 6,
+          "slot_group": "comorbidity"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "age_at_comorbidity_diagnosis": {
+          "name": "age_at_comorbidity_diagnosis",
+          "description": "Indicate the age (in days) of comorbidity diagnosis.",
+          "title": "Age At Comorbidity Diagnosis",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "age_at_comorbidity_diagnosis",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "integer",
+          "minimum_value": 0
+        },
+        "comorbidity_code": {
+          "name": "comorbidity_code",
+          "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.",
+          "title": "Comorbidity Code",
+          "comments": [
+            "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "comorbidity_code",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "string",
+          "required": true,
+          "pattern": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$"
+        },
+        "comorbidity_term": {
+          "name": "comorbidity_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code",
+          "title": "Comorbidity Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.code",
+            "FHIR:condition.code",
+            "Phenopacket:disease.term"
+          ],
+          "rank": 4,
+          "alias": "comorbidity_term",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "string"
+        },
+        "comorbidity_source_text": {
+          "name": "comorbidity_source_text",
+          "description": "Provide the original textual description of the diagnosed comorbidity as reported in the participant's clinical or medical records if applicable",
+          "title": "Comorbidity Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.code",
+            "FHIR:condition.code",
+            "Phenopacket:disease.term"
+          ],
+          "rank": 5,
+          "alias": "comorbidity_source_text",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "string"
+        },
+        "comorbidity_treatment_status": {
+          "name": "comorbidity_treatment_status",
+          "description": "Indicate whether the comorbid condition is currently being treated or not.",
+          "title": "Comorbidity Treatment Status",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "comorbidity_treatment_status",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "ComorbidityTreatmentStatusMenu"
+        },
+        "comorbidity_status": {
+          "name": "comorbidity_status",
+          "description": "Indicate the current state or activity of the comorbid condition.",
+          "title": "Comorbidity Status",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "comorbidity_status",
+          "owner": "comorbidity",
+          "domain_of": [
+            "comorbidity"
+          ],
+          "slot_group": "comorbidity",
+          "range": "ComorbidityStatusMenu"
+        }
+      }
+    },
+    "demographic": {
+      "name": "demographic",
+      "description": "Data for the characterization of the participant by means of segmenting the population (e.g., characterization by age, sex, or race).",
+      "title": "demographic",
+      "todos": [
+        "{\"reference\": \"GDC\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "ethnicity": {
+          "name": "ethnicity",
+          "rank": 5,
+          "slot_group": "Demographic"
+        },
+        "gender": {
+          "name": "gender",
+          "rank": 3,
+          "slot_group": "Demographic"
+        },
+        "race": {
+          "name": "race",
+          "rank": 6,
+          "slot_group": "Demographic"
+        },
+        "sex_at_birth": {
+          "name": "sex_at_birth",
+          "rank": 4,
+          "slot_group": "Demographic"
+        },
+        "study_id": {
+          "name": "study_id",
+          "rank": 2,
+          "slot_group": "v"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "study_id": {
+          "name": "study_id",
+          "description": "Unique identifier of the study.",
+          "title": "Study Id",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:study_id"
+          ],
+          "rank": 2,
+          "alias": "study_id",
+          "owner": "demographic",
+          "domain_of": [
+            "demographic",
+            "participant"
+          ],
+          "slot_group": "v",
+          "required": true
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "demographic",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "gender": {
+          "name": "gender",
+          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+          "title": "Gender",
+          "comments": [
+            "EDI indicator"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Patient.gender",
+            "FHIR:Patient.gender",
+            "Phenopacket:individual.gender",
+            "BeaconV2:individual.gender"
+          ],
+          "rank": 3,
+          "alias": "gender",
+          "owner": "demographic",
+          "domain_of": [
+            "demographic"
+          ],
+          "slot_group": "Demographic",
+          "range": "GenderMenu",
+          "required": true
+        },
+        "sex_at_birth": {
+          "name": "sex_at_birth",
+          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
+          "title": "Sex At Birth",
+          "comments": [
+            "EDI indicator"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "All4One:Biological_sex",
+            "CQDG:Sex",
+            "mCODE.STU3:Patient.extension.birthsex",
+            "FHIR:Patient.extension.birthsex",
+            "Phenopacket:individual.sex",
+            "BeaconV2:individual.sex"
+          ],
+          "rank": 4,
+          "alias": "sex_at_birth",
+          "owner": "demographic",
+          "domain_of": [
+            "demographic"
+          ],
+          "slot_group": "Demographic",
+          "range": "SexAtBirthMenu",
+          "required": true
+        },
+        "ethnicity": {
+          "name": "ethnicity",
+          "description": "Refers to the ethnic or cultural origins of a person’s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+          "title": "Ethnicity",
+          "comments": [
+            "EDI indicator"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Patient.extension.ethnicity",
+            "FHIR:Patient.extension.ethnicity"
+          ],
+          "rank": 5,
+          "alias": "ethnicity",
+          "owner": "demographic",
+          "domain_of": [
+            "demographic"
+          ],
+          "slot_group": "Demographic",
+          "range": "EthnicityMenu",
+          "required": true
+        },
+        "race": {
+          "name": "race",
+          "description": "A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance",
+          "title": "Race",
+          "comments": [
+            "EDI indicator"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Patient.extension.race",
+            "FHIR:Patient.extension.race"
+          ],
+          "rank": 6,
+          "alias": "race",
+          "owner": "demographic",
+          "domain_of": [
+            "demographic"
+          ],
+          "slot_group": "Demographic",
+          "range": "RaceMenu",
+          "required": true
+        }
+      }
+    },
+    "dh_interface": {
+      "name": "dh_interface",
+      "description": "A DataHarmonizer interface",
+      "from_schema": "https://example.com/hostseq.yaml"
+    },
+    "diagnosis": {
+      "name": "diagnosis",
+      "description": "The disease that is inferred to be present in the individual, family or cohort being analyzed.",
+      "title": "diagnosis",
+      "todos": [
+        "{\"reference\": \"Phenopacket\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_diagnosis": {
+          "name": "age_at_diagnosis",
+          "rank": 3,
+          "slot_group": "diagnosis"
+        },
+        "basis_of_diagnosis": {
+          "name": "basis_of_diagnosis",
+          "rank": 9,
+          "slot_group": "extended diagnosis"
+        },
+        "clinical_cancer_staging_system": {
+          "name": "clinical_cancer_staging_system",
+          "rank": 11,
+          "slot_group": "extended diagnosis"
+        },
+        "clinical_m_category": {
+          "name": "clinical_m_category",
+          "rank": 15,
+          "slot_group": "extended diagnosis"
+        },
+        "clinical_n_category": {
+          "name": "clinical_n_category",
+          "rank": 14,
+          "slot_group": "extended diagnosis"
+        },
+        "clinical_stage_group": {
+          "name": "clinical_stage_group",
+          "rank": 12,
+          "slot_group": "extended diagnosis"
+        },
+        "clinical_t_category": {
+          "name": "clinical_t_category",
+          "rank": 13,
+          "slot_group": "extended diagnosis"
+        },
+        "disease_category": {
+          "name": "disease_category",
+          "rank": 7,
+          "slot_group": "diagnosis"
+        },
+        "disease_code": {
+          "name": "disease_code",
+          "rank": 5,
+          "slot_group": "diagnosis"
+        },
+        "disease_source_text": {
+          "name": "disease_source_text",
+          "rank": 4,
+          "slot_group": "diagnosis"
+        },
+        "disease_term": {
+          "name": "disease_term",
+          "rank": 6,
+          "slot_group": "diagnosis"
+        },
+        "laterality": {
+          "name": "laterality",
+          "rank": 10,
+          "slot_group": "extended diagnosis"
+        },
+        "pathological_cancer_staging_system": {
+          "name": "pathological_cancer_staging_system",
+          "rank": 16,
+          "slot_group": "extended diagnosis"
+        },
+        "pathological_m_category": {
+          "name": "pathological_m_category",
+          "rank": 20,
+          "slot_group": "extended diagnosis"
+        },
+        "pathological_n_category": {
+          "name": "pathological_n_category",
+          "rank": 19,
+          "slot_group": "extended diagnosis"
+        },
+        "pathological_stage_group": {
+          "name": "pathological_stage_group",
+          "rank": 17,
+          "slot_group": "extended diagnosis"
+        },
+        "pathological_t_category": {
+          "name": "pathological_t_category",
+          "rank": 18,
+          "slot_group": "extended diagnosis"
+        },
+        "primary_site": {
+          "name": "primary_site",
+          "rank": 8,
+          "slot_group": "extended diagnosis"
+        },
+        "submitter_diagnosis_id": {
+          "name": "submitter_diagnosis_id",
+          "rank": 2,
+          "slot_group": "Database Identifiers"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "diagnosis",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "submitter_diagnosis_id": {
+          "name": "submitter_diagnosis_id",
+          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+          "title": "Submitter Diagnosis Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU1:Condition.identifier",
+            "mCODE.STU2:Condition.identifier",
+            "FHIR:condition.code"
+          ],
+          "rank": 2,
+          "alias": "submitter_diagnosis_id",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "age_at_diagnosis": {
+          "name": "age_at_diagnosis",
+          "description": "Age of participant (in days) at time of diagnosis of the condition.",
+          "title": "Age At Diagnosis",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.onset",
+            "FHIR:condition.onset",
+            "Phenopacket:disease.onset"
+          ],
+          "rank": 3,
+          "alias": "age_at_diagnosis",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "diagnosis",
+          "range": "integer"
+        },
+        "disease_source_text": {
+          "name": "disease_source_text",
+          "description": "Provide the original textual description of the diagnosed disease as reported in the participant's clinical or medical records if applicable",
+          "title": "Disease Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.code",
+            "FHIR:condition.code",
+            "Phenopacket:disease.term"
+          ],
+          "rank": 4,
+          "alias": "disease_source_text",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "diagnosis",
+          "range": "string"
+        },
+        "disease_code": {
+          "name": "disease_code",
+          "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
+          "title": "Disease Code",
+          "todos": [
+            "[\"MOH \", \" ARGO \", \" CQDG\"]"
+          ],
+          "comments": [
+            "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.code",
+            "FHIR:condition.code",
+            "Phenopacket:disease.term"
+          ],
+          "rank": 5,
+          "alias": "disease_code",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "diagnosis",
+          "range": "string",
+          "required": true,
+          "pattern": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$||^(MONDO:)[0-9]{7}$"
+        },
+        "disease_term": {
+          "name": "disease_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the disease_code",
+          "title": "Disease Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:condition.code",
+            "FHIR:condition.code",
+            "Phenopacket:disease.term"
+          ],
+          "rank": 6,
+          "alias": "disease_term",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "diagnosis",
+          "range": "string"
+        },
+        "disease_category": {
+          "name": "disease_category",
+          "description": "A broader classification that groups diseases into categories.",
+          "title": "Disease Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "disease_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "diagnosis",
+          "range": "DiseaseCategoryMenu",
+          "required": true
+        },
+        "primary_site": {
+          "name": "primary_site",
+          "description": "The text term used to describe the primary site of disease, as categorized by the World Health Organization's (WHO) International Classification of Diseases for Oncology (ICD-O). This categorization groups cases into general categories.",
+          "title": "Primary Site",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 8,
+          "alias": "primary_site",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "basis_of_diagnosis": {
+          "name": "basis_of_diagnosis",
+          "description": "Indicate the most valid basis of how the primary diagnosis was identified. Terms are ordered in hierarchical order according to IACR guidelines, with the term at the top of the list (\"Histology of primary tumour\") being the more valid basis. If more than one diagnosis technique was used, select the most valid basis.",
+          "title": "Basis Of Diagnosis",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 9,
+          "alias": "basis_of_diagnosis",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "BasisOfDiagnosisMenu",
+          "required": true
+        },
+        "laterality": {
+          "name": "laterality",
+          "description": "For cancer in a paired organ, indicate the side of the body on which the primary tumour or cancer first developed at the time of primary diagnosis. (Reference caDSR CDE ID 827)",
+          "title": "Laterality",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 10,
+          "alias": "laterality",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "LateralityMenu"
+        },
+        "clinical_cancer_staging_system": {
+          "name": "clinical_cancer_staging_system",
+          "description": "Indicate the cancer staging system used to stage the cancer at the time of diagnosis (prior to treatment).",
+          "title": "Clinical Cancer Staging System",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 11,
+          "alias": "clinical_cancer_staging_system",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "ClinicalCancerStagingSystemMenu"
+        },
+        "clinical_stage_group": {
+          "name": "clinical_stage_group",
+          "description": "Stage group of the cancer, as assigned by the reporting clinical_cancer_staging_system, that indicates the overall prognostic cancer stage (ie. Stage I, Stage II, Stage III etc.).",
+          "title": "Clinical Stage Group",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 12,
+          "alias": "clinical_stage_group",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "clinical_t_category": {
+          "name": "clinical_t_category",
+          "description": "The code to represent the extent of the primary tumour (T) based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+          "title": "Clinical T Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 13,
+          "alias": "clinical_t_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "clinical_n_category": {
+          "name": "clinical_n_category",
+          "description": "The code to represent the stage of cancer defined by the extent of the regional lymph node (N) involvement for the cancer based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+          "title": "Clinical N Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 14,
+          "alias": "clinical_n_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "clinical_m_category": {
+          "name": "clinical_m_category",
+          "description": "The code to represent the stage of cancer defined by the extent of the distant metastasis (M) for the cancer based on evidence obtained from clinical assessment parameters determined at time of primary diagnosis and prior to treatment, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual. MX is NOT a valid category and cannot be assigned.",
+          "title": "Clinical M Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 15,
+          "alias": "clinical_m_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "pathological_cancer_staging_system": {
+          "name": "pathological_cancer_staging_system",
+          "description": "Specify the cancer staging system used to assess the cancer at the time the tumour specimen was resected. Pathological classification is based on the clinical stage information (acquired before treatment) and supplemented/modified by operative findings and pathological evaluation of the resected specimen.",
+          "title": "Pathological Cancer Staging System",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 16,
+          "alias": "pathological_cancer_staging_system",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "pathological_stage_group": {
+          "name": "pathological_stage_group",
+          "description": "Specify the cancer stage, based on pathological_cancer_staging_system, used to assess the cancer at the time the tumour specimen was resected.",
+          "title": "Pathological Stage Group",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 17,
+          "alias": "pathological_stage_group",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "pathological_t_category": {
+          "name": "pathological_t_category",
+          "description": "The code to represent the stage of cancer defined by the size or contiguous extension of the primary tumour (T), according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+          "title": "Pathological T Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 18,
+          "alias": "pathological_t_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "pathological_n_category": {
+          "name": "pathological_n_category",
+          "description": "The code to represent the stage of cancer defined by whether or not the cancer has reached nearby lymph nodes (N), according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+          "title": "Pathological N Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 19,
+          "alias": "pathological_n_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        },
+        "pathological_m_category": {
+          "name": "pathological_m_category",
+          "description": "The code to represent the stage of cancer defined by whether there are distant metastases (M), meaning spread of cancer to other parts of the body, according to criteria based on multiple editions of the AJCC's Cancer Staging Manual.",
+          "title": "Pathological M Category",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 20,
+          "alias": "pathological_m_category",
+          "owner": "diagnosis",
+          "domain_of": [
+            "diagnosis"
+          ],
+          "slot_group": "extended diagnosis",
+          "range": "string"
+        }
+      },
+      "unique_keys": {
+        "main": {
+          "unique_key_name": "main",
+          "unique_key_slots": [
+            "submitter_diagnosis_id"
+          ]
+        }
+      }
+    },
+    "exposure": {
+      "name": "exposure",
+      "title": "exposure",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "alcohol_consumption": {
+          "name": "alcohol_consumption",
+          "rank": 2,
+          "slot_group": "exposure"
+        },
+        "physical_activity": {
+          "name": "physical_activity",
+          "rank": 4,
+          "slot_group": "exposure"
+        },
+        "smoking_status": {
+          "name": "smoking_status",
+          "rank": 3,
+          "slot_group": "exposure"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "exposure",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "alcohol_consumption": {
+          "name": "alcohol_consumption",
+          "description": "Indicate current alcohol consumtion based on recommended daily limit.",
+          "title": "Alcohol Consumption",
+          "todos": [
+            "[\"CQDG\", \"ARGO\", \"MOH\"]"
+          ],
+          "comments": [
+            "Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion."
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "alcohol_consumption",
+          "owner": "exposure",
+          "domain_of": [
+            "exposure"
+          ],
+          "slot_group": "exposure",
+          "range": "AlcoholConsumptionMenu"
+        },
+        "smoking_status": {
+          "name": "smoking_status",
+          "description": "Indicate smoking status and history of a participant at the time of the data collection.",
+          "title": "Smoking Status",
+          "todos": [
+            "[\"CQDG\", \"ARGO\", \"MOH\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "smoking_status",
+          "owner": "exposure",
+          "domain_of": [
+            "exposure"
+          ],
+          "slot_group": "exposure",
+          "range": "SmokingStatusMenu"
+        },
+        "physical_activity": {
+          "name": "physical_activity",
+          "description": "Indicate how many times per week the participant exercises for at least 30 minutes.",
+          "title": "Physical Activity",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "physical_activity",
+          "owner": "exposure",
+          "domain_of": [
+            "exposure"
+          ],
+          "slot_group": "exposure",
+          "range": "PhysicalActivityMenu"
+        }
+      }
+    },
+    "follow_up": {
+      "name": "follow_up",
+      "description": "Any point of contact with a patient after primary diagnosis. ",
+      "title": "follow up",
+      "todos": [
+        "{\"reference\": \"ARGO\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_followup": {
+          "name": "age_at_followup",
+          "rank": 2,
+          "slot_group": "follow_up"
+        },
+        "disease_status_at_followup": {
+          "name": "disease_status_at_followup",
+          "rank": 3,
+          "slot_group": "follow_up"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "follow_up"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "follow_up",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "follow_up",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "age_at_followup": {
+          "name": "age_at_followup",
+          "description": "Participant's age (in days) at time of the follow up event",
+          "title": "Age At Followup",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "age_at_followup",
+          "owner": "follow_up",
+          "domain_of": [
+            "follow_up"
+          ],
+          "slot_group": "follow_up",
+          "range": "string"
+        },
+        "disease_status_at_followup": {
+          "name": "disease_status_at_followup",
+          "description": "Indicate the participant's disease status at time of follow-up",
+          "title": "Disease Status At Followup",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "disease_status_at_followup",
+          "owner": "follow_up",
+          "domain_of": [
+            "follow_up"
+          ],
+          "slot_group": "follow_up",
+          "range": "DiseaseStatusAtFollowupMenu",
+          "required": true
+        }
+      }
+    },
+    "medication": {
+      "name": "medication",
+      "description": "An agent such as a drug (pharmaceutical agent), broadly defined as prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies.",
+      "title": "medication",
+      "todos": [
+        "{\"reference\": \"Phenopacket\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "actual_cumulative_drug_dose": {
+          "name": "actual_cumulative_drug_dose",
+          "rank": 7,
+          "slot_group": "medication"
+        },
+        "drug_code": {
+          "name": "drug_code",
+          "rank": 3,
+          "slot_group": "medication"
+        },
+        "drug_dose_units": {
+          "name": "drug_dose_units",
+          "rank": 5,
+          "slot_group": "medication"
+        },
+        "drug_source_text": {
+          "name": "drug_source_text",
+          "rank": 2,
+          "slot_group": "medication"
+        },
+        "drug_term": {
+          "name": "drug_term",
+          "rank": 4,
+          "slot_group": "medication"
+        },
+        "prescribed_cumulative_drug_dose": {
+          "name": "prescribed_cumulative_drug_dose",
+          "rank": 6,
+          "slot_group": "medication"
+        },
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "title": "Submitter Treatment Id",
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 1,
+          "alias": "submitter_treatment_id",
+          "owner": "medication",
+          "domain_of": [
+            "medication",
+            "procedure",
+            "radiation",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "drug_source_text": {
+          "name": "drug_source_text",
+          "description": "Provide the original text from medical records describing the drug used in the treatment if applicable.",
+          "title": "Drug Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "drug_source_text",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "string"
+        },
+        "drug_code": {
+          "name": "drug_code",
+          "description": "Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt to represent the drug.",
+          "title": "Drug Code",
+          "comments": [
+            "Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "drug_code",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "string",
+          "required": true,
+          "pattern": "^RxNorm:\\d{1,8}$||^KEGG:D\\\\d{5}$||^PubChem:\\\\d{1,9}$||^NCIt:C\\\\d{1,7}$"
+        },
+        "drug_term": {
+          "name": "drug_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
+          "title": "Drug Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "drug_term",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "string"
+        },
+        "drug_dose_units": {
+          "name": "drug_dose_units",
+          "description": "Indicate units used to record drug dose.",
+          "title": "Drug Dose Units",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 5,
+          "alias": "drug_dose_units",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "DrugDoseUnitsMenu"
+        },
+        "prescribed_cumulative_drug_dose": {
+          "name": "prescribed_cumulative_drug_dose",
+          "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
+          "title": "Prescribed Cumulative Drug Dose",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "prescribed_cumulative_drug_dose",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "decimal"
+        },
+        "actual_cumulative_drug_dose": {
+          "name": "actual_cumulative_drug_dose",
+          "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
+          "title": "Actual Cumulative Drug Dose",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "actual_cumulative_drug_dose",
+          "owner": "medication",
+          "domain_of": [
+            "medication"
+          ],
+          "slot_group": "medication",
+          "range": "decimal"
+        }
+      }
+    },
+    "participant": {
+      "name": "participant",
+      "description": "The collection of all data related to a specific individual human in the context of a specific study.",
+      "title": "participant",
+      "todos": [
+        "{\"reference\": \"Phenopacket / GDC\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_death": {
+          "name": "age_at_death",
+          "rank": 6,
+          "slot_group": "Participant"
+        },
+        "age_at_enrollment": {
+          "name": "age_at_enrollment",
+          "rank": 3,
+          "slot_group": "Participant"
+        },
+        "cause_of_death": {
+          "name": "cause_of_death",
+          "rank": 5,
+          "slot_group": "Participant"
+        },
+        "study_id": {
+          "name": "study_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 2,
+          "slot_group": "Database Identifiers"
+        },
+        "vital_status": {
+          "name": "vital_status",
+          "rank": 4,
+          "slot_group": "Participant"
+        }
+      },
+      "attributes": {
+        "study_id": {
+          "name": "study_id",
+          "description": "Unique identifier of the study.",
+          "title": "Study Id",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:study_id"
+          ],
+          "rank": 1,
+          "alias": "study_id",
+          "owner": "participant",
+          "domain_of": [
+            "demographic",
+            "participant"
+          ],
+          "slot_group": "Database Identifiers",
+          "required": true
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 2,
+          "alias": "submitter_participant_id",
+          "owner": "participant",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "age_at_enrollment": {
+          "name": "age_at_enrollment",
+          "description": "Age (in days) of participant at time of enrollment into the study",
+          "title": "Age At Enrollment",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "age_at_enrollment",
+          "owner": "participant",
+          "domain_of": [
+            "participant"
+          ],
+          "slot_group": "Participant",
+          "range": "integer"
+        },
+        "vital_status": {
+          "name": "vital_status",
+          "description": "Participant's last known state of living or deceased.",
+          "title": "Vital Status",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:vital_status",
+            "Phenopacket:individual.vital_status",
+            "BeaconV2:individual.vital_status"
+          ],
+          "rank": 4,
+          "alias": "vital_status",
+          "owner": "participant",
+          "domain_of": [
+            "participant"
+          ],
+          "slot_group": "Participant",
+          "range": "VitalStatusMenu"
+        },
+        "cause_of_death": {
+          "name": "cause_of_death",
+          "description": "Indicate the cause of a participant's death.",
+          "title": "Cause Of Death",
+          "todos": [
+            "[\"ARGO \", \" MOH\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 5,
+          "alias": "cause_of_death",
+          "owner": "participant",
+          "domain_of": [
+            "participant"
+          ],
+          "slot_group": "Participant",
+          "range": "CauseOfDeathMenu"
+        },
+        "age_at_death": {
+          "name": "age_at_death",
+          "description": "Age of participant (in days) at time of death",
+          "title": "Age At Death",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "age_at_death",
+          "owner": "participant",
+          "domain_of": [
+            "participant"
+          ],
+          "slot_group": "Participant",
+          "range": "integer"
+        }
+      },
+      "unique_keys": {
+        "main": {
+          "unique_key_name": "main",
+          "unique_key_slots": [
+            "submitter_participant_id"
+          ]
+        }
+      }
+    },
+    "procedure": {
+      "name": "procedure",
+      "description": "A clinical procedure performed on a subject. For example a surgical or diagnostic procedure such as a biopsy.",
+      "title": "procedure",
+      "todos": [
+        "{\"reference\": \"Phenopacket\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "procedure_body_site_code": {
+          "name": "procedure_body_site_code",
+          "rank": 5,
+          "slot_group": "procedure"
+        },
+        "procedure_body_site_source_text": {
+          "name": "procedure_body_site_source_text",
+          "rank": 7,
+          "slot_group": "procedure"
+        },
+        "procedure_body_site_term": {
+          "name": "procedure_body_site_term",
+          "rank": 6,
+          "slot_group": "procedure"
+        },
+        "procedure_code": {
+          "name": "procedure_code",
+          "rank": 3,
+          "slot_group": "procedure"
+        },
+        "procedure_source_text": {
+          "name": "procedure_source_text",
+          "rank": 2,
+          "slot_group": "procedure"
+        },
+        "procedure_term": {
+          "name": "procedure_term",
+          "rank": 4,
+          "slot_group": "procedure"
+        },
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "title": "Submitter Treatment Id",
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 1,
+          "alias": "submitter_treatment_id",
+          "owner": "procedure",
+          "domain_of": [
+            "medication",
+            "procedure",
+            "radiation",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "procedure_source_text": {
+          "name": "procedure_source_text",
+          "description": "The original texual description of the procedure performed, as recorded in clinical notes or medical records if applicable.",
+          "title": "Procedure Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "procedure_source_text",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string"
+        },
+        "procedure_code": {
+          "name": "procedure_code",
+          "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.",
+          "title": "Procedure Code",
+          "comments": [
+            "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "procedure_code",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string",
+          "required": true,
+          "pattern": "^NCIt:C\\\\d{1,7}$||^SNOMEDCT:\\\\d{6,9}$||^UMLS:C\\\\d{7}$||^CCI:\\\\d\\\\.[A-Z]{2}\\\\.\\\\d{2}\\\\.[A-Z]{2}$"
+        },
+        "procedure_term": {
+          "name": "procedure_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
+          "title": "Procedure Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "procedure_term",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string"
+        },
+        "procedure_body_site_code": {
+          "name": "procedure_body_site_code",
+          "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.",
+          "title": "Procedure Body Site Code",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "comments": [
+            "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
+          ],
+          "examples": [
+            {
+              "value": "C50.1"
+            },
+            {
+              "value": "C18"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Specimen.collection.bodySite",
+            "FHIR:Specimen.collection.bodySite"
+          ],
+          "rank": 5,
+          "alias": "procedure_body_site_code",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string",
+          "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+        },
+        "procedure_body_site_term": {
+          "name": "procedure_body_site_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
+          "title": "Procedure Body Site Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "procedure_body_site_term",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string"
+        },
+        "procedure_body_site_source_text": {
+          "name": "procedure_body_site_source_text",
+          "description": "Provide the original textual description of the body site of the procedure as reported in the participant's clinical or medical records if applicable",
+          "title": "Procedure Body Site Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "procedure_body_site_source_text",
+          "owner": "procedure",
+          "domain_of": [
+            "procedure"
+          ],
+          "slot_group": "procedure",
+          "range": "string"
+        }
+      }
+    },
+    "radiation": {
+      "name": "radiation",
+      "title": "radiation",
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "anatomical_site_irradiated_code": {
+          "name": "anatomical_site_irradiated_code",
+          "rank": 5,
+          "slot_group": "radiation"
+        },
+        "anatomical_site_irradiated_source_text": {
+          "name": "anatomical_site_irradiated_source_text",
+          "rank": 7,
+          "slot_group": "radiation"
+        },
+        "anatomical_site_irradiated_term": {
+          "name": "anatomical_site_irradiated_term",
+          "rank": 6,
+          "slot_group": "radiation"
+        },
+        "radiation_dosage": {
+          "name": "radiation_dosage",
+          "rank": 4,
+          "slot_group": "radiation"
+        },
+        "radiation_fractions": {
+          "name": "radiation_fractions",
+          "rank": 3,
+          "slot_group": "radiation"
+        },
+        "radiation_modality": {
+          "name": "radiation_modality",
+          "rank": 2,
+          "slot_group": "radiation"
+        },
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        }
+      },
+      "attributes": {
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "title": "Submitter Treatment Id",
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 1,
+          "alias": "submitter_treatment_id",
+          "owner": "radiation",
+          "domain_of": [
+            "medication",
+            "procedure",
+            "radiation",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "radiation_modality": {
+          "name": "radiation_modality",
+          "description": "Indicate NCIt code to denote the modality of radiation therapy.",
+          "title": "Radiation Modality",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "radiation_modality",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "RadiationModalityMenu",
+          "required": true
+        },
+        "radiation_fractions": {
+          "name": "radiation_fractions",
+          "description": "Indicate the total number of fractions delivered as part of treatment.",
+          "title": "Radiation Fractions",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "radiation_fractions",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "integer"
+        },
+        "radiation_dosage": {
+          "name": "radiation_dosage",
+          "description": "Indicate the total dose given in units of Gray (Gy).",
+          "title": "Radiation Dosage",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "radiation_dosage",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "integer"
+        },
+        "anatomical_site_irradiated_code": {
+          "name": "anatomical_site_irradiated_code",
+          "description": "Indicate the ICD-O-3 topography code to describe the irradiated site of radiation if applicable. Please use C80.9 if the site is Unkown.",
+          "title": "Anatomical Site Irradiated Code",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "comments": [
+            "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
+          ],
+          "examples": [
+            {
+              "value": "C50.1"
+            },
+            {
+              "value": "C18"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Specimen.collection.bodySite",
+            "FHIR:Specimen.collection.bodySite"
+          ],
+          "rank": 5,
+          "alias": "anatomical_site_irradiated_code",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "string",
+          "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+        },
+        "anatomical_site_irradiated_term": {
+          "name": "anatomical_site_irradiated_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
+          "title": "Anatomical Site Irradiated Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "anatomical_site_irradiated_term",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "string"
+        },
+        "anatomical_site_irradiated_source_text": {
+          "name": "anatomical_site_irradiated_source_text",
+          "description": "Provide the original textual description of the irradiated body site of the radiation as reported in the participant's clinical or medical records if applicable",
+          "title": "Anatomical Site Irradiated Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "anatomical_site_irradiated_source_text",
+          "owner": "radiation",
+          "domain_of": [
+            "radiation"
+          ],
+          "slot_group": "radiation",
+          "range": "string"
+        }
+      }
+    },
+    "specimen": {
+      "name": "specimen",
+      "description": "Any material sample taken from a biological entity, living or dead, from physical object or the environment",
+      "title": "specimen",
+      "todos": [
+        "{\"reference\": \"HL7/FHIR\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_specimen_collection": {
+          "name": "age_at_specimen_collection",
+          "rank": 8,
+          "slot_group": "specimen"
+        },
+        "percent_tumour_cells_measurement_method": {
+          "name": "percent_tumour_cells_measurement_method",
+          "rank": 19,
+          "slot_group": "extended specimen"
+        },
+        "percent_tumour_cells_range": {
+          "name": "percent_tumour_cells_range",
+          "rank": 18,
+          "slot_group": "extended specimen"
+        },
+        "specimen_anatomic_location_code": {
+          "name": "specimen_anatomic_location_code",
+          "rank": 9,
+          "slot_group": "specimen"
+        },
+        "specimen_anatomic_location_label": {
+          "name": "specimen_anatomic_location_label",
+          "rank": 10,
+          "slot_group": "specimen"
+        },
+        "specimen_anatomic_location_source_text": {
+          "name": "specimen_anatomic_location_source_text",
+          "rank": 11,
+          "slot_group": "specimen"
+        },
+        "specimen_laterality": {
+          "name": "specimen_laterality",
+          "rank": 12,
+          "slot_group": "specimen"
+        },
+        "specimen_processing": {
+          "name": "specimen_processing",
+          "rank": 7,
+          "slot_group": "specimen"
+        },
+        "specimen_storage": {
+          "name": "specimen_storage",
+          "rank": 6,
+          "slot_group": "specimen"
+        },
+        "specimen_tissue_source_code": {
+          "name": "specimen_tissue_source_code",
+          "rank": 3,
+          "slot_group": "specimen"
+        },
+        "specimen_tissue_source_term": {
+          "name": "specimen_tissue_source_term",
+          "rank": 4,
+          "slot_group": "specimen"
+        },
+        "specimen_tissue_source_text": {
+          "name": "specimen_tissue_source_text",
+          "rank": 5,
+          "slot_group": "specimen"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        },
+        "submitter_specimen_id": {
+          "name": "submitter_specimen_id",
+          "rank": 2,
+          "slot_group": "Database Identifiers"
+        },
+        "tumour_grade": {
+          "name": "tumour_grade",
+          "rank": 17,
+          "slot_group": "extended specimen"
+        },
+        "tumour_grading_system": {
+          "name": "tumour_grading_system",
+          "rank": 16,
+          "slot_group": "extended specimen"
+        },
+        "tumour_histological_type_code": {
+          "name": "tumour_histological_type_code",
+          "rank": 13,
+          "slot_group": "extended specimen"
+        },
+        "tumour_histological_type_label": {
+          "name": "tumour_histological_type_label",
+          "rank": 14,
+          "slot_group": "extended specimen"
+        },
+        "tumour_histological_type_source_text": {
+          "name": "tumour_histological_type_source_text",
+          "rank": 15,
+          "slot_group": "extended specimen"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "specimen",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "submitter_specimen_id": {
+          "name": "submitter_specimen_id",
+          "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
+          "title": "Submitter Specimen Id",
+          "todos": [
+            "[\"ARGO\", \"MOH\"]"
+          ],
+          "examples": [
+            {
+              "value": "LAML_PO"
+            },
+            {
+              "value": "00445"
+            },
+            {
+              "value": "THY_099-tumour"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_biospecimen_id",
+            "mCODE.STU3:Specimen.Identifier",
+            "FHIR:Specimen.Identifier",
+            "Phenopacket:biosample.id",
+            "BeaconV2:biosample.id"
+          ],
+          "rank": 2,
+          "alias": "submitter_specimen_id",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "specimen_tissue_source_code": {
+          "name": "specimen_tissue_source_code",
+          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
+          "title": "Specimen Tissue Source Code",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:biospecimen_tissue_source",
+            "mCODE.STU3:Specimen.type",
+            "FHIR:Specimen.type",
+            "Phenopacket:biosample.sampled_tissue",
+            "BeaconV2:biosample.sampled_tissue"
+          ],
+          "rank": 3,
+          "alias": "specimen_tissue_source_code",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string",
+          "required": true,
+          "pattern": "^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$"
+        },
+        "specimen_tissue_source_term": {
+          "name": "specimen_tissue_source_term",
+          "description": "Indicate the human readable label for the specimen tissue source code.",
+          "title": "Specimen Tissue Source Term",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "specimen_tissue_source_term",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string"
+        },
+        "specimen_tissue_source_text": {
+          "name": "specimen_tissue_source_text",
+          "description": "Indicate the specimen tissue source as reported in the participant's source data.",
+          "title": "Specimen Tissue Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 5,
+          "alias": "specimen_tissue_source_text",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string"
+        },
+        "specimen_storage": {
+          "name": "specimen_storage",
+          "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
+          "title": "Specimen Storage",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "Phenopacket:biosample.sample_storage",
+            "BeaconV2:biosample.sample_storage"
+          ],
+          "rank": 6,
+          "alias": "specimen_storage",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "SpecimenStorageMenu"
+        },
+        "specimen_processing": {
+          "name": "specimen_processing",
+          "description": "Indicate the technique used to process specimen.",
+          "title": "Specimen Processing",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "Phenopacket:biosample.sample_processing",
+            "BeaconV2:biosample.sample_processing"
+          ],
+          "rank": 7,
+          "alias": "specimen_processing",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "SpecimenProcessingMenu"
+        },
+        "age_at_specimen_collection": {
+          "name": "age_at_specimen_collection",
+          "description": "Indicate participant's age( in days) when specimen was collected.",
+          "title": "Age At Specimen Collection",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 8,
+          "alias": "age_at_specimen_collection",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "integer"
+        },
+        "specimen_anatomic_location_code": {
+          "name": "specimen_anatomic_location_code",
+          "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
+          "title": "Specimen Anatomic Location Code",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "comments": [
+            "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
+          ],
+          "examples": [
+            {
+              "value": "C50.1"
+            },
+            {
+              "value": "C18"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Specimen.collection.bodySite",
+            "FHIR:Specimen.collection.bodySite"
+          ],
+          "rank": 9,
+          "alias": "specimen_anatomic_location_code",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string",
+          "pattern": "^[C][0-9]{2}(.[0-9]{1})?$"
+        },
+        "specimen_anatomic_location_label": {
+          "name": "specimen_anatomic_location_label",
+          "description": "Provide the human readable label for the specimen anatomic location code.",
+          "title": "Specimen Anatomic Location Label",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 10,
+          "alias": "specimen_anatomic_location_label",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string"
+        },
+        "specimen_anatomic_location_source_text": {
+          "name": "specimen_anatomic_location_source_text",
+          "description": "Provide the specimen anatomic location as reported in the participant's source data if applicable",
+          "title": "Specimen Anatomic Location Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 11,
+          "alias": "specimen_anatomic_location_source_text",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "string"
+        },
+        "specimen_laterality": {
+          "name": "specimen_laterality",
+          "description": "For cancer in a paired organ, indicate the side on which the specimen was obtained.",
+          "title": "Specimen Laterality",
+          "comments": [
+            "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier",
+            "FHIR:Specimen.collection.bodySite.extension.lateralityQualifier"
+          ],
+          "rank": 12,
+          "alias": "specimen_laterality",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "specimen",
+          "range": "SpecimenLateralityMenu"
+        },
+        "tumour_histological_type_code": {
+          "name": "tumour_histological_type_code",
+          "description": "Indicate the ICD-O-3 morphology code for the histological type and degree of neoplasms that are usually obtained from a pathology report.  Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.",
+          "title": "Tumour Histological Type Code",
+          "examples": [
+            {
+              "value": "8260/3"
+            },
+            {
+              "value": "9691/36"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 13,
+          "alias": "tumour_histological_type_code",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "string",
+          "pattern": "^[8,9]{1}[0-9]{3}/[0,1,2,3,6,9]{1}[1-9]{0,1}$"
+        },
+        "tumour_histological_type_label": {
+          "name": "tumour_histological_type_label",
+          "description": "Provide the human readable label for the histological type code",
+          "title": "Tumour Histological Type Label",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 14,
+          "alias": "tumour_histological_type_label",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "string"
+        },
+        "tumour_histological_type_source_text": {
+          "name": "tumour_histological_type_source_text",
+          "description": "Provide the histological type as reported in the participant's source data if applicable",
+          "title": "Tumour Histological Type Source Text",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 15,
+          "alias": "tumour_histological_type_source_text",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "string"
+        },
+        "tumour_grading_system": {
+          "name": "tumour_grading_system",
+          "description": "Specify the tumour grading system used to assess the description of a tumour based on how abnormal the tumour cells and the tumour tissue look under a microscope. Tumour grade is an indicator of how quickly a tumour is likely to grow.",
+          "title": "Tumour Grading System",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 16,
+          "alias": "tumour_grading_system",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "TumourGradingSystemMenu"
+        },
+        "tumour_grade": {
+          "name": "tumour_grade",
+          "description": "Grade of the tumour as assigned by the reporting tumour_grading_system.",
+          "title": "Tumour Grade",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 17,
+          "alias": "tumour_grade",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "TumourGradeMenu"
+        },
+        "percent_tumour_cells_range": {
+          "name": "percent_tumour_cells_range",
+          "description": "Select the range representing the percent of tumour cells compared to the number of total cells in a specimen. (Reference: NCIt: C159484)",
+          "title": "Percent Tumour Cells Range",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 18,
+          "alias": "percent_tumour_cells_range",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "PercentTumourCellsRangeMenu"
+        },
+        "percent_tumour_cells_measurement_method": {
+          "name": "percent_tumour_cells_measurement_method",
+          "description": "Indicate method used to measure percent_tumour_cells.",
+          "title": "Percent Tumour Cells Measurement Method",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 19,
+          "alias": "percent_tumour_cells_measurement_method",
+          "owner": "specimen",
+          "domain_of": [
+            "specimen"
+          ],
+          "slot_group": "extended specimen",
+          "range": "PercentTumourCellsMeasurementMethodMenu"
+        }
+      },
+      "unique_keys": {
+        "main": {
+          "unique_key_name": "main",
+          "unique_key_slots": [
+            "submitter_specimen_id"
+          ]
+        }
+      }
+    },
+    "treatment": {
+      "name": "treatment",
+      "description": "Medications, procedures, other actions taken for clinical management",
+      "title": "treatment",
+      "todos": [
+        "{\"reference\": \"Phenopacket\", \"status\": \"v2\"}"
+      ],
+      "from_schema": "https://example.com/hostseq.yaml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "age_at_treatment": {
+          "name": "age_at_treatment",
+          "rank": 4,
+          "slot_group": "treatment"
+        },
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "rank": 1,
+          "slot_group": "Database Identifiers"
+        },
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "rank": 2,
+          "slot_group": "Database Identifiers"
+        },
+        "treatment_duration": {
+          "name": "treatment_duration",
+          "rank": 5,
+          "slot_group": "treatment"
+        },
+        "treatment_intent": {
+          "name": "treatment_intent",
+          "rank": 6,
+          "slot_group": "treatment"
+        },
+        "treatment_response": {
+          "name": "treatment_response",
+          "rank": 7,
+          "slot_group": "treatment"
+        },
+        "treatment_status": {
+          "name": "treatment_status",
+          "rank": 8,
+          "slot_group": "treatment"
+        },
+        "treatment_type": {
+          "name": "treatment_type",
+          "rank": 3,
+          "slot_group": "treatment"
+        }
+      },
+      "attributes": {
+        "submitter_participant_id": {
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "title": "Submitter Participant Id",
+          "todos": [
+            "[\"MOH\", \"ARGO\"]"
+          ],
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "exact_mappings": [
+            "CQDG:submitter_participant_id",
+            "mCODE.STU3:Patient.Identifier",
+            "FHIR:Patient.Identifier",
+            "Phenopacket:individual.id",
+            "BeaconV2:individual.id"
+          ],
+          "rank": 1,
+          "alias": "submitter_participant_id",
+          "owner": "treatment",
+          "domain_of": [
+            "comorbidity",
+            "demographic",
+            "diagnosis",
+            "exposure",
+            "follow_up",
+            "participant",
+            "specimen",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}"
+        },
+        "submitter_treatment_id": {
+          "name": "submitter_treatment_id",
+          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "title": "Submitter Treatment Id",
+          "examples": [
+            {
+              "value": "90234"
+            },
+            {
+              "value": "BLD_donor_89"
+            },
+            {
+              "value": "AML-90"
+            }
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 2,
+          "alias": "submitter_treatment_id",
+          "owner": "treatment",
+          "domain_of": [
+            "medication",
+            "procedure",
+            "radiation",
+            "treatment"
+          ],
+          "slot_group": "Database Identifiers",
+          "range": "string",
+          "required": true,
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$"
+        },
+        "treatment_type": {
+          "name": "treatment_type",
+          "description": "The category or method of treatment administered",
+          "title": "Treatment Type",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 3,
+          "alias": "treatment_type",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "TreatmentTypeMenu",
+          "required": true
+        },
+        "age_at_treatment": {
+          "name": "age_at_treatment",
+          "description": "Age (in days) of the participant at the time the treatment was administered.",
+          "title": "Age At Treatment",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 4,
+          "alias": "age_at_treatment",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "integer"
+        },
+        "treatment_duration": {
+          "name": "treatment_duration",
+          "description": "The length of time (in days) over which the treatment was administered.",
+          "title": "Treatment Duration",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 5,
+          "alias": "treatment_duration",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "integer"
+        },
+        "treatment_intent": {
+          "name": "treatment_intent",
+          "description": "The purpose of the treatment or the desired effect or outcome resulting from the treatment.",
+          "title": "Treatment Intent",
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 6,
+          "alias": "treatment_intent",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "TreatmentIntentMenu"
+        },
+        "treatment_response": {
+          "name": "treatment_response",
+          "description": "The outcome of the treatment, indicating how the patient responded to the intervention",
+          "title": "Treatment Response",
+          "todos": [
+            "[\"CQDG\", \"ARGO\", \"MOH\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 7,
+          "alias": "treatment_response",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "TreatmentResponseMenu"
+        },
+        "treatment_status": {
+          "name": "treatment_status",
+          "description": "Indicate the donor's status of the prescribed treatment.",
+          "title": "Treatment Status",
+          "todos": [
+            "[\"ARGO\", \"MOH\"]"
+          ],
+          "from_schema": "https://example.com/hostseq.yaml",
+          "rank": 8,
+          "alias": "treatment_status",
+          "owner": "treatment",
+          "domain_of": [
+            "treatment"
+          ],
+          "slot_group": "treatment",
+          "range": "TreatmentStatusMenu"
+        }
+      },
+      "unique_keys": {
+        "main": {
+          "unique_key_name": "main",
+          "unique_key_slots": [
+            "submitter_treatment_id"
+          ]
+        }
+      }
+    }
+  },
+  "source_file": "/Users/esu/Desktop/jupyter_notebooks/pcgl_extraction/dh_mohccn.yaml",
+  "@type": "SchemaDefinition"
+}

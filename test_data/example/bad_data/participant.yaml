@@ -1,0 +1,13 @@
+#Missing required fields:
+#study_id
+#submitter_participant_id
+age_at_enrollment: "INVALID DATATYPE" ### Invalid datatype
+vital_status: "INVALID ENUM" ### Invalid enum
+cause_of_death: "INVALID ENUM" ### Invalid enum
+age_at_death: "INVALID DATATYPE" ### Invalid datatype
+---
+study_id: " EXAMPLE-CA"
+submitter_participant_id: "DONOR_01" ### Duplicates IDs
+---
+study_id: " EXAMPLE-CA"
+submitter_participant_id: "DONOR_01" ### Duplicates IDs
