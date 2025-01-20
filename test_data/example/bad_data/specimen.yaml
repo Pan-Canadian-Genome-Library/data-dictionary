@@ -9,7 +9,6 @@ specimen_processing: "INVALID ENUM" ###Invalid enum
 age_at_specimen_collection: "INVALID DATATYPE" ###Invalid datatype
 specimen_anatomic_location_code: "INVALID REGEX" ###Invalid regex
 specimen_anatomic_location_label: "INVALID TERM"
-specimen_anatomic_location_source_text: "INVALID TERM"
 specimen_laterality: "INVALID ENUM"
 ---
 submitter_participant_id : "DONOR01"

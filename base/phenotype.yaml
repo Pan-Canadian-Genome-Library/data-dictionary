@@ -10,7 +10,6 @@ classes:
     - age_at_phenotype
     - phenotype_code
     - phenotype_term
-    - phenotype_source_text
     - phenotype_observed
     - phenotype_duration
     - phenotype_severity
@@ -28,17 +27,14 @@ classes:
       phenotype_term:
         rank: 4
         slot_group: Phenotype
-      phenotype_source_text:
+      phenotype_observed:
         rank: 5
         slot_group: Phenotype
-      phenotype_observed:
+      phenotype_duration:
         rank: 6
         slot_group: Phenotype
-      phenotype_duration:
-        rank: 7
-        slot_group: Phenotype
       phenotype_severity:
-        rank: 8
+        rank: 7
         slot_group: Phenotype
     todos: '{"reference": "Phenopacket", "status": "v2"}'
 description: '...'
@@ -77,6 +73,7 @@ slots:
     name: age_at_phenotype
     range: integer
     title: Age At Phenotype
+    required: false
   phenotype_code:
     comments: 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     description: Use standardized HPO (Human Phenotype Ontology) codes to represent
@@ -105,13 +102,6 @@ slots:
     name: phenotype_severity
     range: PhenotypeSeverityMenu
     title: Phenotype Severity
-    required: false
-  phenotype_source_text:
-    description: Provide the original textual description of the phenotype as reported
-      in the participant's clinical or medical records if applicable
-    name: phenotype_source_text
-    range: string
-    title: Phenotype Source Text
     required: false
   phenotype_term:
     description: Provide the standardized and human readable term derived from the

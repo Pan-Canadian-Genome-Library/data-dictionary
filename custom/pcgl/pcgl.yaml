@@ -1,0 +1,54 @@
+version: 2.1
+id: https://example.com/PCGL.yaml
+in_language:
+- en
+name: default_pcgl_schema
+description: 'Base clinical schema that incorporates all PCGL base entities'
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_curi_maps:
+  - semweb_context
+
+imports:
+- linkml:types
+- base/phenotype 
+- base/comorbidity
+- base/demographic
+- base/diagnosis
+- base/exposure
+- base/follow_up
+- base/measurement
+- base/medication
+- base/participant
+- base/procedure
+- base/radiation
+- base/specimen
+- base/treatment
+classes:
+  phenotype:
+    is_a: base_Phenotype
+  demographic:
+    is_a: base_Demographic
+  comorbidity:
+    is_a: base_Comorbidity
+  diagnosis:
+   is_a: base_Diagnosis
+  exposure:
+   is_a: base_Exposure
+  follow_up:
+    is_a: base_Follow_up
+  measurement:
+    is_a: base_Measurement
+  medication:
+    is_a: base_Medication
+  participant:
+    is_a: base_Participant
+  procedure:
+    is_a: base_Procedure
+  radiation:
+    is_a: base_Radiation
+  specimen:
+    is_a: base_Specimen
+  treatment:
+    is_a: base_Treatment

@@ -9,7 +9,6 @@ classes:
     - radiation_dosage
     - anatomical_site_irradiated_code
     - anatomical_site_irradiated_term
-    - anatomical_site_irradiated_source_text
     title: Radiation
     slot_usage:
       submitter_treatment_id:
@@ -29,9 +28,6 @@ classes:
         slot_group: radiation
       anatomical_site_irradiated_term:
         rank: 6
-        slot_group: radiation
-      anatomical_site_irradiated_source_text:
-        rank: 7
         slot_group: radiation
 description: '...'
 enums:
@@ -71,14 +67,6 @@ slots:
     title: Anatomical Site Irradiated Code
     todos: '["MOH", "ARGO"]'
     required: false
-  anatomical_site_irradiated_source_text:
-    description: Provide the original textual description of the irradiated body site
-      of the radiation as reported in the participant's clinical or medical records
-      if applicable
-    name: anatomical_site_irradiated_source_text
-    range: string
-    title: Anatomical Site Irradiated Source Text
-    required: false
   anatomical_site_irradiated_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the anatomical_site_irradiated_code
@@ -91,11 +79,13 @@ slots:
     name: radiation_dosage
     range: integer
     title: Radiation Dosage
+    required: false
   radiation_fractions:
     description: Indicate the total number of fractions delivered as part of treatment.
     name: radiation_fractions
     range: integer
     title: Radiation Fractions
+    required: false
   radiation_modality:
     description: Indicate NCIt code to denote the modality of radiation therapy.
     name: radiation_modality

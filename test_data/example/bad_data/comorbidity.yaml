@@ -9,6 +9,5 @@ submitter_participant_id : "DONOR1"
 age_at_comorbidity_diagnosis : "BLANK1" ### Incorrect data type
 comorbidity_code : "MONDO:0019140"
 comorbidity_term : "BLANK2"
-comorbidity_source_text : "BLANK3"
 comorbidity_treatment_status : "BLANK4" ### Incorrect enum value
 comorbidity_status : "BLANK5" ### Incorrect enum value

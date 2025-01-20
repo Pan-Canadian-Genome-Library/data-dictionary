@@ -8,7 +8,6 @@ classes:
     - age_at_measurement
     - measurement_code
     - measurement_term
-    - measurement_source_text
     - measurement_result_numeric
     - measurement_unit
     - measurement_result_categorical
@@ -27,17 +26,14 @@ classes:
       measurement_term:
         rank: 4
         slot_group: measurement
-      measurement_source_text:
+      measurement_result_numeric:
         rank: 5
         slot_group: measurement
-      measurement_result_numeric:
+      measurement_unit:
         rank: 6
         slot_group: measurement
-      measurement_unit:
-        rank: 7
-        slot_group: measurement
       measurement_result_categorical:
-        rank: 8
+        rank: 7
         slot_group: measurement
 description: '...'
 enums: {}
@@ -73,13 +69,6 @@ slots:
     name: measurement_result_numeric
     range: decimal
     title: Measurement Result Numeric
-    required: false
-  measurement_source_text:
-    description: Provide the original textual description of the measurement as reported
-      in the participant's clinical or medical records if applicable
-    name: measurement_source_text
-    range: string
-    title: Measurement Source Text
     required: false
   measurement_term:
     description: Provide the standardized and human readable term derived from the

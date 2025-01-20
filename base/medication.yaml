@@ -6,7 +6,6 @@ classes:
     name: base_Medication
     slots:
     - submitter_treatment_id
-    - drug_source_text
     - drug_code
     - drug_term
     - drug_dose_units
@@ -18,23 +17,20 @@ classes:
       submitter_treatment_id:
         rank: 1
         slot_group: Database Identifiers
-      drug_source_text:
+      drug_code:
         rank: 2
         slot_group: medication
-      drug_code:
+      drug_term:
         rank: 3
         slot_group: medication
-      drug_term:
+      drug_dose_units:
         rank: 4
         slot_group: medication
-      drug_dose_units:
+      prescribed_cumulative_drug_dose:
         rank: 5
         slot_group: medication
-      prescribed_cumulative_drug_dose:
-        rank: 6
-        slot_group: medication
       actual_cumulative_drug_dose:
-        rank: 7
+        rank: 6
         slot_group: medication
 description: '...'
 enums:
@@ -69,6 +65,7 @@ slots:
     name: actual_cumulative_drug_dose
     range: decimal
     title: Actual Cumulative Drug Dose
+    required: false
   drug_code:
     comments: 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
       URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
@@ -86,13 +83,6 @@ slots:
     range: DrugDoseUnitsMenu
     required: false
     title: Drug Dose Units
-  drug_source_text:
-    description: Provide the original text from medical records describing the drug
-      used in the treatment if applicable.
-    name: drug_source_text
-    required: false
-    range: string
-    title: Drug Source Text
   drug_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the drug_code

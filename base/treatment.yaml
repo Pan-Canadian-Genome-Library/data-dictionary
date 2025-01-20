@@ -123,6 +123,8 @@ enums:
         text: Procedure
       Radiation therapy:
         text: Radiation therapy
+      Other:
+        text: Other
     title: treatment type menu
 id: https://example.com/base_schema.yaml
 in_language:
@@ -134,6 +136,7 @@ slots:
     name: age_at_treatment
     range: integer
     title: Age At Treatment
+    required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
       the data provider.
@@ -169,6 +172,7 @@ slots:
     name: treatment_duration
     range: integer
     title: Treatment Duration
+    required: false
   treatment_intent:
     description: The purpose of the treatment or the desired effect or outcome resulting
       from the treatment.

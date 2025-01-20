@@ -4,7 +4,6 @@
 #phenotype_observed
 age_at_phenotype: "INVALID DATATYPE" ### Invalid datatype
 phenotype_term: "INVALID DATATYPE"
-phenotype_source_text: "INVALID DATATYPE"
 phenotype_duration: "INVALID DATATYPE" ### Invalid datatype
 phenotype_severity: "INVALID ENUM" ### Invalid ENUM
 ---

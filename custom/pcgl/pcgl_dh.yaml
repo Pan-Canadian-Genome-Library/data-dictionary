@@ -1,38 +1,40 @@
-name: example_extended_schema
-description: '...'
+name: default_pcgl_schema
+description: Base clinical schema that incorporates all PCGL base entities
 in_language: '[''en'']'
-id: https://example.com/hostseq.yaml
-version: '1.0'
+id: https://example.com/PCGL.yaml
+version: '2.1'
 imports:
 - linkml:types
 prefixes:
   linkml: https://w3id.org/linkml/
-default_prefix: https://example.com/hostseq.yaml/
+default_curi_maps:
+- semweb_context
+default_prefix: https://example.com/PCGL.yaml/
 enums:
-  ComorbidityStatusMenu:
-    name: ComorbidityStatusMenu
-    title: comorbidity status menu
+  PhenotypeObservedMenu:
+    name: PhenotypeObservedMenu
+    title: phenotype observed menu
     permissible_values:
-      Active:
-        text: Active
-      In Remission:
-        text: In Remission
-      Resolved:
-        text: Resolved
+      'No':
+        text: 'No'
       Unknown:
         text: Unknown
-  ComorbidityTreatmentStatusMenu:
-    name: ComorbidityTreatmentStatusMenu
-    title: comorbidity treatment status menu
+      'Yes':
+        text: 'Yes'
+  PhenotypeSeverityMenu:
+    name: PhenotypeSeverityMenu
+    title: phenotype severity menu
     permissible_values:
-      Treated and resolved:
-        text: Treated and resolved
-      Under treatment:
-        text: Under treatment
-      Unknown:
-        text: Unknown
-      Untreated:
-        text: Untreated
+      Borderline:
+        text: Borderline
+      Mild:
+        text: Mild
+      Moderate:
+        text: Moderate
+      Profound:
+        text: Profound
+      Severe:
+        text: Severe
   EthnicityMenu:
     name: EthnicityMenu
     title: ethnicity menu
@@ -140,16 +142,30 @@ enums:
   StudyIdMenu:
     name: StudyIdMenu
     title: study id menu
-  PregnancyMenu:
-    name: PregnancyMenu
-    title: pregnancy menu
+  ComorbidityStatusMenu:
+    name: ComorbidityStatusMenu
+    title: comorbidity status menu
     permissible_values:
-      'No':
-        text: 'No'
+      Active:
+        text: Active
+      In Remission:
+        text: In Remission
+      Resolved:
+        text: Resolved
       Unknown:
         text: Unknown
-      'Yes':
-        text: 'Yes'
+  ComorbidityTreatmentStatusMenu:
+    name: ComorbidityTreatmentStatusMenu
+    title: comorbidity treatment status menu
+    permissible_values:
+      Treated and resolved:
+        text: Treated and resolved
+      Under treatment:
+        text: Under treatment
+      Unknown:
+        text: Unknown
+      Untreated:
+        text: Untreated
   DiseaseCategoryMenu:
     name: DiseaseCategoryMenu
     title: disease category menu
@@ -160,48 +176,6 @@ enums:
         text: Cancer
       Infectious disease:
         text: Infectious disease
-  Covid19SeverityMenu:
-    name: Covid19SeverityMenu
-    title: covid19 severity menu
-    permissible_values:
-      Ambulatory (limitation of activities):
-        text: Ambulatory (limitation of activities)
-      Ambulatory (no limitation of activities):
-        text: Ambulatory (no limitation of activities)
-      Ambulatory (with or without limitation of activities):
-        text: Ambulatory (with or without limitation of activities)
-      Dead - death:
-        text: Dead - death
-      Hospitalized - mild disease (hospitalized, no oxygen therapy):
-        text: Hospitalized - mild disease (hospitalized, no oxygen therapy)
-      Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs):
-        text: Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
-      Hospitalized - severe disease (intubation and mechanical ventilation):
-        text: Hospitalized - severe disease (intubation and mechanical ventilation)
-      Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen):
-        text: Hospitalized - severe disease (non-invasive ventilation or high-flow
-          oxygen)
-      Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO):
-        text: Hospitalized - severe disease (ventilation and additional organ support,
-          i.e. pressors, RRT, ECMO)
-      Uninfected (no clinical or virological evidence of infection):
-        text: Uninfected (no clinical or virological evidence of infection)
-  Covid19VaccineDosesMenu:
-    name: Covid19VaccineDosesMenu
-    title: covid19 vaccine doses menu
-    permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      Yes, four doses:
-        text: Yes, four doses
-      Yes, one dose:
-        text: Yes, one dose
-      Yes, three doses:
-        text: Yes, three doses
-      Yes, two doses:
-        text: Yes, two doses
   AlcoholConsumptionMenu:
     name: AlcoholConsumptionMenu
     title: alcohol consumption menu
@@ -328,30 +302,20 @@ enums:
         text: Not Provided
       Restricted Access:
         text: Restricted Access
-  PhenotypeObservedMenu:
-    name: PhenotypeObservedMenu
-    title: phenotype observed menu
+  RadiationModalityMenu:
+    name: RadiationModalityMenu
+    title: radiation modality menu
     permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      'Yes':
-        text: 'Yes'
-  PhenotypeSeverityMenu:
-    name: PhenotypeSeverityMenu
-    title: phenotype severity menu
-    permissible_values:
-      Borderline:
-        text: Borderline
-      Mild:
-        text: Mild
-      Moderate:
-        text: Moderate
-      Profound:
-        text: Profound
-      Severe:
-        text: Severe
+      Electron Beam (NCIT:C28039):
+        text: Electron Beam (NCIT:C28039)
+      High-LET Heavy Ion Therapy (NCIT:C15458):
+        text: High-LET Heavy Ion Therapy (NCIT:C15458)
+      Internal Radiation Therapy (NCIT:C15195):
+        text: Internal Radiation Therapy (NCIT:C15195)
+      Photon Beam Radiation Therapy (NCIT:C104914):
+        text: Photon Beam Radiation Therapy (NCIT:C104914)
+      Proton Radiation (NCIT:C40431).:
+        text: Proton Radiation (NCIT:C40431).
   SpecimenLateralityMenu:
     name: SpecimenLateralityMenu
     title: specimen laterality menu
@@ -492,114 +456,50 @@ enums:
         text: Radiation therapy
       Other:
         text: Other
-  ImageHostedFormatMenu:
-    name: ImageHostedFormatMenu
-    title: Image Hosted Format Menu
-    permissible_values:
-      PNG:
-        text: PNG
-      SVG:
-        text: SVG
-      PDF:
-        text: PDF
-      JPEG:
-        text: JPEG
-  ImageProcessPipelineMenu:
-    name: ImageProcessPipelineMenu
-    title: Image Process Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineB:
-        text: pipelineB
-      pipelineC:
-        text: pipelineC
-      pipelineD:
-        text: pipelineD
-      pipelineE:
-        text: pipelineE
-      pipelineF:
-        text: pipelineF
-  ImageProcessPngPipelineMenu:
-    name: ImageProcessPngPipelineMenu
-    title: Image Process Png Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineB:
-        text: pipelineB
-      pipelineC:
-        text: pipelineC
-  ImageProcessSvgPipelineMenu:
-    name: ImageProcessSvgPipelineMenu
-    title: Image Process Svg Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineD:
-        text: pipelineD
-      pipelineE:
-        text: pipelineE
-  ImageProcessPdfJpegPipelineMenu:
-    name: ImageProcessPdfJpegPipelineMenu
-    title: Image Process Pdf and Jpeg Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineD:
-        text: pipelineD
-      pipelineF:
-        text: pipelineF
-  ImageProcessingNullReasonMenu:
-    name: ImageProcessingNullReasonMenu
-    title: Image Processing Null Reason Menu
-    permissible_values:
-      Unknown:
-        text: Unknown
-      Not Provided:
-        text: Not Provided
-      Revoked:
-        text: Revoked
 slots:
-  age_at_comorbidity_diagnosis:
-    name: age_at_comorbidity_diagnosis
-    description: Indicate the age (in days) of comorbidity diagnosis.
-    title: Age At Comorbidity Diagnosis
+  age_at_phenotype:
+    name: age_at_phenotype
+    description: Participant's age (in days) when phenotype was observed
+    title: Age At Phenotype
     range: integer
     required: false
-  comorbidity_code:
-    name: comorbidity_code
-    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
-    title: Comorbidity Code
+  phenotype_code:
+    name: phenotype_code
+    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
+      the phenotype.
+    title: Phenotype Code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
-      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     range: string
     required: true
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
-  comorbidity_status:
-    name: comorbidity_status
-    description: Indicate the current state or activity of the comorbid condition.
-    title: Comorbidity Status
-    range: ComorbidityStatusMenu
+    pattern: ^HP:[0-9]{7}$
+  phenotype_duration:
+    name: phenotype_duration
+    description: Indicate the length of time (in days) over which the phenotype was
+      observed in the participant.
+    title: Phenotype Duration
+    range: integer
     required: false
-  comorbidity_term:
-    name: comorbidity_term
+  phenotype_observed:
+    name: phenotype_observed
+    description: Indicate whether the phenotype was observed in the participant.
+    title: Phenotype Observed
+    range: PhenotypeObservedMenu
+    required: true
+  phenotype_severity:
+    name: phenotype_severity
+    description: The degree or severity of the observed phenotype.
+    title: Phenotype Severity
+    comments:
+    - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
+    range: PhenotypeSeverityMenu
+    required: false
+  phenotype_term:
+    name: phenotype_term
     description: Provide the standardized and human readable term derived from the
-      coding system associated with the comorbidity_code
-    title: Comorbidity Term
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
+      coding system associated with the phenotype_code.
+    title: Phenotype Term
     range: string
-    required: false
-  comorbidity_treatment_status:
-    name: comorbidity_treatment_status
-    description: Indicate whether the comorbid condition is currently being treated
-      or not.
-    title: Comorbidity Treatment Status
-    range: ComorbidityTreatmentStatusMenu
     required: false
   submitter_participant_id:
     name: submitter_participant_id
@@ -689,55 +589,45 @@ slots:
     - CQDG:study_id
     range: string
     required: true
-  country_of_birth:
-    name: country_of_birth
-    description: The country where an individual was born, typically defined by current
-      geopolitical borders.
-    title: Country Of Birth
-    range: string
-  ancestry:
-    name: ancestry
-    description: The genetic or genomic heritage of an individual, typically tracing
-      the origins of one's ancestors.
-    title: Ancestry
-    range: string
-  height:
-    name: height
-    description: The measurement of an individual from head to toe recorded in centimeters
-      (cm).
-    title: Height
-    range: decimal
-  weight:
-    name: weight
-    description: The mass or body weight of an individual measured in kilograms (kg).
-    title: Weight
-    range: decimal
-  highest_education_level_achieved:
-    name: highest_education_level_achieved
-    description: The highest level of formal education an individual has completed.
-    title: Highest Education Level Achieved
-    range: string
-  employment:
-    name: employment
-    description: The current work status of an individual.
-    title: Employment
-    range: string
-  type_of_residence:
-    name: type_of_residence
-    description: The kind of dwelling in which an individual lives.
-    title: Type Of Residence
-    range: string
-  number_of_other_people_in_household:
-    name: number_of_other_people_in_household
-    description: The total number of individuals living in the same household as the
-      participant, excluding the participant.
-    title: Number Of Other People In Household
+  age_at_comorbidity_diagnosis:
+    name: age_at_comorbidity_diagnosis
+    description: Indicate the age (in days) of comorbidity diagnosis.
+    title: Age At Comorbidity Diagnosis
     range: integer
-  pregnancy:
-    name: pregnancy
-    description: Indicates whether an individual is currently pregnant.
-    title: Pregnancy
-    range: PregnancyMenu
+    required: false
+  comorbidity_code:
+    name: comorbidity_code
+    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+    title: Comorbidity Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
+      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    range: string
+    required: true
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+  comorbidity_status:
+    name: comorbidity_status
+    description: Indicate the current state or activity of the comorbid condition.
+    title: Comorbidity Status
+    range: ComorbidityStatusMenu
+    required: false
+  comorbidity_term:
+    name: comorbidity_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the comorbidity_code
+    title: Comorbidity Term
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+    required: false
+  comorbidity_treatment_status:
+    name: comorbidity_treatment_status
+    description: Indicate whether the comorbid condition is currently being treated
+      or not.
+    title: Comorbidity Treatment Status
+    range: ComorbidityTreatmentStatusMenu
     required: false
   age_at_diagnosis:
     name: age_at_diagnosis
@@ -802,19 +692,6 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  covid19_severity:
-    name: covid19_severity
-    description: A measure of the severity of a COVID-19 infection, which can range
-      from mild to severe or critical.
-    title: Covid19 Severity
-    range: Covid19SeverityMenu
-    required: false
-  covid19_vaccine_doses:
-    name: covid19_vaccine_doses
-    description: The number of COVID-19 vaccine doses the patient has received.
-    title: Covid19 Vaccine Doses
-    range: Covid19VaccineDosesMenu
-    required: false
   alcohol_consumption:
     name: alcohol_consumption
     description: Indicate current alcohol consumtion based on recommended daily limit.
@@ -978,50 +855,6 @@ slots:
     - BeaconV2:individual.vital_status
     range: VitalStatusMenu
     required: false
-  age_at_phenotype:
-    name: age_at_phenotype
-    description: Participant's age (in days) when phenotype was observed
-    title: Age At Phenotype
-    range: integer
-    required: false
-  phenotype_code:
-    name: phenotype_code
-    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
-      the phenotype.
-    title: Phenotype Code
-    comments:
-    - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
-    range: string
-    required: true
-    pattern: ^HP:[0-9]{7}$
-  phenotype_duration:
-    name: phenotype_duration
-    description: Indicate the length of time (in days) over which the phenotype was
-      observed in the participant.
-    title: Phenotype Duration
-    range: integer
-    required: false
-  phenotype_observed:
-    name: phenotype_observed
-    description: Indicate whether the phenotype was observed in the participant.
-    title: Phenotype Observed
-    range: PhenotypeObservedMenu
-    required: true
-  phenotype_severity:
-    name: phenotype_severity
-    description: The degree or severity of the observed phenotype.
-    title: Phenotype Severity
-    comments:
-    - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
-    range: PhenotypeSeverityMenu
-    required: false
-  phenotype_term:
-    name: phenotype_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the phenotype_code.
-    title: Phenotype Term
-    range: string
-    required: false
   procedure_body_site_code:
     name: procedure_body_site_code
     description: Indicate the ICD-O-3 topography code to describe the site of the
@@ -1066,6 +899,50 @@ slots:
     title: Procedure Term
     range: string
     required: false
+  anatomical_site_irradiated_code:
+    name: anatomical_site_irradiated_code
+    description: Indicate the ICD-O-3 topography code to describe the irradiated site
+      of radiation if applicable. Please use C80.9 if the site is Unkown.
+    title: Anatomical Site Irradiated Code
+    todos:
+    - '["MOH", "ARGO"]'
+    comments:
+    - Refer to the International Classification of Diseases for Oncology, 3rd Edition
+      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
+    examples:
+    - value: C50.1
+    - value: C18
+    exact_mappings:
+    - mCODE.STU3:Specimen.collection.bodySite
+    - FHIR:Specimen.collection.bodySite
+    range: string
+    required: false
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+  anatomical_site_irradiated_term:
+    name: anatomical_site_irradiated_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the anatomical_site_irradiated_code
+    title: Anatomical Site Irradiated Term
+    range: string
+    required: false
+  radiation_dosage:
+    name: radiation_dosage
+    description: Indicate the total dose given in units of Gray (Gy).
+    title: Radiation Dosage
+    range: integer
+    required: false
+  radiation_fractions:
+    name: radiation_fractions
+    description: Indicate the total number of fractions delivered as part of treatment.
+    title: Radiation Fractions
+    range: integer
+    required: false
+  radiation_modality:
+    name: radiation_modality
+    description: Indicate NCIt code to denote the modality of radiation therapy.
+    title: Radiation Modality
+    range: RadiationModalityMenu
+    required: true
   age_at_specimen_collection:
     name: age_at_specimen_collection
     description: Indicate participant's age( in days) when specimen was collected.
@@ -1218,411 +1095,9 @@ slots:
     title: Treatment Type
     range: TreatmentTypeMenu
     required: true
-  image_hosted_url:
-    name: image_hosted_url
-    description: A URL for where the image is hosted
-    title: Image Hosted URL
-    range: string
-  image_hosted_format:
-    name: image_hosted_format
-    description: Accepted data types for images
-    title: Image Hosted Format
-    range: ImageHostedFormatMenu
-  image_processing_pipeline:
-    name: image_processing_pipeline
-    description: "Post processing pipeline dependent on image_hosted_format where:\n\
-      \ - image_hosted_format is PNG, choices are \n* PipelineA\n* PipelineB\n* PipelineC\n\
-      \ - image_hosted_format is SVG, choices are \n* PipelineA\n* PipelineD\n* PipelineE\n\
-      \ - image_hosted_format is PDF or JPEG, choices are \n* PipelineA\n* PipelineD\n\
-      * PipelineF\n"
-    title: Image Processing Pipeline
-    range: ImageProcessPipelineMenu
-  image_processing_personel:
-    name: image_processing_personel
-    description: 'String value for the person who processed the image.
-
-      Must be provided.If not ''image_processing_null_reason'' must be provided'
-    title: Image Processing Personel
-    range: string
-  image_processing_null_reason:
-    name: image_processing_null_reason
-    description: 'Tracks reason for why image processing personnel was not provided.
-
-      Only applicable if image_processing_personnel is not provided.
-
-      Possible values:
-
-      * Unknown
-
-      * Revoked
-
-      * Not Provided
-
-      Otherwise leave empty'
-    title: Image Processing Null Reason
-    range: ImageProcessingNullReasonMenu
 classes:
-  Comorbidity:
-    name: Comorbidity
-    description: TBA...
-    title: Comorbidity
-    slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_term
-    - comorbidity_treatment_status
-    - comorbidity_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: comorbidity
-      comorbidity_code:
-        name: comorbidity_code
-        rank: 3
-        slot_group: comorbidity
-      comorbidity_term:
-        name: comorbidity_term
-        rank: 4
-        slot_group: comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
-        rank: 5
-        slot_group: comorbidity
-      comorbidity_status:
-        name: comorbidity_status
-        rank: 6
-        slot_group: comorbidity
-    is_a: dh_interface
-  Demographic:
-    name: Demographic
-    description: Data for the characterization of the participant by means of segmenting
-      the population (e.g., characterization by age, sex, or race).
-    title: Demographic
-    todos:
-    - '{"reference": "GDC", "status": "v2"}'
-    slots:
-    - study_id
-    - submitter_participant_id
-    - gender
-    - sex_at_birth
-    - ethnicity
-    - race
-    - country_of_birth
-    - ancestry
-    - height
-    - weight
-    - highest_education_level_achieved
-    - employment
-    - type_of_residence
-    - number_of_other_people_in_household
-    - pregnancy
-    slot_usage:
-      study_id:
-        name: study_id
-        rank: 2
-        slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      gender:
-        name: gender
-        rank: 3
-        slot_group: Demographic
-      sex_at_birth:
-        name: sex_at_birth
-        rank: 4
-        slot_group: Demographic
-      ethnicity:
-        name: ethnicity
-        rank: 5
-        slot_group: Demographic
-      race:
-        name: race
-        rank: 6
-        slot_group: Demographic
-      country_of_birth:
-        name: country_of_birth
-        rank: 7
-        slot_group: Extended Demographic
-      ancestry:
-        name: ancestry
-        rank: 8
-        slot_group: Extended Demographic
-      height:
-        name: height
-        rank: 9
-        slot_group: Extended Demographic
-      weight:
-        name: weight
-        rank: 10
-        slot_group: Extended Demographic
-      highest_education_level_achieved:
-        name: highest_education_level_achieved
-        rank: 11
-        slot_group: Extended Demographic
-      employment:
-        name: employment
-        rank: 12
-        slot_group: Extended Demographic
-      type_of_residence:
-        name: type_of_residence
-        rank: 13
-        slot_group: Extended Demographic
-      number_of_other_people_in_household:
-        name: number_of_other_people_in_household
-        rank: 14
-        slot_group: Extended Demographic
-      pregnancy:
-        name: pregnancy
-        rank: 15
-        slot_group: Extended Demographic
-    is_a: dh_interface
-  Diagnosis:
-    name: Diagnosis
-    description: The disease that is inferred to be present in the individual, family
-      or cohort being analyzed.
-    title: Diagnosis
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - submitter_diagnosis_id
-    - age_at_diagnosis
-    - disease_code
-    - disease_term
-    - disease_category
-    - covid19_severity
-    - covid19_vaccine_doses
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_diagnosis_id:
-        name: submitter_diagnosis_id
-        rank: 2
-        slot_group: Database Identifiers
-      age_at_diagnosis:
-        name: age_at_diagnosis
-        rank: 3
-        slot_group: diagnosis
-      disease_code:
-        name: disease_code
-        rank: 4
-        slot_group: diagnosis
-      disease_term:
-        name: disease_term
-        rank: 5
-        slot_group: diagnosis
-      disease_category:
-        name: disease_category
-        rank: 6
-        slot_group: diagnosis
-      covid19_severity:
-        name: covid19_severity
-        rank: 8
-        slot_group: Extended Diagnosis
-      covid19_vaccine_doses:
-        name: covid19_vaccine_doses
-        rank: 9
-        slot_group: Extended Diagnosis
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_diagnosis_id
-    is_a: dh_interface
-  Exposure:
-    name: Exposure
-    description: TBA...
-    title: Exposure
-    slots:
-    - submitter_participant_id
-    - alcohol_consumption
-    - smoking_status
-    - physical_activity
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      alcohol_consumption:
-        name: alcohol_consumption
-        rank: 2
-        slot_group: exposure
-      smoking_status:
-        name: smoking_status
-        rank: 3
-        slot_group: exposure
-      physical_activity:
-        name: physical_activity
-        rank: 4
-        slot_group: exposure
-    is_a: dh_interface
-  Follow_up:
-    name: Follow_up
-    description: 'Any point of contact with a patient after primary diagnosis. '
-    title: Follow up
-    todos:
-    - '{"reference": "ARGO", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_followup
-    - disease_status_at_followup
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: follow_up
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: follow_up
-      disease_status_at_followup:
-        name: disease_status_at_followup
-        rank: 3
-        slot_group: follow_up
-    is_a: dh_interface
-  Measurement:
-    name: Measurement
-    description: Record individual measurements to capture quantitative, ordinal (e.g.,
-      absent/present), or categorical measurements.
-    title: Measurement
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_measurement
-    - measurement_code
-    - measurement_term
-    - measurement_result_numeric
-    - measurement_unit
-    - measurement_result_categorical
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: measurement
-      measurement_code:
-        name: measurement_code
-        rank: 3
-        slot_group: measurement
-      measurement_term:
-        name: measurement_term
-        rank: 4
-        slot_group: measurement
-      measurement_result_numeric:
-        name: measurement_result_numeric
-        rank: 5
-        slot_group: measurement
-      measurement_unit:
-        name: measurement_unit
-        rank: 6
-        slot_group: measurement
-      measurement_result_categorical:
-        name: measurement_result_categorical
-        rank: 7
-        slot_group: measurement
-    is_a: dh_interface
-  Medication:
-    name: Medication
-    description: An agent such as a drug (pharmaceutical agent), broadly defined as
-      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
-      therapies.
-    title: Medication
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_treatment_id
-    - drug_code
-    - drug_term
-    - drug_dose_units
-    - prescribed_cumulative_drug_dose
-    - actual_cumulative_drug_dose
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      drug_code:
-        name: drug_code
-        rank: 2
-        slot_group: medication
-      drug_term:
-        name: drug_term
-        rank: 3
-        slot_group: medication
-      drug_dose_units:
-        name: drug_dose_units
-        rank: 4
-        slot_group: medication
-      prescribed_cumulative_drug_dose:
-        name: prescribed_cumulative_drug_dose
-        rank: 5
-        slot_group: medication
-      actual_cumulative_drug_dose:
-        name: actual_cumulative_drug_dose
-        rank: 6
-        slot_group: medication
-    is_a: dh_interface
-  Participant:
-    name: Participant
-    description: The collection of all data related to a specific individual human
-      in the context of a specific study.
-    title: Participant
-    todos:
-    - '{"reference": "Phenopacket / GDC", "status": "v2"}'
-    slots:
-    - study_id
-    - submitter_participant_id
-    - age_at_enrollment
-    - vital_status
-    - cause_of_death
-    - age_at_death
-    slot_usage:
-      study_id:
-        name: study_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 2
-        slot_group: Database Identifiers
-      age_at_enrollment:
-        name: age_at_enrollment
-        rank: 3
-        slot_group: Participant
-      vital_status:
-        name: vital_status
-        rank: 4
-        slot_group: Participant
-      cause_of_death:
-        name: cause_of_death
-        rank: 5
-        slot_group: Participant
-      age_at_death:
-        name: age_at_death
-        rank: 6
-        slot_group: Participant
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_participant_id
-    is_a: dh_interface
-  Phenotype:
-    name: Phenotype
+  phenotype:
+    name: phenotype
     description: Individual phenotypic features, observed as either present or absent
       (excluded), with possible onset, modifiers and frequency
     title: Phenotype
@@ -1666,8 +1141,312 @@ classes:
         rank: 7
         slot_group: Phenotype
     is_a: dh_interface
-  Procedure:
-    name: Procedure
+  demographic:
+    name: demographic
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    title: Demographic
+    todos:
+    - '{"reference": "GDC", "status": "v2"}'
+    slots:
+    - study_id
+    - submitter_participant_id
+    - gender
+    - sex_at_birth
+    - ethnicity
+    - race
+    slot_usage:
+      study_id:
+        name: study_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      gender:
+        name: gender
+        rank: 3
+        slot_group: Demographic
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 4
+        slot_group: Demographic
+      ethnicity:
+        name: ethnicity
+        rank: 5
+        slot_group: Demographic
+      race:
+        name: race
+        rank: 6
+        slot_group: Demographic
+    is_a: dh_interface
+  comorbidity:
+    name: comorbidity
+    description: TBA...
+    title: Comorbidity
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_term
+    - comorbidity_treatment_status
+    - comorbidity_status
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
+        rank: 2
+        slot_group: comorbidity
+      comorbidity_code:
+        name: comorbidity_code
+        rank: 3
+        slot_group: comorbidity
+      comorbidity_term:
+        name: comorbidity_term
+        rank: 4
+        slot_group: comorbidity
+      comorbidity_treatment_status:
+        name: comorbidity_treatment_status
+        rank: 5
+        slot_group: comorbidity
+      comorbidity_status:
+        name: comorbidity_status
+        rank: 6
+        slot_group: comorbidity
+    is_a: dh_interface
+  diagnosis:
+    name: diagnosis
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    title: Diagnosis
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - age_at_diagnosis
+    - disease_code
+    - disease_term
+    - disease_category
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_diagnosis_id:
+        name: submitter_diagnosis_id
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_diagnosis:
+        name: age_at_diagnosis
+        rank: 3
+        slot_group: diagnosis
+      disease_code:
+        name: disease_code
+        rank: 4
+        slot_group: diagnosis
+      disease_term:
+        name: disease_term
+        rank: 5
+        slot_group: diagnosis
+      disease_category:
+        name: disease_category
+        rank: 6
+        slot_group: diagnosis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_diagnosis_id
+    is_a: dh_interface
+  exposure:
+    name: exposure
+    description: TBA...
+    title: Exposure
+    slots:
+    - submitter_participant_id
+    - alcohol_consumption
+    - smoking_status
+    - physical_activity
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      alcohol_consumption:
+        name: alcohol_consumption
+        rank: 2
+        slot_group: exposure
+      smoking_status:
+        name: smoking_status
+        rank: 3
+        slot_group: exposure
+      physical_activity:
+        name: physical_activity
+        rank: 4
+        slot_group: exposure
+    is_a: dh_interface
+  follow_up:
+    name: follow_up
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    title: Follow up
+    todos:
+    - '{"reference": "ARGO", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: follow_up
+      age_at_followup:
+        name: age_at_followup
+        rank: 2
+        slot_group: follow_up
+      disease_status_at_followup:
+        name: disease_status_at_followup
+        rank: 3
+        slot_group: follow_up
+    is_a: dh_interface
+  measurement:
+    name: measurement
+    description: Record individual measurements to capture quantitative, ordinal (e.g.,
+      absent/present), or categorical measurements.
+    title: Measurement
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_measurement
+    - measurement_code
+    - measurement_term
+    - measurement_result_numeric
+    - measurement_unit
+    - measurement_result_categorical
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_measurement:
+        name: age_at_measurement
+        rank: 2
+        slot_group: measurement
+      measurement_code:
+        name: measurement_code
+        rank: 3
+        slot_group: measurement
+      measurement_term:
+        name: measurement_term
+        rank: 4
+        slot_group: measurement
+      measurement_result_numeric:
+        name: measurement_result_numeric
+        rank: 5
+        slot_group: measurement
+      measurement_unit:
+        name: measurement_unit
+        rank: 6
+        slot_group: measurement
+      measurement_result_categorical:
+        name: measurement_result_categorical
+        rank: 7
+        slot_group: measurement
+    is_a: dh_interface
+  medication:
+    name: medication
+    description: An agent such as a drug (pharmaceutical agent), broadly defined as
+      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
+      therapies.
+    title: Medication
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_treatment_id
+    - drug_code
+    - drug_term
+    - drug_dose_units
+    - prescribed_cumulative_drug_dose
+    - actual_cumulative_drug_dose
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      drug_code:
+        name: drug_code
+        rank: 2
+        slot_group: medication
+      drug_term:
+        name: drug_term
+        rank: 3
+        slot_group: medication
+      drug_dose_units:
+        name: drug_dose_units
+        rank: 4
+        slot_group: medication
+      prescribed_cumulative_drug_dose:
+        name: prescribed_cumulative_drug_dose
+        rank: 5
+        slot_group: medication
+      actual_cumulative_drug_dose:
+        name: actual_cumulative_drug_dose
+        rank: 6
+        slot_group: medication
+    is_a: dh_interface
+  participant:
+    name: participant
+    description: The collection of all data related to a specific individual human
+      in the context of a specific study.
+    title: Participant
+    todos:
+    - '{"reference": "Phenopacket / GDC", "status": "v2"}'
+    slots:
+    - study_id
+    - submitter_participant_id
+    - age_at_enrollment
+    - vital_status
+    - cause_of_death
+    - age_at_death
+    slot_usage:
+      study_id:
+        name: study_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_enrollment:
+        name: age_at_enrollment
+        rank: 3
+        slot_group: Participant
+      vital_status:
+        name: vital_status
+        rank: 4
+        slot_group: Participant
+      cause_of_death:
+        name: cause_of_death
+        rank: 5
+        slot_group: Participant
+      age_at_death:
+        name: age_at_death
+        rank: 6
+        slot_group: Participant
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_participant_id
+    is_a: dh_interface
+  procedure:
+    name: procedure
     description: A clinical procedure performed on a subject. For example a surgical
       or diagnostic procedure such as a biopsy.
     title: Procedure
@@ -1701,8 +1480,45 @@ classes:
         rank: 5
         slot_group: procedure
     is_a: dh_interface
-  Specimen:
-    name: Specimen
+  radiation:
+    name: radiation
+    description: TBA...
+    title: Radiation
+    slots:
+    - submitter_treatment_id
+    - radiation_modality
+    - radiation_fractions
+    - radiation_dosage
+    - anatomical_site_irradiated_code
+    - anatomical_site_irradiated_term
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      radiation_modality:
+        name: radiation_modality
+        rank: 2
+        slot_group: radiation
+      radiation_fractions:
+        name: radiation_fractions
+        rank: 3
+        slot_group: radiation
+      radiation_dosage:
+        name: radiation_dosage
+        rank: 4
+        slot_group: radiation
+      anatomical_site_irradiated_code:
+        name: anatomical_site_irradiated_code
+        rank: 5
+        slot_group: radiation
+      anatomical_site_irradiated_term:
+        name: anatomical_site_irradiated_term
+        rank: 6
+        slot_group: radiation
+    is_a: dh_interface
+  specimen:
+    name: specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -1766,8 +1582,8 @@ classes:
         unique_key_slots:
         - submitter_specimen_id
     is_a: dh_interface
-  Treatment:
-    name: Treatment
+  treatment:
+    name: treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:
@@ -1819,111 +1635,6 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_treatment_id
-    is_a: dh_interface
-  Imaging:
-    name: Imaging
-    description: An imaging test
-    title: Imaging
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - image_hosted_url
-    - image_hosted_format
-    - image_processing_pipeline
-    - image_processing_personel
-    - image_processing_null_reason
-    slot_usage:
-      image_hosted_url:
-        name: image_hosted_url
-        rank: 1
-        slot_group: Extended Imaging
-      image_hosted_format:
-        name: image_hosted_format
-        rank: 2
-        slot_group: Extended Imaging
-      image_processing_pipeline:
-        name: image_processing_pipeline
-        rank: 3
-        slot_group: Extended Imaging
-      image_processing_personel:
-        name: image_processing_personel
-        rank: 4
-        slot_group: Extended Imaging
-      image_processing_null_reason:
-        name: image_processing_null_reason
-        rank: 5
-        slot_group: Extended Imaging
-    rules:
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            equals_string: PNG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessPngPipelineMenu
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            equals_string: SVG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessSvgPipelineMenu
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            any_of:
-            - equals_string: PDF
-            - equals_string: JPEG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessPdfJpegPipelineMenu
-    - preconditions:
-        description: An example of if fieldA is missing provide fieldA_null_reason.
-          Common in virus-seq
-        slot_conditions:
-          image_processing_personel:
-            name: image_processing_personel
-            value_presence: ABSENT
-      postconditions:
-        slot_conditions:
-          image_processing_null_reason:
-            name: image_processing_null_reason
-            any_of:
-            - range: ImageProcessingNullReasonMenu
-          image_processing_personel:
-            name: image_processing_personel
-            required: false
-            value_presence: ABSENT
-      elseconditions:
-        slot_conditions:
-          image_processing_personel:
-            name: image_processing_personel
-            range: string
-            required: true
-          image_processing_null_reason:
-            name: image_processing_null_reason
-            value_presence: ABSENT
     is_a: dh_interface
   dh_interface:
     name: dh_interface

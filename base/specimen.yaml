@@ -8,13 +8,11 @@ classes:
     - submitter_specimen_id
     - specimen_tissue_source_code
     - specimen_tissue_source_term
-    - specimen_tissue_source_text
     - specimen_storage
     - specimen_processing
     - age_at_specimen_collection
     - specimen_anatomic_location_code
     - specimen_anatomic_location_label
-    - specimen_anatomic_location_source_text
     - specimen_laterality
     title: Specimen
     todos: '{"reference": "HL7/FHIR", "status": "v2"}'
@@ -35,29 +33,23 @@ classes:
       specimen_tissue_source_term:
         rank: 4
         slot_group: specimen
-      specimen_tissue_source_text:
+      specimen_storage:
         rank: 5
         slot_group: specimen
-      specimen_storage:
+      specimen_processing:
         rank: 6
         slot_group: specimen
-      specimen_processing:
+      age_at_specimen_collection:
         rank: 7
         slot_group: specimen
-      age_at_specimen_collection:
+      specimen_anatomic_location_code:
         rank: 8
         slot_group: specimen
-      specimen_anatomic_location_code:
+      specimen_anatomic_location_label:
         rank: 9
         slot_group: specimen
-      specimen_anatomic_location_label:
-        rank: 10
-        slot_group: specimen
-      specimen_anatomic_location_source_text:
-        rank: 11
-        slot_group: specimen
       specimen_laterality:
-        rank: 12
+        rank: 10
         slot_group: specimen
 description: '...'
 enums:
@@ -155,13 +147,6 @@ slots:
     range: string
     title: Specimen Anatomic Location Label
     required: false
-  specimen_anatomic_location_source_text:
-    description: Provide the specimen anatomic location as reported in the participant's
-      source data if applicable
-    name: specimen_anatomic_location_source_text
-    range: string
-    title: Specimen Anatomic Location Source Text
-    required: false
   specimen_laterality:
     comments: Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
     description: For cancer in a paired organ, indicate the side on which the specimen
@@ -215,13 +200,6 @@ slots:
     name: specimen_tissue_source_term
     range: string
     title: Specimen Tissue Source Term
-    required: false
-  specimen_tissue_source_text:
-    description: Indicate the specimen tissue source as reported in the participant's
-      source data.
-    name: specimen_tissue_source_text
-    range: string
-    title: Specimen Tissue Source Text
     required: false
   submitter_participant_id:
     description: Unique identifier of the participant within the study, assigned by
