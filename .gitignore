@@ -6,7 +6,7 @@ dictionary.json
 populated_dictionary.json
 
 # Misc
-.ipynb_checkpoints
+.ipynb_checkpoints*
 
 # Tests
 /coverage

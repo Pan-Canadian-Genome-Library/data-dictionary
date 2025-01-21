@@ -1096,8 +1096,8 @@ slots:
     range: TreatmentTypeMenu
     required: true
 classes:
-  phenotype:
-    name: phenotype
+  Phenotype:
+    name: Phenotype
     description: Individual phenotypic features, observed as either present or absent
       (excluded), with possible onset, modifiers and frequency
     title: Phenotype
@@ -1140,8 +1140,8 @@ classes:
         name: phenotype_severity
         rank: 7
         slot_group: Phenotype
-  demographic:
-    name: demographic
+  Demographic:
+    name: Demographic
     description: Data for the characterization of the participant by means of segmenting
       the population (e.g., characterization by age, sex, or race).
     title: Demographic
@@ -1179,8 +1179,8 @@ classes:
         name: race
         rank: 6
         slot_group: Demographic
-  comorbidity:
-    name: comorbidity
+  Comorbidity:
+    name: Comorbidity
     description: TBA...
     title: Comorbidity
     slots:
@@ -1215,8 +1215,8 @@ classes:
         name: comorbidity_status
         rank: 6
         slot_group: comorbidity
-  diagnosis:
-    name: diagnosis
+  Diagnosis:
+    name: Diagnosis
     description: The disease that is inferred to be present in the individual, family
       or cohort being analyzed.
     title: Diagnosis
@@ -1259,8 +1259,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_diagnosis_id
-  exposure:
-    name: exposure
+  Exposure:
+    name: Exposure
     description: TBA...
     title: Exposure
     slots:
@@ -1285,8 +1285,8 @@ classes:
         name: physical_activity
         rank: 4
         slot_group: exposure
-  follow_up:
-    name: follow_up
+  Follow_up:
+    name: Follow_up
     description: 'Any point of contact with a patient after primary diagnosis. '
     title: Follow up
     todos:
@@ -1308,8 +1308,8 @@ classes:
         name: disease_status_at_followup
         rank: 3
         slot_group: follow_up
-  measurement:
-    name: measurement
+  Measurement:
+    name: Measurement
     description: Record individual measurements to capture quantitative, ordinal (e.g.,
       absent/present), or categorical measurements.
     title: Measurement
@@ -1352,8 +1352,8 @@ classes:
         name: measurement_result_categorical
         rank: 7
         slot_group: measurement
-  medication:
-    name: medication
+  Medication:
+    name: Medication
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
       prescription and over-the-counter medicines, vaccines, and large-molecule biologic
       therapies.
@@ -1392,8 +1392,8 @@ classes:
         name: actual_cumulative_drug_dose
         rank: 6
         slot_group: medication
-  participant:
-    name: participant
+  Participant:
+    name: Participant
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
@@ -1436,8 +1436,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_participant_id
-  procedure:
-    name: procedure
+  Procedure:
+    name: Procedure
     description: A clinical procedure performed on a subject. For example a surgical
       or diagnostic procedure such as a biopsy.
     title: Procedure
@@ -1470,8 +1470,8 @@ classes:
         name: procedure_body_site_term
         rank: 5
         slot_group: procedure
-  radiation:
-    name: radiation
+  Radiation:
+    name: Radiation
     description: TBA...
     title: Radiation
     slots:
@@ -1506,8 +1506,8 @@ classes:
         name: anatomical_site_irradiated_term
         rank: 6
         slot_group: radiation
-  specimen:
-    name: specimen
+  Specimen:
+    name: Specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -1570,8 +1570,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_specimen_id
-  treatment:
-    name: treatment
+  Treatment:
+    name: Treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:

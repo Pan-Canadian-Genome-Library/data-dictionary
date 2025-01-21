@@ -1096,8 +1096,8 @@ slots:
     range: TreatmentTypeMenu
     required: true
 classes:
-  phenotype:
-    name: phenotype
+  Phenotype:
+    name: Phenotype
     description: Individual phenotypic features, observed as either present or absent
       (excluded), with possible onset, modifiers and frequency
     title: Phenotype
@@ -1141,8 +1141,8 @@ classes:
         rank: 7
         slot_group: Phenotype
     is_a: dh_interface
-  demographic:
-    name: demographic
+  Demographic:
+    name: Demographic
     description: Data for the characterization of the participant by means of segmenting
       the population (e.g., characterization by age, sex, or race).
     title: Demographic
@@ -1181,8 +1181,8 @@ classes:
         rank: 6
         slot_group: Demographic
     is_a: dh_interface
-  comorbidity:
-    name: comorbidity
+  Comorbidity:
+    name: Comorbidity
     description: TBA...
     title: Comorbidity
     slots:
@@ -1218,8 +1218,8 @@ classes:
         rank: 6
         slot_group: comorbidity
     is_a: dh_interface
-  diagnosis:
-    name: diagnosis
+  Diagnosis:
+    name: Diagnosis
     description: The disease that is inferred to be present in the individual, family
       or cohort being analyzed.
     title: Diagnosis
@@ -1263,8 +1263,8 @@ classes:
         unique_key_slots:
         - submitter_diagnosis_id
     is_a: dh_interface
-  exposure:
-    name: exposure
+  Exposure:
+    name: Exposure
     description: TBA...
     title: Exposure
     slots:
@@ -1290,8 +1290,8 @@ classes:
         rank: 4
         slot_group: exposure
     is_a: dh_interface
-  follow_up:
-    name: follow_up
+  Follow_up:
+    name: Follow_up
     description: 'Any point of contact with a patient after primary diagnosis. '
     title: Follow up
     todos:
@@ -1314,8 +1314,8 @@ classes:
         rank: 3
         slot_group: follow_up
     is_a: dh_interface
-  measurement:
-    name: measurement
+  Measurement:
+    name: Measurement
     description: Record individual measurements to capture quantitative, ordinal (e.g.,
       absent/present), or categorical measurements.
     title: Measurement
@@ -1359,8 +1359,8 @@ classes:
         rank: 7
         slot_group: measurement
     is_a: dh_interface
-  medication:
-    name: medication
+  Medication:
+    name: Medication
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
       prescription and over-the-counter medicines, vaccines, and large-molecule biologic
       therapies.
@@ -1400,8 +1400,8 @@ classes:
         rank: 6
         slot_group: medication
     is_a: dh_interface
-  participant:
-    name: participant
+  Participant:
+    name: Participant
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
@@ -1445,8 +1445,8 @@ classes:
         unique_key_slots:
         - submitter_participant_id
     is_a: dh_interface
-  procedure:
-    name: procedure
+  Procedure:
+    name: Procedure
     description: A clinical procedure performed on a subject. For example a surgical
       or diagnostic procedure such as a biopsy.
     title: Procedure
@@ -1480,8 +1480,8 @@ classes:
         rank: 5
         slot_group: procedure
     is_a: dh_interface
-  radiation:
-    name: radiation
+  Radiation:
+    name: Radiation
     description: TBA...
     title: Radiation
     slots:
@@ -1517,8 +1517,8 @@ classes:
         rank: 6
         slot_group: radiation
     is_a: dh_interface
-  specimen:
-    name: specimen
+  Specimen:
+    name: Specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -1582,8 +1582,8 @@ classes:
         unique_key_slots:
         - submitter_specimen_id
     is_a: dh_interface
-  treatment:
-    name: treatment
+  Treatment:
+    name: Treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:
