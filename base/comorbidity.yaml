@@ -7,7 +7,6 @@ classes:
     - age_at_comorbidity_diagnosis
     - comorbidity_code
     - comorbidity_term
-    - comorbidity_source_text
     - comorbidity_treatment_status
     - comorbidity_status
     title: Comorbidity
@@ -24,14 +23,11 @@ classes:
       comorbidity_term:
         rank: 4
         slot_group: comorbidity
-      comorbidity_source_text:
+      comorbidity_treatment_status:
         rank: 5
         slot_group: comorbidity
-      comorbidity_treatment_status:
-        rank: 6
-        slot_group: comorbidity
       comorbidity_status:
-        rank: 7
+        rank: 6
         slot_group: comorbidity
 description: '...'
 enums:
@@ -70,7 +66,6 @@ slots:
     description: Indicate the age (in days) of comorbidity diagnosis.
     name: age_at_comorbidity_diagnosis
     range: integer
-    minimum_value: 0
     title: Age At Comorbidity Diagnosis
     required: false
   comorbidity_code:
@@ -82,17 +77,6 @@ slots:
     range: string
     required: true
     title: Comorbidity Code
-  comorbidity_source_text:
-    description: Provide the original textual description of the diagnosed comorbidity
-      as reported in the participant's clinical or medical records if applicable
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    name: comorbidity_source_text
-    range: string
-    title: Comorbidity Source Text
-    required: false
   comorbidity_status:
     description: Indicate the current state or activity of the comorbid condition.
     name: comorbidity_status

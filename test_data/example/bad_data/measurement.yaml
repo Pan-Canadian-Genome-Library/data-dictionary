@@ -1,7 +1,6 @@
 ###Misisng required
 age_at_measurement: "INVALID datatype" ###Invalid datatype
 measurement_term : "INVALID VALUE"
-measurement_source_text : "INVALID VALUE"
 measurement_result_numeric : "INVALID datatype" ###Invalid datatype
 measurement_unit : "INVALID VALUE"
 measurement_result_categorical : "INVALID VALUE"
@@ -11,7 +10,6 @@ submitter_participant_id : "DONOR1"
 age_at_measurement : 5
 measurement_code : "INVALID VALUE" ###Invalid regex
 measurement_term : "INVALID VALUE"
-measurement_source_text : "INVALID VALUE"
 measurement_result_numeric : 5
 measurement_unit : "INVALID VALUE"
 measurement_result_categorical : "INVALID VALUE"

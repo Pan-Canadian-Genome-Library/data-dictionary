@@ -5,35 +5,27 @@ classes:
     name: base_Procedure
     slots:
     - submitter_treatment_id
-    - procedure_source_text
     - procedure_code
     - procedure_term
     - procedure_body_site_code
     - procedure_body_site_term
-    - procedure_body_site_source_text
     title: Procedure
     todos: '{"reference": "Phenopacket", "status": "v2"}'
     slot_usage:
       submitter_treatment_id:
         rank: 1
         slot_group: Database Identifiers
-      procedure_source_text:
+      procedure_code:
         rank: 2
         slot_group: procedure
-      procedure_code:
+      procedure_term:
         rank: 3
         slot_group: procedure
-      procedure_term:
+      procedure_body_site_code:
         rank: 4
         slot_group: procedure
-      procedure_body_site_code:
-        rank: 5
-        slot_group: procedure
       procedure_body_site_term:
-        rank: 6
-        slot_group: procedure
-      procedure_body_site_source_text:
-        rank: 7
+        rank: 5
         slot_group: procedure
 description: '...'
 enums: {}
@@ -59,13 +51,6 @@ slots:
     title: Procedure Body Site Code
     required: false
     todos: '["MOH", "ARGO"]'
-  procedure_body_site_source_text:
-    description: Provide the original textual description of the body site of the
-      procedure as reported in the participant's clinical or medical records if applicable
-    name: procedure_body_site_source_text
-    required: false
-    range: string
-    title: Procedure Body Site Source Text
   procedure_body_site_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_body_site_code
@@ -83,12 +68,6 @@ slots:
     range: string
     required: true
     title: Procedure Code
-  procedure_source_text:
-    description: The original texual description of the procedure performed, as recorded
-      in clinical notes or medical records if applicable.
-    name: procedure_source_text
-    range: string
-    title: Procedure Source Text
   procedure_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_code

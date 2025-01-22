@@ -7,7 +7,6 @@ classes:
     - submitter_participant_id
     - submitter_diagnosis_id
     - age_at_diagnosis
-    - disease_source_text
     - disease_code
     - disease_term
     - disease_category
@@ -27,17 +26,14 @@ classes:
       age_at_diagnosis:
         rank: 3
         slot_group: diagnosis
-      disease_source_text:
+      disease_code:
         rank: 4
         slot_group: diagnosis
-      disease_code:
+      disease_term:
         rank: 5
         slot_group: diagnosis
-      disease_term:
-        rank: 6
-        slot_group: diagnosis
       disease_category:
-        rank: 7
+        rank: 6
         slot_group: diagnosis
 description: '...'
 enums:
@@ -87,17 +83,6 @@ slots:
     required: true
     title: Disease Code
     todos: '["MOH ", " ARGO ", " CQDG"]'
-  disease_source_text:
-    description: Provide the original textual description of the diagnosed disease
-      as reported in the participant's clinical or medical records if applicable
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    name: disease_source_text
-    range: string
-    required: false
-    title: Disease Source Text
   disease_term:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the disease_code

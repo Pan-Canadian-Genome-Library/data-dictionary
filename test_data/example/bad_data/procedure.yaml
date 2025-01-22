@@ -5,7 +5,6 @@ procedure_source_text : "INVALID VALUE"
 procedure_term : "INVALID VALUE"
 procedure_body_site_code : "INVALID REGEX" ###Invalid Regex
 procedure_body_site_term : "INVALID VALUE" 
-procedure_body_site_source_text : "INVALID VALUE"
 ---
 submitter_treatment_id : "TREATMENT01" 
 procedure_code: "INVALID REGEX" ###Invalid Regex
@@ -16,9 +15,7 @@ procedure_code: "NCIt:C51687"
 submitter_treatment_id : "TREATMENT01" ###Duplicate ID
 procedure_code: "NCIt:C51687" 
 # submitter_treatment_id
-# procedure_source_text
 # procedure_code
 # procedure_term
 # procedure_body_site_code
 # procedure_body_site_term
-# procedure_body_site_source_text

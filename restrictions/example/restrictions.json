@@ -3,46 +3,45 @@
   "description": "...",
   "schemas": [
     {
-      "name": "imaging",
+      "name": "Imaging",
       "fields": [
         {
           "name": "image_processing_pipeline",
+          "valueType": "string",
           "restrictions": {
             "if": {
               "conditions": [
                 {
-                  "field": "image_hosted_format",
+                  "fields": ["image_hosted_format"],
                   "match": {
                     "value": "PNG"
-                  }
+                  },
+                  "case": "all"
                 }
-              ],
-              "case": "all"
+              ]
             },
             "then": {
               "required": true,
-              "valueType": "string",
               "codeList": [
                 "pipelineA",
                 "pipelineB",
                 "pipelineC"
               ]
             },
-            "else": {
+            "else":{
               "if": {
                 "conditions": [
                   {
-                    "field": "image_hosted_format",
+                    "fields": ["image_hosted_format"],
                     "match": {
                       "value": "SVG"
-                    }
+                    },
+                    "case": "all"
                   }
-                ],
-                "case": "all"
+                ]
               },
               "then": {
                 "required": true,
-                "valueType": "string",
                 "codeList": [
                   "pipelineA",
                   "pipelineD",
@@ -53,57 +52,59 @@
                 "if": {
                   "conditions": [
                     {
-                      "field": "image_hosted_format",
+                      "fields": ["image_hosted_format"],
                       "match": {
                         "value": "JPEG"
-                      }
+                      },
+                      "case": "all"
                     }
-                  ],
-                  "case": "any"
+                  ]
                 },
                 "then": {
                   "required": true,
-                  "valueType": "string",
                   "codeList": [
                     "pipelineA",
                     "pipelineD",
                     "pipelineF"
                   ]
-                },
-                "else": {}
+                }
               }
             }
           }
         },
         {
           "name": "image_processing_personel",
+          "valueType": "string",
           "restrictions": {
             "if": {
               "conditions": [
                 {
-                  "field": "Image Processing Null Reason",
-                  "exists": false
+                  "fields": ["image_processing_null_reason"],
+                  "match":{"exists": false},
+                  "case": "all"
                 }
-              ],
-              "case": "all"
+              ]
             },
             "then": {
-              "required": true,
-              "valueType": "string"
+              "required": true
+            },
+            "else": {
+              "empty": true
             }
           }
         },
         {
           "name": "image_processing_null_reason",
+          "valueType": "string",
           "restrictions": {
             "if": {
               "conditions": [
                 {
-                  "field": "Image Processing Personel",
-                  "exists": false
+                  "fields": ["image_processing_personel"],
+                  "match":{"exists": false},
+                  "case": "all"
                 }
-              ],
-              "case": "all"
+              ]
             },
             "then": {
               "required": true,

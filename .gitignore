@@ -5,6 +5,9 @@ node_modules
 dictionary.json
 populated_dictionary.json
 
+# Misc
+.ipynb_checkpoints*
+
 # Tests
 /coverage
 .DS_Store

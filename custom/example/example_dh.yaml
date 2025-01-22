@@ -95,8 +95,8 @@ enums:
         text: Do not know
       East Asian:
         text: East Asian
-      Indigenous (First Nations, Inuk/Inuit, Métis):
-        text: Indigenous (First Nations, Inuk/Inuit, Métis)
+      Indigenous (First Nations, Inuk/Inuit, Metis):
+        text: Indigenous (First Nations, Inuk/Inuit, Metis)
       Latin American:
         text: Latin American
       Middle Eastern:
@@ -490,6 +490,8 @@ enums:
         text: Procedure
       Radiation therapy:
         text: Radiation therapy
+      Other:
+        text: Other
   ImageHostedFormatMenu:
     name: ImageHostedFormatMenu
     title: Image Hosted Format Menu
@@ -565,7 +567,6 @@ slots:
     title: Age At Comorbidity Diagnosis
     range: integer
     required: false
-    minimum_value: 0
   comorbidity_code:
     name: comorbidity_code
     description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
@@ -576,17 +577,6 @@ slots:
     range: string
     required: true
     pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
-  comorbidity_source_text:
-    name: comorbidity_source_text
-    description: Provide the original textual description of the diagnosed comorbidity
-      as reported in the participant's clinical or medical records if applicable
-    title: Comorbidity Source Text
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    range: string
-    required: false
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -783,17 +773,6 @@ slots:
     range: string
     required: true
     pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
-  disease_source_text:
-    name: disease_source_text
-    description: Provide the original textual description of the diagnosed disease
-      as reported in the participant's clinical or medical records if applicable
-    title: Disease Source Text
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    range: string
-    required: false
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
@@ -869,7 +848,7 @@ slots:
     name: age_at_followup
     description: Participant's age (in days) at time of the follow up event
     title: Age At Followup
-    range: string
+    range: integer
     required: false
   disease_status_at_followup:
     name: disease_status_at_followup
@@ -906,13 +885,6 @@ slots:
     title: Measurement Result Numeric
     range: decimal
     required: false
-  measurement_source_text:
-    name: measurement_source_text
-    description: Provide the original textual description of the measurement as reported
-      in the participant's clinical or medical records if applicable
-    title: Measurement Source Text
-    range: string
-    required: false
   measurement_term:
     name: measurement_term
     description: Provide the standardized and human readable term derived from the
@@ -932,6 +904,7 @@ slots:
       specified in drug_dose_units.
     title: Actual Cumulative Drug Dose
     range: decimal
+    required: false
   drug_code:
     name: drug_code
     description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
@@ -943,19 +916,12 @@ slots:
       URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
     range: string
     required: true
-    pattern: ^RxNorm:\d{1,8}$||^KEGG:D\\d{5}$||^PubChem:\\d{1,9}$||^NCIt:C\\d{1,7}$
+    pattern: ^RxNorm:\d{1,8}$|^KEGG:D\\d{5}$|^PubChem:\\d{1,9}$|^NCIt:C\\d{1,7}$
   drug_dose_units:
     name: drug_dose_units
     description: Indicate units used to record drug dose.
     title: Drug Dose Units
     range: DrugDoseUnitsMenu
-    required: false
-  drug_source_text:
-    name: drug_source_text
-    description: Provide the original text from medical records describing the drug
-      used in the treatment if applicable.
-    title: Drug Source Text
-    range: string
     required: false
   drug_term:
     name: drug_term
@@ -1017,6 +983,7 @@ slots:
     description: Participant's age (in days) when phenotype was observed
     title: Age At Phenotype
     range: integer
+    required: false
   phenotype_code:
     name: phenotype_code
     description: Use standardized HPO (Human Phenotype Ontology) codes to represent
@@ -1048,13 +1015,6 @@ slots:
     - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
     range: PhenotypeSeverityMenu
     required: false
-  phenotype_source_text:
-    name: phenotype_source_text
-    description: Provide the original textual description of the phenotype as reported
-      in the participant's clinical or medical records if applicable
-    title: Phenotype Source Text
-    range: string
-    required: false
   phenotype_term:
     name: phenotype_term
     description: Provide the standardized and human readable term derived from the
@@ -1081,13 +1041,6 @@ slots:
     range: string
     required: false
     pattern: ^[C][0-9]{2}(.[0-9]{1})?$
-  procedure_body_site_source_text:
-    name: procedure_body_site_source_text
-    description: Provide the original textual description of the body site of the
-      procedure as reported in the participant's clinical or medical records if applicable
-    title: Procedure Body Site Source Text
-    range: string
-    required: false
   procedure_body_site_term:
     name: procedure_body_site_term
     description: Provide the standardized and human readable term derived from the
@@ -1105,13 +1058,7 @@ slots:
       URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>'
     range: string
     required: true
-    pattern: ^NCIt:C\\d{1,7}$||^SNOMEDCT:\\d{6,9}$||^UMLS:C\\d{7}$||^CCI:\\d\\.[A-Z]{2}\\.\\d{2}\\.[A-Z]{2}$
-  procedure_source_text:
-    name: procedure_source_text
-    description: The original texual description of the procedure performed, as recorded
-      in clinical notes or medical records if applicable.
-    title: Procedure Source Text
-    range: string
+    pattern: ^NCIt:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:\d\.[A-Z]{2}\.\d{2}\.[A-Z]{2}$
   procedure_term:
     name: procedure_term
     description: Provide the standardized and human readable term derived from the
@@ -1150,13 +1097,6 @@ slots:
     description: Provide the human readable label for the specimen anatomic location
       code.
     title: Specimen Anatomic Location Label
-    range: string
-    required: false
-  specimen_anatomic_location_source_text:
-    name: specimen_anatomic_location_source_text
-    description: Provide the specimen anatomic location as reported in the participant's
-      source data if applicable
-    title: Specimen Anatomic Location Source Text
     range: string
     required: false
   specimen_laterality:
@@ -1208,19 +1148,12 @@ slots:
     - BeaconV2:biosample.sampled_tissue
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$||^SNOMEDCT:[0-9]+$
+    pattern: ^NCIT:C[0-9]+$|^SNOMEDCT:[0-9]+$
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
     description: Indicate the human readable label for the specimen tissue source
       code.
     title: Specimen Tissue Source Term
-    range: string
-    required: false
-  specimen_tissue_source_text:
-    name: specimen_tissue_source_text
-    description: Indicate the specimen tissue source as reported in the participant's
-      source data.
-    title: Specimen Tissue Source Text
     range: string
     required: false
   submitter_specimen_id:
@@ -1248,11 +1181,13 @@ slots:
     description: Age (in days) of the participant at the time the treatment was administered.
     title: Age At Treatment
     range: integer
+    required: false
   treatment_duration:
     name: treatment_duration
     description: The length of time (in days) over which the treatment was administered.
     title: Treatment Duration
     range: integer
+    required: false
   treatment_intent:
     name: treatment_intent
     description: The purpose of the treatment or the desired effect or outcome resulting
@@ -1336,7 +1271,6 @@ classes:
     - age_at_comorbidity_diagnosis
     - comorbidity_code
     - comorbidity_term
-    - comorbidity_source_text
     - comorbidity_treatment_status
     - comorbidity_status
     slot_usage:
@@ -1356,17 +1290,13 @@ classes:
         name: comorbidity_term
         rank: 4
         slot_group: comorbidity
-      comorbidity_source_text:
-        name: comorbidity_source_text
-        rank: 5
-        slot_group: comorbidity
       comorbidity_treatment_status:
         name: comorbidity_treatment_status
-        rank: 6
+        rank: 5
         slot_group: comorbidity
       comorbidity_status:
         name: comorbidity_status
-        rank: 7
+        rank: 6
         slot_group: comorbidity
     is_a: dh_interface
   Demographic:
@@ -1465,7 +1395,6 @@ classes:
     - submitter_participant_id
     - submitter_diagnosis_id
     - age_at_diagnosis
-    - disease_source_text
     - disease_code
     - disease_term
     - disease_category
@@ -1484,21 +1413,17 @@ classes:
         name: age_at_diagnosis
         rank: 3
         slot_group: diagnosis
-      disease_source_text:
-        name: disease_source_text
-        rank: 4
-        slot_group: diagnosis
       disease_code:
         name: disease_code
-        rank: 5
+        rank: 4
         slot_group: diagnosis
       disease_term:
         name: disease_term
-        rank: 6
+        rank: 5
         slot_group: diagnosis
       disease_category:
         name: disease_category
-        rank: 7
+        rank: 6
         slot_group: diagnosis
       covid19_severity:
         name: covid19_severity
@@ -1577,7 +1502,6 @@ classes:
     - age_at_measurement
     - measurement_code
     - measurement_term
-    - measurement_source_text
     - measurement_result_numeric
     - measurement_unit
     - measurement_result_categorical
@@ -1598,21 +1522,17 @@ classes:
         name: measurement_term
         rank: 4
         slot_group: measurement
-      measurement_source_text:
-        name: measurement_source_text
-        rank: 5
-        slot_group: measurement
       measurement_result_numeric:
         name: measurement_result_numeric
-        rank: 6
+        rank: 5
         slot_group: measurement
       measurement_unit:
         name: measurement_unit
-        rank: 7
+        rank: 6
         slot_group: measurement
       measurement_result_categorical:
         name: measurement_result_categorical
-        rank: 8
+        rank: 7
         slot_group: measurement
     is_a: dh_interface
   Medication:
@@ -1625,7 +1545,6 @@ classes:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_treatment_id
-    - drug_source_text
     - drug_code
     - drug_term
     - drug_dose_units
@@ -1636,29 +1555,25 @@ classes:
         name: submitter_treatment_id
         rank: 1
         slot_group: Database Identifiers
-      drug_source_text:
-        name: drug_source_text
-        rank: 2
-        slot_group: medication
       drug_code:
         name: drug_code
-        rank: 3
+        rank: 2
         slot_group: medication
       drug_term:
         name: drug_term
-        rank: 4
+        rank: 3
         slot_group: medication
       drug_dose_units:
         name: drug_dose_units
-        rank: 5
+        rank: 4
         slot_group: medication
       prescribed_cumulative_drug_dose:
         name: prescribed_cumulative_drug_dose
-        rank: 6
+        rank: 5
         slot_group: medication
       actual_cumulative_drug_dose:
         name: actual_cumulative_drug_dose
-        rank: 7
+        rank: 6
         slot_group: medication
     is_a: dh_interface
   Participant:
@@ -1718,7 +1633,6 @@ classes:
     - age_at_phenotype
     - phenotype_code
     - phenotype_term
-    - phenotype_source_text
     - phenotype_observed
     - phenotype_duration
     - phenotype_severity
@@ -1739,21 +1653,17 @@ classes:
         name: phenotype_term
         rank: 4
         slot_group: Phenotype
-      phenotype_source_text:
-        name: phenotype_source_text
-        rank: 5
-        slot_group: Phenotype
       phenotype_observed:
         name: phenotype_observed
-        rank: 6
+        rank: 5
         slot_group: Phenotype
       phenotype_duration:
         name: phenotype_duration
-        rank: 7
+        rank: 6
         slot_group: Phenotype
       phenotype_severity:
         name: phenotype_severity
-        rank: 8
+        rank: 7
         slot_group: Phenotype
     is_a: dh_interface
   Procedure:
@@ -1765,40 +1675,30 @@ classes:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_treatment_id
-    - procedure_source_text
     - procedure_code
     - procedure_term
     - procedure_body_site_code
     - procedure_body_site_term
-    - procedure_body_site_source_text
     slot_usage:
       submitter_treatment_id:
         name: submitter_treatment_id
         rank: 1
         slot_group: Database Identifiers
-      procedure_source_text:
-        name: procedure_source_text
-        rank: 2
-        slot_group: procedure
       procedure_code:
         name: procedure_code
-        rank: 3
+        rank: 2
         slot_group: procedure
       procedure_term:
         name: procedure_term
-        rank: 4
+        rank: 3
         slot_group: procedure
       procedure_body_site_code:
         name: procedure_body_site_code
-        rank: 5
+        rank: 4
         slot_group: procedure
       procedure_body_site_term:
         name: procedure_body_site_term
-        rank: 6
-        slot_group: procedure
-      procedure_body_site_source_text:
-        name: procedure_body_site_source_text
-        rank: 7
+        rank: 5
         slot_group: procedure
     is_a: dh_interface
   Specimen:
@@ -1813,13 +1713,11 @@ classes:
     - submitter_specimen_id
     - specimen_tissue_source_code
     - specimen_tissue_source_term
-    - specimen_tissue_source_text
     - specimen_storage
     - specimen_processing
     - age_at_specimen_collection
     - specimen_anatomic_location_code
     - specimen_anatomic_location_label
-    - specimen_anatomic_location_source_text
     - specimen_laterality
     slot_usage:
       submitter_participant_id:
@@ -1838,37 +1736,29 @@ classes:
         name: specimen_tissue_source_term
         rank: 4
         slot_group: specimen
-      specimen_tissue_source_text:
-        name: specimen_tissue_source_text
-        rank: 5
-        slot_group: specimen
       specimen_storage:
         name: specimen_storage
-        rank: 6
+        rank: 5
         slot_group: specimen
       specimen_processing:
         name: specimen_processing
-        rank: 7
+        rank: 6
         slot_group: specimen
       age_at_specimen_collection:
         name: age_at_specimen_collection
-        rank: 8
+        rank: 7
         slot_group: specimen
       specimen_anatomic_location_code:
         name: specimen_anatomic_location_code
-        rank: 9
+        rank: 8
         slot_group: specimen
       specimen_anatomic_location_label:
         name: specimen_anatomic_location_label
-        rank: 10
-        slot_group: specimen
-      specimen_anatomic_location_source_text:
-        name: specimen_anatomic_location_source_text
-        rank: 11
+        rank: 9
         slot_group: specimen
       specimen_laterality:
         name: specimen_laterality
-        rank: 12
+        rank: 10
         slot_group: specimen
     unique_keys:
       main:

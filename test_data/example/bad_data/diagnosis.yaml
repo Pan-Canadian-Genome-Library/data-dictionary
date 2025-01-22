@@ -4,7 +4,6 @@
 # disease_code
 # disease_category
 age_at_diagnosis : "INVALID DATATYPE" ### Incorrect datatype
-disease_source_text : "INVALID VALUE"
 disease_term : "INVALID VALUE"
 covid19_severity : "INVALID ENUM"
 covid19_vaccine_doses : "INVALID ENUM" ### Incorrect enum value
