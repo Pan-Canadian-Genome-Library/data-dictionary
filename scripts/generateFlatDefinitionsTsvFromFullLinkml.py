@@ -63,10 +63,11 @@ def main():
   populateDataFrame(model,definitions)
 
   definitions['schema']=[val.lower() for val in definitions['schema'].values.tolist()]
-  definitions.to_csv("%s/%s" % (cli_input.output_directory,cli_input.custom_linkml.split('/')[-1].replace("_full.yaml","_flattened.tsv")),index=True,sep='\t')
+  definitions.to_csv("%s/%s" % (cli_input.output_directory,cli_input.custom_linkml.split('/')[-1].replace("_full.yaml","_flattened.tsv")),index=False,sep='\t')
 
 def initialize_dataframe():
   df=pd.DataFrame()
+  df['field']=None
   df['schema']=None
   df['required']=None
   df['dataType']=None
@@ -76,74 +77,80 @@ def initialize_dataframe():
   return df
 
 def populateDataFrame(model,definitions):
+  count=0
   for lm_class in model.classes:
       for slot in model.classes[lm_class]['slots']:
-          definitions.loc[slot,"schema"]=lm_class
+          definitions.loc[count,"field"]=slot
+          definitions.loc[count,"schema"]=lm_class
+          count+=1
 
   for ind in definitions.index.values.tolist():
+      slot=definitions.loc[ind,"field"]
       key="required"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
-          definitions.loc[ind,key]=model.slots[ind][key]
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
+          definitions.loc[ind,key]=model.slots[slot][key]
       else:
           definitions.loc[ind,key]=False
           
       key="range"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
-          if "Menu" in model.slots[ind][key]:
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
+          if "Menu" in model.slots[slot][key]:
               definitions.loc[ind,"dataType"]="string"
           else:
-              definitions.loc[ind,"dataType"]=model.slots[ind][key]
+              definitions.loc[ind,"dataType"]=model.slots[slot][key]
       else:
           definitions.loc[ind,"dataType"]=False
 
       key="description"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
-          definitions.loc[ind,key]=model.slots[ind][key]
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
+          definitions.loc[ind,key]=model.slots[slot][key]
       else:
           definitions.loc[ind,key]=None
 
       key="comments"
-      if key in model.slots[ind] and len(model.slots[ind][key])!=0:
-          definitions.loc[ind,key]=model.slots[ind][key]
+      if key in model.slots[slot] and len(model.slots[slot][key])!=0:
+          definitions.loc[ind,key]=model.slots[slot][key]
       else:
           definitions.loc[ind,key]=None
 
       key="exact_mappings"
-      if key in model.slots[ind] and len(model.slots[ind][key])!=0:
-          definitions.loc[ind,key]="\n".join(model.slots[ind][key])
+      if key in model.slots[slot] and len(model.slots[slot][key])!=0:
+          definitions.loc[ind,key]=";".join(model.slots[slot][key])
       else:
           definitions.loc[ind,key]=None
 
       validation_rules=[]
 
       key="pattern"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
           #print(key,ind)
-          validation_rules.append("%s:%s" % (key,model.slots[ind][key]))
+          validation_rules.append("%s:%s" % (key,model.slots[slot][key]))
           #print(validation_rules)
           
       key="minimum_value"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
           #print(key,ind)
-          validation_rules.append("%s:%s" % (key,str(model.slots[ind][key])))
+          validation_rules.append("%s:%s" % (key,str(model.slots[slot][key])))
           #print(validation_rules)
           
       key="maximum_value"
-      if key in model.slots[ind] and model.slots[ind][key]!=None:
+      if key in model.slots[slot] and model.slots[slot][key]!=None:
           #print(key,ind)
-          validation_rules.append("%s:%s" % (key,str(model.slots[ind][key])))
+          validation_rules.append("%s:%s" % (key,str(model.slots[slot][key])))
           #print(validation_rules)
 
       key="range"
-      if "Menu" in model.slots[ind][key]:
+      if "Menu" in model.slots[slot][key]:
           #print(key,ind)
-          validation_rules.append("%s:" % ("Enum"))
-          for enum_value in model.enums[model.slots[ind][key]]['permissible_values']:
-              validation_rules.append(enum_value)
+          enum_list=[]
+          #validation_rules.append("%s:" % ("Enum"))
+          for enum_value in model.enums[model.slots[slot][key]]['permissible_values']:
+              enum_list.append(enum_value)
+          validation_rules.append("%s:%s" % ("Enum",",".join(enum_list)))
           #print(validation_rules)
 
       if len(validation_rules)>0:
-          definitions.loc[ind,"validation"]="\n".join(validation_rules)
+          definitions.loc[ind,"validation"]=";".join(validation_rules)
 
 if __name__ == "__main__":
     main()

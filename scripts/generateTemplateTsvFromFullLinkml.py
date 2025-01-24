@@ -64,7 +64,7 @@ def main():
     populateDataFrame(model,templates[lm_class],lm_class)
 
   for key in templates.keys():
-    templates[key].to_csv("%s/%s_template.tsv" % (cli_input.output_directory,key.lower()),sep='\t')
+    templates[key].to_csv("%s/%s_template.tsv" % (cli_input.output_directory,key.lower()),sep='\t',index=False)
 
 
   #templates=initialize_dataframe()
