@@ -1,10 +1,10 @@
 {
   "name": "example_extended_schema",
   "description": "...",
-  "version": "1.0",
+  "version": "1.4",
   "schemas": [
     {
-      "name": "Comorbidity",
+      "name": "comorbidity",
       "description": "TBA...",
       "fields": [
         {
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "name": "Demographic",
+      "name": "demographic",
       "description": "Data for the characterization of the participant by means of segmenting the population (e.g., characterization by age, sex, or race).",
       "fields": [
         {
@@ -355,7 +355,7 @@
       ]
     },
     {
-      "name": "Diagnosis",
+      "name": "diagnosis",
       "description": "The disease that is inferred to be present in the individual, family or cohort being analyzed.",
       "fields": [
         {
@@ -402,7 +402,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -509,7 +510,7 @@
       ]
     },
     {
-      "name": "Exposure",
+      "name": "exposure",
       "description": "TBA...",
       "fields": [
         {
@@ -597,7 +598,7 @@
       ]
     },
     {
-      "name": "Follow_up",
+      "name": "follow_up",
       "description": "Any point of contact with a patient after primary diagnosis. ",
       "fields": [
         {
@@ -656,7 +657,7 @@
       ]
     },
     {
-      "name": "Measurement",
+      "name": "measurement",
       "description": "Record individual measurements to capture quantitative, ordinal (e.g., absent/present), or categorical measurements.",
       "fields": [
         {
@@ -741,7 +742,7 @@
       ]
     },
     {
-      "name": "Medication",
+      "name": "medication",
       "description": "An agent such as a drug (pharmaceutical agent), broadly defined as prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies.",
       "fields": [
         {
@@ -823,7 +824,7 @@
       ]
     },
     {
-      "name": "Participant",
+      "name": "participant",
       "description": "The collection of all data related to a specific individual human in the context of a specific study.",
       "fields": [
         {
@@ -862,7 +863,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -926,7 +928,7 @@
       ]
     },
     {
-      "name": "Phenotype",
+      "name": "phenotype",
       "description": "Individual phenotypic features, observed as either present or absent (excluded), with possible onset, modifiers and frequency",
       "fields": [
         {
@@ -1031,7 +1033,7 @@
       ]
     },
     {
-      "name": "Procedure",
+      "name": "procedure",
       "description": "A clinical procedure performed on a subject. For example a surgical or diagnostic procedure such as a biopsy.",
       "fields": [
         {
@@ -1107,7 +1109,7 @@
       ]
     },
     {
-      "name": "Specimen",
+      "name": "specimen",
       "description": "Any material sample taken from a biological entity, living or dead, from physical object or the environment",
       "fields": [
         {
@@ -1156,7 +1158,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1300,7 +1303,7 @@
       ]
     },
     {
-      "name": "Treatment",
+      "name": "treatment",
       "description": "Medications, procedures, other actions taken for clinical management",
       "fields": [
         {
@@ -1342,7 +1345,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1445,7 +1449,7 @@
       ]
     },
     {
-      "name": "Imaging",
+      "name": "imaging",
       "description": "An imaging test",
       "fields": [
         {

@@ -100,88 +100,100 @@ def populateFieldProperties(model,lectern):
 
 
   for schema in lectern['schemas']:
-      class_key=schema['name']
-      ###linkML Class == Lectern Schemas
-      for slot in model.classes[class_key]['slots']:
-          tmp={}
-          tmp['meta']={}
-          ###DisplayName for 
-          tmp['meta']['displayName']=model['slots'][slot]['title']
-          tmp['name']=slot.lower()
-          tmp['description']=model['slots'][slot]['description']
+        class_key=schema['name']
+        ###linkML Class == Lectern Schemas
+        for slot in model.classes[class_key]['slots']:
+            tmp={}
+            tmp['meta']={}
+            ###DisplayName for 
+            tmp['meta']['displayName']=model['slots'][slot]['title']
+            tmp['name']=slot.lower()
+            tmp['description']=model['slots'][slot]['description']
 
-          if model['slots'][slot]['required']:
-              if not tmp.get('restrictions'):
-                  tmp['restrictions']={}
-              tmp['restrictions']['required']=True
+            if model['slots'][slot]['required']:
+                if not tmp.get('restrictions'):
+                    tmp['restrictions']={}
+                tmp['restrictions']['required']=True
 
-          ###Handle mappings to other ontologies
-          ###For lectern store under meta
-          if model['slots'][slot]['exact_mappings']:
-              if not tmp.get('meta'):
-                  tmp['meta']={}
-              if not tmp['meta'].get('mappings'):
-                  tmp['meta']['mappings']={}
-                  
-              tmp['meta']['mappings']={}
-              for mapping in model['slots'][slot]['exact_mappings']:
-                  key=mapping.split(":")[0]
-                  val=mapping.split(":")[-1]
-                  tmp['meta']['mappings'][key]=val
+            ###Handle mappings to other ontologies
+            ###For lectern store under meta
+            if model['slots'][slot]['exact_mappings']:
+                if not tmp.get('meta'):
+                    tmp['meta']={}
+                if not tmp['meta'].get('mappings'):
+                    tmp['meta']['mappings']={}
+                    
+                tmp['meta']['mappings']={}
+                for mapping in model['slots'][slot]['exact_mappings']:
+                    key=mapping.split(":")[0]
+                    val=mapping.split(":")[-1]
+                    tmp['meta']['mappings'][key]=val
 
-          if model['slots'][slot]['comments']:
-              if not tmp.get('meta'):
-                  tmp['meta']={}
-              tmp['meta']['required']=model['slots'][slot]['comments']
+            if model['slots'][slot]['comments']:
+                if not tmp.get('meta'):
+                    tmp['meta']={}
+                tmp['meta']['required']=model['slots'][slot]['comments']
 
-          if len(model['slots'][slot]['examples'])>0:
-              if not tmp.get('meta'):
-                  tmp['meta']={}
-                  
-              tmp['meta']['examples']=[]
-              for example in model['slots'][slot]['examples']:
-                  tmp['meta']['examples'].append(example['value'])
-          
-          ##Handle simple restrictions
-          ###For more complex ones see populateFieldRestrictionsProperties
-          if model['slots'][slot]['range']:
-              ###Handle typing
-              if model['slots'][slot]['range'] in linkmlToLecternDataTypes.keys():
-                  tmp['valueType']=linkmlToLecternDataTypes[model['slots'][slot]['range']]
-              ###Handle codelists
-              elif "menu" in model['slots'][slot]['range'].lower():
-                  tmp['valueType']='string'
+            if len(model['slots'][slot]['examples'])>0:
+                if not tmp.get('meta'):
+                    tmp['meta']={}
+                    
+                tmp['meta']['examples']=[]
+                for example in model['slots'][slot]['examples']:
+                    tmp['meta']['examples'].append(example['value'])
+            
+            ##Handle simple restrictions
+            ###For more complex ones see populateFieldRestrictionsProperties
+            if model['slots'][slot]['range']:
+                ###Handle typing
+                if model['slots'][slot]['range'] in linkmlToLecternDataTypes.keys():
+                    tmp['valueType']=linkmlToLecternDataTypes[model['slots'][slot]['range']]
+                ###Handle codelists
+                elif "menu" in model['slots'][slot]['range'].lower():
+                    tmp['valueType']='string'
 
-                  if not tmp.get('restrictions'):
-                      tmp['restrictions']={}
-                  
-                  tmp['restrictions']['codeList']=[]
-                  for enum in model['enums'][model['slots'][slot]['range']]['permissible_values'].keys():
-                      if enum is not None:
-                          tmp['restrictions']['codeList'].append(enum)
+                    if not tmp.get('restrictions'):
+                        tmp['restrictions']={}
+                    
+                    tmp['restrictions']['codeList']=[]
+                    for enum in model['enums'][model['slots'][slot]['range']]['permissible_values'].keys():
+                        if enum is not None:
+                            tmp['restrictions']['codeList'].append(enum)
+            
 
-          ###Handle min,max,regex restrictions
-          if model['slots'][slot]['minimum_value'] is not None:
-              if not tmp.get('restrictions'):
-                  tmp['restrictions']={}
-              if not tmp['restrictions'].get('range'):
-                  tmp['restrictions']['range']={}
+            ###Handle min,max,regex restrictions
+            if model['slots'][slot]['minimum_value'] is not None:
+                if not tmp.get('restrictions'):
+                    tmp['restrictions']={}
+                if not tmp['restrictions'].get('range'):
+                    tmp['restrictions']['range']={}
 
-              tmp['restrictions']['range']['min']=model['slots'][slot]['minimum_value']
-          if model['slots'][slot]['maximum_value'] is not None:
-              if not tmp.get('restrictions'):
-                  tmp['restrictions']={}
-              if not tmp['restrictions'].get('range'):
-                  tmp['restrictions']['range']={}
+                tmp['restrictions']['range']['min']=model['slots'][slot]['minimum_value']
+            if model['slots'][slot]['maximum_value'] is not None:
+                if not tmp.get('restrictions'):
+                    tmp['restrictions']={}
+                if not tmp['restrictions'].get('range'):
+                    tmp['restrictions']['range']={}
 
-              tmp['restrictions']['range']['max']=model['slots'][slot]['maximum_value']
-          if model['slots'][slot]['pattern']:
-              if not tmp.get('restrictions'):
-                  tmp['restrictions']={}
-              tmp['restrictions']['regex']=model['slots'][slot]['pattern']
-                  
-          ###Add field to schema
-          schema['fields'].append(tmp)
+                tmp['restrictions']['range']['max']=model['slots'][slot]['maximum_value']
+            if model['slots'][slot]['pattern']:
+                if not tmp.get('restrictions'):
+                    tmp['restrictions']={}
+                tmp['restrictions']['regex']=model['slots'][slot]['pattern']
+                    
+            ###Add field to schema
+            schema['fields'].append(tmp)
+
+        ###Handle unique keys
+        #print(class_key)
+        if model['classes'][schema['name']]['unique_keys']:
+            for unique_key in model['classes'][schema['name']]['unique_keys']['main']['unique_key_slots']:
+                for field in schema['fields']:
+                    if field['name']==unique_key.lower():
+                        #print(unique_key)
+                        field['unique']=True
+
+        
 
   ###rename to remove capitalization:
   for schema in lectern['schemas']:
