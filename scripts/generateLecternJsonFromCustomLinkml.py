@@ -192,7 +192,30 @@ def populateFieldProperties(model,lectern):
                     if field['name']==unique_key.lower():
                         #print(unique_key)
                         field['unique']=True
+                        
+  ###Handle foreign keys
+  for entity in lectern['schemas']:
+    for field in entity['fields']:
+        if field['name'].endswith("_id") and field['name'].startswith("submitter_"):
+            if field['name']=='study_id':
+                continue
+            if entity['name'].lower() not in field['name'].lower():
+                if not entity.get('restrictions'):
+                    entity['restrictions']={}
+                if not entity['restrictions'].get('foreignKey'):
+                    entity['restrictions']['foreignKey']=[]
 
+                entity['restrictions']['foreignKey'].append(
+                    {
+                        "schema":field['name'].replace("_id","").replace("submitter_",""),
+                        "mappings": [
+                            {
+                                "local":field['name'],
+                                "foreign":field['name']
+                            }
+                        ]
+                    }
+                )
         
 
   ###rename to remove capitalization:
