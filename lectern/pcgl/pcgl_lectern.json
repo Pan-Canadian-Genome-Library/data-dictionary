@@ -106,7 +106,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "demographic",
@@ -280,7 +293,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "comorbidity",
@@ -378,7 +404,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "diagnosis",
@@ -428,7 +467,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -492,7 +532,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "exposure",
@@ -580,7 +633,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "follow_up",
@@ -639,7 +705,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "measurement",
@@ -724,7 +803,20 @@
           "description": "The categorical result of the lab test or measurement.",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "medication",
@@ -806,7 +898,20 @@
           "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
           "valueType": "number"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "participant",
@@ -848,7 +953,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -985,7 +1091,20 @@
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "radiation",
@@ -1072,7 +1191,20 @@
           "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "specimen",
@@ -1124,7 +1256,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1265,7 +1398,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "treatment",
@@ -1310,7 +1456,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1410,7 +1557,366 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "sample",
+      "description": "Refers to the molecular material (e.g., DNA, RNA, protein) extracted from the specimen and used for experiments or analysis.",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "Submitter Sample Id"
+          },
+          "name": "submitter_sample_id",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "Submitter Specimen Id",
+            "mappings": {
+              "CQDG": "submitter_biospecimen_id",
+              "mCODE.STU3": "Specimen.Identifier",
+              "FHIR": "Specimen.Identifier",
+              "Phenopacket": "biosample.id",
+              "BeaconV2": "biosample.id"
+            },
+            "examples": [
+              "LAML_PO",
+              "00445",
+              "THY_099-tumour"
+            ]
+          },
+          "name": "submitter_specimen_id",
+          "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Sample Type"
+          },
+          "name": "sample_type",
+          "description": "Indicate NCIt (NCI Thesaurus) code and term to denote the type of molecular sample used for sequencing and analysis.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "DNA",
+              "Ribonucleic Acid",
+              "Poly A RNA"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Sample Status"
+          },
+          "name": "sample_status",
+          "description": "Indicate the status of the sample for data analysis.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Abnormal",
+              "Control",
+              "Not applicable"
+            ]
+          },
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "specimen",
+            "mappings": [
+              {
+                "local": "submitter_specimen_id",
+                "foreign": "submitter_specimen_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "experiment",
+      "description": "Contains information about the experimental design of the sequencing",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "Submitter Experiment Id"
+          },
+          "name": "submitter_experiment_id",
+          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "Submitter Sample Id"
+          },
+          "name": "submitter_sample_id",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Study Id",
+            "mappings": {
+              "CQDG": "study_id"
+            }
+          },
+          "name": "study_id",
+          "description": "Unique identifier of the study.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Experiment Type"
+          },
+          "name": "experiment_type",
+          "description": "The broad type of sequencing experiment performed. A mixture of library strategy and source",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "GENOMIC",
+              "TRANSCRIPTOMIC",
+              "METAGENOMIC"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "experimental_strategy"
+          },
+          "name": "experimental_strategy",
+          "description": "The primary experimental method. For sequencing data it refers to how the sequencing library was made.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "WGS",
+              "WXS",
+              "RNA-Seq",
+              "Bisulfite-Seq",
+              "ChIP-Seq",
+              "Targeted-Seq"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Platform"
+          },
+          "name": "platform",
+          "description": "The sequencing platform type used in data generation.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "ABI_SOLID",
+              "BGISEQ",
+              "CAPILLARY",
+              "COMPLETE_GENOMICS",
+              "DNBSEQ",
+              "ELEMENT",
+              "GENAPSYS",
+              "GENE_MIND",
+              "HELICOS",
+              "ILLUMINA",
+              "ION_TORRENT",
+              "LS454",
+              "ONT",
+              "OXFORD_NANOPORE",
+              "PACBIO_SMRT",
+              "SOLID",
+              "TAPESTRI",
+              "ULTIMA",
+              "VELA_DIAGNOSTICS"
+            ]
+          },
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "sample",
+            "mappings": [
+              {
+                "local": "submitter_sample_id",
+                "foreign": "submitter_sample_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "read_group",
+      "description": "Holds the readgroup information about the raw reads generated in a run of sequencing",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "Submitter Read Group Id"
+          },
+          "name": "submitter_read_group_id",
+          "description": "The identifier of a read group; must be unique within each payload.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "Submitter Experiment Id"
+          },
+          "name": "submitter_experiment_id",
+          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "File_R1"
+          },
+          "name": "file_r1",
+          "description": "Name of the sequencing file containing reads from the first end of a sequencing run.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "File_R2"
+          },
+          "name": "file_r2",
+          "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Is_Paired_End"
+          },
+          "name": "is_paired_end",
+          "description": "Indicate if paired-end sequencing was performed.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "boolean"
+        },
+        {
+          "meta": {
+            "displayName": "Library_Name"
+          },
+          "name": "library_name",
+          "description": "Name of a sequencing library made from a molecular sample or a sample pool (multiplex sequencing).",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Platform_Unit"
+          },
+          "name": "platform_unit",
+          "description": "Unique identifier for each read group. For example, Illumina has format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers to the unique identifier for a particular flow cell. The {LANE} indicates the lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific identifier. For non-multiplex sequencing, platform unit and read group have a one-to-one relationship.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Read_Group_Id_In_Bam"
+          },
+          "name": "read_group_id_in_bam",
+          "description": "Optional field indicating the @RD ID in the BAM. If submitted, this will be used to map the @RG ID in the BAM header to the submitter_read_group_id in the payload. After submission, the @RG ID in the payload will be used for all future headers. This cannot be submitted for FASTQ files.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Read_Length_R1"
+          },
+          "name": "read_length_r1",
+          "description": "Length of sequencing reads in file_r1; this corresponds to the number of sequencing cycles of the first end.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Read_Length_R2"
+          },
+          "name": "read_length_r2",
+          "description": "Length of sequencing reads in file_r2; this corresponds to the number of sequencing cycles of the second end.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Sample_Barcode"
+          },
+          "name": "sample_barcode",
+          "description": "According to the SAM specification, this is the expected barcode bases as read by the sequencing machine in the absence of errors.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Insert_Size"
+          },
+          "name": "insert_size",
+          "description": "For paired-end sequencing, the average size of sequences between two sequencing ends. Required only for paired-end sequencing.",
+          "valueType": "integer"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "experiment",
+            "mappings": [
+              {
+                "local": "submitter_experiment_id",
+                "foreign": "submitter_experiment_id"
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }

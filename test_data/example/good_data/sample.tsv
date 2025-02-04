@@ -1,0 +1,6 @@
+submitter_sample_id	submitter_specimen_id	sample_type	sample_status
+SAMPLE_A1	SPECIMEN_01	DNA	Abnormal
+SAMPLE_A2	SPECIMEN_01	Poly A RNA	Abnormal
+SAMPLE_A3	SPECIMEN_01	DNA	Abnormal
+SAMPLE_B1	SPECIMEN_02	DNA	Control
+SAMPLE_B2	SPECIMEN_02	Ribonucleic Acid	Control

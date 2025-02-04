@@ -1,0 +1,29 @@
+{
+    "studyId": "EXAMPLE-INTL",
+    "files": [
+      {
+        "info": {
+          "data_category": "Sequencing Reads"
+        },
+        "studyId": "EXAMPLE-INTL",
+        "fileName": "EXPERIMENT_A1.bam",
+        "fileSize": 114883759828,
+        "fileType": "BAM",
+        "fileMd5sum": "72a72edbd15fcdd09ce65e0aa66af416",
+        "fileAccess": "controlled",
+        "dataType": "Submitted Reads"
+      }
+    ],
+    "analysisType": {
+      "name": "sequencing_experiment"
+    },
+    "experiment": {
+      "submitter_sequencing_experiment_id":"EXPERIMENT_A1"
+    },
+    "workflow":{
+        "workflow_name": "PCGL_data_submission",
+        "workflow_version": "0.1",
+        "genome_build": "GRCh38",
+        "genome_annotation": null
+    }
+  }

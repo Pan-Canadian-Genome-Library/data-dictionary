@@ -25,6 +25,9 @@ imports:
 - base/radiation
 - base/specimen
 - base/treatment
+- base/experiment
+- base/sample
+- base/read_group
 classes:
   Phenotype:
     is_a: base_Phenotype
@@ -52,3 +55,9 @@ classes:
     is_a: base_Specimen
   Treatment:
     is_a: base_Treatment
+  Sample:
+    is_a: base_Sample
+  Experiment:
+    is_a: base_Experiment
+  Read_group:
+    is_a: base_Read_group

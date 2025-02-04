@@ -1,3 +1,3 @@
 submitter_participant_id	age_at_phenotype	phenotype_code	phenotype_term	phenotype_observed	phenotype_duration	phenotype_severity
-DONOR01	1	HP:0001631	Atrial septal defect	Yes	5	Mild
-DONOR01		HP:0001631		Yes		
+DONOR_01	1	HP:0001631	Atrial septal defect	Yes	5	Mild
+DONOR_01		HP:0001631		Yes		

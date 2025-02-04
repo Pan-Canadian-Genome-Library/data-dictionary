@@ -1,3 +1,3 @@
 submitter_participant_id	age_at_measurement	measurement_code	measurement_term	measurement_result_numeric	measurement_unit	measurement_result_categorical
-DONOR01	18	LOINC:26464-8	White Blood Count	5	mg/L	Unknown
-DONOR01		LOINC:26464-8				
+DONOR_01	18	LOINC:26464-8	White Blood Count	5	mg/L	Unknown
+DONOR_01		LOINC:26464-8				

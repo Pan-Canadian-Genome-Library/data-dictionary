@@ -456,6 +456,92 @@ enums:
         text: Radiation therapy
       Other:
         text: Other
+  SampleStatusMenu:
+    name: SampleStatusMenu
+    permissible_values:
+      Abnormal:
+        text: Abnormal
+      Control:
+        text: Control
+      Not applicable:
+        text: Not applicable
+  SampleTypeMenu:
+    name: SampleTypeMenu
+    permissible_values:
+      DNA:
+        text: DNA
+        meaning: NCIT:C449
+      Ribonucleic Acid:
+        text: Ribonucleic Acid
+        meaning: NCIT:C812
+      Poly A RNA:
+        text: Poly A RNA
+        meaning: NCIT:C80376
+  ExperimentTypeMenu:
+    name: ExperimentTypeMenu
+    permissible_values:
+      GENOMIC:
+        text: GENOMIC
+      TRANSCRIPTOMIC:
+        text: TRANSCRIPTOMIC
+      METAGENOMIC:
+        text: METAGENOMIC
+  ExperimentalStrategyMenu:
+    name: ExperimentalStrategyMenu
+    permissible_values:
+      WGS:
+        text: WGS
+      WXS:
+        text: WXS
+      RNA-Seq:
+        text: RNA-Seq
+      Bisulfite-Seq:
+        text: Bisulfite-Seq
+      ChIP-Seq:
+        text: ChIP-Seq
+      Targeted-Seq:
+        text: Targeted-Seq
+  PlatformMenu:
+    name: PlatformMenu
+    permissible_values:
+      ABI_SOLID:
+        text: ABI_SOLID
+      BGISEQ:
+        text: BGISEQ
+      CAPILLARY:
+        text: CAPILLARY
+      COMPLETE_GENOMICS:
+        text: COMPLETE_GENOMICS
+      DNBSEQ:
+        text: DNBSEQ
+      ELEMENT:
+        text: ELEMENT
+      GENAPSYS:
+        text: GENAPSYS
+      GENE_MIND:
+        text: GENE_MIND
+      HELICOS:
+        text: HELICOS
+      ILLUMINA:
+        text: ILLUMINA
+      ION_TORRENT:
+        text: ION_TORRENT
+      LS454:
+        text: LS454
+      ONT:
+        text: ONT
+      OXFORD_NANOPORE:
+        text: OXFORD_NANOPORE
+      PACBIO_SMRT:
+        text: PACBIO_SMRT
+      SOLID:
+        text: SOLID
+      TAPESTRI:
+        text: TAPESTRI
+      ULTIMA:
+        text: ULTIMA
+      VELA_DIAGNOSTICS:
+        text: VELA_DIAGNOSTICS
 slots:
   age_at_phenotype:
     name: age_at_phenotype
@@ -1095,6 +1181,136 @@ slots:
     title: Treatment Type
     range: TreatmentTypeMenu
     required: true
+  submitter_sample_id:
+    name: submitter_sample_id
+    description: Unique identifier of the sample within the study, assigned by the
+      data provider
+    title: Submitter Sample Id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  sample_type:
+    name: sample_type
+    description: Indicate NCIt (NCI Thesaurus) code and term to denote the type of
+      molecular sample used for sequencing and analysis.
+    title: Sample Type
+    range: SampleTypeMenu
+    required: true
+  sample_status:
+    name: sample_status
+    description: Indicate the status of the sample for data analysis.
+    title: Sample Status
+    range: SampleStatusMenu
+    required: true
+  submitter_experiment_id:
+    name: submitter_experiment_id
+    description: Unique identifier of the experiment within the study, assigned by
+      the data provider.
+    title: Submitter Experiment Id
+    range: string
+    required: true
+  experiment_type:
+    name: experiment_type
+    description: The broad type of sequencing experiment performed. A mixture of library
+      strategy and source
+    title: Experiment Type
+    range: ExperimentTypeMenu
+    required: true
+  experimental_strategy:
+    name: experimental_strategy
+    description: The primary experimental method. For sequencing data it refers to
+      how the sequencing library was made.
+    title: experimental_strategy
+    range: ExperimentalStrategyMenu
+    required: true
+  platform:
+    name: platform
+    description: The sequencing platform type used in data generation.
+    title: Platform
+    range: PlatformMenu
+    required: true
+  submitter_read_group_id:
+    name: submitter_read_group_id
+    description: The identifier of a read group; must be unique within each payload.
+    title: Submitter Read Group Id
+    range: string
+    required: true
+  file_r1:
+    name: file_r1
+    description: Name of the sequencing file containing reads from the first end of
+      a sequencing run.
+    title: File_R1
+    range: string
+    required: true
+  file_r2:
+    name: file_r2
+    description: Name of the sequencing file containing reads from the second end
+      of a paired-end sequencing run. Required if and only if paired-end sequencing
+      was done.
+    title: File_R2
+    range: string
+    required: false
+  is_paired_end:
+    name: is_paired_end
+    description: Indicate if paired-end sequencing was performed.
+    title: Is_Paired_End
+    range: boolean
+    required: true
+  library_name:
+    name: library_name
+    description: Name of a sequencing library made from a molecular sample or a sample
+      pool (multiplex sequencing).
+    title: Library_Name
+    range: string
+    required: true
+  platform_unit:
+    name: platform_unit
+    description: Unique identifier for each read group. For example, Illumina has
+      format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers
+      to the unique identifier for a particular flow cell. The {LANE} indicates the
+      lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific
+      identifier. For non-multiplex sequencing, platform unit and read group have
+      a one-to-one relationship.
+    title: Platform_Unit
+    range: string
+    required: true
+  read_group_id_in_bam:
+    name: read_group_id_in_bam
+    description: Optional field indicating the @RD ID in the BAM. If submitted, this
+      will be used to map the @RG ID in the BAM header to the submitter_read_group_id
+      in the payload. After submission, the @RG ID in the payload will be used for
+      all future headers. This cannot be submitted for FASTQ files.
+    title: Read_Group_Id_In_Bam
+    range: string
+    required: false
+  read_length_r1:
+    name: read_length_r1
+    description: Length of sequencing reads in file_r1; this corresponds to the number
+      of sequencing cycles of the first end.
+    title: Read_Length_R1
+    range: integer
+    required: false
+  read_length_r2:
+    name: read_length_r2
+    description: Length of sequencing reads in file_r2; this corresponds to the number
+      of sequencing cycles of the second end.
+    title: Read_Length_R2
+    range: integer
+    required: false
+  sample_barcode:
+    name: sample_barcode
+    description: According to the SAM specification, this is the expected barcode
+      bases as read by the sequencing machine in the absence of errors.
+    title: Sample_Barcode
+    range: string
+    required: false
+  insert_size:
+    name: insert_size
+    description: For paired-end sequencing, the average size of sequences between
+      two sequencing ends. Required only for paired-end sequencing.
+    title: Insert_Size
+    range: integer
+    required: false
 classes:
   Phenotype:
     name: Phenotype
@@ -1635,6 +1851,69 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_treatment_id
+    is_a: dh_interface
+  Sample:
+    name: Sample
+    description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
+      from the specimen and used for experiments or analysis.
+    title: Sample
+    todos:
+    - '{"reference": "HL7/FHIR", "status": "v2"}'
+    slots:
+    - submitter_sample_id
+    - submitter_specimen_id
+    - sample_type
+    - sample_status
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_sample_id
+    is_a: dh_interface
+  Experiment:
+    name: Experiment
+    description: Contains information about the experimental design of the sequencing
+    title: Experiment
+    todos:
+    - '{"reference": "HL7/FHIR", "status": "v2"}'
+    slots:
+    - submitter_experiment_id
+    - submitter_sample_id
+    - study_id
+    - experiment_type
+    - experimental_strategy
+    - platform
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_experiment_id
+    is_a: dh_interface
+  Read_group:
+    name: Read_group
+    description: Holds the readgroup information about the raw reads generated in
+      a run of sequencing
+    title: Read_group
+    todos:
+    - '{"reference": "HL7/FHIR", "status": "v2"}'
+    slots:
+    - submitter_read_group_id
+    - submitter_experiment_id
+    - file_r1
+    - file_r2
+    - is_paired_end
+    - library_name
+    - platform_unit
+    - read_group_id_in_bam
+    - read_length_r1
+    - read_length_r2
+    - sample_barcode
+    - insert_size
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_read_group_id
     is_a: dh_interface
   dh_interface:
     name: dh_interface

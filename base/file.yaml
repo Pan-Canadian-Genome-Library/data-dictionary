@@ -1,0 +1,75 @@
+version: 2.0.0
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+description: '...'
+todos: "ADD SLOT USAGE and EXTERNAL ONTOLOGY MAPPINGS"
+enums:
+  FileAccessMenu
+classes:
+  base_Analysis:
+    description: Contains information about the experimental design of the sequencing
+    name: base_Analysis
+    slots:
+      - analysis_id
+      - object_id
+      - file_name
+      - file_size
+      - file_md5sum
+      - file_type
+      - file_access
+    title: Analysis
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - object_id
+slots:
+  analysis_id:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  object_id:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: object_id
+    range: string
+    title: Object Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  file_name:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: file_name
+    range: string
+    title: File Name
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  file_size:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: file_size
+    range: integer
+    title: File Size
+    required: true
+  file_md5sum:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: file_md5sum
+    range: string
+    title: File Md5sum
+    pattern: ^[a-fA-F0-9]{32}$
+    required: true
+  file_type:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: file_type
+    range: FileTypeMenu
+    title: File Type
+    required: true
+  file_access:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: file_access
+    range: string
+    title: File Access
+    pattern: FileAccessMenu
+    required: true

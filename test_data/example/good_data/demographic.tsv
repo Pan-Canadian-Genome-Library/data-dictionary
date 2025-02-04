@@ -1,3 +1,3 @@
-submitter_participant_id	study_id	gender	sex_at_birth	ethnicity	race	country_of_birth	ancestry	height	weight	employment	type_of_residence	number_of_other_people_in_household	pregnancy	highest_education_level_achieved
-DONOR01	EXAMPLE-CA	Missing	Missing	Missing	Missing	Missing	Missing	50	50	Missing	Missing	5	Unknown	Missing
-DONOR02	EXAMPLE-CA	Missing	Missing	Missing	Missing									
+submitter_participant_id	study_id	gender	sex_at_birth	ethnicity	race
+DONOR_01	EXAMPLE-CA	Missing	Missing	Missing	Missing
+DONOR_02	EXAMPLE-CA	Missing	Missing	Missing	Missing

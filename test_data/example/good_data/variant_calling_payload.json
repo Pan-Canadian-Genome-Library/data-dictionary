@@ -1,0 +1,32 @@
+{
+    "studyId": "EXAMPLE-INTL",
+    "files": [
+      {
+        "studyId": "EXAMPLE-INTL",
+        "fileName": "EXPERIMENT_A1vsEXPERIMENT_B1.vcf",
+        "fileSize": 84628916,
+        "fileType": "VCF",
+        "fileMd5sum": "875b10ac541d97fa721f91183adc5e6a",
+        "fileAccess": "controlled",
+        "dataType": "Aligned Reads"
+      }
+    ],
+    "analysisType": {
+      "name": "variant_calling"
+    },
+    "experiment": {
+      "submitter_sequencing_experiment_id":"EXPERIMENT_A1",
+      "matched_submitter_sequencing_experiment_id":"EXPERIMENT_B1"
+    },
+    "workflow":{
+        "workflow_name": "gen3_variant_calling_workflow",
+        "workflow_version": "2.1a",
+        "genome_build": "GRCh38",
+        "genome_annotation": null
+    },
+    "analysis_input_type": "Aligned Reads",
+    "analysis_output_type":"Raw SNV Calls",
+    "variant_class":"Somatic",
+    "variant_calling_strategy":"Tumour Normal Paired"
+
+  }

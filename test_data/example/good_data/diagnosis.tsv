@@ -1,3 +1,3 @@
-submitter_participant_id	submitter_diagnosis_id	age_at_diagnosis	disease_code	disease_term	disease_category	covid19_severity	covid19_vaccine_doses
-DONOR1	DIAGNOSIS_01	50	ICD10:F88.89	Hysterical paralysis	Autoimmune disorder	Ambulatory (limitation of activities)	No
-DONOR1	DIAGNOSIS_01		ICD10:F88.89		Autoimmune disorder		
+submitter_participant_id	submitter_diagnosis_id	age_at_diagnosis	disease_code	disease_term	disease_category
+DONOR_01	DIAGNOSIS_01	50	ICD10:F88.89	Hysterical paralysis	Autoimmune disorder
+DONOR_01	DIAGNOSIS_02		ICD10:F88.89		Autoimmune disorder

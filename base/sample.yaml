@@ -1,0 +1,77 @@
+version: 2.0.0
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+description: '...'
+todos: "ADD SLOT USAGE and EXTERNAL ONTOLOGY MAPPINGS"
+enums:
+  SampleStatusMenu:
+    name: SampleStatusMenu
+    permissible_values:
+      Abnormal: {}
+      Control: {}
+      Not applicable: {}
+  SampleTypeMenu:
+    name: SampleTypeMenu
+    permissible_values:
+      DNA: 
+        meaning: "NCIT:C449"
+      Ribonucleic Acid:
+        meaning: "NCIT:C812"
+      Poly A RNA: 
+        meaning: "NCIT:C80376"
+classes:
+  base_Sample:
+    description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted from the specimen and used for experiments or analysis.
+    name: base_Sample
+    slots:
+      - submitter_sample_id
+      - submitter_specimen_id
+      - sample_type
+      - sample_status
+    title: Sample
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_sample_id
+slots:
+  submitter_sample_id:
+    description: Unique identifier of the sample within the study, assigned by the data provider.
+    name: submitter_sample_id
+    range: string
+    title: Submitter Sample Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  submitter_specimen_id:
+    description: Unique identifier of the specimen within the study, assigned by the
+      data provider.
+    exact_mappings:
+    - CQDG:submitter_biospecimen_id
+    - mCODE.STU3:Specimen.Identifier
+    - FHIR:Specimen.Identifier
+    - Phenopacket:biosample.id
+    - BeaconV2:biosample.id
+    examples:
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
+    name: submitter_specimen_id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    range: string
+    required: true
+    title: Submitter Specimen Id
+    todos: '["ARGO", "MOH"]'
+  sample_type:
+    description: Indicate NCIt (NCI Thesaurus) code and term to denote the type of molecular sample used for sequencing and analysis.
+    name: sample_type
+    range: SampleTypeMenu
+    title: Sample Type
+    required: true
+  sample_status:
+    description: Indicate the status of the sample for data analysis.
+    name: sample_status
+    range: SampleStatusMenu
+    title: Sample Status
+    required: true

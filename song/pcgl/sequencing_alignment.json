@@ -1,0 +1,204 @@
+{
+  "name": "sequencing_alignment",
+  "options":{
+    "fileTypes":["bam", "bai","cram","crai"],
+    "externalValidations":[
+      {
+        "url": "https://lyric.overture-sandbox.cumulus.genomeinformatics.org/ping",
+        "jsonPath": "experiment.submitter_sequencing_experiment_id"
+      }
+    ]
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "experiment",
+      "workflow"
+    ],
+    "properties": {
+      "experiment": {
+        "type": "object",
+        "required": [
+          "submitter_sequencing_experiment_id"
+        ],
+        "propertyNames": {
+          "enum": [
+            "submitter_sequencing_experiment_id"
+          ]
+        },
+        "properties": {
+          "submitter_sequencing_experiment_id": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9\\-\\._]{1,98}$"
+          }
+        }
+      },
+      "workflow": {
+        "type": "object",
+        "required": [
+          "workflow_name",
+          "workflow_version"
+        ],
+        "propertyNames": {
+          "enum": [
+            "workflow_name",
+            "workflow_version",
+            "genome_build",
+            "genome_annotation"
+          ]
+        },
+        "properties": {
+          "workflow_name": {
+            "type": "string",
+            "pattern": "^[a-zA-Z][a-zA-Z0-9 _\\-]+[a-zA-Z0-9]+$"
+          },
+          "workflow_version": {
+            "type": "string"
+          },
+          "genome_build": {
+            "type": "string",
+            "enum": [
+              "GRCh38_hla_decoy_ebv",
+              "GRCh38_Verily_v1",
+              "GRCh38",
+              "GRCh37"
+            ]
+          },
+          "genome_annotation": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "inputs": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "input_analysis_id": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                },
+                "tumour_analysis_id": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                },
+                "normal_analysis_id": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+                },
+                "analysis_type": {
+                  "type": "string",
+                  "pattern": "^[a-zA-Z][a-zA-Z0-9_]+$"
+                }
+              }
+            },
+            "minItems": 1
+          },
+          "run_id": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+          },
+          "pipeline_info": {
+            "type": "object"
+          },
+          "metrics": {
+            "type": "object"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "workflow_name": {
+                  "type": "string",
+                  "pattern": "^.*RNA-Seq.*$"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "genome_annotation": {
+                  "type": "string",
+                  "pattern": "^GENCODE v[0-9]{2,4}$"
+                }
+              },
+              "required": [
+                "genome_annotation"
+              ]
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "workflow_name": {
+                  "enum": [
+                    "Pre Alignment QC"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "genome_build": {
+                  "type": "string"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "genome_build": {
+                  "type": "string",
+                  "enum": [
+                    "GRCh38_hla_decoy_ebv",
+                    "GRCh38_Verily_v1",
+                    "GRCh38",
+                    "GRCh37"
+                  ]
+                }
+              },
+              "required": [
+                "genome_build"
+              ]
+            }
+          }
+        ]
+      },
+      "analysis_input_type":{        
+        "enum":[
+        "Raw Sequencing Reads",
+        "Aligned Reads",
+        "Raw SNV Calls",
+        "Raw InDel Calls",
+        "Raw SV Calls",
+        "Raw CNV Calls",
+        "Filtered SNV Calls",
+        "Filtered InDel Calls",
+        "Annotated SNV Calls",
+        "Annotated InDel Calls",
+        "Annotated CNV Calls",
+        "Annotated SV Calls"
+      ]
+      },
+      "analysis_output_type":{
+        "enum":[
+          "Raw Sequencing Reads",
+          "Aligned Reads",
+          "Raw SNV Calls",
+          "Raw InDel Calls",
+          "Raw SV Calls",
+          "Raw CNV Calls",
+          "Filtered SNV Calls",
+          "Filtered InDel Calls",
+          "Annotated SNV Calls",
+          "Annotated InDel Calls",
+          "Annotated CNV Calls",
+          "Annotated SV Calls"
+        ]
+      }
+    }
+  }
+}

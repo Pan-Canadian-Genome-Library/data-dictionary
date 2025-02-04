@@ -1,0 +1,104 @@
+version: 2.0.0
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+description: '...'
+todos: "ADD SLOT USAGE and EXTERNAL ONTOLOGY MAPPINGS"
+enums:
+  AnalysisTypeMenu:
+    name: AnalysisTypeMenu
+    permissible_values:
+      Sequence Experiment: {}
+      Sequence Alignment: {}
+      Sequence Variantion: {}
+      Variation Annotation: {}
+      Sequence Assembly: {}
+      Gene Expression: {}
+  AnalysisInputTypeMenu:
+    name: AnalysisInputTypeMenu
+    permissible_values:
+      Raw Sequencing Reads: {}
+      Aligned Reads: {}
+      Raw SNV Calls: {}
+      Raw InDel Calls: {}
+      Raw SV Calls: {}
+      Raw CNV Calls: {}
+      Filtered SNV Calls: {}
+      Filtered InDel Calls: {}
+      Annotated SNV Calls: {}
+      Annotated InDel Calls: {}
+      Annotated CNV Calls: {}
+      Annotated SV Calls: {}
+  AnalysisOutputTypeMenu:
+    name:  AnalysisOutputTypeMenu
+    permissible_values:
+      Raw Sequencing Reads: {}
+      Aligned Reads: {}
+      Raw SNV Calls: {}
+      Raw InDel Calls: {}
+      Raw SV Calls: {}
+      Raw CNV Calls: {}
+      Filtered SNV Calls: {}
+      Filtered InDel Calls: {}
+      Annotated SNV Calls: {}
+      Annotated InDel Calls: {}
+      Annotated CNV Calls: {}
+      Annotated SV Calls: {}
+classes:
+  base_Analysis:
+    description: Contains information about the experimental design of the sequencing
+    name: base_Analysis
+    slots:
+      - analysis_id
+      - study_id
+      - submitter_experiment_id
+      - analysis_type
+      - analysis_input_type
+      - analysis_output_type
+    title: Analysis
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - analysis_id
+slots:
+  analysis_id:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  study_id:
+    description: Unique identifier of the study in PCGL.
+    name: study_id
+    range: string
+    title: Study Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  submitter_experiment_id:
+    description: Unique identifier of the experiment within the study, assigned by the data provider.
+    name: submitter_experiment_id
+    range: string
+    title: Submitter Experiment Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  analysis_type:
+    description: Overall type of the analysis. Term chosen from a controlled vocabulary (CV) list.
+    name: analysis_type
+    range: AnalysisTypeMenu
+    title: Analysis Type
+    required: true
+  analysis_input_type:
+    description: An array specifying the types of data used as inputs for the analysis
+    name: analysis_input_type
+    range: AnalysisInputTypeMenu
+    title: Analysis Input Type
+    required: false
+  analysis_output_type:
+    description: An array specifying the types of data produced as outputs from the analysis. For example, in a sequence experiment analysis the output data would be 'Raw Sequencing Reads', while that same type of data could be the input type of data for an analysis type of sequence alignment, which would then output 'Aligned Reads'. 
+    name: analysis_output_type
+    range: AnalysisOutputTypeMenu
+    title: Analysis Output Type
+    required: false

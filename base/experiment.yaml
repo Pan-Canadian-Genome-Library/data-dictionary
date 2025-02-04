@@ -1,0 +1,103 @@
+version: 2.0.0
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+description: '...'
+todos: "ADD SLOT USAGE and EXTERNAL ONTOLOGY MAPPINGS"
+enums:
+  ExperimentTypeMenu:
+    name: ExperimentTypeMenu
+    permissible_values:
+      GENOMIC: {}
+      TRANSCRIPTOMIC: {}
+      METAGENOMIC: {}
+  ExperimentalStrategyMenu:
+    name: ExperimentalStrategyMenu
+    permissible_values:
+      WGS: {}
+      WXS: {}
+      RNA-Seq: {}
+      Bisulfite-Seq: {}
+      ChIP-Seq: {}
+      Targeted-Seq: {}
+  PlatformMenu:
+    name: PlatformMenu
+    permissible_values:
+      ABI_SOLID: {}
+      BGISEQ: {}
+      CAPILLARY: {}
+      COMPLETE_GENOMICS: {}
+      DNBSEQ: {}
+      ELEMENT: {}
+      GENAPSYS: {}
+      GENE_MIND: {}
+      HELICOS: {}
+      ILLUMINA: {}
+      ION_TORRENT: {}
+      LS454: {}
+      ONT: {}
+      OXFORD_NANOPORE: {}
+      PACBIO_SMRT: {}
+      SOLID: {}
+      TAPESTRI: {}
+      ULTIMA: {}
+      VELA_DIAGNOSTICS: {}
+classes:
+  base_Experiment:
+    description: Contains information about the experimental design of the sequencing
+    name: base_Experiment
+    slots:
+      - submitter_experiment_id
+      - submitter_sample_id
+      - study_id
+      - experiment_type
+      - experimental_strategy
+      - platform
+    title: Experiment
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - submitter_experiment_id
+slots:
+  submitter_experiment_id:
+    description: Unique identifier of the experiment within the study, assigned by the data provider.
+    name: submitter_experiment_id
+    range: string
+    title: Submitter Experiment Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  submitter_sample_id:
+    description: Unique identifier of the sample within the study, assigned by the data provider
+    name: submitter_sample_id
+    range: string
+    title: Submitter Sample Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  study_id:
+    description: Unique identifier of the study.
+    exact_mappings:
+    - CQDG:study_id
+    name: study_id
+    required: true
+    title: Study Id
+    range: string
+  experiment_type:
+    description: The broad type of sequencing experiment performed. A mixture of library strategy and source
+    name: experiment_type
+    range: ExperimentTypeMenu
+    title: Experiment Type
+    required: true
+  experimental_strategy:
+    description: The primary experimental method. For sequencing data it refers to how the sequencing library was made.
+    name: experimental_strategy
+    range: ExperimentalStrategyMenu
+    title: experimental_strategy
+    required: true
+  platform:
+    description: The sequencing platform type used in data generation.
+    name: platform
+    range: PlatformMenu
+    title: Platform
+    required: true

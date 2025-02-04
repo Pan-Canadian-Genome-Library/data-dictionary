@@ -1,0 +1,75 @@
+version: 2.0.0
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+description: '...'
+todos: "ADD SLOT USAGE and EXTERNAL ONTOLOGY MAPPINGS"
+enums:
+  GenomeBuildMenu
+classes:
+  base_Analysis:
+    description: Contains information about the experimental design of the sequencing
+    name: base_Analysis
+    slots:
+      - workflow_id
+      - analysis_id
+      - workflow_name
+      - workflow_version
+      - workflow_url
+      - genome_build
+      - genome_annotation
+    title: Analysis
+    todos: '{"reference": "HL7/FHIR", "status": "v2"}'
+    unique_keys:
+      main:
+        unique_key_slots:
+        - workflow_id
+slots:
+  workflow_id:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  analysis_id:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  workflow_name:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  workflow_version:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  workflow_url:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: string
+    title: Analysis Id
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    required: true
+  genome_build:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: analysis_id
+    range: GenomeBuildMenu
+    title: Analysis Id
+    required: true
+  genome_annotation:
+    description: Unique identifier of the analysis within the study, assigned by PCGL.
+    name: genome_annotation
+    range: string
+    title: Genome Annotation
+    required: true

@@ -1,0 +1,28 @@
+{
+    "studyId": "EXAMPLE-INTL",
+    "files": [
+      {
+        "studyId": "EXAMPLE-INTL",
+        "fileName": "EXPERIMENT_A1.aligned.cram",
+        "fileSize": 38000480999,
+        "fileType": "CRAM",
+        "fileMd5sum": "b8c6a7558eedeffaf92d5289c410adee",
+        "fileAccess": "controlled",
+        "dataType": "Aligned Reads"
+      }
+    ],
+    "analysisType": {
+      "name": "sequencing_alignment"
+    },
+    "experiment": {
+      "submitter_sequencing_experiment_id":"EXPERIMENT_A1"
+    },
+    "workflow":{
+        "workflow_name": "gen3_alignment_workflow",
+        "workflow_version": "5a",
+        "genome_build": "GRCh38",
+        "genome_annotation": null
+    },
+    "analysis_input_type": "Raw Sequencing Reads",
+    "analysis_output_type":"Aligned Reads"
+  }
