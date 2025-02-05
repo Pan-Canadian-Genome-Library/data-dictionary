@@ -1758,6 +1758,19 @@
               "empty": true
             }
           }
+        },
+        {
+          "meta": {
+            "displayName": "Image Number"
+          },
+          "name": "image_number",
+          "description": "A number example for image",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "integer",
+          "isArray": true,
+          "delimiter": "|"
         }
       ]
     }

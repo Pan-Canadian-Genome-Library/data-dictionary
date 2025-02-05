@@ -1237,6 +1237,13 @@ slots:
       * PipelineF\n"
     title: Image Processing Pipeline
     range: ImageProcessPipelineMenu
+  image_number:
+    name: image_number
+    description: "A number example for image"
+    title: Image Number
+    range: integer
+    multivalued: true
+    required: true
   image_processing_personel:
     name: image_processing_personel
     description: 'String value for the person who processed the image.
@@ -1820,6 +1827,7 @@ classes:
     - image_processing_pipeline
     - image_processing_personel
     - image_processing_null_reason
+    - image_number
     slot_usage:
       image_hosted_url:
         name: image_hosted_url
@@ -1840,6 +1848,10 @@ classes:
       image_processing_null_reason:
         name: image_processing_null_reason
         rank: 5
+        slot_group: Extended Imaging
+      image_number:
+        name: image_number
+        rank: 6
         slot_group: Extended Imaging
     rules:
     - preconditions:
