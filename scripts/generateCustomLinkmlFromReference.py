@@ -2,23 +2,24 @@
 # -*- coding: utf-8 -*-
 
 """
-  Copyright (C) 2022,  icgc-argo
-
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU Affero General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU Affero General Public License for more details.
-
-  You should have received a copy of the GNU Affero General Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
-  Authors:
-    Edmund Su
+/*
+ * Copyright (c) 2025 The Ontario Institute for Cancer Research. All rights reserved
+ *
+ * This program and the accompanying materials are made available under the terms of
+ * the GNU Affero General Public License v3.0. You should have received a copy of the
+ * GNU Affero General Public License along with this program.
+ *  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+ * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
+ * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+ * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+ * IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
 """
 
 import json
@@ -42,42 +43,42 @@ from linkml_runtime.dumpers import yaml_dumper
 from linkml_runtime.linkml_model import SchemaDefinition, ClassDefinition
 
 def main():
-    """
+	"""
 	The script aims to repackage and flatten the inherited classes in extension and base producing a Data Harmonizer friendly and non-reference versions of the custom schema.
-    """
-    parser = argparse.ArgumentParser(description='Repackage and flatten the inherited classes in extension and base producing a Data Harmonizer friendly and non-reference versions of the custom schema')
-    parser.add_argument('-c', '--custom_schema', dest="custom_schema", help="The custom schema that makes references to extension and base schemas", required=True,type=str)
-    parser.add_argument('-w', '--work_directory', dest="work_dir", help="The main directory containing folders : Base, Extension, Custom", default=False,type=str)
+	"""
+	parser = argparse.ArgumentParser(description='Repackage and flatten the inherited classes in extension and base producing a Data Harmonizer friendly and non-reference versions of the custom schema')
+	parser.add_argument('-c', '--custom_schema', dest="custom_schema", help="The custom schema that makes references to extension and base schemas", required=True,type=str)
+	parser.add_argument('-w', '--work_directory', dest="work_dir", help="The main directory containing folders : Base, Extension, Custom", default=False,type=str)
 
-    cli_input= parser.parse_args()
+	cli_input= parser.parse_args()
 
-    if cli_input.work_dir:
-    	work_dir=cli_input.work_dir
-    else:
-    	work_dir="/".join(cli_input.custom_schema.split("/")[:-3])
+	if cli_input.work_dir:
+		work_dir=cli_input.work_dir
+	else:
+		work_dir="/".join(cli_input.custom_schema.split("/")[:-3])
 
-    reference_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
-    updated_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
+	reference_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
+	updated_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 
-    mapping=generateBaseAndExtenstionMappings(reference_model,work_dir)
-    cleanModel(updated_model)
+	mapping=generateBaseAndExtenstionMappings(reference_model,work_dir)
+	cleanModel(updated_model)
 
-    flattenInheritedProperties(reference_model,updated_model,mapping)
-    dh_model=makeDataHarmonizerVersion(updated_model)
+	flattenInheritedProperties(reference_model,updated_model,mapping)
+	dh_model=makeDataHarmonizerVersion(updated_model)
 
-    yaml_dumper.dump(updated_model,cli_input.custom_schema.replace(".yaml","_full.yaml"))
-    yaml_dumper.dump(dh_model,cli_input.custom_schema.replace(".yaml","_dh.yaml"))
+	yaml_dumper.dump(updated_model,cli_input.custom_schema.replace(".yaml","_full.yaml"))
+	yaml_dumper.dump(dh_model,cli_input.custom_schema.replace(".yaml","_dh.yaml"))
 
-    cleanNullValues(cli_input.custom_schema.replace(".yaml","_full.yaml"))
-    cleanNullValues(cli_input.custom_schema.replace(".yaml","_dh.yaml"))
+	cleanNullValues(cli_input.custom_schema.replace(".yaml","_full.yaml"))
+	cleanNullValues(cli_input.custom_schema.replace(".yaml","_dh.yaml"))
 
 def cleanNullValues(yaml_file):
 	### When none/null in python is written to YAML, value is interpreted a string. Quick regex replace to make value null
-  with open (yaml_file, 'r' ) as f:
-    content = f.read()
-    content_new = content.replace("None","null")
-  with open(yaml_file, 'w') as file:
-    file.write(content_new)
+	with open (yaml_file, 'r' ) as f:
+		content = f.read()
+		content_new = content.replace("None","null")
+	with open(yaml_file, 'w') as file:
+		file.write(content_new)
 
 def generateBaseAndExtenstionMappings(model,working_directory):
 	"""
@@ -147,8 +148,8 @@ def cleanModel(model):
 	model.imports=['linkml:types']
 	###Remove "is_a" inheritances
 	for key in model.classes.keys():
-	    #Remove is_a
-	    del model.classes[key]['is_a']
+		#Remove is_a
+		del model.classes[key]['is_a']
 
 	###return(model)
 
@@ -156,7 +157,7 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 	"""
 	Traverse through each class importing base and extension slots,enums, and whatever else I can't think of at the moment because no coffee.
 	"""
-	for key in updated_model.classes.keys():
+	for key in reference_model.classes.keys():
 		###For base import, we want every property except empty ones and name
 	    if mapping[key].get("base_import"):
 	        #print("2 %s A" % (key))
@@ -264,8 +265,6 @@ def makeDataHarmonizerVersion(model):
 
 	for key in model.classes.keys():
 		dataharmonizer_version.classes[key]['is_a']='dh_interface'
-
-
 
 	return(dataharmonizer_version)
 
