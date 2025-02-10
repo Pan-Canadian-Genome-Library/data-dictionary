@@ -106,7 +106,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "demographic",
@@ -280,7 +293,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "comorbidity",
@@ -378,7 +404,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "diagnosis",
@@ -428,7 +467,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -492,7 +532,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "exposure",
@@ -580,7 +633,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "follow_up",
@@ -639,7 +705,20 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "measurement",
@@ -724,7 +803,20 @@
           "description": "The categorical result of the lab test or measurement.",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "medication",
@@ -806,7 +898,20 @@
           "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
           "valueType": "number"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "participant",
@@ -848,7 +953,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -985,7 +1091,20 @@
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "radiation",
@@ -1072,7 +1191,20 @@
           "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "specimen",
@@ -1124,7 +1256,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1265,7 +1398,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
       "name": "treatment",
@@ -1310,7 +1456,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1410,7 +1557,20 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     }
   ]
 }

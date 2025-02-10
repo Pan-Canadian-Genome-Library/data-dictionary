@@ -1,15 +1,15 @@
-image_hosted_url	image_hosted_format	image_processing_pipeline	image_processing_personel	image_processing_null_reason
-www.hello.com/testPNGa.png	PNG	pipelineA	Bob	
-www.hello.com/testPNGb.png	PNG	pipelineB	Bob	
-www.hello.com/testPNGc.png	PNG	pipelineC	Bob	
-www.hello.com/testSVGa.svg	SVG	pipelineA	Bob	
-www.hello.com/testSVGd.svg	SVG	pipelineD	Bob	
-www.hello.com/testSVGe.svg	SVG	pipelineE	Bob	
-www.hello.com/testPDFa.pdf	PDF	pipelineA	Bob	
-www.hello.com/testPDFd.pdf	PDF	pipelineD	Bob	
-www.hello.com/testPDFf.pdf	PDF	pipelineF	Bob	
-www.hello.com/testJPEGa.jpeg	JPEG	pipelineA	Bob	
-www.hello.com/testJPEGd.jpeg	JPEG	pipelineD	Bob	
-www.hello.com/testJPEGf.jpeg	JPEG	pipelineF	Bob	
-www.hello.com/3.pdf	PDF	pipelineF		Unknown
-www.hello.com/4.pdf	PDF	pipelineF	Bob	
+image_hosted_url	image_hosted_format	image_processing_pipeline	image_processing_personel	image_processing_null_reason	image_number
+www.hello.com/testPNGa.png	PNG	pipelineA	Bob		1
+www.hello.com/testPNGb.png	PNG	pipelineB	Bob		1
+www.hello.com/testPNGc.png	PNG	pipelineC	Bob		1
+www.hello.com/testSVGa.svg	SVG	pipelineA	Bob		1
+www.hello.com/testSVGd.svg	SVG	pipelineD	Bob		1
+www.hello.com/testSVGe.svg	SVG	pipelineE	Bob		1
+www.hello.com/testPDFa.pdf	PDF	pipelineA	Bob		1
+www.hello.com/testPDFd.pdf	PDF	pipelineD	Bob		1
+www.hello.com/testPDFf.pdf	PDF	pipelineF	Bob		1
+www.hello.com/testJPEGa.jpeg	JPEG	pipelineA	Bob		1
+www.hello.com/testJPEGd.jpeg	JPEG	pipelineD	Bob		1
+www.hello.com/testJPEGf.jpeg	JPEG	pipelineF	Bob		1
+www.hello.com/3.pdf	PDF	pipelineF		Unknown	[1]
+www.hello.com/4.pdf	PDF	pipelineF	Bob		[1|2|3]
