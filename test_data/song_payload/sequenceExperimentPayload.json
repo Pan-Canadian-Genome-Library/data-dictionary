@@ -1,0 +1,29 @@
+{
+  "analysisType": {
+    "name": "sequenceExperiment"
+  },
+  "studyId": "TEST-001",
+  "submitter_experiment_id": "EXP12345",
+  "submitter_analysis_id": "ANA67890",
+  "analysis_input_type": null,
+  "analysis_output_type": [
+    "Raw Sequencing Reads"
+  ],
+  "files": [
+    {
+      "fileName": "sample_01.fastq",
+      "fileSize": 123456789,
+      "fileMd5sum": "abcdef1234567890abcdef1234567890",
+      "fileType": "FASTQ",
+      "fileAccess": "open"
+    },
+    {
+      "fileName": "sample_02.fastq",
+      "fileSize": 987654321,
+      "fileMd5sum": "1234abcd5678efgh9012ijkl3456mnop",
+      "fileType": "FASTQ",
+      "fileAccess": "controlled"
+    }
+  ],
+  "experiment": "null" 
+}

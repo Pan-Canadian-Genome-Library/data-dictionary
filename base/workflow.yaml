@@ -1,0 +1,43 @@
+name: pcgl_analysis_schema
+description: Song analysis schema that supports the PCGL analysis data model
+in_language: '[''en'']'
+id: https://example.com/PCGL.yaml
+version: '2.1'
+imports:
+- linkml:types
+prefixes:
+  linkml: https://w3id.org/linkml/
+default_curi_maps:
+- semweb_context
+default_prefix: https://example.com/PCGL.yaml/  
+
+classes:
+  Workflow:
+    name: Workflow
+    description: TBA...
+    title: Workflow
+    slots:
+    - workflow_name
+    - workflow_id
+    - workflow_version
+    - workflow_url
+    attributes:
+      workflow_name:
+        required: true
+        multivalued: false
+        range: string
+      workflow_id:
+        required: true
+        multivalued: false
+        range: string
+      workflow_version:
+        required: false
+        multivalued: false
+        range: string
+      workflow_url:
+        required: false
+        multivalued: false
+        range: string
+
+
+

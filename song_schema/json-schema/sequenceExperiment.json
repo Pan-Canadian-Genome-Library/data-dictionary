@@ -1,0 +1,68 @@
+{
+  "name": "sequenceExperiment",
+  "options": {
+    "fileTypes": [
+      "BAM",
+      "FASTQ"
+    ],
+    "externalValidations": [
+      {
+        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "jsonPath": "submitter_experiment_id"
+      }
+    ]
+  },
+  "schema": {
+    "properties": {
+      "analysis_input_type": {
+        "items": {
+          "description": "",
+          "enum": [
+            "Raw Sequencing Reads",
+            "Aligned Reads",
+            "Raw SNV Calls"
+          ],
+          "title": "AnalysisInputTypeEnum",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "analysis_output_type": {
+        "items": {
+          "description": "",
+          "enum": [
+            "Raw Sequencing Reads",
+            "Aligned Reads",
+            "Raw SNV Calls"
+          ],
+          "title": "AnalysisOutputTypeEnum",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "experiment": {
+        "description": "TBA...",
+        "type": "string"
+      },
+      "submitter_analysis_id": {
+        "type": "string"
+      },
+      "submitter_experiment_id": {
+        "description": "TBA...",
+        "type": "string"
+      }
+    },
+    "required": [
+      "submitter_experiment_id",
+      "experiment",
+      "submitter_analysis_id"
+    ],
+    "type": "object"
+  }
+}

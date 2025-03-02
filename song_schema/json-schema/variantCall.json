@@ -1,0 +1,139 @@
+{
+  "name": "variantCall",
+  "options": {
+    "fileTypes": [
+      "VCF",
+      "TBI"
+    ],
+    "externalValidations": [
+      {
+        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "jsonPath": "submitter_experiment_id"
+      }
+    ]
+  },
+  "schema": {
+    "properties": {
+      "analysis_input_type": {
+        "items": {
+          "description": "",
+          "enum": [
+            "Raw Sequencing Reads",
+            "Aligned Reads",
+            "Raw SNV Calls"
+          ],
+          "title": "AnalysisInputTypeEnum",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "analysis_output_type": {
+        "items": {
+          "description": "",
+          "enum": [
+            "Raw Sequencing Reads",
+            "Aligned Reads",
+            "Raw SNV Calls"
+          ],
+          "title": "AnalysisOutputTypeEnum",
+          "type": "string"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "experiment": {
+        "description": "TBA...",
+        "type": "string"
+      },
+      "genome_annotation": {
+        "description": "",
+        "enum": [
+          "Ensembl",
+          "RefSeq"
+        ],
+        "title": "GenomeAnnotationEnum",
+        "type": "string"
+      },
+      "genome_build": {
+        "description": "",
+        "enum": [
+          "GRCh37",
+          "GRCh38"
+        ],
+        "title": "GenomeBuildEnum",
+        "type": "string"
+      },
+      "submitter_analysis_id": {
+        "type": "string"
+      },
+      "submitter_experiment_id": {
+        "description": "TBA...",
+        "type": "string"
+      },
+      "variant_calling_strategy": {
+        "description": "",
+        "enum": [
+          "Tumour Only",
+          "Tumour Normal Paired",
+          "Cohort"
+        ],
+        "title": "VariantCallingStrategyEnum",
+        "type": "string"
+      },
+      "variant_class": {
+        "description": "",
+        "enum": [
+          "Germline",
+          "Somatic"
+        ],
+        "title": "VariantClassEnum",
+        "type": "string"
+      },
+      "workflow": {
+        "additionalProperties": false,
+        "description": "TBA...",
+        "properties": {
+          "workflow_id": {
+            "type": "string"
+          },
+          "workflow_name": {
+            "type": "string"
+          },
+          "workflow_url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "workflow_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "workflow_name",
+          "workflow_id"
+        ],
+        "title": "Workflow",
+        "type": "object"
+      }
+    },
+    "required": [
+      "submitter_experiment_id",
+      "variant_calling_strategy",
+      "variant_class",
+      "workflow",
+      "experiment",
+      "genome_build",
+      "submitter_analysis_id"
+    ],
+    "type": "object"
+  }
+}

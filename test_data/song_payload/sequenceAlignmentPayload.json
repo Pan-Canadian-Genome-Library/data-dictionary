@@ -1,0 +1,38 @@
+{
+  "analysisType": {
+    "name": "sequenceAlignment"
+  },
+  "studyId": "TEST-001",
+  "submitter_experiment_id": "EXP12345",
+  "submitter_analysis_id": "ANA67891",
+  "analysis_input_type": [
+    "Raw Sequencing Reads"
+  ],
+  "analysis_output_type": [
+    "Aligned Reads"
+  ],
+  "files": [
+    {
+      "fileName": "sample_01.bam",
+      "fileSize": 123456789,
+      "fileMd5sum": "abcdef1234567890abcdef1234567891",
+      "fileType": "BAM",
+      "fileAccess": "open"
+    },
+    {
+      "fileName": "sample_01.bai",
+      "fileSize": 987654321,
+      "fileMd5sum": "1234abcd5678efgh9012ijkl3456mnoq",
+      "fileType": "BAI",
+      "fileAccess": "controlled"
+    }
+  ],
+  "experiment": "null",
+  "genome_build": "GRCh37",
+  "workflow": {
+    "workflow_id": "WFL12345",
+    "workflow_name": "BWA",
+    "workflow_version": "0.7.17",
+    "workflow_url": "https//github.com/bwa"
+  } 
+}

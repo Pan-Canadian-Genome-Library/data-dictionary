@@ -1,0 +1,62 @@
+name: pcgl_analysis_schema
+description: Song analysis schema that supports the PCGL analysis data model
+in_language: '[''en'']'
+id: https://example.com/PCGL.yaml
+version: '2.1'
+imports:
+- linkml:types
+- experiment
+prefixes:
+  linkml: https://w3id.org/linkml/
+default_curi_maps:
+- semweb_context
+default_prefix: https://example.com/PCGL.yaml/  
+enums:
+  analysis_input_type_enum:
+    permissible_values:
+      Raw Sequencing Reads:
+        description: TBA...
+        meaning: TBA...
+      Aligned Reads:
+        description: TBA...
+        meaning: TBA...
+      Raw SNV Calls:
+        description: TBA...
+        meaning: TBA...
+  analysis_output_type_enum:
+    permissible_values:
+      Raw Sequencing Reads:
+        description: TBA...
+        meaning: TBA...
+      Aligned Reads:
+        description: TBA...
+        meaning: TBA...
+      Raw SNV Calls:
+        description: TBA...
+        meaning: TBA...
+
+classes:
+  Analysis:
+    name: Analysis
+    description: TBA...
+    title: Analysis
+    slots:
+    - submitter_analysis_id
+    - analysis_input_type
+    - analysis_output_type
+    attributes:
+      submitter_analysis_id:
+        required: true
+        multivalued: false
+        range: string
+      analysis_input_type:
+        required: false
+        multivalued: true
+        range: analysis_input_type_enum
+      analysis_output_type:
+        required: false
+        multivalued: true
+        range: analysis_output_type_enum
+
+
+

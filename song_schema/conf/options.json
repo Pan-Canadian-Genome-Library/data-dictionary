@@ -1,0 +1,32 @@
+{
+  "sequenceExperiment": 
+    {
+      "fileTypes":["BAM", "FASTQ"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    },
+  "sequenceAlignment": 
+    {
+      "fileTypes":["BAM", "CRAM", "BAI", "CRAI"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    },
+  "variantCall": 
+    {
+      "fileTypes":["VCF", "TBI"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    }  
+}
