@@ -1,13 +1,17 @@
-name: example_extended_schema
+name: PCGL_Base_Schema
 description: '...'
 in_language: '[''en'']'
-id: https://example.com/hostseq.yaml
-version: 2.2.1.0
+id: https://example.com/base_schema.yaml
+version: 2.2.0
 imports:
 - linkml:types
 prefixes:
-  linkml: https://w3id.org/linkml/
-default_prefix: https://example.com/hostseq.yaml/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
+default_curi_maps:
+- semweb_context
+default_prefix: https://example.com/base_schema.yaml/
 enums:
   cause_of_death_menu:
     name: cause_of_death_menu
@@ -558,126 +562,6 @@ enums:
         text: ChIP-Seq
       Targeted-Seq:
         text: Targeted-Seq
-  PregnancyMenu:
-    name: PregnancyMenu
-    title: pregnancy menu
-    permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      'Yes':
-        text: 'Yes'
-  Covid19SeverityMenu:
-    name: Covid19SeverityMenu
-    title: covid19 severity menu
-    permissible_values:
-      Ambulatory (limitation of activities):
-        text: Ambulatory (limitation of activities)
-      Ambulatory (no limitation of activities):
-        text: Ambulatory (no limitation of activities)
-      Ambulatory (with or without limitation of activities):
-        text: Ambulatory (with or without limitation of activities)
-      Dead - death:
-        text: Dead - death
-      Hospitalized - mild disease (hospitalized, no oxygen therapy):
-        text: Hospitalized - mild disease (hospitalized, no oxygen therapy)
-      Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs):
-        text: Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
-      Hospitalized - severe disease (intubation and mechanical ventilation):
-        text: Hospitalized - severe disease (intubation and mechanical ventilation)
-      Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen):
-        text: Hospitalized - severe disease (non-invasive ventilation or high-flow
-          oxygen)
-      Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO):
-        text: Hospitalized - severe disease (ventilation and additional organ support,
-          i.e. pressors, RRT, ECMO)
-      Uninfected (no clinical or virological evidence of infection):
-        text: Uninfected (no clinical or virological evidence of infection)
-  Covid19VaccineDosesMenu:
-    name: Covid19VaccineDosesMenu
-    title: covid19 vaccine doses menu
-    permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      Yes, four doses:
-        text: Yes, four doses
-      Yes, one dose:
-        text: Yes, one dose
-      Yes, three doses:
-        text: Yes, three doses
-      Yes, two doses:
-        text: Yes, two doses
-  ImageHostedFormatMenu:
-    name: ImageHostedFormatMenu
-    title: Image Hosted Format Menu
-    permissible_values:
-      PNG:
-        text: PNG
-      SVG:
-        text: SVG
-      PDF:
-        text: PDF
-      JPEG:
-        text: JPEG
-  ImageProcessPipelineMenu:
-    name: ImageProcessPipelineMenu
-    title: Image Process Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineB:
-        text: pipelineB
-      pipelineC:
-        text: pipelineC
-      pipelineD:
-        text: pipelineD
-      pipelineE:
-        text: pipelineE
-      pipelineF:
-        text: pipelineF
-  ImageProcessPngPipelineMenu:
-    name: ImageProcessPngPipelineMenu
-    title: Image Process Png Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineB:
-        text: pipelineB
-      pipelineC:
-        text: pipelineC
-  ImageProcessSvgPipelineMenu:
-    name: ImageProcessSvgPipelineMenu
-    title: Image Process Svg Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineD:
-        text: pipelineD
-      pipelineE:
-        text: pipelineE
-  ImageProcessPdfJpegPipelineMenu:
-    name: ImageProcessPdfJpegPipelineMenu
-    title: Image Process Pdf and Jpeg Pipeline Menu
-    permissible_values:
-      pipelineA:
-        text: pipelineA
-      pipelineD:
-        text: pipelineD
-      pipelineF:
-        text: pipelineF
-  ImageProcessingNullReasonMenu:
-    name: ImageProcessingNullReasonMenu
-    title: Image Processing Null Reason Menu
-    permissible_values:
-      Unknown:
-        text: Unknown
-      Not Provided:
-        text: Not Provided
-      Revoked:
-        text: Revoked
 slots:
   age_at_death:
     name: age_at_death
@@ -1544,417 +1428,9 @@ slots:
     title: Workflow Url
     range: string
     required: false
-  country_of_birth:
-    name: country_of_birth
-    description: The country where an individual was born, typically defined by current
-      geopolitical borders.
-    title: Country Of Birth
-    range: string
-  ancestry:
-    name: ancestry
-    description: The genetic or genomic heritage of an individual, typically tracing
-      the origins of one's ancestors.
-    title: Ancestry
-    range: string
-  height:
-    name: height
-    description: The measurement of an individual from head to toe recorded in centimeters
-      (cm).
-    title: Height
-    range: decimal
-  weight:
-    name: weight
-    description: The mass or body weight of an individual measured in kilograms (kg).
-    title: Weight
-    range: decimal
-  highest_education_level_achieved:
-    name: highest_education_level_achieved
-    description: The highest level of formal education an individual has completed.
-    title: Highest Education Level Achieved
-    range: string
-  employment:
-    name: employment
-    description: The current work status of an individual.
-    title: Employment
-    range: string
-  type_of_residence:
-    name: type_of_residence
-    description: The kind of dwelling in which an individual lives.
-    title: Type Of Residence
-    range: string
-  number_of_other_people_in_household:
-    name: number_of_other_people_in_household
-    description: The total number of individuals living in the same household as the
-      participant, excluding the participant.
-    title: Number Of Other People In Household
-    range: integer
-  pregnancy:
-    name: pregnancy
-    description: Indicates whether an individual is currently pregnant.
-    title: Pregnancy
-    range: PregnancyMenu
-    required: false
-  covid19_severity:
-    name: covid19_severity
-    description: A measure of the severity of a COVID-19 infection, which can range
-      from mild to severe or critical.
-    title: Covid19 Severity
-    range: Covid19SeverityMenu
-    required: false
-  covid19_vaccine_doses:
-    name: covid19_vaccine_doses
-    description: The number of COVID-19 vaccine doses the patient has received.
-    title: Covid19 Vaccine Doses
-    range: Covid19VaccineDosesMenu
-    required: false
-  image_hosted_url:
-    name: image_hosted_url
-    description: A URL for where the image is hosted
-    title: Image Hosted URL
-    range: string
-  image_hosted_format:
-    name: image_hosted_format
-    description: Accepted data types for images
-    title: Image Hosted Format
-    range: ImageHostedFormatMenu
-  image_processing_pipeline:
-    name: image_processing_pipeline
-    description: "Post processing pipeline dependent on image_hosted_format where:\n\
-      \ - image_hosted_format is PNG, choices are \n* PipelineA\n* PipelineB\n* PipelineC\n\
-      \ - image_hosted_format is SVG, choices are \n* PipelineA\n* PipelineD\n* PipelineE\n\
-      \ - image_hosted_format is PDF or JPEG, choices are \n* PipelineA\n* PipelineD\n\
-      * PipelineF\n"
-    title: Image Processing Pipeline
-    range: ImageProcessPipelineMenu
-  image_processing_personel:
-    name: image_processing_personel
-    description: 'String value for the person who processed the image.
-
-      Must be provided.If not ''image_processing_null_reason'' must be provided'
-    title: Image Processing Personel
-    range: string
-  image_processing_null_reason:
-    name: image_processing_null_reason
-    description: 'Tracks reason for why image processing personnel was not provided.
-
-      Only applicable if image_processing_personnel is not provided.
-
-      Possible values:
-
-      * Unknown
-
-      * Revoked
-
-      * Not Provided
-
-      Otherwise leave empty'
-    title: Image Processing Null Reason
-    range: ImageProcessingNullReasonMenu
 classes:
-  Comorbidity:
-    name: Comorbidity
-    description: TBA...
-    title: Comorbidity
-    slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_term
-    - comorbidity_treatment_status
-    - comorbidity_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: comorbidity
-      comorbidity_code:
-        name: comorbidity_code
-        rank: 3
-        slot_group: comorbidity
-      comorbidity_term:
-        name: comorbidity_term
-        rank: 4
-        slot_group: comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
-        rank: 5
-        slot_group: comorbidity
-      comorbidity_status:
-        name: comorbidity_status
-        rank: 6
-        slot_group: comorbidity
-  Demographic:
-    name: Demographic
-    description: Data for the characterization of the participant by means of segmenting
-      the population (e.g., characterization by age, sex, or race).
-    title: Demographic
-    todos:
-    - '{"reference": "GDC", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - gender
-    - sex_at_birth
-    - ethnicity
-    - race
-    - country_of_birth
-    - ancestry
-    - height
-    - weight
-    - highest_education_level_achieved
-    - employment
-    - type_of_residence
-    - number_of_other_people_in_household
-    - pregnancy
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      gender:
-        name: gender
-        rank: 2
-        slot_group: Demographic
-      sex_at_birth:
-        name: sex_at_birth
-        rank: 3
-        slot_group: Demographic
-      ethnicity:
-        name: ethnicity
-        rank: 4
-        slot_group: Demographic
-      race:
-        name: race
-        rank: 5
-        slot_group: Demographic
-      country_of_birth:
-        name: country_of_birth
-        rank: 7
-        slot_group: Extended Demographic
-      ancestry:
-        name: ancestry
-        rank: 8
-        slot_group: Extended Demographic
-      height:
-        name: height
-        rank: 9
-        slot_group: Extended Demographic
-      weight:
-        name: weight
-        rank: 10
-        slot_group: Extended Demographic
-      highest_education_level_achieved:
-        name: highest_education_level_achieved
-        rank: 11
-        slot_group: Extended Demographic
-      employment:
-        name: employment
-        rank: 12
-        slot_group: Extended Demographic
-      type_of_residence:
-        name: type_of_residence
-        rank: 13
-        slot_group: Extended Demographic
-      number_of_other_people_in_household:
-        name: number_of_other_people_in_household
-        rank: 14
-        slot_group: Extended Demographic
-      pregnancy:
-        name: pregnancy
-        rank: 15
-        slot_group: Extended Demographic
-  Diagnosis:
-    name: Diagnosis
-    description: The disease that is inferred to be present in the individual, family
-      or cohort being analyzed.
-    title: Diagnosis
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - submitter_diagnosis_id
-    - age_at_diagnosis
-    - disease_code
-    - disease_term
-    - disease_category
-    - covid19_severity
-    - covid19_vaccine_doses
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_diagnosis_id:
-        name: submitter_diagnosis_id
-        rank: 2
-        slot_group: Database Identifiers
-      age_at_diagnosis:
-        name: age_at_diagnosis
-        rank: 3
-        slot_group: diagnosis
-      disease_code:
-        name: disease_code
-        rank: 4
-        slot_group: diagnosis
-      disease_term:
-        name: disease_term
-        rank: 5
-        slot_group: diagnosis
-      disease_category:
-        name: disease_category
-        rank: 6
-        slot_group: diagnosis
-      covid19_severity:
-        name: covid19_severity
-        rank: 8
-        slot_group: Extended Diagnosis
-      covid19_vaccine_doses:
-        name: covid19_vaccine_doses
-        rank: 9
-        slot_group: Extended Diagnosis
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_diagnosis_id
-  Exposure:
-    name: Exposure
-    description: TBA...
-    title: Exposure
-    slots:
-    - submitter_participant_id
-    - alcohol_consumption
-    - smoking_status
-    - physical_activity
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      alcohol_consumption:
-        name: alcohol_consumption
-        rank: 2
-        slot_group: exposure
-      smoking_status:
-        name: smoking_status
-        rank: 3
-        slot_group: exposure
-      physical_activity:
-        name: physical_activity
-        rank: 4
-        slot_group: exposure
-  Follow_up:
-    name: Follow_up
-    description: 'Any point of contact with a patient after primary diagnosis. '
-    title: Follow up
-    todos:
-    - '{"reference": "ARGO", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_followup
-    - disease_status_at_followup
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: follow_up
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: follow_up
-      disease_status_at_followup:
-        name: disease_status_at_followup
-        rank: 3
-        slot_group: follow_up
-  Measurement:
-    name: Measurement
-    description: Record individual measurements to capture quantitative, ordinal (e.g.,
-      absent/present), or categorical measurements.
-    title: Measurement
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_measurement
-    - measurement_code
-    - measurement_term
-    - measurement_result_numeric
-    - measurement_unit
-    - measurement_result_categorical
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: measurement
-      measurement_code:
-        name: measurement_code
-        rank: 3
-        slot_group: measurement
-      measurement_term:
-        name: measurement_term
-        rank: 4
-        slot_group: measurement
-      measurement_result_numeric:
-        name: measurement_result_numeric
-        rank: 5
-        slot_group: measurement
-      measurement_unit:
-        name: measurement_unit
-        rank: 6
-        slot_group: measurement
-      measurement_result_categorical:
-        name: measurement_result_categorical
-        rank: 7
-        slot_group: measurement
-  Medication:
-    name: Medication
-    description: An agent such as a drug (pharmaceutical agent), broadly defined as
-      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
-      therapies.
-    title: Medication
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_treatment_id
-    - drug_code
-    - drug_term
-    - drug_dose_units
-    - prescribed_cumulative_drug_dose
-    - actual_cumulative_drug_dose
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      drug_code:
-        name: drug_code
-        rank: 2
-        slot_group: medication
-      drug_term:
-        name: drug_term
-        rank: 3
-        slot_group: medication
-      drug_dose_units:
-        name: drug_dose_units
-        rank: 4
-        slot_group: medication
-      prescribed_cumulative_drug_dose:
-        name: prescribed_cumulative_drug_dose
-        rank: 5
-        slot_group: medication
-      actual_cumulative_drug_dose:
-        name: actual_cumulative_drug_dose
-        rank: 6
-        slot_group: medication
-  Participant:
-    name: Participant
+  base_Participant:
+    name: base_Participant
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
@@ -1997,8 +1473,42 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_participant_id
-  Phenotype:
-    name: Phenotype
+  base_Demographic:
+    name: base_Demographic
+    description: Data for the characterization of the participant by means of segmenting
+      the population (e.g., characterization by age, sex, or race).
+    title: Demographic
+    todos:
+    - '{"reference": "GDC", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - gender
+    - sex_at_birth
+    - ethnicity
+    - race
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      gender:
+        name: gender
+        rank: 2
+        slot_group: Demographic
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 3
+        slot_group: Demographic
+      ethnicity:
+        name: ethnicity
+        rank: 4
+        slot_group: Demographic
+      race:
+        name: race
+        rank: 5
+        slot_group: Demographic
+  base_Phenotype:
+    name: base_Phenotype
     description: Individual phenotypic features, observed as either present or absent
       (excluded), with possible onset, modifiers and frequency
     title: Phenotype
@@ -2041,8 +1551,111 @@ classes:
         name: phenotype_severity
         rank: 7
         slot_group: Phenotype
-  Procedure:
-    name: Procedure
+  base_Follow_up:
+    name: base_Follow_up
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    title: Follow up
+    todos:
+    - '{"reference": "ARGO", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: follow_up
+      age_at_followup:
+        name: age_at_followup
+        rank: 2
+        slot_group: follow_up
+      disease_status_at_followup:
+        name: disease_status_at_followup
+        rank: 3
+        slot_group: follow_up
+  base_Measurement:
+    name: base_Measurement
+    description: Record individual measurements to capture quantitative, ordinal (e.g.,
+      absent/present), or categorical measurements.
+    title: Measurement
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_measurement
+    - measurement_code
+    - measurement_term
+    - measurement_result_numeric
+    - measurement_unit
+    - measurement_result_categorical
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_measurement:
+        name: age_at_measurement
+        rank: 2
+        slot_group: measurement
+      measurement_code:
+        name: measurement_code
+        rank: 3
+        slot_group: measurement
+      measurement_term:
+        name: measurement_term
+        rank: 4
+        slot_group: measurement
+      measurement_result_numeric:
+        name: measurement_result_numeric
+        rank: 5
+        slot_group: measurement
+      measurement_unit:
+        name: measurement_unit
+        rank: 6
+        slot_group: measurement
+      measurement_result_categorical:
+        name: measurement_result_categorical
+        rank: 7
+        slot_group: measurement
+  base_Comorbidity:
+    name: base_Comorbidity
+    description: TBA...
+    title: Comorbidity
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_term
+    - comorbidity_treatment_status
+    - comorbidity_status
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
+        rank: 2
+        slot_group: comorbidity
+      comorbidity_code:
+        name: comorbidity_code
+        rank: 3
+        slot_group: comorbidity
+      comorbidity_term:
+        name: comorbidity_term
+        rank: 4
+        slot_group: comorbidity
+      comorbidity_treatment_status:
+        name: comorbidity_treatment_status
+        rank: 5
+        slot_group: comorbidity
+      comorbidity_status:
+        name: comorbidity_status
+        rank: 6
+        slot_group: comorbidity
+  base_Procedure:
+    name: base_Procedure
     description: A clinical procedure performed on a subject. For example a surgical
       or diagnostic procedure such as a biopsy.
     title: Procedure
@@ -2075,8 +1688,34 @@ classes:
         name: procedure_body_site_term
         rank: 5
         slot_group: procedure
-  Specimen:
-    name: Specimen
+  base_Exposure:
+    name: base_Exposure
+    description: TBA...
+    title: Exposure
+    slots:
+    - submitter_participant_id
+    - alcohol_consumption
+    - smoking_status
+    - physical_activity
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      alcohol_consumption:
+        name: alcohol_consumption
+        rank: 2
+        slot_group: exposure
+      smoking_status:
+        name: smoking_status
+        rank: 3
+        slot_group: exposure
+      physical_activity:
+        name: physical_activity
+        rank: 4
+        slot_group: exposure
+  base_Specimen:
+    name: base_Specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -2139,8 +1778,52 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_specimen_id
-  Treatment:
-    name: Treatment
+  base_Diagnosis:
+    name: base_Diagnosis
+    description: The disease that is inferred to be present in the individual, family
+      or cohort being analyzed.
+    title: Diagnosis
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - age_at_diagnosis
+    - disease_code
+    - disease_term
+    - disease_category
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_diagnosis_id:
+        name: submitter_diagnosis_id
+        rank: 2
+        slot_group: Database Identifiers
+      age_at_diagnosis:
+        name: age_at_diagnosis
+        rank: 3
+        slot_group: diagnosis
+      disease_code:
+        name: disease_code
+        rank: 4
+        slot_group: diagnosis
+      disease_term:
+        name: disease_term
+        rank: 5
+        slot_group: diagnosis
+      disease_category:
+        name: disease_category
+        rank: 6
+        slot_group: diagnosis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_diagnosis_id
+  base_Treatment:
+    name: base_Treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:
@@ -2192,107 +1875,372 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_sample_id
-  Imaging:
-    name: Imaging
-    description: An imaging test
-    title: Imaging
+  base_Medication:
+    name: base_Medication
+    description: An agent such as a drug (pharmaceutical agent), broadly defined as
+      prescription and over-the-counter medicines, vaccines, and large-molecule biologic
+      therapies.
+    title: Medication
     todos:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
-    - image_hosted_url
-    - image_hosted_format
-    - image_processing_pipeline
-    - image_processing_personel
-    - image_processing_null_reason
+    - submitter_treatment_id
+    - drug_code
+    - drug_term
+    - drug_dose_units
+    - prescribed_cumulative_drug_dose
+    - actual_cumulative_drug_dose
     slot_usage:
-      image_hosted_url:
-        name: image_hosted_url
+      submitter_treatment_id:
+        name: submitter_treatment_id
         rank: 1
-        slot_group: Extended Imaging
-      image_hosted_format:
-        name: image_hosted_format
+        slot_group: Database Identifiers
+      drug_code:
+        name: drug_code
         rank: 2
-        slot_group: Extended Imaging
-      image_processing_pipeline:
-        name: image_processing_pipeline
+        slot_group: medication
+      drug_term:
+        name: drug_term
         rank: 3
-        slot_group: Extended Imaging
-      image_processing_personel:
-        name: image_processing_personel
+        slot_group: medication
+      drug_dose_units:
+        name: drug_dose_units
         rank: 4
-        slot_group: Extended Imaging
-      image_processing_null_reason:
-        name: image_processing_null_reason
+        slot_group: medication
+      prescribed_cumulative_drug_dose:
+        name: prescribed_cumulative_drug_dose
         rank: 5
-        slot_group: Extended Imaging
-    rules:
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            equals_string: PNG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessPngPipelineMenu
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            equals_string: SVG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessSvgPipelineMenu
-    - preconditions:
-        description: 'An example of if value==''A'' must follow enum
-
-          1/3 conditions'
-        slot_conditions:
-          image_hosted_format:
-            name: image_hosted_format
-            any_of:
-            - equals_string: PDF
-            - equals_string: JPEG
-      postconditions:
-        slot_conditions:
-          image_processing_pipeline:
-            name: image_processing_pipeline
-            any_of:
-            - range: ImageProcessPdfJpegPipelineMenu
-    - preconditions:
-        description: An example of if fieldA is missing provide fieldA_null_reason.
-          Common in virus-seq
-        slot_conditions:
-          image_processing_personel:
-            name: image_processing_personel
-            value_presence: ABSENT
-      postconditions:
-        slot_conditions:
-          image_processing_null_reason:
-            name: image_processing_null_reason
-            any_of:
-            - range: ImageProcessingNullReasonMenu
-          image_processing_personel:
-            name: image_processing_personel
-            required: false
-            value_presence: ABSENT
-      elseconditions:
-        slot_conditions:
-          image_processing_personel:
-            name: image_processing_personel
-            range: string
-            required: true
-          image_processing_null_reason:
-            name: image_processing_null_reason
-            value_presence: ABSENT
+        slot_group: medication
+      actual_cumulative_drug_dose:
+        name: actual_cumulative_drug_dose
+        rank: 6
+        slot_group: medication
+  base_Radiation:
+    name: base_Radiation
+    description: TBA...
+    title: Radiation
+    slots:
+    - submitter_treatment_id
+    - radiation_modality
+    - radiation_fractions
+    - radiation_dosage
+    - anatomical_site_irradiated_code
+    - anatomical_site_irradiated_term
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      radiation_modality:
+        name: radiation_modality
+        rank: 2
+        slot_group: radiation
+      radiation_fractions:
+        name: radiation_fractions
+        rank: 3
+        slot_group: radiation
+      radiation_dosage:
+        name: radiation_dosage
+        rank: 4
+        slot_group: radiation
+      anatomical_site_irradiated_code:
+        name: anatomical_site_irradiated_code
+        rank: 5
+        slot_group: radiation
+      anatomical_site_irradiated_term:
+        name: anatomical_site_irradiated_term
+        rank: 6
+        slot_group: radiation
+  base_Sample:
+    name: base_Sample
+    description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
+      from the specimen and used for experiments or analysis.
+    title: Sample
+    slots:
+    - submitter_sample_id
+    - submitter_specimen_id
+    - sample_type
+    - sample_status
+    - matched_control_submitter_sample_id
+    slot_usage:
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
+        rank: 2
+        slot_group: Database Identifiers
+      sample_type:
+        name: sample_type
+        rank: 3
+        slot_group: sample
+      sample_status:
+        name: sample_status
+        rank: 4
+        slot_group: sample
+      matched_control_submitter_sample_id:
+        name: matched_control_submitter_sample_id
+        rank: 5
+        slot_group: Database Identifiers
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_sample_id
+  base_Experiment:
+    name: base_Experiment
+    description: Contains information about the experimental design of the sequencing
+    title: Experiment
+    slots:
+    - submitter_experiment_id
+    - submitter_sample_id
+    - experiment_type
+    - experimental_strategy
+    - platform
+    slot_usage:
+      submitter_experiment_id:
+        name: submitter_experiment_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 2
+        slot_group: Database Identifiers
+      experiment_type:
+        name: experiment_type
+        rank: 3
+        slot_group: experiment
+      experimental_strategy:
+        name: experimental_strategy
+        rank: 4
+        slot_group: experiment
+      platform:
+        name: platform
+        rank: 5
+        slot_group: experiment
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_sample_id
+  base_Read_Group:
+    name: base_Read_Group
+    description: Holds the readgroup information about the raw reads generated in
+      a run of sequencing
+    title: Read Group
+    slots:
+    - submitter_read_ group_id
+    - submitter_experiment_id
+    - file_r1
+    - file_r2
+    - is_paired_end
+    - library_name
+    - platform_unit
+    - read_group_id_in_bam
+    - read_length_r1
+    - read_length_r2
+    - sample_barcode
+    - insert_size
+    slot_usage:
+      submitter_read_ group_id:
+        name: submitter_read_ group_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_experiment_id:
+        name: submitter_experiment_id
+        rank: 2
+        slot_group: Database Identifiers
+      file_r1:
+        name: file_r1
+        rank: 3
+        slot_group: read_group
+      file_r2:
+        name: file_r2
+        rank: 4
+        slot_group: read_group
+      is_paired_end:
+        name: is_paired_end
+        rank: 5
+        slot_group: read_group
+      library_name:
+        name: library_name
+        rank: 6
+        slot_group: read_group
+      platform_unit:
+        name: platform_unit
+        rank: 7
+        slot_group: read_group
+      read_group_id_in_bam:
+        name: read_group_id_in_bam
+        rank: 8
+        slot_group: read_group
+      read_length_r1:
+        name: read_length_r1
+        rank: 9
+        slot_group: read_group
+      read_length_r2:
+        name: read_length_r2
+        rank: 10
+        slot_group: read_group
+      sample_barcode:
+        name: sample_barcode
+        rank: 11
+        slot_group: read_group
+      insert_size:
+        name: insert_size
+        rank: 12
+        slot_group: read_group
+  base_Analysis:
+    name: base_Analysis
+    description: This entity is intended to contain metadata about a detailed examination
+      of data (mainly data processing protocols) in order to come to some conclusion.
+      It can be of different types (e.g. sequence variation, sequence alignment, phenotype
+      characterization, gene expression, etc.) that will mainly differ in the protocols
+      used to achieve the processed data of the analysis.
+    title: Analysis
+    slots:
+    - study_id
+    - submitter_analysis_id
+    - analysis_type
+    - submitter_participant_id
+    - submitter_specimen_id
+    - submitter_sample_id
+    - submitter_experiment_id
+    - submitter_workflow_id
+    - analysis_input_type
+    - analysis_output_type
+    - genome_build
+    - genome_annotation
+    slot_usage:
+      study_id:
+        name: study_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 2
+        slot_group: Database Identifiers
+      analysis_type:
+        name: analysis_type
+        rank: 3
+        slot_group: analysis
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 4
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
+        rank: 5
+        slot_group: Database Identifiers
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 6
+        slot_group: Database Identifiers
+      submitter_experiment_id:
+        name: submitter_experiment_id
+        rank: 7
+        slot_group: Database Identifiers
+      submitter_workflow_id:
+        name: submitter_workflow_id
+        rank: 8
+        slot_group: Database Identifiers
+      analysis_input_type:
+        name: analysis_input_type
+        rank: 9
+        slot_group: analysis
+      analysis_output_type:
+        name: analysis_output_type
+        rank: 10
+        slot_group: analysis
+      genome_build:
+        name: genome_build
+        rank: 11
+        slot_group: analysis
+      genome_annotation:
+        name: genome_annotation
+        rank: 12
+        slot_group: analysis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_sample_id
+  base_File:
+    name: base_File
+    description: Contains information about the files generated from a run of sequencing
+      or data analysis
+    title: File
+    slots:
+    - submitter_analysis_id
+    - fileName
+    - fileSize
+    - fileMd5sum
+    - fileType
+    - fileAccess
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      fileName:
+        name: fileName
+        rank: 2
+        slot_group: file
+      fileSize:
+        name: fileSize
+        rank: 3
+        slot_group: file
+      fileMd5sum:
+        name: fileMd5sum
+        rank: 4
+        slot_group: file
+      fileType:
+        name: fileType
+        rank: 5
+        slot_group: file
+      fileAccess:
+        name: fileAccess
+        rank: 6
+        slot_group: file
+  base_Workflow:
+    name: base_Workflow
+    description: Contains information about the analysis workflow generating the analysis
+    title: Workflow
+    slots:
+    - submitter_workflow_id
+    - workflow_name
+    - workflow_version
+    - workflow_url
+    - genome_build
+    - genome_annotation
+    slot_usage:
+      submitter_workflow_id:
+        name: submitter_workflow_id
+        rank: 1
+        slot_group: Database Identifiers
+      workflow_name:
+        name: workflow_name
+        rank: 2
+        slot_group: workflow
+      workflow_version:
+        name: workflow_version
+        rank: 3
+        slot_group: workflow
+      workflow_url:
+        name: workflow_url
+        rank: 4
+        slot_group: workflow
+      genome_build:
+        name: genome_build
+        rank: 5
+        slot_group: workflow
+      genome_annotation:
+        name: genome_annotation
+        rank: 6
+        slot_group: workflow
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_sample_id

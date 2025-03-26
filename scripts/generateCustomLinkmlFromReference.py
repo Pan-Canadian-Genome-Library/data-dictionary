@@ -63,7 +63,10 @@ def main():
 	mapping=generateBaseAndExtenstionMappings(reference_model,work_dir)
 	cleanModel(updated_model)
 
+	cleanVersion(updated_model,mapping)
+
 	flattenInheritedProperties(reference_model,updated_model,mapping)
+
 	dh_model=makeDataHarmonizerVersion(updated_model)
 
 	yaml_dumper.dump(updated_model,cli_input.custom_schema.replace(".yaml","_full.yaml"))
@@ -79,6 +82,30 @@ def cleanNullValues(yaml_file):
 		content_new = content.replace("None","null")
 	with open(yaml_file, 'w') as file:
 		file.write(content_new)
+
+
+def cleanVersion(updated_model,mapping):
+	"""
+	Combine versions from base schema and extensions schema to generate custom schema.
+	Both version are in float "N.N" denoting major minor changes.
+	Custom schema will be "A.a.B.b" denoting : Major base. Minor Base. Major Extension. Minor Extension.
+	"""
+	for key in updated_model.classes.keys():
+		if mapping[key].get("base_import"):
+			tmp_model=yaml_loader.load(mapping[key]['base_import'], SchemaDefinition)
+			break
+
+	base_version=re.search("^\\d.\\d", str(tmp_model.version))
+	extension_version=re.search("^\\d.\\d", str(updated_model.version))
+
+	if not bool(base_version):
+		print('Error retrieve base version')
+
+	if not bool(extension_version):
+		print('Error retrieve extension version')
+
+	updated_model.version="%s.%s" % (str(base_version[0]),str(extension_version[0]))
+
 
 def generateBaseAndExtenstionMappings(model,working_directory):
 	"""
@@ -96,15 +123,15 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 			if class_key.lower() in import_key.lower():
 			### If import is from base, match the base yaml file and class name
 				if "base" in import_key:
-					if os.path.isfile("%s/%s.yaml" % (working_directory,import_key)):
+					if os.path.isfile("%s/base/base.yaml" % (working_directory)):
 						mapping[class_key]={
-						"base_import": "%s/%s.yaml" % (working_directory,import_key),
+						"base_import": "%s/base/base.yaml" % (working_directory),
 						"extension_import": None,
 						"base_import_name": model.classes[class_key]['is_a'],
 						"extension_import_name": None,
 						}
 					else:
-						print("Error cannot find the following file : %s/%s.yaml" % (working_directory,import_key))
+						print("Error cannot find the following file : %s/base/base.yaml" % (working_directory))
 						exit(1)
 				elif "extension" in import_key:
 					if os.path.isfile("%s/%s.yaml" % (working_directory,import_key)):
@@ -114,7 +141,7 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 						if len(tmp_model.imports)!=0:
 							#print("%s yatzee B.A" % (import_key))
 							mapping[class_key]={
-							"base_import": "%s/%s.yaml" % (working_directory,tmp_model.imports[0]),
+							"base_import": "%s/base/base.yaml" % (working_directory),
 							"extension_import": "%s/%s.yaml" % (working_directory,import_key),
 							"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
 							"extension_import_name": model.classes[class_key]['is_a'],
@@ -160,7 +187,7 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 	for key in reference_model.classes.keys():
 		###For base import, we want every property except empty ones and name
 	    if mapping[key].get("base_import"):
-	        #print("2 %s A" % (key))
+	        #print("2 %s A" % (key),mapping[key]['base_import'])
 	        tmp_model=yaml_loader.load(mapping[key]['base_import'], SchemaDefinition)
 	        for base_property in tmp_model.classes[mapping[key]["base_import_name"]]:
 	            #print(base_property)

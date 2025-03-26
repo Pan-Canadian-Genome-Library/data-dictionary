@@ -1,7 +1,7 @@
 {
   "name": "default_pcgl_schema",
   "description": "Base clinical schema that incorporates all PCGL base entities",
-  "version": "2.1",
+  "version": "2.2.2.1",
   "schemas": [
     {
       "name": "phenotype",
@@ -15,7 +15,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -127,27 +129,15 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Study Id",
-            "mappings": {
-              "CQDG": "study_id"
-            }
-          },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "Submitter Participant Id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -320,7 +310,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -431,7 +423,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -453,7 +447,9 @@
             "mappings": {
               "mCODE.STU1": "Condition.identifier",
               "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code"
+              "FHIR": "condition.code",
+              "ARGO": "submitter_diagnosis_id",
+              "MOH": "submitter_diagnosis_id"
             },
             "examples": [
               "90234",
@@ -476,7 +472,9 @@
             "mappings": {
               "mCODE.STU3": "condition.onset",
               "FHIR": "condition.onset",
-              "Phenopacket": "disease.onset"
+              "Phenopacket": "disease.onset",
+              "ARGO": "age_at_diagnosis",
+              "MOH": "age_at_diagnosis"
             }
           },
           "name": "age_at_diagnosis",
@@ -489,7 +487,10 @@
             "mappings": {
               "mCODE.STU3": "condition.code",
               "FHIR": "condition.code",
-              "Phenopacket": "disease.term"
+              "Phenopacket": "disease.term",
+              "ARGO": "disease_code",
+              "MOH": "disease_code",
+              "CQDG": "disease_code"
             },
             "required": [
               "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
@@ -559,7 +560,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -578,6 +581,11 @@
         {
           "meta": {
             "displayName": "Alcohol Consumption",
+            "mappings": {
+              "ARGO": "alcohol_consumption",
+              "MOH": "alcohol_consumption",
+              "CQDG": "alcohol_consumption"
+            },
             "required": [
               "Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion."
             ]
@@ -596,7 +604,12 @@
         },
         {
           "meta": {
-            "displayName": "Smoking Status"
+            "displayName": "Smoking Status",
+            "mappings": {
+              "ARGO": "smoking_status",
+              "MOH": "smoking_status",
+              "CQDG": "smoking_status"
+            }
           },
           "name": "smoking_status",
           "description": "Indicate smoking status and history of a participant at the time of the data collection.",
@@ -660,7 +673,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -732,7 +747,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -939,7 +956,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -990,7 +1009,11 @@
         },
         {
           "meta": {
-            "displayName": "Cause Of Death"
+            "displayName": "Cause Of Death",
+            "mappings": {
+              "ARGO": "cause_of_death",
+              "MOH": "cause_of_death"
+            }
           },
           "name": "cause_of_death",
           "description": "Indicate the cause of a participant's death.",
@@ -1066,7 +1089,9 @@
             "displayName": "Procedure Body Site Code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite"
+              "FHIR": "Specimen.collection.bodySite",
+              "ARGO": "procedure_body_site_code",
+              "MOH": "procedure_body_site_code"
             },
             "required": [
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
@@ -1136,11 +1161,11 @@
           "restrictions": {
             "required": true,
             "codeList": [
-              "Electron Beam (NCIT:C28039)",
-              "High-LET Heavy Ion Therapy (NCIT:C15458)",
-              "Internal Radiation Therapy (NCIT:C15195)",
-              "Photon Beam Radiation Therapy (NCIT:C104914)",
-              "Proton Radiation (NCIT:C40431)."
+              "Electron Beam",
+              "High-LET Heavy Ion Therapy",
+              "Internal Radiation Therapy",
+              "Photon Beam Radiation Therapy",
+              "Proton Radiation"
             ]
           },
           "valueType": "string"
@@ -1166,7 +1191,9 @@
             "displayName": "Anatomical Site Irradiated Code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite"
+              "FHIR": "Specimen.collection.bodySite",
+              "MOH": "anatomical_site_irradiated_code",
+              "ARGO": "anatomical_site_irradiated_code"
             },
             "required": [
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
@@ -1218,7 +1245,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -1242,7 +1271,9 @@
               "mCODE.STU3": "Specimen.Identifier",
               "FHIR": "Specimen.Identifier",
               "Phenopacket": "biosample.id",
-              "BeaconV2": "biosample.id"
+              "BeaconV2": "biosample.id",
+              "ARGO": "submitter_specimen_id",
+              "MOH": "submitter_specimen_id"
             },
             "examples": [
               "LAML_PO",
@@ -1291,7 +1322,9 @@
             "displayName": "Specimen Storage",
             "mappings": {
               "Phenopacket": "biosample.sample_storage",
-              "BeaconV2": "biosample.sample_storage"
+              "BeaconV2": "biosample.sample_storage",
+              "ARGO": "specimen_storage",
+              "MOH": "specimen_storage"
             }
           },
           "name": "specimen_storage",
@@ -1316,7 +1349,9 @@
             "displayName": "Specimen Processing",
             "mappings": {
               "Phenopacket": "biosample.sample_processing",
-              "BeaconV2": "biosample.sample_processing"
+              "BeaconV2": "biosample.sample_processing",
+              "ARGO": "specimen_processing",
+              "MOH": "specimen_processing"
             }
           },
           "name": "specimen_processing",
@@ -1350,7 +1385,9 @@
             "displayName": "Specimen Anatomic Location Code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite"
+              "FHIR": "Specimen.collection.bodySite",
+              "ARGO": "specimen_anatomic_location_code",
+              "MOH": "specimen_anatomic_location_code"
             },
             "required": [
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
@@ -1425,7 +1462,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -1456,8 +1495,7 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string",
-          "unique": true
+          "valueType": "string"
         },
         {
           "meta": {
@@ -1515,7 +1553,12 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Response"
+            "displayName": "Treatment Response",
+            "mappings": {
+              "ARGO": "treatment_response",
+              "MOH": "treatment_response",
+              "CQDG": "treatment_response"
+            }
           },
           "name": "treatment_response",
           "description": "The outcome of the treatment, indicating how the patient responded to the intervention",
@@ -1537,7 +1580,11 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Status"
+            "displayName": "Treatment Status",
+            "mappings": {
+              "ARGO": "treatment_status",
+              "MOH": "treatment_status"
+            }
           },
           "name": "treatment_status",
           "description": "Indicate the donor's status of the prescribed treatment.",
