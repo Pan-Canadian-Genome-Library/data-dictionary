@@ -1,0 +1,4 @@
+study_id	submitter_participant_id	disease_specific_modifier	duo_modifier	duo_permission
+EXAMPLE-CA	DONOR_1		DUO:0000043 (clinical care use)|	DUO:0000042 (general research use)
+EXAMPLE-CA	DONOR_2			DUO:0000006 (health or medical or biomedical research)
+EXAMPLE-CA	DONOR_5	MONDO:0000001|		DUO:0000007 (disease specific research)

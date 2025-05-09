@@ -1,0 +1,3 @@
+submitter_treatment_id	procedure_code	procedure_term	procedure_body_site_code	procedure_body_site_term
+DONOR01	NCIt:C51687	Appendectomy	C50.1	C80.9
+DONOR01	NCIt:C51687			

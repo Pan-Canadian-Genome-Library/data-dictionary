@@ -1,0 +1,13 @@
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ###General use case
+submitter_diagnosis_id : "DONOR_01_DIAGNOSIS_01"
+submitter_participant_id : "DONOR_01"
+age_at_treatment : 10
+treatment_duration : 10
+treatment_intent : Curative
+treatment_response : Clinical remission
+treatment_status : Other
+treatment_type : Other
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_02" ###Minimal
+submitter_participant_id : "DONOR_01"
+treatment_type : Other

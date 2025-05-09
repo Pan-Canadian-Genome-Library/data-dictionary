@@ -1,0 +1,9 @@
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ###General use case
+actual_cumulative_drug_dose : 500
+drug_code : "NCIT:C138986"
+drug_dose_units : "UO:0000080"
+drug_term : "ampicillin (anhydrous)"
+prescribed_cumulative_drug_dose : 500
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_02" ###Minimal
+drug_code : "NCIT:C138986"

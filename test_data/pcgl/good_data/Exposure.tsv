@@ -1,0 +1,3 @@
+Submitter Participant Id	Age At Exposure	Exposure Amount	Exposure Code	Exposure Duration	Exposure Status	Exposure Term	Exposure Unit
+DONOR_01	10.0	10.0	LOINC:43164-0	10.0	Current	Alcohol use	drinks/day
+DONOR_01			LOINC:43164-0		Current		

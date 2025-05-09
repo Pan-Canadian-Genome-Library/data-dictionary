@@ -1,0 +1,64 @@
+submitter_sample_id : "DONOR_O1_SAMPLE_01" ### Missing submitter_experiment_id
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Missing submitter_sample_id
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Missing assay_type_code
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Missing experiment_type
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Missing instrument
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Missing platform
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Invalid assay_type_code regex
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "ChipSeq"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Invalid experiment_type enum
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "WGS"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Invalid instrument regex
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "Oxford Nanopore PromethION"
+platform : "ILLUMINA"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### Invalid platform enum
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "illumina"

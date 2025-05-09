@@ -1,0 +1,26 @@
+exposure_code : "LOINC:43164-0" ### Missing submitter_participant_id
+exposure_status : "Current"
+---
+submitter_participant_id : "DONOR_01" ### Missing exposure_code
+exposure_status : "Current"
+---
+submitter_participant_id : "DONOR_01" ### Missing exposure_status
+exposure_code : "LOINC:43164-0"
+---
+submitter_participant_id : "DONOR_01" ### Invalid exposure_code regex
+age_at_exposure : 10
+exposure_amount : 10
+exposure_code : "Invalid"
+exposure_duration : 10
+exposure_status : "Current"
+exposure_term : "Alcohol use"
+exposure_unit : "drinks/day"
+---
+submitter_participant_id : "DONOR_01" ### Invalid exposure_status enum
+age_at_exposure : 10
+exposure_amount : 10
+exposure_code : "LOINC:43164-0"
+exposure_duration : 10
+exposure_status : "Invalid"
+exposure_term : "Alcohol use"
+exposure_unit : "drinks/day"

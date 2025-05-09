@@ -1,6 +1,6 @@
 ### Generate custom linkML
 ```
-python scripts/generateCustomLinkmlFromReference.py -c custom/example/example.yaml
+python scripts/generateCustomLinkmlFromReference.py -c custom/example/example.yaml -d $(pwd)
 ```
 ### Convert linkML to Lectern
 **Only accepts full linkML**

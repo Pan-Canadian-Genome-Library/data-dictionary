@@ -1,0 +1,68 @@
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_01" ### General use case
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_notes : "No notes collected"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_01" ### Minimal
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_02" ### Conditional another fields
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Another Ethnic or Cultural Origin","Free text input"]
+ethnicity_another_category : "MockEthnicity"
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Another Gender"
+gender_another_gender : "MockGender"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "H0H0H0"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown","Another Racial Category"]
+race_another_racial_category: "MockRace"
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Another Sex"
+sex_another_category : "MockSex"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_notes : "No notes collected"
+sociodem_question : "PCGL reference question"
+sociodem_question_detail : "1.0.0"

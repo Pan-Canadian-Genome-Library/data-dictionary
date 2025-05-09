@@ -1,0 +1,48 @@
+submitter_participant_id : "DONOR_01" ### Missing submitter_specimen_id
+specimen_tissue_source_code : "NCIT:C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Missing submitter_participant_id 
+specimen_tissue_source_code : "NCIT:C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Missing specimen_tissue_source_code
+submitter_participant_id : "DONOR_01"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Invalid specimen_anatomic_location_code regex
+submitter_participant_id : "DONOR_01"
+specimen_anatomic_location_code : "8600019"
+specimen_laterality : "Missing - Unknown"
+specimen_processing : "Missing - Unknown"
+specimen_storage : "Missing - Unknown"
+specimen_tissue_source_code : "NCIT:C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Invalid specimen_tissue_source_code regex 
+submitter_participant_id : "DONOR_01"
+specimen_anatomic_location_code : "UBERON:8600019"
+specimen_laterality : "Missing - Unknown"
+specimen_processing : "Missing - Unknown"
+specimen_storage : "Missing - Unknown"
+specimen_tissue_source_code : "C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Invalid specimen_laterality enum 
+submitter_participant_id : "DONOR_01"
+specimen_anatomic_location_code : "UBERON:8600019"
+specimen_laterality : "Missing"
+specimen_processing : "Missing - Unknown"
+specimen_storage : "Missing - Unknown"
+specimen_tissue_source_code : "NCIT:C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Invalid sspecimen_processing enum
+submitter_participant_id : "DONOR_01"
+specimen_anatomic_location_code : "UBERON:8600019"
+specimen_laterality : "Missing - Unknown"
+specimen_processing : "Missing"
+specimen_storage : "Missing - Unknown"
+specimen_tissue_source_code : "NCIT:C12434"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Invalid specimen_storage enum
+submitter_participant_id : "DONOR_01"
+specimen_anatomic_location_code : "UBERON:8600019"
+specimen_laterality : "Missing - Unknown"
+specimen_processing : "Missing - Unknown"
+specimen_storage : "Missing"
+specimen_tissue_source_code : "NCIT:C12434"

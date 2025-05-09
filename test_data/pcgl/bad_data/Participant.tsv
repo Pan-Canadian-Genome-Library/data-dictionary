@@ -1,0 +1,9 @@
+Study Id	Duo Permission	Submitter Participant Id	Disease Specific Modifier	Duo Modifier
+EXAMPLE-CA	DUO:0000042 (general research use)			
+	DUO:0000042 (general research use)	DONOR-01		
+EXAMPLE-CA		DONOR-02		
+EXAMPLE-CA	DUO:0000042 (general research use)	DONOR-03	MONDO:0000001	
+EXAMPLE-CA	DUO:0000007 (disease specific research)	DONOR-04		DUO:0000043 (clinical care use)|DUO:0000029 (return to database or resource)|DUO:0000028 (institution specific restriction)
+EXAMPLE-CA	DUO:0000007 (disease specific research)	DONOR-05	Sick	DUO:0000043 (clinical care use)|DUO:0000029 (return to database or resource)|DUO:0000028 (institution specific restriction)
+EXAMPLE-CA	DUO:0000007	DONOR-06		DUO:0000043 (clinical care use)|DUO:0000029 (return to database or resource)|DUO:0000028 (institution specific restriction)
+EXAMPLE-CA	DUO:0000042 (general research use)	DONOR-07		DUO:0000043

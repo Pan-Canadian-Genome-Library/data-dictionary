@@ -1,0 +1,11 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_phenotype : 10
+phenotype_code : "HP:0011140"
+phenotype_duration : 10
+phenotype_observed : "Yes"
+phenotype_severity : "Mild"
+phenotype_term : "Gastrointestinal duplication"
+---
+submitter_participant_id : "DONOR_01" ### Minimal
+phenotype_code : "HP:0011140"
+phenotype_observed : "Yes"

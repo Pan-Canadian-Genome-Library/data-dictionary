@@ -1,0 +1,18 @@
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_01" ### General use case
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+assay_type_term : "whole genome sequencing assay"
+experiment_design : "4 rounds of PCR"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+instrument_metadata : "Default settings"
+platform : "ILLUMINA"
+sequencing_protocol : Default settings"
+---
+submitter_experiment_id : "DONOR_O1_EXPERIMENT_02" ### Minimal use case
+submitter_sample_id : "DONOR_O1_SAMPLE_01"
+assay_type_code : "OBI:0002117"
+experiment_type : "NCIT:C84343 (Genomics)"
+instrument : "OBI:0002752 (Oxford Nanopore PromethION)"
+platform : "ILLUMINA"
+

@@ -1,0 +1,5 @@
+Submitter Participant Id	Disease Code	Disease Term	Submitter Diagnosis Id
+DONOR_01	ICD10:C34	Malignant neoplasm of bronchus and lung	
+	MONDO:0000001		DIAGNOSIS_01
+DONOR_01			DIAGNOSIS_02
+DONOR_01	C34		DIAGNOSIS_02

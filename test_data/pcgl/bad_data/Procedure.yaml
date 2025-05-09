@@ -1,0 +1,16 @@
+procedure_body_site_code : "UBERON:2005080" ### Missing submitter_treatment_id
+procedure_code : "CCI:1CA14STCDR"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Missing procedure_body_site_code
+procedure_code : "CCI:1CA14STCDR"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Missing procedure_code 
+procedure_body_site_code : "UBERON:2005080"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Invalid procedure_body_site_code regex
+procedure_body_site_code : "UBERON:2005080"
+procedure_code : "INVALID"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Invalid procedure_code regex
+procedure_body_site_code : "2005080"
+procedure_code : "CCI:1CA14STCDR"

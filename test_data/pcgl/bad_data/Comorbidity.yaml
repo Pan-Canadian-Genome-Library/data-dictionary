@@ -1,0 +1,18 @@
+comorbidity_code : ICD10:C34 ### Missing submitter_participant_id
+---
+submitter_participant_id : "DONOR_01" ### Missing comorbidity_code
+---
+submitter_participant_id : "DONOR_01" ### Invalid comorbidity_code regex
+comorbidity_code : Invalid
+comorbidity_status : Active
+comorbidity_treatment_status : Untreated
+---
+submitter_participant_id : "DONOR_01" ### Invalid comorbidity_status enum
+comorbidity_code : MONDO:0000001
+comorbidity_status : Invalid
+comorbidity_treatment_status : Untreated
+---
+submitter_participant_id : "DONOR_01" ### Invalid comorbidity_treatment_status enum
+comorbidity_code : MONDO:0000001
+comorbidity_status : Active
+comorbidity_treatment_status : Invalid

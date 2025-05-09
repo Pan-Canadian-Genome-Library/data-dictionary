@@ -1,0 +1,6 @@
+Comorbidity Code	Submitter Participant Id	Comorbidity Status	Comorbidity Treatment Status
+ICD10:C34			
+	DONOR_01		
+Invalid	DONOR_01	Active	Untreated
+MONDO:0000001	DONOR_01	Invalid	Untreated
+MONDO:0000001	DONOR_01	Active	Invalid
