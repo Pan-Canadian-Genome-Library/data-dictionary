@@ -11,3 +11,15 @@ treatment_type : Other
 submitter_treatment_id : "DONOR_01_TREATMENT_02" ###Minimal
 submitter_participant_id : "DONOR_01"
 treatment_type : Other
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_03" ###Minimal
+submitter_participant_id : "DONOR_01"
+treatment_type : Other
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_04" ###Minimal
+submitter_participant_id : "DONOR_01"
+treatment_type : Other
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_05" ###Minimal
+submitter_participant_id : "DONOR_01"
+treatment_type : Other

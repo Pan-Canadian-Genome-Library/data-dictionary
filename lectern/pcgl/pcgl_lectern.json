@@ -1,10 +1,14 @@
 {
   "name": "default_pcgl_schema",
   "description": "Base clinical schema that incorporates all PCGL base entities",
-  "version": "2.2.2.2",
+  "version": "1.0",
   "schemas": [
     {
       "name": "participant",
+      "meta":{
+        "base": 1.0,
+        "pcgl_extension" : 1.0
+      },
       "description": "The collection of all data related to a specific individual human in the context of a specific study.",
       "fields": [
         {
@@ -220,11 +224,11 @@
               "No formal education",
               "Elementary school or equivalent",
               "High school (secondary school) diploma or equivalency certificate",
-              "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson designation), or other trades certificate or diploma",
+              "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
               "College, CEGEP, or other non-university certificate or diploma",
-              "Bachelor degree",
+              "Bachelor\u2019s degree",
               "Degree in medicine, dentistry, veterinary medicine or optometry",
-              "Master degree",
+              "Master\u2019s degree",
               "Doctoral degree",
               "Post-doctoral fellowship or training",
               "Prefer not to answer",
@@ -267,7 +271,7 @@
             ]
           },
           "name": "ethnicity",
-          "description": "Refers to the ethnic or cultural origins of a person ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+          "description": "Refers to the ethnic or cultural origins of a person's ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -350,7 +354,7 @@
             ]
           },
           "name": "gender",
-          "description": "Refers to an individual personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -385,7 +389,7 @@
                     "gender"
                   ],
                   "match": {
-                    "value": "'Another Gender'"
+                    "value": "Another Gender"
                   },
                   "case": "all"
                 }
@@ -529,7 +533,7 @@
             "codeList": [
               "Black",
               "East Asian",
-              "Indigenous (First Nations, Inuk/Inuit, Metis)",
+              "Indigenous (First Nations, Inuk/Inuit, M\u00e9tis)",
               "Latin American",
               "Middle Eastern or North African",
               "South Asian",
@@ -645,7 +649,7 @@
             ]
           },
           "name": "sex_at_birth",
-          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
+          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -748,8 +752,10 @@
                     "sociodem_question"
                   ],
                   "match": {
-                    "codeList":
-                      ["PCGL reference question","Another question"]
+                    "codeList": [
+                      "PCGL reference question",
+                      "Another question"
+                    ]
                   },
                   "case": "any"
                 }
@@ -834,7 +840,7 @@
             }
           },
           "name": "cause_of_death",
-          "description": "Indicate the cause of a participant death.",
+          "description": "Indicate the cause of a participant's death.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -858,7 +864,7 @@
             }
           },
           "name": "vital_status",
-          "description": "Participant last known state of living or deceased.",
+          "description": "Participant's last known state of living or deceased.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -1055,7 +1061,9 @@
                   "fields": [
                     "submitter_treatment_id"
                   ],
-                  "match":{"empty": false},
+                  "match": {
+                    "exists": false
+                  },
                   "case": "all"
                 }
               ]
@@ -1175,7 +1183,7 @@
             }
           },
           "name": "treatment_status",
-          "description": "Indicate the donor status of the prescribed treatment.",
+          "description": "Indicate the donor's status of the prescribed treatment.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -1273,7 +1281,7 @@
             "displayName": "Age At Followup"
           },
           "name": "age_at_followup",
-          "description": "Participant age (in days) at time of the follow up event",
+          "description": "Participant's age (in days) at time of the follow up event",
           "valueType": "integer"
         },
         {
@@ -1281,7 +1289,7 @@
             "displayName": "Disease Status At Followup"
           },
           "name": "disease_status_at_followup",
-          "description": "Indicate the participant disease status at time of follow-up",
+          "description": "Indicate the participant's disease status at time of follow-up",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -1741,7 +1749,7 @@
             "displayName": "Age At Phenotype"
           },
           "name": "age_at_phenotype",
-          "description": "Participant age (in days) when phenotype was observed",
+          "description": "Participant's age (in days) when phenotype was observed",
           "valueType": "integer"
         },
         {
@@ -2137,7 +2145,7 @@
             "displayName": "Age At Specimen Collection"
           },
           "name": "age_at_specimen_collection",
-          "description": "Indicate participant age( in days) when specimen was collected.",
+          "description": "Indicate participant's age( in days) when specimen was collected.",
           "valueType": "integer"
         },
         {
@@ -2639,7 +2647,7 @@
           "description": "The identifier of a read group; must be unique within each payload.",
           "restrictions": {
             "required": true,
-            "regex": "^[a-zA-Z0-9\\-_:\\.]+$"
+            "regex": "^[a-zA-Z0-9\\-_:\\.']+$"
           },
           "valueType": "string",
           "unique": true
@@ -2794,7 +2802,7 @@
           "description": "Optional field indicating the @RD ID in the BAM. If submitted, this will be used to map the @RG ID in the BAM header to the submitter_read_group_id in the payload. After submission, the @RG ID in the payload will be used for all future headers. This cannot be submitted for FASTQ files.",
           "valueType": "string",
           "restrictions": {
-            "regex": "^[a-zA-Z0-9\\-_:\\.]+$"
+            "regex": "^[a-zA-Z0-9\\-_:\\.']+$"
           }
         },
         {

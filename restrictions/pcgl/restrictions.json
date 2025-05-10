@@ -36,7 +36,7 @@
                             "conditions": [
                                 {
                                     "fields":["submitter_treatment_id"],
-                                    "empty": false,
+                                    "match":{"exists": false},
                                     "case" : "all"
                                 }
                             ]
@@ -58,7 +58,7 @@
                             "conditions": [
                                 {
                                     "fields":["race"],
-                                    "match":{"value":"race_another_racial_category"},
+                                    "match":{"value":"Another Racial Category"},
                                     "case": "all"
                                 }
                             ]
@@ -76,7 +76,7 @@
                             "conditions": [
                                 {
                                     "fields":["gender"],
-                                    "match":{"value":"'Another Gender'"},
+                                    "match":{"value":"Another Gender"},
                                     "case": "all"
                                 }
                             ]
@@ -95,7 +95,7 @@
                                 {
                                     "fields":["ethnicity"],
                                     "match":{"value": "Free text input"},
-                                    "case": "all"
+                                    "case": "any"
                                 }
                             ]
 
@@ -113,7 +113,7 @@
                                 {
                                     "fields":["sex_at_birth"],
                                     "match":{"value":"Another Sex"},
-                                    "case": "all"
+                                    "case": "any"
                                 }
                             ]
 

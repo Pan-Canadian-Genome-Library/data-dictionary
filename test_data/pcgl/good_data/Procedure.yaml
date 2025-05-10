@@ -16,6 +16,6 @@ submitter_treatment_id : "DONOR_01_TREATMENT_04" ### Minimal use case
 procedure_body_site_code : "ICDO3:C80.9"
 procedure_code : "SNOMEDCT:284196006"
 ---
-submitter_treatment_id : "DONOR_01_TREATMENT_05∂" ### Minimal use case
+submitter_treatment_id : "DONOR_01_TREATMENT_05" ### Minimal use case
 procedure_body_site_code : "ICDO3:C80.9"
 procedure_code : "NCIT:C51894"

@@ -20,7 +20,7 @@ sociodem_date_collection : "9999-99-99"
 sociodem_notes : "No notes collected"
 sociodem_question : "Missing - Unknown"
 ---
-submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_01" ### Minimal
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_02" ### Minimal
 submitter_participant_id : "DONOR_01"
 age_at_sociodem_collection : 10
 education : "Missing - Unknown"
@@ -40,7 +40,7 @@ sex_collect_method : "Missing - Unknown"
 sociodem_date_collection : "9999-99-99"
 sociodem_question : "Missing - Unknown"
 ---
-submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_02" ### Conditional another fields
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_03" ### Conditional another fields
 submitter_participant_id : "DONOR_01"
 age_at_sociodem_collection : 10
 education : "Missing - Unknown"
