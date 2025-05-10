@@ -58,7 +58,7 @@
                             "conditions": [
                                 {
                                     "fields":["race"],
-                                    "match":{"value":"Another Racial Category"},
+                                    "match":{"codeList": ["Another Racial Category"]},
                                     "case": "all"
                                 }
                             ]
@@ -94,7 +94,7 @@
                             "conditions": [
                                 {
                                     "fields":["ethnicity"],
-                                    "match":{"value": "Free text input"},
+                                    "match":{"codeList": ["Free text input"]},
                                     "case": "any"
                                 }
                             ]

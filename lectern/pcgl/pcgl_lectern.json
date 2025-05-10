@@ -1,14 +1,10 @@
 {
-  "name": "default_pcgl_schema",
+  "name": "prod_pcgl_schema",
   "description": "Base clinical schema that incorporates all PCGL base entities",
   "version": "1.0",
   "schemas": [
     {
       "name": "participant",
-      "meta":{
-        "base": 1.0,
-        "pcgl_extension" : 1.0
-      },
       "description": "The collection of all data related to a specific individual human in the context of a specific study.",
       "fields": [
         {
@@ -308,9 +304,9 @@
                     "ethnicity"
                   ],
                   "match": {
-                    "value": "Free text input"
+                    "codeList": ["Free text input"]
                   },
-                  "case": "all"
+                  "case": "any"
                 }
               ]
             },
@@ -570,9 +566,9 @@
                     "race"
                   ],
                   "match": {
-                    "value": "race_another_racial_category"
+                    "codeList": ["Another Racial Category"]
                   },
-                  "case": "all"
+                  "case": "any"
                 }
               ]
             },
@@ -625,7 +621,7 @@
                   "match": {
                     "value": "Another Sex"
                   },
-                  "case": "all"
+                  "case": "any"
                 }
               ]
             },
