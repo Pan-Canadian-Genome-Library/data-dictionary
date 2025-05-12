@@ -1,0 +1,13 @@
+submitter_participant_id : DONOR_01  ###Missing submitter_diagnosis_id
+disease_code : "ICD10:C34"
+disease_term : Malignant neoplasm of bronchus and lung
+---
+submitter_diagnosis_id : "DIAGNOSIS_01" ###Missing submitter_participant_id
+disease_code : "MONDO:0000001"
+---
+submitter_diagnosis_id : "DIAGNOSIS_02" ###Missing disease_code
+submitter_participant_id : DONOR_01
+---
+submitter_diagnosis_id : "DIAGNOSIS_02" ###Invalid disease code code
+submitter_participant_id : DONOR_01
+disease_code : "C34"

@@ -1,0 +1,10 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_measurement : 10
+measurement_code : "LOINC:29463-7"
+measurement_result_categorical : "BLANK"
+measurement_result_numeric : 10
+measurement_term : "Body weight"
+measurement_unit : "UO:0000009"
+---
+submitter_participant_id : "DONOR_01" ### Minimal use case
+measurement_code : "LOINC:29463-7"

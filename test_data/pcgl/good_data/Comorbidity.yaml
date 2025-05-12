@@ -1,0 +1,9 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_comorbidity_diagnosis : 10
+comorbidity_code : MONDO:0000001
+comorbidity_status : Active
+comorbidity_term : Malignant neoplasm of bronchus and lung
+comorbidity_treatment_status : Untreated
+---
+submitter_participant_id : "DONOR_01" ### Minimal
+comorbidity_code : ICD10:C34

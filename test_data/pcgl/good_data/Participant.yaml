@@ -1,0 +1,15 @@
+submitter_participant_id : "DONOR_01" ### General use case
+study_id : "EXAMPLE-CA"
+duo_permission : "DUO:0000042 (general research use)"
+---
+submitter_participant_id : "DONOR_02" ### conditional disease_specific_modifier_when conditional duo_permission 
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043 (clinical care use)"]
+disease_specific_modifier : [MONDO:0000001]
+duo_permission : "DUO:0000007 (disease specific research)"
+---
+submitter_participant_id : "DONOR_03" ### Multi value 
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043 (clinical care use)","DUO:0000029 (return to database or resource)", "DUO:0000028 (institution specific restriction)"]
+disease_specific_modifier : ["MONDO:0000001","MONDO:0000002","MONDO:0000003"]
+duo_permission : "DUO:0000007 (disease specific research)"

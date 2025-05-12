@@ -1,15 +1,17 @@
-name: default_pcgl_schema
-description: Base clinical schema that incorporates all PCGL base entities
+name: PCGL_Base_Schema
+description: '...'
 in_language: '[''en'']'
-id: https://example.com/PCGL.yaml
-version: 2.2.2.2
+id: https://example.com/base_schema.yaml
+version: 2.2
 imports:
 - linkml:types
 prefixes:
-  linkml: https://w3id.org/linkml/
+  linkml:
+    prefix_prefix: linkml
+    prefix_reference: https://w3id.org/linkml/
 default_curi_maps:
 - semweb_context
-default_prefix: https://example.com/PCGL.yaml/
+default_prefix: https://example.com/base_schema.yaml/
 enums:
   cause_of_death_menu:
     name: cause_of_death_menu
@@ -694,10 +696,8 @@ enums:
         text: Elementary school or equivalent
       High school (secondary school) diploma or equivalency certificate:
         text: High school (secondary school) diploma or equivalency certificate
-      ? Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
-        designation), or other trades certificate or diploma
-      : text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
-          designation), or other trades certificate or diploma
+      Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma :
+        text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma 
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
       Bachelor’s degree:
@@ -1093,8 +1093,7 @@ slots:
     name: study_id
     description: Unique identifier of the study.
     title: Study Id
-    notes:
-    - Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
+    notes: Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
     exact_mappings:
     - ARGO:studyId
     - CQDG:study_id
@@ -1136,8 +1135,7 @@ slots:
       The provided values are based on the list of ethnic or cultural origins 2021
       defined by Statistics Canada
     title: Ethnicity
-    notes:
-    - '
+    notes: '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1160,8 +1158,7 @@ slots:
       woman or non-binary person (a person who is not exclusively a man or a woman).
       The provided values are based on the categories defined by Statistics Canada
     title: Gender
-    notes:
-    - '
+    notes: '
 
       PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1194,8 +1191,7 @@ slots:
       based on a person's reproductive system and other physical characteristics.
       The provided values are based on the categoried defined by Statistics Canada
     title: Sex At Birth
-    notes:
-    - '
+    notes: '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1304,8 +1300,8 @@ slots:
     description: Indicate the unit of measurement for the result using LOINC code.
     title: Measurement Unit
     range: string
+    pattern : ^UO:\d{7}$
     required: false
-    pattern: ^UO:\d{7}$
   age_at_comorbidity_diagnosis:
     name: age_at_comorbidity_diagnosis
     description: Indicate the age (in days) of comorbidity diagnosis.
@@ -1459,7 +1455,7 @@ slots:
     - MOH:specimen_anatomic_location_code
     range: string
     required: false
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   specimen_anatomic_location_label:
     name: specimen_anatomic_location_label
     description: Provide the human readable label for the specimen anatomic location
@@ -1677,8 +1673,8 @@ slots:
     description: Indicate units used to record drug dose.
     title: Drug Dose Units
     range: string
-    required: false
     pattern: ^UO:\d{7}$
+    required: false
   drug_term:
     name: drug_term
     description: Provide the standardized and human readable term derived from the
@@ -1711,7 +1707,7 @@ slots:
     - ARGO:anatomical_site_irradiated_code
     range: string
     required: false
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
     description: Provide the standardized and human readable term derived from the
@@ -1759,7 +1755,8 @@ slots:
   sample_type:
     name: sample_type
     description: 'Indicate NCIt (NCI Thesaurus) code and term to denote the type of
-      molecular sample used for sequencing and analysis. '
+      molecular sample used for sequencing and analysis.
+      '
     title: Sample Type
     exact_mappings:
     - Phenopacket:biosample.sample_type
@@ -2011,8 +2008,7 @@ slots:
     description: Age (in days) of the participant at the time of sociodemographic
       data collection
     title: Age At Sociodem Collection
-    notes:
-    - '
+    notes: '
 
       If projects do not have the exact date of birth, they may report an approximate
       age (in days) using the year of birth and year of study collection.
@@ -2031,8 +2027,7 @@ slots:
       \ the day is unknown but the month and year are known\n- Use YYYY if only the\
       \ year is known"
     title: Sociodem Date Collection
-    notes:
-    - '
+    notes: '
 
       When the exact date is unknown it can be approximated based on the study''s
       year of commencement.
@@ -2049,8 +2044,7 @@ slots:
       categories (e.g., Pacific Islander, Indigenous identities outside of North America,
       etc.).
     title: Race Another Racial Category
-    notes:
-    - '
+    notes: '
 
       race_another_racial_category must be populated when race is "Another Racial
       Category"
@@ -2070,8 +2064,7 @@ slots:
       responses that were self-identified should not be aggregated with responses
       that were socially assigned or derived. '
     title: Race Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data v1.0.
@@ -2084,8 +2077,7 @@ slots:
     description: A response which does not fall into any of the previous gender reporting
       categories.
     title: Gender Another Gender
-    notes:
-    - '
+    notes: '
 
       gender_another_gender must be populated when gender is "Another Gender"
 
@@ -2099,8 +2091,7 @@ slots:
     description: 'Studies must report how the gender data was collected. This is necessary
       to enable data aggregation, harmonization, and reproducibility. '
     title: Gender Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data v1.0.
@@ -2114,8 +2105,7 @@ slots:
       For example, a response of “Other” from retrospective studies. Prospective projects
       should instead allow participants to freely self-identify.
     title: Ethnicity Another Category
-    notes:
-    - '
+    notes: '
 
       ethnicity_another_category must be populated when ethnicity is "Free text input".
 
@@ -2129,8 +2119,7 @@ slots:
     description: 'Studies must report how the ethnicity data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
     title: Ethnicity Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2142,8 +2131,7 @@ slots:
     name: sex_another_category
     description: 'A response which does not fall into any of the previous categories. '
     title: Sex Another Category
-    notes:
-    - '
+    notes: '
 
       sex_another_category must be populated when sex is "Another Sex"..
 
@@ -2157,8 +2145,7 @@ slots:
     description: 'Studies must report how the sex_at_birth data was collected. This
       is necessary to enable data aggregation, harmonization, and reproducibility. '
     title: Sex Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2170,8 +2157,7 @@ slots:
     name: education
     description: The highest level of education attained.
     title: Education
-    notes:
-    - '
+    notes: '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2186,8 +2172,7 @@ slots:
     description: 'Studies must report how the education data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
     title: Education Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2199,8 +2184,7 @@ slots:
     name: personal_income
     description: Personal annual income from all sources after taxes.
     title: Personal Income
-    notes:
-    - '
+    notes: '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2215,8 +2199,7 @@ slots:
     description: 'Studies must report how the personal_income data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
     title: Personal Income Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2228,8 +2211,7 @@ slots:
     name: geographic_location
     description: 'A participant’s postal code at their current address of residence. '
     title: Geographic Location
-    notes:
-    - '
+    notes: '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2253,8 +2235,7 @@ slots:
     description: 'Studies must report how the geographic_location data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
     title: Geographic Location Collect Method
-    notes:
-    - '
+    notes: '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2275,8 +2256,7 @@ slots:
       the provided response options/reporting categories if it does not follow the
       PCGL reference question and standard reporting categories.
     title: Sociodem Question Detail
-    notes:
-    - '
+    notes: '
 
       "The sociodem_question_detail field provides additional context and is conditionally
       required based on the value of sociodem_question:
@@ -2338,8 +2318,7 @@ slots:
 
       '
     title: Exposure Code
-    notes:
-    - '
+    notes: '
 
       SNOMED-CT URL:
 
@@ -2392,8 +2371,8 @@ slots:
     name: exposure_amount
     description: Provide intensity, quantity or frequency of the exposure
     title: Exposure Amount
-    notes:
-    - "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day, hours/week\n"
+    notes: "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day,\
+      \ hours/week\n"
     range: integer
     required: false
   exposure_unit:
@@ -2448,10 +2427,9 @@ slots:
     name: experiment_design
     description: The high-level experiment design including layout, protocol.
     title: Experiment Design
-    notes:
-    - Added as a redundancy measure to prevent submission errors. Clinical API will
-      check study_id against user's selection. Also duplicates field study_id in Participant
-      b/c SONG's rigidity to rename
+    notes: Added as a redundancy measure to prevent submission errors. Clinical API
+      will check study_id against user's selection. Also duplicates field study_id
+      in Participant b/c SONG's rigidity to rename
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:design_description
     range: string
@@ -2463,8 +2441,7 @@ slots:
 
       Provide code in Compact URI (CURIE) pattern.'
     title: Assay Type Code
-    notes:
-    - '
+    notes: '
 
       E.g,
 
@@ -2496,8 +2473,7 @@ slots:
     description: Provide the standardized and human readable term derived from the
       coding system associated with the assay type code.
     title: Assay Type Term
-    notes:
-    - '
+    notes: '
 
       E.g,
 
@@ -2542,8 +2518,7 @@ slots:
 
       OBI:0002012 (PacBio RS II)'
     title: Instrument
-    notes:
-    - '
+    notes: '
 
       Please make sure to include a space between the CURIE and the opening parenthesis.
 
@@ -2584,8 +2559,7 @@ slots:
     description: Name of the sequencing file containing reads from the first end of
       a sequencing run.
     title: File R1
-    notes:
-    - Any string value. Must match a fileName identified in the files section.
+    notes: Any string value. Must match a fileName identified in the files section.
     exact_mappings:
     - ARGO:file_r1
     range: string
@@ -2596,8 +2570,8 @@ slots:
       of a paired-end sequencing run. Required if and only if paired-end sequencing
       was done.
     title: File R2
-    notes:
-    - Any string value or null. Must match a fileName identified in the files section.
+    notes: Any string value or null. Must match a fileName identified in the files
+      section.
     exact_mappings:
     - ARGO:file_r2
     range: string
@@ -2607,8 +2581,7 @@ slots:
     description: Name of a sequencing library made from a molecular sample or a sample
       pool (multiplex sequencing).
     title: Library Name
-    notes:
-    - Any string value.
+    notes: Any string value.
     exact_mappings:
     - ARGO.library_name
     - GA4GH.Experiment.Metadata.Checklist:library_extra_id
@@ -2633,8 +2606,7 @@ slots:
       identifier. For non-multiplex sequencing, platform unit and read group have
       a one-to-one relationship.
     title: Platform Unit
-    notes:
-    - Any string value.
+    notes: Any string value.
     exact_mappings:
     - ARGO.platform_unit
     range: string
@@ -2645,8 +2617,7 @@ slots:
       information, spot, gap descriptors, and any other information relevant to its
       construction
     title: Library Description
-    notes:
-    - Any string value.
+    notes: Any string value.
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:library_description
     range: string
@@ -2658,8 +2629,7 @@ slots:
       in the payload. After submission, the @RG ID in the payload will be used for
       all future headers. This cannot be submitted for FASTQ files.
     title: Read Group Id In Bam
-    notes:
-    - Any string value.
+    notes: Any string value.
     exact_mappings:
     - ARGO:read_group_id_in_bam
     range: string
@@ -2700,10 +2670,9 @@ slots:
     name: studyId
     description: Unique identifier of the study.
     title: StudyId
-    notes:
-    - Added as a redundancy measure to prevent submission errors. Clinical API will
-      check study_id against user's selection. Also duplicates field study_id in Participant
-      b/c SONG's rigidity to rename
+    notes: Added as a redundancy measure to prevent submission errors. Clinical API
+      will check study_id against user's selection. Also duplicates field study_id
+      in Participant b/c SONG's rigidity to rename
     exact_mappings:
     - ARGO:studyId
     - CQDG:study_id
@@ -2747,8 +2716,8 @@ slots:
     range: data_type_menu
     required: true
 classes:
-  Participant:
-    name: Participant
+  base_Participant:
+    name: base_Participant
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
@@ -2805,8 +2774,8 @@ classes:
             name: disease_specific_modifier
             required: false
             value_presence: ABSENT
-  Sociodemographic:
-    name: Sociodemographic
+  base_Sociodemographic:
+    name: base_Sociodemographic
     description: Captures sociodemographic characteristics of an individual that may
       vary over time and can influence health status, access to care, or disease outcomes.
       These factors are often collected longitudinally and reflect broader social
@@ -2958,7 +2927,7 @@ classes:
           race:
             name: race
             all_of:
-            - multivalued: true
+              multivalued: true
               has_member:
                 equals_string: Another Racial Category
       postconditions:
@@ -2997,7 +2966,7 @@ classes:
           ethnicity:
             name: ethnicity
             all_of:
-            - multivalued: true
+              multivalued: true
               has_member:
                 equals_string: Free text input
       postconditions:
@@ -3054,8 +3023,181 @@ classes:
             name: sociodem_question_detail
             required: false
             value_presence: ABSENT
-  Demographic:
-    name: Demographic
+  base_Phenotype:
+    name: base_Phenotype
+    description: Individual phenotypic features, observed as either present or absent
+      (excluded), with possible onset, modifiers and frequency
+    title: Phenotype
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_phenotype
+    - phenotype_code
+    - phenotype_duration
+    - phenotype_observed
+    - phenotype_severity
+    - phenotype_term
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_phenotype:
+        name: age_at_phenotype
+        rank: 2
+        slot_group: Phenotype
+      phenotype_code:
+        name: phenotype_code
+        rank: 3
+        slot_group: Phenotype
+      phenotype_duration:
+        name: phenotype_duration
+        rank: 4
+        slot_group: Phenotype
+      phenotype_observed:
+        name: phenotype_observed
+        rank: 5
+        slot_group: Phenotype
+      phenotype_severity:
+        name: phenotype_severity
+        rank: 6
+        slot_group: Phenotype
+      phenotype_term:
+        name: phenotype_term
+        rank: 7
+        slot_group: Phenotype
+  base_Comorbidity:
+    name: base_Comorbidity
+    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
+      that have existed or may occur during the clinical course of the participant
+      who has the index disease under study.
+    title: Comorbidity
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_status
+    - comorbidity_term
+    - comorbidity_treatment_status
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
+        rank: 2
+        slot_group: Comorbidity
+      comorbidity_code:
+        name: comorbidity_code
+        rank: 3
+        slot_group: Comorbidity
+      comorbidity_status:
+        name: comorbidity_status
+        rank: 4
+        slot_group: Comorbidity
+      comorbidity_term:
+        name: comorbidity_term
+        rank: 5
+        slot_group: Comorbidity
+      comorbidity_treatment_status:
+        name: comorbidity_treatment_status
+        rank: 6
+        slot_group: Comorbidity
+  base_Measurement:
+    name: base_Measurement
+    description: Record individual measurements to capture quantitative, ordinal (e.g.,
+      absent/present), or categorical measurements.
+    title: Measurement
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_measurement
+    - measurement_code
+    - measurement_result_categorical
+    - measurement_result_numeric
+    - measurement_term
+    - measurement_unit
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_measurement:
+        name: age_at_measurement
+        rank: 2
+        slot_group: Measurement
+      measurement_code:
+        name: measurement_code
+        rank: 3
+        slot_group: Measurement
+      measurement_result_categorical:
+        name: measurement_result_categorical
+        rank: 4
+        slot_group: Measurement
+      measurement_result_numeric:
+        name: measurement_result_numeric
+        rank: 5
+        slot_group: Measurement
+      measurement_term:
+        name: measurement_term
+        rank: 6
+        slot_group: Measurement
+      measurement_unit:
+        name: measurement_unit
+        rank: 7
+        slot_group: Measurement
+  base_Exposure:
+    name: base_Exposure
+    description: Capture information about external factors, agents, or conditions
+      an individual has encountered that may influence health or disease outcomes.
+    title: Exposure
+    slots:
+    - submitter_participant_id
+    - age_at_exposure
+    - exposure_amount
+    - exposure_code
+    - exposure_duration
+    - exposure_status
+    - exposure_term
+    - exposure_unit
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_exposure:
+        name: age_at_exposure
+        rank: 2
+        slot_group: Exposure
+      exposure_amount:
+        name: exposure_amount
+        rank: 3
+        slot_group: Exposure
+      exposure_code:
+        name: exposure_code
+        rank: 4
+        slot_group: Exposure
+      exposure_duration:
+        name: exposure_duration
+        rank: 5
+        slot_group: Exposure
+      exposure_status:
+        name: exposure_status
+        rank: 6
+        slot_group: Exposure
+      exposure_term:
+        name: exposure_term
+        rank: 7
+        slot_group: Exposure
+      exposure_unit:
+        name: exposure_unit
+        rank: 8
+        slot_group: Exposure
+  base_Demographic:
+    name: base_Demographic
     description: Data for the characterization of the participant by means of segmenting
       the population (e.g., characterization by age, sex, or race).
     title: Demographic
@@ -3090,7 +3232,8 @@ classes:
         slot_group: Demographic
     rules:
     - preconditions:
-        description: cause_of_death populatable only if vital_status is deceased
+        description: cause_of_death populatable only if vital_status
+          is deceased
         slot_conditions:
           vital_status:
             name: vital_status
@@ -3106,7 +3249,8 @@ classes:
             name: cause_of_death
             value_presence: ABSENT
     - preconditions:
-        description: Age_at_death populatable only if vital_status is deceased
+        description: Age_at_death populatable only if vital_status
+          is deceased
         slot_conditions:
           vital_status:
             name: vital_status
@@ -3121,8 +3265,8 @@ classes:
           age_at_death:
             name: age_at_death
             value_presence: ABSENT
-  Diagnosis:
-    name: Diagnosis
+  base_Diagnosis:
+    name: base_Diagnosis
     description: The disease that is inferred to be present in the individual, family
       or cohort being analyzed.
     title: Diagnosis
@@ -3160,8 +3304,31 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_diagnosis_id
-  Treatment:
-    name: Treatment
+  base_Follow_Up:
+    name: base_Follow_Up
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    title: Follow up
+    todos:
+    - '{"reference": "ARGO", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_followup:
+        name: age_at_followup
+        rank: 2
+        slot_group: Follow_Up
+      disease_status_at_followup:
+        name: disease_status_at_followup
+        rank: 3
+        slot_group: Follow_Up
+  base_Treatment:
+    name: base_Treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:
@@ -3213,11 +3380,16 @@ classes:
         name: treatment_type
         rank: 9
         slot_group: Treatment
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_treatment_id
     attributes:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
-        description: Unique identifier of the primary diagnosis event, assigned by
-          the data provider. Redefined to allow requirement to be false
+        description: Unique identifier of the primary diagnosis event, assigned by the
+          data provider. Redefined to allow requirement to be false
         title: Submitter Diagnosis Id
         examples:
         - value: '90234'
@@ -3232,70 +3404,8 @@ classes:
         range: string
         required: false
         pattern: ^[A-Za-z0-9\-\._]{1,64}$
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_treatment_id
-  Follow_Up:
-    name: Follow_Up
-    description: 'Any point of contact with a patient after primary diagnosis. '
-    title: Follow up
-    todos:
-    - '{"reference": "ARGO", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_followup
-    - disease_status_at_followup
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: Follow_Up
-      disease_status_at_followup:
-        name: disease_status_at_followup
-        rank: 3
-        slot_group: Follow_Up
-  Procedure:
-    name: Procedure
-    description: A clinical procedure performed on a subject. For example a surgical
-      or diagnostic procedure such as a biopsy.
-    title: Procedure
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_treatment_id
-    - procedure_body_site_code
-    - procedure_body_site_term
-    - procedure_code
-    - procedure_term
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      procedure_body_site_code:
-        name: procedure_body_site_code
-        rank: 2
-        slot_group: Procedure
-      procedure_body_site_term:
-        name: procedure_body_site_term
-        rank: 3
-        slot_group: Procedure
-      procedure_code:
-        name: procedure_code
-        rank: 4
-        slot_group: Procedure
-      procedure_term:
-        name: procedure_term
-        rank: 5
-        slot_group: Procedure
-  Medication:
-    name: Medication
+  base_Medication:
+    name: base_Medication
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
       prescription and over-the-counter medicines, vaccines, and large-molecule biologic
       therapies.
@@ -3334,8 +3444,42 @@ classes:
         name: prescribed_cumulative_drug_dose
         rank: 6
         slot_group: Medication
-  Radiation:
-    name: Radiation
+  base_Procedure:
+    name: base_Procedure
+    description: A clinical procedure performed on a subject. For example a surgical
+      or diagnostic procedure such as a biopsy.
+    title: Procedure
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_treatment_id
+    - procedure_body_site_code
+    - procedure_body_site_term
+    - procedure_code
+    - procedure_term
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      procedure_body_site_code:
+        name: procedure_body_site_code
+        rank: 2
+        slot_group: Procedure
+      procedure_body_site_term:
+        name: procedure_body_site_term
+        rank: 3
+        slot_group: Procedure
+      procedure_code:
+        name: procedure_code
+        rank: 4
+        slot_group: Procedure
+      procedure_term:
+        name: procedure_term
+        rank: 5
+        slot_group: Procedure
+  base_Radiation:
+    name: base_Radiation
     description: Uses ionizing radiation, generally as part of cancer treatment to
       control or kill malignant cells.
     title: Radiation
@@ -3376,181 +3520,8 @@ classes:
         name: radiation_modality_term
         rank: 7
         slot_group: Radiation
-  Measurement:
-    name: Measurement
-    description: Record individual measurements to capture quantitative, ordinal (e.g.,
-      absent/present), or categorical measurements.
-    title: Measurement
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_measurement
-    - measurement_code
-    - measurement_result_categorical
-    - measurement_result_numeric
-    - measurement_term
-    - measurement_unit
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: Measurement
-      measurement_code:
-        name: measurement_code
-        rank: 3
-        slot_group: Measurement
-      measurement_result_categorical:
-        name: measurement_result_categorical
-        rank: 4
-        slot_group: Measurement
-      measurement_result_numeric:
-        name: measurement_result_numeric
-        rank: 5
-        slot_group: Measurement
-      measurement_term:
-        name: measurement_term
-        rank: 6
-        slot_group: Measurement
-      measurement_unit:
-        name: measurement_unit
-        rank: 7
-        slot_group: Measurement
-  Phenotype:
-    name: Phenotype
-    description: Individual phenotypic features, observed as either present or absent
-      (excluded), with possible onset, modifiers and frequency
-    title: Phenotype
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_phenotype
-    - phenotype_code
-    - phenotype_duration
-    - phenotype_observed
-    - phenotype_severity
-    - phenotype_term
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_phenotype:
-        name: age_at_phenotype
-        rank: 2
-        slot_group: Phenotype
-      phenotype_code:
-        name: phenotype_code
-        rank: 3
-        slot_group: Phenotype
-      phenotype_duration:
-        name: phenotype_duration
-        rank: 4
-        slot_group: Phenotype
-      phenotype_observed:
-        name: phenotype_observed
-        rank: 5
-        slot_group: Phenotype
-      phenotype_severity:
-        name: phenotype_severity
-        rank: 6
-        slot_group: Phenotype
-      phenotype_term:
-        name: phenotype_term
-        rank: 7
-        slot_group: Phenotype
-  Comorbidity:
-    name: Comorbidity
-    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
-      that have existed or may occur during the clinical course of the participant
-      who has the index disease under study.
-    title: Comorbidity
-    slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_status
-    - comorbidity_term
-    - comorbidity_treatment_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: Comorbidity
-      comorbidity_code:
-        name: comorbidity_code
-        rank: 3
-        slot_group: Comorbidity
-      comorbidity_status:
-        name: comorbidity_status
-        rank: 4
-        slot_group: Comorbidity
-      comorbidity_term:
-        name: comorbidity_term
-        rank: 5
-        slot_group: Comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
-        rank: 6
-        slot_group: Comorbidity
-  Exposure:
-    name: Exposure
-    description: Capture information about external factors, agents, or conditions
-      an individual has encountered that may influence health or disease outcomes.
-    title: Exposure
-    slots:
-    - submitter_participant_id
-    - age_at_exposure
-    - exposure_amount
-    - exposure_code
-    - exposure_duration
-    - exposure_status
-    - exposure_term
-    - exposure_unit
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_exposure:
-        name: age_at_exposure
-        rank: 2
-        slot_group: Exposure
-      exposure_amount:
-        name: exposure_amount
-        rank: 3
-        slot_group: Exposure
-      exposure_code:
-        name: exposure_code
-        rank: 4
-        slot_group: Exposure
-      exposure_duration:
-        name: exposure_duration
-        rank: 5
-        slot_group: Exposure
-      exposure_status:
-        name: exposure_status
-        rank: 6
-        slot_group: Exposure
-      exposure_term:
-        name: exposure_term
-        rank: 7
-        slot_group: Exposure
-      exposure_unit:
-        name: exposure_unit
-        rank: 8
-        slot_group: Exposure
-  Specimen:
-    name: Specimen
+  base_Specimen:
+    name: base_Specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -3613,8 +3584,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_specimen_id
-  Sample:
-    name: Sample
+  base_Sample:
+    name: base_Sample
     description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
       from the specimen and used for experiments or analysis.
     title: Sample
@@ -3650,8 +3621,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_sample_id
-  Experiment:
-    name: Experiment
+  base_Experiment:
+    name: base_Experiment
     description: Contains information about the experimental design of the sequencing
     title: Experiment
     slots:
@@ -3711,8 +3682,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_experiment_id
-  Read_Group:
-    name: Read_Group
+  base_Read_Group:
+    name: base_Read_Group
     description: Holds the readgroup information about the raw reads generated in
       a run of sequencing
     title: Read Group
@@ -3801,3 +3772,156 @@ classes:
             name: file_r2
             required: false
             value_presence: ABSENT
+  base_Analysis:
+    name: base_Analysis
+    description: This entity is intended to contain metadata about a detailed examination
+      of data (mainly data processing protocols) in order to come to some conclusion.
+      It can be of different types (e.g. sequence variation, sequence alignment, phenotype
+      characterization, gene expression, etc.) that will mainly differ in the protocols
+      used to achieve the processed data of the analysis.
+    title: Analysis
+    slots:
+    - submitter_analysis_id
+    - submitter_experiment_id
+    - submitter_participant_id
+    - submitter_sample_id
+    - submitter_specimen_id
+    - analysisType
+    - data_category
+    - genome_annotation
+    - genome_build
+    - studyId
+    - variant_calling_strategy
+    - variant_class
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_experiment_id:
+        name: submitter_experiment_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 3
+        slot_group: Database Identifiers
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 4
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
+        rank: 5
+        slot_group: Database Identifiers
+      analysisType:
+        name: analysisType
+        rank: 6
+        slot_group: Analysis
+      data_category:
+        name: data_category
+        rank: 7
+        slot_group: Analysis
+      genome_annotation:
+        name: genome_annotation
+        rank: 8
+        slot_group: Analysis
+      genome_build:
+        name: genome_build
+        rank: 9
+        slot_group: Analysis
+      studyId:
+        name: studyId
+        rank: 10
+        slot_group: Analysis
+      variant_calling_strategy:
+        name: variant_calling_strategy
+        rank: 11
+        slot_group: Analysis
+      variant_class:
+        name: variant_class
+        rank: 12
+        slot_group: Analysis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_analysis_id
+  base_File:
+    name: base_File
+    description: Contains information about the files generated from a run of sequencing
+      or data analysis
+    title: File
+    slots:
+    - submitter_analysis_id
+    - dataType
+    - fileAccess
+    - fileMd5sum
+    - fileName
+    - fileSize
+    - fileType
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      dataType:
+        name: dataType
+        rank: 2
+        slot_group: File
+      fileAccess:
+        name: fileAccess
+        rank: 3
+        slot_group: File
+      fileMd5sum:
+        name: fileMd5sum
+        rank: 4
+        slot_group: File
+      fileName:
+        name: fileName
+        rank: 5
+        slot_group: File
+      fileSize:
+        name: fileSize
+        rank: 6
+        slot_group: File
+      fileType:
+        name: fileType
+        rank: 7
+        slot_group: File
+  base_Workflow:
+    name: base_Workflow
+    description: Contains information about the analysis workflow generating the analysis
+    title: Workflow
+    slots:
+    - submitter_workflow_id
+    - submitter_analysis_id
+    - workflow_name
+    - workflow_url
+    - workflow_version
+    slot_usage:
+      submitter_workflow_id:
+        name: submitter_workflow_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 2
+        slot_group: Database Identifiers
+      workflow_name:
+        name: workflow_name
+        rank: 3
+        slot_group: Workflow
+      workflow_url:
+        name: workflow_url
+        rank: 4
+        slot_group: Workflow
+      workflow_version:
+        name: workflow_version
+        rank: 5
+        slot_group: Workflow
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_workflow_id

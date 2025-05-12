@@ -1,4 +1,4 @@
-version: 2.1
+version: 2.2
 id: https://example.com/PCGL.yaml
 in_language:
 - en
@@ -12,43 +12,41 @@ default_curi_maps:
 
 imports:
 - linkml:types
-- base/phenotype 
-- base/comorbidity
-- base/demographic
-- base/diagnosis
-- base/exposure
-- base/follow_up
-- base/measurement
-- base/medication
-- base/participant
-- base/procedure
-- base/radiation
-- base/specimen
-- base/treatment
+- base/base
 classes:
-  Phenotype:
-    is_a: base_Phenotype
-  Demographic:
-    is_a: base_Demographic
-  Comorbidity:
-    is_a: base_Comorbidity
-  Diagnosis:
-   is_a: base_Diagnosis
-  Exposure:
-   is_a: base_Exposure
-  Follow_up:
-    is_a: base_Follow_up
-  Measurement:
-    is_a: base_Measurement
-  Medication:
-    is_a: base_Medication
   Participant:
     is_a: base_Participant
-  Procedure:
-    is_a: base_Procedure
-  Radiation:
-    is_a: base_Radiation
-  Specimen:
-    is_a: base_Specimen
+  Sociodemographic:
+    is_a: base_Sociodemographic
+  Demographic:
+    is_a: base_Demographic
+  Diagnosis:
+   is_a: base_Diagnosis
   Treatment:
     is_a: base_Treatment
+  Follow_Up:
+    is_a: base_Follow_Up
+  Procedure:
+    is_a: base_Procedure
+  Medication:
+    is_a: base_Medication
+  Radiation:
+    is_a: base_Radiation
+  Measurement:
+    is_a: base_Measurement
+  Phenotype:
+    is_a: base_Phenotype
+  Comorbidity:
+    is_a: base_Comorbidity
+  Exposure:
+   is_a: base_Exposure
+  Specimen:
+    is_a: base_Specimen
+  Sample:
+    is_a: base_Sample
+  Experiment:
+    is_a: base_Experiment
+  Read_Group:
+    is_a: base_Read_Group
+
+

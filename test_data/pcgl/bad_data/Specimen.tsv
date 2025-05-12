@@ -1,0 +1,9 @@
+Submitter Participant Id	Specimen Tissue Source Code	Submitter Specimen Id	Specimen Anatomic Location Code	Specimen Laterality	Specimen Processing	Specimen Storage
+DONOR_01	NCIT:C12434					
+	NCIT:C12434	DONOR_01_SPECIMEN_01				
+DONOR_01		DONOR_01_SPECIMEN_01				
+DONOR_01	NCIT:C12434	DONOR_01_SPECIMEN_01	8600019	Missing - Unknown	Missing - Unknown	Missing - Unknown
+DONOR_01	C12434	DONOR_01_SPECIMEN_01	UBERON:8600019	Missing - Unknown	Missing - Unknown	Missing - Unknown
+DONOR_01	NCIT:C12434	DONOR_01_SPECIMEN_01	UBERON:8600019	Missing	Missing - Unknown	Missing - Unknown
+DONOR_01	NCIT:C12434	DONOR_01_SPECIMEN_01	UBERON:8600019	Missing - Unknown	Missing	Missing - Unknown
+DONOR_01	NCIT:C12434	DONOR_01_SPECIMEN_01	UBERON:8600019	Missing - Unknown	Missing - Unknown	Missing

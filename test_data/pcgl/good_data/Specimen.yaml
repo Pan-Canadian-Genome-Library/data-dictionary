@@ -1,0 +1,14 @@
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### General use case
+submitter_participant_id : "DONOR_01"
+age_at_specimen_collection : 10
+specimen_anatomic_location_code : "UBERON:8600019"
+specimen_anatomic_location_term : placental basal plate"
+specimen_laterality : "Missing - Unknown"
+specimen_processing : "Missing - Unknown"
+specimen_storage : "Missing - Unknown"
+specimen_tissue_source_code : "NCIT:C12434"
+specimen_tissue_source_term : "Blood"
+---
+submitter_specimen_id : "DONOR_01_SPECIMEN_02" ### Minimal
+submitter_participant_id : "DONOR_01"
+specimen_tissue_source_code : "NCIT:C12434"

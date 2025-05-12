@@ -1,0 +1,10 @@
+drug_code : "NCIT:C138986" ###Missing submitter_treatment_id
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ###Missing drug_code
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ###Invalid drug_code regex
+drug_code : "INVALID"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ###Invalid drug_dose_units regex
+drug_code : "NCIT:C138986"
+drug_dose_units : "INVALID"

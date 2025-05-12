@@ -1,0 +1,25 @@
+submitter_specimen_id : "DONOR_01_SPECIMEN_01" ### Missing submitter_sample_id 
+molecule_type_code : "NCIT:C449"
+sample_status : "Case"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_01" ### Missing submitter_specimen_id
+molecule_type_code : "NCIT:C449"
+sample_status : "Case"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_01" ### Missing molecule_type_code
+submitter_specimen_id : "DONOR_01_SPECIMEN_01"
+sample_status : "Case"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_01" ### Missing sample_status 
+submitter_specimen_id : "DONOR_01_SPECIMEN_01"
+molecule_type_code : "NCIT:C449"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_01" ###Invalid molecule_type_code regex
+submitter_specimen_id : "DONOR_01_SPECIMEN_01"
+molecule_type_code : "C449"
+sample_status : "Case"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_01" ###Invalid sample_status regex
+submitter_specimen_id : "DONOR_01_SPECIMEN_01"
+molecule_type_code : "NCIT:C449"
+sample_status : "Invalid"

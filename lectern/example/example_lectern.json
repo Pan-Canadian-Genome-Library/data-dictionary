@@ -1,10 +1,10 @@
 {
   "name": "example_extended_schema",
   "description": "...",
-  "version": "1.0",
+  "version": "2.2.1.0",
   "schemas": [
     {
-      "name": "Comorbidity",
+      "name": "comorbidity",
       "description": "TBA...",
       "fields": [
         {
@@ -15,7 +15,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -99,26 +101,25 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Demographic",
+      "name": "demographic",
       "description": "Data for the characterization of the participant by means of segmenting the population (e.g., characterization by age, sex, or race).",
       "fields": [
-        {
-          "meta": {
-            "displayName": "Study Id",
-            "mappings": {
-              "CQDG": "study_id"
-            }
-          },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
         {
           "meta": {
             "displayName": "Submitter Participant Id",
@@ -127,7 +128,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -352,10 +355,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Diagnosis",
+      "name": "diagnosis",
       "description": "The disease that is inferred to be present in the individual, family or cohort being analyzed.",
       "fields": [
         {
@@ -366,7 +382,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -388,7 +406,9 @@
             "mappings": {
               "mCODE.STU1": "Condition.identifier",
               "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code"
+              "FHIR": "condition.code",
+              "ARGO": "submitter_diagnosis_id",
+              "MOH": "submitter_diagnosis_id"
             },
             "examples": [
               "90234",
@@ -402,7 +422,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -410,7 +431,9 @@
             "mappings": {
               "mCODE.STU3": "condition.onset",
               "FHIR": "condition.onset",
-              "Phenopacket": "disease.onset"
+              "Phenopacket": "disease.onset",
+              "ARGO": "age_at_diagnosis",
+              "MOH": "age_at_diagnosis"
             }
           },
           "name": "age_at_diagnosis",
@@ -423,7 +446,10 @@
             "mappings": {
               "mCODE.STU3": "condition.code",
               "FHIR": "condition.code",
-              "Phenopacket": "disease.term"
+              "Phenopacket": "disease.term",
+              "ARGO": "disease_code",
+              "MOH": "disease_code",
+              "CQDG": "disease_code"
             },
             "required": [
               "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
@@ -506,10 +532,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Exposure",
+      "name": "exposure",
       "description": "TBA...",
       "fields": [
         {
@@ -520,7 +559,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -539,6 +580,11 @@
         {
           "meta": {
             "displayName": "Alcohol Consumption",
+            "mappings": {
+              "ARGO": "alcohol_consumption",
+              "MOH": "alcohol_consumption",
+              "CQDG": "alcohol_consumption"
+            },
             "required": [
               "Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion."
             ]
@@ -557,7 +603,12 @@
         },
         {
           "meta": {
-            "displayName": "Smoking Status"
+            "displayName": "Smoking Status",
+            "mappings": {
+              "ARGO": "smoking_status",
+              "MOH": "smoking_status",
+              "CQDG": "smoking_status"
+            }
           },
           "name": "smoking_status",
           "description": "Indicate smoking status and history of a participant at the time of the data collection.",
@@ -594,10 +645,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Follow_up",
+      "name": "follow_up",
       "description": "Any point of contact with a patient after primary diagnosis. ",
       "fields": [
         {
@@ -608,7 +672,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -653,10 +719,23 @@
           },
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Measurement",
+      "name": "measurement",
       "description": "Record individual measurements to capture quantitative, ordinal (e.g., absent/present), or categorical measurements.",
       "fields": [
         {
@@ -667,7 +746,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -738,10 +819,23 @@
           "description": "The categorical result of the lab test or measurement.",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Medication",
+      "name": "medication",
       "description": "An agent such as a drug (pharmaceutical agent), broadly defined as prescription and over-the-counter medicines, vaccines, and large-molecule biologic therapies.",
       "fields": [
         {
@@ -820,10 +914,23 @@
           "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
           "valueType": "number"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Participant",
+      "name": "participant",
       "description": "The collection of all data related to a specific individual human in the context of a specific study.",
       "fields": [
         {
@@ -848,7 +955,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -862,7 +971,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -898,7 +1008,11 @@
         },
         {
           "meta": {
-            "displayName": "Cause Of Death"
+            "displayName": "Cause Of Death",
+            "mappings": {
+              "ARGO": "cause_of_death",
+              "MOH": "cause_of_death"
+            }
           },
           "name": "cause_of_death",
           "description": "Indicate the cause of a participant's death.",
@@ -926,7 +1040,7 @@
       ]
     },
     {
-      "name": "Phenotype",
+      "name": "phenotype",
       "description": "Individual phenotypic features, observed as either present or absent (excluded), with possible onset, modifiers and frequency",
       "fields": [
         {
@@ -937,7 +1051,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -1028,10 +1144,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Procedure",
+      "name": "procedure",
       "description": "A clinical procedure performed on a subject. For example a surgical or diagnostic procedure such as a biopsy.",
       "fields": [
         {
@@ -1079,7 +1208,9 @@
             "displayName": "Procedure Body Site Code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite"
+              "FHIR": "Specimen.collection.bodySite",
+              "ARGO": "procedure_body_site_code",
+              "MOH": "procedure_body_site_code"
             },
             "required": [
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
@@ -1104,10 +1235,23 @@
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
           "valueType": "string"
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "treatment",
+            "mappings": [
+              {
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Specimen",
+      "name": "specimen",
       "description": "Any material sample taken from a biological entity, living or dead, from physical object or the environment",
       "fields": [
         {
@@ -1118,7 +1262,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -1142,7 +1288,9 @@
               "mCODE.STU3": "Specimen.Identifier",
               "FHIR": "Specimen.Identifier",
               "Phenopacket": "biosample.id",
-              "BeaconV2": "biosample.id"
+              "BeaconV2": "biosample.id",
+              "ARGO": "submitter_specimen_id",
+              "MOH": "submitter_specimen_id"
             },
             "examples": [
               "LAML_PO",
@@ -1156,7 +1304,8 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
@@ -1190,7 +1339,9 @@
             "displayName": "Specimen Storage",
             "mappings": {
               "Phenopacket": "biosample.sample_storage",
-              "BeaconV2": "biosample.sample_storage"
+              "BeaconV2": "biosample.sample_storage",
+              "ARGO": "specimen_storage",
+              "MOH": "specimen_storage"
             }
           },
           "name": "specimen_storage",
@@ -1215,7 +1366,9 @@
             "displayName": "Specimen Processing",
             "mappings": {
               "Phenopacket": "biosample.sample_processing",
-              "BeaconV2": "biosample.sample_processing"
+              "BeaconV2": "biosample.sample_processing",
+              "ARGO": "specimen_processing",
+              "MOH": "specimen_processing"
             }
           },
           "name": "specimen_processing",
@@ -1249,7 +1402,9 @@
             "displayName": "Specimen Anatomic Location Code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite"
+              "FHIR": "Specimen.collection.bodySite",
+              "ARGO": "specimen_anatomic_location_code",
+              "MOH": "specimen_anatomic_location_code"
             },
             "required": [
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
@@ -1297,10 +1452,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Treatment",
+      "name": "treatment",
       "description": "Medications, procedures, other actions taken for clinical management",
       "fields": [
         {
@@ -1311,7 +1479,9 @@
               "mCODE.STU3": "Patient.Identifier",
               "FHIR": "Patient.Identifier",
               "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id"
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
             },
             "examples": [
               "90234",
@@ -1400,7 +1570,12 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Response"
+            "displayName": "Treatment Response",
+            "mappings": {
+              "ARGO": "treatment_response",
+              "MOH": "treatment_response",
+              "CQDG": "treatment_response"
+            }
           },
           "name": "treatment_response",
           "description": "The outcome of the treatment, indicating how the patient responded to the intervention",
@@ -1422,7 +1597,11 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Status"
+            "displayName": "Treatment Status",
+            "mappings": {
+              "ARGO": "treatment_status",
+              "MOH": "treatment_status"
+            }
           },
           "name": "treatment_status",
           "description": "Indicate the donor's status of the prescribed treatment.",
@@ -1442,10 +1621,23 @@
             ]
           }
         }
-      ]
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
     },
     {
-      "name": "Imaging",
+      "name": "imaging",
       "description": "An imaging test",
       "fields": [
         {

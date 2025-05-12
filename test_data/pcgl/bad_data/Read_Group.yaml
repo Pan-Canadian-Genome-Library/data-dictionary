@@ -1,0 +1,70 @@
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01" ### Missing submitter_read_group_id
+file_r1 : "TEST.BAM"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Missing submitter_experiment_id
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Missing file_r1 
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r2 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Missing file_r2
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Missing library_layout
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Missing library_name
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+platform_unit : "ILLUMINA_004"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### platform_unit
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### Minimum insert_size, read_length_r1 and read_length_r2
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+insert_size : -1
+library_description : "Test Library"
+library_layout : "OBI:0000722 (paired-end library)"
+library_name : "DONOR_01_EXPERIMENT_01"
+platform_unit : "ILLUMINA_004"
+read_group_id_in_bam : "DONOR_01_EXPERIMENT_01"
+read_length_r1 : 19
+read_length_r2 : 19
+---
+submitter_read_group_id : "DONOR_01_EXPERIMENT_01_READGROUP_01" ### file_r2 only required when library_layout is paired-end
+submitter_experiment_id : "DONOR_01_EXPERIMENT_01"
+file_r1 : "TEST.BAM"
+file_r2 : "TEST.BAM"
+library_name : "DONOR_01_EXPERIMENT_01"
+library_layout : "OBI:0000736 (single fragment library)"
+platform_unit : "ILLUMINA_004"
