@@ -1,6 +1,6 @@
 {
-  "sequenceExperiment": 
-    {
+  "sequenceExperiment": {
+    "options": {
       "fileTypes":["BAM", "FASTQ"],
       "externalValidations":[
         {
@@ -9,8 +9,11 @@
         }
       ]
     },
-  "sequenceAlignment": 
-    {
+    "dataType":[
+      "Raw Sequencing Reads"]
+  },   
+  "sequenceAlignment": {
+    "options": {
       "fileTypes":["BAM", "CRAM", "BAI", "CRAI"],
       "externalValidations":[
         {
@@ -19,8 +22,12 @@
         }
       ]
     },
-  "variantCall": 
-    {
+    "dataType":[
+      "Aligned Reads",
+      "Aligned Reads Index"]
+  },
+  "variantCall": {
+    "options": {
       "fileTypes":["VCF", "TBI"],
       "externalValidations":[
         {
@@ -28,5 +35,12 @@
           "jsonPath": "submitter_experiment_id"
         }
       ]
-    }  
+    },
+    "dataType":[
+      "Single Nucleotide Variants (SNVs)",
+      "Insertions and Deletions (InDels)",
+      "Structural Variations (SVs)",
+      "Copy Number Variations (CNVs)",
+      "Variant Calls Index"]
+  } 
 }

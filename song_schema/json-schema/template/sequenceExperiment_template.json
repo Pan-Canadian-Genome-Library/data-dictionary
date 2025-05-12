@@ -1,0 +1,20 @@
+{
+  "analysisType": {
+    "name": "sequenceExperiment"
+  },
+  "data_category": "<data_category>",
+  "experiment": "<experiment>",
+  "files": [
+    {
+      "dataType": "<dataType>",
+      "fileAccess": "<fileAccess>",
+      "fileMd5sum": "<fileMd5sum>",
+      "fileName": "<fileName>",
+      "fileSize": 0,
+      "fileType": "<fileType>"
+    }
+  ],
+  "studyId": "<studyId>",
+  "submitter_analysis_id": "<submitter_analysis_id>",
+  "submitter_experiment_id": "<submitter_experiment_id>"
+}

@@ -2,41 +2,29 @@
   "analysisType": {
     "name": "variantCall"
   },
-  "studyId": "TEST-001",
-  "analysis_input_type": [
-    "Raw Sequencing Reads",
-    "Aligned Reads"
-  ],
-  "analysis_output_type": [
-    "Raw SNV Calls"
-  ],
-  "experiment": "Example Experiment",
-  "submitter_analysis_id": "Analysis_123",
-  "submitter_experiment_id": "Experiment_456",
-  "variant_calling_strategy": "Tumour Normal Paired",
-  "variant_class": "Somatic",
-  "genome_annotation": "Ensembl",
-  "genome_build": "GRCh38",
-  "workflow": {
-    "workflow_id": "WF_001",
-    "workflow_name": "Variant Analysis Workflow",
-    "workflow_url": "https://example.com/workflow",
-    "workflow_version": "1.0.0"
-  },
+  "data_category": "Reference",
+  "experiment": "sport",
   "files": [
     {
-      "fileName": "sample_01.vcf.gz",
-      "fileSize": 123456789,
-      "fileMd5sum": "abcdef1234567890abcdef1234567892",
-      "fileType": "VCF",
-      "fileAccess": "controlled"
-    },
-    {
-      "fileName": "sample_01.vcf.gz.tbi",
-      "fileSize": 987654321,
-      "fileMd5sum": "1234abcd5678efgh9012ijkl3456mnor",
-      "fileType": "TBI",
-      "fileAccess": "controlled"
+      "dataType": "Insertions and Deletions (InDels)",
+      "fileAccess": "open",
+      "fileMd5sum": "1cD422FDD266eAcc6c9CddD3d3e40CEc",
+      "fileName": "Tyz",
+      "fileSize": 6890,
+      "fileType": "TBI"
     }
-  ]
+  ],
+  "genome_annotation": "large",
+  "genome_build": "GRCh38",
+  "studyId": "low",
+  "submitter_analysis_id": "WttfR-dczMyz7",
+  "submitter_experiment_id": "9LW9lg.",
+  "variant_calling_strategy": "Family based",
+  "variant_class": "Germline",
+  "workflow": {
+    "submitter_workflow_id": "poor",
+    "workflow_name": "think",
+    "workflow_url": "carry",
+    "workflow_version": "religious"
+  }
 }

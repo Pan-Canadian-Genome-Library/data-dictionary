@@ -1,0 +1,129 @@
+name: pcgl_song_schema
+description: Song schema that supports the PCGL analysis data model
+in_language: '[''en'']'
+id: https://example.com/PCGL_SONG.yaml
+
+imports:
+- linkml:types
+- ../../base/base
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+default_curi_maps:
+- semweb_context
+default_prefix: https://example.com/PCGL_SONG.yaml/  
+
+classes:
+  AnalysisType:
+    description: The type of analysis that was performed.
+    slots:
+    - name
+    attributes:
+      name:
+        required: true
+        multivalued: false
+        range: string
+  Analysis:
+    description: The base class for all analysis types.
+    slots:
+    - studyId
+    - analysisType
+    - submitter_analysis_id
+    - data_category
+    - files
+    annotations:
+      base_version: 1.0
+      dynamic_version: 1.0
+  sequenceExperiment:
+    name: sequenceExperiment
+    description: Use this analysis type to describe the sequencing experiment metadata related to the experimental design and sequencing run. It links to the experiment that generated the data.
+    title: Sequence Experiment
+    is_a: Analysis
+    slots:
+    - submitter_experiment_id
+    - experiment
+    slot_usage:
+      submitter_experiment_id:
+        required: true
+      experiment:
+        required: true
+    annotations:
+      base_version: 1.0
+      dynamic_version: 1.0
+  sequenceAlignment:
+    name: sequenceAlignment
+    description: Use this analysis type to describe the alignment of sequencing reads to a reference genome. It links to the workflow that performed the alignment. 
+    title: Sequence Alignment
+    is_a: Analysis
+    slots:
+    - submitter_experiment_id
+    - workflow
+    - experiment
+    - genome_build
+    slot_usage:
+      submitter_experiment_id:
+        required: true
+      workflow:
+        required: true
+      experiment:
+        required: true
+      genome_build:
+        required: true
+    annotations:
+      base_version: 1.0
+      dynamic_version: 1.0
+  variantCall:
+    name: variantCall
+    description: Use this analysis type to describe the variant calling process, including the strategy used and the class of variants detected. It links to the workflow that performed the variant calling.
+    title: Variant Call
+    is_a: Analysis
+    slots:
+    - submitter_experiment_id
+    - variant_calling_strategy
+    - variant_class
+    - workflow
+    - experiment
+    - genome_build
+    - genome_annotation
+    slot_usage:
+      submitter_experiment_id:
+        required: true
+      variant_calling_strategy:
+        required: true
+      variant_class:
+        required: true
+      workflow:
+        required: true
+      experiment:
+        required: true
+      genome_build:
+        required: true
+      genome_annotation:
+        required: false
+    annotations:
+      base_version: 1.0
+      dynamic_version: 1.0
+
+slots:
+  files:
+    description: The list of files associated with the analysis.
+    required: true
+    multivalued: true
+    range: base_File
+  workflow:
+    description: TBA...
+    required: false
+    multivalued: false
+    range: base_Workflow
+  experiment:
+    description: TBA...temporary to be removed.
+    required: false
+    multivalued: false
+    range: string
+  analysisType:
+    name: analysisType
+    description: Overall type of the analysis. Term chosen from a controlled vocabulary
+      (CV) list.
+    title: Analysis Type
+    range: AnalysisType
+    required: true

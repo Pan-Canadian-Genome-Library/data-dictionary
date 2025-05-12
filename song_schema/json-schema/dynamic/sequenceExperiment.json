@@ -1,0 +1,52 @@
+{
+  "name": "sequenceExperiment",
+  "options": {
+    "fileTypes": [
+      "BAM",
+      "FASTQ"
+    ],
+    "externalValidations": [
+      {
+        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "jsonPath": "submitter_experiment_id"
+      }
+    ]
+  },
+  "schema": {
+    "properties": {
+      "data_category": {
+        "description": "",
+        "enum": [
+          "Genomics",
+          "Transcriptomics",
+          "Epigenomics",
+          "Proteomics",
+          "Imaging",
+          "Reference"
+        ],
+        "type": "string"
+      },
+      "experiment": {
+        "description": "TBA...temporary to be removed.",
+        "type": "string"
+      },
+      "submitter_analysis_id": {
+        "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "submitter_experiment_id": {
+        "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      }
+    },
+    "required": [
+      "submitter_experiment_id",
+      "experiment",
+      "submitter_analysis_id",
+      "data_category"
+    ],
+    "type": "object"
+  }
+}
