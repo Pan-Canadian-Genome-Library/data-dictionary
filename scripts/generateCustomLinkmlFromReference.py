@@ -40,7 +40,8 @@ import argparse
 import copy
 from linkml_runtime.loaders import yaml_loader
 from linkml_runtime.dumpers import yaml_dumper
-from linkml_runtime.linkml_model import SchemaDefinition, ClassDefinition
+from linkml_runtime.linkml_model import SchemaDefinition, ClassDefinition, SlotDefinition, EnumDefinition, PermissibleValue, Example
+from linkml_runtime.linkml_model.meta import AnonymousSlotExpression , ClassDefinition, SlotDefinition, ClassExpression, ClassDefinitionName, ClassRule, AnonymousClassExpression, SlotExpression, SlotDefinitionName, PresenceEnum
 
 def main():
 	"""
@@ -60,7 +61,8 @@ def main():
 	reference_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 	updated_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 
-	mapping=generateBaseAndExtenstionMappings(reference_model,work_dir)
+	mapping=generateBaseAndExtenstionMappings(cli_input.custom_schema,reference_model,work_dir)
+	print(mapping)
 	cleanModel(updated_model)
 
 	cleanVersion(updated_model,mapping)
@@ -107,7 +109,7 @@ def cleanVersion(updated_model,mapping):
 	updated_model.version="%s.%s" % (str(base_version[0]),str(extension_version[0]))
 
 
-def generateBaseAndExtenstionMappings(model,working_directory):
+def generateBaseAndExtenstionMappings(custom_schema,model,working_directory):
 	"""
 	Check through each class in Custom schema and map to appropriate import
 	If import is base, no furhther action
@@ -122,7 +124,7 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 			#print(class_key)
 			#print(model.classes[class_key]['is_a'])
 			if "base" in  model.classes[class_key]['is_a']:
-				if os.path.isfile("%s/base/base.yaml" % (working_directory)):
+				if os.path.exists("%s/base/base.yaml" % (working_directory)):
 					mapping[class_key]={
 					"base_import": "%s/base/base.yaml" % (working_directory),
 					"extension_import": None,
@@ -133,15 +135,17 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 					print("Error cannot find the following file : %s/base/base.yaml" % (working_directory))
 					exit(1)
 			elif "extension" in  model.classes[class_key]['is_a']:
-				if os.path.isfile("%s/%s.yaml" % (working_directory,class_key)):
+				if os.path.exists("%s/%s" % (working_directory,custom_schema.replace("custom","extension"))):
 					#print("%s/%s.yaml" % (working_directory,import_key))
-					tmp_model=yaml_loader.load("%s/%s.yaml" % (working_directory,class_key), SchemaDefinition)
+					tmp_model=yaml_loader.load(custom_schema.replace("custom","extension"), SchemaDefinition)
 					### If import is from extension and base, match yaml and class names for both
-					if len(tmp_model.imports)!=0:
+					#print(tmp_model.classes.keys())
+					#print(model.classes[class_key]['is_a'])
+					if tmp_model.classes[model.classes[class_key]['is_a']]['is_a'] is not None:
 						#print("%s yatzee B.A" % (import_key))
 						mapping[class_key]={
 						"base_import": "%s/base/base.yaml" % (working_directory),
-						"extension_import": "%s/%s.yaml" % (working_directory,class_key),
+						"extension_import": "%s/%s" % (working_directory,custom_schema.replace("custom","extension")),
 						"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
 						"extension_import_name": model.classes[class_key]['is_a'],
 						}
@@ -150,7 +154,7 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 						#print("%s yatzee B.B" % (import_key))
 						mapping[class_key]={
 						"base_import": None,
-						"extension_import": "%s/%s.yaml" % (working_directory,class_key),
+						"extension_import": "%s/%s" % (working_directory,custom_schema.replace("custom","extension")),
 						"base_import_name": None,
 						"extension_import_name": model.classes[class_key]['is_a'],
 						}
@@ -160,9 +164,8 @@ def generateBaseAndExtenstionMappings(model,working_directory):
 			else:
 				check+=1
 
+
 	if check==len(model.imports):
-		print(check,len(model.imports))
-		print()
 		print("Error cannot match class %s to any imports" % class_key)
 		exit(1)
 
@@ -187,97 +190,174 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 	"""
 	for key in reference_model.classes.keys():
 		###For base import, we want every property except empty ones and name
-	    if mapping[key].get("base_import"):
-	        #print("2 %s A" % (key),mapping[key]['base_import'])
-	        tmp_model=yaml_loader.load(mapping[key]['base_import'], SchemaDefinition)
-	        for base_property in tmp_model.classes[mapping[key]["base_import_name"]]:
-	            #print(base_property)
-	            if tmp_model.classes[mapping[key]["base_import_name"]][base_property]==None:
-	                continue
-	            if base_property=='name':
-	                continue
-	            #if base_property=='range':
-	            #    print(base_property,mapping[key]['base_import'],tmp_model.classes[mapping[key]["base_import_name"]][base_property])
-	            if len(tmp_model.classes[mapping[key]["base_import_name"]][base_property])!=0:
-	                #print(key,base_property)
-	                updated_model.classes[key][base_property]=tmp_model.classes[mapping[key]["base_import_name"]][base_property]
+		print(key,mapping[key])
+		if mapping[key].get("base_import"):
+			#print("2 %s A" % (key),mapping[key]['base_import'])
+			tmp_model=yaml_loader.load(mapping[key]['base_import'], SchemaDefinition)
+			for base_property in tmp_model.classes[mapping[key]["base_import_name"]]:
+				#print(base_property)
+				if tmp_model.classes[mapping[key]["base_import_name"]][base_property]==None:
+					continue
+				if base_property=='name':
+					continue
+				#if base_property=='range':
+				#	print(base_property,mapping[key]['base_import'],tmp_model.classes[mapping[key]["base_import_name"]][base_property])
+				if len(tmp_model.classes[mapping[key]["base_import_name"]][base_property])!=0:
+					#print(key,base_property)
+					updated_model.classes[key][base_property]=tmp_model.classes[mapping[key]["base_import_name"]][base_property]
 
-	        for slot_item in tmp_model['slots']:
-	            updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
-	            ### Conversion from YAML to python object stringifies Menu,None need to fix
-                #print(slot_item)
-	            if bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
-	            	#print("A",updated_model['slots'][slot_item]['range'])
-	            	tmp_array=[]
-	            	old_value=updated_model['slots'][slot_item]['range']
-	            	if "None" in old_value:
-	            		tmp_array.append("None")
-	            	for val in re.findall("'.*'",old_value):
-	            		tmp_array.append(val.replace("'",""))
-	            	updated_model['slots'][slot_item]['range']=tmp_array
-	            	#print("B",updated_model['slots'][slot_item]['range'])
-	        for enum_item in tmp_model['enums']:
-	            updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
-	       
-	    ### For extended without base imports, we also want every property except empty ones and name     
-	    if mapping[key].get("extension_import") and not mapping[key].get("base_import"):
-	        #print("2 %s B" % (key))
-	        tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition)
-	        for base_property in tmp_model.classes[mapping[key]["extension_import_name"]]:
-	            if tmp_model.classes[mapping[key]["extension_import_name"]][base_property]==None:
-	                continue
-	            if base_property=='name':
-	                continue
-	            if len(tmp_model.classes[mapping[key]["extension_import_name"]][base_property])!=0:
-	                #print(key,base_property)
-	                updated_model.classes[key][base_property]=tmp_model.classes[mapping[key]["extension_import_name"]][base_property]
+			for slot_item in tmp_model['slots']:
+				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
+				### Conversion from YAML to python object stringifies Menu,None need to fix
+				#print(slot_item)
+				if bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
+					#print("A",updated_model['slots'][slot_item]['range'])
+					tmp_array=[]
+					old_value=updated_model['slots'][slot_item]['range']
+					if "None" in old_value:
+						tmp_array.append("None")
+					for val in re.findall("'.*'",old_value):
+						tmp_array.append(val.replace("'",""))
+					updated_model['slots'][slot_item]['range']=tmp_array
 
-	        for slot_item in tmp_model['slots']:
-	            updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
-	            ### Conversion from YAML to python object stringifies Menu,None need to fix
-	            if bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
-	            	#print("A",updated_model['slots'][slot_item]['range'])
-	            	tmp_array=[]
-	            	old_value=updated_model['slots'][slot_item]['range']
-	            	if "None" in old_value:
-	            		tmp_array.append("None")
-	            	for val in re.findall("'.*'",old_value):
-	            		tmp_array.append(val.replace("'",""))
-	            	updated_model['slots'][slot_item]['range']=tmp_array
-	            	#print("B",updated_model['slots'][slot_item]['range'])
-	        for enum_item in tmp_model['enums']:
-	            updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
-	    
-	    ### For extended with base imports, b/c earlier base was imported, we only want to import news slots, definitions for new slots, enums related to new slots, and usage of new slots  
-	    if mapping[key].get("extension_import") and mapping[key].get("base_import"):
-	        #print("2 %s C" % (key))
-	        tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition) 
-	        ###updated_model.classes[key]['slots']=updated_model.classes[key]['slots']+tmp_model.classes[mapping[key]["extension_import_name"]]['slots']
-	        
-	        ###Add slots defintions
-	        for slot_item in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
-	          updated_model.classes[key]['slots'].append(tmp_model['slots'][slot_item]['name'])
-	          updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
-	          #print("A",slot_item,key,tmp_model['slots'][slot_item])
-	          if bool(re.search('^\\[.*\\]$', tmp_model['slots'][slot_item]['range'])):
-	              tmp_array=[]
-	              current_value=tmp_model['slots'][slot_item]['range']
-	              if "None" in old_value:
-	                tmp_array.append("None")
-	              for val in re.findall("'.*'",current_value):
-	                tmp_array.append(val.replace("'",""))
-	              updated_model['slots'][slot_item]['range']=tmp_array
-	        for enum_item in tmp_model['enums']:
-	            updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
-		        #for slot_item in tmp_model['slots']:
-		        #    updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
-		        #for enum_item in tmp_model['enums']:
-		        #    updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+				
+					#print("B",updated_model['slots'][slot_item]['range'])
+			for enum_item in tmp_model['enums']:
+				updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+		   
+		### For extended without base imports, we also want every property except empty ones and name	 
+		if mapping[key].get("extension_import") and not mapping[key].get("base_import"):
+			#print("2 %s B" % (key))
+			tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition)
+			for base_property in tmp_model.classes[mapping[key]["extension_import_name"]]:
+				if tmp_model.classes[mapping[key]["extension_import_name"]][base_property]==None:
+					continue
+				if base_property=='name':
+					continue
+				if len(tmp_model.classes[mapping[key]["extension_import_name"]][base_property])!=0:
+					#print(key,base_property)
+					updated_model.classes[key][base_property]=tmp_model.classes[mapping[key]["extension_import_name"]][base_property]
 
-	        if len(tmp_model['classes'][mapping[key].get("extension_import_name")]['slot_usage'])>0:
-	            for slot_usage in tmp_model['classes'][mapping[key].get("extension_import_name")]['slot_usage']:
-	                #print(slot_usage,key)
-	                updated_model.classes[key]['slot_usage'][slot_usage]=tmp_model['classes'][mapping[key].get("extension_import_name")]['slot_usage'][slot_usage]
+			for slot_item in tmp_model['slots']:
+				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
+				### Conversion from YAML to python object stringifies Menu,None need to fix
+				if bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
+					#print("A",updated_model['slots'][slot_item]['range'])
+					tmp_array=[]
+					old_value=updated_model['slots'][slot_item]['range']
+					if "None" in old_value:
+						tmp_array.append("None")
+					for val in re.findall("'.*'",old_value):
+						tmp_array.append(val.replace("'",""))
+					updated_model['slots'][slot_item]['range']=tmp_array
+					#print("B",updated_model['slots'][slot_item]['range'])
+			for enum_item in tmp_model['enums']:
+				updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+
+		for slot_item in  updated_model['slots'].keys():
+			print(slot_item)
+			updated_model['slots'][slot_item]['title']=slot_item
+
+		
+		### For extended with base imports, b/c earlier base was imported, we only want to import news slots, definitions for new slots, enums related to new slots, and usage of new slots  
+		if mapping[key].get("extension_import") and mapping[key].get("base_import"):
+			#print("2 %s C" % (key))
+			tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition) 
+			###updated_model.classes[key]['slots']=updated_model.classes[key]['slots']+tmp_model.classes[mapping[key]["extension_import_name"]]['slots']
+			
+			###Add slots defintions
+			for slot_item in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
+				updated_model.classes[key]['slots'].append(tmp_model['slots'][slot_item]['name'])
+				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
+				#print("A",slot_item,key,tmp_model['slots'][slot_item])
+				#print(slot_item)
+				if bool(re.search('^\\[.*\\]$', tmp_model['slots'][slot_item]['range'])):
+					tmp_array=[]
+					current_value=tmp_model['slots'][slot_item]['range']
+					if "None" in old_value:
+						tmp_array.append("None")
+					for val in re.findall("'.*'",current_value):
+						tmp_array.append(val.replace("'",""))
+						updated_model['slots'][slot_item]['range']=tmp_array
+			for enum_item in tmp_model['enums']:
+				updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+				#for slot_item in tmp_model['slots']:
+				#	updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
+				#for enum_item in tmp_model['enums']:
+				#	updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+
+	for key in reference_model.classes.keys():
+		usage={}
+		main_slot_id=None
+		slot_id=[]
+		others=[]
+		extensions=[]
+
+		if mapping[key].get("extension_import_name") and mapping[key].get("base_import_name"):
+			tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition)
+			for slot in updated_model.classes[key]['slots']:
+				if slot.endswith("_id") and key in slot:
+					main_slot_id=slot
+				elif slot.endswith("_id"):
+					slot_id.append(slot)
+				elif slot in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
+					print("D",key,tmp_model.classes[mapping[key]["extension_import_name"]]['slots'])
+					extensions.append(slot)
+				else:
+					others.append(slot)
+			slot_id.sort()
+			others.sort()
+			extensions.sort()
+			if main_slot_id:
+				usage[main_slot_id]=SlotDefinition(name=main_slot_id,rank=1,slot_group="Database Identifiers")
+			if len(slot_id)>0:
+				for slot in slot_id:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Database Identifiers")
+			if len(others)>0:
+				for slot in others:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
+			if len(extensions)>0:
+				for slot in extensions:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Extensions %s" % (key))
+		elif mapping[key].get("extension_import_name"):
+			tmp_model=yaml_loader.load(mapping[key]['extension_import'], SchemaDefinition)
+			for slot in updated_model.classes[key]['slots']:
+				if slot.endswith("_id") and key in slot:
+					main_slot_id=slot
+				elif slot.endswith("_id"):
+					slot_id.append(slot)
+				elif slot in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
+					extensions.append(slot)
+			slot_id.sort()
+			others.sort()
+			if main_slot_id:
+				usage[main_slot_id]=SlotDefinition(name=main_slot_id,rank=1,slot_group="Database Identifiers")
+			if len(slot_id)>0:
+				for slot in slot_id:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Database Identifiers")
+			if len(extensions)>0:
+				for slot in extensions:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Extensions %s" % (key))
+		else : 
+			for slot in updated_model.classes[key]['slots']:
+				if slot.endswith("_id") and key in slot:
+					main_slot_id=slot
+				elif slot.endswith("_id"):
+					slot_id.append(slot)
+				else:
+					others.append(slot)
+			slot_id.sort()
+			others.sort()
+			if main_slot_id:
+				usage[main_slot_id]=SlotDefinition(name=main_slot_id,rank=1,slot_group="Database Identifiers")
+			if len(slot_id)>0:
+				for slot in slot_id:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Database Identifiers")
+			if len(others)>0:
+				for slot in others:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
+		print("C",key,usage)
+		updated_model.classes[key]['slot_usage']=usage
 
 def makeDataHarmonizerVersion(model):
 	"""
@@ -300,4 +380,4 @@ def makeDataHarmonizerVersion(model):
 
 
 if __name__ == "__main__":
-    main()
+	main()

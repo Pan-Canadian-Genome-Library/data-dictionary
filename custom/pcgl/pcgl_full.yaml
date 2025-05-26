@@ -1071,19 +1071,19 @@ slots:
   age_at_death:
     name: age_at_death
     description: Age of participant (in days) at time of death
-    title: Age At Death
+    title: age_at_death
     range: integer
     required: false
   age_at_enrollment:
     name: age_at_enrollment
     description: Age (in days) of participant at time of enrollment into the study
-    title: Age At Enrollment
+    title: age_at_enrollment
     range: integer
     required: false
   cause_of_death:
     name: cause_of_death
     description: Indicate the cause of a participant's death.
-    title: Cause Of Death
+    title: cause_of_death
     exact_mappings:
     - ARGO:cause_of_death
     - MOH:cause_of_death
@@ -1092,7 +1092,7 @@ slots:
   study_id:
     name: study_id
     description: Unique identifier of the study.
-    title: Study Id
+    title: study_id
     notes:
     - Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
     exact_mappings:
@@ -1104,7 +1104,7 @@ slots:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
       the data provider.
-    title: Submitter Participant Id
+    title: submitter_participant_id
     examples:
     - value: '90234'
     - value: BLD_donor_89
@@ -1123,7 +1123,7 @@ slots:
   vital_status:
     name: vital_status
     description: Participant's last known state of living or deceased.
-    title: Vital Status
+    title: vital_status
     exact_mappings:
     - CQDG:vital_status
     - Phenopacket:individual.vital_status
@@ -1135,7 +1135,7 @@ slots:
     description: Refers to the ethnic or cultural origins of a person's ancestors.
       The provided values are based on the list of ethnic or cultural origins 2021
       defined by Statistics Canada
-    title: Ethnicity
+    title: ethnicity
     notes:
     - '
 
@@ -1159,7 +1159,7 @@ slots:
     description: Refers to an individual's personal and social identity as a man,
       woman or non-binary person (a person who is not exclusively a man or a woman).
       The provided values are based on the categories defined by Statistics Canada
-    title: Gender
+    title: gender
     notes:
     - '
 
@@ -1180,7 +1180,7 @@ slots:
       within social hierarchies. There is no scientifically supported biological basis
       for discrete racial groups. The provided values are based on race-based data
       standard defined by CIHI guidance
-    title: Race
+    title: race
     comments:
     - EDI indicator
     exact_mappings:
@@ -1193,7 +1193,7 @@ slots:
     description: Refers to sex assigned at birth. Sex at birth is typically assigned
       based on a person's reproductive system and other physical characteristics.
       The provided values are based on the categoried defined by Statistics Canada
-    title: Sex At Birth
+    title: sex_at_birth
     notes:
     - '
 
@@ -1210,14 +1210,14 @@ slots:
   age_at_phenotype:
     name: age_at_phenotype
     description: Participant's age (in days) when phenotype was observed
-    title: Age At Phenotype
+    title: age_at_phenotype
     range: integer
     required: false
   phenotype_code:
     name: phenotype_code
     description: Use standardized HPO (Human Phenotype Ontology) codes to represent
       the phenotype.
-    title: Phenotype Code
+    title: phenotype_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     range: string
@@ -1227,19 +1227,19 @@ slots:
     name: phenotype_duration
     description: Indicate the length of time (in days) over which the phenotype was
       observed in the participant.
-    title: Phenotype Duration
+    title: phenotype_duration
     range: integer
     required: false
   phenotype_observed:
     name: phenotype_observed
     description: Indicate whether the phenotype was observed in the participant.
-    title: Phenotype Observed
+    title: phenotype_observed
     range: phenotype_observed_menu
     required: true
   phenotype_severity:
     name: phenotype_severity
     description: The degree or severity of the observed phenotype.
-    title: Phenotype Severity
+    title: phenotype_severity
     comments:
     - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
     range: phenotype_severity_menu
@@ -1248,33 +1248,33 @@ slots:
     name: phenotype_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the phenotype_code.
-    title: Phenotype Term
+    title: phenotype_term
     range: string
     required: false
   age_at_followup:
     name: age_at_followup
     description: Participant's age (in days) at time of the follow up event
-    title: Age At Followup
+    title: age_at_followup
     range: integer
     required: false
   disease_status_at_followup:
     name: disease_status_at_followup
     description: Indicate the participant's disease status at time of follow-up
-    title: Disease Status At Followup
+    title: disease_status_at_followup
     range: disease_status_at_followup_menu
     required: true
   age_at_measurement:
     name: age_at_measurement
     description: Age (in days) of the participant at the time the lab test or measurement
       was conducted.
-    title: Age At Measurement
+    title: age_at_measurement
     range: integer
     required: false
   measurement_code:
     name: measurement_code
     description: Use standartized LOINC (Logical Observation Identifiers Names and
       Codes) code to represent quantitative, ordinal, or categorical measurements.
-    title: Measurement Code
+    title: measurement_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
     range: string
@@ -1283,56 +1283,60 @@ slots:
   measurement_result_categorical:
     name: measurement_result_categorical
     description: The categorical result of the lab test or measurement.
-    title: Measurement Result Categorical
+    title: measurement_result_categorical
     range: string
     required: false
   measurement_result_numeric:
     name: measurement_result_numeric
     description: The numeric result of the lab test or measurement.
-    title: Measurement Result Numeric
+    title: measurement_result_numeric
     range: decimal
     required: false
   measurement_term:
     name: measurement_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the measurement_code
-    title: Measurement Term
+    title: measurement_term
     range: string
     required: false
   measurement_unit:
     name: measurement_unit
     description: Indicate the unit of measurement for the result using LOINC code.
-    title: Measurement Unit
+    title: measurement_unit
     range: string
     required: false
     pattern: ^UO:\d{7}$
   age_at_comorbidity_diagnosis:
     name: age_at_comorbidity_diagnosis
     description: Indicate the age (in days) of comorbidity diagnosis.
-    title: Age At Comorbidity Diagnosis
+    title: age_at_comorbidity_diagnosis
     range: integer
     required: false
   comorbidity_code:
     name: comorbidity_code
     description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
-    title: Comorbidity Code
+      Provide code in Compact URI (CURIE) pattern.
+    title: comorbidity_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
     range: string
     required: true
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
-    title: Comorbidity Status
+    title: comorbidity_status
     range: comorbidity_status_menu
     required: false
   comorbidity_term:
     name: comorbidity_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the comorbidity_code
-    title: Comorbidity Term
+    title: comorbidity_term
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1343,14 +1347,14 @@ slots:
     name: comorbidity_treatment_status
     description: Indicate whether the comorbid condition is currently being treated
       or not.
-    title: Comorbidity Treatment Status
+    title: comorbidity_treatment_status
     range: comorbidity_treatment_status_menu
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
     description: Indicate the ICD-O-3 topography code to describe the site of the
       surgery if applicable. Please use C80.9 if the site is Unkown.
-    title: Procedure Body Site Code
+    title: procedure_body_site_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
@@ -1369,31 +1373,37 @@ slots:
     name: procedure_body_site_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_body_site_code
-    title: Procedure Body Site Term
+    title: procedure_body_site_term
     range: string
     required: false
   procedure_code:
     name: procedure_code
     description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
       performed.
-    title: Procedure Code
+    title: procedure_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
-      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>'
+      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>
+      CCI URL: https://www.cihi.ca/en/cci-coding-structure'
+    examples:
+    - value: NCIT:C51894
+    - value: snomedct:284196006
+    - value: umls:C2584994
+    - value: CCI:1CA14STCDR
     range: string
     required: true
-    pattern: ^NCIT:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
   procedure_term:
     name: procedure_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_code
-    title: Procedure Term
+    title: procedure_term
     range: string
     required: false
   submitter_treatment_id:
     name: submitter_treatment_id
     description: Unique identifier of the treatment, assigned by the data provider.
-    title: Submitter Treatment Id
+    title: submitter_treatment_id
     examples:
     - value: '90234'
     - value: BLD_donor_89
@@ -1404,7 +1414,7 @@ slots:
   alcohol_consumption:
     name: alcohol_consumption
     description: Indicate current alcohol consumtion based on recommended daily limit.
-    title: Alcohol Consumption
+    title: alcohol_consumption
     comments:
     - Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks
       a week, with no more than 3 drinks a day most days. No more than 4 drinks on
@@ -1420,14 +1430,14 @@ slots:
     name: physical_activity
     description: Indicate how many times per week the participant exercises for at
       least 30 minutes.
-    title: Physical Activity
+    title: physical_activity
     range: physical_activity_menu
     required: false
   smoking_status:
     name: smoking_status
     description: Indicate smoking status and history of a participant at the time
       of the data collection.
-    title: Smoking Status
+    title: smoking_status
     exact_mappings:
     - ARGO:smoking_status
     - MOH:smoking_status
@@ -1437,7 +1447,7 @@ slots:
   age_at_specimen_collection:
     name: age_at_specimen_collection
     description: Indicate participant's age( in days) when specimen was collected.
-    title: Age At Specimen Collection
+    title: age_at_specimen_collection
     range: integer
     required: false
   specimen_anatomic_location_code:
@@ -1445,7 +1455,7 @@ slots:
     description: Indicate the ICD-O-3 topography code for the anatomic location of
       a specimen when it was collected. Please use C80.9 if the primary site of a
       specimen is Unkown.
-    title: Specimen Anatomic Location Code
+    title: specimen_anatomic_location_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
@@ -1464,14 +1474,14 @@ slots:
     name: specimen_anatomic_location_label
     description: Provide the human readable label for the specimen anatomic location
       code.
-    title: Specimen Anatomic Location Label
+    title: specimen_anatomic_location_label
     range: string
     required: false
   specimen_laterality:
     name: specimen_laterality
     description: For cancer in a paired organ, indicate the side on which the specimen
       was obtained.
-    title: Specimen Laterality
+    title: specimen_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
     exact_mappings:
@@ -1482,7 +1492,7 @@ slots:
   specimen_processing:
     name: specimen_processing
     description: Indicate the technique used to process specimen.
-    title: Specimen Processing
+    title: specimen_processing
     exact_mappings:
     - Phenopacket:biosample.sample_processing
     - BeaconV2:biosample.sample_processing
@@ -1494,7 +1504,7 @@ slots:
     name: specimen_storage
     description: Indicate the method of long term storage for specimen that were not
       extracted freshly or immediately cultured.
-    title: Specimen Storage
+    title: specimen_storage
     exact_mappings:
     - Phenopacket:biosample.sample_storage
     - BeaconV2:biosample.sample_storage
@@ -1507,7 +1517,7 @@ slots:
     description: Indicate the tissue source of the specimen from which a biopsy or
       other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
       SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
-    title: Specimen Tissue Source Code
+    title: specimen_tissue_source_code
     exact_mappings:
     - CQDG:biospecimen_tissue_source
     - mCODE.STU3:Specimen.type
@@ -1521,14 +1531,14 @@ slots:
     name: specimen_tissue_source_term
     description: Indicate the human readable label for the specimen tissue source
       code.
-    title: Specimen Tissue Source Term
+    title: specimen_tissue_source_term
     range: string
     required: false
   submitter_specimen_id:
     name: submitter_specimen_id
     description: Unique identifier of the specimen within the study, assigned by the
       data provider.
-    title: Submitter Specimen Id
+    title: submitter_specimen_id
     examples:
     - value: LAML_PO
     - value: '00445'
@@ -1547,7 +1557,7 @@ slots:
   age_at_diagnosis:
     name: age_at_diagnosis
     description: Age of participant (in days) at time of diagnosis of the condition.
-    title: Age At Diagnosis
+    title: age_at_diagnosis
     exact_mappings:
     - mCODE.STU3:condition.onset
     - FHIR:condition.onset
@@ -1559,16 +1569,19 @@ slots:
   disease_category:
     name: disease_category
     description: A broader classification that groups diseases into categories.
-    title: Disease Category
+    title: disease_category
     range: disease_category_menu
     required: true
   disease_code:
     name: disease_code
     description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
-    title: Disease Code
+    title: disease_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1578,12 +1591,12 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the disease_code
-    title: Disease Term
+    title: disease_term
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1594,7 +1607,7 @@ slots:
     name: submitter_diagnosis_id
     description: Unique identifier of the primary diagnosis event, assigned by the
       data provider.
-    title: Submitter Diagnosis Id
+    title: submitter_diagnosis_id
     examples:
     - value: '90234'
     - value: BLD_donor_89
@@ -1611,27 +1624,27 @@ slots:
   age_at_treatment:
     name: age_at_treatment
     description: Age (in days) of the participant at the time the treatment was administered.
-    title: Age At Treatment
+    title: age_at_treatment
     range: integer
     required: false
   treatment_duration:
     name: treatment_duration
     description: The length of time (in days) over which the treatment was administered.
-    title: Treatment Duration
+    title: treatment_duration
     range: integer
     required: false
   treatment_intent:
     name: treatment_intent
     description: The purpose of the treatment or the desired effect or outcome resulting
       from the treatment.
-    title: Treatment Intent
+    title: treatment_intent
     range: treatment_intent_menu
     required: false
   treatment_response:
     name: treatment_response
     description: The outcome of the treatment, indicating how the patient responded
       to the intervention
-    title: Treatment Response
+    title: treatment_response
     exact_mappings:
     - ARGO:treatment_response
     - MOH:treatment_response
@@ -1641,7 +1654,7 @@ slots:
   treatment_status:
     name: treatment_status
     description: Indicate the donor's status of the prescribed treatment.
-    title: Treatment Status
+    title: treatment_status
     exact_mappings:
     - ARGO:treatment_status
     - MOH:treatment_status
@@ -1650,32 +1663,37 @@ slots:
   treatment_type:
     name: treatment_type
     description: The category or method of treatment administered
-    title: Treatment Type
+    title: treatment_type
     range: treatment_type_menu
     required: true
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
       specified in drug_dose_units.
-    title: Actual Cumulative Drug Dose
+    title: actual_cumulative_drug_dose
     range: decimal
     required: false
   drug_code:
     name: drug_code
     description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
       to represent the drug.
-    title: Drug Code
+    title: drug_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
       URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
       URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
+    examples:
+    - value: rxnorm:221058
+    - value: kegg.drug:D00123
+    - value: pubchem.compound:100101
+    - value: NCIT:C138986
     range: string
     required: true
-    pattern: ^RxNorm:\d{1,8}$|^KEGG:D\d{5}$|^PubChem:\d{1,9}$|^NCIT:C\d{1,7}$
+    pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
   drug_dose_units:
     name: drug_dose_units
     description: Indicate units used to record drug dose.
-    title: Drug Dose Units
+    title: drug_dose_units
     range: string
     required: false
     pattern: ^UO:\d{7}$
@@ -1683,21 +1701,21 @@ slots:
     name: drug_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the drug_code
-    title: Drug Term
+    title: drug_term
     range: string
     required: false
   prescribed_cumulative_drug_dose:
     name: prescribed_cumulative_drug_dose
     description: Indicate the total prescribed cumulative drug dose in the same units
       specified in drug_dose_units.
-    title: Prescribed Cumulative Drug Dose
+    title: prescribed_cumulative_drug_dose
     range: decimal
     required: false
   anatomical_site_irradiated_code:
     name: anatomical_site_irradiated_code
     description: Indicate the ICD-O-3 topography code to describe the irradiated site
       of radiation if applicable. Please use C80.9 if the site is Unkown.
-    title: Anatomical Site Irradiated Code
+    title: anatomical_site_irradiated_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
@@ -1716,25 +1734,25 @@ slots:
     name: anatomical_site_irradiated_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the anatomical_site_irradiated_code
-    title: Anatomical Site Irradiated Term
+    title: anatomical_site_irradiated_term
     range: string
     required: false
   radiation_dosage:
     name: radiation_dosage
     description: Indicate the total dose given in units of Gray (Gy).
-    title: Radiation Dosage
+    title: radiation_dosage
     range: integer
     required: false
   radiation_fractions:
     name: radiation_fractions
     description: Indicate the total number of fractions delivered as part of treatment.
-    title: Radiation Fractions
+    title: radiation_fractions
     range: integer
     required: false
   radiation_modality:
     name: radiation_modality
     description: Indicate NCIt code to denote the modality of radiation therapy.
-    title: Radiation Modality
+    title: radiation_modality
     range: radiation_modality_menu
     required: true
   submitter_sample_id:
@@ -1743,7 +1761,7 @@ slots:
       data provider.
 
       '
-    title: Submitter Sample Id
+    title: submitter_sample_id
     examples:
     - value: hnc_12
     - value: CCG_34_94583
@@ -1760,7 +1778,7 @@ slots:
     name: sample_type
     description: 'Indicate NCIt (NCI Thesaurus) code and term to denote the type of
       molecular sample used for sequencing and analysis. '
-    title: Sample Type
+    title: sample_type
     exact_mappings:
     - Phenopacket:biosample.sample_type
     - BeaconV2:biosample.sample_type
@@ -1771,7 +1789,7 @@ slots:
   sample_status:
     name: sample_status
     description: Indicate the status of the sample for data analysis.
-    title: Sample Status
+    title: sample_status
     exact_mappings:
     - Phenopacket:sample_status
     range: sample_status_menu
@@ -1780,7 +1798,7 @@ slots:
     name: matched_control_submitter_sample_id
     description: 'Indicate the matched control submitter sample id to use for data
       analysis. '
-    title: Matched Control Submitter Sample Id
+    title: matched_control_submitter_sample_id
     range: string
     required: false
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
@@ -1788,7 +1806,7 @@ slots:
     name: submitter_experiment_id
     description: Unique identifier of the experiment within the study, assigned by
       the data provider.
-    title: Submitter Experiment Id
+    title: submitter_experiment_id
     exact_mappings:
     - ARGO:submitter_experiment_id
     range: string
@@ -1798,7 +1816,7 @@ slots:
     name: experiment_type
     description: The broad type of sequencing experiment performed. A mixture of library
       strategy and source
-    title: Experiment Type
+    title: experiment_type
     exact_mappings:
     - GA4GHExperimentMetadataChecklist:experiment_type
     range: experiment_type_menu
@@ -1807,7 +1825,7 @@ slots:
     name: experimental_strategy
     description: The primary experimental method. For sequencing data it refers to
       how the sequencing library was made.
-    title: Experimental Strategy
+    title: experimental_strategy
     exact_mappings:
     - BeaconV2:runs.libraryStrategy
     - ARGO:experimental_strategy
@@ -1816,7 +1834,7 @@ slots:
   platform:
     name: platform
     description: The sequencing platform type used in data generation.
-    title: Platform
+    title: platform
     exact_mappings:
     - BeaconV2:runs.platform
     - ARGO:platform
@@ -1826,7 +1844,7 @@ slots:
     name: submitter_analysis_id
     description: Unique identifier of the analysis within the study, assigned by the
       data provider.
-    title: Submitter Analysis Id
+    title: submitter_analysis_id
     examples:
     - value: hnc_12
     - value: CCG_34_94583
@@ -1840,7 +1858,7 @@ slots:
   submitter_read_group_id:
     name: submitter_read_group_id
     description: The identifier of a read group; must be unique within each payload.
-    title: Submitter Read Group Id
+    title: submitter_read_group_id
     exact_mappings:
     - ARGO:submitter_read_group_id
     - BeaconV2:runs.id
@@ -1851,7 +1869,7 @@ slots:
     name: analysis_type
     description: Overall type of the analysis. Term chosen from a controlled vocabulary
       (CV) list.
-    title: Analysis Type
+    title: analysis_type
     exact_mappings:
     - ARGO:analysis_type
     - EGA:analysis_type
@@ -1861,13 +1879,13 @@ slots:
     name: submitter_workflow_id
     description: Indicate the unique identifier of the data processing workflow used
       in the analysis.
-    title: Submitter Workflow Id
+    title: submitter_workflow_id
     range: string
     required: false
   analysis_input_type:
     name: analysis_input_type
     description: An array specifying the types of data used as inputs for the analysis
-    title: Analysis Input Type
+    title: analysis_input_type
     exact_mappings:
     - ARGO:analysis_input_type
     - EGA:analysis_input_type
@@ -1880,7 +1898,7 @@ slots:
       be ''Raw Sequencing Reads'', while that same type of data could be the input
       type of data for an analysis type of sequence alignment, which would then output
       ''Aligned Reads''. '
-    title: Analysis Output Type
+    title: analysis_output_type
     exact_mappings:
     - ARGO:analysis_output_type
     - EGA:analysis_output_type
@@ -1889,20 +1907,20 @@ slots:
   genome_build:
     name: genome_build
     description: 'The reference genome build that is used in the workflow. '
-    title: Genome Build
+    title: genome_build
     range: genome_build_menu
     required: false
   genome_annotation:
     name: genome_annotation
     description: Indicates which genome annotation build or version was used in the
       analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
-    title: Genome Annotation
+    title: genome_annotation
     range: string
     required: false
   fileName:
     name: fileName
     description: Name of the file.
-    title: FileName
+    title: fileName
     exact_mappings:
     - ARGO:fileName
     range: string
@@ -1911,7 +1929,7 @@ slots:
   fileSize:
     name: fileSize
     description: Size of the file, in bytes.
-    title: FileSize
+    title: fileSize
     exact_mappings:
     - ARGO:fileSize
     range: integer
@@ -1919,7 +1937,7 @@ slots:
   fileMd5sum:
     name: fileMd5sum
     description: Computed md5sum of the file.
-    title: FileMd5sum
+    title: fileMd5sum
     exact_mappings:
     - ARGO:fileMd5sum
     range: string
@@ -1928,7 +1946,7 @@ slots:
   fileType:
     name: fileType
     description: Data format of files.
-    title: FileType
+    title: fileType
     exact_mappings:
     - EGA:fileType
     - ARGO:fileType
@@ -1937,7 +1955,7 @@ slots:
   fileAccess:
     name: fileAccess
     description: The permission level of a file for public access.
-    title: FileAccess
+    title: fileAccess
     exact_mappings:
     - ARGO:fileAccess
     range: string
@@ -1945,13 +1963,13 @@ slots:
   workflow_name:
     name: workflow_name
     description: The name of the genomic data processing workflow used for data analysis.
-    title: Workflow Name
+    title: workflow_name
     range: string
     required: true
   workflow_version:
     name: workflow_version
     description: 'The version of the workflow or pipeline being used. '
-    title: Workflow Version
+    title: workflow_version
     range: string
     required: false
   workflow_url:
@@ -1959,7 +1977,7 @@ slots:
     description: A URL linking to the workflow's repository or documentation. This
       could be a reference to a GitHub repository, a website where the workflow is
       described, or documentation on how to run the workflow.
-    title: Workflow Url
+    title: workflow_url
     range: string
     required: false
   duo_permission:
@@ -1967,7 +1985,7 @@ slots:
     description: Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE)
       pattern to indicate permitted uses or focused areas of research for the Participant
       data.
-    title: Duo Permission
+    title: duo_permission
     exact_mappings:
     - CQDG:duo_permission
     range: duo_permission_menu
@@ -1977,7 +1995,7 @@ slots:
     description: Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE)
       pattern to add requirements, limitations, or prohibitions within the permitted
       boundary for the Participant data.
-    title: Duo Modifier
+    title: duo_modifier
     exact_mappings:
     - CQDG:duo_modifier
     range: duo_modifier_menu
@@ -1987,7 +2005,7 @@ slots:
     name: disease_specific_modifier
     description: If the permission is DUO:0000007 (disease specific research), then
       MONDO codes must be provided to specify which disease(s) apply.
-    title: Disease Specific Modifier
+    title: disease_specific_modifier
     examples:
     - value: MONDO:0000001
     range: string
@@ -1998,7 +2016,7 @@ slots:
     name: submitter_sociodem_id
     description: Unique identifier for the sociodemographic record, assigned by the
       data provider.
-    title: Submitter Sociodem Id
+    title: submitter_sociodem_id
     examples:
     - value: '90234'
     - value: BLD_participant_89
@@ -2010,7 +2028,7 @@ slots:
     name: age_at_sociodem_collection
     description: Age (in days) of the participant at the time of sociodemographic
       data collection
-    title: Age At Sociodem Collection
+    title: age_at_sociodem_collection
     notes:
     - '
 
@@ -2030,7 +2048,7 @@ slots:
       \ the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if\
       \ the day is unknown but the month and year are known\n- Use YYYY if only the\
       \ year is known"
-    title: Sociodem Date Collection
+    title: sociodem_date_collection
     notes:
     - '
 
@@ -2048,7 +2066,7 @@ slots:
     description: A response which does not fall into any of the previous racial reporting
       categories (e.g., Pacific Islander, Indigenous identities outside of North America,
       etc.).
-    title: Race Another Racial Category
+    title: race_another_racial_category
     notes:
     - '
 
@@ -2069,7 +2087,7 @@ slots:
       in (genetic) population structure with socially constructed racial categories,
       responses that were self-identified should not be aggregated with responses
       that were socially assigned or derived. '
-    title: Race Collect Method
+    title: race_collect_method
     notes:
     - '
 
@@ -2083,7 +2101,7 @@ slots:
     name: gender_another_gender
     description: A response which does not fall into any of the previous gender reporting
       categories.
-    title: Gender Another Gender
+    title: gender_another_gender
     notes:
     - '
 
@@ -2098,7 +2116,7 @@ slots:
     name: gender_collect_method
     description: 'Studies must report how the gender data was collected. This is necessary
       to enable data aggregation, harmonization, and reproducibility. '
-    title: Gender Collect Method
+    title: gender_collect_method
     notes:
     - '
 
@@ -2113,7 +2131,7 @@ slots:
     description: A response which does not fall into any of the previous categories.
       For example, a response of “Other” from retrospective studies. Prospective projects
       should instead allow participants to freely self-identify.
-    title: Ethnicity Another Category
+    title: ethnicity_another_category
     notes:
     - '
 
@@ -2128,7 +2146,7 @@ slots:
     name: ethnicity_collect_method
     description: 'Studies must report how the ethnicity data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Ethnicity Collect Method
+    title: ethnicity_collect_method
     notes:
     - '
 
@@ -2141,7 +2159,7 @@ slots:
   sex_another_category:
     name: sex_another_category
     description: 'A response which does not fall into any of the previous categories. '
-    title: Sex Another Category
+    title: sex_another_category
     notes:
     - '
 
@@ -2156,7 +2174,7 @@ slots:
     name: sex_collect_method
     description: 'Studies must report how the sex_at_birth data was collected. This
       is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Sex Collect Method
+    title: sex_collect_method
     notes:
     - '
 
@@ -2169,7 +2187,7 @@ slots:
   education:
     name: education
     description: The highest level of education attained.
-    title: Education
+    title: education
     notes:
     - '
 
@@ -2185,7 +2203,7 @@ slots:
     name: education_collect_method
     description: 'Studies must report how the education data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Education Collect Method
+    title: education_collect_method
     notes:
     - '
 
@@ -2198,7 +2216,7 @@ slots:
   personal_income:
     name: personal_income
     description: Personal annual income from all sources after taxes.
-    title: Personal Income
+    title: personal_income
     notes:
     - '
 
@@ -2214,7 +2232,7 @@ slots:
     name: personal_income_collect_method
     description: 'Studies must report how the personal_income data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Personal Income Collect Method
+    title: personal_income_collect_method
     notes:
     - '
 
@@ -2227,7 +2245,7 @@ slots:
   geographic_location:
     name: geographic_location
     description: 'A participant’s postal code at their current address of residence. '
-    title: Geographic Location
+    title: geographic_location
     notes:
     - '
 
@@ -2245,14 +2263,14 @@ slots:
     name: geographic_location_additional
     description: When postal code is less specific, additional information may be
       reported.
-    title: Geographic Location Additional
+    title: geographic_location_additional
     range: string
     required: false
   geographic_location_collect_method:
     name: geographic_location_collect_method
     description: 'Studies must report how the geographic_location data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Geographic Location Collect Method
+    title: geographic_location_collect_method
     notes:
     - '
 
@@ -2266,7 +2284,7 @@ slots:
     name: sociodem_question
     description: Indicate whether the questions asked for the sociodemographic variable
       follow the PCGL reference question and standard reporting categories.
-    title: Sociodem Question
+    title: sociodem_question
     range: sociodem_question_menu
     required: true
   sociodem_question_detail:
@@ -2274,7 +2292,7 @@ slots:
     description: Report the questions asked for the sociodemographic variable, including
       the provided response options/reporting categories if it does not follow the
       PCGL reference question and standard reporting categories.
-    title: Sociodem Question Detail
+    title: sociodem_question_detail
     notes:
     - '
 
@@ -2297,7 +2315,7 @@ slots:
     name: sociodem_notes
     description: Studies may choose to report whether potential bias may exist due
       to the way reporting categories were defined and handled.
-    title: Sociodem Notes
+    title: sociodem_notes
     examples:
     - value: "\n    For example, in the Canadian Census, the order of the provided\
         \ response options for ethnicity were shown to influence number of received\
@@ -2312,7 +2330,7 @@ slots:
     description: 'Indicate NCIt code to denote the modality of radiation therapy.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Radiation Modality Code
+    title: radiation_modality_code
     examples:
     - value: NCIT:C28039
     exact_mappings:
@@ -2324,7 +2342,7 @@ slots:
     name: radiation_modality_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the radiation modality code.
-    title: Radiation Modality Term
+    title: radiation_modality_term
     examples:
     - value: Electron Beam
     range: string
@@ -2337,7 +2355,7 @@ slots:
       Provide code in Compact URI (CURIE) pattern.
 
       '
-    title: Exposure Code
+    title: exposure_code
     notes:
     - '
 
@@ -2365,7 +2383,7 @@ slots:
     name: exposure_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the exposure_code
-    title: Exposure Term
+    title: exposure_term
     examples:
     - value: Alcohol use
     range: string
@@ -2373,25 +2391,25 @@ slots:
   exposure_status:
     name: exposure_status
     description: Provide the status of the exposure
-    title: Exposure Status
+    title: exposure_status
     range: exposure_status_menu
     required: true
   age_at_exposure:
     name: age_at_exposure
     description: 'Age (in days) when the participant was exposed (or first exposed)        '
-    title: Age At Exposure
+    title: age_at_exposure
     range: integer
     required: false
   exposure_duration:
     name: exposure_duration
     description: Duration of exposure period
-    title: Exposure Duration
+    title: exposure_duration
     range: integer
     required: false
   exposure_amount:
     name: exposure_amount
     description: Provide intensity, quantity or frequency of the exposure
-    title: Exposure Amount
+    title: exposure_amount
     notes:
     - "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day, hours/week\n"
     range: integer
@@ -2399,7 +2417,7 @@ slots:
   exposure_unit:
     name: exposure_unit
     description: Unit associated with exposure_amount
-    title: Exposure Unit
+    title: exposure_unit
     examples:
     - value: drinks/day
     range: string
@@ -2408,7 +2426,7 @@ slots:
     name: specimen_anatomic_location_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the specimen anatomic location code.
-    title: Specimen Anatomic Location Term
+    title: specimen_anatomic_location_term
     examples:
     - value: placental basal plate
     range: string
@@ -2419,7 +2437,7 @@ slots:
       for sequencing and analysis.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Molecule Type Code
+    title: molecule_type_code
     examples:
     - value: NCIT:C449
     - value: NCIT:C812
@@ -2439,7 +2457,7 @@ slots:
     name: molecule_type_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with molecule type code.
-    title: Molecule Type Term
+    title: molecule_type_term
     examples:
     - value: DNA
     range: string
@@ -2447,7 +2465,7 @@ slots:
   experiment_design:
     name: experiment_design
     description: The high-level experiment design including layout, protocol.
-    title: Experiment Design
+    title: experiment_design
     notes:
     - Added as a redundancy measure to prevent submission errors. Clinical API will
       check study_id against user's selection. Also duplicates field study_id in Participant
@@ -2462,7 +2480,7 @@ slots:
       the library for sequencing data.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Assay Type Code
+    title: assay_type_code
     notes:
     - '
 
@@ -2495,7 +2513,7 @@ slots:
     name: assay_type_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the assay type code.
-    title: Assay Type Term
+    title: assay_type_term
     notes:
     - '
 
@@ -2541,7 +2559,7 @@ slots:
       OBI:0002630 (Illumina NovaSeq 6000)
 
       OBI:0002012 (PacBio RS II)'
-    title: Instrument
+    title: instrument
     notes:
     - '
 
@@ -2562,7 +2580,7 @@ slots:
     name: instrument_metadata
     description: Captures metadata about sequencing instrument usage (e.g. instruments
       parameters and usage conditions)
-    title: Instrument Metadata
+    title: instrument_metadata
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:instrument_metadata
     range: string
@@ -2574,7 +2592,7 @@ slots:
       of dumping free text in this field.
 
       E.g, https://www.protocols.io/view/environmental-dna-edna-metabarcoding-protocol-for-rm7vzy3q2lx1/v1'
-    title: Sequencing Protocol
+    title: sequencing_protocol
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:sequencing_protocol
     range: string
@@ -2583,7 +2601,7 @@ slots:
     name: file_r1
     description: Name of the sequencing file containing reads from the first end of
       a sequencing run.
-    title: File R1
+    title: file_r1
     notes:
     - Any string value. Must match a fileName identified in the files section.
     exact_mappings:
@@ -2595,7 +2613,7 @@ slots:
     description: Name of the sequencing file containing reads from the second end
       of a paired-end sequencing run. Required if and only if paired-end sequencing
       was done.
-    title: File R2
+    title: file_r2
     notes:
     - Any string value or null. Must match a fileName identified in the files section.
     exact_mappings:
@@ -2606,7 +2624,7 @@ slots:
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
       pool (multiplex sequencing).
-    title: Library Name
+    title: library_name
     notes:
     - Any string value.
     exact_mappings:
@@ -2618,7 +2636,7 @@ slots:
     name: library_layout
     description: Indicate whether the library was built as paired-end or single-end
       if applicable.
-    title: Library Layout
+    title: library_layout
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:library_layout
     - BeaconV2:runs.libraryLayout
@@ -2632,7 +2650,7 @@ slots:
       lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific
       identifier. For non-multiplex sequencing, platform unit and read group have
       a one-to-one relationship.
-    title: Platform Unit
+    title: platform_unit
     notes:
     - Any string value.
     exact_mappings:
@@ -2644,7 +2662,7 @@ slots:
     description: Description of the nucleotide sequencing library, including targeting
       information, spot, gap descriptors, and any other information relevant to its
       construction
-    title: Library Description
+    title: library_description
     notes:
     - Any string value.
     exact_mappings:
@@ -2657,7 +2675,7 @@ slots:
       will be used to map the @RG ID in the BAM header to the submitter_read_group_id
       in the payload. After submission, the @RG ID in the payload will be used for
       all future headers. This cannot be submitted for FASTQ files.
-    title: Read Group Id In Bam
+    title: read_group_id_in_bam
     notes:
     - Any string value.
     exact_mappings:
@@ -2669,7 +2687,7 @@ slots:
     name: read_length_r1
     description: Length of sequencing reads in file_r1; this corresponds to the number
       of sequencing cycles of the first end.
-    title: Read Length R1
+    title: read_length_r1
     exact_mappings:
     - ARGO:read_length_r1
     range: integer
@@ -2679,7 +2697,7 @@ slots:
     name: read_length_r2
     description: Length of sequencing reads in file_r2; this corresponds to the number
       of sequencing cycles of the second end.
-    title: Read Length R2
+    title: read_length_r2
     exact_mappings:
     - ARGO:read_length_r2
     range: integer
@@ -2689,7 +2707,7 @@ slots:
     name: insert_size
     description: For paired-end sequencing, the average size of sequences between
       two sequencing ends. Required only for paired-end sequencing.
-    title: Insert Size
+    title: insert_size
     exact_mappings:
     - ARGO:insert_size
     - GA4GH.Experiment.Metadata.Checklist:insert_size
@@ -2699,7 +2717,7 @@ slots:
   studyId:
     name: studyId
     description: Unique identifier of the study.
-    title: StudyId
+    title: studyId
     notes:
     - Added as a redundancy measure to prevent submission errors. Clinical API will
       check study_id against user's selection. Also duplicates field study_id in Participant
@@ -2713,7 +2731,7 @@ slots:
     name: analysisType
     description: Overall type of the analysis. Term chosen from a controlled vocabulary
       (CV) list.
-    title: AnalysisType
+    title: analysisType
     exact_mappings:
     - ARGO:analysisType
     - EGA:analysisType
@@ -2722,14 +2740,14 @@ slots:
   data_category:
     name: data_category
     description: 'Indicate the category of data produced as outputs from the analysis. '
-    title: Data Category
+    title: data_category
     range: data_category_menu
     required: true
   variant_class:
     name: variant_class
     description: Indicates whether the called variants are germline, somatic, or of
       uncertain classification.
-    title: Variant Class
+    title: variant_class
     range: variant_class_menu
     required: false
   variant_calling_strategy:
@@ -2737,13 +2755,13 @@ slots:
     description: Indicate the approach used to identify genetic variants from sequencing
       data, based on the availability of reference samples (e.g., matched normal)
       and the study design.
-    title: Variant Calling Strategy
+    title: variant_calling_strategy
     range: variant_calling_strategy_menu
     required: false
   dataType:
     name: dataType
     description: 'Indicates the type of data produced as outputs from the analysis. '
-    title: DataType
+    title: dataType
     range: data_type_menu
     required: true
 classes:
@@ -2761,14 +2779,14 @@ classes:
     - duo_modifier
     - duo_permission
     slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
       study_id:
         name: study_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
         rank: 2
-        slot_group: Participant
+        slot_group: Database Identifiers
       disease_specific_modifier:
         name: disease_specific_modifier
         rank: 3
@@ -2841,12 +2859,12 @@ classes:
     - sociodem_question
     - sociodem_question_detail
     slot_usage:
-      submitter_sociodem_id:
-        name: submitter_sociodem_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_sociodem_id:
+        name: submitter_sociodem_id
         rank: 2
         slot_group: Database Identifiers
       age_at_sociodem_collection:
@@ -3177,16 +3195,16 @@ classes:
     - treatment_status
     - treatment_type
     slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_treatment_id:
+        name: submitter_treatment_id
         rank: 3
         slot_group: Database Identifiers
       age_at_treatment:
@@ -3568,12 +3586,12 @@ classes:
     - specimen_tissue_source_code
     - specimen_tissue_source_term
     slot_usage:
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
         rank: 2
         slot_group: Database Identifiers
       age_at_specimen_collection:
@@ -3730,12 +3748,12 @@ classes:
     - read_length_r1
     - read_length_r2
     slot_usage:
-      submitter_read_group_id:
-        name: submitter_read_group_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_experiment_id:
         name: submitter_experiment_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_read_group_id:
+        name: submitter_read_group_id
         rank: 2
         slot_group: Database Identifiers
       file_r1:
