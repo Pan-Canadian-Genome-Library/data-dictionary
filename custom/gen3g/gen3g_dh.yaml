@@ -1,8 +1,8 @@
-name: default_pcgl_schema
-description: Base clinical schema that incorporates all PCGL base entities
+name: gen3g_schema
+description: Gen3G clinical schema that incorporates all PCGL base entities (minus radiation and comorbidity), adds new entities pedigree, firsttrimestervisit, secondtrimestervisit,deliveryvisit and extends demographic, participiant and experiment
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 2.2.2.2
+version: '1.0'
 imports:
 - linkml:types
 prefixes:

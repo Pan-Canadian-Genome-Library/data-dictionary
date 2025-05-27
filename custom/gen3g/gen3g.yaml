@@ -2,7 +2,7 @@ version: 2.2
 id: https://example.com/PCGL.yaml
 in_language:
 - en
-name: default_pcgl_schema
+name: gen3g_schema
 description: 'Base clinical schema that incorporates all PCGL base entities'
 prefixes:
   linkml: https://w3id.org/linkml/
