@@ -1503,11 +1503,11 @@
       "restrictions": {
         "foreignKey": [
           {
-            "schema": "treatment",
+            "schema": "participant",
             "mappings": [
               {
-                "local": "submitter_treatment_id",
-                "foreign": "submitter_treatment_id"
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
               }
             ]
           }
@@ -1527,11 +1527,11 @@
               "AML-90"
             ]
           },
-          "name": "submitter_treatment_id",
-          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
           },
           "valueType": "string"
         },
@@ -1548,8 +1548,7 @@
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
             ],
             "examples": [
-              "C50.1",
-              "C18"
+              "Alcohol use"
             ]
           },
           "name": "anatomical_site_irradiated_code",
@@ -1563,8 +1562,8 @@
           "meta": {
             "displayName": "anatomical_site_irradiated_term"
           },
-          "name": "anatomical_site_irradiated_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
+          "name": "exposure_unit",
+          "description": "Unit associated with exposure_amount",
           "valueType": "string"
         },
         {
@@ -1616,11 +1615,11 @@
       "restrictions": {
         "foreignKey": [
           {
-            "schema": "treatment",
+            "schema": "participant",
             "mappings": [
               {
-                "local": "submitter_treatment_id",
-                "foreign": "submitter_treatment_id"
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
               }
             ]
           }
@@ -1959,6 +1958,96 @@
               "Not applicable"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "Specimen Processing",
+            "mappings": {
+              "Phenopacket": "biosample.sample_processing",
+              "BeaconV2": "biosample.sample_processing",
+              "ARGO": "specimen_processing",
+              "MOH": "specimen_processing"
+            }
+          },
+          "name": "specimen_processing",
+          "description": "Indicate the technique used to process specimen.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Cryopreservation - other",
+              "Cryopreservation in dry ice (dead tissue)",
+              "Cryopreservation in liquid nitrogen (dead tissue)",
+              "Cryopreservation of live cells in liquid nitrogen",
+              "Formalin fixed & paraffin embedded",
+              "Formalin fixed - buffered",
+              "Formalin fixed - unbuffered",
+              "Fresh",
+              "Other",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Specimen Storage",
+            "mappings": {
+              "Phenopacket": "biosample.sample_storage",
+              "BeaconV2": "biosample.sample_storage",
+              "ARGO": "specimen_storage",
+              "MOH": "specimen_storage"
+            }
+          },
+          "name": "specimen_storage",
+          "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Cut slide",
+              "Frozen in -70 freezer",
+              "Frozen in liquid nitrogen",
+              "Frozen in vapour phase",
+              "Not Applicable",
+              "Other",
+              "Paraffin block",
+              "RNA later frozen",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Specimen Tissue Source Code",
+            "mappings": {
+              "CQDG": "biospecimen_tissue_source",
+              "mCODE.STU3": "Specimen.type",
+              "FHIR": "Specimen.type",
+              "Phenopacket": "biosample.sampled_tissue",
+              "BeaconV2": "biosample.sampled_tissue"
+            }
+          },
+          "name": "specimen_tissue_source_code",
+          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
+          "restrictions": {
+            "required": true,
+            "regex": "^NCIT:C[0-9]+$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Specimen Tissue Source Term"
+          },
+          "name": "specimen_tissue_source_term",
+          "description": "Indicate the human readable label for the specimen tissue source code.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1992,9 +2081,9 @@
               "MOH": "submitter_participant_id"
             },
             "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
             ]
           },
           "name": "submitter_participant_id",
@@ -2092,11 +2181,11 @@
       "restrictions": {
         "foreignKey": [
           {
-            "schema": "participant",
+            "schema": "experiment",
             "mappings": [
               {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
+                "local": "submitter_experiment_id",
+                "foreign": "submitter_experiment_id"
               }
             ]
           }

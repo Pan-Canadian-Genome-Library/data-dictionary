@@ -2,7 +2,7 @@ name: default_pcgl_schema
 description: Base clinical schema that incorporates all PCGL base entities
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1
+version: '2.1'
 imports:
 - linkml:types
 prefixes:
@@ -1068,43 +1068,57 @@ enums:
       Missing - Restricted access:
         text: Missing - Restricted access
 slots:
-  age_at_death:
-    name: age_at_death
-    description: Age of participant (in days) at time of death
-    title: age_at_death
+  age_at_phenotype:
+    name: age_at_phenotype
+    description: Participant's age (in days) when phenotype was observed
+    title: Age At Phenotype
     range: integer
     required: false
-  age_at_enrollment:
-    name: age_at_enrollment
-    description: Age (in days) of participant at time of enrollment into the study
-    title: age_at_enrollment
+  phenotype_code:
+    name: phenotype_code
+    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
+      the phenotype.
+    title: Phenotype Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
+    range: string
+    required: true
+    pattern: ^HP:[0-9]{7}$
+  phenotype_duration:
+    name: phenotype_duration
+    description: Indicate the length of time (in days) over which the phenotype was
+      observed in the participant.
+    title: Phenotype Duration
     range: integer
     required: false
-  cause_of_death:
-    name: cause_of_death
-    description: Indicate the cause of a participant's death.
-    title: cause_of_death
-    exact_mappings:
-    - ARGO:cause_of_death
-    - MOH:cause_of_death
-    range: cause_of_death_menu
+  phenotype_observed:
+    name: phenotype_observed
+    description: Indicate whether the phenotype was observed in the participant.
+    title: Phenotype Observed
+    range: PhenotypeObservedMenu
+    required: true
+  phenotype_severity:
+    name: phenotype_severity
+    description: The degree or severity of the observed phenotype.
+    title: Phenotype Severity
+    comments:
+    - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
+    range: PhenotypeSeverityMenu
     required: false
-  study_id:
-    name: study_id
-    description: Unique identifier of the study.
-    title: study_id
-    notes:
-    - Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
-    exact_mappings:
-    - ARGO:studyId
-    - CQDG:study_id
+  phenotype_term:
+    name: phenotype_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the phenotype_code.
+    title: Phenotype Term
     range: string
     required: true
   submitter_participant_id:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
       the data provider.
-    title: submitter_participant_id
+    title: Submitter Participant Id
+    todos:
+    - '["MOH", "ARGO"]'
     examples:
     - value: '90234'
     - value: BLD_donor_89
@@ -1120,33 +1134,12 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}
-  vital_status:
-    name: vital_status
-    description: Participant's last known state of living or deceased.
-    title: vital_status
-    exact_mappings:
-    - CQDG:vital_status
-    - Phenopacket:individual.vital_status
-    - BeaconV2:individual.vital_status
-    range: vital_status_menu
-    required: false
   ethnicity:
     name: ethnicity
     description: Refers to the ethnic or cultural origins of a person's ancestors.
       The provided values are based on the list of ethnic or cultural origins 2021
       defined by Statistics Canada
-    title: ethnicity
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-
-      To include multiple values, separate values with a pipe delimiter ''|'' within
-      your file."
-
-      '
+    title: Ethnicity
     comments:
     - EDI indicator
     exact_mappings:
@@ -1159,14 +1152,7 @@ slots:
     description: Refers to an individual's personal and social identity as a man,
       woman or non-binary person (a person who is not exclusively a man or a woman).
       The provided values are based on the categories defined by Statistics Canada
-    title: gender
-    notes:
-    - '
-
-      PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
+    title: Gender
     comments:
     - EDI indicator
     exact_mappings:
@@ -1193,53 +1179,84 @@ slots:
     description: Refers to sex assigned at birth. Sex at birth is typically assigned
       based on a person's reproductive system and other physical characteristics.
       The provided values are based on the categoried defined by Statistics Canada
-    title: sex_at_birth
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
+    title: Sex At Birth
     comments:
     - EDI indicator
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: sex_at_birth_menu
     required: true
-  age_at_phenotype:
-    name: age_at_phenotype
-    description: Participant's age (in days) when phenotype was observed
-    title: age_at_phenotype
+  study_id:
+    name: study_id
+    description: Unique identifier of the study.
+    title: Study Id
+    exact_mappings:
+    - CQDG:study_id
+    range: string
+    required: true
+  age_at_comorbidity_diagnosis:
+    name: age_at_comorbidity_diagnosis
+    description: Indicate the age (in days) of comorbidity diagnosis.
+    title: Age At Comorbidity Diagnosis
     range: integer
     required: false
-  phenotype_code:
-    name: phenotype_code
-    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
-      the phenotype.
-    title: phenotype_code
+  comorbidity_code:
+    name: comorbidity_code
+    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+    title: Comorbidity Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     range: string
     required: true
-    pattern: ^HP:[0-9]{7}$
-  phenotype_duration:
-    name: phenotype_duration
-    description: Indicate the length of time (in days) over which the phenotype was
-      observed in the participant.
-    title: phenotype_duration
+    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+  comorbidity_status:
+    name: comorbidity_status
+    description: Indicate the current state or activity of the comorbid condition.
+    title: Comorbidity Status
+    range: ComorbidityStatusMenu
+    required: false
+  comorbidity_term:
+    name: comorbidity_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the comorbidity_code
+    title: Comorbidity Term
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
+    range: string
+    required: false
+  comorbidity_treatment_status:
+    name: comorbidity_treatment_status
+    description: Indicate whether the comorbid condition is currently being treated
+      or not.
+    title: Comorbidity Treatment Status
+    range: ComorbidityTreatmentStatusMenu
+    required: false
+  age_at_diagnosis:
+    name: age_at_diagnosis
+    description: Age of participant (in days) at time of diagnosis of the condition.
+    title: Age At Diagnosis
+    todos:
+    - '["MOH", "ARGO"]'
+    exact_mappings:
+    - mCODE.STU3:condition.onset
+    - FHIR:condition.onset
+    - Phenopacket:disease.onset
     range: integer
     required: false
-  phenotype_observed:
-    name: phenotype_observed
-    description: Indicate whether the phenotype was observed in the participant.
-    title: phenotype_observed
-    range: phenotype_observed_menu
+  disease_category:
+    name: disease_category
+    description: A broader classification that groups diseases into categories.
+    title: Disease Category
+    range: DiseaseCategoryMenu
     required: true
-  phenotype_severity:
-    name: phenotype_severity
-    description: The degree or severity of the observed phenotype.
-    title: phenotype_severity
+  disease_code:
+    name: disease_code
+    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    title: Disease Code
+    todos:
+    - '["MOH ", " ARGO ", " CQDG"]'
     comments:
     - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
     range: phenotype_severity_menu
@@ -1247,8 +1264,12 @@ slots:
   phenotype_term:
     name: phenotype_term
     description: Provide the standardized and human readable term derived from the
-      coding system associated with the phenotype_code.
-    title: phenotype_term
+      coding system associated with the disease_code
+    title: Disease Term
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.term
     range: string
     required: false
   age_at_followup:
@@ -1260,8 +1281,8 @@ slots:
   disease_status_at_followup:
     name: disease_status_at_followup
     description: Indicate the participant's disease status at time of follow-up
-    title: disease_status_at_followup
-    range: disease_status_at_followup_menu
+    title: Disease Status At Followup
+    range: DiseaseStatusAtFollowupMenu
     required: true
   age_at_measurement:
     name: age_at_measurement
@@ -1305,56 +1326,93 @@ slots:
     title: measurement_unit
     range: string
     required: false
-    pattern: ^UO:\d{7}$
-  age_at_comorbidity_diagnosis:
-    name: age_at_comorbidity_diagnosis
-    description: Indicate the age (in days) of comorbidity diagnosis.
-    title: age_at_comorbidity_diagnosis
-    range: integer
+  actual_cumulative_drug_dose:
+    name: actual_cumulative_drug_dose
+    description: Indicate the total actual cumulative drug dose in the same units
+      specified in drug_dose_units.
+    title: Actual Cumulative Drug Dose
+    range: decimal
     required: false
-  comorbidity_code:
-    name: comorbidity_code
-    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
-      Provide code in Compact URI (CURIE) pattern.
-    title: comorbidity_code
+  drug_code:
+    name: drug_code
+    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
+      to represent the drug.
+    title: Drug Code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
-      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
-    examples:
-    - value: MONDO:0000001
-    - value: icd10:C34
+    - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
+      URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
+      URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
-  comorbidity_status:
-    name: comorbidity_status
-    description: Indicate the current state or activity of the comorbid condition.
-    title: comorbidity_status
-    range: comorbidity_status_menu
+    pattern: ^RxNorm:\d{1,8}$|^KEGG:D\\d{5}$|^PubChem:\\d{1,9}$|^NCIt:C\\d{1,7}$
+  drug_dose_units:
+    name: drug_dose_units
+    description: Indicate units used to record drug dose.
+    title: Drug Dose Units
+    range: DrugDoseUnitsMenu
     required: false
   comorbidity_term:
     name: comorbidity_term
     description: Provide the standardized and human readable term derived from the
-      coding system associated with the comorbidity_code
-    title: comorbidity_term
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
+      coding system associated with the drug_code
+    title: Drug Term
     range: string
     required: false
-  comorbidity_treatment_status:
-    name: comorbidity_treatment_status
-    description: Indicate whether the comorbid condition is currently being treated
-      or not.
-    title: comorbidity_treatment_status
-    range: comorbidity_treatment_status_menu
+  prescribed_cumulative_drug_dose:
+    name: prescribed_cumulative_drug_dose
+    description: Indicate the total prescribed cumulative drug dose in the same units
+      specified in drug_dose_units.
+    title: Prescribed Cumulative Drug Dose
+    range: decimal
+    required: false
+  submitter_treatment_id:
+    name: submitter_treatment_id
+    description: Unique identifier of the treatment, assigned by the data provider.
+    title: Submitter Treatment Id
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  age_at_death:
+    name: age_at_death
+    description: Age of participant (in days) at time of death
+    title: Age At Death
+    range: integer
+    required: false
+  age_at_enrollment:
+    name: age_at_enrollment
+    description: Age (in days) of participant at time of enrollment into the study
+    title: Age At Enrollment
+    range: integer
+    required: false
+  cause_of_death:
+    name: cause_of_death
+    description: Indicate the cause of a participant's death.
+    title: Cause Of Death
+    todos:
+    - '["ARGO ", " MOH"]'
+    range: CauseOfDeathMenu
+    required: false
+  vital_status:
+    name: vital_status
+    description: Participant's last known state of living or deceased.
+    title: Vital Status
+    exact_mappings:
+    - CQDG:vital_status
+    - Phenopacket:individual.vital_status
+    - BeaconV2:individual.vital_status
+    range: VitalStatusMenu
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
     description: Indicate the ICD-O-3 topography code to describe the site of the
       surgery if applicable. Please use C80.9 if the site is Unkown.
-    title: procedure_body_site_code
+    title: Procedure Body Site Code
+    todos:
+    - '["MOH", "ARGO"]'
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
@@ -1392,7 +1450,7 @@ slots:
     - value: CCI:1CA14STCDR
     range: string
     required: true
-    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIt:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:\d\.[A-Z]{2}\.\d{2}\.[A-Z]{2}$
   procedure_term:
     name: procedure_term
     description: Provide the standardized and human readable term derived from the
@@ -1400,49 +1458,35 @@ slots:
     title: procedure_term
     range: string
     required: false
-  submitter_treatment_id:
-    name: submitter_treatment_id
-    description: Unique identifier of the treatment, assigned by the data provider.
-    title: submitter_treatment_id
+  anatomical_site_irradiated_code:
+    name: anatomical_site_irradiated_code
+    description: Indicate the ICD-O-3 topography code to describe the irradiated site
+      of radiation if applicable. Please use C80.9 if the site is Unkown.
+    title: Anatomical Site Irradiated Code
+    todos:
+    - '["MOH", "ARGO"]'
+    comments:
+    - Refer to the International Classification of Diseases for Oncology, 3rd Edition
+      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
     examples:
     - value: '90234'
     - value: BLD_donor_89
     - value: AML-90
     range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  alcohol_consumption:
-    name: alcohol_consumption
-    description: Indicate current alcohol consumtion based on recommended daily limit.
-    title: alcohol_consumption
-    comments:
-    - Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks
-      a week, with no more than 3 drinks a day most days. No more than 4 drinks on
-      any single occasion. For women, no more than 10 drinks a week, with no more
-      than 2 drinks a day most days. No more than 3 drinks on any single occasion.
-    exact_mappings:
-    - ARGO:alcohol_consumption
-    - MOH:alcohol_consumption
-    - CQDG:alcohol_consumption
-    range: alcohol_consumption_menu
     required: false
-  physical_activity:
-    name: physical_activity
-    description: Indicate how many times per week the participant exercises for at
-      least 30 minutes.
-    title: physical_activity
-    range: physical_activity_menu
+    pattern: ^[C][0-9]{2}(.[0-9]{1})?$
+  anatomical_site_irradiated_term:
+    name: anatomical_site_irradiated_term
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the anatomical_site_irradiated_code
+    title: Anatomical Site Irradiated Term
+    range: string
     required: false
-  smoking_status:
-    name: smoking_status
-    description: Indicate smoking status and history of a participant at the time
-      of the data collection.
-    title: smoking_status
-    exact_mappings:
-    - ARGO:smoking_status
-    - MOH:smoking_status
-    - CQDG:smoking_status
-    range: smoking_status_menu
+  radiation_dosage:
+    name: radiation_dosage
+    description: Indicate the total dose given in units of Gray (Gy).
+    title: Radiation Dosage
+    range: integer
     required: false
   age_at_specimen_collection:
     name: age_at_specimen_collection
@@ -1455,7 +1499,9 @@ slots:
     description: Indicate the ICD-O-3 topography code for the anatomic location of
       a specimen when it was collected. Please use C80.9 if the primary site of a
       specimen is Unkown.
-    title: specimen_anatomic_location_code
+    title: Specimen Anatomic Location Code
+    todos:
+    - '["MOH", "ARGO"]'
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
@@ -1492,7 +1538,9 @@ slots:
   specimen_processing:
     name: specimen_processing
     description: Indicate the technique used to process specimen.
-    title: specimen_processing
+    title: Specimen Processing
+    todos:
+    - '["MOH", "ARGO"]'
     exact_mappings:
     - Phenopacket:biosample.sample_processing
     - BeaconV2:biosample.sample_processing
@@ -1504,7 +1552,9 @@ slots:
     name: specimen_storage
     description: Indicate the method of long term storage for specimen that were not
       extracted freshly or immediately cultured.
-    title: specimen_storage
+    title: Specimen Storage
+    todos:
+    - '["MOH", "ARGO"]'
     exact_mappings:
     - Phenopacket:biosample.sample_storage
     - BeaconV2:biosample.sample_storage
@@ -1538,7 +1588,9 @@ slots:
     name: submitter_specimen_id
     description: Unique identifier of the specimen within the study, assigned by the
       data provider.
-    title: submitter_specimen_id
+    title: Submitter Specimen Id
+    todos:
+    - '["ARGO", "MOH"]'
     examples:
     - value: LAML_PO
     - value: '00445'
@@ -1549,75 +1601,6 @@ slots:
     - FHIR:Specimen.Identifier
     - Phenopacket:biosample.id
     - BeaconV2:biosample.id
-    - ARGO:submitter_specimen_id
-    - MOH:submitter_specimen_id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  age_at_diagnosis:
-    name: age_at_diagnosis
-    description: Age of participant (in days) at time of diagnosis of the condition.
-    title: age_at_diagnosis
-    exact_mappings:
-    - mCODE.STU3:condition.onset
-    - FHIR:condition.onset
-    - Phenopacket:disease.onset
-    - ARGO:age_at_diagnosis
-    - MOH:age_at_diagnosis
-    range: integer
-    required: false
-  disease_category:
-    name: disease_category
-    description: A broader classification that groups diseases into categories.
-    title: disease_category
-    range: disease_category_menu
-    required: true
-  disease_code:
-    name: disease_code
-    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
-    title: disease_code
-    comments:
-    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
-      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
-    examples:
-    - value: MONDO:0000001
-    - value: icd10:C34
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    - ARGO:disease_code
-    - MOH:disease_code
-    - CQDG:disease_code
-    range: string
-    required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
-  disease_term:
-    name: disease_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the disease_code
-    title: disease_term
-    exact_mappings:
-    - mCODE.STU3:condition.code
-    - FHIR:condition.code
-    - Phenopacket:disease.term
-    range: string
-    required: false
-  submitter_diagnosis_id:
-    name: submitter_diagnosis_id
-    description: Unique identifier of the primary diagnosis event, assigned by the
-      data provider.
-    title: submitter_diagnosis_id
-    examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
-    exact_mappings:
-    - mCODE.STU1:Condition.identifier
-    - mCODE.STU2:Condition.identifier
-    - FHIR:condition.code
-    - ARGO:submitter_diagnosis_id
-    - MOH:submitter_diagnosis_id
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
@@ -1637,1132 +1620,31 @@ slots:
     name: treatment_intent
     description: The purpose of the treatment or the desired effect or outcome resulting
       from the treatment.
-    title: treatment_intent
-    range: treatment_intent_menu
+    title: Treatment Intent
+    range: TreatmentIntentMenu
     required: false
   treatment_response:
     name: treatment_response
     description: The outcome of the treatment, indicating how the patient responded
       to the intervention
-    title: treatment_response
-    exact_mappings:
-    - ARGO:treatment_response
-    - MOH:treatment_response
-    - CQDG:treatment_response
-    range: treatment_response_menu
+    title: Treatment Response
+    todos:
+    - '["CQDG", "ARGO", "MOH"]'
+    range: TreatmentResponseMenu
     required: false
   treatment_status:
     name: treatment_status
     description: Indicate the donor's status of the prescribed treatment.
-    title: treatment_status
-    exact_mappings:
-    - ARGO:treatment_status
-    - MOH:treatment_status
-    range: treatment_status_menu
+    title: Treatment Status
+    todos:
+    - '["ARGO", "MOH"]'
+    range: TreatmentStatusMenu
     required: false
   treatment_type:
     name: treatment_type
     description: The category or method of treatment administered
-    title: treatment_type
-    range: treatment_type_menu
-    required: true
-  actual_cumulative_drug_dose:
-    name: actual_cumulative_drug_dose
-    description: Indicate the total actual cumulative drug dose in the same units
-      specified in drug_dose_units.
-    title: actual_cumulative_drug_dose
-    range: decimal
-    required: false
-  drug_code:
-    name: drug_code
-    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
-      to represent the drug.
-    title: drug_code
-    comments:
-    - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
-      URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
-      URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
-    examples:
-    - value: rxnorm:221058
-    - value: kegg.drug:D00123
-    - value: pubchem.compound:100101
-    - value: NCIT:C138986
-    range: string
-    required: true
-    pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
-  drug_dose_units:
-    name: drug_dose_units
-    description: Indicate units used to record drug dose.
-    title: drug_dose_units
-    range: string
-    required: false
-    pattern: ^UO:\d{7}$
-  drug_term:
-    name: drug_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the drug_code
-    title: drug_term
-    range: string
-    required: false
-  prescribed_cumulative_drug_dose:
-    name: prescribed_cumulative_drug_dose
-    description: Indicate the total prescribed cumulative drug dose in the same units
-      specified in drug_dose_units.
-    title: prescribed_cumulative_drug_dose
-    range: decimal
-    required: false
-  anatomical_site_irradiated_code:
-    name: anatomical_site_irradiated_code
-    description: Indicate the ICD-O-3 topography code to describe the irradiated site
-      of radiation if applicable. Please use C80.9 if the site is Unkown.
-    title: anatomical_site_irradiated_code
-    comments:
-    - Refer to the International Classification of Diseases for Oncology, 3rd Edition
-      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
-    examples:
-    - value: C50.1
-    - value: C18
-    exact_mappings:
-    - mCODE.STU3:Specimen.collection.bodySite
-    - FHIR:Specimen.collection.bodySite
-    - MOH:anatomical_site_irradiated_code
-    - ARGO:anatomical_site_irradiated_code
-    range: string
-    required: false
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
-  anatomical_site_irradiated_term:
-    name: anatomical_site_irradiated_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the anatomical_site_irradiated_code
-    title: anatomical_site_irradiated_term
-    range: string
-    required: false
-  radiation_dosage:
-    name: radiation_dosage
-    description: Indicate the total dose given in units of Gray (Gy).
-    title: radiation_dosage
-    range: integer
-    required: false
-  radiation_fractions:
-    name: radiation_fractions
-    description: Indicate the total number of fractions delivered as part of treatment.
-    title: radiation_fractions
-    range: integer
-    required: false
-  radiation_modality:
-    name: radiation_modality
-    description: Indicate NCIt code to denote the modality of radiation therapy.
-    title: radiation_modality
-    range: radiation_modality_menu
-    required: true
-  submitter_sample_id:
-    name: submitter_sample_id
-    description: 'Unique identifier of the sample within the study, assigned by the
-      data provider.
-
-      '
-    title: submitter_sample_id
-    examples:
-    - value: hnc_12
-    - value: CCG_34_94583
-    - value: BRCA47832-3239
-    exact_mappings:
-    - FHIR:submitter_sample_id
-    - mCODE:submitter_sample_id
-    - MOH:submitter_sample_id
-    - ARGO:submitter_sample_id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  sample_type:
-    name: sample_type
-    description: 'Indicate NCIt (NCI Thesaurus) code and term to denote the type of
-      molecular sample used for sequencing and analysis. '
-    title: sample_type
-    exact_mappings:
-    - Phenopacket:biosample.sample_type
-    - BeaconV2:biosample.sample_type
-    - CQDG:sample_type
-    - Phenopacket:sample_type
-    range: sample_type_menu
-    required: true
-  sample_status:
-    name: sample_status
-    description: Indicate the status of the sample for data analysis.
-    title: sample_status
-    exact_mappings:
-    - Phenopacket:sample_status
-    range: sample_status_menu
-    required: true
-  matched_control_submitter_sample_id:
-    name: matched_control_submitter_sample_id
-    description: 'Indicate the matched control submitter sample id to use for data
-      analysis. '
-    title: matched_control_submitter_sample_id
-    range: string
-    required: false
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  submitter_experiment_id:
-    name: submitter_experiment_id
-    description: Unique identifier of the experiment within the study, assigned by
-      the data provider.
-    title: submitter_experiment_id
-    exact_mappings:
-    - ARGO:submitter_experiment_id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  experiment_type:
-    name: experiment_type
-    description: The broad type of sequencing experiment performed. A mixture of library
-      strategy and source
-    title: experiment_type
-    exact_mappings:
-    - GA4GHExperimentMetadataChecklist:experiment_type
-    range: experiment_type_menu
-    required: true
-  experimental_strategy:
-    name: experimental_strategy
-    description: The primary experimental method. For sequencing data it refers to
-      how the sequencing library was made.
-    title: experimental_strategy
-    exact_mappings:
-    - BeaconV2:runs.libraryStrategy
-    - ARGO:experimental_strategy
-    range: experimental_strategy_menu
-    required: true
-  platform:
-    name: platform
-    description: The sequencing platform type used in data generation.
-    title: platform
-    exact_mappings:
-    - BeaconV2:runs.platform
-    - ARGO:platform
-    range: platform_menu
-    required: true
-  submitter_analysis_id:
-    name: submitter_analysis_id
-    description: Unique identifier of the analysis within the study, assigned by the
-      data provider.
-    title: submitter_analysis_id
-    examples:
-    - value: hnc_12
-    - value: CCG_34_94583
-    - value: BRCA47832-3239
-    exact_mappings:
-    - BeaconV2:analyses.id
-    - EGA:submitter_analysis_id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  submitter_read_group_id:
-    name: submitter_read_group_id
-    description: The identifier of a read group; must be unique within each payload.
-    title: submitter_read_group_id
-    exact_mappings:
-    - ARGO:submitter_read_group_id
-    - BeaconV2:runs.id
-    range: string
-    required: true
-    pattern: ^[a-zA-Z0-9\-_:\.']+$
-  analysis_type:
-    name: analysis_type
-    description: Overall type of the analysis. Term chosen from a controlled vocabulary
-      (CV) list.
-    title: analysis_type
-    exact_mappings:
-    - ARGO:analysis_type
-    - EGA:analysis_type
-    range: string
-    required: true
-  submitter_workflow_id:
-    name: submitter_workflow_id
-    description: Indicate the unique identifier of the data processing workflow used
-      in the analysis.
-    title: submitter_workflow_id
-    range: string
-    required: false
-  analysis_input_type:
-    name: analysis_input_type
-    description: An array specifying the types of data used as inputs for the analysis
-    title: analysis_input_type
-    exact_mappings:
-    - ARGO:analysis_input_type
-    - EGA:analysis_input_type
-    range: string
-    required: false
-  analysis_output_type:
-    name: analysis_output_type
-    description: 'An array specifying the types of data produced as outputs from the
-      analysis. For example, in a sequence experiment analysis the output data would
-      be ''Raw Sequencing Reads'', while that same type of data could be the input
-      type of data for an analysis type of sequence alignment, which would then output
-      ''Aligned Reads''. '
-    title: analysis_output_type
-    exact_mappings:
-    - ARGO:analysis_output_type
-    - EGA:analysis_output_type
-    range: string
-    required: false
-  genome_build:
-    name: genome_build
-    description: 'The reference genome build that is used in the workflow. '
-    title: genome_build
-    range: genome_build_menu
-    required: false
-  genome_annotation:
-    name: genome_annotation
-    description: Indicates which genome annotation build or version was used in the
-      analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
-    title: genome_annotation
-    range: string
-    required: false
-  fileName:
-    name: fileName
-    description: Name of the file.
-    title: fileName
-    exact_mappings:
-    - ARGO:fileName
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
-  fileSize:
-    name: fileSize
-    description: Size of the file, in bytes.
-    title: fileSize
-    exact_mappings:
-    - ARGO:fileSize
-    range: integer
-    required: true
-  fileMd5sum:
-    name: fileMd5sum
-    description: Computed md5sum of the file.
-    title: fileMd5sum
-    exact_mappings:
-    - ARGO:fileMd5sum
-    range: string
-    required: true
-    pattern: ^[a-fA-F0-9]{32}$
-  fileType:
-    name: fileType
-    description: Data format of files.
-    title: fileType
-    exact_mappings:
-    - EGA:fileType
-    - ARGO:fileType
-    range: string
-    required: true
-  fileAccess:
-    name: fileAccess
-    description: The permission level of a file for public access.
-    title: fileAccess
-    exact_mappings:
-    - ARGO:fileAccess
-    range: string
-    required: true
-  workflow_name:
-    name: workflow_name
-    description: The name of the genomic data processing workflow used for data analysis.
-    title: workflow_name
-    range: string
-    required: true
-  workflow_version:
-    name: workflow_version
-    description: 'The version of the workflow or pipeline being used. '
-    title: workflow_version
-    range: string
-    required: false
-  workflow_url:
-    name: workflow_url
-    description: A URL linking to the workflow's repository or documentation. This
-      could be a reference to a GitHub repository, a website where the workflow is
-      described, or documentation on how to run the workflow.
-    title: workflow_url
-    range: string
-    required: false
-  duo_permission:
-    name: duo_permission
-    description: Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE)
-      pattern to indicate permitted uses or focused areas of research for the Participant
-      data.
-    title: duo_permission
-    exact_mappings:
-    - CQDG:duo_permission
-    range: duo_permission_menu
-    required: true
-  duo_modifier:
-    name: duo_modifier
-    description: Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE)
-      pattern to add requirements, limitations, or prohibitions within the permitted
-      boundary for the Participant data.
-    title: duo_modifier
-    exact_mappings:
-    - CQDG:duo_modifier
-    range: duo_modifier_menu
-    required: false
-    multivalued: true
-  disease_specific_modifier:
-    name: disease_specific_modifier
-    description: If the permission is DUO:0000007 (disease specific research), then
-      MONDO codes must be provided to specify which disease(s) apply.
-    title: disease_specific_modifier
-    examples:
-    - value: MONDO:0000001
-    range: string
-    required: false
-    multivalued: true
-    pattern: ^MONDO:\d{7}$
-  submitter_sociodem_id:
-    name: submitter_sociodem_id
-    description: Unique identifier for the sociodemographic record, assigned by the
-      data provider.
-    title: submitter_sociodem_id
-    examples:
-    - value: '90234'
-    - value: BLD_participant_89
-    - value: AML-90
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  age_at_sociodem_collection:
-    name: age_at_sociodem_collection
-    description: Age (in days) of the participant at the time of sociodemographic
-      data collection
-    title: age_at_sociodem_collection
-    notes:
-    - '
-
-      If projects do not have the exact date of birth, they may report an approximate
-      age (in days) using the year of birth and year of study collection.
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: integer
-    required: true
-  sociodem_date_collection:
-    name: sociodem_date_collection
-    description: "Many sociodemographic variables are social constructs, and the way\
-      \ participants self-identify may evolve over time. \nPlease indicate the actual\
-      \ date when the data was collected in format: YYYY-MM-DD, if available. \nIf\
-      \ the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if\
-      \ the day is unknown but the month and year are known\n- Use YYYY if only the\
-      \ year is known"
-    title: sociodem_date_collection
-    notes:
-    - '
-
-      When the exact date is unknown it can be approximated based on the study''s
-      year of commencement.
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: true
-    pattern: ^(?:\d{4}|\d{4}-\d{2}|\d{4}-\d{2}-\d{2})$
-  race_another_racial_category:
-    name: race_another_racial_category
-    description: A response which does not fall into any of the previous racial reporting
-      categories (e.g., Pacific Islander, Indigenous identities outside of North America,
-      etc.).
-    title: race_another_racial_category
-    notes:
-    - '
-
-      race_another_racial_category must be populated when race is "Another Racial
-      Category"
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  race_collect_method:
-    name: race_collect_method
-    description: 'Studies must report how race data was collected. This is necessary
-      to enable data aggregation, harmonization, and reproducibility. Responses from
-      prospective projects should always be self-identified. To respect participants’
-      autonomy and right to self-determination, as well as to avoid conflating differences
-      in (genetic) population structure with socially constructed racial categories,
-      responses that were self-identified should not be aggregated with responses
-      that were socially assigned or derived. '
-    title: race_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data v1.0.
-
-      '
-    range: race_collect_method_menu
-    required: true
-  gender_another_gender:
-    name: gender_another_gender
-    description: A response which does not fall into any of the previous gender reporting
-      categories.
-    title: gender_another_gender
-    notes:
-    - '
-
-      gender_another_gender must be populated when gender is "Another Gender"
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  gender_collect_method:
-    name: gender_collect_method
-    description: 'Studies must report how the gender data was collected. This is necessary
-      to enable data aggregation, harmonization, and reproducibility. '
-    title: gender_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data v1.0.
-
-      '
-    range: gender_collect_method_menu
-    required: true
-  ethnicity_another_category:
-    name: ethnicity_another_category
-    description: A response which does not fall into any of the previous categories.
-      For example, a response of “Other” from retrospective studies. Prospective projects
-      should instead allow participants to freely self-identify.
-    title: ethnicity_another_category
-    notes:
-    - '
-
-      ethnicity_another_category must be populated when ethnicity is "Free text input".
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  ethnicity_collect_method:
-    name: ethnicity_collect_method
-    description: 'Studies must report how the ethnicity data was collected. This is
-      necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: ethnicity_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data.
-
-      '
-    range: ethnicity_collect_method_menu
-    required: true
-  sex_another_category:
-    name: sex_another_category
-    description: 'A response which does not fall into any of the previous categories. '
-    title: sex_another_category
-    notes:
-    - '
-
-      sex_another_category must be populated when sex is "Another Sex"..
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  sex_collect_method:
-    name: sex_collect_method
-    description: 'Studies must report how the sex_at_birth data was collected. This
-      is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: sex_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data.
-
-      '
-    range: sex_collect_method_menu
-    required: true
-  education:
-    name: education
-    description: The highest level of education attained.
-    title: education
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: education_menu
-    required: true
-  education_collect_method:
-    name: education_collect_method
-    description: 'Studies must report how the education data was collected. This is
-      necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: education_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data.
-
-      '
-    range: education_collect_method_menu
-    required: true
-  personal_income:
-    name: personal_income
-    description: Personal annual income from all sources after taxes.
-    title: personal_income
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: personal_income_menu
-    required: true
-  personal_income_collect_method:
-    name: personal_income_collect_method
-    description: 'Studies must report how the personal_income data was collected.
-      This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: personal_income_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data.
-
-      '
-    range: personal_income_collect_method_menu
-    required: true
-  geographic_location:
-    name: geographic_location
-    description: 'A participant’s postal code at their current address of residence. '
-    title: geographic_location
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: true
-    pattern: ^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$|^Missing \- Unknown$|^Missing
-      \- Not collected$|^Missing \- Not provided$|^Missing \- Restricted access$
-  geographic_location_additional:
-    name: geographic_location_additional
-    description: When postal code is less specific, additional information may be
-      reported.
-    title: geographic_location_additional
-    range: string
-    required: false
-  geographic_location_collect_method:
-    name: geographic_location_collect_method
-    description: 'Studies must report how the geographic_location data was collected.
-      This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: geographic_location_collect_method
-    notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data.
-
-      '
-    range: geographic_location_collect_method_menu
-    required: true
-  sociodem_question:
-    name: sociodem_question
-    description: Indicate whether the questions asked for the sociodemographic variable
-      follow the PCGL reference question and standard reporting categories.
-    title: sociodem_question
-    range: sociodem_question_menu
-    required: true
-  sociodem_question_detail:
-    name: sociodem_question_detail
-    description: Report the questions asked for the sociodemographic variable, including
-      the provided response options/reporting categories if it does not follow the
-      PCGL reference question and standard reporting categories.
-    title: sociodem_question_detail
-    notes:
-    - '
-
-      "The sociodem_question_detail field provides additional context and is conditionally
-      required based on the value of sociodem_question:
-
-      If sociodem_question is ""PCGL reference question"", please indicate the version
-      of the PCGL reference question used.
-
-      If sociodem_question is ""Another question"", please provide the exact question
-      text used to collect the variable, including the response options or reporting
-      categories made available to participants."
-
-      '
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  sociodem_notes:
-    name: sociodem_notes
-    description: Studies may choose to report whether potential bias may exist due
-      to the way reporting categories were defined and handled.
-    title: sociodem_notes
-    examples:
-    - value: "\n    For example, in the Canadian Census, the order of the provided\
-        \ response options for ethnicity were shown to influence number of received\
-        \ responses per reporting option. \n\nOther examples may include inclusion/exclusion\
-        \ criteria based on sociodemographic variables."
-    exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: string
-    required: false
-  radiation_modality_code:
-    name: radiation_modality_code
-    description: 'Indicate NCIt code to denote the modality of radiation therapy.
-
-      Provide code in Compact URI (CURIE) pattern.'
-    title: radiation_modality_code
-    examples:
-    - value: NCIT:C28039
-    exact_mappings:
-    - Phenopacket:radiation_modality_code
-    range: string
-    required: true
-    pattern: ^NCIT:C\d+$
-  radiation_modality_term:
-    name: radiation_modality_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the radiation modality code.
-    title: radiation_modality_term
-    examples:
-    - value: Electron Beam
-    range: string
-    required: false
-  exposure_code:
-    name: exposure_code
-    description: 'Provide the standardized codes from SNOMED CT, ExO, LOINC to represent
-      the type of exposure.
-
-      Provide code in Compact URI (CURIE) pattern.
-
-      '
-    title: exposure_code
-    notes:
-    - '
-
-      SNOMED-CT URL:
-
-      http://snomed.info/id/{code}
-
-
-      ExO URL:
-
-      http://purl.obolibrary.org/obo/ExO_{code}
-
-
-      LOINC URL:
-
-      https://loinc.org/{code}
-
-      '
-    examples:
-    - value: LOINC:43164-0
-    range: string
-    required: true
-    pattern: ^snomedct:(\w+)?\d+$|^ExO:\d{7}$|^LOINC:[0-9]{1,5}-[0-9]$
-  exposure_term:
-    name: exposure_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the exposure_code
-    title: exposure_term
-    examples:
-    - value: Alcohol use
-    range: string
-    required: false
-  exposure_status:
-    name: exposure_status
-    description: Provide the status of the exposure
-    title: exposure_status
-    range: exposure_status_menu
-    required: true
-  age_at_exposure:
-    name: age_at_exposure
-    description: 'Age (in days) when the participant was exposed (or first exposed)        '
-    title: age_at_exposure
-    range: integer
-    required: false
-  exposure_duration:
-    name: exposure_duration
-    description: Duration of exposure period
-    title: exposure_duration
-    range: integer
-    required: false
-  exposure_amount:
-    name: exposure_amount
-    description: Provide intensity, quantity or frequency of the exposure
-    title: exposure_amount
-    notes:
-    - "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day, hours/week\n"
-    range: integer
-    required: false
-  exposure_unit:
-    name: exposure_unit
-    description: Unit associated with exposure_amount
-    title: exposure_unit
-    examples:
-    - value: drinks/day
-    range: string
-    required: false
-  specimen_anatomic_location_term:
-    name: specimen_anatomic_location_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the specimen anatomic location code.
-    title: specimen_anatomic_location_term
-    examples:
-    - value: placental basal plate
-    range: string
-    required: false
-  molecule_type_code:
-    name: molecule_type_code
-    description: 'Indicate NCIT or SO code to denote the type of source material used
-      for sequencing and analysis.
-
-      Provide code in Compact URI (CURIE) pattern.'
-    title: molecule_type_code
-    examples:
-    - value: NCIT:C449
-    - value: NCIT:C812
-    - value: NNCIT:C80376
-    - value: SO:0000991
-    - value: SO:0000234
-    - value: SO:0001877
-    exact_mappings:
-    - CQDG:Sample.Registration:sample_type
-    - Phenopacket:Biosample:sample_type
-    - BeaconV2:biosample.sample_type
-    - GA4GH.Experiment.Metadata.Checklist:molecule_type
-    range: string
-    required: true
-    pattern: ^NCIT:C[0-9]+$|^SO:\d{7}$
-  molecule_type_term:
-    name: molecule_type_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with molecule type code.
-    title: molecule_type_term
-    examples:
-    - value: DNA
-    range: string
-    required: false
-  experiment_design:
-    name: experiment_design
-    description: The high-level experiment design including layout, protocol.
-    title: experiment_design
-    notes:
-    - Added as a redundancy measure to prevent submission errors. Clinical API will
-      check study_id against user's selection. Also duplicates field study_id in Participant
-      b/c SONG's rigidity to rename
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:design_description
-    range: string
-    required: false
-  assay_type_code:
-    name: assay_type_code
-    description: 'Indicate OBI code to provide the sequencing technique intented for
-      the library for sequencing data.
-
-      Provide code in Compact URI (CURIE) pattern.'
-    title: assay_type_code
-    notes:
-    - '
-
-      E.g,
-
-      OBI:0002117 (whole genome sequencing assay)
-
-      OBI:0002118 (exome sequencing assay)
-
-      OBI:0001922 (microRNA profiling by high throughput sequencing assay)
-
-      OBI:0002764 (single-cell ATAC-seq)
-
-      OBI:0002440 (Hi-C assay)
-
-      OBI:0000748 (bisulfite sequencing assay)
-
-      OBI:0000716 (ChIP-seq assay)"
-
-      '
-    examples:
-    - value: OBI:0002117
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:assay_type
-    - BeaconV2:runs.libraryStrategy
-    range: string
-    required: true
-    pattern: ^OBI:\d{7}$
-  assay_type_term:
-    name: assay_type_term
-    description: Provide the standardized and human readable term derived from the
-      coding system associated with the assay type code.
-    title: assay_type_term
-    notes:
-    - '
-
-      E.g,
-
-      OBI:0002117 (whole genome sequencing assay)
-
-      OBI:0002118 (exome sequencing assay)
-
-      OBI:0001922 (microRNA profiling by high throughput sequencing assay)
-
-      OBI:0002764 (single-cell ATAC-seq)
-
-      OBI:0002440 (Hi-C assay)
-
-      OBI:0000748 (bisulfite sequencing assay)
-
-      OBI:0000716 (ChIP-seq assay)"
-
-      '
-    examples:
-    - value: whole genome sequencing assay
-    range: string
-    required: false
-  instrument:
-    name: instrument
-    description: 'Provide detailed information about the sequencing platform or technology
-      used, including the name and/or model number of the specific instrument. Whenever
-      possible, specify the exact model or revision rather than the general manufacturer
-      name. It is recommended to use standardized terminology by including the appropriate
-      OBI (Ontology for Biomedical Investigations) code and term to ensure precision.
-
-
-      Use the format: OBI code in CURIE format (OBI term)
-
-
-      Example values:
-
-      OBI:0002752 (Oxford Nanopore PromethION)
-
-      OBI:0000759 (Illumina)
-
-      OBI:0002630 (Illumina NovaSeq 6000)
-
-      OBI:0002012 (PacBio RS II)'
-    title: instrument
-    notes:
-    - '
-
-      Please make sure to include a space between the CURIE and the opening parenthesis.
-
-      '
-    examples:
-    - value: OBI:0002752 (Oxford Nanopore PromethION)
-    - value: OBI:0000759 (Illumina)
-    - value: OBI:0002630 (Illumina NovaSeq 6000)
-    - value: OBI:0002012 (PacBio RS II)
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:instrument
-    range: string
-    required: true
-    pattern: ^OBI:\d{7} \(.*\)$
-  instrument_metadata:
-    name: instrument_metadata
-    description: Captures metadata about sequencing instrument usage (e.g. instruments
-      parameters and usage conditions)
-    title: instrument_metadata
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:instrument_metadata
-    range: string
-    required: false
-  sequencing_protocol:
-    name: sequencing_protocol
-    description: 'Set of rules which guides how the sequencing protocol was followed.
-      Change-tracking services such as Protocol.io or GitHub are encouraged instead
-      of dumping free text in this field.
-
-      E.g, https://www.protocols.io/view/environmental-dna-edna-metabarcoding-protocol-for-rm7vzy3q2lx1/v1'
-    title: sequencing_protocol
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:sequencing_protocol
-    range: string
-    required: false
-  file_r1:
-    name: file_r1
-    description: Name of the sequencing file containing reads from the first end of
-      a sequencing run.
-    title: file_r1
-    notes:
-    - Any string value. Must match a fileName identified in the files section.
-    exact_mappings:
-    - ARGO:file_r1
-    range: string
-    required: true
-  file_r2:
-    name: file_r2
-    description: Name of the sequencing file containing reads from the second end
-      of a paired-end sequencing run. Required if and only if paired-end sequencing
-      was done.
-    title: file_r2
-    notes:
-    - Any string value or null. Must match a fileName identified in the files section.
-    exact_mappings:
-    - ARGO:file_r2
-    range: string
-    required: false
-  library_name:
-    name: library_name
-    description: Name of a sequencing library made from a molecular sample or a sample
-      pool (multiplex sequencing).
-    title: library_name
-    notes:
-    - Any string value.
-    exact_mappings:
-    - ARGO.library_name
-    - GA4GH.Experiment.Metadata.Checklist:library_extra_id
-    range: string
-    required: true
-  library_layout:
-    name: library_layout
-    description: Indicate whether the library was built as paired-end or single-end
-      if applicable.
-    title: library_layout
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:library_layout
-    - BeaconV2:runs.libraryLayout
-    range: library_layout_menu
-    required: true
-  platform_unit:
-    name: platform_unit
-    description: Unique identifier for each read group. For example, Illumina has
-      format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers
-      to the unique identifier for a particular flow cell. The {LANE} indicates the
-      lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific
-      identifier. For non-multiplex sequencing, platform unit and read group have
-      a one-to-one relationship.
-    title: platform_unit
-    notes:
-    - Any string value.
-    exact_mappings:
-    - ARGO.platform_unit
-    range: string
-    required: true
-  library_description:
-    name: library_description
-    description: Description of the nucleotide sequencing library, including targeting
-      information, spot, gap descriptors, and any other information relevant to its
-      construction
-    title: library_description
-    notes:
-    - Any string value.
-    exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:library_description
-    range: string
-    required: false
-  read_group_id_in_bam:
-    name: read_group_id_in_bam
-    description: Optional field indicating the @RD ID in the BAM. If submitted, this
-      will be used to map the @RG ID in the BAM header to the submitter_read_group_id
-      in the payload. After submission, the @RG ID in the payload will be used for
-      all future headers. This cannot be submitted for FASTQ files.
-    title: read_group_id_in_bam
-    notes:
-    - Any string value.
-    exact_mappings:
-    - ARGO:read_group_id_in_bam
-    range: string
-    required: false
-    pattern: ^[a-zA-Z0-9\-_:\.']+$
-  read_length_r1:
-    name: read_length_r1
-    description: Length of sequencing reads in file_r1; this corresponds to the number
-      of sequencing cycles of the first end.
-    title: read_length_r1
-    exact_mappings:
-    - ARGO:read_length_r1
-    range: integer
-    required: false
-    minimum_value: 20
-  read_length_r2:
-    name: read_length_r2
-    description: Length of sequencing reads in file_r2; this corresponds to the number
-      of sequencing cycles of the second end.
-    title: read_length_r2
-    exact_mappings:
-    - ARGO:read_length_r2
-    range: integer
-    required: false
-    minimum_value: 20
-  insert_size:
-    name: insert_size
-    description: For paired-end sequencing, the average size of sequences between
-      two sequencing ends. Required only for paired-end sequencing.
-    title: insert_size
-    exact_mappings:
-    - ARGO:insert_size
-    - GA4GH.Experiment.Metadata.Checklist:insert_size
-    range: integer
-    required: false
-    minimum_value: 0
-  studyId:
-    name: studyId
-    description: Unique identifier of the study.
-    title: studyId
-    notes:
-    - Added as a redundancy measure to prevent submission errors. Clinical API will
-      check study_id against user's selection. Also duplicates field study_id in Participant
-      b/c SONG's rigidity to rename
-    exact_mappings:
-    - ARGO:studyId
-    - CQDG:study_id
-    range: string
-    required: true
-  analysisType:
-    name: analysisType
-    description: Overall type of the analysis. Term chosen from a controlled vocabulary
-      (CV) list.
-    title: analysisType
-    exact_mappings:
-    - ARGO:analysisType
-    - EGA:analysisType
-    range: analysis_type_menu
-    required: true
-  data_category:
-    name: data_category
-    description: 'Indicate the category of data produced as outputs from the analysis. '
-    title: data_category
-    range: data_category_menu
-    required: true
-  variant_class:
-    name: variant_class
-    description: Indicates whether the called variants are germline, somatic, or of
-      uncertain classification.
-    title: variant_class
-    range: variant_class_menu
-    required: false
-  variant_calling_strategy:
-    name: variant_calling_strategy
-    description: Indicate the approach used to identify genetic variants from sequencing
-      data, based on the availability of reference samples (e.g., matched normal)
-      and the study design.
-    title: variant_calling_strategy
-    range: variant_calling_strategy_menu
-    required: false
-  dataType:
-    name: dataType
-    description: 'Indicates the type of data produced as outputs from the analysis. '
-    title: dataType
-    range: data_type_menu
+    title: Treatment Type
+    range: TreatmentTypeMenu
     required: true
 classes:
   Participant:
@@ -2783,12 +1665,12 @@ classes:
         name: study_id
         rank: 1
         slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
+      age_at_phenotype:
+        name: age_at_phenotype
         rank: 2
-        slot_group: Database Identifiers
-      disease_specific_modifier:
-        name: disease_specific_modifier
+        slot_group: Phenotype
+      phenotype_code:
+        name: phenotype_code
         rank: 3
         slot_group: Participant
       duo_modifier:
@@ -2860,16 +1742,16 @@ classes:
     - sociodem_question
     - sociodem_question_detail
     slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_sociodem_id:
-        name: submitter_sociodem_id
+      study_id:
+        name: study_id
         rank: 2
         slot_group: Database Identifiers
-      age_at_sociodem_collection:
-        name: age_at_sociodem_collection
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 2
+        slot_group: Database Identifiers
+      gender:
+        name: gender
         rank: 3
         slot_group: Sociodemographic
       education:
@@ -3199,16 +2081,16 @@ classes:
     - treatment_status
     - treatment_type
     slot_usage:
-      submitter_diagnosis_id:
-        name: submitter_diagnosis_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
-      submitter_treatment_id:
-        name: submitter_treatment_id
+      alcohol_consumption:
+        name: alcohol_consumption
+        rank: 2
+        slot_group: exposure
+      smoking_status:
+        name: smoking_status
         rank: 3
         slot_group: Database Identifiers
       age_at_treatment:
@@ -3599,12 +2481,12 @@ classes:
     - specimen_tissue_source_code
     - specimen_tissue_source_term
     slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_specimen_id:
         name: submitter_specimen_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
         rank: 2
         slot_group: Database Identifiers
       age_at_specimen_collection:
@@ -3665,12 +2547,12 @@ classes:
         name: submitter_specimen_id
         rank: 2
         slot_group: Database Identifiers
-      molecule_type_code:
-        name: molecule_type_code
+      specimen_tissue_source_code:
+        name: specimen_tissue_source_code
         rank: 3
-        slot_group: Sample
-      molecule_type_term:
-        name: molecule_type_term
+        slot_group: specimen
+      specimen_tissue_source_term:
+        name: specimen_tissue_source_term
         rank: 4
         slot_group: Sample
       sample_status:
@@ -3764,12 +2646,12 @@ classes:
     - read_length_r1
     - read_length_r2
     slot_usage:
-      submitter_experiment_id:
-        name: submitter_experiment_id
+      submitter_participant_id:
+        name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      submitter_read_group_id:
-        name: submitter_read_group_id
+      submitter_treatment_id:
+        name: submitter_treatment_id
         rank: 2
         slot_group: Database Identifiers
       file_r1:
