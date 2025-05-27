@@ -21,15 +21,11 @@
         "enum": [
           "Genomics",
           "Transcriptomics",
-          "Epigenomics",
           "Proteomics",
+          "Epigenomics",
           "Imaging",
           "Reference"
         ],
-        "type": "string"
-      },
-      "experiment": {
-        "description": "TBA...temporary to be removed.",
         "type": "string"
       },
       "genome_build": {
@@ -87,7 +83,6 @@
     "required": [
       "submitter_experiment_id",
       "workflow",
-      "experiment",
       "genome_build",
       "submitter_analysis_id",
       "data_category"

@@ -19,15 +19,11 @@
         "enum": [
           "Genomics",
           "Transcriptomics",
-          "Epigenomics",
           "Proteomics",
+          "Epigenomics",
           "Imaging",
           "Reference"
         ],
-        "type": "string"
-      },
-      "experiment": {
-        "description": "TBA...temporary to be removed.",
         "type": "string"
       },
       "genome_annotation": {
@@ -56,7 +52,7 @@
         "type": "string"
       },
       "variant_calling_strategy": {
-        "description": "The strategy used to call variants in the analysis.",
+        "description": "",
         "enum": [
           "Tumour only",
           "Tumour normal",
@@ -68,7 +64,7 @@
         "type": "string"
       },
       "variant_class": {
-        "description": "The class of variants.",
+        "description": "",
         "enum": [
           "Germline",
           "Somatic",
@@ -115,7 +111,6 @@
       "variant_calling_strategy",
       "variant_class",
       "workflow",
-      "experiment",
       "genome_build",
       "submitter_analysis_id",
       "data_category"

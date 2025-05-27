@@ -236,7 +236,8 @@ def process_schema(input_file, top_class, options, schema_dir, example_dir):
     with open(output_file, "w", encoding="utf-8") as out:
         json.dump(schema_copy_drop, out, indent=2)
     print(f"Expanded full schema saved to: {output_file}")
-    
+
+    '''
     # Generate an example instance based on the schema
     example_instance = generate_example(schema_copy_drop)
 
@@ -247,6 +248,7 @@ def process_schema(input_file, top_class, options, schema_dir, example_dir):
     with open(output_file, "w", encoding="utf-8") as out:
         json.dump(example_instance, out, indent=2)
     print(f"Example instance saved to: {output_file}")
+    '''
 
     # Generate a template instance based on the schema
     template_instance = generate_template(schema_copy_drop2)

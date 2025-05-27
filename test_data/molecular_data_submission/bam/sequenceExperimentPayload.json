@@ -1,0 +1,19 @@
+{
+  "analysisType": {
+    "name": "sequenceExperiment"
+  },
+  "data_category": "Transcriptomics",
+  "files": [
+    {
+      "dataType": "Raw Sequencing Reads",
+      "fileAccess": "controlled",
+      "fileMd5sum": "601d12fbfea8d9b8b2f33f35a1b1bd53",
+      "fileName": "anon_chr1_complete.bam",
+      "fileSize": 258104,
+      "fileType": "BAM"
+    }
+  ],
+  "studyId": "test-001",
+  "submitter_analysis_id": "analysis_002",
+  "submitter_experiment_id": "exp_002"
+}

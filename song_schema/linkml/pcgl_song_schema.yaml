@@ -34,6 +34,32 @@ classes:
     annotations:
       base_version: 1.0
       dynamic_version: 1.0
+  Workflow:
+    description: Contains information about the analysis workflow generating the analysis
+    slots:
+    - submitter_workflow_id
+    - workflow_name
+    - workflow_url
+    - workflow_version
+    slot_usage:
+      submitter_workflow_id:
+        required: true
+      workflow_name:
+        required: true
+      workflow_url:
+        required: false
+      workflow_version:
+        required: false
+  File:
+    description: Contains information about the files generated from a run of sequencing
+      or data analysis
+    slots:
+    - dataType
+    - fileAccess
+    - fileMd5sum
+    - fileName
+    - fileSize
+    - fileType
   sequenceExperiment:
     name: sequenceExperiment
     description: Use this analysis type to describe the sequencing experiment metadata related to the experimental design and sequencing run. It links to the experiment that generated the data.
@@ -41,11 +67,8 @@ classes:
     is_a: Analysis
     slots:
     - submitter_experiment_id
-    - experiment
     slot_usage:
       submitter_experiment_id:
-        required: true
-      experiment:
         required: true
     annotations:
       base_version: 1.0
@@ -58,14 +81,11 @@ classes:
     slots:
     - submitter_experiment_id
     - workflow
-    - experiment
     - genome_build
     slot_usage:
       submitter_experiment_id:
         required: true
       workflow:
-        required: true
-      experiment:
         required: true
       genome_build:
         required: true
@@ -82,7 +102,6 @@ classes:
     - variant_calling_strategy
     - variant_class
     - workflow
-    - experiment
     - genome_build
     - genome_annotation
     slot_usage:
@@ -93,8 +112,6 @@ classes:
       variant_class:
         required: true
       workflow:
-        required: true
-      experiment:
         required: true
       genome_build:
         required: true
@@ -109,17 +126,12 @@ slots:
     description: The list of files associated with the analysis.
     required: true
     multivalued: true
-    range: base_File
+    range: File
   workflow:
     description: TBA...
     required: false
     multivalued: false
-    range: base_Workflow
-  experiment:
-    description: TBA...temporary to be removed.
-    required: false
-    multivalued: false
-    range: string
+    range: Workflow
   analysisType:
     name: analysisType
     description: Overall type of the analysis. Term chosen from a controlled vocabulary

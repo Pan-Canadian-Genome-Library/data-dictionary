@@ -3,7 +3,6 @@
     "name": "sequenceAlignment"
   },
   "data_category": "<data_category>",
-  "experiment": "<experiment>",
   "files": [
     {
       "dataType": "<dataType>",
