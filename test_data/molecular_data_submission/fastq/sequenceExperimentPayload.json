@@ -3,7 +3,6 @@
     "name": "sequenceExperiment"
   },
   "data_category": "Genomics",
-  "experiment": "exp_001",
   "files": [
     {
     "fileName": "C0HVY.2_r1.fq.gz",
