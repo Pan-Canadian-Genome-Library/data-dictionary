@@ -1,0 +1,6 @@
+disease_status_at_followup : "Stable" ### Missing submitter_participant_id
+---
+submitter_participant_id : "DONOR_01" ### Missing disease_status_at_followup
+---
+submitter_participant_id : "DONOR_01" ### Invalid disease_status_at_followup enum
+disease_status_at_followup : "INVALID"

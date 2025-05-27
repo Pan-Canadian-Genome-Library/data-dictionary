@@ -1,0 +1,15 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_death : 15
+age_at_enrollment : 10
+cause_of_death : Died of cancer
+vital_status : Deceased
+---
+submitter_participant_id : "DONOR_01" ### Conditional where age of death only present if vital status is deceased
+age_at_enrollment : 10
+cause_of_death : Died of cancer
+vital_status : Deceased
+---
+submitter_participant_id : "DONOR_01" ### Not sure what the use case for this one is but check anyways
+---
+submitter_participant_id : "DONOR_01" ### minimal info is deceased
+vital_status : Deceased

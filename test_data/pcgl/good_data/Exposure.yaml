@@ -1,0 +1,12 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_exposure : 10
+exposure_amount : 10
+exposure_code : "LOINC:43164-0"
+exposure_duration : 10
+exposure_status : "Current"
+exposure_term : "Alcohol use"
+exposure_unit : "drinks/day"
+---
+submitter_participant_id : "DONOR_01" ### Minimal
+exposure_code : "LOINC:43164-0"
+exposure_status : "Current"

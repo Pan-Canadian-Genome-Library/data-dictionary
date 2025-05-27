@@ -1,0 +1,10 @@
+submitter_sample_id : "DONOR_01_SAMPLE_01" ###General use case
+submitter_specimen_id : "DONOR_01_SPECIMEN_02"
+molecule_type_code : "NCIT:C449"
+molecule_type_term : "DNA"
+sample_status : "Case"
+---
+submitter_sample_id : "DONOR_01_SAMPLE_02" ### Minimal
+submitter_specimen_id : "DONOR_01_SPECIMEN_02"
+molecule_type_code : "NCIT:C449"
+sample_status : "Case"

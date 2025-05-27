@@ -1,0 +1,12 @@
+submitter_treatment_id : "DONOR_01_TREATMENT_01" # General use case
+anatomical_site_irradiated_code : "UBERON:2005080"
+anatomical_site_irradiated_term : "anterior mesenteric artery"
+radiation_dosage : 10
+radiation_fractions : 10
+radiation_modality_code : "NCIT:C28039"
+radiation_modality_term : "Electron Beam"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" # Minimal
+anatomical_site_irradiated_code : "ICDO3:C80.9"
+radiation_modality_code : "NCIT:C28039"
+

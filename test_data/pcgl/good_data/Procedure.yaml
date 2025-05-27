@@ -1,0 +1,21 @@
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### General use case
+procedure_body_site_code : "UBERON:2005080"
+procedure_body_site_term : "BLANK"
+procedure_code : "CCI:1CA14STCDR"
+procedure_term : "BLANK"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_02" ### Minimal use case
+procedure_body_site_code : "UBERON:2005080"
+procedure_code : "UMLS:C2584994"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_03" ### Minimal use case
+procedure_body_site_code : "UBERON:2005080"
+procedure_code : "UMLS:C2584994"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_04" ### Minimal use case
+procedure_body_site_code : "ICDO3:C80.9"
+procedure_code : "SNOMEDCT:284196006"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_05" ### Minimal use case
+procedure_body_site_code : "ICDO3:C80.9"
+procedure_code : "NCIT:C51894"

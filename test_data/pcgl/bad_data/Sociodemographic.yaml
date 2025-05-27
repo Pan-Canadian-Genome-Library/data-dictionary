@@ -1,0 +1,621 @@
+submitter_participant_id : "DONOR_01" ### submitter_sociodem_id 
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_01" ### Missing submitter_participant_id
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_03" ### Missing age_at_sociodem_collection
+submitter_participant_id : "DONOR_01"
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_04" ### Missing education 
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_05" ### Missing education_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_06" ### Missing ethnicity
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_07" ### Missing ethnicity_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_08" ### Missing gender
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_09" ### Missing gender_collect_method 
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_10" ### Missing geographic_location 
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_11" ### Missing geographic_location_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_12" ### Missing personal_income
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_13" ### Missing personal_income_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_14" ### Missing race 
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_15" ### Missing race_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_16" ### Missing sex_at_birth
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_17" ### Missing sex_collect_method
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_19" ### Missing sociodem_date_collection
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_18" ### Missing sociodem_question
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_additional : "Somewhere secret"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_19" ### race_another_racial_category can only be used when race is Another Racial Category
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_another_racial_category: "MockRace"
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_20" ### race_another_racial_category must be used when race is Another Racial Category
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Another Racial Category"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_21" ### gender_another_gender can only be used when gender is Another Gender
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_another_gender: "MockGender"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_22" ### gender_another_gender must be used when gender is Another Gender
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Another Gender"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_23" ### eethnicity_another_category can only be used when ethnicity is Free text input
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_another_category : "MockEthnicity"
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_24" ### ethnicity_another_category must be used when ethnicity is Free text input
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Free text input"]
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_25" ### sex_at_birth can only be used when sex_at_birth is Another Sex
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_another_category: "MockSex"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_26" ### sex_at_birth must be used when sex_at_birth is Another Sex
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Another Sex"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_27" ### Invalid geographic_location regex
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "HHH-HHH"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_28" ### Invalid sociodem_date_collection regex
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "99-99-9999"
+sociodem_question : "Missing - Unknown"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_29" ###sociodem_question_detail can only be provided is sociodem_question is PCGL reference question or another question
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Missing - Unknown"
+sociodem_question_detail: "1.0.0"
+---
+submitter_sociodem_id : "DONOR_01_SOCIODEMOGRAPHIC_30" ###sociodem_question_detail must be provided is sociodem_question is PCGL reference question or another question
+submitter_participant_id : "DONOR_01"
+age_at_sociodem_collection : 10
+education : "Missing - Unknown"
+education_collect_method : "Missing - Unknown"
+ethnicity : ["Missing - Unknown"]
+ethnicity_collect_method : "Missing - Unknown"
+gender : "Missing - Unknown"
+gender_collect_method : "Missing - Unknown"
+geographic_location : "Missing - Unknown"
+geographic_location_collect_method : "Missing - Unknown"
+personal_income : "Missing - Unknown"
+personal_income_collect_method : "Missing - Unknown"
+race : ["Missing - Unknown"]
+race_collect_method : "Missing - Unknown"
+sex_at_birth : "Missing - Unknown"
+sex_collect_method : "Missing - Unknown"
+sociodem_date_collection : "9999-99-99"
+sociodem_question : "Another question"

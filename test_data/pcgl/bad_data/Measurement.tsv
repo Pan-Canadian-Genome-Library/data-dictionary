@@ -1,0 +1,5 @@
+Measurement Code	Submitter Participant Id	Age At Measurement	Measurement Result Categorical	Measurement Result Numeric	Measurement Term	Measurement Unit
+LOINC:29463-7						
+	DONOR_01					
+Invalid	DONOR_01	10.0	BLANK	10.0	Body weight	UO:0000009
+LOINC:29463-7	DONOR_01	10.0	BLANK	10.0	Body weight	Invalid

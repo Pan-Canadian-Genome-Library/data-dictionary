@@ -1,0 +1,3 @@
+Submitter Treatment Id	Anatomical Site Irradiated Code	Anatomical Site Irradiated Term	Radiation Dosage	Radiation Fractions	Radiation Modality Code	Radiation Modality Term
+DONOR_01_TREATMENT_01	UBERON:2005080	anterior mesenteric artery	10.0	10.0	NCIT:C28039	Electron Beam
+DONOR_01_TREATMENT_01	ICDO3:C80.9				NCIT:C28039	

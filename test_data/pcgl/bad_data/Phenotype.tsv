@@ -1,0 +1,7 @@
+Phenotype Code	Phenotype Observed	Submitter Participant Id	Age At Phenotype	Phenotype Duration	Phenotype Severity	Phenotype Term
+HP:0011140	Yes					
+	Yes	DONOR_01				
+HP:0011140		DONOR_01				
+INVALID	Yes	DONOR_01	10.0	10.0	Mild	Gastrointestinal duplication
+HP:0011140	INVALID	DONOR_01	10.0	10.0	Mild	Gastrointestinal duplication
+HP:0011140	Yes	DONOR_01	10.0	10.0	INVALID	Gastrointestinal duplication

@@ -1,0 +1,18 @@
+age_at_death : 15 ### Missing required field
+age_at_enrollment : 10
+cause_of_death : Died of cancer
+vital_status : Deceased
+---
+submitter_participant_id : "DONOR_01" ### Invalid cause_of_death value
+cause_of_death : Died ###
+vital_status : Deceased
+---
+submitter_participant_id : "DONOR_01" ### Invalid vital_status value
+cause_of_death : Died of cancer
+vital_status : Dead
+---
+submitter_participant_id : "DONOR_01" ### cause_of_death should be not populated when vital_status!=Deceased
+cause_of_death : Died of cancer
+---
+submitter_participant_id : "DONOR_01" ### age_at_death  should be not populated when vital_status!=Deceased
+age_at_death : 70

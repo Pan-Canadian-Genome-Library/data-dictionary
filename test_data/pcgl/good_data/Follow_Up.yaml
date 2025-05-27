@@ -1,0 +1,6 @@
+submitter_participant_id : "DONOR_01" ### General use case
+age_at_followup : 10
+disease_status_at_followup : "Stable"
+---
+submitter_participant_id : "DONOR_01" ### Minimal use case
+disease_status_at_followup : "Stable"

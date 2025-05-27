@@ -1,0 +1,34 @@
+study_id : "EXAMPLE-CA"  ### Missing required submitter_participant_id 
+duo_permission : "DUO:0000042 (general research use)"
+---
+submitter_participant_id : "DONOR-01" ### Missing required study_id 
+duo_permission : "DUO:0000042 (general research use)"
+---
+submitter_participant_id : "DONOR-02" ### Missing required duo_permission
+study_id : "EXAMPLE-CA"
+---
+submitter_participant_id : "DONOR-03" ### Using disease modifier with incorrect duo_permission
+study_id : "EXAMPLE-CA"
+duo_permission : "DUO:0000042 (general research use)"
+disease_specific_modifier : [MONDO:0000001]
+---
+submitter_participant_id : "DONOR-04" ### Missing disease_specific_modifier when duo_permission is DUO:0000007 (disease specific research)
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043 (clinical care use)","DUO:0000029 (return to database or resource)", "DUO:0000028 (institution specific restriction)"]
+duo_permission : "DUO:0000007 (disease specific research)"
+---
+submitter_participant_id : "DONOR-05" ### disease modifier invalid regex
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043 (clinical care use)","DUO:0000029 (return to database or resource)", "DUO:0000028 (institution specific restriction)"]
+disease_specific_modifier : ["Sick"]
+duo_permission : "DUO:0000007 (disease specific research)"
+---
+submitter_participant_id : "DONOR-06" ### duo permission invalid value
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043 (clinical care use)","DUO:0000029 (return to database or resource)", "DUO:0000028 (institution specific restriction)"]
+duo_permission : "DUO:0000007"
+---
+submitter_participant_id : "DONOR-07" ### duo modifier invalid value
+study_id : "EXAMPLE-CA"
+duo_modifier : ["DUO:0000043"]
+duo_permission : "DUO:0000042 (general research use)"

@@ -1,0 +1,16 @@
+anatomical_site_irradiated_code : "ICDO3:C80.9" ### Missing submitter_treatment_id
+radiation_modality_code : "NCIT:C28039"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Missing anatomical_site_irradiated_code
+radiation_modality_code : "NCIT:C28039"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" ### Missing radiation_modality_code
+anatomical_site_irradiated_code : "ICDO3:C80.9"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" # Invalid anatomical_site_irradiated_code regex
+anatomical_site_irradiated_code : "INVALD"
+radiation_modality_code : "NCIT:C28039"
+---
+submitter_treatment_id : "DONOR_01_TREATMENT_01" # Invalid radiation_modality_code regex
+anatomical_site_irradiated_code : "ICDO3:C80.9"
+radiation_modality_code : "INVALD"

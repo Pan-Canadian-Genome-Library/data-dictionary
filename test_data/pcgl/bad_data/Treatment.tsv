@@ -1,0 +1,7 @@
+Submitter Diagnosis Id	Submitter Participant Id	Age At Treatment	Treatment Duration	Treatment Intent	Treatment Response	Treatment Status	Treatment Type	Submitter Treatment Id
+DONOR_01_DIAGNOSIS_01	DONOR_01	10.0	10.0	Curative	Clinical remission	Other	Other	
+DONOR_01_DIAGNOSIS_01		10.0	10.0	Curative	Clinical remission	Other	Other	DONOR_01_TREATMENT_01
+DONOR_01_DIAGNOSIS_01	DONOR_01	10.0	10.0	Curative	Clinical remission	Other		DONOR_01_TREATMENT_01
+	DONOR_01			INVALID			Other	DONOR_01_TREATMENT_01
+	DONOR_01				INVALID		Other	DONOR_01_TREATMENT_01
+	DONOR_01					INVALID	Other	DONOR_01_TREATMENT_01
