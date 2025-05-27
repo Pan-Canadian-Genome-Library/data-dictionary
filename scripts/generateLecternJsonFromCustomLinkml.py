@@ -108,7 +108,7 @@ def populateFieldProperties(model,lectern):
             tmp['meta']={}
             ###DisplayName for 
             tmp['meta']['displayName']=model['slots'][slot]['title']
-            tmp['name']=slot.lower()
+            tmp['name']=slot
             tmp['description']=model['slots'][slot]['description']
 
             if model['slots'][slot]['required']:
@@ -198,7 +198,7 @@ def populateFieldProperties(model,lectern):
         if model['classes'][schema['name']]['unique_keys']:
             for unique_key in model['classes'][schema['name']]['unique_keys']['main']['unique_key_slots']:
                 for field in schema['fields']:
-                    if field['name']==unique_key.lower():
+                    if field['name']==unique_key:
                         #print(unique_key)
                         field['unique']=True
                         
@@ -208,7 +208,7 @@ def populateFieldProperties(model,lectern):
         if field['name'].endswith("_id") and field['name'].startswith("submitter_"):
             if field['name']=='study_id':
                 continue
-            if entity['name'].lower() not in field['name'].lower():
+            if entity['name'].lower() not in field['name']:
                 if not entity.get('restrictions'):
                     entity['restrictions']={}
                 if not entity['restrictions'].get('foreignKey'):

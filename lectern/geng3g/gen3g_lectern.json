@@ -1,7 +1,10 @@
 {
-  "name": "prod_pcgl_schema",
-  "description": "Base clinical schema that incorporates all PCGL base entities",
+  "name": "gen3g_schema",
   "version": "1.1",
+  "description": "GEN3G clinical schema that incorporates all PCGL base entities and extends with additional GEN3G fields and entities",
+  "meta": {
+    "notes": "Remove sociodem_id foreign key in sociodemographics. Replace class null description with TBD. Remove family Id foreign key in pedigree"
+  },
   "schemas": [
     {
       "name": "participant",
@@ -11,25 +14,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string",
           "unique": true
@@ -140,6 +132,17 @@
             ]
           },
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "pooled_participant_id",
+            "mappings": {
+              "dbGap": "POOLED_SUBJECT_ID"
+            }
+          },
+          "name": "pooled_participant_id",
+          "description": "Pooled participant ID.",
+          "valueType": "string"
         }
       ]
     },
@@ -169,25 +172,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -642,26 +634,13 @@
           "meta": {
             "displayName": "sex_at_birth",
             "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "required": [
-              "EDI indicator"
-            ]
+              "Phenopacket.sex_at_birth": "Phenopacket.sex_at_birth"
+            }
           },
           "name": "sex_at_birth",
-          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
+          "description": "Biological sex. EDI indicator.",
           "restrictions": {
-            "required": true,
-            "codeList": [
-              "Male",
-              "Female",
-              "Intersex",
-              "Another Sex",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
+            "required": true
           },
           "valueType": "string"
         },
@@ -793,25 +772,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -877,6 +845,263 @@
               "Missing - Restricted access"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Diabete_famille",
+            "mappings": {
+              "dbGaP.Patient_Diabete_famille": "dbGaP.Patient_Diabete_famille"
+            }
+          },
+          "name": "Patient_Diabete_famille",
+          "description": "Do any of your family members have diabetes?. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_grossesse",
+            "mappings": {
+              "dbGaP.Patient_Nbre_grossesse": "dbGaP.Patient_Nbre_grossesse"
+            }
+          },
+          "name": "Patient_Nbre_grossesse",
+          "description": "Total umber of pregnancies including the current one. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_a_terme",
+            "mappings": {
+              "dbGaP.Patient_Nbre_a_terme": "dbGaP.Patient_Nbre_a_terme"
+            }
+          },
+          "name": "Patient_Nbre_a_terme",
+          "description": "Number of term babies (more than 37 weeks). Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_pas_a_terme",
+            "mappings": {
+              "dbGaP.Patient_Nbre_pas_a_terme": "dbGaP.Patient_Nbre_pas_a_terme"
+            }
+          },
+          "name": "Patient_Nbre_pas_a_terme",
+          "description": "Number of preterm babies (less than 37 weeks). Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_bebe_avorte",
+            "mappings": {
+              "dbGaP.Patient_Nbre_bebe_avorte": "dbGaP.Patient_Nbre_bebe_avorte"
+            }
+          },
+          "name": "Patient_Nbre_bebe_avorte",
+          "description": "Number of voluntary abortion. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nb_faussescouches",
+            "mappings": {
+              "dbGaP.Patient_Nb_faussescouches": "dbGaP.Patient_Nb_faussescouches"
+            }
+          },
+          "name": "Patient_Nb_faussescouches",
+          "description": "Number of spontaneous abortions. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Poids_av_gros_kg",
+            "mappings": {
+              "dbGaP.Patient_Poids_av_gros_kg": "dbGaP.Patient_Poids_av_gros_kg"
+            }
+          },
+          "name": "Patient_Poids_av_gros_kg",
+          "description": "Self-reported weight before pregnancy. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_IMC_avant_grossesse",
+            "mappings": {
+              "dbGaP.Patient_IMC_avant_grossesse": "dbGaP.Patient_IMC_avant_grossesse"
+            }
+          },
+          "name": "Patient_IMC_avant_grossesse",
+          "description": "Pre-pregnancy body mass index (calculated based on self-reported pre-pregnancy weight and measured height). Collected in 1st trimester visit. Measured in kg/m2. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_SOPK",
+            "mappings": {
+              "dbGaP.Patient_SOPK": "dbGaP.Patient_SOPK"
+            }
+          },
+          "name": "Patient_SOPK",
+          "description": "Indication if the participant has polycystic ovarian syndrome (ovarian dysfunction). Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Corticosteroides",
+            "mappings": {
+              "dbGaP.Patient_Corticosteroides": "dbGaP.Patient_Corticosteroides"
+            }
+          },
+          "name": "Patient_Corticosteroides",
+          "description": "Indication if the participant is taking corticosteroids. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Asthme",
+            "mappings": {
+              "dbGaP.Patient_Asthme": "dbGaP.Patient_Asthme"
+            }
+          },
+          "name": "Patient_Asthme",
+          "description": "Indication if the participant has asthma disease. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Pb_thyroidien",
+            "mappings": {
+              "dbGaP.Patient_Pb_thyroidien": "dbGaP.Patient_Pb_thyroidien"
+            }
+          },
+          "name": "Patient_Pb_thyroidien",
+          "description": "Indication if the participant has a thyroid condition. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Pb_urinaire",
+            "mappings": {
+              "dbGaP.Patient_Pb_urinaire": "dbGaP.Patient_Pb_urinaire"
+            }
+          },
+          "name": "Patient_Pb_urinaire",
+          "description": "Indication if the participant has a genitourinary condition. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Allergies",
+            "mappings": {
+              "dbGaP.Patient_Allergies": "dbGaP.Patient_Allergies"
+            }
+          },
+          "name": "Patient_Allergies",
+          "description": "Indication if the participant has allergies. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Reflux",
+            "mappings": {
+              "dbGaP.Patient_Reflux": "dbGaP.Patient_Reflux"
+            }
+          },
+          "name": "Patient_Reflux",
+          "description": "Indication if the participant has gastric reflux. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Pb_sante_mentale",
+            "mappings": {
+              "dbGaP.Patient_Pb_sante_mentale": "dbGaP.Patient_Pb_sante_mentale"
+            }
+          },
+          "name": "Patient_Pb_sante_mentale",
+          "description": "Indication if the participant has mental health problems. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Sexe",
+            "mappings": {
+              "dbGaP.Accouchement_Sexe": "dbGaP.Accouchement_Sexe"
+            }
+          },
+          "name": "Accouchement_Sexe",
+          "description": "Child's sex. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "999"
+            ]
+          }
         }
       ],
       "restrictions": {
@@ -926,25 +1151,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1083,25 +1297,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1238,80 +1441,6 @@
               }
             ]
           },
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "follow_up",
-      "description": "Any point of contact with a patient after primary diagnosis. ",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "age_at_followup"
-          },
-          "name": "age_at_followup",
-          "description": "Participant's age (in days) at time of the follow up event",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "disease_status_at_followup"
-          },
-          "name": "disease_status_at_followup",
-          "description": "Indicate the participant's disease status at time of follow-up",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Complete remission",
-              "Distant progression",
-              "Loco-regional progression",
-              "No evidence of disease",
-              "Partial remission",
-              "Progression NOS",
-              "Relapse or recurrence",
-              "Stable"
-            ]
-          },
-          "valueType": "string"
-        }
-      ],
-      "restrictions": {
-        "foreignKey": [
           {
             "schema": "participant",
             "mappings": [
@@ -1503,123 +1632,11 @@
       "restrictions": {
         "foreignKey": [
           {
-            "schema": "participant",
+            "schema": "treatment",
             "mappings": [
               {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "radiation",
-      "description": "Uses ionizing radiation, generally as part of cancer treatment to control or kill malignant cells.",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "submitter_treatment_id",
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "anatomical_site_irradiated_code",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite",
-              "MOH": "anatomical_site_irradiated_code",
-              "ARGO": "anatomical_site_irradiated_code"
-            },
-            "required": [
-              "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
-            ],
-            "examples": [
-              "Alcohol use"
-            ]
-          },
-          "name": "anatomical_site_irradiated_code",
-          "description": "Indicate the ICD-O-3 topography code to describe the irradiated site of radiation if applicable. Please use C80.9 if the site is Unkown.",
-          "valueType": "string",
-          "restrictions": {
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
-          }
-        },
-        {
-          "meta": {
-            "displayName": "anatomical_site_irradiated_term"
-          },
-          "name": "exposure_unit",
-          "description": "Unit associated with exposure_amount",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "radiation_dosage"
-          },
-          "name": "radiation_dosage",
-          "description": "Indicate the total dose given in units of Gray (Gy).",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "radiation_fractions"
-          },
-          "name": "radiation_fractions",
-          "description": "Indicate the total number of fractions delivered as part of treatment.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "radiation_modality_code",
-            "mappings": {
-              "Phenopacket": "radiation_modality_code"
-            },
-            "examples": [
-              "NCIT:C28039"
-            ]
-          },
-          "name": "radiation_modality_code",
-          "description": "Indicate NCIt code to denote the modality of radiation therapy.\nProvide code in Compact URI (CURIE) pattern.",
-          "restrictions": {
-            "required": true,
-            "regex": "^NCIT:C\\d+$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "radiation_modality_term",
-            "examples": [
-              "Electron Beam"
-            ]
-          },
-          "name": "radiation_modality_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the radiation modality code.",
-          "valueType": "string"
-        }
-      ],
-      "restrictions": {
-        "foreignKey": [
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
+                "local": "submitter_treatment_id",
+                "foreign": "submitter_treatment_id"
               }
             ]
           }
@@ -1634,25 +1651,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1737,25 +1743,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1850,221 +1845,6 @@
       }
     },
     {
-      "name": "comorbidity",
-      "description": "Any medical conditions (e.g diabetes, prior cancer malignancies) that have existed or may occur during the clinical course of the participant who has the index disease under study.",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "age_at_comorbidity_diagnosis"
-          },
-          "name": "age_at_comorbidity_diagnosis",
-          "description": "Indicate the age (in days) of comorbidity diagnosis.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "comorbidity_code",
-            "required": [
-              "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
-            ],
-            "examples": [
-              "MONDO:0000001",
-              "icd10:C34"
-            ]
-          },
-          "name": "comorbidity_code",
-          "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern.",
-          "restrictions": {
-            "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "comorbidity_status"
-          },
-          "name": "comorbidity_status",
-          "description": "Indicate the current state or activity of the comorbid condition.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Active",
-              "In Remission",
-              "Resolved",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown",
-              "Not applicable"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "comorbidity_term",
-            "mappings": {
-              "mCODE.STU3": "condition.code",
-              "FHIR": "condition.code",
-              "Phenopacket": "disease.term"
-            }
-          },
-          "name": "comorbidity_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "comorbidity_treatment_status"
-          },
-          "name": "comorbidity_treatment_status",
-          "description": "Indicate whether the comorbid condition is currently being treated or not.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Treated and resolved",
-              "Under treatment",
-              "Untreated",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown",
-              "Not applicable"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Processing",
-            "mappings": {
-              "Phenopacket": "biosample.sample_processing",
-              "BeaconV2": "biosample.sample_processing",
-              "ARGO": "specimen_processing",
-              "MOH": "specimen_processing"
-            }
-          },
-          "name": "specimen_processing",
-          "description": "Indicate the technique used to process specimen.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Cryopreservation - other",
-              "Cryopreservation in dry ice (dead tissue)",
-              "Cryopreservation in liquid nitrogen (dead tissue)",
-              "Cryopreservation of live cells in liquid nitrogen",
-              "Formalin fixed & paraffin embedded",
-              "Formalin fixed - buffered",
-              "Formalin fixed - unbuffered",
-              "Fresh",
-              "Other",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown",
-              "Not applicable"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Storage",
-            "mappings": {
-              "Phenopacket": "biosample.sample_storage",
-              "BeaconV2": "biosample.sample_storage",
-              "ARGO": "specimen_storage",
-              "MOH": "specimen_storage"
-            }
-          },
-          "name": "specimen_storage",
-          "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Cut slide",
-              "Frozen in -70 freezer",
-              "Frozen in liquid nitrogen",
-              "Frozen in vapour phase",
-              "Not Applicable",
-              "Other",
-              "Paraffin block",
-              "RNA later frozen",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown",
-              "Not applicable"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Tissue Source Code",
-            "mappings": {
-              "CQDG": "biospecimen_tissue_source",
-              "mCODE.STU3": "Specimen.type",
-              "FHIR": "Specimen.type",
-              "Phenopacket": "biosample.sampled_tissue",
-              "BeaconV2": "biosample.sampled_tissue"
-            }
-          },
-          "name": "specimen_tissue_source_code",
-          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
-          "restrictions": {
-            "required": true,
-            "regex": "^NCIT:C[0-9]+$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Tissue Source Term"
-          },
-          "name": "specimen_tissue_source_term",
-          "description": "Indicate the human readable label for the specimen tissue source code.",
-          "valueType": "string"
-        }
-      ],
-      "restrictions": {
-        "foreignKey": [
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
       "name": "exposure",
       "description": "Capture information about external factors, agents, or conditions an individual has encountered that may influence health or disease outcomes.",
       "fields": [
@@ -2072,25 +1852,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "hnc_12",
-              "CCG_34_94583",
-              "BRCA47832-3239"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -2181,11 +1950,11 @@
       "restrictions": {
         "foreignKey": [
           {
-            "schema": "experiment",
+            "schema": "participant",
             "mappings": [
               {
-                "local": "submitter_experiment_id",
-                "foreign": "submitter_experiment_id"
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
               }
             ]
           }
@@ -2227,25 +1996,14 @@
           "meta": {
             "displayName": "submitter_participant_id",
             "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
           },
           "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -2724,6 +2482,22 @@
           "name": "sequencing_protocol",
           "description": "Set of rules which guides how the sequencing protocol was followed. Change-tracking services such as Protocol.io or GitHub are encouraged instead of dumping free text in this field.\nE.g, https://www.protocols.io/view/environmental-dna-edna-metabarcoding-protocol-for-rm7vzy3q2lx1/v1",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sequencing_batch"
+          },
+          "name": "sequencing_batch",
+          "description": "A unique identifier or label assigned to a group of sequencing libraries that were prepared and sequenced together under similar experimental conditions, often within the same sequencing run or flow cell. (Not from program).",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sequencing_position"
+          },
+          "name": "sequencing_position",
+          "description": "The specific physical or logical location within the sequencing platform (e.g., lane, well, or slot) where the sample was loaded and sequenced. (Not from program).",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -2955,6 +2729,1723 @@
               {
                 "local": "submitter_experiment_id",
                 "foreign": "submitter_experiment_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "pedigree",
+      "description": "TBD",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_family_id",
+            "mappings": {
+              "Phenopacket.submitter_family_id": "Phenopacket.submitter_family_id"
+            }
+          },
+          "name": "submitter_family_id",
+          "description": "Unique and de-identified identifier of the family, assigned by the data provider..",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "father_id",
+            "mappings": {
+              "Phenopacket.father_id": "Phenopacket.father_id"
+            }
+          },
+          "name": "father_id",
+          "description": "Unique and de-identified identifier for the father.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "mother_id",
+            "mappings": {
+              "Phenopacket.mother_id": "Phenopacket.mother_id"
+            }
+          },
+          "name": "mother_id",
+          "description": "Unique and de-identified identifier for the mother.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "sex_at_birth",
+            "mappings": {
+              "Phenopacket.sex_at_birth": "Phenopacket.sex_at_birth"
+            }
+          },
+          "name": "sex_at_birth",
+          "description": "Biological sex. EDI indicator.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "firsttrimestervisit",
+      "description": "TBD",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_age_calc_V1",
+            "mappings": {
+              "dbGaP.Patient_age_calc_V1": "dbGaP.Patient_age_calc_V1"
+            }
+          },
+          "name": "Patient_age_calc_V1",
+          "description": "Participant calculated age based on date of birth and date of 1st trimester visit. Collected in 1st trimester visit. Measured in years.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Alcool",
+            "mappings": {
+              "dbGaP.Patient_Alcool": "dbGaP.Patient_Alcool"
+            }
+          },
+          "name": "Patient_Alcool",
+          "description": "Have you ever drank alcohol?. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Consommezvous",
+            "mappings": {
+              "dbGaP.Patient_Consommezvous": "dbGaP.Patient_Consommezvous"
+            }
+          },
+          "name": "Patient_Consommezvous",
+          "description": "Do you currently drink alcohol?. Asked only if participant answer \"yes\" to the \"Patient_Alcool\" question\n Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Consommationsjour",
+            "mappings": {
+              "dbGaP.Patient_Consommationsjour": "dbGaP.Patient_Consommationsjour"
+            }
+          },
+          "name": "Patient_Consommationsjour",
+          "description": "What is your alcohol consumption (drinks or portions per day). Asked only if participant answer \"yes\" to the \"Patient_Consommezvous\" question\n Collected in 1st trimester visit. Measured in Portions/day. 888=Not applicable; 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Deja_fume",
+            "mappings": {
+              "dbGaP.Patient_Deja_fume": "dbGaP.Patient_Deja_fume"
+            }
+          },
+          "name": "Patient_Deja_fume",
+          "description": "Have you ever smoked?. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Fumezvous",
+            "mappings": {
+              "dbGaP.Patient_Fumezvous": "dbGaP.Patient_Fumezvous"
+            }
+          },
+          "name": "Patient_Fumezvous",
+          "description": "Do you currently smoke?. Asked only if participant answer \"yes\" to the \"Patient_Deja_fume\" question\n Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_cigjr",
+            "mappings": {
+              "dbGaP.Patient_Nbre_cigjr": "dbGaP.Patient_Nbre_cigjr"
+            }
+          },
+          "name": "Patient_Nbre_cigjr",
+          "description": "Number of cigarettes per day. Asked only if participant answer \"yes\" to the \"Patient_Fumezvous\" question\n Collected in 1st trimester visit. Measured in Cigarettes/day. 888=Not applicable; 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Taille",
+            "mappings": {
+              "dbGaP.Patient_Taille": "dbGaP.Patient_Taille"
+            }
+          },
+          "name": "Patient_Taille",
+          "description": "Measured height by stadiometer. Collected in 1st trimester visit. Measured in m.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Sem_Gestation_V1",
+            "mappings": {
+              "dbGaP.Visite_Sem_Gestation_V1": "dbGaP.Visite_Sem_Gestation_V1"
+            }
+          },
+          "name": "Visite_Sem_Gestation_V1",
+          "description": "Gestational age at 1st trimester visit (recruitment) based on LMP or if differ by >5 days on ultrasound result. Collected in 1st trimester visit. Measured in weeks.day.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_MedicationVitamines_V1",
+            "mappings": {
+              "dbGaP.Visite_MedicationVitamines_V1": "dbGaP.Visite_MedicationVitamines_V1"
+            }
+          },
+          "name": "Visite_MedicationVitamines_V1",
+          "description": "Do you take any medications or vitamins?. Collected in 1st trimester visit. 0=No; 1=Yes.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Poids_V1",
+            "mappings": {
+              "dbGaP.Visite_Poids_V1": "dbGaP.Visite_Poids_V1"
+            }
+          },
+          "name": "Visite_Poids_V1",
+          "description": "Measured participant's weight at 1st trimester visit (recruitment). Collected in 1st trimester visit. Measured in kg.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_IMC_V1",
+            "mappings": {
+              "dbGaP.Visite_IMC_V1": "dbGaP.Visite_IMC_V1"
+            }
+          },
+          "name": "Visite_IMC_V1",
+          "description": "Body mass index (BMI) calculated based on measured weight and height. Collected in 1st trimester visit. Measured in kg/m2.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Tour_de_taille_V1",
+            "mappings": {
+              "dbGaP.Visite_Tour_de_taille_V1": "dbGaP.Visite_Tour_de_taille_V1"
+            }
+          },
+          "name": "Visite_Tour_de_taille_V1",
+          "description": "Measured participant's waist circumference at 1st trimester visit (recruitment). Collected in 1st trimester visit. Measured in cm. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_TAS_M_V1",
+            "mappings": {
+              "dbGaP.Visite_TAS_M_V1": "dbGaP.Visite_TAS_M_V1"
+            }
+          },
+          "name": "Visite_TAS_M_V1",
+          "description": "Average of three systolic blood pressure measures. Collected in 1st trimester visit. Measured in mmHg. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_TAD_M_V1",
+            "mappings": {
+              "dbGaP.Visite_TAD_M_V1": "dbGaP.Visite_TAD_M_V1"
+            }
+          },
+          "name": "Visite_TAD_M_V1",
+          "description": "Average of three diastolic blood pressure measures. Collected in 1st trimester visit. Measured in mmHg. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Diagnostic_de_DG_V1",
+            "mappings": {
+              "dbGaP.Visite_Diagnostic_de_DG_V1": "dbGaP.Visite_Diagnostic_de_DG_V1"
+            }
+          },
+          "name": "Visite_Diagnostic_de_DG_V1",
+          "description": "Diagnosis of gestational diabetes based on 1h-glucose>=10.3 mmol/L post 50g-GCT. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Saison_V1",
+            "mappings": {
+              "dbGaP.Visite_Saison_V1": "dbGaP.Visite_Saison_V1"
+            }
+          },
+          "name": "Visite_Saison_V1",
+          "description": "Season in which the visit take place, see possible values. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "4"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Visite__gras_BI_V1",
+            "mappings": {
+              "dbGaP.Visite__gras_BI_V1": "dbGaP.Visite__gras_BI_V1"
+            }
+          },
+          "name": "Visite__gras_BI_V1",
+          "description": "Fat percentage measured by Tanita bioimpedance scale. Collected in 1st trimester visit. Measured in %. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Impedance_BI_V1",
+            "mappings": {
+              "dbGaP.Visite_Impedance_BI_V1": "dbGaP.Visite_Impedance_BI_V1"
+            }
+          },
+          "name": "Visite_Impedance_BI_V1",
+          "description": "Bioimpedance measured by Tanita bioimpedance scale. Collected in 1st trimester visit. Measured in Ohms. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Masse_grasse_BI_V1",
+            "mappings": {
+              "dbGaP.Visite_Masse_grasse_BI_V1": "dbGaP.Visite_Masse_grasse_BI_V1"
+            }
+          },
+          "name": "Visite_Masse_grasse_BI_V1",
+          "description": "Fat mass measured by Tanita bioimpedance scale. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Fat_free_mass_BI_V1",
+            "mappings": {
+              "dbGaP.Visite_Fat_free_mass_BI_V1": "dbGaP.Visite_Fat_free_mass_BI_V1"
+            }
+          },
+          "name": "Visite_Fat_free_mass_BI_V1",
+          "description": "Fat free mass measured by Tanita bioimpedance scale. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Tot_body_water_BI_V1",
+            "mappings": {
+              "dbGaP.Visite_Tot_body_water_BI_V1": "dbGaP.Visite_Tot_body_water_BI_V1"
+            }
+          },
+          "name": "Visite_Tot_body_water_BI_V1",
+          "description": "Total body water measured by Tanita bioimpedance scale. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Act_sedentaires_9_Dormirsemaine_V1",
+            "mappings": {
+              "dbGaP.Act_sedentaires_9_Dormirsemaine_V1": "dbGaP.Act_sedentaires_9_Dormirsemaine_V1"
+            }
+          },
+          "name": "Act_sedentaires_9_Dormirsemaine_V1",
+          "description": "On average, how many hours a night do you sleep during the week? (Number of hours). Collected in 1st trimester visit. Measured in hours. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Fruits_frequence_jour_V1",
+            "mappings": {
+              "dbGaP.Nutrition_Fruits_frequence_jour_V1": "dbGaP.Nutrition_Fruits_frequence_jour_V1"
+            }
+          },
+          "name": "Nutrition_Fruits_frequence_jour_V1",
+          "description": "Without counting juice, how often do you usually eat fruit?. Asked to give frequency and unit of frequency and then transform each answer on a per day basis\n Collected in 1st trimester visit. Measured in Times/day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Legumes_frequence_jour_V1",
+            "mappings": {
+              "dbGaP.Nutrition_Legumes_frequence_jour_V1": "dbGaP.Nutrition_Legumes_frequence_jour_V1"
+            }
+          },
+          "name": "Nutrition_Legumes_frequence_jour_V1",
+          "description": "How often do you usually eat vegetables, not including potatoes (baked, fried, etc)?. Asked to give frequency and unit of frequency and then transform each answer on a per day basis\n Collected in 1st trimester visit. Measured in Times/day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Dejeuner_frequence_V1",
+            "mappings": {
+              "dbGaP.Nutrition_Dejeuner_frequence_V1": "dbGaP.Nutrition_Dejeuner_frequence_V1"
+            }
+          },
+          "name": "Nutrition_Dejeuner_frequence_V1",
+          "description": "Usually, how often do you have breakfast?. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Restaurant_frequence_semaine_V1",
+            "mappings": {
+              "dbGaP.Nutrition_Restaurant_frequence_semaine_V1": "dbGaP.Nutrition_Restaurant_frequence_semaine_V1"
+            }
+          },
+          "name": "Nutrition_Restaurant_frequence_semaine_V1",
+          "description": "How often do you go out to a restaurant (any type of restaurant)?. Asked to give frequency and unit of frequency and then transform each answer on a per week basis\n Collected in 1st trimester visit. Measured in Times/week. 999=Missing.",
+          "valueType": "number"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "secondtrimestervisit",
+      "description": "TBD",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Sem_Gestation_V2",
+            "mappings": {
+              "dbGaP.Visite_Sem_Gestation_V2": "dbGaP.Visite_Sem_Gestation_V2"
+            }
+          },
+          "name": "Visite_Sem_Gestation_V2",
+          "description": "Gestational age at 2nd trimester visit based on LMP or if differ by >5 days on ultrasound result. Collected in 2nd trimester visit. Measured in weeks.day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_MedicationVitamines_V2",
+            "mappings": {
+              "dbGaP.Visite_MedicationVitamines_V2": "dbGaP.Visite_MedicationVitamines_V2"
+            }
+          },
+          "name": "Visite_MedicationVitamines_V2",
+          "description": "Do you take any medications or vitamins?. Collected in 2nd trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Poids_V2",
+            "mappings": {
+              "dbGaP.Visite_Poids_V2": "dbGaP.Visite_Poids_V2"
+            }
+          },
+          "name": "Visite_Poids_V2",
+          "description": "Measured participant's weight at 2nd trimester visit. Collected in 2nd trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_IMC_V2",
+            "mappings": {
+              "dbGaP.Visite_IMC_V2": "dbGaP.Visite_IMC_V2"
+            }
+          },
+          "name": "Visite_IMC_V2",
+          "description": "Body mass index (BMI) calculated based on measured weight at 2nd trimester visit and height at 1st trimester visit. Collected in 2nd trimester visit. Measured in kg/m2. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_TAS_M_V2",
+            "mappings": {
+              "dbGaP.Visite_TAS_M_V2": "dbGaP.Visite_TAS_M_V2"
+            }
+          },
+          "name": "Visite_TAS_M_V2",
+          "description": "Average of three systolic blood pressure measures. Collected in 2nd trimester visit. Measured in mmHg. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_TAD_M_V2",
+            "mappings": {
+              "dbGaP.Visite_TAD_M_V2": "dbGaP.Visite_TAD_M_V2"
+            }
+          },
+          "name": "Visite_TAD_M_V2",
+          "description": "Average of three diastolic blood pressure measures. Collected in 2nd trimester visit. Measured in mmHg. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Diagnostic_de_DG_V2",
+            "mappings": {
+              "dbGaP.Visite_Diagnostic_de_DG_V2": "dbGaP.Visite_Diagnostic_de_DG_V2"
+            }
+          },
+          "name": "Visite_Diagnostic_de_DG_V2",
+          "description": "Diagnosis of gestational diabetes at 2nd trimester visit based on OGTT 75g glucose with fasting, 1h-post and 2h-post values basedon IADPSG criteria. Collected in 2nd trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Saison_V2",
+            "mappings": {
+              "dbGaP.Visite_Saison_V2": "dbGaP.Visite_Saison_V2"
+            }
+          },
+          "name": "Visite_Saison_V2",
+          "description": "Season in which the visit take place, see possible values. Collected in 2nd trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Visite__gras_BI_V2",
+            "mappings": {
+              "dbGaP.Visite__gras_BI_V2": "dbGaP.Visite__gras_BI_V2"
+            }
+          },
+          "name": "Visite__gras_BI_V2",
+          "description": "Fat percentage measured by Tanita bioimpedance scale. Collected in 2nd trimester visit. Measured in %. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Impedance_BI_V2",
+            "mappings": {
+              "dbGaP.Visite_Impedance_BI_V2": "dbGaP.Visite_Impedance_BI_V2"
+            }
+          },
+          "name": "Visite_Impedance_BI_V2",
+          "description": "Bioimpedance measured by Tanita bioimpedance scale. Collected in 2nd trimester visit. Measured in Ohms. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Masse_grasse_BI_V2",
+            "mappings": {
+              "dbGaP.Visite_Masse_grasse_BI_V2": "dbGaP.Visite_Masse_grasse_BI_V2"
+            }
+          },
+          "name": "Visite_Masse_grasse_BI_V2",
+          "description": "Fat mass measured by Tanita bioimpedance scale. Collected in 2nd trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Fat_free_mass_BI_V2",
+            "mappings": {
+              "dbGaP.Visite_Fat_free_mass_BI_V2": "dbGaP.Visite_Fat_free_mass_BI_V2"
+            }
+          },
+          "name": "Visite_Fat_free_mass_BI_V2",
+          "description": "Fat free mass measured by Tanita bioimpedance scale. Collected in 2nd trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Visite_Tot_body_water_BI_V2",
+            "mappings": {
+              "dbGaP.Visite_Tot_body_water_BI_V2": "dbGaP.Visite_Tot_body_water_BI_V2"
+            }
+          },
+          "name": "Visite_Tot_body_water_BI_V2",
+          "description": "Total body water measured by Tanita bioimpedance scale. Collected in 2nd trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Act_sedentaires_9_Dormirsemaine_V2",
+            "mappings": {
+              "dbGaP.Act_sedentaires_9_Dormirsemaine_V2": "dbGaP.Act_sedentaires_9_Dormirsemaine_V2"
+            }
+          },
+          "name": "Act_sedentaires_9_Dormirsemaine_V2",
+          "description": "On average, how many hours a night do you sleep during the week? (Number of hours). Collected in 2nd trimester visit. Measured in hours. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Fruits_frequence_jour_V2",
+            "mappings": {
+              "dbGaP.Nutrition_Fruits_frequence_jour_V2": "dbGaP.Nutrition_Fruits_frequence_jour_V2"
+            }
+          },
+          "name": "Nutrition_Fruits_frequence_jour_V2",
+          "description": "Without counting juice, how often do you usually eat fruit?. Asked to give frequency and unit of frequency and then transform each answer on a per day basis\n Collected in 2nd trimester visit. Measured in Times/day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Legumes_frequence_jour_V2",
+            "mappings": {
+              "dbGaP.Nutrition_Legumes_frequence_jour_V2": "dbGaP.Nutrition_Legumes_frequence_jour_V2"
+            }
+          },
+          "name": "Nutrition_Legumes_frequence_jour_V2",
+          "description": "How often do you usually eat vegetables, not including potatoes (baked, fried, etc)?. Asked to give frequency and unit of frequency and then transform each answer on a per day basis\n Collected in 2nd trimester visit. Measured in Times/day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Dejeuner_frequence_V2",
+            "mappings": {
+              "dbGaP.Nutrition_Dejeuner_frequence_V2": "dbGaP.Nutrition_Dejeuner_frequence_V2"
+            }
+          },
+          "name": "Nutrition_Dejeuner_frequence_V2",
+          "description": "Usually, how often do you have breakfast?. Collected in 2nd trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Nutrition_Restaurant_frequence_semaine_V2",
+            "mappings": {
+              "dbGaP.Nutrition_Restaurant_frequence_semaine_V2": "dbGaP.Nutrition_Restaurant_frequence_semaine_V2"
+            }
+          },
+          "name": "Nutrition_Restaurant_frequence_semaine_V2",
+          "description": "How often do you go out to a restaurant (any type of restaurant)?. Asked to give frequency and unit of frequency and then transform each answer on a per week basis\n Collected in 2nd trimester visit. Measured in Times/week. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "MATSUDA",
+            "mappings": {
+              "dbGaP.MATSUDA": "dbGaP.MATSUDA"
+            }
+          },
+          "name": "MATSUDA",
+          "description": "Matsuda index (https://diabetesjournals.org/care/article/22/9/1462/20552/Insulin-sensitivity-indices-obtained-from-oral). formula used : 10000/sqrt(fasting insulin (pg/mL)/5.808/6*fasting glucose (mmol/L)/0.0555 * (fasting glucose (mmol/L)/0.0555 + glucose 1h post-OGTT 75g (mmol/L)/0.0555 + glucose 2h post-OGTT 75g (mmol/L)/0.0555)/3 * (fasting insulin (pg/mL)/5.808/6 + insulin 1h post-OGTT 75g (pg/mL)/5.808/6 + insulin 2h post-OGTT 75g (pg/mL)/5.808/6)/3)\n Collected in 2nd trimester visit. 9999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Stumvoll",
+            "mappings": {
+              "dbGaP.Stumvoll": "dbGaP.Stumvoll"
+            }
+          },
+          "name": "Stumvoll",
+          "description": "Stumvoll index (https://diabetesjournals.org/care/article/24/4/796/23380/Oral-Glucose-Tolerance-Test-Indexes-for-Insulin (first phase beta cell for 0, 60, 120 samples)). formula used : 1194+4.724*fasting insulin (pg/mL)/1000*172.2-117*glucose 1h post-OGTT 75g (mmol/L)+1.414*insulin 1h post-OGTT 75g (pg/mL)/1000*172.2\n Collected in 2nd trimester visit. 9999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Homa_ir",
+            "mappings": {
+              "dbGaP.Homa_ir": "dbGaP.Homa_ir"
+            }
+          },
+          "name": "Homa_ir",
+          "description": "HOMA-IR index (https://link.springer.com/content/pdf/10.1007/BF00280883.pdf). formula used : fasting insulin (pg/mL)/5.808/6*fasting glucose (mmol/L)/22.5\n Collected in 2nd trimester visit. 9999=Missing.",
+          "valueType": "number"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "deliveryvisit",
+      "description": "TBD",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Sem_gest_accouch",
+            "mappings": {
+              "dbGaP.Accouchement_Sem_gest_accouch": "dbGaP.Accouchement_Sem_gest_accouch"
+            }
+          },
+          "name": "Accouchement_Sem_gest_accouch",
+          "description": "Gestational age at birth based on LMP or if differ by >5 days on ultrasound result. Collected at delivery (in medical records). Measured in weeks.day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Type_Traitement",
+            "mappings": {
+              "dbGaP.Accouchement_Type_Traitement": "dbGaP.Accouchement_Type_Traitement"
+            }
+          },
+          "name": "Accouchement_Type_Traitement",
+          "description": "Treament type for gestational diabetes. Only for 2nd trimester gestational diabetes\n Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "2",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Poids_mere_nd",
+            "mappings": {
+              "dbGaP.Accouchement_Poids_mere_nd": "dbGaP.Accouchement_Poids_mere_nd"
+            }
+          },
+          "name": "Accouchement_Poids_mere_nd",
+          "description": "Last participant's weight recorded in the prenatal record. Collected at delivery (in medical records). Measured in kg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_GA_poids",
+            "mappings": {
+              "dbGaP.Accouchement_GA_poids": "dbGaP.Accouchement_GA_poids"
+            }
+          },
+          "name": "Accouchement_GA_poids",
+          "description": "Gestational age when the weight was measured. Collected at delivery (in medical records). Measured in weeks.day. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Complications_fin_HTA",
+            "mappings": {
+              "dbGaP.Accouchement_Complications_fin_HTA": "dbGaP.Accouchement_Complications_fin_HTA"
+            }
+          },
+          "name": "Accouchement_Complications_fin_HTA",
+          "description": "Complications at the end of pregnancy (mulitple choice question) - High blood pressure. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Complications_fin_decollement_placentaire",
+            "mappings": {
+              "dbGaP.Accouchement_Complications_fin_decollement_placentaire": "dbGaP.Accouchement_Complications_fin_decollement_placentaire"
+            }
+          },
+          "name": "Accouchement_Complications_fin_decollement_placentaire",
+          "description": "Complications at the end of pregnancy (mulitple choice question) - Placental abruption. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Complications_fin_hydramnios",
+            "mappings": {
+              "dbGaP.Accouchement_Complications_fin_hydramnios": "dbGaP.Accouchement_Complications_fin_hydramnios"
+            }
+          },
+          "name": "Accouchement_Complications_fin_hydramnios",
+          "description": "Complications at the end of pregnancy (mulitple choice question) - Hydramnios. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Complications_fin_saignement",
+            "mappings": {
+              "dbGaP.Accouchement_Complications_fin_saignement": "dbGaP.Accouchement_Complications_fin_saignement"
+            }
+          },
+          "name": "Accouchement_Complications_fin_saignement",
+          "description": "Complications at the end of pregnancy (mulitple choice question) - Bleeding. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Duree_tot_travail_min",
+            "mappings": {
+              "dbGaP.Accouchement_Duree_tot_travail_min": "dbGaP.Accouchement_Duree_tot_travail_min"
+            }
+          },
+          "name": "Accouchement_Duree_tot_travail_min",
+          "description": "Total duration of labour (if any). Collected at delivery (in medical records). Measured in min. 9999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Analgesie_",
+            "mappings": {
+              "dbGaP.Accouchement_Analgesie_": "dbGaP.Accouchement_Analgesie_"
+            }
+          },
+          "name": "Accouchement_Analgesie_",
+          "description": "Presence of analgesia in the last 4 hours of delivery. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Corticosteroides",
+            "mappings": {
+              "dbGaP.Accouchement_Corticosteroides": "dbGaP.Accouchement_Corticosteroides"
+            }
+          },
+          "name": "Accouchement_Corticosteroides",
+          "description": "Does corticosteroids have been taken at delivery. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Antibiotiques",
+            "mappings": {
+              "dbGaP.Accouchement_Antibiotiques": "dbGaP.Accouchement_Antibiotiques"
+            }
+          },
+          "name": "Accouchement_Antibiotiques",
+          "description": "Does antibiotics have been taken at delivery. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Anesthesie_generale",
+            "mappings": {
+              "dbGaP.Accouchement_Anesthesie_generale": "dbGaP.Accouchement_Anesthesie_generale"
+            }
+          },
+          "name": "Accouchement_Anesthesie_generale",
+          "description": "Anesthesia (muliple choice question) - General anesthesia. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Anesthesie_peridurale",
+            "mappings": {
+              "dbGaP.Accouchement_Anesthesie_peridurale": "dbGaP.Accouchement_Anesthesie_peridurale"
+            }
+          },
+          "name": "Accouchement_Anesthesie_peridurale",
+          "description": "Anesthesia (muliple choice question) - Epidural anesthesia. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Anesthesie_rachidienne",
+            "mappings": {
+              "dbGaP.Accouchement_Anesthesie_rachidienne": "dbGaP.Accouchement_Anesthesie_rachidienne"
+            }
+          },
+          "name": "Accouchement_Anesthesie_rachidienne",
+          "description": "Anesthesia (muliple choice question) - Spinal anesthesia. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Anesthesie_bloc_honteux",
+            "mappings": {
+              "dbGaP.Accouchement_Anesthesie_bloc_honteux": "dbGaP.Accouchement_Anesthesie_bloc_honteux"
+            }
+          },
+          "name": "Accouchement_Anesthesie_bloc_honteux",
+          "description": "Anesthesia (muliple choice question) - Pudendal block anesthesia. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Anesthesie_locale",
+            "mappings": {
+              "dbGaP.Accouchement_Anesthesie_locale": "dbGaP.Accouchement_Anesthesie_locale"
+            }
+          },
+          "name": "Accouchement_Anesthesie_locale",
+          "description": "Anesthesia (muliple choice question) - Local anesthesia. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Mode",
+            "mappings": {
+              "dbGaP.Accouchement_Mode": "dbGaP.Accouchement_Mode"
+            }
+          },
+          "name": "Accouchement_Mode",
+          "description": "Delivery mode (vaginal or caesarean). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Type",
+            "mappings": {
+              "dbGaP.Accouchement_Type": "dbGaP.Accouchement_Type"
+            }
+          },
+          "name": "Accouchement_Type",
+          "description": "Presentation (cephalic or breech). Usually only for vaginal deliveries\n Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Tete",
+            "mappings": {
+              "dbGaP.Accouchement_Tete": "dbGaP.Accouchement_Tete"
+            }
+          },
+          "name": "Accouchement_Tete",
+          "description": "Method of cephalic delivery (spontaneous,vaccum or forceps). Usually only for cephalic deliveries\n Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Cesarienne",
+            "mappings": {
+              "dbGaP.Accouchement_Cesarienne": "dbGaP.Accouchement_Cesarienne"
+            }
+          },
+          "name": "Accouchement_Cesarienne",
+          "description": "Is it the first caesarean section of the mother?. Only for caesarean section deliveries\n Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Type_de_cesarienne",
+            "mappings": {
+              "dbGaP.Accouchement_Type_de_cesarienne": "dbGaP.Accouchement_Type_de_cesarienne"
+            }
+          },
+          "name": "Accouchement_Type_de_cesarienne",
+          "description": "Type of caesarean section. Only for caesarean section deliveries\n Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_pH",
+            "mappings": {
+              "dbGaP.Accouchement_pH": "dbGaP.Accouchement_pH"
+            }
+          },
+          "name": "Accouchement_pH",
+          "description": "Cord blood acidity (pH) measured at delivery. Collected at delivery (in medical records). 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Episiotomie",
+            "mappings": {
+              "dbGaP.Accouchement_Episiotomie": "dbGaP.Accouchement_Episiotomie"
+            }
+          },
+          "name": "Accouchement_Episiotomie",
+          "description": "Does an episiotomy has been done?. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "2",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_pCO2",
+            "mappings": {
+              "dbGaP.Accouchement_pCO2": "dbGaP.Accouchement_pCO2"
+            }
+          },
+          "name": "Accouchement_pCO2",
+          "description": "Partial pressure of carbon dioxide (pCO2) measured in cord blood at delivery. Collected at delivery (in medical records). Measured in mmHg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_pO2",
+            "mappings": {
+              "dbGaP.Accouchement_pO2": "dbGaP.Accouchement_pO2"
+            }
+          },
+          "name": "Accouchement_pO2",
+          "description": "Cord blood pO2 measured at delivery. Collected at delivery (in medical records). Measured in mmHg. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_HC03",
+            "mappings": {
+              "dbGaP.Accouchement_HC03": "dbGaP.Accouchement_HC03"
+            }
+          },
+          "name": "Accouchement_HC03",
+          "description": "Bicarbonate concentration (HCO3) measured in cord blood at delivery. Collected at delivery (in medical records). Measured in mmol/L. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Exces_base",
+            "mappings": {
+              "dbGaP.Accouchement_Exces_base": "dbGaP.Accouchement_Exces_base"
+            }
+          },
+          "name": "Accouchement_Exces_base",
+          "description": "Base excess in cord blood. Collected at delivery (in medical records). Measured in mmol/L. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Neonatalogie",
+            "mappings": {
+              "dbGaP.Accouchement_Neonatalogie": "dbGaP.Accouchement_Neonatalogie"
+            }
+          },
+          "name": "Accouchement_Neonatalogie",
+          "description": "Admission to neonatology unit (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Perte_sanguine",
+            "mappings": {
+              "dbGaP.Accouchement_Perte_sanguine": "dbGaP.Accouchement_Perte_sanguine"
+            }
+          },
+          "name": "Accouchement_Perte_sanguine",
+          "description": "Blood loss at delivery (approximation). Collected at delivery (in medical records). Measured in mL. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Bradycardie",
+            "mappings": {
+              "dbGaP.Accouchement_Bradycardie": "dbGaP.Accouchement_Bradycardie"
+            }
+          },
+          "name": "Accouchement_Bradycardie",
+          "description": "Bradycardia (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Probs_respiratoires",
+            "mappings": {
+              "dbGaP.Accouchement_Probs_respiratoires": "dbGaP.Accouchement_Probs_respiratoires"
+            }
+          },
+          "name": "Accouchement_Probs_respiratoires",
+          "description": "Respiratory problems (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Hypoglycemie",
+            "mappings": {
+              "dbGaP.Accouchement_Hypoglycemie": "dbGaP.Accouchement_Hypoglycemie"
+            }
+          },
+          "name": "Accouchement_Hypoglycemie",
+          "description": "Neonatal hypoglycemia (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Hypocalcemie",
+            "mappings": {
+              "dbGaP.Accouchement_Hypocalcemie": "dbGaP.Accouchement_Hypocalcemie"
+            }
+          },
+          "name": "Accouchement_Hypocalcemie",
+          "description": "Neonatal hypocalcemia (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Hyperbilirubinemie",
+            "mappings": {
+              "dbGaP.Accouchement_Hyperbilirubinemie": "dbGaP.Accouchement_Hyperbilirubinemie"
+            }
+          },
+          "name": "Accouchement_Hyperbilirubinemie",
+          "description": "Hyperbilirubinemia (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Liquide_amniotique",
+            "mappings": {
+              "dbGaP.Accouchement_Liquide_amniotique": "dbGaP.Accouchement_Liquide_amniotique"
+            }
+          },
+          "name": "Accouchement_Liquide_amniotique",
+          "description": "Amniotic fluid description. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Polycythemie",
+            "mappings": {
+              "dbGaP.Accouchement_Polycythemie": "dbGaP.Accouchement_Polycythemie"
+            }
+          },
+          "name": "Accouchement_Polycythemie",
+          "description": "Polycythemia (neonatal complication). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Fracturedislocation",
+            "mappings": {
+              "dbGaP.Accouchement_Fracturedislocation": "dbGaP.Accouchement_Fracturedislocation"
+            }
+          },
+          "name": "Accouchement_Fracturedislocation",
+          "description": "Fractures or dislocations (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Admission_SI",
+            "mappings": {
+              "dbGaP.Accouchement_Admission_SI": "dbGaP.Accouchement_Admission_SI"
+            }
+          },
+          "name": "Accouchement_Admission_SI",
+          "description": "Neonatal intensive-care unit (NICU) admission (neonatal complications). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Therapie_resp",
+            "mappings": {
+              "dbGaP.Accouchement_Therapie_resp": "dbGaP.Accouchement_Therapie_resp"
+            }
+          },
+          "name": "Accouchement_Therapie_resp",
+          "description": "Respiratory therapy (neonatal complication). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Couleur",
+            "mappings": {
+              "dbGaP.Accouchement_Couleur": "dbGaP.Accouchement_Couleur"
+            }
+          },
+          "name": "Accouchement_Couleur",
+          "description": "Amniotic fluid color. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "4",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Meconiel",
+            "mappings": {
+              "dbGaP.Accouchement_Meconiel": "dbGaP.Accouchement_Meconiel"
+            }
+          },
+          "name": "Accouchement_Meconiel",
+          "description": "Description of amniotic fluid with meconium appearance. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "888",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Evacuation",
+            "mappings": {
+              "dbGaP.Accouchement_Evacuation": "dbGaP.Accouchement_Evacuation"
+            }
+          },
+          "name": "Accouchement_Evacuation",
+          "description": "Placenta removal (spontaneous or manual). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Vaisseaux_ombelicaux",
+            "mappings": {
+              "dbGaP.Accouchement_Vaisseaux_ombelicaux": "dbGaP.Accouchement_Vaisseaux_ombelicaux"
+            }
+          },
+          "name": "Accouchement_Vaisseaux_ombelicaux",
+          "description": "Number of ombilical vessels in placenta. Collected at delivery (in medical records). 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Reversion_uterine",
+            "mappings": {
+              "dbGaP.Accouchement_Reversion_uterine": "dbGaP.Accouchement_Reversion_uterine"
+            }
+          },
+          "name": "Accouchement_Reversion_uterine",
+          "description": "Uterine reversion (to fix uterine inversion). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Etat",
+            "mappings": {
+              "dbGaP.Accouchement_Etat": "dbGaP.Accouchement_Etat"
+            }
+          },
+          "name": "Accouchement_Etat",
+          "description": "Newborn condition at birth (live or stillborn). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Poids",
+            "mappings": {
+              "dbGaP.Accouchement_Poids": "dbGaP.Accouchement_Poids"
+            }
+          },
+          "name": "Accouchement_Poids",
+          "description": "Birthweight (newborn measurement). Collected at delivery (in medical records). Measured in g. 9999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Longueur",
+            "mappings": {
+              "dbGaP.Accouchement_Longueur": "dbGaP.Accouchement_Longueur"
+            }
+          },
+          "name": "Accouchement_Longueur",
+          "description": "Birth length (newborn measurement). Collected at delivery (in medical records). Measured in cm. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Alimentation",
+            "mappings": {
+              "dbGaP.Accouchement_Alimentation": "dbGaP.Accouchement_Alimentation"
+            }
+          },
+          "name": "Accouchement_Alimentation",
+          "description": "Feeding during hospitalisation (maternal breast feeding, artificial or mixed). Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "1",
+              "2",
+              "3",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Reanimation",
+            "mappings": {
+              "dbGaP.Accouchement_Reanimation": "dbGaP.Accouchement_Reanimation"
+            }
+          },
+          "name": "Accouchement_Reanimation",
+          "description": "Newborn resuscitation. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_APGAR_1_min",
+            "mappings": {
+              "dbGaP.Accouchement_APGAR_1_min": "dbGaP.Accouchement_APGAR_1_min"
+            }
+          },
+          "name": "Accouchement_APGAR_1_min",
+          "description": "APGAR score at 1 min. Collected at delivery (in medical records). 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_APGAR_5_min",
+            "mappings": {
+              "dbGaP.Accouchement_APGAR_5_min": "dbGaP.Accouchement_APGAR_5_min"
+            }
+          },
+          "name": "Accouchement_APGAR_5_min",
+          "description": "APGAR score at 5 min. Collected at delivery (in medical records). 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_tmps_hospi_dur_tot",
+            "mappings": {
+              "dbGaP.Accouchement_tmps_hospi_dur_tot": "dbGaP.Accouchement_tmps_hospi_dur_tot"
+            }
+          },
+          "name": "Accouchement_tmps_hospi_dur_tot",
+          "description": "Total hospitalisation time for delivery (days). Collected at delivery (in medical records). Measured in Days. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Malformation",
+            "mappings": {
+              "dbGaP.Accouchement_Malformation": "dbGaP.Accouchement_Malformation"
+            }
+          },
+          "name": "Accouchement_Malformation",
+          "description": "Newborn malformation. Collected at delivery (in medical records).",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Circonf_de_la_tete",
+            "mappings": {
+              "dbGaP.Accouchement_Circonf_de_la_tete": "dbGaP.Accouchement_Circonf_de_la_tete"
+            }
+          },
+          "name": "Accouchement_Circonf_de_la_tete",
+          "description": "Head circumference (newborn measurement). Collected at delivery (in medical records). Measured in cm. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Hemoglo_du_bebe_Hb",
+            "mappings": {
+              "dbGaP.Accouchement_Hemoglo_du_bebe_Hb": "dbGaP.Accouchement_Hemoglo_du_bebe_Hb"
+            }
+          },
+          "name": "Accouchement_Hemoglo_du_bebe_Hb",
+          "description": "Newborn's hemoglobin. Collected at delivery (in medical records). Measured in g/L. 999=Missing.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Accouchement_Glucose_du_bebe",
+            "mappings": {
+              "dbGaP.Accouchement_Glucose_du_bebe": "dbGaP.Accouchement_Glucose_du_bebe"
+            }
+          },
+          "name": "Accouchement_Glucose_du_bebe",
+          "description": "Newborn's glucose measured in cord blood. Collected at delivery (in medical records). Measured in mmol/L. 999=Missing.",
+          "valueType": "number"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
               }
             ]
           }

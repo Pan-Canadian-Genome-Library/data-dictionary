@@ -1,8 +1,8 @@
-version: 1.1
+version: 1.0
 id: https://example.com/PCGL.yaml
 in_language:
 - en
-name: default_pcgl_schema
+name: gen3g_schema
 description: 'Base clinical schema that incorporates all PCGL base entities'
 prefixes:
   linkml: https://w3id.org/linkml/
@@ -13,31 +13,26 @@ default_curi_maps:
 imports:
 - linkml:types
 - base/base
+- extension/gen3g/gen3g
 classes:
   Participant:
-    is_a: base_Participant
+    is_a: extension_Participant
   Sociodemographic:
     is_a: base_Sociodemographic
   Demographic:
-    is_a: base_Demographic
+    is_a: extension_Demographic
   Diagnosis:
    is_a: base_Diagnosis
   Treatment:
     is_a: base_Treatment
-  Follow_Up:
-    is_a: base_Follow_Up
   Procedure:
     is_a: base_Procedure
   Medication:
     is_a: base_Medication
-  Radiation:
-    is_a: base_Radiation
   Measurement:
     is_a: base_Measurement
   Phenotype:
     is_a: base_Phenotype
-  Comorbidity:
-    is_a: base_Comorbidity
   Exposure:
    is_a: base_Exposure
   Specimen:
@@ -45,8 +40,16 @@ classes:
   Sample:
     is_a: base_Sample
   Experiment:
-    is_a: base_Experiment
+    is_a: extension_Experiment
   Read_Group:
     is_a: base_Read_Group
+  Pedigree:
+    is_a: extension_Pedigree
+  FirstTrimesterVisit:
+    is_a: extension_FirstTrimesterVisit
+  SecondTrimesterVisit:
+    is_a: extension_SecondTrimesterVisit
+  DeliveryVisit:
+    is_a: extension_DeliveryVisit
 
 
