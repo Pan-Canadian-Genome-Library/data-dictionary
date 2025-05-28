@@ -1540,9 +1540,9 @@ slots:
       data provider.
     title: submitter_specimen_id
     examples:
-    - value: hnc_12
-    - value: CCG_34_94583
-    - value: BRCA47832-3239
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
     exact_mappings:
     - CQDG:submitter_biospecimen_id
     - mCODE.STU3:Specimen.Identifier
@@ -3586,65 +3586,8 @@ classes:
     - specimen_tissue_source_code
     - specimen_tissue_source_term
     slot_usage:
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
-        slot_group: Database Identifiers
-      age_at_specimen_collection:
-        name: age_at_specimen_collection
-        rank: 3
-        slot_group: Specimen
-      specimen_anatomic_location_code:
-        name: specimen_anatomic_location_code
-        rank: 4
-        slot_group: Specimen
-      specimen_anatomic_location_term:
-        name: specimen_anatomic_location_term
-        rank: 5
-        slot_group: Specimen
-      specimen_laterality:
-        name: specimen_laterality
-        rank: 6
-        slot_group: Specimen
-      specimen_processing:
-        name: specimen_processing
-        rank: 7
-        slot_group: Specimen
-      specimen_storage:
-        name: specimen_storage
-        rank: 8
-        slot_group: Specimen
-      specimen_tissue_source_code:
-        name: specimen_tissue_source_code
-        rank: 9
-        slot_group: Specimen
-      specimen_tissue_source_term:
-        name: specimen_tissue_source_term
-        rank: 10
-        slot_group: Specimen
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_specimen_id
-  Sample:
-    name: Sample
-    description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
-      from the specimen and used for experiments or analysis.
-    title: Sample
-    slots:
-    - submitter_sample_id
-    - submitter_specimen_id
-    - molecule_type_code
-    - molecule_type_term
-    - sample_status
-    slot_usage:
-      submitter_sample_id:
-        name: submitter_sample_id
         rank: 1
         slot_group: Database Identifiers
       submitter_specimen_id:

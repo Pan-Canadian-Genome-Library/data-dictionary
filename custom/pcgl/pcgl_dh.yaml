@@ -14,27 +14,7 @@ enums:
   cause_of_death_menu:
     name: cause_of_death_menu
     title: cause of death menu
-  cause_of_death_menu:
-    name: cause_of_death_menu
-    title: cause of death menu
     permissible_values:
-      Died of cancer:
-        text: Died of cancer
-      Died of other reasons:
-        text: Died of other reasons
-      Not Applicable:
-        text: Not Applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  vital_status_menu:
-    name: vital_status_menu
-    title: vital status menu
       Died of cancer:
         text: Died of cancer
       Died of other reasons:
@@ -57,45 +37,8 @@ enums:
         text: Alive
       Deceased:
         text: Deceased
-      Alive:
-        text: Alive
-      Deceased:
-        text: Deceased
       Not Applicable:
         text: Not Applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  ethnicity_menu:
-    name: ethnicity_menu
-    title: ethnicity_menu
-    permissible_values:
-      Free text input:
-        text: Free text input
-      Another Ethnic or Cultural Origin:
-        text: Another Ethnic or Cultural Origin
-      Do not know:
-        text: Do not know
-      Prefer not to answer:
-        text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  gender_menu:
-    name: gender_menu
-    title: gender_menu
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -151,29 +94,6 @@ enums:
   conditional_race_menu:
     name: conditional_race_menu
     title: conditional_race_menu
-      Another Gender:
-        text: Another Gender
-      Prefer not to answer:
-        text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  conditional_race_menu:
-    name: conditional_race_menu
-    title: conditional_race_menu
-    permissible_values:
-      Another Racial Category:
-        text: Another Racial Category
-  race_menu:
-    name: race_menu
-    title: race_menu
     permissible_values:
       Another Racial Category:
         text: Another Racial Category
@@ -187,12 +107,8 @@ enums:
         text: East Asian
       Indigenous (First Nations, Inuk/Inuit, Métis):
         text: Indigenous (First Nations, Inuk/Inuit, Métis)
-      Indigenous (First Nations, Inuk/Inuit, Métis):
-        text: Indigenous (First Nations, Inuk/Inuit, Métis)
       Latin American:
         text: Latin American
-      Middle Eastern or North African:
-        text: Middle Eastern or North African
       Middle Eastern or North African:
         text: Middle Eastern or North African
       South Asian:
@@ -201,23 +117,6 @@ enums:
         text: Southeast Asian
       White:
         text: White
-      Another Racial Category:
-        text: Another Racial Category
-      Do not know:
-        text: Do not know
-      Prefer not to answer:
-        text: Prefer not to answer
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  sex_at_birth_menu:
-    name: sex_at_birth_menu
-    title: sex_at_birth_menu
       Another Racial Category:
         text: Another Racial Category
       Do not know:
@@ -254,69 +153,7 @@ enums:
         text: Missing - Restricted access
   study_id_menu:
     name: study_id_menu
-      Female:
-        text: Female
-      Intersex:
-        text: Intersex
-      Another Sex:
-        text: Another Sex
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  study_id_menu:
-    name: study_id_menu
     title: study id menu
-  phenotype_observed_menu:
-    name: phenotype_observed_menu
-    title: phenotype observed menu
-    permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      'Yes':
-        text: 'Yes'
-  phenotype_severity_menu:
-    name: phenotype_severity_menu
-    title: phenotype severity menu
-    permissible_values:
-      Borderline:
-        text: Borderline
-      Mild:
-        text: Mild
-      Moderate:
-        text: Moderate
-      Profound:
-        text: Profound
-      Severe:
-        text: Severe
-  disease_status_at_followup_menu:
-    name: disease_status_at_followup_menu
-    title: disease status at followup menu
-    permissible_values:
-      Complete remission:
-        text: Complete remission
-      Distant progression:
-        text: Distant progression
-      Loco-regional progression:
-        text: Loco-regional progression
-      No evidence of disease:
-        text: No evidence of disease
-      Partial remission:
-        text: Partial remission
-      Progression NOS:
-        text: Progression NOS
-      Relapse or recurrence:
-        text: Relapse or recurrence
-      Stable:
-        text: Stable
-  comorbidity_status_menu:
-    name: comorbidity_status_menu
   phenotype_observed_menu:
     name: phenotype_observed_menu
     title: phenotype observed menu
@@ -383,18 +220,6 @@ enums:
         text: Not applicable
   comorbidity_treatment_status_menu:
     name: comorbidity_treatment_status_menu
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  comorbidity_treatment_status_menu:
-    name: comorbidity_treatment_status_menu
     title: comorbidity treatment status menu
     permissible_values:
       Treated and resolved:
@@ -403,18 +228,6 @@ enums:
         text: Under treatment
       Untreated:
         text: Untreated
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  alcohol_consumption_menu:
-    name: alcohol_consumption_menu
       Missing - Not collected:
         text: Missing - Not collected
       Missing - Not provided:
@@ -439,8 +252,6 @@ enums:
         text: No alcohol consumption
   physical_activity_menu:
     name: physical_activity_menu
-  physical_activity_menu:
-    name: physical_activity_menu
     title: physical activity menu
     permissible_values:
       1-3 times a month:
@@ -461,8 +272,6 @@ enums:
         text: Unknown
   smoking_status_menu:
     name: smoking_status_menu
-  smoking_status_menu:
-    name: smoking_status_menu
     title: smoking status menu
     permissible_values:
       Current reformed smoker for <= 15 years:
@@ -481,26 +290,12 @@ enums:
         text: Smoking history not documented
   specimen_laterality_menu:
     name: specimen_laterality_menu
-  specimen_laterality_menu:
-    name: specimen_laterality_menu
     title: specimen laterality menu
     permissible_values:
       Left:
         text: Left
       Right:
         text: Right
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  specimen_processing_menu:
-    name: specimen_processing_menu
       Missing - Not collected:
         text: Missing - Not collected
       Missing - Not provided:
@@ -545,18 +340,6 @@ enums:
         text: Not applicable
   specimen_storage_menu:
     name: specimen_storage_menu
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  specimen_storage_menu:
-    name: specimen_storage_menu
     title: specimen storage menu
     permissible_values:
       Cut slide:
@@ -575,28 +358,6 @@ enums:
         text: Paraffin block
       RNA later frozen:
         text: RNA later frozen
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  disease_category_menu:
-    name: disease_category_menu
-    title: disease category menu
-    permissible_values:
-      Autoimmune disorder:
-        text: Autoimmune disorder
-      Cancer:
-        text: Cancer
-      Infectious disease:
-        text: Infectious disease
-  treatment_intent_menu:
-    name: treatment_intent_menu
       Missing - Not collected:
         text: Missing - Not collected
       Missing - Not provided:
@@ -651,20 +412,6 @@ enums:
         text: Not applicable
   treatment_response_menu:
     name: treatment_response_menu
-      Other:
-        text: Other
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Not applicable:
-        text: Not applicable
-  treatment_response_menu:
-    name: treatment_response_menu
     title: treatment response menu
     permissible_values:
       Clinical remission:
@@ -685,18 +432,6 @@ enums:
         text: Treatment cessation due to toxicity
       Worsening of symptoms:
         text: Worsening of symptoms
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  treatment_status_menu:
-    name: treatment_status_menu
       Missing - Not collected:
         text: Missing - Not collected
       Missing - Not provided:
@@ -741,18 +476,6 @@ enums:
         text: Not applicable
   treatment_type_menu:
     name: treatment_type_menu
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  treatment_type_menu:
-    name: treatment_type_menu
     title: treatment type menu
     permissible_values:
       Medication:
@@ -765,585 +488,6 @@ enums:
         text: Radiation therapy
       Other:
         text: Other
-  radiation_modality_menu:
-    name: radiation_modality_menu
-    title: radiation modality menu
-    permissible_values:
-      Electron Beam:
-        text: Electron Beam
-        meaning: NCIT:C28039
-      High-LET Heavy Ion Therapy:
-        text: High-LET Heavy Ion Therapy
-        meaning: NCIT:C15458
-      Internal Radiation Therapy:
-        text: Internal Radiation Therapy
-        meaning: NCIT:C15195
-      Photon Beam Radiation Therapy:
-        text: Photon Beam Radiation Therapy
-        meaning: NCIT:C104914
-      Proton Radiation:
-        text: Proton Radiation
-        meaning: NCIT:C40431
-  sample_type_menu:
-    name: sample_type_menu
-    title: sample_type_menu
-    permissible_values:
-      DNA:
-        text: DNA
-        meaning: NCIT:C449
-      Ribonucleic Acid:
-        text: Ribonucleic Acid
-        meaning: NCIT:C812
-      Poly A RNA:
-        text: Poly A RNA
-        meaning: NCIT:C80376
-  sample_status_menu:
-    name: sample_status_menu
-    title: sample_status_menu
-    permissible_values:
-      Case:
-        text: Case
-      Control:
-        text: Control
-      Not applicable:
-        text: Not applicable
-  experiment_type_menu:
-    name: experiment_type_menu
-    title: experiment_type_menu
-    permissible_values:
-      NCIT:C84343 (Genomics):
-        text: NCIT:C84343 (Genomics)
-      NCIT:C153189 (Transcriptomics):
-        text: NCIT:C153189 (Transcriptomics)
-      NCIT:C20085 (Proteomics):
-        text: NCIT:C20085 (Proteomics)
-      NCIT:C153191 (Metagenomics):
-        text: NCIT:C153191 (Metagenomics)
-      NCIT:C153190 (Epigenomics):
-        text: NCIT:C153190 (Epigenomics)
-  genome_build_menu:
-    name: genome_build_menu
-    title: genome_build_menu
-    permissible_values:
-      GRCh38:
-        text: GRCh38
-      GRCh37:
-        text: GRCh37
-  platform_menu:
-    name: platform_menu
-    title: platform_menu
-    permissible_values:
-      CAPILLARY:
-        text: CAPILLARY
-      DNBSEQ:
-        text: DNBSEQ
-      ELEMENT:
-        text: ELEMENT
-      HELICOS:
-        text: HELICOS
-      ILLUMINA:
-        text: ILLUMINA
-      IONTORRENT:
-        text: IONTORRENT
-      LS454:
-        text: LS454
-      ONT:
-        text: ONT
-      PACBIO:
-        text: PACBIO
-      SINGULAR:
-        text: SINGULAR
-      SOLID:
-        text: SOLID
-      ULTIMA:
-        text: ULTIMA
-  experimental_strategy_menu:
-    name: experimental_strategy_menu
-    title: experimental_strategy_menu
-    permissible_values:
-      WGS:
-        text: WGS
-      WXS:
-        text: WXS
-      RNA-Seq:
-        text: RNA-Seq
-      Bisulfite-Seq:
-        text: Bisulfite-Seq
-      ChIP-Seq:
-        text: ChIP-Seq
-      Targeted-Seq:
-        text: Targeted-Seq
-  duo_permission_menu:
-    name: duo_permission_menu
-    title: duo_permission_menu
-    permissible_values:
-      DUO:0000042 (general research use):
-        text: DUO:0000042 (general research use)
-      DUO:0000006 (health or medical or biomedical research):
-        text: DUO:0000006 (health or medical or biomedical research)
-      DUO:0000007 (disease specific research):
-        text: DUO:0000007 (disease specific research)
-      DUO:0000011 (population origins or ancestry research only):
-        text: DUO:0000011 (population origins or ancestry research only)
-      DUO:0000004 (no restriction):
-        text: DUO:0000004 (no restriction)
-  duo_modifier_menu:
-    name: duo_modifier_menu
-    title: duo_modifier_menu
-    permissible_values:
-      DUO:0000043 (clinical care use):
-        text: DUO:0000043 (clinical care use)
-      DUO:0000029 (return to database or resource):
-        text: DUO:0000029 (return to database or resource)
-      DUO:0000028 (institution specific restriction):
-        text: DUO:0000028 (institution specific restriction)
-      DUO:0000027 (project specific restriction):
-        text: DUO:0000027 (project specific restriction)
-      DUO:0000026 (user specific restriction):
-        text: DUO:0000026 (user specific restriction)
-      DUO:0000025 (time limit on use):
-        text: DUO:0000025 (time limit on use)
-      DUO:0000024 (publication moratorium):
-        text: DUO:0000024 (publication moratorium)
-      DUO:0000022 (geographical restriction):
-        text: DUO:0000022 (geographical restriction)
-      DUO:0000021 (ethics approval required):
-        text: DUO:0000021 (ethics approval required)
-      DUO:0000020 (collaboration required):
-        text: DUO:0000020 (collaboration required)
-      DUO:0000019 (publication required):
-        text: DUO:0000019 (publication required)
-      DUO:0000018 (not for profit, non commercial use only):
-        text: DUO:0000018 (not for profit, non commercial use only)
-      DUO:0000046 (non-commercial use only):
-        text: DUO:0000046 (non-commercial use only)
-      DUO:0000045 (not for profit organisation use only):
-        text: DUO:0000045 (not for profit organisation use only)
-      DUO:0000016 (genetic studies only):
-        text: DUO:0000016 (genetic studies only)
-      DUO:0000015 (no general methods research):
-        text: DUO:0000015 (no general methods research)
-      DUO:0000012 (research specific restrictions):
-        text: DUO:0000012 (research specific restrictions)
-      DUO:00000044 (population origins or ancestry research prohibited):
-        text: DUO:00000044 (population origins or ancestry research prohibited)
-  race_collect_method_menu:
-    name: race_collect_method_menu
-    title: race_collect_method_menu
-    permissible_values:
-      Socially assigned:
-        text: Socially assigned
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  gender_collect_method_menu:
-    name: gender_collect_method_menu
-    title: gender_collect_method_menu
-    permissible_values:
-      Self-identified:
-        text: Self-identified
-      Other:
-        text: Other
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  education_menu:
-    name: education_menu
-    title: education_menu
-    permissible_values:
-      No formal education:
-        text: No formal education
-      Elementary school or equivalent:
-        text: Elementary school or equivalent
-      High school (secondary school) diploma or equivalency certificate:
-        text: High school (secondary school) diploma or equivalency certificate
-      ? Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
-        designation), or other trades certificate or diploma
-      : text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
-          designation), or other trades certificate or diploma
-      College, CEGEP, or other non-university certificate or diploma:
-        text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
-      Degree in medicine, dentistry, veterinary medicine or optometry:
-        text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
-      Doctoral degree:
-        text: Doctoral degree
-      Post-doctoral fellowship or training:
-        text: Post-doctoral fellowship or training
-      Prefer not to answer:
-        text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  education_collect_method_menu:
-    name: education_collect_method_menu
-    title: education_collect_method_menu
-    permissible_values:
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  personal_income_menu:
-    name: personal_income_menu
-    title: personal_income_menu
-    permissible_values:
-      Less than $15,000:
-        text: Less than $15,000
-      $ 15,000 - $ 19,999:
-        text: $ 15,000 - $ 19,999
-      $ 20,000 - $ 29,000:
-        text: $ 20,000 - $ 29,000
-      $ 30,000 - $ 49,999:
-        text: $ 30,000 - $ 49,999
-      $ 50,000 - $ 69,999:
-        text: $ 50,000 - $ 69,999
-      $ 70,000 - $ 84,999:
-        text: $ 70,000 - $ 84,999
-      $ 85,000 - $ 99,999:
-        text: $ 85,000 - $ 99,999
-      $ 100,000 - $ 124,999:
-        text: $ 100,000 - $ 124,999
-      $ 125,000 - $ 149,999:
-        text: $ 125,000 - $ 149,999
-      $ 150,000 or more:
-        text: $ 150,000 or more
-      Prefer not to answer:
-        text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  personal_income_collect_method_menu:
-    name: personal_income_collect_method_menu
-    title: personal_income_collect_method_menu
-    permissible_values:
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  geographic_location_collect_method_menu:
-    name: geographic_location_collect_method_menu
-    title: geographic_location_collect_method_menu
-    permissible_values:
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  sociodem_question_menu:
-    name: sociodem_question_menu
-    title: sociodem_question_menu
-    permissible_values:
-      PCGL reference question:
-        text: PCGL reference question
-      Another question:
-        text: Another question
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-  exposure_status_menu:
-    name: exposure_status_menu
-    title: exposure_status_menu
-    permissible_values:
-      Current:
-        text: Current
-      Former:
-        text: Former
-      Never:
-        text: Never
-      Exposed - Current Unknown:
-        text: Exposed - Current Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  library_layout_menu:
-    name: library_layout_menu
-    title: library_layout_menu
-    permissible_values:
-      OBI:0000722 (paired-end library):
-        text: OBI:0000722 (paired-end library)
-      OBI:0000736 (single fragment library):
-        text: OBI:0000736 (single fragment library)
-      Not applicable:
-        text: Not applicable
-  analysis_type_menu:
-    name: analysis_type_menu
-    title: analysis_type_menu
-    permissible_values:
-      sequenceExperiment:
-        text: sequenceExperiment
-        description: Use this analysis type to describe the sequencing experiment
-          metadata related to the experimental design and sequencing run. It links
-          to the experiment that generated the data.
-      sequenceAlignment:
-        text: sequenceAlignment
-        description: 'Use this analysis type to describe the alignment of sequencing
-          reads to a reference genome. It links to the workflow that performed the
-          alignment. '
-      variantCall:
-        text: variantCall
-        description: Use this analysis type to describe the variant calling process,
-          including the strategy used and the class of variants detected. It links
-          to the workflow that performed the variant calling.
-      variantAnnotation:
-        text: variantAnnotation
-        description: Use this analysis type to describe the annotation of variants,
-          including the sources of annotation and the class of variants. It links
-          to the workflow that performed the annotation.
-  data_category_menu:
-    name: data_category_menu
-    title: data_category_menu
-    permissible_values:
-      Genomics:
-        text: Genomics
-        description: Data related to DNA-based sequencing and variant analysis, including
-          whole genome sequencing (WGS), whole exome sequencing (WES), and targeted
-          panel sequencing.
-      Transcriptomics:
-        text: Transcriptomics
-        description: Data capturing RNA-based expression patterns, including bulk
-          and single-cell RNA sequencing (scRNA-seq) for studying gene activity.
-      Proteomics:
-        text: Proteomics
-        description: Data on proteins, capturing post-translational modifications,
-          protein abundance, and metabolic profiles.
-      Epigenomics:
-        text: Epigenomics
-        description: Data related to chromatin structure, DNA modifications, and gene
-          regulation, including methylation, histone modifications, and chromatin
-          accessibility.
-      Imaging:
-        text: Imaging
-        description: Biomedical imaging data from diagnostic and research studies,
-          often used in integration with genomic data.
-      Reference:
-        text: Reference
-        description: Data used as reference standards for genomic analysis, including
-          genome assemblies, annotations and variant databases.
-  variant_class_menu:
-    name: variant_class_menu
-    title: variant_class_menu
-    permissible_values:
-      Germline:
-        text: Germline
-        description: Heritable variantr found in normal (non-tumor) cells, typically
-          present in both somatic and reproductive cells.
-      Somatic:
-        text: Somatic
-        description: Non-heritable variants arising in tumor cells due to acquired
-          mutations, not present in normal tissue.
-      Unknown:
-        text: Unknown
-        description: Variants detected in the analysis but not confidently classified
-          as germline or somatic.
-  variant_calling_strategy_menu:
-    name: variant_calling_strategy_menu
-    title: variant_calling_strategy_menu
-    permissible_values:
-      Tumour only:
-        text: Tumour only
-        description: Variant calling performed on a tumour sample without a matched
-          normal. Germline variants are filtered out using population databases and
-          artifact panels, requiring additional filtering to distinguish somatic from
-          germline variants. Common in clinical cancer genomics when no matched normal
-          is available.
-      Tumour normal:
-        text: Tumour normal
-        description: Variant calling performed on paired tumor and normal samples,
-          allowing direct differentiation between somatic and germline variants.
-      Single sample:
-        text: Single sample
-        description: Germline variant calling performed on a single individual sample,
-          typically for detecting inherited or de novo variants. Common in clinical
-          diagnostics and research studies.
-      Family based:
-        text: Family based
-        description: Germline variant calling using samples from a family (e.g., parent-child
-          trios or extended pedigrees) to distinguish inherited from de novo variants
-          and assess inheritance patterns.
-      RNA based:
-        text: RNA based
-        description: Variant calling using RNA sequencing data to identify expressed
-          variants, including somatic mutations, RNA editing events, and fusion transcripts.
-          Typically used to complement DNA-based variant calling.
-      Joint calling:
-        text: Joint calling
-        description: Germline variant calling performed jointly across multiple unrelated
-          samples to improve genotype accuracy and variant detection sensitivity across
-          a cohort. Common in population-scale studies.
-  data_type_menu:
-    name: data_type_menu
-    title: data_type_menu
-    permissible_values:
-      Raw Sequencing Reads:
-        text: Raw Sequencing Reads
-        description: Unprocessed nucleotide sequences generated by high-throughput
-          sequencing platforms (e.g., Illumina, PacBio, ONT). These reads include
-          adapters, sequencing errors, and low-quality bases.
-      Aligned Reads:
-        text: Aligned Reads
-        description: Sequencing reads that have been mapped to a reference genome
-          or transcriptome, indicating their genomic or transcriptomic origin.
-      Aligned Reads Index:
-        text: Aligned Reads Index
-        description: Index files that accompany aligned reads to enable fast querying
-          and retrieval of specific genomic regions from large alignment files.
-      Single Nucleotide Variants (SNVs):
-        text: Single Nucleotide Variants (SNVs)
-        description: Single-nucleotide changes (substitutions) in the DNA sequence
-      Insertions and Deletions (InDels):
-        text: Insertions and Deletions (InDels)
-        description: 'Small insertions or deletions of nucleotides (typically ≤50
-          bp) within the genome. '
-      Structural Variations (SVs):
-        text: Structural Variations (SVs)
-        description: Large-scale genomic variations affecting DNA structure, including
-          insertions, deletions, duplications, translocations, and inversions.
-      Copy Number Variations (CNVs):
-        text: Copy Number Variations (CNVs)
-        description: Changes in the number of copies of genomic segments, which can
-          result in duplications or deletions of genes or regulatory regions.
-      Variant Calls Index:
-        text: Variant Calls Index
-        description: Index files for variant call data, allowing efficient retrieval
-          of variant information for specific genomic locations.
-      Quality Control Metrics:
-        text: Quality Control Metrics
-        description: Any dataset containing statistical summaries or evaluations of
-          data quality across genomic, transcriptomic, and other biological datasets.
-      Gene Fusions:
-        text: Gene Fusions
-        description: Abnormal joining of two separate genes, often resulting from
-          genomic rearrangements such as translocations or deletions, which can lead
-          to oncogenic activity.
-      Alternative Splicing:
-        text: Alternative Splicing
-        description: Variations in how exons are combined to form different mRNA isoforms,
-          leading to multiple protein products from a single gene.
-      Gene Expression Quantification:
-        text: Gene Expression Quantification
-        description: Measurement of RNA transcript abundance at the gene level, indicating
-          how active a gene is across samples.
-      Transcript Expression Quantification:
-        text: Transcript Expression Quantification
-        description: Measurement of RNA transcript abundance at the transcript isoform
-          level, capturing alternative splicing effects.
-      Single-Cell Expression Matrices:
-        text: Single-Cell Expression Matrices
-        description: Gene expression values recorded for individual cells, capturing
-          cellular heterogeneity in bulk samples.
-      Splicing Junctions:
-        text: Splicing Junctions
-        description: Exon-exon junctions identified in RNA-seq data, used to study
-          transcript isoforms and alternative splicing events.
-      Differential Expression Analysis:
-        text: Differential Expression Analysis
-        description: Statistical comparison of gene expression levels between conditions
-          (e.g., case vs. control) to identify significantly upregulated or downregulated
-          genes.
-  ethnicity_collect_method_menu:
-    name: ethnicity_collect_method_menu
-    title: ethnicity_collect_method_menu
-    permissible_values:
-      Socially assigned:
-        text: Socially assigned
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-  sex_collect_method_menu:
-    name: sex_collect_method_menu
-    title: sex_collect_method_menu
-    permissible_values:
-      Self-identified:
-        text: Self-identified
-      Clinician-recorded:
-        text: Clinician-recorded
-      Derived:
-        text: Derived
-      Other:
-        text: Other
-      Missing - Unknown:
-        text: Missing - Unknown
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
   radiation_modality_menu:
     name: radiation_modality_menu
     title: radiation modality menu
@@ -1956,7 +1100,6 @@ slots:
     - CQDG:study_id
     range: string
     required: true
-    required: true
   submitter_participant_id:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
@@ -1974,8 +1117,6 @@ slots:
     - BeaconV2:individual.id
     - ARGO:submitter_participant_id
     - MOH:submitter_participant_id
-    - ARGO:submitter_participant_id
-    - MOH:submitter_participant_id
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}
@@ -1991,7 +1132,6 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: Refers to the ethnic or cultural origins of a person's ancestors.
     description: Refers to the ethnic or cultural origins of a person's ancestors.
       The provided values are based on the list of ethnic or cultural origins 2021
       defined by Statistics Canada
@@ -2012,10 +1152,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: ethnicity_menu
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: ethnicity_menu
     required: true
-    multivalued: true
     multivalued: true
   gender:
     name: gender
@@ -2035,8 +1172,6 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: gender_menu
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: gender_menu
     required: true
   race:
     name: race
@@ -2051,10 +1186,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: race_menu
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: race_menu
     required: true
-    multivalued: true
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
@@ -2074,8 +1206,6 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: sex_at_birth_menu
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: sex_at_birth_menu
     required: true
   age_at_phenotype:
     name: age_at_phenotype
@@ -2089,7 +1219,6 @@ slots:
       the phenotype.
     title: phenotype_code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     range: string
     required: true
@@ -2112,11 +1241,6 @@ slots:
     description: The degree or severity of the observed phenotype.
     title: phenotype_severity
     comments:
-    - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
-    range: phenotype_severity_menu
-    required: false
-  phenotype_term:
-    name: phenotype_term
     - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
     range: phenotype_severity_menu
     required: false
@@ -2210,8 +1334,6 @@ slots:
     required: false
   comorbidity_term:
     name: comorbidity_term
-  comorbidity_term:
-    name: comorbidity_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the comorbidity_code
     title: comorbidity_term
@@ -2244,11 +1366,7 @@ slots:
     - FHIR:Specimen.collection.bodySite
     - ARGO:procedure_body_site_code
     - MOH:procedure_body_site_code
-    - ARGO:procedure_body_site_code
-    - MOH:procedure_body_site_code
     range: string
-    required: true
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
     required: true
     pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   procedure_body_site_term:
@@ -2287,9 +1405,6 @@ slots:
     description: Unique identifier of the treatment, assigned by the data provider.
     title: submitter_treatment_id
     examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
     - value: '90234'
     - value: BLD_donor_89
     - value: AML-90
@@ -2352,11 +1467,8 @@ slots:
     - FHIR:Specimen.collection.bodySite
     - ARGO:specimen_anatomic_location_code
     - MOH:specimen_anatomic_location_code
-    - ARGO:specimen_anatomic_location_code
-    - MOH:specimen_anatomic_location_code
     range: string
     required: false
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
     pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   specimen_anatomic_location_label:
     name: specimen_anatomic_location_label
@@ -2376,7 +1488,6 @@ slots:
     - mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier
     - FHIR:Specimen.collection.bodySite.extension.lateralityQualifier
     range: specimen_laterality_menu
-    range: specimen_laterality_menu
     required: false
   specimen_processing:
     name: specimen_processing
@@ -2385,9 +1496,6 @@ slots:
     exact_mappings:
     - Phenopacket:biosample.sample_processing
     - BeaconV2:biosample.sample_processing
-    - ARGO:specimen_processing
-    - MOH:specimen_processing
-    range: specimen_processing_menu
     - ARGO:specimen_processing
     - MOH:specimen_processing
     range: specimen_processing_menu
@@ -2400,9 +1508,6 @@ slots:
     exact_mappings:
     - Phenopacket:biosample.sample_storage
     - BeaconV2:biosample.sample_storage
-    - ARGO:specimen_storage
-    - MOH:specimen_storage
-    range: specimen_storage_menu
     - ARGO:specimen_storage
     - MOH:specimen_storage
     range: specimen_storage_menu
@@ -2421,7 +1526,6 @@ slots:
     - BeaconV2:biosample.sampled_tissue
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$
     pattern: ^NCIT:C[0-9]+$
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
@@ -3666,20 +2770,10 @@ classes:
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
-  Participant:
-    name: Participant
-    description: The collection of all data related to a specific individual human
-      in the context of a specific study.
-    title: Participant
     todos:
-    - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - study_id
-    - disease_specific_modifier
-    - duo_modifier
-    - duo_permission
     - study_id
     - disease_specific_modifier
     - duo_modifier
@@ -3699,42 +2793,11 @@ classes:
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        slot_group: Participant
-      duo_modifier:
-        name: duo_modifier
         rank: 4
         slot_group: Participant
       duo_permission:
         name: duo_permission
-        slot_group: Participant
-      duo_permission:
-        name: duo_permission
         rank: 5
-        slot_group: Participant
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_participant_id
-    rules:
-    - preconditions:
-        description: If the duo_permission is DUO:0000007 (disease specific research),
-          then MONDO codes must be provided for disease_specific_modifier.
-        slot_conditions:
-          duo_permission:
-            name: duo_permission
-            equals_string: DUO:0000007 (disease specific research)
-      postconditions:
-        slot_conditions:
-          disease_specific_modifier:
-            name: disease_specific_modifier
-            required: true
-      elseconditions:
-        slot_conditions:
-          disease_specific_modifier:
-            name: disease_specific_modifier
-            required: false
-            value_presence: ABSENT
         slot_group: Participant
     unique_keys:
       main:
@@ -3769,35 +2832,13 @@ classes:
       determinants of health. The PCGL requires information on eight key sociodemographic
       variables defined by the Canadian Institute for Health Information (CIHI).
     title: Sociodemographic
-  Sociodemographic:
-    name: Sociodemographic
-    description: Captures sociodemographic characteristics of an individual that may
-      vary over time and can influence health status, access to care, or disease outcomes.
-      These factors are often collected longitudinally and reflect broader social
-      determinants of health. The PCGL requires information on eight key sociodemographic
-      variables defined by the Canadian Institute for Health Information (CIHI).
-    title: Sociodemographic
     slots:
-    - submitter_sociodem_id
     - submitter_sociodem_id
     - submitter_participant_id
     - age_at_sociodem_collection
     - education
     - education_collect_method
-    - age_at_sociodem_collection
-    - education
-    - education_collect_method
     - ethnicity
-    - ethnicity_another_category
-    - ethnicity_collect_method
-    - gender
-    - gender_another_gender
-    - gender_collect_method
-    - geographic_location
-    - geographic_location_additional
-    - geographic_location_collect_method
-    - personal_income
-    - personal_income_collect_method
     - ethnicity_another_category
     - ethnicity_collect_method
     - gender
@@ -3818,19 +2859,10 @@ classes:
     - sociodem_notes
     - sociodem_question
     - sociodem_question_detail
-    - race_another_racial_category
-    - race_collect_method
-    - sex_another_category
-    - sex_at_birth
-    - sex_collect_method
-    - sociodem_date_collection
-    - sociodem_notes
-    - sociodem_question
-    - sociodem_question_detail
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       submitter_sociodem_id:
         name: submitter_sociodem_id
@@ -3842,15 +2874,7 @@ classes:
         slot_group: Sociodemographic
       education:
         name: education
-        slot_group: Sociodemographic
-      education:
-        name: education
         rank: 4
-        slot_group: Sociodemographic
-      education_collect_method:
-        name: education_collect_method
-        rank: 5
-        slot_group: Sociodemographic
         slot_group: Sociodemographic
       education_collect_method:
         name: education_collect_method
@@ -3858,48 +2882,6 @@ classes:
         slot_group: Sociodemographic
       ethnicity:
         name: ethnicity
-        rank: 6
-        slot_group: Sociodemographic
-      ethnicity_another_category:
-        name: ethnicity_another_category
-        rank: 7
-        slot_group: Sociodemographic
-      ethnicity_collect_method:
-        name: ethnicity_collect_method
-        rank: 8
-        slot_group: Sociodemographic
-      gender:
-        name: gender
-        rank: 9
-        slot_group: Sociodemographic
-      gender_another_gender:
-        name: gender_another_gender
-        rank: 10
-        slot_group: Sociodemographic
-      gender_collect_method:
-        name: gender_collect_method
-        rank: 11
-        slot_group: Sociodemographic
-      geographic_location:
-        name: geographic_location
-        rank: 12
-        slot_group: Sociodemographic
-      geographic_location_additional:
-        name: geographic_location_additional
-        rank: 13
-        slot_group: Sociodemographic
-      geographic_location_collect_method:
-        name: geographic_location_collect_method
-        rank: 14
-        slot_group: Sociodemographic
-      personal_income:
-        name: personal_income
-        rank: 15
-        slot_group: Sociodemographic
-      personal_income_collect_method:
-        name: personal_income_collect_method
-        rank: 16
-        slot_group: Sociodemographic
         rank: 6
         slot_group: Sociodemographic
       ethnicity_another_category:
@@ -4091,161 +3073,7 @@ classes:
             name: sociodem_question_detail
             required: false
             value_presence: ABSENT
-        rank: 17
-        slot_group: Sociodemographic
-      race_another_racial_category:
-        name: race_another_racial_category
-        rank: 18
-        slot_group: Sociodemographic
-      race_collect_method:
-        name: race_collect_method
-        rank: 19
-        slot_group: Sociodemographic
-      sex_another_category:
-        name: sex_another_category
-        rank: 20
-        slot_group: Sociodemographic
-      sex_at_birth:
-        name: sex_at_birth
-        rank: 21
-        slot_group: Sociodemographic
-      sex_collect_method:
-        name: sex_collect_method
-        rank: 22
-        slot_group: Sociodemographic
-      sociodem_date_collection:
-        name: sociodem_date_collection
-        rank: 23
-        slot_group: Sociodemographic
-      sociodem_notes:
-        name: sociodem_notes
-        rank: 24
-        slot_group: Sociodemographic
-      sociodem_question:
-        name: sociodem_question
-        rank: 25
-        slot_group: Sociodemographic
-      sociodem_question_detail:
-        name: sociodem_question_detail
-        rank: 26
-        slot_group: Sociodemographic
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_sociodem_id
-    rules:
-    - preconditions:
-        description: race_another_racial_category must be populated when race is "Another
-          Racial Category"
-        slot_conditions:
-          race:
-            name: race
-            all_of:
-            - multivalued: true
-              has_member:
-                equals_string: Another Racial Category
-      postconditions:
-        slot_conditions:
-          race_another_racial_category:
-            name: race_another_racial_category
-            required: true
-      elseconditions:
-        slot_conditions:
-          race_another_racial_category:
-            name: race_another_racial_category
-            required: false
-            value_presence: ABSENT
-    - preconditions:
-        description: gender_another_gender must be populated when gender is "Another
-          Gender"
-        slot_conditions:
-          gender:
-            name: gender
-            equals_string: Another Gender
-      postconditions:
-        slot_conditions:
-          gender_another_gender:
-            name: gender_another_gender
-            required: true
-      elseconditions:
-        slot_conditions:
-          gender_another_gender:
-            name: gender_another_gender
-            required: false
-            value_presence: ABSENT
-    - preconditions:
-        description: ethnicity_another_category must be populated when ethnicity is
-          "Free text input".
-        slot_conditions:
-          ethnicity:
-            name: ethnicity
-            all_of:
-            - multivalued: true
-              has_member:
-                equals_string: Free text input
-      postconditions:
-        slot_conditions:
-          ethnicity_another_category:
-            name: ethnicity_another_category
-            required: true
-      elseconditions:
-        slot_conditions:
-          ethnicity_another_category:
-            name: ethnicity_another_category
-            required: false
-            value_presence: ABSENT
-    - preconditions:
-        description: sex_another_category must be populated when sex is "Another Sex".
-        slot_conditions:
-          sex_at_birth:
-            name: sex_at_birth
-            equals_string: Another Sex
-      postconditions:
-        slot_conditions:
-          sex_another_category:
-            name: sex_another_category
-            required: true
-      elseconditions:
-        slot_conditions:
-          sex_another_category:
-            name: sex_another_category
-            required: false
-            value_presence: ABSENT
-    - preconditions:
-        description: "\n            \"The sociodem_question_detail field provides\
-          \ additional context and is conditionally required based on the value of\
-          \ sociodem_question:\nIf sociodem_question is \"\"PCGL reference question\"\
-          \", please indicate the version of the PCGL reference question used.\nIf\
-          \ sociodem_question is \"\"Another question\"\", please provide the exact\
-          \ question text used to collect the variable, including the response options\
-          \ or reporting categories made available to participants.\"\n          \
-          \  "
-        slot_conditions:
-          sociodem_question:
-            name: sociodem_question
-            any_of:
-            - equals_string: PCGL reference question
-            - equals_string: Another question
-      postconditions:
-        slot_conditions:
-          sociodem_question_detail:
-            name: sociodem_question_detail
-            required: true
-      elseconditions:
-        slot_conditions:
-          sociodem_question_detail:
-            name: sociodem_question_detail
-            required: false
-            value_presence: ABSENT
     is_a: dh_interface
-  Demographic:
-    name: Demographic
-    description: Data for the characterization of the participant by means of segmenting
-      the population (e.g., characterization by age, sex, or race).
-    title: Demographic
-    todos:
-    - '{"reference": "GDC", "status": "v2"}'
   Demographic:
     name: Demographic
     description: Data for the characterization of the participant by means of segmenting
@@ -4259,10 +3087,6 @@ classes:
     - age_at_enrollment
     - cause_of_death
     - vital_status
-    - age_at_death
-    - age_at_enrollment
-    - cause_of_death
-    - vital_status
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -4270,12 +3094,7 @@ classes:
         slot_group: Database Identifiers
       age_at_death:
         name: age_at_death
-      age_at_death:
-        name: age_at_death
         rank: 2
-        slot_group: Demographic
-      age_at_enrollment:
-        name: age_at_enrollment
         slot_group: Demographic
       age_at_enrollment:
         name: age_at_enrollment
@@ -4283,51 +3102,11 @@ classes:
         slot_group: Demographic
       cause_of_death:
         name: cause_of_death
-        slot_group: Demographic
-      cause_of_death:
-        name: cause_of_death
         rank: 4
         slot_group: Demographic
       vital_status:
         name: vital_status
-        slot_group: Demographic
-      vital_status:
-        name: vital_status
         rank: 5
-        slot_group: Demographic
-    rules:
-    - preconditions:
-        description: cause_of_death populatable only if vital_status is deceased
-        slot_conditions:
-          vital_status:
-            name: vital_status
-            equals_string: Deceased
-      postconditions:
-        slot_conditions:
-          cause_of_death:
-            name: cause_of_death
-            required: false
-      elseconditions:
-        slot_conditions:
-          cause_of_death:
-            name: cause_of_death
-            value_presence: ABSENT
-    - preconditions:
-        description: Age_at_death populatable only if vital_status is deceased
-        slot_conditions:
-          vital_status:
-            name: vital_status
-            equals_string: Deceased
-      postconditions:
-        slot_conditions:
-          age_at_death:
-            name: age_at_death
-            required: false
-      elseconditions:
-        slot_conditions:
-          age_at_death:
-            name: age_at_death
-            value_presence: ABSENT
         slot_group: Demographic
     rules:
     - preconditions:
@@ -4373,7 +3152,6 @@ classes:
     slots:
     - submitter_diagnosis_id
     - submitter_participant_id
-    - submitter_participant_id
     - age_at_diagnosis
     - disease_code
     - disease_term
@@ -4384,26 +3162,19 @@ classes:
         slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
         rank: 2
         slot_group: Database Identifiers
       age_at_diagnosis:
         name: age_at_diagnosis
         rank: 3
         slot_group: Diagnosis
-        slot_group: Diagnosis
       disease_code:
         name: disease_code
         rank: 4
         slot_group: Diagnosis
-        slot_group: Diagnosis
       disease_term:
         name: disease_term
         rank: 5
-        slot_group: Diagnosis
         slot_group: Diagnosis
     unique_keys:
       main:
@@ -4417,24 +3188,10 @@ classes:
     title: Treatment
     todos:
     - '{"reference": "Phenopacket", "status": "v2"}'
-  Treatment:
-    name: Treatment
-    description: Medications, procedures, other actions taken for clinical management
-    title: Treatment
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_treatment_id
     - submitter_diagnosis_id
-    - submitter_treatment_id
-    - submitter_diagnosis_id
     - submitter_participant_id
-    - age_at_treatment
-    - treatment_duration
-    - treatment_intent
-    - treatment_response
-    - treatment_status
-    - treatment_type
     - age_at_treatment
     - treatment_duration
     - treatment_intent
@@ -4456,9 +3213,6 @@ classes:
         slot_group: Database Identifiers
       age_at_treatment:
         name: age_at_treatment
-        slot_group: Database Identifiers
-      age_at_treatment:
-        name: age_at_treatment
         rank: 4
         slot_group: Treatment
       treatment_duration:
@@ -4505,54 +3259,7 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_treatment_id
-        slot_group: Treatment
-      treatment_duration:
-        name: treatment_duration
-        rank: 5
-        slot_group: Treatment
-      treatment_intent:
-        name: treatment_intent
-        rank: 6
-        slot_group: Treatment
-      treatment_response:
-        name: treatment_response
-        rank: 7
-        slot_group: Treatment
-      treatment_status:
-        name: treatment_status
-        rank: 8
-        slot_group: Treatment
-      treatment_type:
-        name: treatment_type
-        rank: 9
-        slot_group: Treatment
-    attributes:
-      submitter_diagnosis_id:
-        name: submitter_diagnosis_id
-        description: Unique identifier of the primary diagnosis event, assigned by
-          the data provider. Redefined to allow requirement to be false
-        title: Submitter Diagnosis Id
-        examples:
-        - value: '90234'
-        - value: BLD_donor_89
-        - value: AML-90
-        exact_mappings:
-        - mCODE.STU1:Condition.identifier
-        - mCODE.STU2:Condition.identifier
-        - FHIR:condition.code
-        - ARGO:submitter_diagnosis_id
-        - MOH:submitter_diagnosis_id
-        range: string
-        required: false
-        pattern: ^[A-Za-z0-9\-\._]{1,64}$
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_treatment_id
     is_a: dh_interface
-  Follow_Up:
-    name: Follow_Up
   Follow_Up:
     name: Follow_Up
     description: 'Any point of contact with a patient after primary diagnosis. '
@@ -4568,23 +3275,15 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-        slot_group: Database Identifiers
       age_at_followup:
         name: age_at_followup
         rank: 2
-        slot_group: Follow_Up
         slot_group: Follow_Up
       disease_status_at_followup:
         name: disease_status_at_followup
         rank: 3
         slot_group: Follow_Up
-        slot_group: Follow_Up
     is_a: dh_interface
-  Procedure:
-    name: Procedure
-    description: A clinical procedure performed on a subject. For example a surgical
-      or diagnostic procedure such as a biopsy.
-    title: Procedure
   Procedure:
     name: Procedure
     description: A clinical procedure performed on a subject. For example a surgical
@@ -4598,26 +3297,14 @@ classes:
     - procedure_body_site_term
     - procedure_code
     - procedure_term
-    - submitter_treatment_id
-    - procedure_body_site_code
-    - procedure_body_site_term
-    - procedure_code
-    - procedure_term
     slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
       submitter_treatment_id:
         name: submitter_treatment_id
         rank: 1
         slot_group: Database Identifiers
       procedure_body_site_code:
         name: procedure_body_site_code
-      procedure_body_site_code:
-        name: procedure_body_site_code
         rank: 2
-        slot_group: Procedure
-      procedure_body_site_term:
-        name: procedure_body_site_term
         slot_group: Procedure
       procedure_body_site_term:
         name: procedure_body_site_term
@@ -4625,18 +3312,11 @@ classes:
         slot_group: Procedure
       procedure_code:
         name: procedure_code
-        slot_group: Procedure
-      procedure_code:
-        name: procedure_code
         rank: 4
         slot_group: Procedure
       procedure_term:
         name: procedure_term
-        slot_group: Procedure
-      procedure_term:
-        name: procedure_term
         rank: 5
-        slot_group: Procedure
         slot_group: Procedure
     is_a: dh_interface
   Medication:
@@ -4650,10 +3330,8 @@ classes:
     slots:
     - submitter_treatment_id
     - actual_cumulative_drug_dose
-    - actual_cumulative_drug_dose
     - drug_code
     - drug_dose_units
-    - drug_term
     - drug_term
     - prescribed_cumulative_drug_dose
     slot_usage:
@@ -4665,23 +3343,13 @@ classes:
         name: actual_cumulative_drug_dose
         rank: 2
         slot_group: Medication
-      actual_cumulative_drug_dose:
-        name: actual_cumulative_drug_dose
-        rank: 2
-        slot_group: Medication
       drug_code:
         name: drug_code
         rank: 3
         slot_group: Medication
-        slot_group: Medication
       drug_dose_units:
         name: drug_dose_units
         rank: 4
-        slot_group: Medication
-      drug_term:
-        name: drug_term
-        rank: 5
-        slot_group: Medication
         slot_group: Medication
       drug_term:
         name: drug_term
@@ -4724,65 +3392,17 @@ classes:
         slot_group: Radiation
       radiation_fractions:
         name: radiation_fractions
-        rank: 6
-        slot_group: Medication
-    is_a: dh_interface
-  Radiation:
-    name: Radiation
-    description: Uses ionizing radiation, generally as part of cancer treatment to
-      control or kill malignant cells.
-    title: Radiation
-    slots:
-    - submitter_treatment_id
-    - anatomical_site_irradiated_code
-    - anatomical_site_irradiated_term
-    - radiation_dosage
-    - radiation_fractions
-    - radiation_modality_code
-    - radiation_modality_term
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      anatomical_site_irradiated_code:
-        name: anatomical_site_irradiated_code
-        rank: 2
-        slot_group: Radiation
-      anatomical_site_irradiated_term:
-        name: anatomical_site_irradiated_term
-        rank: 3
-        slot_group: Radiation
-      radiation_dosage:
-        name: radiation_dosage
-        rank: 4
-        slot_group: Radiation
-      radiation_fractions:
-        name: radiation_fractions
         rank: 5
         slot_group: Radiation
       radiation_modality_code:
         name: radiation_modality_code
-        slot_group: Radiation
-      radiation_modality_code:
-        name: radiation_modality_code
         rank: 6
         slot_group: Radiation
       radiation_modality_term:
         name: radiation_modality_term
         rank: 7
         slot_group: Radiation
-        slot_group: Radiation
-      radiation_modality_term:
-        name: radiation_modality_term
-        rank: 7
-        slot_group: Radiation
     is_a: dh_interface
-  Measurement:
-    name: Measurement
-    description: Record individual measurements to capture quantitative, ordinal (e.g.,
-      absent/present), or categorical measurements.
-    title: Measurement
   Measurement:
     name: Measurement
     description: Record individual measurements to capture quantitative, ordinal (e.g.,
@@ -4790,15 +3410,8 @@ classes:
     title: Measurement
     todos:
     - '{"reference": "Phenopacket", "status": "v2"}'
-    - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - age_at_measurement
-    - measurement_code
-    - measurement_result_categorical
-    - measurement_result_numeric
-    - measurement_term
-    - measurement_unit
     - age_at_measurement
     - measurement_code
     - measurement_result_categorical
@@ -4809,14 +3422,7 @@ classes:
       submitter_participant_id:
         name: submitter_participant_id
         rank: 1
-        rank: 1
         slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: Measurement
-      measurement_code:
-        name: measurement_code
       age_at_measurement:
         name: age_at_measurement
         rank: 2
@@ -4827,20 +3433,11 @@ classes:
         slot_group: Measurement
       measurement_result_categorical:
         name: measurement_result_categorical
-        slot_group: Measurement
-      measurement_result_categorical:
-        name: measurement_result_categorical
         rank: 4
         slot_group: Measurement
       measurement_result_numeric:
         name: measurement_result_numeric
-        slot_group: Measurement
-      measurement_result_numeric:
-        name: measurement_result_numeric
         rank: 5
-        slot_group: Measurement
-      measurement_term:
-        name: measurement_term
         slot_group: Measurement
       measurement_term:
         name: measurement_term
@@ -4850,17 +3447,7 @@ classes:
         name: measurement_unit
         rank: 7
         slot_group: Measurement
-        slot_group: Measurement
-      measurement_unit:
-        name: measurement_unit
-        rank: 7
-        slot_group: Measurement
     is_a: dh_interface
-  Phenotype:
-    name: Phenotype
-    description: Individual phenotypic features, observed as either present or absent
-      (excluded), with possible onset, modifiers and frequency
-    title: Phenotype
   Phenotype:
     name: Phenotype
     description: Individual phenotypic features, observed as either present or absent
@@ -4876,28 +3463,14 @@ classes:
     - phenotype_observed
     - phenotype_severity
     - phenotype_term
-    - submitter_participant_id
-    - age_at_phenotype
-    - phenotype_code
-    - phenotype_duration
-    - phenotype_observed
-    - phenotype_severity
-    - phenotype_term
     slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
       submitter_participant_id:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
       age_at_phenotype:
         name: age_at_phenotype
-      age_at_phenotype:
-        name: age_at_phenotype
         rank: 2
-        slot_group: Phenotype
-      phenotype_code:
-        name: phenotype_code
         slot_group: Phenotype
       phenotype_code:
         name: phenotype_code
@@ -4905,26 +3478,11 @@ classes:
         slot_group: Phenotype
       phenotype_duration:
         name: phenotype_duration
-        slot_group: Phenotype
-      phenotype_duration:
-        name: phenotype_duration
         rank: 4
         slot_group: Phenotype
       phenotype_observed:
         name: phenotype_observed
-        slot_group: Phenotype
-      phenotype_observed:
-        name: phenotype_observed
         rank: 5
-        slot_group: Phenotype
-      phenotype_severity:
-        name: phenotype_severity
-        rank: 6
-        slot_group: Phenotype
-      phenotype_term:
-        name: phenotype_term
-        rank: 7
-        slot_group: Phenotype
         slot_group: Phenotype
       phenotype_severity:
         name: phenotype_severity
@@ -4941,19 +3499,7 @@ classes:
       that have existed or may occur during the clinical course of the participant
       who has the index disease under study.
     title: Comorbidity
-  Comorbidity:
-    name: Comorbidity
-    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
-      that have existed or may occur during the clinical course of the participant
-      who has the index disease under study.
-    title: Comorbidity
     slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_status
-    - comorbidity_term
-    - comorbidity_treatment_status
     - submitter_participant_id
     - age_at_comorbidity_diagnosis
     - comorbidity_code
@@ -4963,18 +3509,11 @@ classes:
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
-      submitter_participant_id:
-        name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
       age_at_comorbidity_diagnosis:
         name: age_at_comorbidity_diagnosis
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
         rank: 2
-        slot_group: Comorbidity
-      comorbidity_code:
-        name: comorbidity_code
         slot_group: Comorbidity
       comorbidity_code:
         name: comorbidity_code
@@ -4982,13 +3521,7 @@ classes:
         slot_group: Comorbidity
       comorbidity_status:
         name: comorbidity_status
-        slot_group: Comorbidity
-      comorbidity_status:
-        name: comorbidity_status
         rank: 4
-        slot_group: Comorbidity
-      comorbidity_term:
-        name: comorbidity_term
         slot_group: Comorbidity
       comorbidity_term:
         name: comorbidity_term
@@ -4996,59 +3529,7 @@ classes:
         slot_group: Comorbidity
       comorbidity_treatment_status:
         name: comorbidity_treatment_status
-        slot_group: Comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
         rank: 6
-        slot_group: Comorbidity
-    is_a: dh_interface
-  Exposure:
-    name: Exposure
-    description: Capture information about external factors, agents, or conditions
-      an individual has encountered that may influence health or disease outcomes.
-    title: Exposure
-    slots:
-    - submitter_participant_id
-    - age_at_exposure
-    - exposure_amount
-    - exposure_code
-    - exposure_duration
-    - exposure_status
-    - exposure_term
-    - exposure_unit
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_exposure:
-        name: age_at_exposure
-        rank: 2
-        slot_group: Exposure
-      exposure_amount:
-        name: exposure_amount
-        rank: 3
-        slot_group: Exposure
-      exposure_code:
-        name: exposure_code
-        rank: 4
-        slot_group: Exposure
-      exposure_duration:
-        name: exposure_duration
-        rank: 5
-        slot_group: Exposure
-      exposure_status:
-        name: exposure_status
-        rank: 6
-        slot_group: Exposure
-      exposure_term:
-        name: exposure_term
-        rank: 7
-        slot_group: Exposure
-      exposure_unit:
-        name: exposure_unit
-        rank: 8
-        slot_group: Exposure
         slot_group: Comorbidity
     is_a: dh_interface
   Exposure:
@@ -5109,81 +3590,17 @@ classes:
     slots:
     - submitter_specimen_id
     - submitter_participant_id
-    - submitter_participant_id
     - age_at_specimen_collection
     - specimen_anatomic_location_code
-    - specimen_anatomic_location_term
     - specimen_anatomic_location_term
     - specimen_laterality
     - specimen_processing
     - specimen_storage
     - specimen_tissue_source_code
     - specimen_tissue_source_term
-    - specimen_processing
-    - specimen_storage
-    - specimen_tissue_source_code
-    - specimen_tissue_source_term
     slot_usage:
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
-        slot_group: Database Identifiers
-      age_at_specimen_collection:
-        name: age_at_specimen_collection
-        rank: 3
-        slot_group: Specimen
-      specimen_anatomic_location_code:
-        name: specimen_anatomic_location_code
-        rank: 4
-        slot_group: Specimen
-      specimen_anatomic_location_term:
-        name: specimen_anatomic_location_term
-        rank: 5
-        slot_group: Specimen
-      specimen_laterality:
-        name: specimen_laterality
-        rank: 6
-        slot_group: Specimen
-      specimen_processing:
-        name: specimen_processing
-        rank: 7
-        slot_group: Specimen
-      specimen_storage:
-        name: specimen_storage
-        rank: 8
-        slot_group: Specimen
-      specimen_tissue_source_code:
-        name: specimen_tissue_source_code
-        rank: 9
-        slot_group: Specimen
-      specimen_tissue_source_term:
-        name: specimen_tissue_source_term
-        rank: 10
-        slot_group: Specimen
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_specimen_id
-    is_a: dh_interface
-  Sample:
-    name: Sample
-    description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
-      from the specimen and used for experiments or analysis.
-    title: Sample
-    slots:
-    - submitter_sample_id
-    - submitter_specimen_id
-    - molecule_type_code
-    - molecule_type_term
-    - sample_status
-    slot_usage:
-      submitter_sample_id:
-        name: submitter_sample_id
         rank: 1
         slot_group: Database Identifiers
       submitter_specimen_id:
@@ -5258,55 +3675,7 @@ classes:
         slot_group: Sample
       sample_status:
         name: sample_status
-        slot_group: Sample
-      sample_status:
-        name: sample_status
         rank: 5
-        slot_group: Sample
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_sample_id
-    is_a: dh_interface
-  Experiment:
-    name: Experiment
-    description: Contains information about the experimental design of the sequencing
-    title: Experiment
-    slots:
-    - submitter_experiment_id
-    - submitter_sample_id
-    - assay_type_code
-    - assay_type_term
-    - experiment_design
-    - experiment_type
-    - instrument
-    - instrument_metadata
-    - platform
-    - sequencing_protocol
-    slot_usage:
-      submitter_experiment_id:
-        name: submitter_experiment_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_sample_id:
-        name: submitter_sample_id
-        rank: 2
-        slot_group: Database Identifiers
-      assay_type_code:
-        name: assay_type_code
-        rank: 3
-        slot_group: Experiment
-      assay_type_term:
-        name: assay_type_term
-        rank: 4
-        slot_group: Experiment
-      experiment_design:
-        name: experiment_design
-        rank: 5
-        slot_group: Experiment
-      experiment_type:
-        name: experiment_type
         slot_group: Sample
     unique_keys:
       main:
@@ -5356,13 +3725,7 @@ classes:
         slot_group: Experiment
       instrument:
         name: instrument
-        slot_group: Experiment
-      instrument:
-        name: instrument
         rank: 7
-        slot_group: Experiment
-      instrument_metadata:
-        name: instrument_metadata
         slot_group: Experiment
       instrument_metadata:
         name: instrument_metadata
@@ -5370,24 +3733,16 @@ classes:
         slot_group: Experiment
       platform:
         name: platform
-        slot_group: Experiment
-      platform:
-        name: platform
         rank: 9
-        slot_group: Experiment
-      sequencing_protocol:
-        name: sequencing_protocol
         slot_group: Experiment
       sequencing_protocol:
         name: sequencing_protocol
         rank: 10
         slot_group: Experiment
-        slot_group: Experiment
     unique_keys:
       main:
         unique_key_name: main
         unique_key_slots:
-        - submitter_experiment_id
         - submitter_experiment_id
     is_a: dh_interface
   Read_Group:
@@ -5395,24 +3750,7 @@ classes:
     description: Holds the readgroup information about the raw reads generated in
       a run of sequencing
     title: Read Group
-  Read_Group:
-    name: Read_Group
-    description: Holds the readgroup information about the raw reads generated in
-      a run of sequencing
-    title: Read Group
     slots:
-    - submitter_read_group_id
-    - submitter_experiment_id
-    - file_r1
-    - file_r2
-    - insert_size
-    - library_description
-    - library_layout
-    - library_name
-    - platform_unit
-    - read_group_id_in_bam
-    - read_length_r1
-    - read_length_r2
     - submitter_read_group_id
     - submitter_experiment_id
     - file_r1
@@ -5436,12 +3774,7 @@ classes:
         slot_group: Database Identifiers
       file_r1:
         name: file_r1
-      file_r1:
-        name: file_r1
         rank: 3
-        slot_group: Read_Group
-      file_r2:
-        name: file_r2
         slot_group: Read_Group
       file_r2:
         name: file_r2
@@ -5449,13 +3782,7 @@ classes:
         slot_group: Read_Group
       insert_size:
         name: insert_size
-        slot_group: Read_Group
-      insert_size:
-        name: insert_size
         rank: 5
-        slot_group: Read_Group
-      library_description:
-        name: library_description
         slot_group: Read_Group
       library_description:
         name: library_description
@@ -5463,13 +3790,7 @@ classes:
         slot_group: Read_Group
       library_layout:
         name: library_layout
-        slot_group: Read_Group
-      library_layout:
-        name: library_layout
         rank: 7
-        slot_group: Read_Group
-      library_name:
-        name: library_name
         slot_group: Read_Group
       library_name:
         name: library_name
@@ -5491,46 +3812,10 @@ classes:
         name: read_length_r2
         rank: 12
         slot_group: Read_Group
-        slot_group: Read_Group
-      platform_unit:
-        name: platform_unit
-        rank: 9
-        slot_group: Read_Group
-      read_group_id_in_bam:
-        name: read_group_id_in_bam
-        rank: 10
-        slot_group: Read_Group
-      read_length_r1:
-        name: read_length_r1
-        rank: 11
-        slot_group: Read_Group
-      read_length_r2:
-        name: read_length_r2
-        rank: 12
-        slot_group: Read_Group
     unique_keys:
       main:
         unique_key_name: main
         unique_key_slots:
-        - submitter_read_group_id
-    rules:
-    - preconditions:
-        description: Required if and only if paired-end sequencing was done.
-        slot_conditions:
-          library_layout:
-            name: library_layout
-            equals_string: OBI:0000722 (paired-end library)
-      postconditions:
-        slot_conditions:
-          file_r2:
-            name: file_r2
-            required: true
-      elseconditions:
-        slot_conditions:
-          file_r2:
-            name: file_r2
-            required: false
-            value_presence: ABSENT
         - submitter_read_group_id
     rules:
     - preconditions:
