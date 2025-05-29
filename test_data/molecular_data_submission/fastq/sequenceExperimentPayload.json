@@ -1,0 +1,59 @@
+{
+  "analysisType": {
+    "name": "sequenceExperiment"
+  },
+  "data_category": "Genomics",
+  "files": [
+    {
+    "fileName": "C0HVY.2_r1.fq.gz",
+    "fileSize": 2040,
+    "fileMd5sum": "64cf635dbc54f53cae2cb03ec8e8471b",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    },
+    {
+    "fileName": "C0HVY.2_r2.fq.gz",
+    "fileSize": 2042,
+    "fileMd5sum": "ceb7e66d031cb894fa9d1d3f8da65fc7",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    },
+    {
+    "fileName": "D0RE2.1_r1.fq.gz",
+    "fileSize": 2309,
+    "fileMd5sum": "44bea7aa32a1afb68eec24496b608545",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    },
+    {
+    "fileName": "D0RE2.1_r2.fq.gz",
+    "fileSize": 2365,
+    "fileMd5sum": "d73b37eca9375258ab42905f7943b1b6",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    },
+    {
+    "fileName": "D0RH0.2_r1.fq.gz",
+    "fileSize": 1872,
+    "fileMd5sum": "b90a3c9750db29406f31e9488d5b7e2b",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    },
+    {
+    "fileName": "D0RH0.2_r2.fq.gz",
+    "fileSize": 1894,
+    "fileMd5sum": "a407247b584daa078114ab05e6e489be",
+    "fileType": "FASTQ",
+    "fileAccess": "controlled",
+    "dataType": "Raw Sequencing Reads"
+    }
+  ],
+  "studyId": "test-001",
+  "submitter_analysis_id": "analysis_001",
+  "submitter_experiment_id": "exp_001"
+}

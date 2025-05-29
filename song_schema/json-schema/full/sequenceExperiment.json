@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "properties": {
+    "analysisType": {
+      "additionalProperties": false,
+      "description": "The type of analysis that was performed.",
+      "properties": {
+        "name": {
+          "const": "sequenceExperiment"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "data_category": {
+      "description": "",
+      "enum": [
+        "Genomics",
+        "Transcriptomics",
+        "Proteomics",
+        "Epigenomics",
+        "Imaging",
+        "Reference"
+      ],
+      "type": "string"
+    },
+    "files": {
+      "description": "The list of files associated with the analysis.",
+      "items": {
+        "additionalProperties": false,
+        "description": "Contains information about the files generated from a run of sequencing or data analysis",
+        "properties": {
+          "dataType": {
+            "description": "",
+            "enum": [
+              "Raw Sequencing Reads"
+            ],
+            "type": "string"
+          },
+          "fileAccess": {
+            "description": "The permission level of a file for public access.",
+            "type": "string"
+          },
+          "fileMd5sum": {
+            "description": "Computed md5sum of the file.",
+            "pattern": "^[a-fA-F0-9]{32}$",
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Name of the file.",
+            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
+            "type": "string"
+          },
+          "fileSize": {
+            "description": "Size of the file, in bytes.",
+            "type": "integer"
+          },
+          "fileType": {
+            "description": "Data format of files.",
+            "type": "string",
+            "enum": [
+              "BAM",
+              "FASTQ"
+            ]
+          }
+        },
+        "required": [
+          "dataType",
+          "fileAccess",
+          "fileMd5sum",
+          "fileName",
+          "fileSize",
+          "fileType"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "studyId": {
+      "description": "Unique identifier of the study.",
+      "type": "string"
+    },
+    "submitter_analysis_id": {
+      "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+      "type": "string"
+    },
+    "submitter_experiment_id": {
+      "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+      "type": "string"
+    }
+  },
+  "required": [
+    "submitter_experiment_id",
+    "studyId",
+    "analysisType",
+    "submitter_analysis_id",
+    "data_category",
+    "files"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "properties": {
+    "analysisType": {
+      "additionalProperties": false,
+      "description": "The type of analysis that was performed.",
+      "properties": {
+        "name": {
+          "const": "variantCall"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
+    "data_category": {
+      "description": "",
+      "enum": [
+        "Genomics",
+        "Transcriptomics",
+        "Proteomics",
+        "Epigenomics",
+        "Imaging",
+        "Reference"
+      ],
+      "type": "string"
+    },
+    "files": {
+      "description": "The list of files associated with the analysis.",
+      "items": {
+        "additionalProperties": false,
+        "description": "Contains information about the files generated from a run of sequencing or data analysis",
+        "properties": {
+          "dataType": {
+            "description": "",
+            "enum": [
+              "Single Nucleotide Variants (SNVs)",
+              "Insertions and Deletions (InDels)",
+              "Structural Variations (SVs)",
+              "Copy Number Variations (CNVs)",
+              "Variant Calls Index"
+            ],
+            "type": "string"
+          },
+          "fileAccess": {
+            "description": "The permission level of a file for public access.",
+            "type": "string"
+          },
+          "fileMd5sum": {
+            "description": "Computed md5sum of the file.",
+            "pattern": "^[a-fA-F0-9]{32}$",
+            "type": "string"
+          },
+          "fileName": {
+            "description": "Name of the file.",
+            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
+            "type": "string"
+          },
+          "fileSize": {
+            "description": "Size of the file, in bytes.",
+            "type": "integer"
+          },
+          "fileType": {
+            "description": "Data format of files.",
+            "type": "string",
+            "enum": [
+              "VCF",
+              "TBI"
+            ]
+          }
+        },
+        "required": [
+          "dataType",
+          "fileAccess",
+          "fileMd5sum",
+          "fileName",
+          "fileSize",
+          "fileType"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "genome_annotation": {
+      "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "genome_build": {
+      "description": "",
+      "enum": [
+        "GRCh38",
+        "GRCh37"
+      ],
+      "type": "string"
+    },
+    "studyId": {
+      "description": "Unique identifier of the study.",
+      "type": "string"
+    },
+    "submitter_analysis_id": {
+      "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+      "type": "string"
+    },
+    "submitter_experiment_id": {
+      "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+      "type": "string"
+    },
+    "variant_calling_strategy": {
+      "description": "",
+      "enum": [
+        "Tumour only",
+        "Tumour normal",
+        "Single sample",
+        "Family based",
+        "RNA based",
+        "Joint calling"
+      ],
+      "type": "string"
+    },
+    "variant_class": {
+      "description": "",
+      "enum": [
+        "Germline",
+        "Somatic",
+        "Unknown"
+      ],
+      "type": "string"
+    },
+    "workflow": {
+      "additionalProperties": false,
+      "description": "Contains information about the analysis workflow generating the analysis",
+      "properties": {
+        "submitter_workflow_id": {
+          "description": "Indicate the unique identifier of the data processing workflow used in the analysis.",
+          "type": "string"
+        },
+        "workflow_name": {
+          "description": "The name of the genomic data processing workflow used for data analysis.",
+          "type": "string"
+        },
+        "workflow_url": {
+          "description": "A URL linking to the workflow's repository or documentation. This could be a reference to a GitHub repository, a website where the workflow is described, or documentation on how to run the workflow.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "workflow_version": {
+          "description": "The version of the workflow or pipeline being used. ",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "submitter_workflow_id",
+        "workflow_name"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "submitter_experiment_id",
+    "variant_calling_strategy",
+    "variant_class",
+    "workflow",
+    "genome_build",
+    "studyId",
+    "analysisType",
+    "submitter_analysis_id",
+    "data_category",
+    "files"
+  ],
+  "type": "object"
+}
