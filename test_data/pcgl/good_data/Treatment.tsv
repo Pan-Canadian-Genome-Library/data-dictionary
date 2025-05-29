@@ -1,4 +1,4 @@
-Submitter Treatment Id	Submitter Diagnosis Id	Submitter Participant Id	Age At Treatment	Treatment Duration	Treatment Intent	Treatment Response	Treatment Status	Treatment Type
+submitter_treatment_id	submitter_diagnosis_id	submitter_participant_id	age_at_treatment	treatment_duration	treatment_intent	treatment_response	treatment_status	treatment_type
 DONOR_01_TREATMENT_01	DONOR_01_DIAGNOSIS_01	DONOR_01	10.0	10.0	Curative	Clinical remission	Other	Other
 DONOR_01_TREATMENT_02		DONOR_01						Other
 DONOR_01_TREATMENT_03		DONOR_01						Other

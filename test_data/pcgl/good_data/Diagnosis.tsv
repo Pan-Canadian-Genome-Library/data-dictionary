@@ -1,4 +1,4 @@
-Submitter Diagnosis Id	Submitter Participant Id	Disease Code	Disease Term	Age At Diagnosis
-DONOR_01_DIAGNOSIS_02	DONOR_01	ICD10:C34	Malignant neoplasm of bronchus and lung	10.0
+submitter_diagnosis_id	submitter_participant_id	disease_code	disease_term	age_at_diagnosis
+DONOR_01_DIAGNOSIS_02	DONOR_01	icd10:C34	Malignant neoplasm of bronchus and lung	10.0
 DONOR_01_DIAGNOSIS_01	DONOR_01	MONDO:0000001		
-DONOR_02_DIAGNOSIS_02	DONOR_02	ICD10:C34		
+DONOR_02_DIAGNOSIS_02	DONOR_02	icd10:C34		

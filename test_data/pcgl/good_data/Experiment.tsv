@@ -1,3 +1,3 @@
-Submitter Experiment Id	Submitter Sample Id	Assay Type Code	Assay Type Term	Experiment Design	Experiment Type	Instrument	Instrument Metadata	Platform	Sequencing Protocol
+submitter_experiment_id	submitter_sample_id	assay_type_code	assay_type_term	experiment_design	experiment_type	instrument	instrument_metadata	platform	sequencing_protocol
 DONOR_01_EXPERIMENT_01	DONOR_01_SAMPLE_01	OBI:0002117	whole genome sequencing assay	4 rounds of PCR	NCIT:C84343 (Genomics)	OBI:0002752 (Oxford Nanopore PromethION)	Default settings	ILLUMINA	"Default settings"""
 DONOR_01_EXPERIMENT_02	DONOR_01_SAMPLE_01	OBI:0002117			NCIT:C84343 (Genomics)	OBI:0002752 (Oxford Nanopore PromethION)		ILLUMINA	

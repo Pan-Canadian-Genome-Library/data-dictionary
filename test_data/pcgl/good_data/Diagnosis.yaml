@@ -1,6 +1,6 @@
 submitter_diagnosis_id : "DONOR_01_DIAGNOSIS_02" ###General use case
 submitter_participant_id : DONOR_01
-disease_code : "ICD10:C34"
+disease_code : "icd10:C34"
 disease_term : Malignant neoplasm of bronchus and lung
 age_at_diagnosis: 10
 ---
@@ -8,6 +8,6 @@ submitter_diagnosis_id : "DONOR_01_DIAGNOSIS_01" ###use case MONDO
 submitter_participant_id : DONOR_01
 disease_code : "MONDO:0000001"
 ---
-submitter_diagnosis_id : "DONOR_02_DIAGNOSIS_02" ###use case ICD10
+submitter_diagnosis_id : "DONOR_02_DIAGNOSIS_02" ###use case icd10
 submitter_participant_id : DONOR_02
-disease_code : "ICD10:C34"
+disease_code : "icd10:C34"
