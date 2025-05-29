@@ -1,8 +1,8 @@
-name: default_pcgl_schema
-description: Base clinical schema that incorporates all PCGL base entities
+name: gen3g_schema
+description: Gen3G clinical schema that incorporates all PCGL base entities (minus radiation and comorbidity), adds new entities pedigree, firsttrimestervisit, secondtrimestervisit,deliveryvisit and extends demographic, participiant and experiment
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1
+version: 1.0
 imports:
 - linkml:types
 prefixes:
@@ -1067,6 +1067,851 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
+  Patient_Diabete_famille_menu:
+    name: Patient_Diabete_famille_menu
+    title: Patient_Diabete_famille_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_SOPK_menu:
+    name: Patient_SOPK_menu
+    title: Patient_SOPK_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Corticosteroides_menu:
+    name: Patient_Corticosteroides_menu
+    title: Patient_Corticosteroides_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Asthme_menu:
+    name: Patient_Asthme_menu
+    title: Patient_Asthme_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Pb_thyroidien_menu:
+    name: Patient_Pb_thyroidien_menu
+    title: Patient_Pb_thyroidien_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Pb_urinaire_menu:
+    name: Patient_Pb_urinaire_menu
+    title: Patient_Pb_urinaire_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Allergies_menu:
+    name: Patient_Allergies_menu
+    title: Patient_Allergies_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Reflux_menu:
+    name: Patient_Reflux_menu
+    title: Patient_Reflux_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Pb_sante_mentale_menu:
+    name: Patient_Pb_sante_mentale_menu
+    title: Patient_Pb_sante_mentale_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Sexe_menu:
+    name: Accouchement_Sexe_menu
+    title: Accouchement_Sexe_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Male
+      '2':
+        text: '2'
+        meaning: Female
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Alcool_menu:
+    name: Patient_Alcool_menu
+    title: Patient_Alcool_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Consommezvous_menu:
+    name: Patient_Consommezvous_menu
+    title: Patient_Consommezvous_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Deja_fume_menu:
+    name: Patient_Deja_fume_menu
+    title: Patient_Deja_fume_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Patient_Fumezvous_menu:
+    name: Patient_Fumezvous_menu
+    title: Patient_Fumezvous_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Visite_Diagnostic_de_DG_V1_menu:
+    name: Visite_Diagnostic_de_DG_V1_menu
+    title: Visite_Diagnostic_de_DG_V1_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Visite_Saison_V1_menu:
+    name: Visite_Saison_V1_menu
+    title: Visite_Saison_V1_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Winter(Dec,Jan,Feb)
+      '2':
+        text: '2'
+        meaning: Spring(Mar,Apr,May)
+      '3':
+        text: '3'
+        meaning: Summer(Jun,Jul,Aug)
+      '4':
+        text: '4'
+        meaning: Fall(Sep,Oct,Nov)
+  Nutrition_Dejeuner_frequence_V1_menu:
+    name: Nutrition_Dejeuner_frequence_V1_menu
+    title: Nutrition_Dejeuner_frequence_V1_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: Never
+      '1':
+        text: '1'
+        meaning: Almostnever
+      '2':
+        text: '2'
+        meaning: Unfrequently
+      '3':
+        text: '3'
+        meaning: Morethanhalfthetime
+      '4':
+        text: '4'
+        meaning: Mostofthetime
+      '5':
+        text: '5'
+        meaning: Everyday
+      '999':
+        text: '999'
+        meaning: Missing
+  Visite_MedicationVitamines_V2_menu:
+    name: Visite_MedicationVitamines_V2_menu
+    title: Visite_MedicationVitamines_V2_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Visite_Diagnostic_de_DG_V2_menu:
+    name: Visite_Diagnostic_de_DG_V2_menu
+    title: Visite_Diagnostic_de_DG_V2_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Visite_Saison_V2_menu:
+    name: Visite_Saison_V2_menu
+    title: Visite_Saison_V2_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Winter(Dec,Jan,Feb)
+      '2':
+        text: '2'
+        meaning: Spring(Mar,Apr,May)
+      '3':
+        text: '3'
+        meaning: Summer(Jun,Jul,Aug)
+      '4':
+        text: '4'
+        meaning: Fall(Sep,Oct,Nov)
+      '999':
+        text: '999'
+        meaning: Missing
+  Nutrition_Dejeuner_frequence_V2_menu:
+    name: Nutrition_Dejeuner_frequence_V2_menu
+    title: Nutrition_Dejeuner_frequence_V2_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: Never
+      '1':
+        text: '1'
+        meaning: Almostnever
+      '2':
+        text: '2'
+        meaning: Unfrequently
+      '3':
+        text: '3'
+        meaning: Morethanhalfthetime
+      '4':
+        text: '4'
+        meaning: Mostofthetime
+      '5':
+        text: '5'
+        meaning: Everyday
+  Accouchement_Type_Traitement_menu:
+    name: Accouchement_Type_Traitement_menu
+    title: Accouchement_Type_Traitement_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: Notreatment
+      '1':
+        text: '1'
+        meaning: diet
+      '2':
+        text: '2'
+        meaning: Insulin
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Complications_fin_HTA_menu:
+    name: Accouchement_Complications_fin_HTA_menu
+    title: Accouchement_Complications_fin_HTA_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Complications_fin_decollement_placentaire_menu:
+    name: Accouchement_Complications_fin_decollement_placentaire_menu
+    title: Accouchement_Complications_fin_decollement_placentaire_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Complications_fin_hydramnios_menu:
+    name: Accouchement_Complications_fin_hydramnios_menu
+    title: Accouchement_Complications_fin_hydramnios_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Complications_fin_saignement_menu:
+    name: Accouchement_Complications_fin_saignement_menu
+    title: Accouchement_Complications_fin_saignement_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Analgesie__menu:
+    name: Accouchement_Analgesie__menu
+    title: Accouchement_Analgesie__menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Corticosteroides_menu:
+    name: Accouchement_Corticosteroides_menu
+    title: Accouchement_Corticosteroides_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Antibiotiques_menu:
+    name: Accouchement_Antibiotiques_menu
+    title: Accouchement_Antibiotiques_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Anesthesie_generale_menu:
+    name: Accouchement_Anesthesie_generale_menu
+    title: Accouchement_Anesthesie_generale_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Anesthesie_peridurale_menu:
+    name: Accouchement_Anesthesie_peridurale_menu
+    title: Accouchement_Anesthesie_peridurale_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Anesthesie_rachidienne_menu:
+    name: Accouchement_Anesthesie_rachidienne_menu
+    title: Accouchement_Anesthesie_rachidienne_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Anesthesie_bloc_honteux_menu:
+    name: Accouchement_Anesthesie_bloc_honteux_menu
+    title: Accouchement_Anesthesie_bloc_honteux_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Anesthesie_locale_menu:
+    name: Accouchement_Anesthesie_locale_menu
+    title: Accouchement_Anesthesie_locale_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Mode_menu:
+    name: Accouchement_Mode_menu
+    title: Accouchement_Mode_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Vaginal
+      '2':
+        text: '2'
+        meaning: Caesareansection
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Type_menu:
+    name: Accouchement_Type_menu
+    title: Accouchement_Type_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Cephalic
+      '2':
+        text: '2'
+        meaning: Breech
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Tete_menu:
+    name: Accouchement_Tete_menu
+    title: Accouchement_Tete_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Spontaneous
+      '2':
+        text: '2'
+        meaning: Forcep
+      '3':
+        text: '3'
+        meaning: Vacuum
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Cesarienne_menu:
+    name: Accouchement_Cesarienne_menu
+    title: Accouchement_Cesarienne_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: First
+      '2':
+        text: '2'
+        meaning: Repeated
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Type_de_cesarienne_menu:
+    name: Accouchement_Type_de_cesarienne_menu
+    title: Accouchement_Type_de_cesarienne_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Transverselow-segment
+      '2':
+        text: '2'
+        meaning: Verticallow-segment
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Episiotomie_menu:
+    name: Accouchement_Episiotomie_menu
+    title: Accouchement_Episiotomie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: null
+      '1':
+        text: '1'
+        meaning: Median
+      '2':
+        text: '2'
+        meaning: Medical-lateral
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Neonatalogie_menu:
+    name: Accouchement_Neonatalogie_menu
+    title: Accouchement_Neonatalogie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Bradycardie_menu:
+    name: Accouchement_Bradycardie_menu
+    title: Accouchement_Bradycardie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Probs_respiratoires_menu:
+    name: Accouchement_Probs_respiratoires_menu
+    title: Accouchement_Probs_respiratoires_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Hypoglycemie_menu:
+    name: Accouchement_Hypoglycemie_menu
+    title: Accouchement_Hypoglycemie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Hypocalcemie_menu:
+    name: Accouchement_Hypocalcemie_menu
+    title: Accouchement_Hypocalcemie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Hyperbilirubinemie_menu:
+    name: Accouchement_Hyperbilirubinemie_menu
+    title: Accouchement_Hyperbilirubinemie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Liquide_amniotique_menu:
+    name: Accouchement_Liquide_amniotique_menu
+    title: Accouchement_Liquide_amniotique_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Normal
+      '2':
+        text: '2'
+        meaning: Oligohydramnios
+      '3':
+        text: '3'
+        meaning: Hydramnios
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Polycythemie_menu:
+    name: Accouchement_Polycythemie_menu
+    title: Accouchement_Polycythemie_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Fracturedislocation_menu:
+    name: Accouchement_Fracturedislocation_menu
+    title: Accouchement_Fracturedislocation_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Admission_SI_menu:
+    name: Accouchement_Admission_SI_menu
+    title: Accouchement_Admission_SI_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Therapie_resp_menu:
+    name: Accouchement_Therapie_resp_menu
+    title: Accouchement_Therapie_resp_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Couleur_menu:
+    name: Accouchement_Couleur_menu
+    title: Accouchement_Couleur_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Clear
+      '2':
+        text: '2'
+        meaning: Meconiel
+      '3':
+        text: '3'
+        meaning: Pinkish
+      '4':
+        text: '4'
+        meaning: Bloody
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Meconiel_menu:
+    name: Accouchement_Meconiel_menu
+    title: Accouchement_Meconiel_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Thick
+      '2':
+        text: '2'
+        meaning: Peapuree
+      '3':
+        text: '3'
+        meaning: Tinted
+      '888':
+        text: '888'
+        meaning: Notapplicable
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Evacuation_menu:
+    name: Accouchement_Evacuation_menu
+    title: Accouchement_Evacuation_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Manual
+      '2':
+        text: '2'
+        meaning: Spontaneous
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Reversion_uterine_menu:
+    name: Accouchement_Reversion_uterine_menu
+    title: Accouchement_Reversion_uterine_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Etat_menu:
+    name: Accouchement_Etat_menu
+    title: Accouchement_Etat_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: Stillbirth
+      '1':
+        text: '1'
+        meaning: livebirth
+      '999':
+        text: '999'
+        meaning: missing
+  Accouchement_Alimentation_menu:
+    name: Accouchement_Alimentation_menu
+    title: Accouchement_Alimentation_menu
+    permissible_values:
+      '1':
+        text: '1'
+        meaning: Artificial
+      '2':
+        text: '2'
+        meaning: Maternal
+      '3':
+        text: '3'
+        meaning: Mixed
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Reanimation_menu:
+    name: Accouchement_Reanimation_menu
+    title: Accouchement_Reanimation_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
+  Accouchement_Malformation_menu:
+    name: Accouchement_Malformation_menu
+    title: Accouchement_Malformation_menu
+    permissible_values:
+      '0':
+        text: '0'
+        meaning: 'No'
+      '1':
+        text: '1'
+        meaning: 'Yes'
+      '999':
+        text: '999'
+        meaning: Missing
 slots:
   age_at_death:
     name: age_at_death
@@ -1102,24 +1947,14 @@ slots:
     required: true
   submitter_participant_id:
     name: submitter_participant_id
-    description: Unique identifier of the participant within the study, assigned by
-      the data provider.
+    description: Unique and de-identified identifier of the participant within the
+      study, assigned by the data provider.. Collected in 1st trimester visit.
     title: submitter_participant_id
-    examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
     exact_mappings:
-    - CQDG:submitter_participant_id
-    - mCODE.STU3:Patient.Identifier
-    - FHIR:Patient.Identifier
-    - Phenopacket:individual.id
-    - BeaconV2:individual.id
-    - ARGO:submitter_participant_id
-    - MOH:submitter_participant_id
+    - dbGap:SUBJECT_ID
+    - PCGL.submitter_participant_id
     range: string
     required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}
   vital_status:
     name: vital_status
     description: Participant's last known state of living or deceased.
@@ -1190,22 +2025,11 @@ slots:
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
-    description: Refers to sex assigned at birth. Sex at birth is typically assigned
-      based on a person's reproductive system and other physical characteristics.
-      The provided values are based on the categoried defined by Statistics Canada
+    description: Biological sex. EDI indicator.
     title: sex_at_birth
-    notes:
-    - '
-
-      "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
-      v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
-
-      '
-    comments:
-    - EDI indicator
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
-    range: sex_at_birth_menu
+    - Phenopacket.sex_at_birth
+    range: string
     required: true
   age_at_phenotype:
     name: age_at_phenotype
@@ -2764,6 +3588,1175 @@ slots:
     title: dataType
     range: data_type_menu
     required: true
+  pooled_participant_id:
+    name: pooled_participant_id
+    description: Pooled participant ID.
+    title: pooled_participant_id
+    exact_mappings:
+    - dbGap:POOLED_SUBJECT_ID
+    range: string
+    required: false
+  Patient_Diabete_famille:
+    name: Patient_Diabete_famille
+    description: Do any of your family members have diabetes?. Collected in 1st trimester
+      visit.
+    title: Patient_Diabete_famille
+    exact_mappings:
+    - dbGaP.Patient_Diabete_famille
+    range: Patient_Diabete_famille_menu
+    required: false
+  Patient_Nbre_grossesse:
+    name: Patient_Nbre_grossesse
+    description: Total umber of pregnancies including the current one. Collected in
+      1st trimester visit.
+    title: Patient_Nbre_grossesse
+    exact_mappings:
+    - dbGaP.Patient_Nbre_grossesse
+    range: integer
+    required: false
+  Patient_Nbre_a_terme:
+    name: Patient_Nbre_a_terme
+    description: Number of term babies (more than 37 weeks). Collected in 1st trimester
+      visit.
+    title: Patient_Nbre_a_terme
+    exact_mappings:
+    - dbGaP.Patient_Nbre_a_terme
+    range: integer
+    required: false
+  Patient_Nbre_pas_a_terme:
+    name: Patient_Nbre_pas_a_terme
+    description: Number of preterm babies (less than 37 weeks). Collected in 1st trimester
+      visit.
+    title: Patient_Nbre_pas_a_terme
+    exact_mappings:
+    - dbGaP.Patient_Nbre_pas_a_terme
+    range: integer
+    required: false
+  Patient_Nbre_bebe_avorte:
+    name: Patient_Nbre_bebe_avorte
+    description: Number of voluntary abortion. Collected in 1st trimester visit.
+    title: Patient_Nbre_bebe_avorte
+    exact_mappings:
+    - dbGaP.Patient_Nbre_bebe_avorte
+    range: integer
+    required: false
+  Patient_Nb_faussescouches:
+    name: Patient_Nb_faussescouches
+    description: Number of spontaneous abortions. Collected in 1st trimester visit.
+    title: Patient_Nb_faussescouches
+    exact_mappings:
+    - dbGaP.Patient_Nb_faussescouches
+    range: integer
+    required: false
+  Patient_Poids_av_gros_kg:
+    name: Patient_Poids_av_gros_kg
+    description: Self-reported weight before pregnancy. Collected in 1st trimester
+      visit. Measured in kg. 999=Missing.
+    title: Patient_Poids_av_gros_kg
+    exact_mappings:
+    - dbGaP.Patient_Poids_av_gros_kg
+    range: decimal
+    required: false
+  Patient_IMC_avant_grossesse:
+    name: Patient_IMC_avant_grossesse
+    description: Pre-pregnancy body mass index (calculated based on self-reported
+      pre-pregnancy weight and measured height). Collected in 1st trimester visit.
+      Measured in kg/m2. 999=Missing.
+    title: Patient_IMC_avant_grossesse
+    exact_mappings:
+    - dbGaP.Patient_IMC_avant_grossesse
+    range: decimal
+    required: false
+  Patient_SOPK:
+    name: Patient_SOPK
+    description: Indication if the participant has polycystic ovarian syndrome (ovarian
+      dysfunction). Collected in 1st trimester visit.
+    title: Patient_SOPK
+    exact_mappings:
+    - dbGaP.Patient_SOPK
+    range: Patient_SOPK_menu
+    required: false
+  Patient_Corticosteroides:
+    name: Patient_Corticosteroides
+    description: Indication if the participant is taking corticosteroids. Collected
+      in 1st trimester visit.
+    title: Patient_Corticosteroides
+    exact_mappings:
+    - dbGaP.Patient_Corticosteroides
+    range: Patient_Corticosteroides_menu
+    required: false
+  Patient_Asthme:
+    name: Patient_Asthme
+    description: Indication if the participant has asthma disease. Collected in 1st
+      trimester visit.
+    title: Patient_Asthme
+    exact_mappings:
+    - dbGaP.Patient_Asthme
+    range: Patient_Asthme_menu
+    required: false
+  Patient_Pb_thyroidien:
+    name: Patient_Pb_thyroidien
+    description: Indication if the participant has a thyroid condition. Collected
+      in 1st trimester visit.
+    title: Patient_Pb_thyroidien
+    exact_mappings:
+    - dbGaP.Patient_Pb_thyroidien
+    range: Patient_Pb_thyroidien_menu
+    required: false
+  Patient_Pb_urinaire:
+    name: Patient_Pb_urinaire
+    description: Indication if the participant has a genitourinary condition. Collected
+      in 1st trimester visit.
+    title: Patient_Pb_urinaire
+    exact_mappings:
+    - dbGaP.Patient_Pb_urinaire
+    range: Patient_Pb_urinaire_menu
+    required: false
+  Patient_Allergies:
+    name: Patient_Allergies
+    description: Indication if the participant has allergies. Collected in 1st trimester
+      visit.
+    title: Patient_Allergies
+    exact_mappings:
+    - dbGaP.Patient_Allergies
+    range: Patient_Allergies_menu
+    required: false
+  Patient_Reflux:
+    name: Patient_Reflux
+    description: Indication if the participant has gastric reflux. Collected in 1st
+      trimester visit.
+    title: Patient_Reflux
+    exact_mappings:
+    - dbGaP.Patient_Reflux
+    range: Patient_Reflux_menu
+    required: false
+  Patient_Pb_sante_mentale:
+    name: Patient_Pb_sante_mentale
+    description: Indication if the participant has mental health problems. Collected
+      in 1st trimester visit.
+    title: Patient_Pb_sante_mentale
+    exact_mappings:
+    - dbGaP.Patient_Pb_sante_mentale
+    range: Patient_Pb_sante_mentale_menu
+    required: false
+  Accouchement_Sexe:
+    name: Accouchement_Sexe
+    description: Child's sex. Collected at delivery (in medical records).
+    title: Accouchement_Sexe
+    exact_mappings:
+    - dbGaP.Accouchement_Sexe
+    range: Accouchement_Sexe_menu
+    required: false
+  sequencing_batch:
+    name: sequencing_batch
+    description: A unique identifier or label assigned to a group of sequencing libraries
+      that were prepared and sequenced together under similar experimental conditions,
+      often within the same sequencing run or flow cell. (Not from program).
+    title: sequencing_batch
+    range: string
+    required: false
+  sequencing_position:
+    name: sequencing_position
+    description: The specific physical or logical location within the sequencing platform
+      (e.g., lane, well, or slot) where the sample was loaded and sequenced. (Not
+      from program).
+    title: sequencing_position
+    range: string
+    required: false
+  submitter_family_id:
+    name: submitter_family_id
+    description: Unique and de-identified identifier of the family, assigned by the
+      data provider..
+    title: submitter_family_id
+    exact_mappings:
+    - Phenopacket.submitter_family_id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  father_id:
+    name: father_id
+    description: Unique and de-identified identifier for the father.
+    title: father_id
+    exact_mappings:
+    - Phenopacket.father_id
+    range: string
+    required: false
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  mother_id:
+    name: mother_id
+    description: Unique and de-identified identifier for the mother.
+    title: mother_id
+    exact_mappings:
+    - Phenopacket.mother_id
+    range: string
+    required: false
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  Patient_age_calc_V1:
+    name: Patient_age_calc_V1
+    description: Participant calculated age based on date of birth and date of 1st
+      trimester visit. Collected in 1st trimester visit. Measured in years.
+    title: Patient_age_calc_V1
+    exact_mappings:
+    - dbGaP.Patient_age_calc_V1
+    range: decimal
+    required: false
+  Patient_Alcool:
+    name: Patient_Alcool
+    description: Have you ever drank alcohol?. Collected in 1st trimester visit.
+    title: Patient_Alcool
+    exact_mappings:
+    - dbGaP.Patient_Alcool
+    range: Patient_Alcool_menu
+    required: false
+  Patient_Consommezvous:
+    name: Patient_Consommezvous
+    description: "Do you currently drink alcohol?. Asked only if participant answer\
+      \ \"yes\" to the \"Patient_Alcool\" question\n Collected in 1st trimester visit."
+    title: Patient_Consommezvous
+    exact_mappings:
+    - dbGaP.Patient_Consommezvous
+    range: Patient_Consommezvous_menu
+    required: false
+  Patient_Consommationsjour:
+    name: Patient_Consommationsjour
+    description: "What is your alcohol consumption (drinks or portions per day). Asked\
+      \ only if participant answer \"yes\" to the \"Patient_Consommezvous\" question\n\
+      \ Collected in 1st trimester visit. Measured in Portions/day. 888=Not applicable;\
+      \ 999=Missing."
+    title: Patient_Consommationsjour
+    exact_mappings:
+    - dbGaP.Patient_Consommationsjour
+    range: decimal
+    required: false
+  Patient_Deja_fume:
+    name: Patient_Deja_fume
+    description: Have you ever smoked?. Collected in 1st trimester visit.
+    title: Patient_Deja_fume
+    exact_mappings:
+    - dbGaP.Patient_Deja_fume
+    range: Patient_Deja_fume_menu
+    required: false
+  Patient_Fumezvous:
+    name: Patient_Fumezvous
+    description: "Do you currently smoke?. Asked only if participant answer \"yes\"\
+      \ to the \"Patient_Deja_fume\" question\n Collected in 1st trimester visit."
+    title: Patient_Fumezvous
+    exact_mappings:
+    - dbGaP.Patient_Fumezvous
+    range: Patient_Fumezvous_menu
+    required: false
+  Patient_Nbre_cigjr:
+    name: Patient_Nbre_cigjr
+    description: "Number of cigarettes per day. Asked only if participant answer \"\
+      yes\" to the \"Patient_Fumezvous\" question\n Collected in 1st trimester visit.\
+      \ Measured in Cigarettes/day. 888=Not applicable; 999=Missing."
+    title: Patient_Nbre_cigjr
+    exact_mappings:
+    - dbGaP.Patient_Nbre_cigjr
+    range: decimal
+    required: false
+  Patient_Taille:
+    name: Patient_Taille
+    description: Measured height by stadiometer. Collected in 1st trimester visit.
+      Measured in m.
+    title: Patient_Taille
+    exact_mappings:
+    - dbGaP.Patient_Taille
+    range: decimal
+    required: false
+  Visite_Sem_Gestation_V1:
+    name: Visite_Sem_Gestation_V1
+    description: Gestational age at 1st trimester visit (recruitment) based on LMP
+      or if differ by >5 days on ultrasound result. Collected in 1st trimester visit.
+      Measured in weeks.day.
+    title: Visite_Sem_Gestation_V1
+    exact_mappings:
+    - dbGaP.Visite_Sem_Gestation_V1
+    range: decimal
+    required: false
+  Visite_MedicationVitamines_V1:
+    name: Visite_MedicationVitamines_V1
+    description: Do you take any medications or vitamins?. Collected in 1st trimester
+      visit. 0=No; 1=Yes.
+    title: Visite_MedicationVitamines_V1
+    exact_mappings:
+    - dbGaP.Visite_MedicationVitamines_V1
+    range: integer
+    required: false
+  Visite_Poids_V1:
+    name: Visite_Poids_V1
+    description: Measured participant's weight at 1st trimester visit (recruitment).
+      Collected in 1st trimester visit. Measured in kg.
+    title: Visite_Poids_V1
+    exact_mappings:
+    - dbGaP.Visite_Poids_V1
+    range: decimal
+    required: false
+  Visite_IMC_V1:
+    name: Visite_IMC_V1
+    description: Body mass index (BMI) calculated based on measured weight and height.
+      Collected in 1st trimester visit. Measured in kg/m2.
+    title: Visite_IMC_V1
+    exact_mappings:
+    - dbGaP.Visite_IMC_V1
+    range: decimal
+    required: false
+  Visite_Tour_de_taille_V1:
+    name: Visite_Tour_de_taille_V1
+    description: Measured participant's waist circumference at 1st trimester visit
+      (recruitment). Collected in 1st trimester visit. Measured in cm. 999=Missing.
+    title: Visite_Tour_de_taille_V1
+    exact_mappings:
+    - dbGaP.Visite_Tour_de_taille_V1
+    range: decimal
+    required: false
+  Visite_TAS_M_V1:
+    name: Visite_TAS_M_V1
+    description: Average of three systolic blood pressure measures. Collected in 1st
+      trimester visit. Measured in mmHg. 999=Missing.
+    title: Visite_TAS_M_V1
+    exact_mappings:
+    - dbGaP.Visite_TAS_M_V1
+    range: integer
+    required: false
+  Visite_TAD_M_V1:
+    name: Visite_TAD_M_V1
+    description: Average of three diastolic blood pressure measures. Collected in
+      1st trimester visit. Measured in mmHg. 999=Missing.
+    title: Visite_TAD_M_V1
+    exact_mappings:
+    - dbGaP.Visite_TAD_M_V1
+    range: integer
+    required: false
+  Visite_Diagnostic_de_DG_V1:
+    name: Visite_Diagnostic_de_DG_V1
+    description: Diagnosis of gestational diabetes based on 1h-glucose>=10.3 mmol/L
+      post 50g-GCT. Collected in 1st trimester visit.
+    title: Visite_Diagnostic_de_DG_V1
+    exact_mappings:
+    - dbGaP.Visite_Diagnostic_de_DG_V1
+    range: Visite_Diagnostic_de_DG_V1_menu
+    required: false
+  Visite_Saison_V1:
+    name: Visite_Saison_V1
+    description: Season in which the visit take place, see possible values. Collected
+      in 1st trimester visit.
+    title: Visite_Saison_V1
+    exact_mappings:
+    - dbGaP.Visite_Saison_V1
+    range: Visite_Saison_V1_menu
+    required: false
+  Visite__gras_BI_V1:
+    name: Visite__gras_BI_V1
+    description: Fat percentage measured by Tanita bioimpedance scale. Collected in
+      1st trimester visit. Measured in %. 999=Missing.
+    title: Visite__gras_BI_V1
+    exact_mappings:
+    - dbGaP.Visite__gras_BI_V1
+    range: decimal
+    required: false
+  Visite_Impedance_BI_V1:
+    name: Visite_Impedance_BI_V1
+    description: Bioimpedance measured by Tanita bioimpedance scale. Collected in
+      1st trimester visit. Measured in Ohms. 999=Missing.
+    title: Visite_Impedance_BI_V1
+    exact_mappings:
+    - dbGaP.Visite_Impedance_BI_V1
+    range: integer
+    required: false
+  Visite_Masse_grasse_BI_V1:
+    name: Visite_Masse_grasse_BI_V1
+    description: Fat mass measured by Tanita bioimpedance scale. Collected in 1st
+      trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Masse_grasse_BI_V1
+    exact_mappings:
+    - dbGaP.Visite_Masse_grasse_BI_V1
+    range: decimal
+    required: false
+  Visite_Fat_free_mass_BI_V1:
+    name: Visite_Fat_free_mass_BI_V1
+    description: Fat free mass measured by Tanita bioimpedance scale. Collected in
+      1st trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Fat_free_mass_BI_V1
+    exact_mappings:
+    - dbGaP.Visite_Fat_free_mass_BI_V1
+    range: decimal
+    required: false
+  Visite_Tot_body_water_BI_V1:
+    name: Visite_Tot_body_water_BI_V1
+    description: Total body water measured by Tanita bioimpedance scale. Collected
+      in 1st trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Tot_body_water_BI_V1
+    exact_mappings:
+    - dbGaP.Visite_Tot_body_water_BI_V1
+    range: decimal
+    required: false
+  Act_sedentaires_9_Dormirsemaine_V1:
+    name: Act_sedentaires_9_Dormirsemaine_V1
+    description: On average, how many hours a night do you sleep during the week?
+      (Number of hours). Collected in 1st trimester visit. Measured in hours. 999=Missing.
+    title: Act_sedentaires_9_Dormirsemaine_V1
+    exact_mappings:
+    - dbGaP.Act_sedentaires_9_Dormirsemaine_V1
+    range: decimal
+    required: false
+  Nutrition_Fruits_frequence_jour_V1:
+    name: Nutrition_Fruits_frequence_jour_V1
+    description: "Without counting juice, how often do you usually eat fruit?. Asked\
+      \ to give frequency and unit of frequency and then transform each answer on\
+      \ a per day basis\n Collected in 1st trimester visit. Measured in Times/day.\
+      \ 999=Missing."
+    title: Nutrition_Fruits_frequence_jour_V1
+    exact_mappings:
+    - dbGaP.Nutrition_Fruits_frequence_jour_V1
+    range: decimal
+    required: false
+  Nutrition_Legumes_frequence_jour_V1:
+    name: Nutrition_Legumes_frequence_jour_V1
+    description: "How often do you usually eat vegetables, not including potatoes\
+      \ (baked, fried, etc)?. Asked to give frequency and unit of frequency and then\
+      \ transform each answer on a per day basis\n Collected in 1st trimester visit.\
+      \ Measured in Times/day. 999=Missing."
+    title: Nutrition_Legumes_frequence_jour_V1
+    exact_mappings:
+    - dbGaP.Nutrition_Legumes_frequence_jour_V1
+    range: decimal
+    required: false
+  Nutrition_Dejeuner_frequence_V1:
+    name: Nutrition_Dejeuner_frequence_V1
+    description: Usually, how often do you have breakfast?. Collected in 1st trimester
+      visit.
+    title: Nutrition_Dejeuner_frequence_V1
+    exact_mappings:
+    - dbGaP.Nutrition_Dejeuner_frequence_V1
+    range: Nutrition_Dejeuner_frequence_V1_menu
+    required: false
+  Nutrition_Restaurant_frequence_semaine_V1:
+    name: Nutrition_Restaurant_frequence_semaine_V1
+    description: "How often do you go out to a restaurant (any type of restaurant)?.\
+      \ Asked to give frequency and unit of frequency and then transform each answer\
+      \ on a per week basis\n Collected in 1st trimester visit. Measured in Times/week.\
+      \ 999=Missing."
+    title: Nutrition_Restaurant_frequence_semaine_V1
+    exact_mappings:
+    - dbGaP.Nutrition_Restaurant_frequence_semaine_V1
+    range: decimal
+    required: false
+  Visite_Sem_Gestation_V2:
+    name: Visite_Sem_Gestation_V2
+    description: Gestational age at 2nd trimester visit based on LMP or if differ
+      by >5 days on ultrasound result. Collected in 2nd trimester visit. Measured
+      in weeks.day. 999=Missing.
+    title: Visite_Sem_Gestation_V2
+    exact_mappings:
+    - dbGaP.Visite_Sem_Gestation_V2
+    range: decimal
+    required: false
+  Visite_MedicationVitamines_V2:
+    name: Visite_MedicationVitamines_V2
+    description: Do you take any medications or vitamins?. Collected in 2nd trimester
+      visit.
+    title: Visite_MedicationVitamines_V2
+    exact_mappings:
+    - dbGaP.Visite_MedicationVitamines_V2
+    range: Visite_MedicationVitamines_V2_menu
+    required: false
+  Visite_Poids_V2:
+    name: Visite_Poids_V2
+    description: Measured participant's weight at 2nd trimester visit. Collected in
+      2nd trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Poids_V2
+    exact_mappings:
+    - dbGaP.Visite_Poids_V2
+    range: decimal
+    required: false
+  Visite_IMC_V2:
+    name: Visite_IMC_V2
+    description: Body mass index (BMI) calculated based on measured weight at 2nd
+      trimester visit and height at 1st trimester visit. Collected in 2nd trimester
+      visit. Measured in kg/m2. 999=Missing.
+    title: Visite_IMC_V2
+    exact_mappings:
+    - dbGaP.Visite_IMC_V2
+    range: decimal
+    required: false
+  Visite_TAS_M_V2:
+    name: Visite_TAS_M_V2
+    description: Average of three systolic blood pressure measures. Collected in 2nd
+      trimester visit. Measured in mmHg. 999=Missing.
+    title: Visite_TAS_M_V2
+    exact_mappings:
+    - dbGaP.Visite_TAS_M_V2
+    range: integer
+    required: false
+  Visite_TAD_M_V2:
+    name: Visite_TAD_M_V2
+    description: Average of three diastolic blood pressure measures. Collected in
+      2nd trimester visit. Measured in mmHg. 999=Missing.
+    title: Visite_TAD_M_V2
+    exact_mappings:
+    - dbGaP.Visite_TAD_M_V2
+    range: integer
+    required: false
+  Visite_Diagnostic_de_DG_V2:
+    name: Visite_Diagnostic_de_DG_V2
+    description: Diagnosis of gestational diabetes at 2nd trimester visit based on
+      OGTT 75g glucose with fasting, 1h-post and 2h-post values basedon IADPSG criteria.
+      Collected in 2nd trimester visit.
+    title: Visite_Diagnostic_de_DG_V2
+    exact_mappings:
+    - dbGaP.Visite_Diagnostic_de_DG_V2
+    range: Visite_Diagnostic_de_DG_V2_menu
+    required: false
+  Visite_Saison_V2:
+    name: Visite_Saison_V2
+    description: Season in which the visit take place, see possible values. Collected
+      in 2nd trimester visit.
+    title: Visite_Saison_V2
+    exact_mappings:
+    - dbGaP.Visite_Saison_V2
+    range: Visite_Saison_V2_menu
+    required: false
+  Visite__gras_BI_V2:
+    name: Visite__gras_BI_V2
+    description: Fat percentage measured by Tanita bioimpedance scale. Collected in
+      2nd trimester visit. Measured in %. 999=Missing.
+    title: Visite__gras_BI_V2
+    exact_mappings:
+    - dbGaP.Visite__gras_BI_V2
+    range: decimal
+    required: false
+  Visite_Impedance_BI_V2:
+    name: Visite_Impedance_BI_V2
+    description: Bioimpedance measured by Tanita bioimpedance scale. Collected in
+      2nd trimester visit. Measured in Ohms. 999=Missing.
+    title: Visite_Impedance_BI_V2
+    exact_mappings:
+    - dbGaP.Visite_Impedance_BI_V2
+    range: integer
+    required: false
+  Visite_Masse_grasse_BI_V2:
+    name: Visite_Masse_grasse_BI_V2
+    description: Fat mass measured by Tanita bioimpedance scale. Collected in 2nd
+      trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Masse_grasse_BI_V2
+    exact_mappings:
+    - dbGaP.Visite_Masse_grasse_BI_V2
+    range: decimal
+    required: false
+  Visite_Fat_free_mass_BI_V2:
+    name: Visite_Fat_free_mass_BI_V2
+    description: Fat free mass measured by Tanita bioimpedance scale. Collected in
+      2nd trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Fat_free_mass_BI_V2
+    exact_mappings:
+    - dbGaP.Visite_Fat_free_mass_BI_V2
+    range: decimal
+    required: false
+  Visite_Tot_body_water_BI_V2:
+    name: Visite_Tot_body_water_BI_V2
+    description: Total body water measured by Tanita bioimpedance scale. Collected
+      in 2nd trimester visit. Measured in kg. 999=Missing.
+    title: Visite_Tot_body_water_BI_V2
+    exact_mappings:
+    - dbGaP.Visite_Tot_body_water_BI_V2
+    range: decimal
+    required: false
+  Act_sedentaires_9_Dormirsemaine_V2:
+    name: Act_sedentaires_9_Dormirsemaine_V2
+    description: On average, how many hours a night do you sleep during the week?
+      (Number of hours). Collected in 2nd trimester visit. Measured in hours. 999=Missing.
+    title: Act_sedentaires_9_Dormirsemaine_V2
+    exact_mappings:
+    - dbGaP.Act_sedentaires_9_Dormirsemaine_V2
+    range: decimal
+    required: false
+  Nutrition_Fruits_frequence_jour_V2:
+    name: Nutrition_Fruits_frequence_jour_V2
+    description: "Without counting juice, how often do you usually eat fruit?. Asked\
+      \ to give frequency and unit of frequency and then transform each answer on\
+      \ a per day basis\n Collected in 2nd trimester visit. Measured in Times/day.\
+      \ 999=Missing."
+    title: Nutrition_Fruits_frequence_jour_V2
+    exact_mappings:
+    - dbGaP.Nutrition_Fruits_frequence_jour_V2
+    range: decimal
+    required: false
+  Nutrition_Legumes_frequence_jour_V2:
+    name: Nutrition_Legumes_frequence_jour_V2
+    description: "How often do you usually eat vegetables, not including potatoes\
+      \ (baked, fried, etc)?. Asked to give frequency and unit of frequency and then\
+      \ transform each answer on a per day basis\n Collected in 2nd trimester visit.\
+      \ Measured in Times/day. 999=Missing."
+    title: Nutrition_Legumes_frequence_jour_V2
+    exact_mappings:
+    - dbGaP.Nutrition_Legumes_frequence_jour_V2
+    range: decimal
+    required: false
+  Nutrition_Dejeuner_frequence_V2:
+    name: Nutrition_Dejeuner_frequence_V2
+    description: Usually, how often do you have breakfast?. Collected in 2nd trimester
+      visit.
+    title: Nutrition_Dejeuner_frequence_V2
+    exact_mappings:
+    - dbGaP.Nutrition_Dejeuner_frequence_V2
+    range: Nutrition_Dejeuner_frequence_V2_menu
+    required: false
+  Nutrition_Restaurant_frequence_semaine_V2:
+    name: Nutrition_Restaurant_frequence_semaine_V2
+    description: "How often do you go out to a restaurant (any type of restaurant)?.\
+      \ Asked to give frequency and unit of frequency and then transform each answer\
+      \ on a per week basis\n Collected in 2nd trimester visit. Measured in Times/week.\
+      \ 999=Missing."
+    title: Nutrition_Restaurant_frequence_semaine_V2
+    exact_mappings:
+    - dbGaP.Nutrition_Restaurant_frequence_semaine_V2
+    range: decimal
+    required: false
+  MATSUDA:
+    name: MATSUDA
+    description: "Matsuda index (https://diabetesjournals.org/care/article/22/9/1462/20552/Insulin-sensitivity-indices-obtained-from-oral).\
+      \ formula used : 10000/sqrt(fasting insulin (pg/mL)/5.808/6*fasting glucose\
+      \ (mmol/L)/0.0555 * (fasting glucose (mmol/L)/0.0555 + glucose 1h post-OGTT\
+      \ 75g (mmol/L)/0.0555 + glucose 2h post-OGTT 75g (mmol/L)/0.0555)/3 * (fasting\
+      \ insulin (pg/mL)/5.808/6 + insulin 1h post-OGTT 75g (pg/mL)/5.808/6 + insulin\
+      \ 2h post-OGTT 75g (pg/mL)/5.808/6)/3)\n Collected in 2nd trimester visit. 9999=Missing."
+    title: MATSUDA
+    exact_mappings:
+    - dbGaP.MATSUDA
+    range: decimal
+    required: false
+  Stumvoll:
+    name: Stumvoll
+    description: "Stumvoll index (https://diabetesjournals.org/care/article/24/4/796/23380/Oral-Glucose-Tolerance-Test-Indexes-for-Insulin\
+      \ (first phase beta cell for 0, 60, 120 samples)). formula used : 1194+4.724*fasting\
+      \ insulin (pg/mL)/1000*172.2-117*glucose 1h post-OGTT 75g (mmol/L)+1.414*insulin\
+      \ 1h post-OGTT 75g (pg/mL)/1000*172.2\n Collected in 2nd trimester visit. 9999=Missing."
+    title: Stumvoll
+    exact_mappings:
+    - dbGaP.Stumvoll
+    range: decimal
+    required: false
+  Homa_ir:
+    name: Homa_ir
+    description: "HOMA-IR index (https://link.springer.com/content/pdf/10.1007/BF00280883.pdf).\
+      \ formula used : fasting insulin (pg/mL)/5.808/6*fasting glucose (mmol/L)/22.5\n\
+      \ Collected in 2nd trimester visit. 9999=Missing."
+    title: Homa_ir
+    exact_mappings:
+    - dbGaP.Homa_ir
+    range: decimal
+    required: false
+  Accouchement_Sem_gest_accouch:
+    name: Accouchement_Sem_gest_accouch
+    description: Gestational age at birth based on LMP or if differ by >5 days on
+      ultrasound result. Collected at delivery (in medical records). Measured in weeks.day.
+      999=Missing.
+    title: Accouchement_Sem_gest_accouch
+    exact_mappings:
+    - dbGaP.Accouchement_Sem_gest_accouch
+    range: decimal
+    required: false
+  Accouchement_Type_Traitement:
+    name: Accouchement_Type_Traitement
+    description: "Treament type for gestational diabetes. Only for 2nd trimester gestational\
+      \ diabetes\n Collected at delivery (in medical records)."
+    title: Accouchement_Type_Traitement
+    exact_mappings:
+    - dbGaP.Accouchement_Type_Traitement
+    range: Accouchement_Type_Traitement_menu
+    required: false
+  Accouchement_Poids_mere_nd:
+    name: Accouchement_Poids_mere_nd
+    description: Last participant's weight recorded in the prenatal record. Collected
+      at delivery (in medical records). Measured in kg. 999=Missing.
+    title: Accouchement_Poids_mere_nd
+    exact_mappings:
+    - dbGaP.Accouchement_Poids_mere_nd
+    range: decimal
+    required: false
+  Accouchement_GA_poids:
+    name: Accouchement_GA_poids
+    description: Gestational age when the weight was measured. Collected at delivery
+      (in medical records). Measured in weeks.day. 999=Missing.
+    title: Accouchement_GA_poids
+    exact_mappings:
+    - dbGaP.Accouchement_GA_poids
+    range: decimal
+    required: false
+  Accouchement_Complications_fin_HTA:
+    name: Accouchement_Complications_fin_HTA
+    description: Complications at the end of pregnancy (mulitple choice question)
+      - High blood pressure. Collected at delivery (in medical records).
+    title: Accouchement_Complications_fin_HTA
+    exact_mappings:
+    - dbGaP.Accouchement_Complications_fin_HTA
+    range: Accouchement_Complications_fin_HTA_menu
+    required: false
+  Accouchement_Complications_fin_decollement_placentaire:
+    name: Accouchement_Complications_fin_decollement_placentaire
+    description: Complications at the end of pregnancy (mulitple choice question)
+      - Placental abruption. Collected at delivery (in medical records).
+    title: Accouchement_Complications_fin_decollement_placentaire
+    exact_mappings:
+    - dbGaP.Accouchement_Complications_fin_decollement_placentaire
+    range: Accouchement_Complications_fin_decollement_placentaire_menu
+    required: false
+  Accouchement_Complications_fin_hydramnios:
+    name: Accouchement_Complications_fin_hydramnios
+    description: Complications at the end of pregnancy (mulitple choice question)
+      - Hydramnios. Collected at delivery (in medical records).
+    title: Accouchement_Complications_fin_hydramnios
+    exact_mappings:
+    - dbGaP.Accouchement_Complications_fin_hydramnios
+    range: Accouchement_Complications_fin_hydramnios_menu
+    required: false
+  Accouchement_Complications_fin_saignement:
+    name: Accouchement_Complications_fin_saignement
+    description: Complications at the end of pregnancy (mulitple choice question)
+      - Bleeding. Collected at delivery (in medical records).
+    title: Accouchement_Complications_fin_saignement
+    exact_mappings:
+    - dbGaP.Accouchement_Complications_fin_saignement
+    range: Accouchement_Complications_fin_saignement_menu
+    required: false
+  Accouchement_Duree_tot_travail_min:
+    name: Accouchement_Duree_tot_travail_min
+    description: Total duration of labour (if any). Collected at delivery (in medical
+      records). Measured in min. 9999=Missing.
+    title: Accouchement_Duree_tot_travail_min
+    exact_mappings:
+    - dbGaP.Accouchement_Duree_tot_travail_min
+    range: integer
+    required: false
+  Accouchement_Analgesie_:
+    name: Accouchement_Analgesie_
+    description: Presence of analgesia in the last 4 hours of delivery. Collected
+      at delivery (in medical records).
+    title: Accouchement_Analgesie_
+    exact_mappings:
+    - dbGaP.Accouchement_Analgesie_
+    range: Accouchement_Analgesie__menu
+    required: false
+  Accouchement_Corticosteroides:
+    name: Accouchement_Corticosteroides
+    description: Does corticosteroids have been taken at delivery. Collected at delivery
+      (in medical records).
+    title: Accouchement_Corticosteroides
+    exact_mappings:
+    - dbGaP.Accouchement_Corticosteroides
+    range: Accouchement_Corticosteroides_menu
+    required: false
+  Accouchement_Antibiotiques:
+    name: Accouchement_Antibiotiques
+    description: Does antibiotics have been taken at delivery. Collected at delivery
+      (in medical records).
+    title: Accouchement_Antibiotiques
+    exact_mappings:
+    - dbGaP.Accouchement_Antibiotiques
+    range: Accouchement_Antibiotiques_menu
+    required: false
+  Accouchement_Anesthesie_generale:
+    name: Accouchement_Anesthesie_generale
+    description: Anesthesia (muliple choice question) - General anesthesia. Collected
+      at delivery (in medical records).
+    title: Accouchement_Anesthesie_generale
+    exact_mappings:
+    - dbGaP.Accouchement_Anesthesie_generale
+    range: Accouchement_Anesthesie_generale_menu
+    required: false
+  Accouchement_Anesthesie_peridurale:
+    name: Accouchement_Anesthesie_peridurale
+    description: Anesthesia (muliple choice question) - Epidural anesthesia. Collected
+      at delivery (in medical records).
+    title: Accouchement_Anesthesie_peridurale
+    exact_mappings:
+    - dbGaP.Accouchement_Anesthesie_peridurale
+    range: Accouchement_Anesthesie_peridurale_menu
+    required: false
+  Accouchement_Anesthesie_rachidienne:
+    name: Accouchement_Anesthesie_rachidienne
+    description: Anesthesia (muliple choice question) - Spinal anesthesia. Collected
+      at delivery (in medical records).
+    title: Accouchement_Anesthesie_rachidienne
+    exact_mappings:
+    - dbGaP.Accouchement_Anesthesie_rachidienne
+    range: Accouchement_Anesthesie_rachidienne_menu
+    required: false
+  Accouchement_Anesthesie_bloc_honteux:
+    name: Accouchement_Anesthesie_bloc_honteux
+    description: Anesthesia (muliple choice question) - Pudendal block anesthesia.
+      Collected at delivery (in medical records).
+    title: Accouchement_Anesthesie_bloc_honteux
+    exact_mappings:
+    - dbGaP.Accouchement_Anesthesie_bloc_honteux
+    range: Accouchement_Anesthesie_bloc_honteux_menu
+    required: false
+  Accouchement_Anesthesie_locale:
+    name: Accouchement_Anesthesie_locale
+    description: Anesthesia (muliple choice question) - Local anesthesia. Collected
+      at delivery (in medical records).
+    title: Accouchement_Anesthesie_locale
+    exact_mappings:
+    - dbGaP.Accouchement_Anesthesie_locale
+    range: Accouchement_Anesthesie_locale_menu
+    required: false
+  Accouchement_Mode:
+    name: Accouchement_Mode
+    description: Delivery mode (vaginal or caesarean). Collected at delivery (in medical
+      records).
+    title: Accouchement_Mode
+    exact_mappings:
+    - dbGaP.Accouchement_Mode
+    range: Accouchement_Mode_menu
+    required: false
+  Accouchement_Type:
+    name: Accouchement_Type
+    description: "Presentation (cephalic or breech). Usually only for vaginal deliveries\n\
+      \ Collected at delivery (in medical records)."
+    title: Accouchement_Type
+    exact_mappings:
+    - dbGaP.Accouchement_Type
+    range: Accouchement_Type_menu
+    required: false
+  Accouchement_Tete:
+    name: Accouchement_Tete
+    description: "Method of cephalic delivery (spontaneous,vaccum or forceps). Usually\
+      \ only for cephalic deliveries\n Collected at delivery (in medical records)."
+    title: Accouchement_Tete
+    exact_mappings:
+    - dbGaP.Accouchement_Tete
+    range: Accouchement_Tete_menu
+    required: false
+  Accouchement_Cesarienne:
+    name: Accouchement_Cesarienne
+    description: "Is it the first caesarean section of the mother?. Only for caesarean\
+      \ section deliveries\n Collected at delivery (in medical records)."
+    title: Accouchement_Cesarienne
+    exact_mappings:
+    - dbGaP.Accouchement_Cesarienne
+    range: Accouchement_Cesarienne_menu
+    required: false
+  Accouchement_Type_de_cesarienne:
+    name: Accouchement_Type_de_cesarienne
+    description: "Type of caesarean section. Only for caesarean section deliveries\n\
+      \ Collected at delivery (in medical records)."
+    title: Accouchement_Type_de_cesarienne
+    exact_mappings:
+    - dbGaP.Accouchement_Type_de_cesarienne
+    range: Accouchement_Type_de_cesarienne_menu
+    required: false
+  Accouchement_pH:
+    name: Accouchement_pH
+    description: Cord blood acidity (pH) measured at delivery. Collected at delivery
+      (in medical records). 999=Missing.
+    title: Accouchement_pH
+    exact_mappings:
+    - dbGaP.Accouchement_pH
+    range: decimal
+    required: false
+  Accouchement_Episiotomie:
+    name: Accouchement_Episiotomie
+    description: Does an episiotomy has been done?. Collected at delivery (in medical
+      records).
+    title: Accouchement_Episiotomie
+    exact_mappings:
+    - dbGaP.Accouchement_Episiotomie
+    range: Accouchement_Episiotomie_menu
+    required: false
+  Accouchement_pCO2:
+    name: Accouchement_pCO2
+    description: Partial pressure of carbon dioxide (pCO2) measured in cord blood
+      at delivery. Collected at delivery (in medical records). Measured in mmHg. 999=Missing.
+    title: Accouchement_pCO2
+    exact_mappings:
+    - dbGaP.Accouchement_pCO2
+    range: decimal
+    required: false
+  Accouchement_pO2:
+    name: Accouchement_pO2
+    description: Cord blood pO2 measured at delivery. Collected at delivery (in medical
+      records). Measured in mmHg. 999=Missing.
+    title: Accouchement_pO2
+    exact_mappings:
+    - dbGaP.Accouchement_pO2
+    range: decimal
+    required: false
+  Accouchement_HC03:
+    name: Accouchement_HC03
+    description: Bicarbonate concentration (HCO3) measured in cord blood at delivery.
+      Collected at delivery (in medical records). Measured in mmol/L. 999=Missing.
+    title: Accouchement_HC03
+    exact_mappings:
+    - dbGaP.Accouchement_HC03
+    range: decimal
+    required: false
+  Accouchement_Exces_base:
+    name: Accouchement_Exces_base
+    description: Base excess in cord blood. Collected at delivery (in medical records).
+      Measured in mmol/L. 999=Missing.
+    title: Accouchement_Exces_base
+    exact_mappings:
+    - dbGaP.Accouchement_Exces_base
+    range: decimal
+    required: false
+  Accouchement_Neonatalogie:
+    name: Accouchement_Neonatalogie
+    description: Admission to neonatology unit (neonatal complications). Collected
+      at delivery (in medical records).
+    title: Accouchement_Neonatalogie
+    exact_mappings:
+    - dbGaP.Accouchement_Neonatalogie
+    range: Accouchement_Neonatalogie_menu
+    required: false
+  Accouchement_Perte_sanguine:
+    name: Accouchement_Perte_sanguine
+    description: Blood loss at delivery (approximation). Collected at delivery (in
+      medical records). Measured in mL. 999=Missing.
+    title: Accouchement_Perte_sanguine
+    exact_mappings:
+    - dbGaP.Accouchement_Perte_sanguine
+    range: integer
+    required: false
+  Accouchement_Bradycardie:
+    name: Accouchement_Bradycardie
+    description: Bradycardia (neonatal complications). Collected at delivery (in medical
+      records).
+    title: Accouchement_Bradycardie
+    exact_mappings:
+    - dbGaP.Accouchement_Bradycardie
+    range: Accouchement_Bradycardie_menu
+    required: false
+  Accouchement_Probs_respiratoires:
+    name: Accouchement_Probs_respiratoires
+    description: Respiratory problems (neonatal complications). Collected at delivery
+      (in medical records).
+    title: Accouchement_Probs_respiratoires
+    exact_mappings:
+    - dbGaP.Accouchement_Probs_respiratoires
+    range: Accouchement_Probs_respiratoires_menu
+    required: false
+  Accouchement_Hypoglycemie:
+    name: Accouchement_Hypoglycemie
+    description: Neonatal hypoglycemia (neonatal complications). Collected at delivery
+      (in medical records).
+    title: Accouchement_Hypoglycemie
+    exact_mappings:
+    - dbGaP.Accouchement_Hypoglycemie
+    range: Accouchement_Hypoglycemie_menu
+    required: false
+  Accouchement_Hypocalcemie:
+    name: Accouchement_Hypocalcemie
+    description: Neonatal hypocalcemia (neonatal complications). Collected at delivery
+      (in medical records).
+    title: Accouchement_Hypocalcemie
+    exact_mappings:
+    - dbGaP.Accouchement_Hypocalcemie
+    range: Accouchement_Hypocalcemie_menu
+    required: false
+  Accouchement_Hyperbilirubinemie:
+    name: Accouchement_Hyperbilirubinemie
+    description: Hyperbilirubinemia (neonatal complications). Collected at delivery
+      (in medical records).
+    title: Accouchement_Hyperbilirubinemie
+    exact_mappings:
+    - dbGaP.Accouchement_Hyperbilirubinemie
+    range: Accouchement_Hyperbilirubinemie_menu
+    required: false
+  Accouchement_Liquide_amniotique:
+    name: Accouchement_Liquide_amniotique
+    description: Amniotic fluid description. Collected at delivery (in medical records).
+    title: Accouchement_Liquide_amniotique
+    exact_mappings:
+    - dbGaP.Accouchement_Liquide_amniotique
+    range: Accouchement_Liquide_amniotique_menu
+    required: false
+  Accouchement_Polycythemie:
+    name: Accouchement_Polycythemie
+    description: Polycythemia (neonatal complication). Collected at delivery (in medical
+      records).
+    title: Accouchement_Polycythemie
+    exact_mappings:
+    - dbGaP.Accouchement_Polycythemie
+    range: Accouchement_Polycythemie_menu
+    required: false
+  Accouchement_Fracturedislocation:
+    name: Accouchement_Fracturedislocation
+    description: Fractures or dislocations (neonatal complications). Collected at
+      delivery (in medical records).
+    title: Accouchement_Fracturedislocation
+    exact_mappings:
+    - dbGaP.Accouchement_Fracturedislocation
+    range: Accouchement_Fracturedislocation_menu
+    required: false
+  Accouchement_Admission_SI:
+    name: Accouchement_Admission_SI
+    description: Neonatal intensive-care unit (NICU) admission (neonatal complications).
+      Collected at delivery (in medical records).
+    title: Accouchement_Admission_SI
+    exact_mappings:
+    - dbGaP.Accouchement_Admission_SI
+    range: Accouchement_Admission_SI_menu
+    required: false
+  Accouchement_Therapie_resp:
+    name: Accouchement_Therapie_resp
+    description: Respiratory therapy (neonatal complication). Collected at delivery
+      (in medical records).
+    title: Accouchement_Therapie_resp
+    exact_mappings:
+    - dbGaP.Accouchement_Therapie_resp
+    range: Accouchement_Therapie_resp_menu
+    required: false
+  Accouchement_Couleur:
+    name: Accouchement_Couleur
+    description: Amniotic fluid color. Collected at delivery (in medical records).
+    title: Accouchement_Couleur
+    exact_mappings:
+    - dbGaP.Accouchement_Couleur
+    range: Accouchement_Couleur_menu
+    required: false
+  Accouchement_Meconiel:
+    name: Accouchement_Meconiel
+    description: Description of amniotic fluid with meconium appearance. Collected
+      at delivery (in medical records).
+    title: Accouchement_Meconiel
+    exact_mappings:
+    - dbGaP.Accouchement_Meconiel
+    range: Accouchement_Meconiel_menu
+    required: false
+  Accouchement_Evacuation:
+    name: Accouchement_Evacuation
+    description: Placenta removal (spontaneous or manual). Collected at delivery (in
+      medical records).
+    title: Accouchement_Evacuation
+    exact_mappings:
+    - dbGaP.Accouchement_Evacuation
+    range: Accouchement_Evacuation_menu
+    required: false
+  Accouchement_Vaisseaux_ombelicaux:
+    name: Accouchement_Vaisseaux_ombelicaux
+    description: Number of ombilical vessels in placenta. Collected at delivery (in
+      medical records). 999=Missing.
+    title: Accouchement_Vaisseaux_ombelicaux
+    exact_mappings:
+    - dbGaP.Accouchement_Vaisseaux_ombelicaux
+    range: integer
+    required: false
+  Accouchement_Reversion_uterine:
+    name: Accouchement_Reversion_uterine
+    description: Uterine reversion (to fix uterine inversion). Collected at delivery
+      (in medical records).
+    title: Accouchement_Reversion_uterine
+    exact_mappings:
+    - dbGaP.Accouchement_Reversion_uterine
+    range: Accouchement_Reversion_uterine_menu
+    required: false
+  Accouchement_Etat:
+    name: Accouchement_Etat
+    description: Newborn condition at birth (live or stillborn). Collected at delivery
+      (in medical records).
+    title: Accouchement_Etat
+    exact_mappings:
+    - dbGaP.Accouchement_Etat
+    range: Accouchement_Etat_menu
+    required: false
+  Accouchement_Poids:
+    name: Accouchement_Poids
+    description: Birthweight (newborn measurement). Collected at delivery (in medical
+      records). Measured in g. 9999=Missing.
+    title: Accouchement_Poids
+    exact_mappings:
+    - dbGaP.Accouchement_Poids
+    range: integer
+    required: false
+  Accouchement_Longueur:
+    name: Accouchement_Longueur
+    description: Birth length (newborn measurement). Collected at delivery (in medical
+      records). Measured in cm. 999=Missing.
+    title: Accouchement_Longueur
+    exact_mappings:
+    - dbGaP.Accouchement_Longueur
+    range: decimal
+    required: false
+  Accouchement_Alimentation:
+    name: Accouchement_Alimentation
+    description: Feeding during hospitalisation (maternal breast feeding, artificial
+      or mixed). Collected at delivery (in medical records).
+    title: Accouchement_Alimentation
+    exact_mappings:
+    - dbGaP.Accouchement_Alimentation
+    range: Accouchement_Alimentation_menu
+    required: false
+  Accouchement_Reanimation:
+    name: Accouchement_Reanimation
+    description: Newborn resuscitation. Collected at delivery (in medical records).
+    title: Accouchement_Reanimation
+    exact_mappings:
+    - dbGaP.Accouchement_Reanimation
+    range: Accouchement_Reanimation_menu
+    required: false
+  Accouchement_APGAR_1_min:
+    name: Accouchement_APGAR_1_min
+    description: APGAR score at 1 min. Collected at delivery (in medical records).
+      999=Missing.
+    title: Accouchement_APGAR_1_min
+    exact_mappings:
+    - dbGaP.Accouchement_APGAR_1_min
+    range: integer
+    required: false
+  Accouchement_APGAR_5_min:
+    name: Accouchement_APGAR_5_min
+    description: APGAR score at 5 min. Collected at delivery (in medical records).
+      999=Missing.
+    title: Accouchement_APGAR_5_min
+    exact_mappings:
+    - dbGaP.Accouchement_APGAR_5_min
+    range: integer
+    required: false
+  Accouchement_tmps_hospi_dur_tot:
+    name: Accouchement_tmps_hospi_dur_tot
+    description: Total hospitalisation time for delivery (days). Collected at delivery
+      (in medical records). Measured in Days. 999=Missing.
+    title: Accouchement_tmps_hospi_dur_tot
+    exact_mappings:
+    - dbGaP.Accouchement_tmps_hospi_dur_tot
+    range: integer
+    required: false
+  Accouchement_Malformation:
+    name: Accouchement_Malformation
+    description: Newborn malformation. Collected at delivery (in medical records).
+    title: Accouchement_Malformation
+    exact_mappings:
+    - dbGaP.Accouchement_Malformation
+    range: Accouchement_Malformation_menu
+    required: false
+  Accouchement_Circonf_de_la_tete:
+    name: Accouchement_Circonf_de_la_tete
+    description: Head circumference (newborn measurement). Collected at delivery (in
+      medical records). Measured in cm. 999=Missing.
+    title: Accouchement_Circonf_de_la_tete
+    exact_mappings:
+    - dbGaP.Accouchement_Circonf_de_la_tete
+    range: decimal
+    required: false
+  Accouchement_Hemoglo_du_bebe_Hb:
+    name: Accouchement_Hemoglo_du_bebe_Hb
+    description: Newborn's hemoglobin. Collected at delivery (in medical records).
+      Measured in g/L. 999=Missing.
+    title: Accouchement_Hemoglo_du_bebe_Hb
+    exact_mappings:
+    - dbGaP.Accouchement_Hemoglo_du_bebe_Hb
+    range: integer
+    required: false
+  Accouchement_Glucose_du_bebe:
+    name: Accouchement_Glucose_du_bebe
+    description: Newborn's glucose measured in cord blood. Collected at delivery (in
+      medical records). Measured in mmol/L. 999=Missing.
+    title: Accouchement_Glucose_du_bebe
+    exact_mappings:
+    - dbGaP.Accouchement_Glucose_du_bebe
+    range: decimal
+    required: false
 classes:
   Participant:
     name: Participant
@@ -2778,26 +4771,31 @@ classes:
     - disease_specific_modifier
     - duo_modifier
     - duo_permission
+    - pooled_participant_id
     slot_usage:
+      pooled_participant_id:
+        name: pooled_participant_id
+        rank: 1
+        slot_group: Database Identifiers
       study_id:
         name: study_id
-        rank: 1
+        rank: 2
         slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 3
         slot_group: Database Identifiers
       disease_specific_modifier:
         name: disease_specific_modifier
-        rank: 3
+        rank: 4
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        rank: 4
+        rank: 5
         slot_group: Participant
       duo_permission:
         name: duo_permission
-        rank: 5
+        rank: 6
         slot_group: Participant
     unique_keys:
       main:
@@ -2823,7 +4821,6 @@ classes:
             name: disease_specific_modifier
             required: false
             value_presence: ABSENT
-    is_a: dh_interface
   Sociodemographic:
     name: Sociodemographic
     description: Captures sociodemographic characteristics of an individual that may
@@ -3073,7 +5070,6 @@ classes:
             name: sociodem_question_detail
             required: false
             value_presence: ABSENT
-    is_a: dh_interface
   Demographic:
     name: Demographic
     description: Data for the characterization of the participant by means of segmenting
@@ -3087,6 +5083,23 @@ classes:
     - age_at_enrollment
     - cause_of_death
     - vital_status
+    - Patient_Diabete_famille
+    - Patient_Nbre_grossesse
+    - Patient_Nbre_a_terme
+    - Patient_Nbre_pas_a_terme
+    - Patient_Nbre_bebe_avorte
+    - Patient_Nb_faussescouches
+    - Patient_Poids_av_gros_kg
+    - Patient_IMC_avant_grossesse
+    - Patient_SOPK
+    - Patient_Corticosteroides
+    - Patient_Asthme
+    - Patient_Pb_thyroidien
+    - Patient_Pb_urinaire
+    - Patient_Allergies
+    - Patient_Reflux
+    - Patient_Pb_sante_mentale
+    - Accouchement_Sexe
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -3108,6 +5121,74 @@ classes:
         name: vital_status
         rank: 5
         slot_group: Demographic
+      Accouchement_Sexe:
+        name: Accouchement_Sexe
+        rank: 6
+        slot_group: Extensions Demographic
+      Patient_Allergies:
+        name: Patient_Allergies
+        rank: 7
+        slot_group: Extensions Demographic
+      Patient_Asthme:
+        name: Patient_Asthme
+        rank: 8
+        slot_group: Extensions Demographic
+      Patient_Corticosteroides:
+        name: Patient_Corticosteroides
+        rank: 9
+        slot_group: Extensions Demographic
+      Patient_Diabete_famille:
+        name: Patient_Diabete_famille
+        rank: 10
+        slot_group: Extensions Demographic
+      Patient_IMC_avant_grossesse:
+        name: Patient_IMC_avant_grossesse
+        rank: 11
+        slot_group: Extensions Demographic
+      Patient_Nb_faussescouches:
+        name: Patient_Nb_faussescouches
+        rank: 12
+        slot_group: Extensions Demographic
+      Patient_Nbre_a_terme:
+        name: Patient_Nbre_a_terme
+        rank: 13
+        slot_group: Extensions Demographic
+      Patient_Nbre_bebe_avorte:
+        name: Patient_Nbre_bebe_avorte
+        rank: 14
+        slot_group: Extensions Demographic
+      Patient_Nbre_grossesse:
+        name: Patient_Nbre_grossesse
+        rank: 15
+        slot_group: Extensions Demographic
+      Patient_Nbre_pas_a_terme:
+        name: Patient_Nbre_pas_a_terme
+        rank: 16
+        slot_group: Extensions Demographic
+      Patient_Pb_sante_mentale:
+        name: Patient_Pb_sante_mentale
+        rank: 17
+        slot_group: Extensions Demographic
+      Patient_Pb_thyroidien:
+        name: Patient_Pb_thyroidien
+        rank: 18
+        slot_group: Extensions Demographic
+      Patient_Pb_urinaire:
+        name: Patient_Pb_urinaire
+        rank: 19
+        slot_group: Extensions Demographic
+      Patient_Poids_av_gros_kg:
+        name: Patient_Poids_av_gros_kg
+        rank: 20
+        slot_group: Extensions Demographic
+      Patient_Reflux:
+        name: Patient_Reflux
+        rank: 21
+        slot_group: Extensions Demographic
+      Patient_SOPK:
+        name: Patient_SOPK
+        rank: 22
+        slot_group: Extensions Demographic
     rules:
     - preconditions:
         description: cause_of_death populatable only if vital_status is deceased
@@ -3141,7 +5222,6 @@ classes:
           age_at_death:
             name: age_at_death
             value_presence: ABSENT
-    is_a: dh_interface
   Diagnosis:
     name: Diagnosis
     description: The disease that is inferred to be present in the individual, family
@@ -3181,7 +5261,6 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_diagnosis_id
-    is_a: dh_interface
   Treatment:
     name: Treatment
     description: Medications, procedures, other actions taken for clinical management
@@ -3259,31 +5338,6 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_treatment_id
-    is_a: dh_interface
-  Follow_Up:
-    name: Follow_Up
-    description: 'Any point of contact with a patient after primary diagnosis. '
-    title: Follow up
-    todos:
-    - '{"reference": "ARGO", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_followup
-    - disease_status_at_followup
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: Follow_Up
-      disease_status_at_followup:
-        name: disease_status_at_followup
-        rank: 3
-        slot_group: Follow_Up
-    is_a: dh_interface
   Procedure:
     name: Procedure
     description: A clinical procedure performed on a subject. For example a surgical
@@ -3318,7 +5372,6 @@ classes:
         name: procedure_term
         rank: 5
         slot_group: Procedure
-    is_a: dh_interface
   Medication:
     name: Medication
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
@@ -3359,50 +5412,6 @@ classes:
         name: prescribed_cumulative_drug_dose
         rank: 6
         slot_group: Medication
-    is_a: dh_interface
-  Radiation:
-    name: Radiation
-    description: Uses ionizing radiation, generally as part of cancer treatment to
-      control or kill malignant cells.
-    title: Radiation
-    slots:
-    - submitter_treatment_id
-    - anatomical_site_irradiated_code
-    - anatomical_site_irradiated_term
-    - radiation_dosage
-    - radiation_fractions
-    - radiation_modality_code
-    - radiation_modality_term
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      anatomical_site_irradiated_code:
-        name: anatomical_site_irradiated_code
-        rank: 2
-        slot_group: Radiation
-      anatomical_site_irradiated_term:
-        name: anatomical_site_irradiated_term
-        rank: 3
-        slot_group: Radiation
-      radiation_dosage:
-        name: radiation_dosage
-        rank: 4
-        slot_group: Radiation
-      radiation_fractions:
-        name: radiation_fractions
-        rank: 5
-        slot_group: Radiation
-      radiation_modality_code:
-        name: radiation_modality_code
-        rank: 6
-        slot_group: Radiation
-      radiation_modality_term:
-        name: radiation_modality_term
-        rank: 7
-        slot_group: Radiation
-    is_a: dh_interface
   Measurement:
     name: Measurement
     description: Record individual measurements to capture quantitative, ordinal (e.g.,
@@ -3447,7 +5456,6 @@ classes:
         name: measurement_unit
         rank: 7
         slot_group: Measurement
-    is_a: dh_interface
   Phenotype:
     name: Phenotype
     description: Individual phenotypic features, observed as either present or absent
@@ -3492,46 +5500,6 @@ classes:
         name: phenotype_term
         rank: 7
         slot_group: Phenotype
-    is_a: dh_interface
-  Comorbidity:
-    name: Comorbidity
-    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
-      that have existed or may occur during the clinical course of the participant
-      who has the index disease under study.
-    title: Comorbidity
-    slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_status
-    - comorbidity_term
-    - comorbidity_treatment_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: Comorbidity
-      comorbidity_code:
-        name: comorbidity_code
-        rank: 3
-        slot_group: Comorbidity
-      comorbidity_status:
-        name: comorbidity_status
-        rank: 4
-        slot_group: Comorbidity
-      comorbidity_term:
-        name: comorbidity_term
-        rank: 5
-        slot_group: Comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
-        rank: 6
-        slot_group: Comorbidity
-    is_a: dh_interface
   Exposure:
     name: Exposure
     description: Capture information about external factors, agents, or conditions
@@ -3579,7 +5547,6 @@ classes:
         name: exposure_unit
         rank: 8
         slot_group: Exposure
-    is_a: dh_interface
   Specimen:
     name: Specimen
     description: Any material sample taken from a biological entity, living or dead,
@@ -3644,7 +5611,6 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_specimen_id
-    is_a: dh_interface
   Sample:
     name: Sample
     description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
@@ -3682,7 +5648,6 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_sample_id
-    is_a: dh_interface
   Experiment:
     name: Experiment
     description: Contains information about the experimental design of the sequencing
@@ -3698,6 +5663,8 @@ classes:
     - instrument_metadata
     - platform
     - sequencing_protocol
+    - sequencing_batch
+    - sequencing_position
     slot_usage:
       submitter_experiment_id:
         name: submitter_experiment_id
@@ -3739,12 +5706,19 @@ classes:
         name: sequencing_protocol
         rank: 10
         slot_group: Experiment
+      sequencing_batch:
+        name: sequencing_batch
+        rank: 11
+        slot_group: Extensions Experiment
+      sequencing_position:
+        name: sequencing_position
+        rank: 12
+        slot_group: Extensions Experiment
     unique_keys:
       main:
         unique_key_name: main
         unique_key_slots:
         - submitter_experiment_id
-    is_a: dh_interface
   Read_Group:
     name: Read_Group
     description: Holds the readgroup information about the raw reads generated in
@@ -3835,8 +5809,584 @@ classes:
             name: file_r2
             required: false
             value_presence: ABSENT
-    is_a: dh_interface
-  dh_interface:
-    name: dh_interface
-    description: A DataHarmonizer interface
-    from_schema: https://example.com/base_schema.yaml
+  Pedigree:
+    name: Pedigree
+    slots:
+    - submitter_family_id
+    - submitter_participant_id
+    - father_id
+    - mother_id
+    - sex_at_birth
+    slot_usage:
+      father_id:
+        name: father_id
+        rank: 1
+        slot_group: Database Identifiers
+      mother_id:
+        name: mother_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_family_id:
+        name: submitter_family_id
+        rank: 3
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 4
+        slot_group: Database Identifiers
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 5
+        slot_group: Extensions Pedigree
+  FirstTrimesterVisit:
+    name: FirstTrimesterVisit
+    slots:
+    - submitter_participant_id
+    - Patient_age_calc_V1
+    - Patient_Alcool
+    - Patient_Consommezvous
+    - Patient_Consommationsjour
+    - Patient_Deja_fume
+    - Patient_Fumezvous
+    - Patient_Nbre_cigjr
+    - Patient_Taille
+    - Visite_Sem_Gestation_V1
+    - Visite_MedicationVitamines_V1
+    - Visite_Poids_V1
+    - Visite_IMC_V1
+    - Visite_Tour_de_taille_V1
+    - Visite_TAS_M_V1
+    - Visite_TAD_M_V1
+    - Visite_Diagnostic_de_DG_V1
+    - Visite_Saison_V1
+    - Visite__gras_BI_V1
+    - Visite_Impedance_BI_V1
+    - Visite_Masse_grasse_BI_V1
+    - Visite_Fat_free_mass_BI_V1
+    - Visite_Tot_body_water_BI_V1
+    - Act_sedentaires_9_Dormirsemaine_V1
+    - Nutrition_Fruits_frequence_jour_V1
+    - Nutrition_Legumes_frequence_jour_V1
+    - Nutrition_Dejeuner_frequence_V1
+    - Nutrition_Restaurant_frequence_semaine_V1
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      Patient_age_calc_V1:
+        name: Patient_age_calc_V1
+        rank: 2
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Alcool:
+        name: Patient_Alcool
+        rank: 3
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Consommezvous:
+        name: Patient_Consommezvous
+        rank: 4
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Consommationsjour:
+        name: Patient_Consommationsjour
+        rank: 5
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Deja_fume:
+        name: Patient_Deja_fume
+        rank: 6
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Fumezvous:
+        name: Patient_Fumezvous
+        rank: 7
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Nbre_cigjr:
+        name: Patient_Nbre_cigjr
+        rank: 8
+        slot_group: Extensions FirstTrimesterVisit
+      Patient_Taille:
+        name: Patient_Taille
+        rank: 9
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Sem_Gestation_V1:
+        name: Visite_Sem_Gestation_V1
+        rank: 10
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_MedicationVitamines_V1:
+        name: Visite_MedicationVitamines_V1
+        rank: 11
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Poids_V1:
+        name: Visite_Poids_V1
+        rank: 12
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_IMC_V1:
+        name: Visite_IMC_V1
+        rank: 13
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Tour_de_taille_V1:
+        name: Visite_Tour_de_taille_V1
+        rank: 14
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_TAS_M_V1:
+        name: Visite_TAS_M_V1
+        rank: 15
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_TAD_M_V1:
+        name: Visite_TAD_M_V1
+        rank: 16
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Diagnostic_de_DG_V1:
+        name: Visite_Diagnostic_de_DG_V1
+        rank: 17
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Saison_V1:
+        name: Visite_Saison_V1
+        rank: 18
+        slot_group: Extensions FirstTrimesterVisit
+      Visite__gras_BI_V1:
+        name: Visite__gras_BI_V1
+        rank: 19
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Impedance_BI_V1:
+        name: Visite_Impedance_BI_V1
+        rank: 20
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Masse_grasse_BI_V1:
+        name: Visite_Masse_grasse_BI_V1
+        rank: 21
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Fat_free_mass_BI_V1:
+        name: Visite_Fat_free_mass_BI_V1
+        rank: 22
+        slot_group: Extensions FirstTrimesterVisit
+      Visite_Tot_body_water_BI_V1:
+        name: Visite_Tot_body_water_BI_V1
+        rank: 23
+        slot_group: Extensions FirstTrimesterVisit
+      Act_sedentaires_9_Dormirsemaine_V1:
+        name: Act_sedentaires_9_Dormirsemaine_V1
+        rank: 24
+        slot_group: Extensions FirstTrimesterVisit
+      Nutrition_Fruits_frequence_jour_V1:
+        name: Nutrition_Fruits_frequence_jour_V1
+        rank: 25
+        slot_group: Extensions FirstTrimesterVisit
+      Nutrition_Legumes_frequence_jour_V1:
+        name: Nutrition_Legumes_frequence_jour_V1
+        rank: 26
+        slot_group: Extensions FirstTrimesterVisit
+      Nutrition_Dejeuner_frequence_V1:
+        name: Nutrition_Dejeuner_frequence_V1
+        rank: 27
+        slot_group: Extensions FirstTrimesterVisit
+      Nutrition_Restaurant_frequence_semaine_V1:
+        name: Nutrition_Restaurant_frequence_semaine_V1
+        rank: 28
+        slot_group: Extensions FirstTrimesterVisit
+  SecondTrimesterVisit:
+    name: SecondTrimesterVisit
+    slots:
+    - submitter_participant_id
+    - Visite_Sem_Gestation_V2
+    - Visite_MedicationVitamines_V2
+    - Visite_Poids_V2
+    - Visite_IMC_V2
+    - Visite_TAS_M_V2
+    - Visite_TAD_M_V2
+    - Visite_Diagnostic_de_DG_V2
+    - Visite_Saison_V2
+    - Visite__gras_BI_V2
+    - Visite_Impedance_BI_V2
+    - Visite_Masse_grasse_BI_V2
+    - Visite_Fat_free_mass_BI_V2
+    - Visite_Tot_body_water_BI_V2
+    - Act_sedentaires_9_Dormirsemaine_V2
+    - Nutrition_Fruits_frequence_jour_V2
+    - Nutrition_Legumes_frequence_jour_V2
+    - Nutrition_Dejeuner_frequence_V2
+    - Nutrition_Restaurant_frequence_semaine_V2
+    - MATSUDA
+    - Stumvoll
+    - Homa_ir
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      Visite_Sem_Gestation_V2:
+        name: Visite_Sem_Gestation_V2
+        rank: 2
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_MedicationVitamines_V2:
+        name: Visite_MedicationVitamines_V2
+        rank: 3
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Poids_V2:
+        name: Visite_Poids_V2
+        rank: 4
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_IMC_V2:
+        name: Visite_IMC_V2
+        rank: 5
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_TAS_M_V2:
+        name: Visite_TAS_M_V2
+        rank: 6
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_TAD_M_V2:
+        name: Visite_TAD_M_V2
+        rank: 7
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Diagnostic_de_DG_V2:
+        name: Visite_Diagnostic_de_DG_V2
+        rank: 8
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Saison_V2:
+        name: Visite_Saison_V2
+        rank: 9
+        slot_group: Extensions SecondTrimesterVisit
+      Visite__gras_BI_V2:
+        name: Visite__gras_BI_V2
+        rank: 10
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Impedance_BI_V2:
+        name: Visite_Impedance_BI_V2
+        rank: 11
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Masse_grasse_BI_V2:
+        name: Visite_Masse_grasse_BI_V2
+        rank: 12
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Fat_free_mass_BI_V2:
+        name: Visite_Fat_free_mass_BI_V2
+        rank: 13
+        slot_group: Extensions SecondTrimesterVisit
+      Visite_Tot_body_water_BI_V2:
+        name: Visite_Tot_body_water_BI_V2
+        rank: 14
+        slot_group: Extensions SecondTrimesterVisit
+      Act_sedentaires_9_Dormirsemaine_V2:
+        name: Act_sedentaires_9_Dormirsemaine_V2
+        rank: 15
+        slot_group: Extensions SecondTrimesterVisit
+      Nutrition_Fruits_frequence_jour_V2:
+        name: Nutrition_Fruits_frequence_jour_V2
+        rank: 16
+        slot_group: Extensions SecondTrimesterVisit
+      Nutrition_Legumes_frequence_jour_V2:
+        name: Nutrition_Legumes_frequence_jour_V2
+        rank: 17
+        slot_group: Extensions SecondTrimesterVisit
+      Nutrition_Dejeuner_frequence_V2:
+        name: Nutrition_Dejeuner_frequence_V2
+        rank: 18
+        slot_group: Extensions SecondTrimesterVisit
+      Nutrition_Restaurant_frequence_semaine_V2:
+        name: Nutrition_Restaurant_frequence_semaine_V2
+        rank: 19
+        slot_group: Extensions SecondTrimesterVisit
+      MATSUDA:
+        name: MATSUDA
+        rank: 20
+        slot_group: Extensions SecondTrimesterVisit
+      Stumvoll:
+        name: Stumvoll
+        rank: 21
+        slot_group: Extensions SecondTrimesterVisit
+      Homa_ir:
+        name: Homa_ir
+        rank: 22
+        slot_group: Extensions SecondTrimesterVisit
+  DeliveryVisit:
+    name: DeliveryVisit
+    slots:
+    - submitter_participant_id
+    - Accouchement_Sem_gest_accouch
+    - Accouchement_Type_Traitement
+    - Accouchement_Poids_mere_nd
+    - Accouchement_GA_poids
+    - Accouchement_Complications_fin_HTA
+    - Accouchement_Complications_fin_decollement_placentaire
+    - Accouchement_Complications_fin_hydramnios
+    - Accouchement_Complications_fin_saignement
+    - Accouchement_Duree_tot_travail_min
+    - Accouchement_Analgesie_
+    - Accouchement_Corticosteroides
+    - Accouchement_Antibiotiques
+    - Accouchement_Anesthesie_generale
+    - Accouchement_Anesthesie_peridurale
+    - Accouchement_Anesthesie_rachidienne
+    - Accouchement_Anesthesie_bloc_honteux
+    - Accouchement_Anesthesie_locale
+    - Accouchement_Mode
+    - Accouchement_Type
+    - Accouchement_Tete
+    - Accouchement_Cesarienne
+    - Accouchement_Type_de_cesarienne
+    - Accouchement_pH
+    - Accouchement_Episiotomie
+    - Accouchement_pCO2
+    - Accouchement_pO2
+    - Accouchement_HC03
+    - Accouchement_Exces_base
+    - Accouchement_Neonatalogie
+    - Accouchement_Perte_sanguine
+    - Accouchement_Bradycardie
+    - Accouchement_Probs_respiratoires
+    - Accouchement_Hypoglycemie
+    - Accouchement_Hypocalcemie
+    - Accouchement_Hyperbilirubinemie
+    - Accouchement_Liquide_amniotique
+    - Accouchement_Polycythemie
+    - Accouchement_Fracturedislocation
+    - Accouchement_Admission_SI
+    - Accouchement_Therapie_resp
+    - Accouchement_Couleur
+    - Accouchement_Meconiel
+    - Accouchement_Evacuation
+    - Accouchement_Vaisseaux_ombelicaux
+    - Accouchement_Reversion_uterine
+    - Accouchement_Etat
+    - Accouchement_Poids
+    - Accouchement_Longueur
+    - Accouchement_Alimentation
+    - Accouchement_Reanimation
+    - Accouchement_APGAR_1_min
+    - Accouchement_APGAR_5_min
+    - Accouchement_tmps_hospi_dur_tot
+    - Accouchement_Malformation
+    - Accouchement_Circonf_de_la_tete
+    - Accouchement_Hemoglo_du_bebe_Hb
+    - Accouchement_Glucose_du_bebe
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      Accouchement_Sem_gest_accouch:
+        name: Accouchement_Sem_gest_accouch
+        rank: 2
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Type_Traitement:
+        name: Accouchement_Type_Traitement
+        rank: 3
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Poids_mere_nd:
+        name: Accouchement_Poids_mere_nd
+        rank: 4
+        slot_group: Extensions DeliveryVisit
+      Accouchement_GA_poids:
+        name: Accouchement_GA_poids
+        rank: 5
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Complications_fin_HTA:
+        name: Accouchement_Complications_fin_HTA
+        rank: 6
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Complications_fin_decollement_placentaire:
+        name: Accouchement_Complications_fin_decollement_placentaire
+        rank: 7
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Complications_fin_hydramnios:
+        name: Accouchement_Complications_fin_hydramnios
+        rank: 8
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Complications_fin_saignement:
+        name: Accouchement_Complications_fin_saignement
+        rank: 9
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Duree_tot_travail_min:
+        name: Accouchement_Duree_tot_travail_min
+        rank: 10
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Analgesie_:
+        name: Accouchement_Analgesie_
+        rank: 11
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Corticosteroides:
+        name: Accouchement_Corticosteroides
+        rank: 12
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Antibiotiques:
+        name: Accouchement_Antibiotiques
+        rank: 13
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Anesthesie_generale:
+        name: Accouchement_Anesthesie_generale
+        rank: 14
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Anesthesie_peridurale:
+        name: Accouchement_Anesthesie_peridurale
+        rank: 15
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Anesthesie_rachidienne:
+        name: Accouchement_Anesthesie_rachidienne
+        rank: 16
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Anesthesie_bloc_honteux:
+        name: Accouchement_Anesthesie_bloc_honteux
+        rank: 17
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Anesthesie_locale:
+        name: Accouchement_Anesthesie_locale
+        rank: 18
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Mode:
+        name: Accouchement_Mode
+        rank: 19
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Type:
+        name: Accouchement_Type
+        rank: 20
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Tete:
+        name: Accouchement_Tete
+        rank: 21
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Cesarienne:
+        name: Accouchement_Cesarienne
+        rank: 22
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Type_de_cesarienne:
+        name: Accouchement_Type_de_cesarienne
+        rank: 23
+        slot_group: Extensions DeliveryVisit
+      Accouchement_pH:
+        name: Accouchement_pH
+        rank: 24
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Episiotomie:
+        name: Accouchement_Episiotomie
+        rank: 25
+        slot_group: Extensions DeliveryVisit
+      Accouchement_pCO2:
+        name: Accouchement_pCO2
+        rank: 26
+        slot_group: Extensions DeliveryVisit
+      Accouchement_pO2:
+        name: Accouchement_pO2
+        rank: 27
+        slot_group: Extensions DeliveryVisit
+      Accouchement_HC03:
+        name: Accouchement_HC03
+        rank: 28
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Exces_base:
+        name: Accouchement_Exces_base
+        rank: 29
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Neonatalogie:
+        name: Accouchement_Neonatalogie
+        rank: 30
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Perte_sanguine:
+        name: Accouchement_Perte_sanguine
+        rank: 31
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Bradycardie:
+        name: Accouchement_Bradycardie
+        rank: 32
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Probs_respiratoires:
+        name: Accouchement_Probs_respiratoires
+        rank: 33
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Hypoglycemie:
+        name: Accouchement_Hypoglycemie
+        rank: 34
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Hypocalcemie:
+        name: Accouchement_Hypocalcemie
+        rank: 35
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Hyperbilirubinemie:
+        name: Accouchement_Hyperbilirubinemie
+        rank: 36
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Liquide_amniotique:
+        name: Accouchement_Liquide_amniotique
+        rank: 37
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Polycythemie:
+        name: Accouchement_Polycythemie
+        rank: 38
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Fracturedislocation:
+        name: Accouchement_Fracturedislocation
+        rank: 39
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Admission_SI:
+        name: Accouchement_Admission_SI
+        rank: 40
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Therapie_resp:
+        name: Accouchement_Therapie_resp
+        rank: 41
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Couleur:
+        name: Accouchement_Couleur
+        rank: 42
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Meconiel:
+        name: Accouchement_Meconiel
+        rank: 43
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Evacuation:
+        name: Accouchement_Evacuation
+        rank: 44
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Vaisseaux_ombelicaux:
+        name: Accouchement_Vaisseaux_ombelicaux
+        rank: 45
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Reversion_uterine:
+        name: Accouchement_Reversion_uterine
+        rank: 46
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Etat:
+        name: Accouchement_Etat
+        rank: 47
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Poids:
+        name: Accouchement_Poids
+        rank: 48
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Longueur:
+        name: Accouchement_Longueur
+        rank: 49
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Alimentation:
+        name: Accouchement_Alimentation
+        rank: 50
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Reanimation:
+        name: Accouchement_Reanimation
+        rank: 51
+        slot_group: Extensions DeliveryVisit
+      Accouchement_APGAR_1_min:
+        name: Accouchement_APGAR_1_min
+        rank: 52
+        slot_group: Extensions DeliveryVisit
+      Accouchement_APGAR_5_min:
+        name: Accouchement_APGAR_5_min
+        rank: 53
+        slot_group: Extensions DeliveryVisit
+      Accouchement_tmps_hospi_dur_tot:
+        name: Accouchement_tmps_hospi_dur_tot
+        rank: 54
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Malformation:
+        name: Accouchement_Malformation
+        rank: 55
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Circonf_de_la_tete:
+        name: Accouchement_Circonf_de_la_tete
+        rank: 56
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Hemoglo_du_bebe_Hb:
+        name: Accouchement_Hemoglo_du_bebe_Hb
+        rank: 57
+        slot_group: Extensions DeliveryVisit
+      Accouchement_Glucose_du_bebe:
+        name: Accouchement_Glucose_du_bebe
+        rank: 58
+        slot_group: Extensions DeliveryVisit

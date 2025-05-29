@@ -1,5 +1,5 @@
-python scripts/generateCustomLinkmlFromReference.py -c custom/pcgl/pcgl.yaml -w $(pwd)
-python scripts/generateLecternJsonFromCustomLinkml.py -c custom/pcgl/pcgl_full.yaml -r restrictions/pcgl/restrictions.json
+python scripts/generateCustomLinkmlFromReference.py -c custom/gen3g/gen3g.yaml -w $(pwd)
+python scripts/generateLecternJsonFromCustomLinkml.py -c custom/gen3g/gen3g_full.yaml -r restrictions/pcgl/restrictions.json
 ###Validate Good data
 linkml validate -C Participant -s custom/pcgl/pcgl_full.yaml test_data/pcgl/good_data/Participant.yaml
 linkml validate -C Sociodemographic -s custom/pcgl/pcgl_full.yaml test_data/pcgl/good_data/Sociodemographic.yaml

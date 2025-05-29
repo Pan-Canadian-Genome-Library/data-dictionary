@@ -6,4 +6,4 @@ comorbidity_term : Malignant neoplasm of bronchus and lung
 comorbidity_treatment_status : Untreated
 ---
 submitter_participant_id : "DONOR_01" ### Minimal
-comorbidity_code : ICD10:C34
+comorbidity_code : icd10:C34

@@ -2,7 +2,7 @@ name: PCGL_Base_Schema
 description: '...'
 in_language: '[''en'']'
 id: https://example.com/base_schema.yaml
-version: 2.2
+version: '1.1'
 imports:
 - linkml:types
 prefixes:
@@ -1310,14 +1310,17 @@ slots:
     required: false
   comorbidity_code:
     name: comorbidity_code
-    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+    description: "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern."
     title: Comorbidity Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
     range: string
     required: true
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    examples:
+    - value : MONDO:0000001
+    - value : icd10:C34
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -1375,10 +1378,16 @@ slots:
     title: Procedure Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
-      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>'
+      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:
+https://www.cihi.ca/en/cci-coding-structure'
     range: string
     required: true
-    pattern: ^NCIT:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    examples:
+    - value: NCIT:C51894 
+    - value: snomedct:284196006
+    - value: umls:C2584994
+    - value: CCI:1CA14STCDR
   procedure_term:
     name: procedure_term
     description: Provide the standardized and human readable term derived from the
@@ -1574,7 +1583,10 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
@@ -1667,7 +1679,12 @@ slots:
       URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
     range: string
     required: true
-    pattern: ^RxNorm:\d{1,8}$|^KEGG:D\d{5}$|^PubChem:\d{1,9}$|^NCIT:C\d{1,7}$
+    pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
+    examples:
+    - value: rxnorm:221058
+    - value: kegg.drug:D00123
+    - value: pubchem.compound:100101
+    - value: NCIT:C138986
   drug_dose_units:
     name: drug_dose_units
     description: Indicate units used to record drug dose.

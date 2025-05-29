@@ -1,4 +1,4 @@
-Submitter Participant Id	Age At Death	Age At Enrollment	Cause Of Death	Vital Status
+submitter_participant_id	age_at_death	age_at_enrollment	cause_of_death	vital_status
 DONOR_01	15.0	10.0	Died of cancer	Deceased
 DONOR_01		10.0	Died of cancer	Deceased
 DONOR_01				

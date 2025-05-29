@@ -1,0 +1,169 @@
+{
+    "name": "default_pcgl_schema",
+    "description": "...",
+    "schemas": [
+        {
+            "name": "participant",
+            "fields":[
+                {
+                    "name":"disease_specific_modifier",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["duo_permission"],
+                                    "match":{"value": "DUO:0000007 (disease specific research)"},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required": true, "regex": "^MONDO:\\d{7}$"},
+                        "else":{"required": false, "empty": true}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "treatment",
+            "fields":[
+                {
+                    "name":"submitter_diagnosis_id",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["submitter_treatment_id"],
+                                    "match":{"exists": false},
+                                    "case" : "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required": false, "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "sociodemographic",
+            "fields" : [
+                {
+                    "name":"race_another_racial_category",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["race"],
+                                    "match":{"codeList": ["Another Racial Category"]},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"gender_another_gender",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["gender"],
+                                    "match":{"value":"Another Gender"},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"ethnicity_another_category",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["ethnicity"],
+                                    "match":{"codeList": ["Free text input"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"sex_another_category",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["sex_at_birth"],
+                                    "match":{"value":"Another Sex"},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"sociodem_question_detail",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["sociodem_question"],
+                                    "match":{"codeList":["PCGL reference question","Another question"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "read_group",
+            "fields" : [
+                {
+                    "name":"file_r2",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["library_layout"],
+                                    "match":{"value":"OBI:0000722 (paired-end library)"},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                }
+            ]
+        }
+    ]
+}
