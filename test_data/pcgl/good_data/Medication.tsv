@@ -1,3 +1,3 @@
-Submitter Treatment Id	Actual Cumulative Drug Dose	Drug Code	Drug Dose Units	Drug Term	Prescribed Cumulative Drug Dose
+submitter_treatment_id	actual_cumulative_drug_dose	drug_code	drug_dose_units	drug_term	prescribed_cumulative_drug_dose
 DONOR_01_TREATMENT_01	500.0	NCIT:C138986	UO:0000080	ampicillin (anhydrous)	500.0
 DONOR_01_TREATMENT_02		NCIT:C138986			

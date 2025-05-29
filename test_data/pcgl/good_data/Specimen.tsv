@@ -1,3 +1,3 @@
-Submitter Specimen Id	Submitter Participant Id	Age At Specimen Collection	Specimen Anatomic Location Code	Specimen Anatomic Location Term	Specimen Laterality	Specimen Processing	Specimen Storage	Specimen Tissue Source Code	Specimen Tissue Source Term
+submitter_specimen_id	submitter_participant_id	age_at_specimen_collection	specimen_anatomic_location_code	specimen_anatomic_location_term	specimen_laterality	specimen_processing	specimen_storage	specimen_tissue_source_code	specimen_tissue_source_term
 DONOR_01_SPECIMEN_01	DONOR_01	10.0	UBERON:8600019	"placental basal plate"""	Missing - Unknown	Missing - Unknown	Missing - Unknown	NCIT:C12434	Blood
 DONOR_01_SPECIMEN_02	DONOR_01							NCIT:C12434	
