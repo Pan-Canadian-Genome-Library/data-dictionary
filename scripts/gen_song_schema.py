@@ -35,7 +35,6 @@ from jsonschema.validators import (
     Draft201909Validator,
     Draft202012Validator
 )
-import random
 
 
 def generate_json_schema(input_file, top_class):
