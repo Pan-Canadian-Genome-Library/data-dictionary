@@ -32,7 +32,7 @@ python scripts/generateFlatDefinitionsTsvFromFullLinkml.py -c custom/example/exa
 ```
 python scripts/generateTemplateTsvFromFullLinkml.py -c custom/pcgl/pcgl_full.yaml -o csv/template/pcgl
 ```
-### Date validation
+### Data validation
 ```
 linkml validate -C Comorbidity -s custom/example/example_full.yaml test_data/example/good_data/comorbidity.tsv
 linkml validate -C Demographic -s custom/example/example_full.yaml test_data/example/good_data/demographic.tsv
@@ -61,4 +61,36 @@ linkml validate -C Phenotype -s custom/example/example_full.yaml test_data/examp
 linkml validate -C Procedure -s custom/example/example_full.yaml test_data/example/bad_data/procedure.yaml
 linkml validate -C Specimen -s custom/example/example_full.yaml test_data/example/bad_data/specimen.yaml
 linkml validate -C Treatment -s custom/example/example_full.yaml test_data/example/bad_data/treatment.yaml
+```
+
+### Generate Molecular Metadata Schemas and Templates
+#### Prerequisites
+Before running `scripts/gen_song_schema.py`, ensure you have the following:
+1. Python Environment
+
+- Python 3.7 or higher is recommended.
+- (Optional but recommended) Use a virtual environment:
+
+2. Required Python Packages
+```
+pip install jsonref jsonschema
+```  
+
+3. LinkML Toolkit
+
+The script uses the linkml CLI tool to generate JSON schemas. Install it via pip:
+```
+pip install linkml
+```
+
+4. Input Files
+- A LinkML YAML schema file (e.g., pcgl_song_schema.yaml).
+- A configuration JSON file specifying top classes and options (e.g., options.json).
+
+#### Command Line Usage
+```
+python3 scripts/gen_song_schema.py \
+--input_file song_schema/linkml/pcgl_song_schema.yaml \
+--config_file song_schema/conf/options.json \
+--output_schema_dir song_schema/json-schema
 ```

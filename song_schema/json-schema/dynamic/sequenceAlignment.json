@@ -1,0 +1,92 @@
+{
+  "name": "sequenceAlignment",
+  "options": {
+    "fileTypes": [
+      "BAM",
+      "CRAM",
+      "BAI",
+      "CRAI"
+    ],
+    "externalValidations": [
+      {
+        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "jsonPath": "submitter_experiment_id"
+      }
+    ]
+  },
+  "schema": {
+    "properties": {
+      "data_category": {
+        "description": "",
+        "enum": [
+          "Genomics",
+          "Transcriptomics",
+          "Proteomics",
+          "Epigenomics",
+          "Imaging",
+          "Reference"
+        ],
+        "type": "string"
+      },
+      "genome_build": {
+        "description": "",
+        "enum": [
+          "GRCh38",
+          "GRCh37"
+        ],
+        "type": "string"
+      },
+      "submitter_analysis_id": {
+        "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "submitter_experiment_id": {
+        "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "workflow": {
+        "additionalProperties": false,
+        "description": "Contains information about the analysis workflow generating the analysis",
+        "properties": {
+          "submitter_workflow_id": {
+            "description": "Indicate the unique identifier of the data processing workflow used in the analysis.",
+            "type": "string"
+          },
+          "workflow_name": {
+            "description": "The name of the genomic data processing workflow used for data analysis.",
+            "type": "string"
+          },
+          "workflow_url": {
+            "description": "A URL linking to the workflow's repository or documentation. This could be a reference to a GitHub repository, a website where the workflow is described, or documentation on how to run the workflow.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "workflow_version": {
+            "description": "The version of the workflow or pipeline being used. ",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "submitter_workflow_id",
+          "workflow_name"
+        ],
+        "type": "object"
+      }
+    },
+    "required": [
+      "submitter_experiment_id",
+      "workflow",
+      "genome_build",
+      "submitter_analysis_id",
+      "data_category"
+    ],
+    "type": "object"
+  }
+}

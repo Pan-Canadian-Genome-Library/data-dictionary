@@ -1,0 +1,46 @@
+{
+  "sequenceExperiment": {
+    "options": {
+      "fileTypes":["BAM", "FASTQ"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    },
+    "dataType":[
+      "Raw Sequencing Reads"]
+  },   
+  "sequenceAlignment": {
+    "options": {
+      "fileTypes":["BAM", "CRAM", "BAI", "CRAI"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    },
+    "dataType":[
+      "Aligned Reads",
+      "Aligned Reads Index"]
+  },
+  "variantCall": {
+    "options": {
+      "fileTypes":["VCF", "TBI"],
+      "externalValidations":[
+        {
+          "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+          "jsonPath": "submitter_experiment_id"
+        }
+      ]
+    },
+    "dataType":[
+      "Single Nucleotide Variants (SNVs)",
+      "Insertions and Deletions (InDels)",
+      "Structural Variations (SVs)",
+      "Copy Number Variations (CNVs)",
+      "Variant Calls Index"]
+  } 
+}

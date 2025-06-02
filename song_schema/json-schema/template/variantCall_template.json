@@ -1,0 +1,29 @@
+{
+  "analysisType": {
+    "name": "variantCall"
+  },
+  "data_category": "<data_category>",
+  "files": [
+    {
+      "dataType": "<dataType>",
+      "fileAccess": "<fileAccess>",
+      "fileMd5sum": "<fileMd5sum>",
+      "fileName": "<fileName>",
+      "fileSize": 0,
+      "fileType": "<fileType>"
+    }
+  ],
+  "genome_annotation": "<genome_annotation>",
+  "genome_build": "<genome_build>",
+  "studyId": "<studyId>",
+  "submitter_analysis_id": "<submitter_analysis_id>",
+  "submitter_experiment_id": "<submitter_experiment_id>",
+  "variant_calling_strategy": "<variant_calling_strategy>",
+  "variant_class": "<variant_class>",
+  "workflow": {
+    "submitter_workflow_id": "<submitter_workflow_id>",
+    "workflow_name": "<workflow_name>",
+    "workflow_url": "<workflow_url>",
+    "workflow_version": "<workflow_version>"
+  }
+}
