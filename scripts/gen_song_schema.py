@@ -28,7 +28,7 @@ import subprocess
 import copy
 import argparse
 from jsonschema import exceptions
-from faker import Faker
+
 # We'll import all relevant validators that jsonschema provides
 from jsonschema.validators import (
     Draft7Validator,
@@ -36,18 +36,14 @@ from jsonschema.validators import (
     Draft202012Validator
 )
 import random
-import exrex
 
-fake = Faker()
 
 def generate_json_schema(input_file, top_class):
     # Use the linkml generate command to generate JSON schema with --top-class option and capture output
-    command = ["linkml", "generate", "json-schema", "--top-class", top_class, input_file]
-    # result = subprocess.run(command, check=True, capture_output=True, text=True)
+    command = ["linkml", "generate", "json-schema", "--top-class", top_class, input_file] 
     try:
         result = subprocess.run(command, check=True, capture_output=True, text=True)
         print("Command executed successfully.")
-        # print("Standard Output:", result.stdout)
         return result.stdout
     except subprocess.CalledProcessError as e:
         print("Error occurred while running the command.")
@@ -108,41 +104,6 @@ def validate_schema(schema):
         except exceptions.SchemaError as e:
             print(f"Schema is not valid with {validator.META_SCHEMA['$id']}: {e}")
 
-def generate_example(schema):
-    # Generate an example instance based on the schema
-    example = {}
-    for prop, prop_schema in schema.get('properties', {}).items():
-        if 'const' in prop_schema:
-            example[prop] = prop_schema['const']
-        elif 'enum' in prop_schema:
-            example[prop] = random.choice(prop_schema['enum'])
-        elif 'pattern' in prop_schema:
-            example[prop] = exrex.getone(prop_schema['pattern'])
-        elif 'type' in prop_schema:
-            prop_type = prop_schema['type']
-            if isinstance(prop_type, list):
-                if 'null' in prop_type:
-                    prop_type.remove('null')
-                    if not prop_type:
-                        example[prop] = None
-                        continue
-                    prop_type = prop_type[0]
-            if prop_type == 'string':
-                example[prop] = fake.word()
-            elif prop_type == 'integer':
-                example[prop] = fake.random_int()
-            elif prop_type == 'number':
-                example[prop] = fake.random_number()
-            elif prop_type == 'boolean':
-                example[prop] = fake.boolean()
-            elif prop_type == 'array':
-                if 'items' in prop_schema and 'enum' in prop_schema['items']:
-                    example[prop] = [random.choice(prop_schema['items']['enum']) for _ in range(random.randint(1, 3))]
-                else:
-                    example[prop] = [generate_example(prop_schema['items'])]
-            elif prop_type == 'object':
-                example[prop] = generate_example(prop_schema)
-    return example
 
 def generate_template(schema):
     # Generate a template instance based on the schema
@@ -201,7 +162,7 @@ def ensure_directory_exists(directory):
     if not os.path.exists(directory):
         os.makedirs(directory)
 
-def process_schema(input_file, top_class, options, schema_dir, example_dir):
+def process_schema(input_file, top_class, options, schema_dir):
     
     # Generate JSON schema using linkml generate command with --top-class option
     json_schema_str = generate_json_schema(input_file, top_class)
@@ -209,78 +170,55 @@ def process_schema(input_file, top_class, options, schema_dir, example_dir):
     # Resolve references in the JSON schema
     schema_with_refs = resolve_references(json_schema_str)
 
-    # Create a copy of the resolved schema
-    schema_copy = copy.deepcopy(schema_with_refs)
+    # # Create a copy of the resolved schema
+    # schema_copy = copy.deepcopy(schema_with_refs)
 
-    # Drop specific fields from the JSON schema
+    # Drop specific fields and update the JSON schema
     fields_to_drop = ["$id", "$defs", "description", "version", "title",
                       "additionalProperties", "metamodel_version"]
-    schema_copy_drop = drop_fields(schema_copy, fields_to_drop)
+    schema_clean = drop_fields(copy.deepcopy(schema_with_refs), fields_to_drop)
 
     # Update the name property within the analysisType property
     file_type_enum = options.get('options', []).get('fileTypes', [])
     data_type_enum = options.get('dataType', []) 
-    schema_copy_drop = update_schema(schema_copy_drop, top_class, file_type_enum, data_type_enum)
+    schema_clean = update_schema(schema_clean, top_class, file_type_enum, data_type_enum)
 
     # Remove all "title" fields from the schema
-    remove_titles(schema_copy_drop)
+    remove_titles(schema_clean)
 
-    # Create a copy of the resolved schema
-    schema_copy_drop2 = copy.deepcopy(schema_copy_drop)
-    schema_copy_drop3 = copy.deepcopy(schema_copy_drop)
+    # Prepare output paths
+    full_schema_path = os.path.join(schema_dir, "full", f"{top_class}.json")
+    template_path = os.path.join(schema_dir, "template", f"{top_class}_template.json")
+    dynamic_schema_path = os.path.join(schema_dir, "dynamic", f"{top_class}.json")
 
-    # Write the fully expanded schema (base+dynamic) to the output file
-    output_file = os.path.join(schema_dir, "full", f"{top_class}.json")
-    # Ensure output directories exist
-    ensure_directory_exists(os.path.dirname(output_file))
-    with open(output_file, "w", encoding="utf-8") as out:
-        json.dump(schema_copy_drop, out, indent=2)
-    print(f"Expanded full schema saved to: {output_file}")
+    # Ensure all output directories exist
+    for path in [full_schema_path, template_path, dynamic_schema_path]:
+        ensure_directory_exists(os.path.dirname(path))
 
-    '''
-    # Generate an example instance based on the schema
-    example_instance = generate_example(schema_copy_drop)
+    # Write full schema
+    with open(full_schema_path, "w", encoding="utf-8") as out:
+        json.dump(schema_clean, out, indent=2)
+    print(f"Expanded full schema saved to: {full_schema_path}")
 
-    # Write the example instance to a separate file
-    output_file = os.path.join(example_dir, f"{top_class}Payload.json")
-    # Ensure output directories exist
-    ensure_directory_exists(os.path.dirname(output_file))
-    with open(output_file, "w", encoding="utf-8") as out:
-        json.dump(example_instance, out, indent=2)
-    print(f"Example instance saved to: {output_file}")
-    '''
-
-    # Generate a template instance based on the schema
-    template_instance = generate_template(schema_copy_drop2)
-
-    # Write the template instance to a separate file
-    output_file = os.path.join(schema_dir, "template", f"{top_class}_template.json")
-    # Ensure output directories exist
-    ensure_directory_exists(os.path.dirname(output_file))
-    with open(output_file, "w", encoding="utf-8") as out:
+    # Generate and write template
+    template_instance = generate_template(copy.deepcopy(schema_clean))
+    with open(template_path, "w", encoding="utf-8") as out:
         json.dump(template_instance, out, indent=2)
+    print(f"Template instance saved to: {template_path}")
 
-    # Customize the JSON schema to generate dynamic schema
-    dynamic_schema = generate_dynamic_schema(schema_copy_drop3, top_class, options.get('options', {}))
-    
-    # Validate the customized schema
+    # Generate, validate, and write dynamic schema
+    dynamic_schema = generate_dynamic_schema(copy.deepcopy(schema_clean), top_class, options.get('options', {}))
     validate_schema(dynamic_schema)
-
-    # Write the fully expanded customized schema (dynamic) to the output file.
-    output_file = os.path.join(schema_dir, "dynamic", f"{top_class}.json")
-    # Ensure output directories exist
-    ensure_directory_exists(os.path.dirname(output_file))
-    with open(output_file, "w", encoding="utf-8") as out:
+    with open(dynamic_schema_path, "w", encoding="utf-8") as out:
         json.dump(dynamic_schema, out, indent=2)
-    print(f"Expanded dynamic schema saved to: {output_file}")
+    print(f"Expanded dynamic schema saved to: {dynamic_schema_path}")
 
 def main():
     parser = argparse.ArgumentParser(description="Generate and customize JSON schema from LinkML YAML file.")
     parser.add_argument("--input_file", help="The input YAML file defining the LinkML data model.", default="../song_schema/linkml/pcgl_song_schema.yaml")
     parser.add_argument("--config_file", help="The configuration file with key-value pairs for top_class options.", default="../song_schema/conf/options.json")
     parser.add_argument("--output_schema_dir", help="The directory to save the expanded schemas.", default="../song_schema/json-schema")
-    parser.add_argument("--output_payload_example_dir", help="The directory to save the SONG example payloads.", default="../test_data/song_payload")
-
+    
     args = parser.parse_args()
 
     # Load the configuration file
@@ -294,7 +232,7 @@ def main():
     # Loop through each key in the configuration file and generate JSON schema for each top_class
     for top_class, options in config.items():
         # output_file = os.path.join(args.output_dir, f"{top_class}")
-        process_schema(args.input_file, top_class, options, args.output_schema_dir, args.output_payload_example_dir)
+        process_schema(args.input_file, top_class, options, args.output_schema_dir)
 
 if __name__ == "__main__":
     main()
