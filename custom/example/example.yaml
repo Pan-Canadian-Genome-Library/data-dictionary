@@ -31,7 +31,7 @@ classes:
   Exposure:
     is_a: base_Exposure
   Follow_up:
-    is_a: base_Follow_up
+    is_a: base_Follow_Up
   Measurement:
     is_a: base_Measurement
   Medication:
