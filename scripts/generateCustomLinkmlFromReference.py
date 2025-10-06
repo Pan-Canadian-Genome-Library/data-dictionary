@@ -58,6 +58,7 @@ def main():
 	else:
 		work_dir="/".join(cli_input.custom_schema.split("/")[:-3])
 
+	#print("work_dir=%s"%work_dir)
 	reference_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 	updated_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 
@@ -135,26 +136,25 @@ def generateBaseAndExtenstionMappings(custom_schema,model,working_directory):
 					print("Error cannot find the following file : %s/base/base.yaml" % (working_directory))
 					exit(1)
 			elif "extension" in  model.classes[class_key]['is_a']:
-				if os.path.exists("%s/%s" % (working_directory,custom_schema.replace("custom","extension"))):
+				if os.path.exists("%s/%s" % (working_directory, os.path.split(custom_schema)[0].replace("custom","extension"))):
 					#print("%s/%s.yaml" % (working_directory,import_key))
-					tmp_model=yaml_loader.load(custom_schema.replace("custom","extension"), SchemaDefinition)
 					### If import is from extension and base, match yaml and class names for both
-					#print(tmp_model.classes.keys())
-					#print(model.classes[class_key]['is_a'])
-					if tmp_model.classes[model.classes[class_key]['is_a']]['is_a'] is not None:
-						#print("%s yatzee B.A" % (import_key))
-						mapping[class_key]={
-						"base_import": "%s/base/base.yaml" % (working_directory),
-						"extension_import": "%s/%s" % (working_directory,custom_schema.replace("custom","extension")),
-						"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
-						"extension_import_name": model.classes[class_key]['is_a'],
-						}
+					if 'is_a' in model.classes[class_key]['is_a']:
+						if model.classes[class_key]['is_a']['is_a'] is not None:
+							#print("%s yatzee B.A" % (import_key))
+							mapping[class_key]={
+							"base_import": "%s/base/base.yaml" % (working_directory),
+							"extension_import": "%s/%s/%s" % (working_directory,custom_schema.replace("custom","extension"),model.classes[class_key]['is_a'].split("_")[-1].lower()),
+							"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
+							"extension_import_name": model.classes[class_key]['is_a'],
+							}
 					else:
 						### If import is from extension only, match yaml and class names for extension
 						#print("%s yatzee B.B" % (import_key))
+						extension_name = "%s.yaml"%model.classes[class_key]['is_a'].split("_")[-1].lower()
 						mapping[class_key]={
 						"base_import": None,
-						"extension_import": "%s/%s" % (working_directory,custom_schema.replace("custom","extension")),
+						"extension_import": "%s/%s/%s" % (working_directory,os.path.split(custom_schema)[0].replace("custom","extension"),extension_name),
 						"base_import_name": None,
 						"extension_import_name": model.classes[class_key]['is_a'],
 						}
