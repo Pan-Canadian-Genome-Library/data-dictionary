@@ -9,6 +9,7 @@ prefixes:
 imports:
   - linkml:types
   - base/comorbidity
+  - base/diagnosis
   - extension/example/demographic
   - extension/example/diagnosis
   - base/exposure
