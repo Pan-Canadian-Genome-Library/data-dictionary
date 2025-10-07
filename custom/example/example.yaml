@@ -9,6 +9,7 @@ prefixes:
 imports:
   - linkml:types
   - base/comorbidity
+  - base/diagnosis
   - extension/example/demographic
   - extension/example/diagnosis
   - base/exposure
@@ -31,7 +32,7 @@ classes:
   Exposure:
     is_a: base_Exposure
   Follow_up:
-    is_a: base_Follow_up
+    is_a: base_Follow_Up
   Measurement:
     is_a: base_Measurement
   Medication:
