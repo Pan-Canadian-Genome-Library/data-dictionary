@@ -139,15 +139,16 @@ def generateBaseAndExtenstionMappings(custom_schema,model,working_directory):
 				if os.path.exists("%s/%s" % (working_directory, os.path.split(custom_schema)[0].replace("custom","extension"))):
 					#print("%s/%s.yaml" % (working_directory,import_key))
 					### If import is from extension and base, match yaml and class names for both
-					if 'is_a' in model.classes[class_key]['is_a']:
-						if model.classes[class_key]['is_a']['is_a'] is not None:
-							#print("%s yatzee B.A" % (import_key))
-							mapping[class_key]={
-							"base_import": "%s/base/base.yaml" % (working_directory),
-							"extension_import": "%s/%s/%s" % (working_directory,custom_schema.replace("custom","extension"),model.classes[class_key]['is_a'].split("_")[-1].lower()),
-							"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
-							"extension_import_name": model.classes[class_key]['is_a'],
-							}
+					class_key_path = "%s/%s.yaml"%(os.path.split(custom_schema)[0].replace("custom", "extension"), class_key.lower())
+					tmp_model=yaml_loader.load(class_key_path, SchemaDefinition)
+					if tmp_model.classes[model.classes[class_key]['is_a']]['is_a'] is not None:
+						#print("%s yatzee B.A" % (import_key))
+						mapping[class_key]={
+						"base_import": "%s/base/base.yaml" % (working_directory),
+						"extension_import": "%s/%s/%s.yaml" % (working_directory,os.path.split(custom_schema)[0].replace("custom","extension"),model.classes[class_key]['is_a'].split("_")[-1].lower()),
+						"base_import_name": tmp_model.classes[model.classes[class_key]['is_a']]['is_a'],
+						"extension_import_name": model.classes[class_key]['is_a'],
+						}
 					else:
 						### If import is from extension only, match yaml and class names for extension
 						#print("%s yatzee B.B" % (import_key))
