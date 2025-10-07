@@ -1,15 +1,15 @@
 {
   "name": "example_extended_schema",
   "description": "...",
-  "version": "2.2.1.0",
+  "version": "1.1.1.0",
   "schemas": [
     {
       "name": "comorbidity",
-      "description": "TBA...",
+      "description": "Any medical conditions (e.g diabetes, prior cancer malignancies) that have existed or may occur during the clinical course of the participant who has the index disease under study.",
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -35,7 +35,7 @@
         },
         {
           "meta": {
-            "displayName": "Age At Comorbidity Diagnosis"
+            "displayName": "age_at_comorbidity_diagnosis"
           },
           "name": "age_at_comorbidity_diagnosis",
           "description": "Indicate the age (in days) of comorbidity diagnosis.",
@@ -43,22 +43,46 @@
         },
         {
           "meta": {
-            "displayName": "Comorbidity Code",
+            "displayName": "comorbidity_code",
             "required": [
               "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+            ],
+            "examples": [
+              "MONDO:0000001",
+              "icd10:C34"
             ]
           },
           "name": "comorbidity_code",
-          "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.",
+          "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$"
+            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Comorbidity Term",
+            "displayName": "comorbidity_status"
+          },
+          "name": "comorbidity_status",
+          "description": "Indicate the current state or activity of the comorbid condition.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Active",
+              "In Remission",
+              "Resolved",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "comorbidity_term",
             "mappings": {
               "mCODE.STU3": "condition.code",
               "FHIR": "condition.code",
@@ -71,7 +95,7 @@
         },
         {
           "meta": {
-            "displayName": "Comorbidity Treatment Status"
+            "displayName": "comorbidity_treatment_status"
           },
           "name": "comorbidity_treatment_status",
           "description": "Indicate whether the comorbid condition is currently being treated or not.",
@@ -80,24 +104,12 @@
             "codeList": [
               "Treated and resolved",
               "Under treatment",
-              "Unknown",
-              "Untreated"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Comorbidity Status"
-          },
-          "name": "comorbidity_status",
-          "description": "Indicate the current state or activity of the comorbid condition.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Active",
-              "In Remission",
-              "Resolved",
-              "Unknown"
+              "Untreated",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
             ]
           }
         }
@@ -122,7 +134,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -148,137 +160,70 @@
         },
         {
           "meta": {
-            "displayName": "Gender",
-            "mappings": {
-              "mCODE.STU3": "Patient.gender",
-              "FHIR": "Patient.gender",
-              "Phenopacket": "individual.gender",
-              "BeaconV2": "individual.gender"
-            },
-            "required": [
-              "EDI indicator"
-            ]
+            "displayName": "age_at_death"
           },
-          "name": "gender",
-          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Man",
-              "Missing",
-              "Non-binary person",
-              "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Restricted Access",
-              "Woman"
-            ]
-          },
-          "valueType": "string"
+          "name": "age_at_death",
+          "description": "Age of participant (in days) at time of death",
+          "valueType": "integer"
         },
         {
           "meta": {
-            "displayName": "Sex At Birth",
-            "mappings": {
-              "All4One": "Biological_sex",
-              "CQDG": "Sex",
-              "mCODE.STU3": "Patient.extension.birthsex",
-              "FHIR": "Patient.extension.birthsex",
-              "Phenopacket": "individual.sex",
-              "BeaconV2": "individual.sex"
-            },
-            "required": [
-              "EDI indicator"
-            ]
+            "displayName": "age_at_enrollment"
           },
-          "name": "sex_at_birth",
-          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Female",
-              "Male",
-              "Missing",
-              "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Restricted Access"
-            ]
-          },
-          "valueType": "string"
+          "name": "age_at_enrollment",
+          "description": "Age (in days) of participant at time of enrollment into the study",
+          "valueType": "integer"
         },
         {
           "meta": {
-            "displayName": "Ethnicity",
+            "displayName": "cause_of_death",
             "mappings": {
-              "mCODE.STU3": "Patient.extension.ethnicity",
-              "FHIR": "Patient.extension.ethnicity"
-            },
-            "required": [
-              "EDI indicator"
-            ]
+              "ARGO": "cause_of_death",
+              "MOH": "cause_of_death"
+            }
           },
-          "name": "ethnicity",
-          "description": "Refers to the ethnic or cultural origins of a person\u2019s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+          "name": "cause_of_death",
+          "description": "Indicate the cause of a participant's death.",
+          "valueType": "string",
           "restrictions": {
-            "required": true,
             "codeList": [
-              "African",
-              "Asian",
-              "Caribbean",
-              "European",
-              "Latin, Central and South American",
-              "Missing",
-              "North American",
+              "Died of cancer",
+              "Died of other reasons",
               "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Oceanian",
-              "Other ethnic and cultural",
-              "Restricted Access"
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
             ]
-          },
-          "valueType": "string"
+          }
         },
         {
           "meta": {
-            "displayName": "Race",
+            "displayName": "vital_status",
             "mappings": {
-              "mCODE.STU3": "Patient.extension.race",
-              "FHIR": "Patient.extension.race"
-            },
-            "required": [
-              "EDI indicator"
-            ]
+              "CQDG": "vital_status",
+              "Phenopacket": "individual.vital_status",
+              "BeaconV2": "individual.vital_status"
+            }
           },
-          "name": "race",
-          "description": "A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance",
+          "name": "vital_status",
+          "description": "Participant's last known state of living or deceased.",
+          "valueType": "string",
           "restrictions": {
-            "required": true,
             "codeList": [
-              "Another race category",
-              "Black",
-              "Do not know",
-              "East Asian",
-              "Indigenous (First Nations, Inuk/Inuit, Metis)",
-              "Latin American",
-              "Middle Eastern",
-              "Missing",
+              "Alive",
+              "Deceased",
               "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Prefer not to answer",
-              "Restricted Access",
-              "South Asian",
-              "Southeast Asian",
-              "White"
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
             ]
-          },
-          "valueType": "string"
+          }
         },
         {
           "meta": {
-            "displayName": "Country Of Birth"
+            "displayName": "country_of_birth"
           },
           "name": "country_of_birth",
           "description": "The country where an individual was born, typically defined by current geopolitical borders.",
@@ -286,7 +231,7 @@
         },
         {
           "meta": {
-            "displayName": "Ancestry"
+            "displayName": "ancestry"
           },
           "name": "ancestry",
           "description": "The genetic or genomic heritage of an individual, typically tracing the origins of one's ancestors.",
@@ -294,7 +239,7 @@
         },
         {
           "meta": {
-            "displayName": "Height"
+            "displayName": "height"
           },
           "name": "height",
           "description": "The measurement of an individual from head to toe recorded in centimeters (cm).",
@@ -302,7 +247,7 @@
         },
         {
           "meta": {
-            "displayName": "Weight"
+            "displayName": "weight"
           },
           "name": "weight",
           "description": "The mass or body weight of an individual measured in kilograms (kg).",
@@ -310,7 +255,7 @@
         },
         {
           "meta": {
-            "displayName": "Highest Education Level Achieved"
+            "displayName": "highest_education_level_achieved"
           },
           "name": "highest_education_level_achieved",
           "description": "The highest level of formal education an individual has completed.",
@@ -318,7 +263,7 @@
         },
         {
           "meta": {
-            "displayName": "Employment"
+            "displayName": "employment"
           },
           "name": "employment",
           "description": "The current work status of an individual.",
@@ -326,7 +271,7 @@
         },
         {
           "meta": {
-            "displayName": "Type Of Residence"
+            "displayName": "type_of_residence"
           },
           "name": "type_of_residence",
           "description": "The kind of dwelling in which an individual lives.",
@@ -334,7 +279,7 @@
         },
         {
           "meta": {
-            "displayName": "Number Of Other People In Household"
+            "displayName": "number_of_other_people_in_household"
           },
           "name": "number_of_other_people_in_household",
           "description": "The total number of individuals living in the same household as the participant, excluding the participant.",
@@ -342,7 +287,7 @@
         },
         {
           "meta": {
-            "displayName": "Pregnancy"
+            "displayName": "pregnancy"
           },
           "name": "pregnancy",
           "description": "Indicates whether an individual is currently pregnant.",
@@ -376,7 +321,32 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_diagnosis_id",
+            "mappings": {
+              "mCODE.STU1": "Condition.identifier",
+              "mCODE.STU2": "Condition.identifier",
+              "FHIR": "condition.code",
+              "ARGO": "submitter_diagnosis_id",
+              "MOH": "submitter_diagnosis_id"
+            },
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_diagnosis_id",
+          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -402,32 +372,7 @@
         },
         {
           "meta": {
-            "displayName": "Submitter Diagnosis Id",
-            "mappings": {
-              "mCODE.STU1": "Condition.identifier",
-              "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code",
-              "ARGO": "submitter_diagnosis_id",
-              "MOH": "submitter_diagnosis_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_diagnosis_id",
-          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          },
-          "valueType": "string",
-          "unique": true
-        },
-        {
-          "meta": {
-            "displayName": "Age At Diagnosis",
+            "displayName": "age_at_diagnosis",
             "mappings": {
               "mCODE.STU3": "condition.onset",
               "FHIR": "condition.onset",
@@ -442,7 +387,7 @@
         },
         {
           "meta": {
-            "displayName": "Disease Code",
+            "displayName": "disease_code",
             "mappings": {
               "mCODE.STU3": "condition.code",
               "FHIR": "condition.code",
@@ -453,19 +398,23 @@
             },
             "required": [
               "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+            ],
+            "examples": [
+              "MONDO:0000001",
+              "icd10:C34"
             ]
           },
           "name": "disease_code",
           "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
           "restrictions": {
             "required": true,
-            "regex": "^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$"
+            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Disease Term",
+            "displayName": "disease_term",
             "mappings": {
               "mCODE.STU3": "condition.code",
               "FHIR": "condition.code",
@@ -478,23 +427,7 @@
         },
         {
           "meta": {
-            "displayName": "Disease Category"
-          },
-          "name": "disease_category",
-          "description": "A broader classification that groups diseases into categories.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Autoimmune disorder",
-              "Cancer",
-              "Infectious disease"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Covid19 Severity"
+            "displayName": "covid19_severity"
           },
           "name": "covid19_severity",
           "description": "A measure of the severity of a COVID-19 infection, which can range from mild to severe or critical.",
@@ -516,7 +449,7 @@
         },
         {
           "meta": {
-            "displayName": "Covid19 Vaccine Doses"
+            "displayName": "covid19_vaccine_doses"
           },
           "name": "covid19_vaccine_doses",
           "description": "The number of COVID-19 vaccine doses the patient has received.",
@@ -549,11 +482,11 @@
     },
     {
       "name": "exposure",
-      "description": "TBA...",
+      "description": "Capture information about external factors, agents, or conditions an individual has encountered that may influence health or disease outcomes.",
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -579,71 +512,86 @@
         },
         {
           "meta": {
-            "displayName": "Alcohol Consumption",
-            "mappings": {
-              "ARGO": "alcohol_consumption",
-              "MOH": "alcohol_consumption",
-              "CQDG": "alcohol_consumption"
-            },
-            "required": [
-              "Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion."
-            ]
+            "displayName": "age_at_exposure"
           },
-          "name": "alcohol_consumption",
-          "description": "Indicate current alcohol consumtion based on recommended daily limit.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Alcohol consumption unknown",
-              "Alcohol intake exceeds recommended daily limit",
-              "Alcohol intake within recommended daily limit",
-              "No alcohol consumption"
-            ]
-          }
+          "name": "age_at_exposure",
+          "description": "Age (in days) when the participant was exposed (or first exposed)        ",
+          "valueType": "integer"
         },
         {
           "meta": {
-            "displayName": "Smoking Status",
-            "mappings": {
-              "ARGO": "smoking_status",
-              "MOH": "smoking_status",
-              "CQDG": "smoking_status"
-            }
+            "displayName": "exposure_amount"
           },
-          "name": "smoking_status",
-          "description": "Indicate smoking status and history of a participant at the time of the data collection.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Current reformed smoker for <= 15 years",
-              "Current reformed smoker for > 15 years",
-              "Current reformed smoker, duration not specified",
-              "Current smoker",
-              "Lifelong non-smoker (<100 cigarettes smoked in lifetime)",
-              "Not applicable",
-              "Smoking history not documented"
-            ]
-          }
+          "name": "exposure_amount",
+          "description": "Provide intensity, quantity or frequency of the exposure",
+          "valueType": "integer"
         },
         {
           "meta": {
-            "displayName": "Physical Activity"
+            "displayName": "exposure_code",
+            "examples": [
+              "LOINC:43164-0"
+            ]
           },
-          "name": "physical_activity",
-          "description": "Indicate how many times per week the participant exercises for at least 30 minutes.",
-          "valueType": "string",
+          "name": "exposure_code",
+          "description": "Provide the standardized codes from SNOMED CT, ExO, LOINC to represent the type of exposure.\nProvide code in Compact URI (CURIE) pattern.\n",
           "restrictions": {
+            "required": true,
+            "regex": "^snomedct:(\\w+)?\\d+$|^ExO:\\d{7}$|^LOINC:[0-9]{1,5}-[0-9]$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_duration"
+          },
+          "name": "exposure_duration",
+          "description": "Duration of exposure period",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_status"
+          },
+          "name": "exposure_status",
+          "description": "Provide the status of the exposure",
+          "restrictions": {
+            "required": true,
             "codeList": [
-              "1-3 times a month",
-              "Every day",
-              "Less than once a month",
-              "Most days but not every day",
+              "Current",
+              "Former",
               "Never",
-              "Not applicable",
-              "Once or twice a week",
-              "Unknown"
+              "Exposed - Current Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
             ]
-          }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_term",
+            "examples": [
+              "Alcohol use"
+            ]
+          },
+          "name": "exposure_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the exposure_code",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_unit",
+            "examples": [
+              "drinks/day"
+            ]
+          },
+          "name": "exposure_unit",
+          "description": "Unit associated with exposure_amount",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -666,7 +614,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -692,7 +640,7 @@
         },
         {
           "meta": {
-            "displayName": "Age At Followup"
+            "displayName": "age_at_followup"
           },
           "name": "age_at_followup",
           "description": "Participant's age (in days) at time of the follow up event",
@@ -700,7 +648,7 @@
         },
         {
           "meta": {
-            "displayName": "Disease Status At Followup"
+            "displayName": "disease_status_at_followup"
           },
           "name": "disease_status_at_followup",
           "description": "Indicate the participant's disease status at time of follow-up",
@@ -740,7 +688,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -766,7 +714,7 @@
         },
         {
           "meta": {
-            "displayName": "Age At Measurement"
+            "displayName": "age_at_measurement"
           },
           "name": "age_at_measurement",
           "description": "Age (in days) of the participant at the time the lab test or measurement was conducted.",
@@ -774,7 +722,7 @@
         },
         {
           "meta": {
-            "displayName": "Measurement Code",
+            "displayName": "measurement_code",
             "required": [
               "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}"
             ]
@@ -789,15 +737,15 @@
         },
         {
           "meta": {
-            "displayName": "Measurement Term"
+            "displayName": "measurement_result_categorical"
           },
-          "name": "measurement_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the measurement_code",
+          "name": "measurement_result_categorical",
+          "description": "The categorical result of the lab test or measurement.",
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Measurement Result Numeric"
+            "displayName": "measurement_result_numeric"
           },
           "name": "measurement_result_numeric",
           "description": "The numeric result of the lab test or measurement.",
@@ -805,19 +753,22 @@
         },
         {
           "meta": {
-            "displayName": "Measurement Unit"
+            "displayName": "measurement_term"
           },
-          "name": "measurement_unit",
-          "description": "Indicate the unit of measurement for the result using LOINC code.",
+          "name": "measurement_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the measurement_code",
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Measurement Result Categorical"
+            "displayName": "measurement_unit"
           },
-          "name": "measurement_result_categorical",
-          "description": "The categorical result of the lab test or measurement.",
-          "valueType": "string"
+          "name": "measurement_unit",
+          "description": "Indicate the unit of measurement for the result using LOINC code.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^UO:\\d{7}$"
+          }
         }
       ],
       "restrictions": {
@@ -840,7 +791,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Treatment Id",
+            "displayName": "submitter_treatment_id",
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -857,22 +808,47 @@
         },
         {
           "meta": {
-            "displayName": "Drug Code",
+            "displayName": "actual_cumulative_drug_dose"
+          },
+          "name": "actual_cumulative_drug_dose",
+          "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "drug_code",
             "required": [
               "Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}"
+            ],
+            "examples": [
+              "rxnorm:221058",
+              "kegg.drug:D00123",
+              "pubchem.compound:100101",
+              "NCIT:C138986"
             ]
           },
           "name": "drug_code",
           "description": "Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt to represent the drug.",
           "restrictions": {
             "required": true,
-            "regex": "^RxNorm:\\d{1,8}$|^KEGG:D\\\\d{5}$|^PubChem:\\\\d{1,9}$|^NCIt:C\\\\d{1,7}$"
+            "regex": "^rxnorm:\\d{1,8}$|^kegg\\.drug:D\\d+$|^pubchem\\.chem:\\d+$|^NCIT:C\\d{1,7}$"
           },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Drug Term"
+            "displayName": "drug_dose_units"
+          },
+          "name": "drug_dose_units",
+          "description": "Indicate units used to record drug dose.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^UO:\\d{7}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "drug_term"
           },
           "name": "drug_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
@@ -880,38 +856,10 @@
         },
         {
           "meta": {
-            "displayName": "Drug Dose Units"
-          },
-          "name": "drug_dose_units",
-          "description": "Indicate units used to record drug dose.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "IU/kg",
-              "IU/m2",
-              "Not available",
-              "g/m2",
-              "mg",
-              "mg/kg",
-              "mg/m2",
-              "ug/m2"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Prescribed Cumulative Drug Dose"
+            "displayName": "prescribed_cumulative_drug_dose"
           },
           "name": "prescribed_cumulative_drug_dose",
           "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
-          "valueType": "number"
-        },
-        {
-          "meta": {
-            "displayName": "Actual Cumulative Drug Dose"
-          },
-          "name": "actual_cumulative_drug_dose",
-          "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
           "valueType": "number"
         }
       ],
@@ -935,21 +883,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Study Id",
-            "mappings": {
-              "CQDG": "study_id"
-            }
-          },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -976,66 +910,90 @@
         },
         {
           "meta": {
-            "displayName": "Age At Enrollment"
+            "displayName": "study_id",
+            "mappings": {
+              "ARGO": "studyId",
+              "CQDG": "study_id"
+            }
           },
-          "name": "age_at_enrollment",
-          "description": "Age (in days) of participant at time of enrollment into the study",
-          "valueType": "integer"
+          "name": "study_id",
+          "description": "Unique identifier of the study.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Vital Status",
+            "displayName": "disease_specific_modifier",
+            "examples": [
+              "MONDO:0000001"
+            ]
+          },
+          "name": "disease_specific_modifier",
+          "description": "If the permission is DUO:0000007 (disease specific research), then MONDO codes must be provided to specify which disease(s) apply.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^MONDO:\\d{7}$"
+          },
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "duo_modifier",
             "mappings": {
-              "CQDG": "vital_status",
-              "Phenopacket": "individual.vital_status",
-              "BeaconV2": "individual.vital_status"
+              "CQDG": "duo_modifier"
             }
           },
-          "name": "vital_status",
-          "description": "Participant's last known state of living or deceased.",
+          "name": "duo_modifier",
+          "description": "Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to add requirements, limitations, or prohibitions within the permitted boundary for the Participant data.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
-              "Alive",
-              "Deceased",
-              "Missing",
-              "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Restricted Access"
+              "DUO:0000043 (clinical care use)",
+              "DUO:0000029 (return to database or resource)",
+              "DUO:0000028 (institution specific restriction)",
+              "DUO:0000027 (project specific restriction)",
+              "DUO:0000026 (user specific restriction)",
+              "DUO:0000025 (time limit on use)",
+              "DUO:0000024 (publication moratorium)",
+              "DUO:0000022 (geographical restriction)",
+              "DUO:0000021 (ethics approval required)",
+              "DUO:0000020 (collaboration required)",
+              "DUO:0000019 (publication required)",
+              "DUO:0000018 (not for profit, non commercial use only)",
+              "DUO:0000046 (non-commercial use only)",
+              "DUO:0000045 (not for profit organisation use only)",
+              "DUO:0000016 (genetic studies only)",
+              "DUO:0000015 (no general methods research)",
+              "DUO:0000012 (research specific restrictions)",
+              "DUO:00000044 (population origins or ancestry research prohibited)"
             ]
-          }
+          },
+          "isArray": true,
+          "delimiter": "|"
         },
         {
           "meta": {
-            "displayName": "Cause Of Death",
+            "displayName": "duo_permission",
             "mappings": {
-              "ARGO": "cause_of_death",
-              "MOH": "cause_of_death"
+              "CQDG": "duo_permission"
             }
           },
-          "name": "cause_of_death",
-          "description": "Indicate the cause of a participant's death.",
-          "valueType": "string",
+          "name": "duo_permission",
+          "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Participant data.",
           "restrictions": {
+            "required": true,
             "codeList": [
-              "Died of cancer",
-              "Died of other reasons",
-              "Missing",
-              "Not Applicable",
-              "Not Collected",
-              "Not Provided",
-              "Restricted Access"
+              "DUO:0000042 (general research use)",
+              "DUO:0000006 (health or medical or biomedical research)",
+              "DUO:0000007 (disease specific research)",
+              "DUO:0000011 (population origins or ancestry research only)",
+              "DUO:0000004 (no restriction)"
             ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Age At Death"
           },
-          "name": "age_at_death",
-          "description": "Age of participant (in days) at time of death",
-          "valueType": "integer"
+          "valueType": "string"
         }
       ]
     },
@@ -1045,7 +1003,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -1071,7 +1029,7 @@
         },
         {
           "meta": {
-            "displayName": "Age At Phenotype"
+            "displayName": "age_at_phenotype"
           },
           "name": "age_at_phenotype",
           "description": "Participant's age (in days) when phenotype was observed",
@@ -1079,7 +1037,7 @@
         },
         {
           "meta": {
-            "displayName": "Phenotype Code",
+            "displayName": "phenotype_code",
             "required": [
               "Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>"
             ]
@@ -1094,15 +1052,15 @@
         },
         {
           "meta": {
-            "displayName": "Phenotype Term"
+            "displayName": "phenotype_duration"
           },
-          "name": "phenotype_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.",
-          "valueType": "string"
+          "name": "phenotype_duration",
+          "description": "Indicate the length of time (in days) over which the phenotype was observed in the participant.",
+          "valueType": "integer"
         },
         {
           "meta": {
-            "displayName": "Phenotype Observed"
+            "displayName": "phenotype_observed"
           },
           "name": "phenotype_observed",
           "description": "Indicate whether the phenotype was observed in the participant.",
@@ -1118,15 +1076,7 @@
         },
         {
           "meta": {
-            "displayName": "Phenotype Duration"
-          },
-          "name": "phenotype_duration",
-          "description": "Indicate the length of time (in days) over which the phenotype was observed in the participant.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Phenotype Severity",
+            "displayName": "phenotype_severity",
             "required": [
               "Permissible values from https://hpo.jax.org/browse/term/HP:0012824"
             ]
@@ -1143,6 +1093,14 @@
               "Severe"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "phenotype_term"
+          },
+          "name": "phenotype_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1165,7 +1123,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Treatment Id",
+            "displayName": "submitter_treatment_id",
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1182,30 +1140,7 @@
         },
         {
           "meta": {
-            "displayName": "Procedure Code",
-            "required": [
-              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>"
-            ]
-          },
-          "name": "procedure_code",
-          "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.",
-          "restrictions": {
-            "required": true,
-            "regex": "^NCIt:C\\d{1,7}$|^SNOMEDCT:\\d{6,9}$|^UMLS:C\\d{7}$|^CCI:\\d\\.[A-Z]{2}\\.\\d{2}\\.[A-Z]{2}$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Procedure Term"
-          },
-          "name": "procedure_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Procedure Body Site Code",
+            "displayName": "procedure_body_site_code",
             "mappings": {
               "mCODE.STU3": "Specimen.collection.bodySite",
               "FHIR": "Specimen.collection.bodySite",
@@ -1222,17 +1157,47 @@
           },
           "name": "procedure_body_site_code",
           "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.",
-          "valueType": "string",
           "restrictions": {
-            "regex": "^[C][0-9]{2}(.[0-9]{1})?$"
-          }
+            "required": true,
+            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+          },
+          "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Procedure Body Site Term"
+            "displayName": "procedure_body_site_term"
           },
           "name": "procedure_body_site_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_code",
+            "required": [
+              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL: https://www.cihi.ca/en/cci-coding-structure"
+            ],
+            "examples": [
+              "NCIT:C51894",
+              "snomedct:284196006",
+              "umls:C2584994",
+              "CCI:1CA14STCDR"
+            ]
+          },
+          "name": "procedure_code",
+          "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.",
+          "restrictions": {
+            "required": true,
+            "regex": "^NCIT:C\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_term"
+          },
+          "name": "procedure_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
           "valueType": "string"
         }
       ],
@@ -1256,33 +1221,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Submitter Participant Id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Submitter Specimen Id",
+            "displayName": "submitter_specimen_id",
             "mappings": {
               "CQDG": "submitter_biospecimen_id",
               "mCODE.STU3": "Specimen.Identifier",
@@ -1309,171 +1248,7 @@
         },
         {
           "meta": {
-            "displayName": "Specimen Tissue Source Code",
-            "mappings": {
-              "CQDG": "biospecimen_tissue_source",
-              "mCODE.STU3": "Specimen.type",
-              "FHIR": "Specimen.type",
-              "Phenopacket": "biosample.sampled_tissue",
-              "BeaconV2": "biosample.sampled_tissue"
-            }
-          },
-          "name": "specimen_tissue_source_code",
-          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
-          "restrictions": {
-            "required": true,
-            "regex": "^NCIT:C[0-9]+$|^SNOMEDCT:[0-9]+$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Tissue Source Term"
-          },
-          "name": "specimen_tissue_source_term",
-          "description": "Indicate the human readable label for the specimen tissue source code.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Storage",
-            "mappings": {
-              "Phenopacket": "biosample.sample_storage",
-              "BeaconV2": "biosample.sample_storage",
-              "ARGO": "specimen_storage",
-              "MOH": "specimen_storage"
-            }
-          },
-          "name": "specimen_storage",
-          "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Cut slide",
-              "Frozen in -70 freezer",
-              "Frozen in liquid nitrogen",
-              "Frozen in vapour phase",
-              "Not Applicable",
-              "Other",
-              "Paraffin block",
-              "RNA later frozen",
-              "Unknown"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Processing",
-            "mappings": {
-              "Phenopacket": "biosample.sample_processing",
-              "BeaconV2": "biosample.sample_processing",
-              "ARGO": "specimen_processing",
-              "MOH": "specimen_processing"
-            }
-          },
-          "name": "specimen_processing",
-          "description": "Indicate the technique used to process specimen.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Cryopreservation - other",
-              "Cryopreservation in dry ice (dead tissue)",
-              "Cryopreservation in liquid nitrogen (dead tissue)",
-              "Cryopreservation of live cells in liquid nitrogen",
-              "Formalin fixed & paraffin embedded",
-              "Formalin fixed - buffered",
-              "Formalin fixed - unbuffered",
-              "Fresh",
-              "Other",
-              "Unknown"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Age At Specimen Collection"
-          },
-          "name": "age_at_specimen_collection",
-          "description": "Indicate participant's age( in days) when specimen was collected.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Anatomic Location Code",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite",
-              "ARGO": "specimen_anatomic_location_code",
-              "MOH": "specimen_anatomic_location_code"
-            },
-            "required": [
-              "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
-            ],
-            "examples": [
-              "C50.1",
-              "C18"
-            ]
-          },
-          "name": "specimen_anatomic_location_code",
-          "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
-          "valueType": "string",
-          "restrictions": {
-            "regex": "^[C][0-9]{2}(.[0-9]{1})?$"
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Anatomic Location Label"
-          },
-          "name": "specimen_anatomic_location_label",
-          "description": "Provide the human readable label for the specimen anatomic location code.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "Specimen Laterality",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite.extension.lateralityQualifier",
-              "FHIR": "Specimen.collection.bodySite.extension.lateralityQualifier"
-            },
-            "required": [
-              "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
-            ]
-          },
-          "name": "specimen_laterality",
-          "description": "For cancer in a paired organ, indicate the side on which the specimen was obtained.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "Left",
-              "Not applicable",
-              "Right",
-              "Unknown"
-            ]
-          }
-        }
-      ],
-      "restrictions": {
-        "foreignKey": [
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "treatment",
-      "description": "Medications, procedures, other actions taken for clinical management",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "Submitter Participant Id",
+            "displayName": "submitter_participant_id",
             "mappings": {
               "CQDG": "submitter_participant_id",
               "mCODE.STU3": "Patient.Identifier",
@@ -1499,7 +1274,185 @@
         },
         {
           "meta": {
-            "displayName": "Submitter Treatment Id",
+            "displayName": "age_at_specimen_collection"
+          },
+          "name": "age_at_specimen_collection",
+          "description": "Indicate participant's age( in days) when specimen was collected.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "specimen_anatomic_location_code",
+            "mappings": {
+              "mCODE.STU3": "Specimen.collection.bodySite",
+              "FHIR": "Specimen.collection.bodySite",
+              "ARGO": "specimen_anatomic_location_code",
+              "MOH": "specimen_anatomic_location_code"
+            },
+            "required": [
+              "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
+            ],
+            "examples": [
+              "C50.1",
+              "C18"
+            ]
+          },
+          "name": "specimen_anatomic_location_code",
+          "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "specimen_anatomic_location_term",
+            "examples": [
+              "placental basal plate"
+            ]
+          },
+          "name": "specimen_anatomic_location_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen anatomic location code.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "specimen_laterality",
+            "mappings": {
+              "mCODE.STU3": "Specimen.collection.bodySite.extension.lateralityQualifier",
+              "FHIR": "Specimen.collection.bodySite.extension.lateralityQualifier"
+            },
+            "required": [
+              "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+            ]
+          },
+          "name": "specimen_laterality",
+          "description": "For cancer in a paired organ, indicate the side on which the specimen was obtained.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Left",
+              "Right",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "specimen_processing",
+            "mappings": {
+              "Phenopacket": "biosample.sample_processing",
+              "BeaconV2": "biosample.sample_processing",
+              "ARGO": "specimen_processing",
+              "MOH": "specimen_processing"
+            }
+          },
+          "name": "specimen_processing",
+          "description": "Indicate the technique used to process specimen.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Cryopreservation - other",
+              "Cryopreservation in dry ice (dead tissue)",
+              "Cryopreservation in liquid nitrogen (dead tissue)",
+              "Cryopreservation of live cells in liquid nitrogen",
+              "Formalin fixed & paraffin embedded",
+              "Formalin fixed - buffered",
+              "Formalin fixed - unbuffered",
+              "Fresh",
+              "Other",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "specimen_storage",
+            "mappings": {
+              "Phenopacket": "biosample.sample_storage",
+              "BeaconV2": "biosample.sample_storage",
+              "ARGO": "specimen_storage",
+              "MOH": "specimen_storage"
+            }
+          },
+          "name": "specimen_storage",
+          "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Cut slide",
+              "Frozen in -70 freezer",
+              "Frozen in liquid nitrogen",
+              "Frozen in vapour phase",
+              "Not Applicable",
+              "Other",
+              "Paraffin block",
+              "RNA later frozen",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "specimen_tissue_source_code",
+            "mappings": {
+              "CQDG": "biospecimen_tissue_source",
+              "mCODE.STU3": "Specimen.type",
+              "FHIR": "Specimen.type",
+              "Phenopacket": "biosample.sampled_tissue",
+              "BeaconV2": "biosample.sampled_tissue"
+            }
+          },
+          "name": "specimen_tissue_source_code",
+          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
+          "restrictions": {
+            "required": true,
+            "regex": "^NCIT:C[0-9]+$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "specimen_tissue_source_term"
+          },
+          "name": "specimen_tissue_source_term",
+          "description": "Indicate the human readable label for the specimen tissue source code.",
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "treatment",
+      "description": "Medications, procedures, other actions taken for clinical management",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_treatment_id",
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1512,29 +1465,62 @@
             "required": true,
             "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
           },
-          "valueType": "string"
+          "valueType": "string",
+          "unique": true
         },
         {
           "meta": {
-            "displayName": "Treatment Type"
-          },
-          "name": "treatment_type",
-          "description": "The category or method of treatment administered",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Medication",
-              "Pharmacotherapy",
-              "Procedure",
-              "Radiation therapy",
-              "Other"
+            "displayName": "submitter_diagnosis_id",
+            "mappings": {
+              "mCODE.STU1": "Condition.identifier",
+              "mCODE.STU2": "Condition.identifier",
+              "FHIR": "condition.code",
+              "ARGO": "submitter_diagnosis_id",
+              "MOH": "submitter_diagnosis_id"
+            },
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
             ]
           },
+          "name": "submitter_diagnosis_id",
+          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "Age At Treatment"
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "CQDG": "submitter_participant_id",
+              "mCODE.STU3": "Patient.Identifier",
+              "FHIR": "Patient.Identifier",
+              "Phenopacket": "individual.id",
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
+            },
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_treatment"
           },
           "name": "age_at_treatment",
           "description": "Age (in days) of the participant at the time the treatment was administered.",
@@ -1542,7 +1528,7 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Duration"
+            "displayName": "treatment_duration"
           },
           "name": "treatment_duration",
           "description": "The length of time (in days) over which the treatment was administered.",
@@ -1550,7 +1536,7 @@
         },
         {
           "meta": {
-            "displayName": "Treatment Intent"
+            "displayName": "treatment_intent"
           },
           "name": "treatment_intent",
           "description": "The purpose of the treatment or the desired effect or outcome resulting from the treatment.",
@@ -1564,13 +1550,19 @@
               "Palliative",
               "Preventative",
               "Screening",
-              "Supportive"
+              "Supportive",
+              "Other",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Not applicable"
             ]
           }
         },
         {
           "meta": {
-            "displayName": "Treatment Response",
+            "displayName": "treatment_response",
             "mappings": {
               "ARGO": "treatment_response",
               "MOH": "treatment_response",
@@ -1587,17 +1579,21 @@
               "Improvement of symptoms",
               "No improvement of symptoms",
               "No sign of disease",
-              "Not applicable",
               "Partial Response",
               "Stable Disease",
               "Treatment cessation due to toxicity",
-              "Worsening of symptoms"
+              "Worsening of symptoms",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
             ]
           }
         },
         {
           "meta": {
-            "displayName": "Treatment Status",
+            "displayName": "treatment_status",
             "mappings": {
               "ARGO": "treatment_status",
               "MOH": "treatment_status"
@@ -1608,7 +1604,6 @@
           "valueType": "string",
           "restrictions": {
             "codeList": [
-              "Not available",
               "Other",
               "Patient choice (stopped or interrupted treatment)",
               "Physician decision (stopped or interrupted treatment)",
@@ -1617,13 +1612,45 @@
               "Treatment incomplete due to technical or organizational problems",
               "Treatment ongoing",
               "Treatment stopped due to acute toxicity",
-              "Treatment stopped due to lack of efficacy (disease progression)"
+              "Treatment stopped due to lack of efficacy (disease progression)",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "treatment_type"
+          },
+          "name": "treatment_type",
+          "description": "The category or method of treatment administered",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Medication",
+              "Pharmacotherapy",
+              "Procedure",
+              "Radiation therapy",
+              "Other"
+            ]
+          },
+          "valueType": "string"
         }
       ],
       "restrictions": {
         "foreignKey": [
+          {
+            "schema": "diagnosis",
+            "mappings": [
+              {
+                "local": "submitter_diagnosis_id",
+                "foreign": "submitter_diagnosis_id"
+              }
+            ]
+          },
           {
             "schema": "participant",
             "mappings": [
@@ -1642,7 +1669,7 @@
       "fields": [
         {
           "meta": {
-            "displayName": "Image Hosted URL"
+            "displayName": "image_hosted_url"
           },
           "name": "image_hosted_url",
           "description": "A URL for where the image is hosted",
@@ -1650,7 +1677,7 @@
         },
         {
           "meta": {
-            "displayName": "Image Hosted Format"
+            "displayName": "image_hosted_format"
           },
           "name": "image_hosted_format",
           "description": "Accepted data types for images",
@@ -1666,7 +1693,7 @@
         },
         {
           "meta": {
-            "displayName": "Image Processing Pipeline"
+            "displayName": "image_processing_pipeline"
           },
           "name": "image_processing_pipeline",
           "description": "Post processing pipeline dependent on image_hosted_format where:\n - image_hosted_format is PNG, choices are \n* PipelineA\n* PipelineB\n* PipelineC\n - image_hosted_format is SVG, choices are \n* PipelineA\n* PipelineD\n* PipelineE\n - image_hosted_format is PDF or JPEG, choices are \n* PipelineA\n* PipelineD\n* PipelineF\n",
@@ -1743,7 +1770,7 @@
         },
         {
           "meta": {
-            "displayName": "Image Processing Personel"
+            "displayName": "image_processing_personel"
           },
           "name": "image_processing_personel",
           "description": "String value for the person who processed the image.\nMust be provided.If not 'image_processing_null_reason' must be provided",
@@ -1772,7 +1799,7 @@
         },
         {
           "meta": {
-            "displayName": "Image Processing Null Reason"
+            "displayName": "image_processing_null_reason"
           },
           "name": "image_processing_null_reason",
           "description": "Tracks reason for why image processing personnel was not provided.\nOnly applicable if image_processing_personnel is not provided.\nPossible values:\n* Unknown\n* Revoked\n* Not Provided\nOtherwise leave empty",
