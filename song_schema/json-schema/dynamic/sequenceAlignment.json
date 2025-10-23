@@ -9,7 +9,7 @@
     ],
     "externalValidations": [
       {
-        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "url": "https://submission.ingress.dev.k8s.pcgl.dev-sd4h.ca/health",
         "jsonPath": "submitter_experiment_id"
       }
     ]
