@@ -258,36 +258,6 @@
         },
         {
           "meta": {
-            "displayName": "ethnicity",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "required": [
-              "EDI indicator"
-            ]
-          },
-          "name": "ethnicity",
-          "description": "Refers to the ethnic or cultural origins of a person's ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Free text input",
-              "Another Ethnic or Cultural Origin",
-              "Do not know",
-              "Prefer not to answer",
-              "Not applicable",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
             "displayName": "ethnicity_another_category",
             "mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
@@ -323,6 +293,36 @@
         },
         {
           "meta": {
+            "displayName": "ethnicity",
+            "mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "required": [
+              "EDI indicator"
+            ]
+          },
+          "name": "ethnicity",
+          "description": "Refers to the ethnic or cultural origins of a person's ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Free text input",
+              "Another Ethnic or Cultural Origin",
+              "Do not know",
+              "Prefer not to answer",
+              "Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
             "displayName": "ethnicity_collect_method"
           },
           "name": "ethnicity_collect_method",
@@ -333,34 +333,6 @@
               "Socially assigned",
               "Self-identified",
               "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "gender",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "required": [
-              "EDI indicator"
-            ]
-          },
-          "name": "gender",
-          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Man",
-              "Woman",
-              "Another Gender",
-              "Prefer not to answer",
-              "Not applicable",
               "Missing - Unknown",
               "Missing - Not collected",
               "Missing - Not provided",
@@ -401,6 +373,34 @@
               "empty": true
             }
           }
+        },
+        {
+          "meta": {
+            "displayName": "gender",
+            "mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "required": [
+              "EDI indicator"
+            ]
+          },
+          "name": "gender",
+          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Man",
+              "Woman",
+              "Another Gender",
+              "Prefer not to answer",
+              "Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
         },
         {
           "meta": {
@@ -516,6 +516,41 @@
         },
         {
           "meta": {
+            "displayName": "race_another_racial_category",
+            "mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "race_another_racial_category",
+          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "race"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Racial Category"
+                    ]
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
             "displayName": "race",
             "mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
@@ -549,41 +584,6 @@
           "valueType": "string",
           "isArray": true,
           "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "race_another_racial_category",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "race_another_racial_category",
-          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "race"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Another Racial Category"
-                    ]
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {
@@ -717,25 +717,6 @@
         },
         {
           "meta": {
-            "displayName": "sociodem_question"
-          },
-          "name": "sociodem_question",
-          "description": "Indicate whether the questions asked for the sociodemographic variable follow the PCGL reference question and standard reporting categories.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "PCGL reference question",
-              "Another question",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "sociodem_question_detail",
             "mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
@@ -769,6 +750,25 @@
               "empty": true
             }
           }
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_question"
+          },
+          "name": "sociodem_question",
+          "description": "Indicate whether the questions asked for the sociodemographic variable follow the PCGL reference question and standard reporting categories.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "PCGL reference question",
+              "Another question",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown"
+            ]
+          },
+          "valueType": "string"
         }
       ],
       "restrictions": {
