@@ -9,7 +9,7 @@
     ],
     "externalValidations": [
       {
-        "url": "https://submission.ingress.dev.k8s.pcgl.dev-sd4h.ca/health",
+        "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
         "jsonPath": "submitter_experiment_id"
       }
     ]
