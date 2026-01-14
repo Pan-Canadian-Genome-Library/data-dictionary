@@ -1,0 +1,39 @@
+classes:
+  extension_Exposure:
+    is_a: base_Exposure
+    name: extension_Exposure
+    slots:
+    - submitter_exposure_id
+    - exposure_source_text
+    - exposure_note
+    title: exposure
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_exposure_id
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  exposure_note:
+    description: Free text to record any additional information.
+    name: exposure_note
+    range: string
+    title: Exposure Note
+  exposure_source_text:
+    description: Description of an exposure, as recorded in the source system, before
+      ontology mapping.
+    name: exposure_source_text
+    range: string
+    title: Exposure Source Text
+  submitter_exposure_id:
+    description: Unique identifier of the exposure event within the study, assigned
+      by the data provider.
+    name: submitter_exposure_id
+    range: string
+    title: Submitter Exposure Id
+version: 1.0.0

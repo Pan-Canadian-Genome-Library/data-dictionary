@@ -1,0 +1,39 @@
+classes:
+  extension_Phenotype:
+    is_a: base_Phenotype
+    name: extension_Phenotype
+    slots:
+    - submitter_phenotype_id
+    - phenotype_source_text
+    - phenotype_note
+    title: phenotype
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_phenotype_id
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  phenotype_note:
+    description: Free text to record any additional information.
+    name: phenotype_note
+    range: string
+    title: Phenotype Note
+  phenotype_source_text:
+    description: Free-text description of a phenotype or clinical feature, prior to
+      ontology mapping.
+    name: phenotype_source_text
+    range: string
+    title: Phenotype Source Text
+  submitter_phenotype_id:
+    description: Unique identifier of the phenotype event within the study, assigned
+      by the data provider.
+    name: submitter_phenotype_id
+    range: string
+    title: Submitter Phenotype Id
+version: 1.0.0

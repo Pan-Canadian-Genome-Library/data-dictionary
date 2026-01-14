@@ -1,0 +1,69 @@
+classes:
+  extension_Hla:
+    name: extension_Hla
+    slots:
+    - submitter_sample_id
+    - hla_optitype_a1
+    - hla_optitype_a2
+    - hla_optitype_b1
+    - hla_optitype_b2
+    - hla_optitype_c1
+    - hla_optitype_c2
+    - hla_optitype_reads
+    - hla_optitype_objective
+    title: hla
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  hla_optitype_a1:
+    description: HLA Optitype A1
+    name: hla_optitype_a1
+    range: string
+    title: Hla Optitype A1
+  hla_optitype_a2:
+    description: HLA Optitype A2
+    name: hla_optitype_a2
+    range: string
+    title: Hla Optitype A2
+  hla_optitype_b1:
+    description: HLA Optitype B1
+    name: hla_optitype_b1
+    range: string
+    title: Hla Optitype B1
+  hla_optitype_b2:
+    description: HLA Optitype B2
+    name: hla_optitype_b2
+    range: string
+    title: Hla Optitype B2
+  hla_optitype_c1:
+    description: HLA Optitype C1
+    name: hla_optitype_c1
+    range: string
+    title: Hla Optitype C1
+  hla_optitype_c2:
+    description: HLA Optitype C2
+    name: hla_optitype_c2
+    range: string
+    title: Hla Optitype C2
+  hla_optitype_objective:
+    description: HLA Optitype Objective
+    name: hla_optitype_objective
+    range: string
+    title: Hla Optitype Objective
+  hla_optitype_reads:
+    description: HLA Optitype Reads
+    name: hla_optitype_reads
+    range: string
+    title: Hla Optitype Reads
+  submitter_sample_id:
+    description: Unique identifier of the sample within the study, assigned by the
+      data provider.
+    name: submitter_sample_id
+    range: string
+    required: true
+    title: Submitter Sample Id
+version: 1.0.0

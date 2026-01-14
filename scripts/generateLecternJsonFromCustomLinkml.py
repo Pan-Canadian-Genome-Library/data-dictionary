@@ -96,7 +96,8 @@ def populateFieldProperties(model,lectern):
       "boolean":"boolean",
       "integer":"integer",
       "string":"string",
-      "decimal":"number"
+      "decimal":"number",
+      "float":"number"
   }
 
 

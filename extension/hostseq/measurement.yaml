@@ -1,0 +1,47 @@
+classes:
+  extension_Measurement:
+    is_a: base_Measurement
+    name: extension_Measurement
+    slots:
+    - submitter_measurement_id
+    - measurement_source_text
+    - measurement_unit_source_text
+    - measurement_note
+    title: measurement
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_measurement_id
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  measurement_note:
+    description: Free text to record any additional information.
+    name: measurement_note
+    range: string
+    title: Measurement Note
+  measurement_source_text:
+    description: Free-text representation of a measurement, observation, or test,
+      as originally recorded in the source.
+    name: measurement_source_text
+    range: string
+    title: Measurement Source Text
+  measurement_unit_source_text:
+    description: Free-text representation of the unit of measurement as originally
+      recorded in the source system, prior to mapping to a standardized unit ontology
+      (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.
+    name: measurement_unit_source_text
+    range: string
+    title: Measurement Unit Source Text
+  submitter_measurement_id:
+    description: Unique identifier of the measurement event within the study, assigned
+      by the data provider.
+    name: submitter_measurement_id
+    range: string
+    title: Submitter Measurement Id
+version: 1.0.0

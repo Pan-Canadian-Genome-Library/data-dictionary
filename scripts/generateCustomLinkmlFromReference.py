@@ -140,6 +140,7 @@ def generateBaseAndExtenstionMappings(custom_schema,model,working_directory):
 					#print("%s/%s.yaml" % (working_directory,import_key))
 					### If import is from extension and base, match yaml and class names for both
 					class_key_path = "%s/%s.yaml"%(os.path.split(custom_schema)[0].replace("custom", "extension"), class_key.lower())
+					print(class_key_path)
 					tmp_model=yaml_loader.load(class_key_path, SchemaDefinition)
 					if tmp_model.classes[model.classes[class_key]['is_a']]['is_a'] is not None:
 						#print("%s yatzee B.A" % (import_key))

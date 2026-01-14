@@ -1,17 +1,160 @@
 classes:
-  diagnosis:
-    description: The disease that is inferred to be present in the individual, family
-      or cohort being analyzed.
-    name: diagnosis
+  extension_Diagnosis:
+    is_a: base_Diagnosis
+    name: extension_Diagnosis
     slots:
-    - covid19_severity
-    - covid19_vaccine_doses
+    - disease_source_text
+    - diagnosis_note
+    - er_visit
+    - triage_date
+    - transfer_facility
+    - transfer_facility_name
+    - transfer_facility_date
+    - transfer_facility_sourceid
+    - transfer_facility_hostseqid
+    - hospitalized
+    - ambulatory_state
+    - date_admission
+    - hospitalized_state
+    - vent_days
+    - who_covid19_severity
+    - hgi_a2
+    - hhgi_a1
+    - hgi_b1
+    - hgi_c2
+    - est_infection_time
+    - covid19_test_date
+    - negative_test_date
+    - pcr
+    - serology_result
+    - serology_date
+    - serology_kit
+    - repeat_hosp
+    - repeat_hosp_date
+    - repeat_hosp_reason
     title: diagnosis
-    todos: '{"reference": "Phenopacket", "status": "v2"}'
 description: '...'
 enums:
-  Covid19SeverityMenu:
-    name: Covid19SeverityMenu
+  AmbulatoryStateMenu:
+    name: AmbulatoryStateMenu
+    permissible_values:
+      Limitation of activities:
+        text: Limitation of activities
+      No limitation of activities:
+        text: No limitation of activities
+      Unknown:
+        text: Unknown
+    title: ambulatory state menu
+  ErVisitMenu:
+    name: ErVisitMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+    title: er visit menu
+  HgiA2Menu:
+    name: HgiA2Menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+    title: hgi a2 menu
+  HgiB1Menu:
+    name: HgiB1Menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+    title: hgi b1 menu
+  HgiC2Menu:
+    name: HgiC2Menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+    title: hgi c2 menu
+  HhgiA1Menu:
+    name: HhgiA1Menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+    title: hhgi a1 menu
+  HospitalizedMenu:
+    name: HospitalizedMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+    title: hospitalized menu
+  HospitalizedStateMenu:
+    name: HospitalizedStateMenu
+    permissible_values:
+      Intubation and mechanical ventilation:
+        text: Intubation and mechanical ventilation
+      No oxygen therapy:
+        text: No oxygen therapy
+      Non-invasive ventilation or high-flow oxygen:
+        text: Non-invasive ventilation or high-flow oxygen
+      Oxygen by mask or nasal prongs:
+        text: Oxygen by mask or nasal prongs
+      Ventilation + additional organ support -pressor, RRT, ECMO:
+        text: Ventilation + additional organ support -pressor, RRT, ECMO
+    title: hospitalized state menu
+  PcrMenu:
+    name: PcrMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+    title: pcr menu
+  RepeatHospMenu:
+    name: RepeatHospMenu
+    permissible_values:
+      Don't know:
+        text: Don't know
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+    title: repeat hosp menu
+  SerologyResultMenu:
+    name: SerologyResultMenu
+    permissible_values:
+      Ab Negative:
+        text: Ab Negative
+      Ab Positive:
+        text: Ab Positive
+      Equivocal:
+        text: Equivocal
+      IgG Positive:
+        text: IgG Positive
+      IgM Positive:
+        text: IgM Positive
+      Negative:
+        text: Negative
+      Not administered:
+        text: Not administered
+    title: serology result menu
+  TransferFacilityMenu:
+    name: TransferFacilityMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      Yes - facility is a study site:
+        text: Yes - facility is a study site
+      Yes - facility is not a study site:
+        text: Yes - facility is not a study site
+    title: transfer facility menu
+  WhoCovid19SeverityMenu:
+    name: WhoCovid19SeverityMenu
     permissible_values:
       Ambulatory (limitation of activities):
         text: Ambulatory (limitation of activities)
@@ -35,37 +178,177 @@ enums:
           i.e. pressors, RRT, ECMO)
       Uninfected (no clinical or virological evidence of infection):
         text: Uninfected (no clinical or virological evidence of infection)
-    title: covid19 severity menu
-  Covid19VaccineDosesMenu:
-    name: Covid19VaccineDosesMenu
-    permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      Yes, four doses:
-        text: Yes, four doses
-      Yes, one dose:
-        text: Yes, one dose
-      Yes, three doses:
-        text: Yes, three doses
-      Yes, two doses:
-        text: Yes, two doses
-    title: covid19 vaccine doses menu
+    title: who covid19 severity menu
 id: https://example.com/base_schema.yaml
 in_language:
 - en
 name: PCGL_Base_Schema
 slots:
-  covid19_severity:
-    description: A measure of the severity of a COVID-19 infection, which can range
-      from mild to severe or critical.
-    name: covid19_severity
-    range: Covid19SeverityMenu
-    title: Covid19 Severity
-  covid19_vaccine_doses:
-    description: The number of COVID-19 vaccine doses the patient has received.
-    name: covid19_vaccine_doses
-    range: Covid19VaccineDosesMenu
-    title: Covid19 Vaccine Doses
-version: 2.0.0
+  ambulatory_state:
+    description: Ambulatory state
+    name: ambulatory_state
+    range: AmbulatoryStateMenu
+    title: Ambulatory State
+  covid19_test_date:
+    description: COVID-19 test date
+    name: covid19_test_date
+    range: string
+    title: Covid19 Test Date
+  date_admission:
+    description: Date of admission
+    name: date_admission
+    range: string
+    title: Date Admission
+  diagnosis_note:
+    description: Free text to record any additional information.
+    name: diagnosis_note
+    range: string
+    title: Diagnosis Note
+  disease_source_text:
+    description: Description of the disease as originally recorded in the source system,
+      prior to ontology mapping.
+    name: disease_source_text
+    range: string
+    title: Disease Source Text
+  er_visit:
+    description: Patient seen in ER
+    name: er_visit
+    range: ErVisitMenu
+    title: Er Visit
+  est_infection_time:
+    description: Estimated time of COVID-19 infection (estimated by (1) first date
+      of PCR test. or (2) date of symptom onset, or (3) date of enrollment (only for
+      studies of prospective recruitment)
+    name: est_infection_time
+    range: string
+    title: Est Infection Time
+  hgi_a2:
+    description: 'COVID-19 HGI phenotype A2 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support
+      (intubation, CPAP, BiPAP, CNP (continue external negative pressure), Optiflow/very
+      high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with
+      COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g.,
+      2 L/min via nasal cannulae) only does not qualify for case status) Control:
+      Everyone that is not a case, e.g. population'
+    name: hgi_a2
+    range: HgiA2Menu
+    title: Hgi A2
+  hgi_b1:
+    description: 'COVID-19 HGI phenotype B1 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based), hospitalization due to corona-related
+      symptoms. Control: Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology
+      based) AND not hospitalized 21 days after the test.'
+    name: hgi_b1
+    range: HgiB1Menu
+    title: Hgi B1
+  hgi_c2:
+    description: 'COVID-19 HGI phenotype C2 Case: Individuals with laboratory confirmation
+      of SARS-CoV-2 infection (RNA and/or serology based) OR EHR/ICD coding/Physician
+      confirmed COVID-19 OR self-reported COVID-19 positive (e.g., by questionnaire).
+      Control: Everybody that is not a case, e.g. population'
+    name: hgi_c2
+    range: HgiC2Menu
+    title: Hgi C2
+  hhgi_a1:
+    description: 'COVID-19 HGI phenotype A1 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support
+      (intubation, CPAP, BiPAP, CNP (continued external negative pressure), Optiflow/very
+      high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with
+      COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g.,
+      2 L/min via nasal cannulae) only does not qualify for case status). Control:
+      Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND not
+      hospitalized 21 days after the test.'
+    name: hhgi_a1
+    range: HhgiA1Menu
+    title: Hhgi A1
+  hospitalized:
+    description: Patient hospitalized
+    name: hospitalized
+    range: HospitalizedMenu
+    title: Hospitalized
+  hospitalized_state:
+    description: Hospitalized state
+    name: hospitalized_state
+    range: HospitalizedStateMenu
+    title: Hospitalized State
+  negative_test_date:
+    description: If tests are all negative, date of last negative test
+    name: negative_test_date
+    range: string
+    title: Negative Test Date
+  pcr:
+    description: PCR
+    name: pcr
+    range: PcrMenu
+    title: Pcr
+  repeat_hosp:
+    description: Repeat hospital visit within 30 days?
+    name: repeat_hosp
+    range: RepeatHospMenu
+    title: Repeat Hosp
+  repeat_hosp_date:
+    description: Date of repeat hospital visit
+    name: repeat_hosp_date
+    range: string
+    title: Repeat Hosp Date
+  repeat_hosp_reason:
+    description: Reason for repeat hospital visit
+    name: repeat_hosp_reason
+    range: string
+    title: Repeat Hosp Reason
+  serology_date:
+    description: serology positive test date (First positive test)
+    name: serology_date
+    range: string
+    title: Serology Date
+  serology_kit:
+    description: Commercial serology test kit name (if known)
+    name: serology_kit
+    range: string
+    title: Serology Kit
+  serology_result:
+    description: Serology (choice=Negative)
+    name: serology_result
+    range: SerologyResultMenu
+    title: Serology Result
+  transfer_facility:
+    description: Transfer from another facility
+    name: transfer_facility
+    range: TransferFacilityMenu
+    title: Transfer Facility
+  transfer_facility_date:
+    description: ER triage date at transfer facility
+    name: transfer_facility_date
+    range: string
+    title: Transfer Facility Date
+  transfer_facility_hostseqid:
+    description: 'HostSeq study ID # from transfer facility'
+    name: transfer_facility_hostseqid
+    range: string
+    title: Transfer Facility Hostseqid
+  transfer_facility_name:
+    description: Name of transfer facility
+    name: transfer_facility_name
+    range: string
+    title: Transfer Facility Name
+  transfer_facility_sourceid:
+    description: 'Source study ID # from transfer facility'
+    name: transfer_facility_sourceid
+    range: string
+    title: Transfer Facility Sourceid
+  triage_date:
+    description: ER triage date at reporting facility
+    name: triage_date
+    range: string
+    title: Triage Date
+  vent_days:
+    description: Total duration of invasive ventilation
+    name: vent_days
+    range: string
+    title: Vent Days
+  who_covid19_severity:
+    description: WHO COVID-19 severity scale
+    name: who_covid19_severity
+    range: WhoCovid19SeverityMenu
+    title: Who Covid19 Severity
+version: 1.0.0

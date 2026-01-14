@@ -1,0 +1,34 @@
+classes:
+  extension_Procedure:
+    is_a: base_Procedure
+    name: extension_Procedure
+    slots:
+    - procedure_source_text
+    - procedure_body_site_source_text
+    - procedure_note
+    title: procedure
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  procedure_body_site_source_text:
+    description: Description of the anatomical site for a procedure, as originally
+      captured in the source.
+    name: procedure_body_site_source_text
+    range: string
+    title: Procedure Body Site Source Text
+  procedure_note:
+    description: Free text to record any additional information.
+    name: procedure_note
+    range: string
+    title: Procedure Note
+  procedure_source_text:
+    description: Description of the procedure as originally recorded in the source
+      system, prior to ontology mapping.
+    name: procedure_source_text
+    range: string
+    title: Procedure Source Text
+version: 1.0.0

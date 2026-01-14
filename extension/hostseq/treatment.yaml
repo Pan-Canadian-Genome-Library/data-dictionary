@@ -1,0 +1,20 @@
+classes:
+  extension_Treatment:
+    is_a: base_Treatment
+    name: extension_Treatment
+    slots:
+    - treatment_note
+    title: treatment
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  treatment_note:
+    description: Free text to record any additional information.
+    name: treatment_note
+    range: string
+    title: Treatment Note
+version: 1.0.0
