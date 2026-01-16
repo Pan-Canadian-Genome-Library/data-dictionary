@@ -2,7 +2,7 @@ name: PCGL_Base_Schema
 description: '...'
 in_language: '[''en'']'
 id: https://example.com/base_schema.yaml
-version: '1.1'
+version: '1.2'
 imports:
 - linkml:types
 prefixes:
@@ -700,12 +700,12 @@ enums:
         text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma 
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
+      Bachelor's degree:
+        text: Bachelor's degree
       Degree in medicine, dentistry, veterinary medicine or optometry:
         text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
+      Master's degree:
+        text: Master's degree
       Doctoral degree:
         text: Doctoral degree
       Post-doctoral fellowship or training:
@@ -1317,7 +1317,7 @@ slots:
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
     examples:
     - value : MONDO:0000001
     - value : icd10:C34
@@ -1583,7 +1583,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
     examples:
     - value: MONDO:0000001
     - value: icd10:C34

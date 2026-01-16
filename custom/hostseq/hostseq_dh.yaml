@@ -2,7 +2,7 @@ name: default_pcgl_schema
 description: Base clinical schema that incorporates all PCGL base entities
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1.1.1
+version: 1.2.1.1
 imports:
 - linkml:types
 prefixes:
@@ -700,12 +700,12 @@ enums:
           designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
+      Bachelor's degree:
+        text: Bachelor's degree
       Degree in medicine, dentistry, veterinary medicine or optometry:
         text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
+      Master's degree:
+        text: Master's degree
       Doctoral degree:
         text: Doctoral degree
       Post-doctoral fellowship or training:
@@ -1614,7 +1614,7 @@ slots:
     - value: icd10:C34
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -1880,7 +1880,7 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
@@ -3125,6 +3125,12 @@ slots:
     description: Any additional info
     title: demographic_note
     range: string
+  diagnosis_date:
+    name: diagnosis_date
+    description: COVID-19 diagnosis date (by lab confirmed test) - First positive
+      test
+    title: diagnosis_date
+    range: string
   disease_source_text:
     name: disease_source_text
     description: Description of the disease as originally recorded in the source system,
@@ -3267,6 +3273,7 @@ slots:
     description: Serology (choice=Negative)
     title: serology_result
     range: SerologyResultMenu
+    multivalued: true
   serology_date:
     name: serology_date
     description: serology positive test date (First positive test)
@@ -3948,6 +3955,7 @@ classes:
     - age_at_diagnosis
     - disease_code
     - disease_term
+    - diagnosis_date
     - disease_source_text
     - diagnosis_note
     - er_visit
@@ -4010,109 +4018,113 @@ classes:
         name: date_admission
         rank: 8
         slot_group: Extensions Diagnosis
+      diagnosis_date:
+        name: diagnosis_date
+        rank: 9
+        slot_group: Extensions Diagnosis
       diagnosis_note:
         name: diagnosis_note
-        rank: 9
+        rank: 10
         slot_group: Extensions Diagnosis
       disease_source_text:
         name: disease_source_text
-        rank: 10
+        rank: 11
         slot_group: Extensions Diagnosis
       er_visit:
         name: er_visit
-        rank: 11
+        rank: 12
         slot_group: Extensions Diagnosis
       est_infection_time:
         name: est_infection_time
-        rank: 12
+        rank: 13
         slot_group: Extensions Diagnosis
       hgi_a2:
         name: hgi_a2
-        rank: 13
+        rank: 14
         slot_group: Extensions Diagnosis
       hgi_b1:
         name: hgi_b1
-        rank: 14
+        rank: 15
         slot_group: Extensions Diagnosis
       hgi_c2:
         name: hgi_c2
-        rank: 15
+        rank: 16
         slot_group: Extensions Diagnosis
       hhgi_a1:
         name: hhgi_a1
-        rank: 16
+        rank: 17
         slot_group: Extensions Diagnosis
       hospitalized:
         name: hospitalized
-        rank: 17
+        rank: 18
         slot_group: Extensions Diagnosis
       hospitalized_state:
         name: hospitalized_state
-        rank: 18
+        rank: 19
         slot_group: Extensions Diagnosis
       negative_test_date:
         name: negative_test_date
-        rank: 19
+        rank: 20
         slot_group: Extensions Diagnosis
       pcr:
         name: pcr
-        rank: 20
+        rank: 21
         slot_group: Extensions Diagnosis
       repeat_hosp:
         name: repeat_hosp
-        rank: 21
+        rank: 22
         slot_group: Extensions Diagnosis
       repeat_hosp_date:
         name: repeat_hosp_date
-        rank: 22
+        rank: 23
         slot_group: Extensions Diagnosis
       repeat_hosp_reason:
         name: repeat_hosp_reason
-        rank: 23
+        rank: 24
         slot_group: Extensions Diagnosis
       serology_date:
         name: serology_date
-        rank: 24
+        rank: 25
         slot_group: Extensions Diagnosis
       serology_kit:
         name: serology_kit
-        rank: 25
+        rank: 26
         slot_group: Extensions Diagnosis
       serology_result:
         name: serology_result
-        rank: 26
+        rank: 27
         slot_group: Extensions Diagnosis
       transfer_facility:
         name: transfer_facility
-        rank: 27
+        rank: 28
         slot_group: Extensions Diagnosis
       transfer_facility_date:
         name: transfer_facility_date
-        rank: 28
+        rank: 29
         slot_group: Extensions Diagnosis
       transfer_facility_hostseqid:
         name: transfer_facility_hostseqid
-        rank: 29
+        rank: 30
         slot_group: Extensions Diagnosis
       transfer_facility_name:
         name: transfer_facility_name
-        rank: 30
+        rank: 31
         slot_group: Extensions Diagnosis
       transfer_facility_sourceid:
         name: transfer_facility_sourceid
-        rank: 31
+        rank: 32
         slot_group: Extensions Diagnosis
       triage_date:
         name: triage_date
-        rank: 32
+        rank: 33
         slot_group: Extensions Diagnosis
       vent_days:
         name: vent_days
-        rank: 33
+        rank: 34
         slot_group: Extensions Diagnosis
       who_covid19_severity:
         name: who_covid19_severity
-        rank: 34
+        rank: 35
         slot_group: Extensions Diagnosis
     unique_keys:
       main:

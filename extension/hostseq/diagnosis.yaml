@@ -3,6 +3,7 @@ classes:
     is_a: base_Diagnosis
     name: extension_Diagnosis
     slots:
+    - diagnosis_date
     - disease_source_text
     - diagnosis_note
     - er_visit
@@ -199,6 +200,11 @@ slots:
     name: date_admission
     range: string
     title: Date Admission
+  diagnosis_date:
+    description: COVID-19 diagnosis date (by lab confirmed test) - First positive test
+    name: diagnosis_date
+    range: string
+    title: Diagnosis Date
   diagnosis_note:
     description: Free text to record any additional information.
     name: diagnosis_note
@@ -311,6 +317,7 @@ slots:
     name: serology_result
     range: SerologyResultMenu
     title: Serology Result
+    multivalued: true
   transfer_facility:
     description: Transfer from another facility
     name: transfer_facility

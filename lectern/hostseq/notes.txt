@@ -3,3 +3,11 @@
 - remove member_id restriction in household
 - place placehodler class descrition hla
 - place placehodler class descrition hhousehold
+
+"name": "hostseq_schema",
+
+  "version": "1.1",
+  "meta" : {
+    "base_version" : "1.2",
+    "extension_version" : "1.1"
+  },
