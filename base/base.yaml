@@ -1,5 +1,5 @@
 name: PCGL_Base_Schema
-description: '...'
+description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
 in_language: '[''en'']'
 id: https://example.com/base_schema.yaml
 version: '1.2'

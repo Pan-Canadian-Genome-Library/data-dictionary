@@ -1,8 +1,8 @@
-name: default_pcgl_schema
+name: PCGL_Base_Schema
 description: Base clinical schema that incorporates all PCGL base entities
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1
+version: 1.2.1.1
 imports:
 - linkml:types
 prefixes:
@@ -700,12 +700,12 @@ enums:
           designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
+      Bachelor's degree:
+        text: Bachelor's degree
       Degree in medicine, dentistry, veterinary medicine or optometry:
         text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
+      Master's degree:
+        text: Master's degree
       Doctoral degree:
         text: Doctoral degree
       Post-doctoral fellowship or training:
@@ -1325,7 +1325,7 @@ slots:
     - value: icd10:C34
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -1591,7 +1591,7 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the

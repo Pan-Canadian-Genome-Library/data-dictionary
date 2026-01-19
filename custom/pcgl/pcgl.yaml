@@ -2,8 +2,8 @@ version: 1.1
 id: https://example.com/PCGL.yaml
 in_language:
 - en
-name: default_pcgl_schema
-description: 'Base clinical schema that incorporates all PCGL base entities'
+name: PCGL_Base_Schema
+description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
 prefixes:
   linkml: https://w3id.org/linkml/
 

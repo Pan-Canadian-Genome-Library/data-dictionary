@@ -1,7 +1,11 @@
 {
-  "name": "prod_pcgl_schema",
-  "description": "Base clinical schema that incorporates all PCGL base entities",
-  "version": "1.1",
+  "name": "PCGL_Base_Schema",
+  "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results",
+  "version": "1.2",
+  "meta" : {
+    "base_version" : "1.2",
+    "extension_version" : "1.0"
+  },
   "schemas": [
     {
       "name": "participant",
@@ -222,9 +226,9 @@
               "High school (secondary school) diploma or equivalency certificate",
               "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
               "College, CEGEP, or other non-university certificate or diploma",
-              "Bachelor\u2019s degree",
+              "Bachelor's degree",
               "Degree in medicine, dentistry, veterinary medicine or optometry",
-              "Master\u2019s degree",
+              "Master's degree",
               "Doctoral degree",
               "Post-doctoral fellowship or training",
               "Prefer not to answer",
@@ -986,7 +990,7 @@
           "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -1903,7 +1907,7 @@
           "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
