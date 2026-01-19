@@ -1,7 +1,7 @@
 {
-  "name": "PCGL_Base_Schema",
+  "name": "The Pan-Canadian Genome Library Data Dictionary",
   "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results",
-  "version": "1.2",
+  "version": "1.0",
   "meta" : {
     "base_version" : "1.2",
     "extension_version" : "1.0"
