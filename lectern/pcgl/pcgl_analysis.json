@@ -1,0 +1,574 @@
+{
+  "name": "pcgl_analysis",
+  "description" : "Analysis schema summarizing PCGL's analysis entities managed by SONG",
+  "version" : "1.0",
+  "schemas": [
+    {
+      "name": "analysis",
+      "fields": [
+        {
+          "name": "studyId",
+          "description": "Unique identifier of the study.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "mapping": {
+              "CQDG": "study_id"
+            },
+            "displayName": "studyid",
+            "notes": "Added as a redundancy measure to prevent submission errors. Clinical API will check study_id against user's selection"
+          }
+        },
+        {
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "valueType": "string",
+          "unique": true,
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "meta": {
+            "mapping": {
+              "Beacon V2": "analyses.id"
+            },
+            "displayName": "submitter_analysis_id"
+          }
+        },
+        {
+          "name": "analysisType",
+          "description": "Overall type of the analysis. Term chosen from a controlled vocabulary (CV) list.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "sequenceExperiment",
+              "sequenceAlignment",
+              "variantCall",
+              "variantAnnotation"
+            ]
+          },
+          "meta": {
+            "source": [
+              "ARGO",
+              "EGA"
+            ],
+            "displayName": "analysistype"
+          }
+        },
+        {
+          "name": "submitter_participant_id",
+          "description": "List of unique identifier of the participants within the same analysis. Participants must be registered as part of base schema in PCGL.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "meta": {
+            "displayName": "submitter_participant_id"
+          },
+          "isArray" : true
+        },
+        {
+          "name": "submitter_specimen_id",
+          "description": "List of unique identifier of the specimen within the study, assigned by the data provider. Specimens must be registered as part of base schema in PCGL.",
+          "valueType": "string",
+          "meta": {
+            "source": [
+              "MOH",
+              "ARGO"
+            ],
+            "mapping": {
+              "FHIR/mCODE": "mCODE STU1: Specimen.Identifier",
+              "Phenopacket": "biosample.id",
+              "Beacon V2": "biosample.id"
+            },
+            "displayName": "submitter_specimen_id"
+          },
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "isArray" : true
+        },
+        {
+          "name": "submitter_sample_id",
+          "description": "List of unique identifiers for samples within the same analysis. Samples must be registered as part of base schema in PCGL.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "submitter_sample_id"
+          },
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "isArray" : true
+        },
+        {
+          "name": "submitter_experiment_id",
+          "description": "List of unique identifier of the experiments within the same analysis. Experiments must be registered as part of base schema in PCGL.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "submitter_experiment_id",
+            "notes": "Required if analysisType is sequenceExperiment, sequenceAlignment, or variantCall"
+          },
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "analysisType"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "sequenceExperiment",
+                      "sequenceAlignment",
+                      "variantCall"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            },
+            "else": {
+              "required": false,
+              "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            }
+          },
+          "isArray" : true
+        },
+        {
+          "name": "data_category",
+          "description": "Indicate the category of data produced as outputs from the analysis.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Genomics",
+              "Transcriptomics",
+              "Proteomics",
+              "Epigenomics",
+              "Imaging",
+              "Reference"
+            ]
+          },
+          "meta": {
+            "displayName": "data_category"
+          }
+        },
+        {
+          "name": "variant_class",
+          "description": "Indicates whether the called variants are germline, somatic, or of uncertain classification.",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "analysisType"
+                  ],
+                  "match": {
+                    "value": "variantCall"
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "codeList": [
+                "Germline",
+                "Somatic",
+                "Unknown"
+              ]
+            },
+            "else": {
+              "required": false,
+              "codeList": [
+                "Germline",
+                "Somatic",
+                "Unknown"
+              ]
+            }
+          },
+          "meta": {
+            "displayName": "variant_class",
+            "notes": "Required if analysisType is variantCall"
+          }
+        },
+        {
+          "name": "variant_calling_strategy",
+          "description": "Indicate the approach used to identify genetic variants from sequencing data, based on the availability of reference samples (e.g., matched normal) and the study design.",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "analysisType"
+                  ],
+                  "match": {
+                    "value": "variantCall"
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "codeList": [
+                "Tumour only",
+                "Tumour normal",
+                "Single sample",
+                "Family based",
+                "RNA based",
+                "Joint calling"
+              ]
+            },
+            "else": {
+              "required": false,
+              "codeList": [
+                "Tumour only",
+                "Tumour normal",
+                "Single sample",
+                "Family based",
+                "RNA based",
+                "Joint calling"
+              ]
+            }
+          },
+          "meta": {
+            "displayName": "variant_calling_strategy",
+            "notes": "Required if analysisType is variantCall"
+          }
+        },
+        {
+          "name": "genome_build",
+          "description": "The reference genome build that is used in the workflow.",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "analysisType"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "sequenceAlignment",
+                      "variantCall"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            }
+          },
+          "meta": {
+            "displayName": "genome_build",
+            "notes": "Required if analysisType is sequenceAlignment or variantCall"
+          }
+        },
+        {
+          "name": "genome_annotation",
+          "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.).",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^(?:Ensembl \\d{1,5}|RefSeq \\d{1,5}|Gencode v\\d{1,5})$"
+          },
+          "meta": {
+            "displayName": "genome_annotation"
+          }
+        }
+      ],
+      "meta": {
+        "reference": "EGA",
+        "status": "Prod V1.0"
+      },
+      "description": "This entity is intended to contain metadata about a detailed examination of data (mainly data processing protocols) in order to come to some conclusion. It can be of different types (e.g. sequence variation, sequence alignment, phenotype characterization, gene expression, etc.) that will mainly differ in the protocols used to achieve the processed data of the analysis."
+    },
+    {
+      "name": "file",
+      "fields": [
+        {
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "meta": {
+            "mapping": {
+              "Beacon V2": "analyses.id"
+            },
+            "displayName": "submitter_analysis_id"
+          }
+        },
+        {
+          "name": "fileName",
+          "description": "Name of the file.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "regex": "^[^\\\\/:\\*\\?\"<>\\|]+$"
+          },
+          "meta": {
+            "displayName": "filename",
+            "notes": "No paths are allowed in the file name."
+          }
+        },
+        {
+          "name": "fileSize",
+          "description": "Size of the file, in bytes.",
+          "valueType": "integer",
+          "restrictions": {
+            "required": true,
+            "range": {
+              "min": 0
+            }
+          },
+          "meta": {
+            "displayName": "filesize",
+            "notes": "Integer with a minimum value of 0"
+          }
+        },
+        {
+          "name": "fileMd5sum",
+          "description": "Computed md5sum of the file.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "regex": "^[a-fA-F0-9]{32}$"
+          },
+          "meta": {
+            "displayName": "filemd5sum"
+          }
+        },
+        {
+          "name": "fileType",
+          "description": "Data format of files.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "ADF",
+              "ASM",
+              "BAM",
+              "BAI",
+              "BAX.H5",
+              "BAS.H5",
+              "BCF",
+              "BIM",
+              "BGI",
+              "BGEN",
+              "CEL",
+              "CSI",
+              "CSFASTA",
+              "CRAM",
+              "CRAI",
+              "CSV",
+              "EXP",
+              "FAM",
+              "FAST5",
+              "FASTQ",
+              "FASTA",
+              "GEN",
+              "GMX",
+              "GMT",
+              "GPR",
+              "GRP",
+              "GTC",
+              "HAP",
+              "HDF5",
+              "HTML",
+              "HIC",
+              "IDAT",
+              "IDF",
+              "JPG",
+              "LOC",
+              "LOOM",
+              "MAP",
+              "MATLAB",
+              "MEX",
+              "MD",
+              "MD5",
+              "MTX",
+              "PAIR",
+              "PED",
+              "PERL",
+              "PNG",
+              "PXF",
+              "PY",
+              "qual454",
+              "qualsolid",
+              "R",
+              "SAM",
+              "SDRF",
+              "SH",
+              "SNP",
+              "SRA",
+              "SRF",
+              "SFF",
+              "SVG",
+              "TBI",
+              "TIF",
+              "TSV",
+              "TXT",
+              "VCF",
+              "XLSX",
+              "XML"
+            ]
+          },
+          "meta": {
+            "source": [
+              "EGA",
+              "ARGO"
+            ],
+            "displayName": "filetype"
+          }
+        },
+        {
+          "name": "fileAccess",
+          "description": "The permission level of a file for public access.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "fileaccess"
+          }
+        },
+        {
+          "name": "dataType",
+          "description": "Indicates the type of data produced as outputs from the analysis.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Raw Sequencing Reads",
+              "Aligned Reads",
+              "Aligned Reads Index",
+              "Single Nucleotide Variants (SNVs)",
+              "Insertions and Deletions (InDels)",
+              "Structural Variations (SVs)",
+              "Copy Number Variations (CNVs)",
+              "Variant Calls Index",
+              "Quality Control Metrics",
+              "Gene Fusions",
+              "Alternative Splicing",
+              "Gene Expression Quantification",
+              "Transcript Expression Quantification",
+              "Single-Cell Expression Matrices",
+              "Splicing Junctions",
+              "Differential Expression Analysis"
+            ]
+          },
+          "meta": {
+            "displayName": "datatype"
+          }
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "analysis",
+            "mappings": [
+              {
+                "local": "submitter_analysis_id",
+                "foreign": "submitter_analysis_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "workflow",
+      "fields": [
+        {
+          "name": "submitter_workflow_id",
+          "description": "Unique identifier of the genomic data processing workflow used for data analysis.",
+          "valueType": "string",
+          "unique": true,
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "meta": {
+            "mapping": {
+              "Beacon V2": "analyses.id"
+            },
+            "displayName": "submitter_workflow_id"
+          }
+        },
+        {
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "meta": {
+            "mapping": {
+              "Beacon V2": "analyses.id"
+            },
+            "displayName": "submitter_analysis_id"
+          }
+        },
+        {
+          "name": "workflow_name",
+          "description": "The name of the genomic data processing workflow used for data analysis.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "workflow_name"
+          }
+        },
+        {
+          "name": "workflow_version",
+          "description": "The version of the workflow or pipeline being used.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "workflow_version"
+          }
+        },
+        {
+          "name": "workflow_url",
+          "description": "A URL linking to the workflow's repository or documentation. This could be a reference to a GitHub repository, a website where the workflow is described, or documentation on how to run the workflow.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "workflow_url"
+          }
+        }
+      ],
+      "meta": {
+        "reference": "EGA",
+        "status": "Prod V1.0"
+      },
+      "description": "Contains information about the analysis workflow generating the files",
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "analysis",
+            "mappings": [
+              {
+                "local": "submitter_analysis_id",
+                "foreign": "submitter_analysis_id"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
