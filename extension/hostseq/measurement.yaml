@@ -3,16 +3,10 @@ classes:
     is_a: base_Measurement
     name: extension_Measurement
     slots:
-    - submitter_measurement_id
     - measurement_source_text
     - measurement_unit_source_text
     - measurement_note
     title: measurement
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_measurement_id
 description: '...'
 enums: {}
 id: https://example.com/base_schema.yaml
@@ -38,10 +32,4 @@ slots:
     name: measurement_unit_source_text
     range: string
     title: Measurement Unit Source Text
-  submitter_measurement_id:
-    description: Unique identifier of the measurement event within the study, assigned
-      by the data provider.
-    name: submitter_measurement_id
-    range: string
-    title: Submitter Measurement Id
 version: 1.0.0

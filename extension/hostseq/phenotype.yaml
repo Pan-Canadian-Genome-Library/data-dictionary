@@ -3,15 +3,10 @@ classes:
     is_a: base_Phenotype
     name: extension_Phenotype
     slots:
-    - submitter_phenotype_id
+    - submitter_participant_id
     - phenotype_source_text
     - phenotype_note
     title: phenotype
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_phenotype_id
 description: '...'
 enums: {}
 id: https://example.com/base_schema.yaml
@@ -30,10 +25,9 @@ slots:
     name: phenotype_source_text
     range: string
     title: Phenotype Source Text
-  submitter_phenotype_id:
-    description: Unique identifier of the phenotype event within the study, assigned
-      by the data provider.
-    name: submitter_phenotype_id
+  submitter_participant_id:
+    description: "Unique identifier of the participant within the study, assigned by the data provider."
+    name: submitter_participant_id
     range: string
-    title: Submitter Phenotype Id
+    title: Submitter Participant Id
 version: 1.0.0

@@ -3318,12 +3318,6 @@ slots:
     description: Free text to record any additional information.
     title: drug_note
     range: string
-  submitter_measurement_id:
-    name: submitter_measurement_id
-    description: Unique identifier of the measurement event within the study, assigned
-      by the data provider.
-    title: submitter_measurement_id
-    range: string
   measurement_source_text:
     name: measurement_source_text
     description: Free-text representation of a measurement, observation, or test,
@@ -3342,12 +3336,6 @@ slots:
     description: Free text to record any additional information.
     title: measurement_note
     range: string
-  submitter_phenotype_id:
-    name: submitter_phenotype_id
-    description: Unique identifier of the phenotype event within the study, assigned
-      by the data provider.
-    title: submitter_phenotype_id
-    range: string
   phenotype_source_text:
     name: phenotype_source_text
     description: Free-text description of a phenotype or clinical feature, prior to
@@ -3365,22 +3353,10 @@ slots:
       ontology mapping.
     title: comorbidity_source_text
     range: string
-  submitter_comorbidity_id:
-    name: submitter_comorbidity_id
-    description: Unique identifier of the comorbidity event within the study, assigned
-      by the data provider.
-    title: submitter_comorbidity_id
-    range: string
   comorbidity_note:
     name: comorbidity_note
     description: Free text to record any additional information.
     title: comorbidity_note
-    range: string
-  submitter_exposure_id:
-    name: submitter_exposure_id
-    description: Unique identifier of the exposure event within the study, assigned
-      by the data provider.
-    title: submitter_exposure_id
     range: string
   exposure_source_text:
     name: exposure_source_text
@@ -4379,54 +4355,49 @@ classes:
     - measurement_result_numeric
     - measurement_term
     - measurement_unit
-    - submitter_measurement_id
     - measurement_source_text
     - measurement_unit_source_text
     - measurement_note
     slot_usage:
-      submitter_measurement_id:
-        name: submitter_measurement_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       age_at_measurement:
         name: age_at_measurement
-        rank: 3
+        rank: 2
         slot_group: Measurement
       measurement_code:
         name: measurement_code
-        rank: 4
+        rank: 3
         slot_group: Measurement
       measurement_result_categorical:
         name: measurement_result_categorical
-        rank: 5
+        rank: 4
         slot_group: Measurement
       measurement_result_numeric:
         name: measurement_result_numeric
-        rank: 6
+        rank: 5
         slot_group: Measurement
       measurement_term:
         name: measurement_term
-        rank: 7
+        rank: 6
         slot_group: Measurement
       measurement_unit:
         name: measurement_unit
-        rank: 8
+        rank: 7
         slot_group: Measurement
       measurement_note:
         name: measurement_note
-        rank: 9
+        rank: 8
         slot_group: Extensions Measurement
       measurement_source_text:
         name: measurement_source_text
-        rank: 10
+        rank: 9
         slot_group: Extensions Measurement
       measurement_unit_source_text:
         name: measurement_unit_source_text
-        rank: 11
+        rank: 10
         slot_group: Extensions Measurement
     is_a: dh_interface
   Phenotype:
@@ -4444,7 +4415,6 @@ classes:
     - phenotype_observed
     - phenotype_severity
     - phenotype_term
-    - submitter_phenotype_id
     - phenotype_source_text
     - phenotype_note
     slot_usage:
@@ -4452,41 +4422,37 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      submitter_phenotype_id:
-        name: submitter_phenotype_id
-        rank: 2
-        slot_group: Database Identifiers
       age_at_phenotype:
         name: age_at_phenotype
-        rank: 3
+        rank: 2
         slot_group: Phenotype
       phenotype_code:
         name: phenotype_code
-        rank: 4
+        rank: 3
         slot_group: Phenotype
       phenotype_duration:
         name: phenotype_duration
-        rank: 5
+        rank: 4
         slot_group: Phenotype
       phenotype_observed:
         name: phenotype_observed
-        rank: 6
+        rank: 5
         slot_group: Phenotype
       phenotype_severity:
         name: phenotype_severity
-        rank: 7
+        rank: 6
         slot_group: Phenotype
       phenotype_term:
         name: phenotype_term
-        rank: 8
+        rank: 7
         slot_group: Phenotype
       phenotype_note:
         name: phenotype_note
-        rank: 9
+        rank: 8
         slot_group: Extensions Phenotype
       phenotype_source_text:
         name: phenotype_source_text
-        rank: 10
+        rank: 9
         slot_group: Extensions Phenotype
     is_a: dh_interface
   Comorbidity:
@@ -4503,44 +4469,39 @@ classes:
     - comorbidity_term
     - comorbidity_treatment_status
     - comorbidity_source_text
-    - submitter_comorbidity_id
     - comorbidity_note
     slot_usage:
-      submitter_comorbidity_id:
-        name: submitter_comorbidity_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       age_at_comorbidity_diagnosis:
         name: age_at_comorbidity_diagnosis
-        rank: 3
+        rank: 2
         slot_group: Comorbidity
       comorbidity_code:
         name: comorbidity_code
-        rank: 4
+        rank: 3
         slot_group: Comorbidity
       comorbidity_status:
         name: comorbidity_status
-        rank: 5
+        rank: 4
         slot_group: Comorbidity
       comorbidity_term:
         name: comorbidity_term
-        rank: 6
+        rank: 5
         slot_group: Comorbidity
       comorbidity_treatment_status:
         name: comorbidity_treatment_status
-        rank: 7
+        rank: 6
         slot_group: Comorbidity
       comorbidity_note:
         name: comorbidity_note
-        rank: 8
+        rank: 7
         slot_group: Extensions Comorbidity
       comorbidity_source_text:
         name: comorbidity_source_text
-        rank: 9
+        rank: 8
         slot_group: Extensions Comorbidity
     is_a: dh_interface
   Exposure:
@@ -4557,53 +4518,48 @@ classes:
     - exposure_status
     - exposure_term
     - exposure_unit
-    - submitter_exposure_id
     - exposure_source_text
     - exposure_note
     slot_usage:
-      submitter_exposure_id:
-        name: submitter_exposure_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       age_at_exposure:
         name: age_at_exposure
-        rank: 3
+        rank: 2
         slot_group: Exposure
       exposure_amount:
         name: exposure_amount
-        rank: 4
+        rank: 3
         slot_group: Exposure
       exposure_code:
         name: exposure_code
-        rank: 5
+        rank: 4
         slot_group: Exposure
       exposure_duration:
         name: exposure_duration
-        rank: 6
+        rank: 5
         slot_group: Exposure
       exposure_status:
         name: exposure_status
-        rank: 7
+        rank: 6
         slot_group: Exposure
       exposure_term:
         name: exposure_term
-        rank: 8
+        rank: 7
         slot_group: Exposure
       exposure_unit:
         name: exposure_unit
-        rank: 9
+        rank: 8
         slot_group: Exposure
       exposure_note:
         name: exposure_note
-        rank: 10
+        rank: 9
         slot_group: Extensions Exposure
       exposure_source_text:
         name: exposure_source_text
-        rank: 11
+        rank: 10
         slot_group: Extensions Exposure
     is_a: dh_interface
   Specimen:

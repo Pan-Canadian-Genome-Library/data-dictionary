@@ -4,14 +4,8 @@ classes:
     name: extension_Comorbidity
     slots:
     - comorbidity_source_text
-    - submitter_comorbidity_id
     - comorbidity_note
     title: comorbidity
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_comorbidity_id
 description: '...'
 enums: {}
 id: https://example.com/base_schema.yaml
@@ -30,10 +24,4 @@ slots:
     name: comorbidity_source_text
     range: string
     title: Comorbidity Source Text
-  submitter_comorbidity_id:
-    description: Unique identifier of the comorbidity event within the study, assigned
-      by the data provider.
-    name: submitter_comorbidity_id
-    range: string
-    title: Submitter Comorbidity Id
 version: 1.0.0
