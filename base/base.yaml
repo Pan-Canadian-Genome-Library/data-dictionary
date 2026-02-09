@@ -2,7 +2,7 @@ name: PCGL_Base_Schema
 description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
 in_language: '[''en'']'
 id: https://example.com/base_schema.yaml
-version: '1.2'
+version: '1.0'
 imports:
 - linkml:types
 prefixes:
@@ -153,9 +153,6 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
-  study_id_menu:
-    name: study_id_menu
-    title: study id menu
   phenotype_observed_menu:
     name: phenotype_observed_menu
     title: phenotype observed menu
@@ -1089,16 +1086,6 @@ slots:
     - MOH:cause_of_death
     range: cause_of_death_menu
     required: false
-  study_id:
-    name: study_id
-    description: Unique identifier of the study.
-    title: Study Id
-    notes: Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
-    exact_mappings:
-    - ARGO:studyId
-    - CQDG:study_id
-    range: string
-    required: true
   submitter_participant_id:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
@@ -2742,7 +2729,6 @@ classes:
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - study_id
     - disease_specific_modifier
     - duo_modifier
     - duo_permission
@@ -2751,21 +2737,17 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      study_id:
-        name: study_id
-        rank: 2
-        slot_group: Participant
       disease_specific_modifier:
         name: disease_specific_modifier
-        rank: 3
+        rank: 2
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        rank: 4
+        rank: 3
         slot_group: Participant
       duo_permission:
         name: duo_permission
-        rank: 5
+        rank: 4
         slot_group: Participant
     unique_keys:
       main:

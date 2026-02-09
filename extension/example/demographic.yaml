@@ -16,6 +16,7 @@ classes:
     - type_of_residence
     - number_of_other_people_in_household
     - pregnancy
+    - vital_status
     title: Demographic
     todos: '{"reference": "GDC", "status": "v2"}'
     slot_usage:
@@ -57,6 +58,26 @@ enums:
       'Yes':
         text: 'Yes'
     title: pregnancy menu
+  vital_status_menu:
+    name: vital_status_menu
+    title: vital status menu
+    permissible_values:
+      Alive:
+        text: Alive
+      Deceased:
+        text: Deceased
+      Not Applicable:
+        text: Not Applicable
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+      Bob:
+        text: Bob
 id: https://example.com/base_schema.yaml
 in_language:
 - en
@@ -112,4 +133,14 @@ slots:
     name: weight
     range: decimal
     title: Weight
+  vital_status:
+    name: vital_status
+    description: Participant's last known state of living or deceased.
+    title: Vital Status
+    exact_mappings:
+    - CQDG:vital_status
+    - Phenopacket:individual.vital_status
+    - BeaconV2:individual.vital_status
+    range: vital_status_menu
+    required: false
 version: 2.0.0

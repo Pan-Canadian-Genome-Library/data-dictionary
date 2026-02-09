@@ -94,3 +94,13 @@ python3 scripts/gen_song_schema.py \
 --config_file song_schema/conf/options.json \
 --output_schema_dir song_schema/json-schema
 ```
+#### Versioning
+All base schema versions will iterate on major versions and extensions schemas will iterate on minor versions.<Br>
+E.g. 
+- Base `1.0`,`2.0`, and `3.0`
+- Extension `.1`,`0.2`, and `.3`
+- The extension schema will be specified in the custom yaml
+
+Custom schema version will be the combination of base and extension resolving as `base.extension` e.g `1.1`
+- due to schema versioning require a larger decimal, any conflicting versions such as `1.10` vs `1.1` can be avoided by skipping ahead in minor version. 
+- base schema and extension will additionally be captured in lectern schema's meta property

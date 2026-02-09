@@ -1,10 +1,12 @@
 {
   "name": "The Pan-Canadian Genome Library Data Dictionary",
   "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results",
-  "version": "1.0",
-  "meta" : {
-    "base_version" : "1.2",
-    "extension_version" : "1.0"
+  "version": "1.1",
+  "meta": {
+    "version": {
+      "base": "1.0",
+      "extension": "0.1"
+    }
   },
   "schemas": [
     {
@@ -37,21 +39,6 @@
           },
           "valueType": "string",
           "unique": true
-        },
-        {
-          "meta": {
-            "displayName": "study_id",
-            "mappings": {
-              "ARGO": "studyId",
-              "CQDG": "study_id"
-            }
-          },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
         },
         {
           "meta": {

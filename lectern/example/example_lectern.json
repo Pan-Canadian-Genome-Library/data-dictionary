@@ -1,7 +1,13 @@
 {
   "name": "example_extended_schema",
   "description": "...",
-  "version": "1.1.1.0",
+  "version": "1.1",
+  "meta": {
+    "version": {
+      "base": "1.0",
+      "extension": "0.1"
+    }
+  },
   "schemas": [
     {
       "name": "comorbidity",
@@ -56,7 +62,7 @@
           "description": "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -408,7 +414,7 @@
           "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -907,21 +913,6 @@
           },
           "valueType": "string",
           "unique": true
-        },
-        {
-          "meta": {
-            "displayName": "study_id",
-            "mappings": {
-              "ARGO": "studyId",
-              "CQDG": "study_id"
-            }
-          },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
         },
         {
           "meta": {

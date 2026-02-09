@@ -81,13 +81,28 @@ def main():
 def populateLecternProperties(model,lectern):
   for val in ["name","description","version"]:
       lectern[val]=model[val]
+
+  lectern['name']=lectern['name'].replace("_"," ")
+
+  if lectern.get("version"):
+    if not re.findall(r'\d\.0\.0.\d',lectern.get("version")):
+        print(lectern.get("version"))
+        print("Schema version regex is not correct. Should follow '\\d.0.0.\\d'")
+        exit(1)
+    else:
+        lectern['version']="%s.%s" % (lectern['version'].split(".")[0],lectern['version'].split(".")[-1])
+        lectern['meta']={}
+        lectern['meta']['version']={
+            "base":".".join(model[val].split(".")[:2]),
+            "extension":".".join(model[val].split(".")[2:])
+        }
   lectern['schemas']=[]
 
 def populateSchemaProperties(model,lectern):
   for class_key in model.classes.keys():
       tmp={}
       tmp['name']=class_key
-      tmp['description']=model.classes[class_key]['description']
+      tmp['description']=model.classes[class_key]['description'] if model.classes[class_key]['description']!=None else "..."
       tmp['fields']=[]
       lectern['schemas'].append(tmp)
 
@@ -208,6 +223,8 @@ def populateFieldProperties(model,lectern):
     for field in entity['fields']:
         if field['name'].endswith("_id") and field['name'].startswith("submitter_"):
             if field['name']=='study_id':
+                continue
+            if field['name'].replace("_id","").replace("submitter_","") not in [ent['name'].lower() for ent in lectern['schemas']]:
                 continue
             if entity['name'].lower() not in field['name']:
                 if not entity.get('restrictions'):

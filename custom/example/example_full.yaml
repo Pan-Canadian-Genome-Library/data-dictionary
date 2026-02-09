@@ -2,7 +2,7 @@ name: example_extended_schema
 description: '...'
 in_language: '[''en'']'
 id: https://example.com/hostseq.yaml
-version: 1.1.1.0
+version: 1.0.0.1
 imports:
 - linkml:types
 prefixes:
@@ -149,9 +149,6 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
-  study_id_menu:
-    name: study_id_menu
-    title: study id menu
   phenotype_observed_menu:
     name: phenotype_observed_menu
     title: phenotype observed menu
@@ -698,12 +695,12 @@ enums:
           designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
+      Bachelor's degree:
+        text: Bachelor's degree
       Degree in medicine, dentistry, veterinary medicine or optometry:
         text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
+      Master's degree:
+        text: Master's degree
       Doctoral degree:
         text: Doctoral degree
       Post-doctoral fellowship or training:
@@ -1207,17 +1204,6 @@ slots:
     - MOH:cause_of_death
     range: cause_of_death_menu
     required: false
-  study_id:
-    name: study_id
-    description: Unique identifier of the study.
-    title: study_id
-    notes:
-    - Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
-    exact_mappings:
-    - ARGO:studyId
-    - CQDG:study_id
-    range: string
-    required: true
   submitter_participant_id:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
@@ -1443,7 +1429,7 @@ slots:
     - value: icd10:C34
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -1709,7 +1695,7 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
@@ -3066,40 +3052,40 @@ classes:
         name: cause_of_death
         rank: 4
         slot_group: Demographic
-      vital_status:
-        name: vital_status
-        rank: 5
-        slot_group: Demographic
       ancestry:
         name: ancestry
-        rank: 6
+        rank: 5
         slot_group: Extensions Demographic
       country_of_birth:
         name: country_of_birth
-        rank: 7
+        rank: 6
         slot_group: Extensions Demographic
       employment:
         name: employment
-        rank: 8
+        rank: 7
         slot_group: Extensions Demographic
       height:
         name: height
-        rank: 9
+        rank: 8
         slot_group: Extensions Demographic
       highest_education_level_achieved:
         name: highest_education_level_achieved
-        rank: 10
+        rank: 9
         slot_group: Extensions Demographic
       number_of_other_people_in_household:
         name: number_of_other_people_in_household
-        rank: 11
+        rank: 10
         slot_group: Extensions Demographic
       pregnancy:
         name: pregnancy
-        rank: 12
+        rank: 11
         slot_group: Extensions Demographic
       type_of_residence:
         name: type_of_residence
+        rank: 12
+        slot_group: Extensions Demographic
+      vital_status:
+        name: vital_status
         rank: 13
         slot_group: Extensions Demographic
       weight:
@@ -3167,20 +3153,20 @@ classes:
         name: age_at_diagnosis
         rank: 3
         slot_group: Diagnosis
-      disease_code:
-        name: disease_code
-        rank: 4
-        slot_group: Diagnosis
       disease_term:
         name: disease_term
-        rank: 5
+        rank: 4
         slot_group: Diagnosis
       covid19_severity:
         name: covid19_severity
-        rank: 6
+        rank: 5
         slot_group: Extensions Diagnosis
       covid19_vaccine_doses:
         name: covid19_vaccine_doses
+        rank: 6
+        slot_group: Extensions Diagnosis
+      disease_code:
+        name: disease_code
         rank: 7
         slot_group: Extensions Diagnosis
     unique_keys:
@@ -3351,30 +3337,25 @@ classes:
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - study_id
     - disease_specific_modifier
     - duo_modifier
     - duo_permission
     slot_usage:
-      study_id:
-        name: study_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       disease_specific_modifier:
         name: disease_specific_modifier
-        rank: 3
+        rank: 2
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        rank: 4
+        rank: 3
         slot_group: Participant
       duo_permission:
         name: duo_permission
-        rank: 5
+        rank: 4
         slot_group: Participant
     unique_keys:
       main:

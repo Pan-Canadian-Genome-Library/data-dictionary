@@ -1,8 +1,8 @@
-version: 1.1
+version: 0.1
 id: https://example.com/PCGL.yaml
 in_language:
 - en
-name: PCGL_Base_Schema
+name: 'The_Pan-Canadian_Genome_Library_Data_Dictionary'
 description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
 prefixes:
   linkml: https://w3id.org/linkml/
