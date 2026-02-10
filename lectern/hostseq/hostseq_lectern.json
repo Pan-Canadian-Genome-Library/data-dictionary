@@ -1,6 +1,6 @@
 {
-  "name": "hostseq pcgl schema",
-  "description": "Base clinical schema that incorporates all PCGL base entities",
+  "name": "PCGLST0002 pcgl schema",
+  "description": "Hostseq custom schema that incorporates all PCGL base entities and study specific extension fields and entities",
   "version": "1.1",
   "meta": {
     "version": {

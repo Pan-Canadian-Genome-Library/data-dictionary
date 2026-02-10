@@ -3,7 +3,7 @@ description: Defines the base schema of shared data elements used across all dom
   including patient demographics, vital status, and laboratory results
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.0.0.1
+version: 1.0.0.0
 imports:
 - linkml:types
 prefixes:

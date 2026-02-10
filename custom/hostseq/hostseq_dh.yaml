@@ -1,5 +1,6 @@
-name: hostseq_pcgl_schema
-description: Base clinical schema that incorporates all PCGL base entities
+name: PCGLST0002_pcgl_schema
+description: Hostseq custom schema that incorporates all PCGL base entities and study
+  specific extension fields and entities
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
 version: 1.0.0.1
