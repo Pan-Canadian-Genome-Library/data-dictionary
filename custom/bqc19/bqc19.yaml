@@ -1,0 +1,52 @@
+version: 0.1
+id: https://example.com/PCGL.yaml
+in_language:
+- en
+name: PCGLST0001_pcgl_schema
+description: 'BQC19 custom schema that incorporates all PCGL base entities and study specific extension fields and entities'
+prefixes:
+  linkml: https://w3id.org/linkml/
+
+default_curi_maps:
+  - semweb_context
+
+imports:
+- linkml:types
+- base/base
+classes:
+  Participant:
+    is_a: base_Participant
+  Sociodemographic:
+    is_a: base_Sociodemographic
+  Demographic:
+    is_a: base_Demographic
+  Diagnosis:
+   is_a: base_Diagnosis
+  Treatment:
+    is_a: base_Treatment
+  Follow_Up:
+    is_a: base_Follow_Up
+  Procedure:
+    is_a: base_Procedure
+  Medication:
+    is_a: base_Medication
+  Radiation:
+    is_a: base_Radiation
+  Measurement:
+    is_a: base_Measurement
+  Phenotype:
+    is_a: base_Phenotype
+  Comorbidity:
+    is_a: base_Comorbidity
+  Exposure:
+   is_a: base_Exposure
+  Specimen:
+    is_a: base_Specimen
+  Sample:
+    is_a: base_Sample
+  Experiment:
+    is_a: base_Experiment
+  Read_Group:
+    is_a: base_Read_Group
+
+
