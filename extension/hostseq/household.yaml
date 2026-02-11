@@ -1,0 +1,83 @@
+classes:
+  extension_Household:
+    name: extension_Household
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - submitter_member_id
+    - member_age_years
+    - member_relationship
+    - member_disease_status
+    title: household
+description: '...'
+enums:
+  MemberDiseaseStatusMenu:
+    name: MemberDiseaseStatusMenu
+    permissible_values:
+      Absent:
+        text: Absent
+      Missing - Unknown:
+        text: Missing - Unknown
+      Present:
+        text: Present
+    title: member disease status menu
+  MemberRelationshipMenu:
+    name: MemberRelationshipMenu
+    permissible_values:
+      Aunt/uncle:
+        text: Aunt/uncle
+      Child:
+        text: Child
+      Cousin:
+        text: Cousin
+      Grandparent:
+        text: Grandparent
+      Other:
+        text: Other
+      Parent:
+        text: Parent
+      Spouse:
+        text: Spouse
+    title: member relationship menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  member_age_years:
+    description: Member's age in years
+    name: member_age_years
+    range: integer
+    title: Member Age Years
+  member_disease_status:
+    description: Member's disease status
+    name: member_disease_status
+    range: MemberDiseaseStatusMenu
+    title: Member Disease Status
+  member_relationship:
+    description: Member's relationship to patient
+    name: member_relationship
+    range: MemberRelationshipMenu
+    title: Member Relationship
+  submitter_diagnosis_id:
+    description: Unique identifier of the diagnosis within the study, assigned by
+      the data provider.
+    name: submitter_diagnosis_id
+    range: string
+    required: true
+    title: Submitter Diagnosis Id
+  submitter_member_id:
+    description: Unique identifier of the family member within the study, assigned
+      by the data provider.
+    name: submitter_member_id
+    range: string
+    required: true
+    title: Submitter Member Id
+  submitter_participant_id:
+    description: Unique identifier of the participant within the study, assigned by
+      the data provider.
+    name: submitter_participant_id
+    range: string
+    required: true
+    title: Submitter Participant Id
+version: 1.0.0

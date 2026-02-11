@@ -1,8 +1,9 @@
-name: default_pcgl_schema
-description: Base clinical schema that incorporates all PCGL base entities
+name: The_Pan-Canadian_Genome_Library_Data_Dictionary
+description: Defines the base schema of shared data elements used across all domains,
+  including patient demographics, vital status, and laboratory results
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1
+version: 1.0.0.0
 imports:
 - linkml:types
 prefixes:
@@ -151,9 +152,6 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
-  study_id_menu:
-    name: study_id_menu
-    title: study id menu
   phenotype_observed_menu:
     name: phenotype_observed_menu
     title: phenotype observed menu
@@ -700,12 +698,12 @@ enums:
           designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor’s degree:
-        text: Bachelor’s degree
+      Bachelor's degree:
+        text: Bachelor's degree
       Degree in medicine, dentistry, veterinary medicine or optometry:
         text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master’s degree:
-        text: Master’s degree
+      Master's degree:
+        text: Master's degree
       Doctoral degree:
         text: Doctoral degree
       Post-doctoral fellowship or training:
@@ -1089,17 +1087,6 @@ slots:
     - MOH:cause_of_death
     range: cause_of_death_menu
     required: false
-  study_id:
-    name: study_id
-    description: Unique identifier of the study.
-    title: study_id
-    notes:
-    - Duplicates field for studyId in Analysis b/c SONG's rigidity to rename
-    exact_mappings:
-    - ARGO:studyId
-    - CQDG:study_id
-    range: string
-    required: true
   submitter_participant_id:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
@@ -1325,7 +1312,7 @@ slots:
     - value: icd10:C34
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
@@ -1591,7 +1578,7 @@ slots:
     - CQDG:disease_code
     range: string
     required: true
-    pattern: ^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\.[0-9]))?))$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
@@ -2774,30 +2761,25 @@ classes:
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - study_id
     - disease_specific_modifier
     - duo_modifier
     - duo_permission
     slot_usage:
-      study_id:
-        name: study_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       disease_specific_modifier:
         name: disease_specific_modifier
-        rank: 3
+        rank: 2
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        rank: 4
+        rank: 3
         slot_group: Participant
       duo_permission:
         name: duo_permission
-        rank: 5
+        rank: 4
         slot_group: Participant
     unique_keys:
       main:

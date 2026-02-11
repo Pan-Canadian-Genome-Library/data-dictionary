@@ -1,0 +1,27 @@
+classes:
+  extension_Medication:
+    is_a: base_Medication
+    name: extension_Medication
+    slots:
+    - drug_source_text
+    - drug_note
+    title: medication
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  drug_note:
+    description: Free text to record any additional information.
+    name: drug_note
+    range: string
+    title: Drug Note
+  drug_source_text:
+    description: Description of the drug as originally recorded in the source system,
+      prior to ontology mapping.
+    name: drug_source_text
+    range: string
+    title: Drug Source Text
+version: 1.0.0

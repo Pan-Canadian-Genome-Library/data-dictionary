@@ -1,0 +1,237 @@
+{
+  "name": "pcgl_study",
+  "description" : "Study schema summarizing PCGL's study entity managed by Clinical Submission Service",
+  "version" : "1.0",
+  "schemas": [
+    {
+      "name": "study",
+      "fields": [
+        {
+          "name": "study_id",
+          "description": "Unique identifier of the study in PCGL.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "source": [
+              "ARGO:program.program_id",
+              "CQDG:study.study_id"
+            ],
+            "mapping": {
+              "CQDG": "study_id"
+            },
+            "displayName": "study_id"
+          }
+        },
+        {
+          "name": "study_name",
+          "description": "The official name of the study",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "source": [
+              "ARGO:program.program_name",
+              "CQDG:study.name"
+            ],
+            "mapping": {
+              "CQDG": "name"
+            },
+            "displayName": "study_name"
+          }
+        },
+        {
+          "name": "study_description",
+          "description": "A detailed description of the study\u2019s purpose, hypothesis, and design.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "source": [
+              "ARGO:program.description",
+              "CQDG:study.description"
+            ],
+            "mapping": {
+              "CQDG": "description"
+            },
+            "displayName": "study_description"
+          }
+        },
+        {
+          "name": "program_name",
+          "description": "Indicate the overarching program the study belongs to (if applicable)",
+          "valueType": "string",
+          "meta": {
+            "displayName": "program_name"
+          }
+        },
+        {
+          "name": "keywords",
+          "description": "List of specific terms that describe the focus and content of the study.   In case there are several, place each on separate line.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "keywords"
+          },
+          "isArray": true,
+          "delimiter": ","
+        },
+        {
+          "name": "status",
+          "description": "Indicate if the study is completed or ongoing.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Ongoing",
+              "Completed"
+            ]
+          },
+          "meta": {
+            "displayName": "status"
+          }
+        },
+        {
+          "name": "context",
+          "description": "Indicate if the study was conducted in a clinical setting or as part of a research project.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Clinical",
+              "Research"
+            ]
+          },
+          "meta": {
+            "displayName": "context"
+          }
+        },
+        {
+          "name": "domain",
+          "description": "List of specific scientific or clinical domains addressed by the study.  In case there are several, place each on separate line.",
+          "valueType": "string",
+          "isArray": true,
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Aging",
+              "Birth Defects",
+              "Cancer",
+              "Circulatory and Respiratory Health",
+              "General Health",
+              "Infection and Immunity",
+              "Musculoskeletal Health and Arthritis",
+              "Neurodevelopmental Conditions",
+              "Neurosciences, Mental Health and Addiction",
+              "Nutrition, Metabolism and Diabetes",
+              "Population Genomics",
+              "Rare Diseases",
+              "Other"
+            ]
+          },
+          "meta": {
+            "displayName": "domain"
+          }
+        },
+        {
+          "name": "dac_id",
+          "description": "Unique identifier of the Data Access Committee (DAC) in PCGL to which the study is assigned.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "dac_id"
+          }
+        },
+        {
+          "name": "participant_criteria",
+          "description": "Inclusion/exclusion criteria for participants (e.g., specific cancer type, age range).",
+          "valueType": "string",
+          "meta": {
+            "displayName": "participant_criteria"
+          }
+        },
+        {
+          "name": "principal_investigators",
+          "description": "List of lead researchers responsible for the study.  In case there are several, please list each investigator on a separate line in the format: FirstName LastName, Affiliation E.g,  John Doe, Example Research Institute",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": ",",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "principal_investigators",
+            "notes": "Make sure to use only one comma (,) to separate the name from the affiliation.\nAvoid using additional fields (like emails or roles) in this section.",
+            "examples": [
+              "FirstName LastName, Affiliation",
+              "John Doe, Example Research Institute"
+            ]
+          }
+        },
+        {
+          "name": "lead_organizations",
+          "description": "List of institutions or organizations leading the study.  In case there are several, please list each lead organization on a separate line using its full official name.",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": ",",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "lead_organizations",
+            "notes": "Do not include departments or individual names."
+          }
+        },
+        {
+          "name": "collaborators",
+          "description": "List of researchers, institutions or companies involved in the study.  In case there are several, please list each collaborator on a separate line in the format: FirstName LastName (if individula) or Organization full official name, Role E.g,  Biotech Inc., Industry Partner Emily John, Data Contributor",
+          "valueType": "string",
+          "meta": {
+            "displayName": "collaborators",
+            "notes": "Include both individuals and organizations as applicable.\nUse a single comma (,) to separate the name or organization from their role.\nIf the collaborator is an individual, include their full name and role.\nIf the collaborator is an organization, use the full official name.",
+            "examples": [
+              "Biotech Inc., Industry Partner",
+              "Emily John, Data Contributor"
+            ]
+          },
+          "isArray": true
+        },
+        {
+          "name": "funding_sources",
+          "description": "List of organizations or agencies funding the study.   In case there are several, please list each funding source on a separate line in the format: Funder name, Grant number E.g, National Example Foundation, NEF-12345 Example Health Research Council",
+          "valueType": "string",
+          "isArray": true,
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "funding_sources",
+            "notes": "If no grant number is available, only include the funder name.\nDo not include currency amounts or dates.\nUse the full name of the funding organization.",
+            "examples": [
+              "National Example Foundation, NEF-12345",
+              "Example Health Research Council"
+            ]
+          }
+        },
+        {
+          "name": "publication_links",
+          "description": "List of URL links to academic papers or reports associated with the study.   In case there are several, please list each publication on a separate line by providing a DOI URL formatted as https://doi.org/ followed by the DOI number.",
+          "valueType": "string",
+          "meta": {
+            "displayName": "publication_links"
+          },
+          "isArray": true,
+          "delimiter": ","
+        }
+      ],
+      "meta": {
+        "status": "Prod V1.0"
+      },
+      "description": "Study refers to a specific research project conducted as part of a larger program. It involves data collection, analysis, and interpretation related to the program's goals. Each study is focused on particular research questions related to set of objectives."
+    }
+  ]
+}

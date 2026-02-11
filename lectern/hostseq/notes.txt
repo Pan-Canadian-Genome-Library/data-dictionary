@@ -1,0 +1,13 @@
+- remove analysis_id restriction in workflow
+- remove socidem_id restriction in socidemographic
+- remove member_id restriction in household
+- place placehodler class descrition hla
+- place placehodler class descrition hhousehold
+
+"name": "hostseq_schema",
+
+  "version": "1.1",
+  "meta" : {
+    "base_version" : "1.2",
+    "extension_version" : "1.1"
+  },

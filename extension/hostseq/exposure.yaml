@@ -1,0 +1,27 @@
+classes:
+  extension_Exposure:
+    is_a: base_Exposure
+    name: extension_Exposure
+    slots:
+    - exposure_source_text
+    - exposure_note
+    title: exposure
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  exposure_note:
+    description: Free text to record any additional information.
+    name: exposure_note
+    range: string
+    title: Exposure Note
+  exposure_source_text:
+    description: Description of an exposure, as recorded in the source system, before
+      ontology mapping.
+    name: exposure_source_text
+    range: string
+    title: Exposure Source Text
+version: 1.0.0

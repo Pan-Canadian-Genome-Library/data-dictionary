@@ -1,0 +1,72 @@
+{
+  "name": "pcgl_dac",
+ "description" : "DAC schema summarizing PCGL's DAC entity managed by Clinical Submission Service",
+  "version" : "1.0",
+  "schemas": [
+    {
+      "name": "dac",
+      "fields": [
+        {
+          "name": "dac_id",
+          "description": "Unique identifier of the Data Access Committee (DAC).",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "dac_id"
+          }
+        },
+        {
+          "name": "dac_name",
+          "description": "Full name of the DAC",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "dac_name"
+          }
+        },
+        {
+          "name": "dac_description",
+          "description": "An in-depth description of the DAC, including its overall purpose, scope and responsibilities.",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "dac_description"
+          }
+        },
+        {
+          "name": "contact_name",
+          "description": "The full name of the primary contact person.  Please provide in the format: FirstName LastName E,g Jone Smith",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "contact_name"
+          }
+        },
+        {
+          "name": "contact_email",
+          "description": "Contact email for communication",
+          "valueType": "string",
+          "restrictions": {
+            "required": true
+          },
+          "meta": {
+            "displayName": "contact_email"
+          }
+        }
+      ],
+      "meta": {
+        "reference": "EGA",
+        "status": "Prod V1.0"
+      },
+      "description": "A group fo individuals responsible for reviewing and approving or denying access requests to data based on established policies."
+    }
+  ]
+}

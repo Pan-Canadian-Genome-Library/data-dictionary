@@ -9,9 +9,14 @@ classes:
     slots:
     - covid19_severity
     - covid19_vaccine_doses
+    - disease_code
     title: Diagnosis
     todos: '{"reference": "Phenopacket", "status": "v2"}'
     slot_usage:
+      disease_code:
+        name: disease_code
+        rank: 4
+        slot_group: Diagnosis
       covid19_severity:
         rank: 8
         slot_group: Extended Diagnosis
@@ -79,4 +84,25 @@ slots:
     range: Covid19VaccineDosesMenu
     title: Covid19 Vaccine Doses
     required : false
+  disease_code:
+    name: disease_code
+    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    title: Disease Code
+    comments:
+    - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
+      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    exact_mappings:
+    - mCODE.STU3:condition.code
+    - FHIR:condition.code
+    - Phenopacket:disease.ter
+    - ARGO:disease_code
+    - MOH:disease_code
+    - CQDG:disease_code
+    - hello:eep
+    range: string
+    required: false
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}/NCit:*.$
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
 version: 2.0.0

@@ -1,17 +1,16 @@
-name: PCGL_Base_Schema
-description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
+name: PCGLST0002_pcgl_schema
+description: Hostseq custom schema that incorporates all PCGL base entities and study
+  specific extension fields and entities
 in_language: '[''en'']'
-id: https://example.com/base_schema.yaml
-version: '1.0'
+id: https://example.com/PCGL.yaml
+version: 1.0.0.1
 imports:
 - linkml:types
 prefixes:
-  linkml:
-    prefix_prefix: linkml
-    prefix_reference: https://w3id.org/linkml/
+  linkml: https://w3id.org/linkml/
 default_curi_maps:
 - semweb_context
-default_prefix: https://example.com/base_schema.yaml/
+default_prefix: https://example.com/PCGL.yaml/
 enums:
   cause_of_death_menu:
     name: cause_of_death_menu
@@ -693,8 +692,10 @@ enums:
         text: Elementary school or equivalent
       High school (secondary school) diploma or equivalency certificate:
         text: High school (secondary school) diploma or equivalency certificate
-      Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma :
-        text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma 
+      ? Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
+        designation), or other trades certificate or diploma
+      : text: Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's
+          designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
       Bachelor's degree:
@@ -1064,23 +1065,325 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
+  AncestryMenu:
+    name: AncestryMenu
+    title: ancestry menu
+    permissible_values:
+      Ashkenazi Jewish:
+        text: Ashkenazi Jewish
+      Black:
+        text: Black
+      East Asian / Pacific Islander:
+        text: East Asian / Pacific Islander
+      Hispanic:
+        text: Hispanic
+      Indigenous (First Nations, Metis, Inuit):
+        text: Indigenous (First Nations, Metis, Inuit)
+      Middle Eastern or Central Asian:
+        text: Middle Eastern or Central Asian
+      More than one race:
+        text: More than one race
+      Other:
+        text: Other
+      Prefer not to answer/ Don't know:
+        text: Prefer not to answer/ Don't know
+      Sephardic Jewish:
+        text: Sephardic Jewish
+      South Asian:
+        text: South Asian
+      White:
+        text: White
+  BirthPlaceMenu:
+    name: BirthPlaceMenu
+    title: birth place menu
+    permissible_values:
+      Africa:
+        text: Africa
+      Central and South America:
+        text: Central and South America
+      East Asia/ Southeast Asia:
+        text: East Asia/ Southeast Asia
+      East/West Europe:
+        text: East/West Europe
+      Middle East/ Central Asia:
+        text: Middle East/ Central Asia
+      North America:
+        text: North America
+      Oceania:
+        text: Oceania
+      Other:
+        text: Other
+      South Asia:
+        text: South Asia
+  CurrentlyPregnantMenu:
+    name: CurrentlyPregnantMenu
+    title: currently pregnant menu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+  DobMonthMenu:
+    name: DobMonthMenu
+    title: dob month menu
+    permissible_values:
+      April:
+        text: April
+      August:
+        text: August
+      December:
+        text: December
+      Don't know:
+        text: Don't know
+      February:
+        text: February
+      January:
+        text: January
+      July:
+        text: July
+      June:
+        text: June
+      March:
+        text: March
+      May:
+        text: May
+      November:
+        text: November
+      October:
+        text: October
+      September:
+        text: September
+  EmploymentStatusMenu:
+    name: EmploymentStatusMenu
+    title: employment status menu
+    permissible_values:
+      Factory worker:
+        text: Factory worker
+      Grocery store employee:
+        text: Grocery store employee
+      Healthcare worker (excluding long-term health care provider):
+        text: Healthcare worker (excluding long-term health care provider)
+      Long-term care facility employee:
+        text: Long-term care facility employee
+      Other:
+        text: Other
+      Tourism/travel worker:
+        text: Tourism/travel worker
+      Unknown:
+        text: Unknown
+  ResidenceTypeMenu:
+    name: ResidenceTypeMenu
+    title: residence type menu
+    permissible_values:
+      Another institution:
+        text: Another institution
+      Long term care facility:
+        text: Long term care facility
+      Personal residence:
+        text: Personal residence
+      Unknown:
+        text: Unknown
+  OutcomeSelfCareMenu:
+    name: OutcomeSelfCareMenu
+    title: outcome self care menu
+    permissible_values:
+      Better:
+        text: Better
+      Don't know:
+        text: Don't know
+      Same as before illness:
+        text: Same as before illness
+      Worse:
+        text: Worse
+  AmbulatoryStateMenu:
+    name: AmbulatoryStateMenu
+    title: ambulatory state menu
+    permissible_values:
+      Limitation of activities:
+        text: Limitation of activities
+      No limitation of activities:
+        text: No limitation of activities
+      Unknown:
+        text: Unknown
+  ErVisitMenu:
+    name: ErVisitMenu
+    title: er visit menu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+  HgiA2Menu:
+    name: HgiA2Menu
+    title: hgi a2 menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+  HgiB1Menu:
+    name: HgiB1Menu
+    title: hgi b1 menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+  HgiC2Menu:
+    name: HgiC2Menu
+    title: hgi c2 menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+  HhgiA1Menu:
+    name: HhgiA1Menu
+    title: hhgi a1 menu
+    permissible_values:
+      Case:
+        text: Case
+      Control:
+        text: Control
+  HospitalizedMenu:
+    name: HospitalizedMenu
+    title: hospitalized menu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+  HospitalizedStateMenu:
+    name: HospitalizedStateMenu
+    title: hospitalized state menu
+    permissible_values:
+      Intubation and mechanical ventilation:
+        text: Intubation and mechanical ventilation
+      No oxygen therapy:
+        text: No oxygen therapy
+      Non-invasive ventilation or high-flow oxygen:
+        text: Non-invasive ventilation or high-flow oxygen
+      Oxygen by mask or nasal prongs:
+        text: Oxygen by mask or nasal prongs
+      Ventilation + additional organ support -pressor, RRT, ECMO:
+        text: Ventilation + additional organ support -pressor, RRT, ECMO
+  PcrMenu:
+    name: PcrMenu
+    title: pcr menu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+  RepeatHospMenu:
+    name: RepeatHospMenu
+    title: repeat hosp menu
+    permissible_values:
+      Don't know:
+        text: Don't know
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+  SerologyResultMenu:
+    name: SerologyResultMenu
+    title: serology result menu
+    permissible_values:
+      Ab Negative:
+        text: Ab Negative
+      Ab Positive:
+        text: Ab Positive
+      Equivocal:
+        text: Equivocal
+      IgG Positive:
+        text: IgG Positive
+      IgM Positive:
+        text: IgM Positive
+      Negative:
+        text: Negative
+      Not administered:
+        text: Not administered
+  TransferFacilityMenu:
+    name: TransferFacilityMenu
+    title: transfer facility menu
+    permissible_values:
+      'No':
+        text: 'No'
+      Yes - facility is a study site:
+        text: Yes - facility is a study site
+      Yes - facility is not a study site:
+        text: Yes - facility is not a study site
+  WhoCovid19SeverityMenu:
+    name: WhoCovid19SeverityMenu
+    title: who covid19 severity menu
+    permissible_values:
+      Ambulatory (limitation of activities):
+        text: Ambulatory (limitation of activities)
+      Ambulatory (no limitation of activities):
+        text: Ambulatory (no limitation of activities)
+      Ambulatory (with or without limitation of activities):
+        text: Ambulatory (with or without limitation of activities)
+      Dead - death:
+        text: Dead - death
+      Hospitalized - mild disease (hospitalized, no oxygen therapy):
+        text: Hospitalized - mild disease (hospitalized, no oxygen therapy)
+      Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs):
+        text: Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
+      Hospitalized - severe disease (intubation and mechanical ventilation):
+        text: Hospitalized - severe disease (intubation and mechanical ventilation)
+      Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen):
+        text: Hospitalized - severe disease (non-invasive ventilation or high-flow
+          oxygen)
+      Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO):
+        text: Hospitalized - severe disease (ventilation and additional organ support,
+          i.e. pressors, RRT, ECMO)
+      Uninfected (no clinical or virological evidence of infection):
+        text: Uninfected (no clinical or virological evidence of infection)
+  MemberDiseaseStatusMenu:
+    name: MemberDiseaseStatusMenu
+    title: member disease status menu
+    permissible_values:
+      Absent:
+        text: Absent
+      Missing - Unknown:
+        text: Missing - Unknown
+      Present:
+        text: Present
+  MemberRelationshipMenu:
+    name: MemberRelationshipMenu
+    title: member relationship menu
+    permissible_values:
+      Aunt/uncle:
+        text: Aunt/uncle
+      Child:
+        text: Child
+      Cousin:
+        text: Cousin
+      Grandparent:
+        text: Grandparent
+      Other:
+        text: Other
+      Parent:
+        text: Parent
+      Spouse:
+        text: Spouse
 slots:
   age_at_death:
     name: age_at_death
     description: Age of participant (in days) at time of death
-    title: Age At Death
+    title: age_at_death
     range: integer
     required: false
   age_at_enrollment:
     name: age_at_enrollment
     description: Age (in days) of participant at time of enrollment into the study
-    title: Age At Enrollment
+    title: age_at_enrollment
     range: integer
     required: false
   cause_of_death:
     name: cause_of_death
     description: Indicate the cause of a participant's death.
-    title: Cause Of Death
+    title: cause_of_death
     exact_mappings:
     - ARGO:cause_of_death
     - MOH:cause_of_death
@@ -1090,26 +1393,13 @@ slots:
     name: submitter_participant_id
     description: Unique identifier of the participant within the study, assigned by
       the data provider.
-    title: Submitter Participant Id
-    examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
-    exact_mappings:
-    - CQDG:submitter_participant_id
-    - mCODE.STU3:Patient.Identifier
-    - FHIR:Patient.Identifier
-    - Phenopacket:individual.id
-    - BeaconV2:individual.id
-    - ARGO:submitter_participant_id
-    - MOH:submitter_participant_id
+    title: submitter_participant_id
     range: string
     required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}
   vital_status:
     name: vital_status
     description: Participant's last known state of living or deceased.
-    title: Vital Status
+    title: vital_status
     exact_mappings:
     - CQDG:vital_status
     - Phenopacket:individual.vital_status
@@ -1121,8 +1411,9 @@ slots:
     description: Refers to the ethnic or cultural origins of a person's ancestors.
       The provided values are based on the list of ethnic or cultural origins 2021
       defined by Statistics Canada
-    title: Ethnicity
-    notes: '
+    title: ethnicity
+    notes:
+    - '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1144,8 +1435,9 @@ slots:
     description: Refers to an individual's personal and social identity as a man,
       woman or non-binary person (a person who is not exclusively a man or a woman).
       The provided values are based on the categories defined by Statistics Canada
-    title: Gender
-    notes: '
+    title: gender
+    notes:
+    - '
 
       PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1164,7 +1456,7 @@ slots:
       within social hierarchies. There is no scientifically supported biological basis
       for discrete racial groups. The provided values are based on race-based data
       standard defined by CIHI guidance
-    title: Race
+    title: race
     comments:
     - EDI indicator
     exact_mappings:
@@ -1177,8 +1469,9 @@ slots:
     description: Refers to sex assigned at birth. Sex at birth is typically assigned
       based on a person's reproductive system and other physical characteristics.
       The provided values are based on the categoried defined by Statistics Canada
-    title: Sex At Birth
-    notes: '
+    title: sex_at_birth
+    notes:
+    - '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -1193,14 +1486,14 @@ slots:
   age_at_phenotype:
     name: age_at_phenotype
     description: Participant's age (in days) when phenotype was observed
-    title: Age At Phenotype
+    title: age_at_phenotype
     range: integer
     required: false
   phenotype_code:
     name: phenotype_code
     description: Use standardized HPO (Human Phenotype Ontology) codes to represent
       the phenotype.
-    title: Phenotype Code
+    title: phenotype_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     range: string
@@ -1210,19 +1503,19 @@ slots:
     name: phenotype_duration
     description: Indicate the length of time (in days) over which the phenotype was
       observed in the participant.
-    title: Phenotype Duration
+    title: phenotype_duration
     range: integer
     required: false
   phenotype_observed:
     name: phenotype_observed
     description: Indicate whether the phenotype was observed in the participant.
-    title: Phenotype Observed
+    title: phenotype_observed
     range: phenotype_observed_menu
     required: true
   phenotype_severity:
     name: phenotype_severity
     description: The degree or severity of the observed phenotype.
-    title: Phenotype Severity
+    title: phenotype_severity
     comments:
     - Permissible values from https://hpo.jax.org/browse/term/HP:0012824
     range: phenotype_severity_menu
@@ -1231,33 +1524,33 @@ slots:
     name: phenotype_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the phenotype_code.
-    title: Phenotype Term
+    title: phenotype_term
     range: string
     required: false
   age_at_followup:
     name: age_at_followup
     description: Participant's age (in days) at time of the follow up event
-    title: Age At Followup
+    title: age_at_followup
     range: integer
     required: false
   disease_status_at_followup:
     name: disease_status_at_followup
     description: Indicate the participant's disease status at time of follow-up
-    title: Disease Status At Followup
+    title: disease_status_at_followup
     range: disease_status_at_followup_menu
     required: true
   age_at_measurement:
     name: age_at_measurement
     description: Age (in days) of the participant at the time the lab test or measurement
       was conducted.
-    title: Age At Measurement
+    title: age_at_measurement
     range: integer
     required: false
   measurement_code:
     name: measurement_code
     description: Use standartized LOINC (Logical Observation Identifiers Names and
       Codes) code to represent quantitative, ordinal, or categorical measurements.
-    title: Measurement Code
+    title: measurement_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
     range: string
@@ -1266,59 +1559,60 @@ slots:
   measurement_result_categorical:
     name: measurement_result_categorical
     description: The categorical result of the lab test or measurement.
-    title: Measurement Result Categorical
+    title: measurement_result_categorical
     range: string
     required: false
   measurement_result_numeric:
     name: measurement_result_numeric
     description: The numeric result of the lab test or measurement.
-    title: Measurement Result Numeric
+    title: measurement_result_numeric
     range: decimal
     required: false
   measurement_term:
     name: measurement_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the measurement_code
-    title: Measurement Term
+    title: measurement_term
     range: string
     required: false
   measurement_unit:
     name: measurement_unit
     description: Indicate the unit of measurement for the result using LOINC code.
-    title: Measurement Unit
+    title: measurement_unit
     range: string
-    pattern : ^UO:\d{7}$
     required: false
+    pattern: ^UO:\d{7}$
   age_at_comorbidity_diagnosis:
     name: age_at_comorbidity_diagnosis
     description: Indicate the age (in days) of comorbidity diagnosis.
-    title: Age At Comorbidity Diagnosis
+    title: age_at_comorbidity_diagnosis
     range: integer
     required: false
   comorbidity_code:
     name: comorbidity_code
-    description: "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern."
-    title: Comorbidity Code
+    description: Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.
+      Provide code in Compact URI (CURIE) pattern.
+    title: comorbidity_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
     range: string
     required: true
     pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
-    examples:
-    - value : MONDO:0000001
-    - value : icd10:C34
   comorbidity_status:
     name: comorbidity_status
     description: Indicate the current state or activity of the comorbid condition.
-    title: Comorbidity Status
+    title: comorbidity_status
     range: comorbidity_status_menu
     required: false
   comorbidity_term:
     name: comorbidity_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the comorbidity_code
-    title: Comorbidity Term
+    title: comorbidity_term
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1329,14 +1623,14 @@ slots:
     name: comorbidity_treatment_status
     description: Indicate whether the comorbid condition is currently being treated
       or not.
-    title: Comorbidity Treatment Status
+    title: comorbidity_treatment_status
     range: comorbidity_treatment_status_menu
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
     description: Indicate the ICD-O-3 topography code to describe the site of the
       surgery if applicable. Please use C80.9 if the site is Unkown.
-    title: Procedure Body Site Code
+    title: procedure_body_site_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
@@ -1355,37 +1649,37 @@ slots:
     name: procedure_body_site_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_body_site_code
-    title: Procedure Body Site Term
+    title: procedure_body_site_term
     range: string
     required: false
   procedure_code:
     name: procedure_code
     description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
       performed.
-    title: Procedure Code
+    title: procedure_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
-      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:
-https://www.cihi.ca/en/cci-coding-structure'
-    range: string
-    required: true
-    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>
+      CCI URL: https://www.cihi.ca/en/cci-coding-structure'
     examples:
-    - value: NCIT:C51894 
+    - value: NCIT:C51894
     - value: snomedct:284196006
     - value: umls:C2584994
     - value: CCI:1CA14STCDR
+    range: string
+    required: true
+    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
   procedure_term:
     name: procedure_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the procedure_code
-    title: Procedure Term
+    title: procedure_term
     range: string
     required: false
   submitter_treatment_id:
     name: submitter_treatment_id
     description: Unique identifier of the treatment, assigned by the data provider.
-    title: Submitter Treatment Id
+    title: submitter_treatment_id
     examples:
     - value: '90234'
     - value: BLD_donor_89
@@ -1396,7 +1690,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   alcohol_consumption:
     name: alcohol_consumption
     description: Indicate current alcohol consumtion based on recommended daily limit.
-    title: Alcohol Consumption
+    title: alcohol_consumption
     comments:
     - Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks
       a week, with no more than 3 drinks a day most days. No more than 4 drinks on
@@ -1412,14 +1706,14 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: physical_activity
     description: Indicate how many times per week the participant exercises for at
       least 30 minutes.
-    title: Physical Activity
+    title: physical_activity
     range: physical_activity_menu
     required: false
   smoking_status:
     name: smoking_status
     description: Indicate smoking status and history of a participant at the time
       of the data collection.
-    title: Smoking Status
+    title: smoking_status
     exact_mappings:
     - ARGO:smoking_status
     - MOH:smoking_status
@@ -1429,7 +1723,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   age_at_specimen_collection:
     name: age_at_specimen_collection
     description: Indicate participant's age( in days) when specimen was collected.
-    title: Age At Specimen Collection
+    title: age_at_specimen_collection
     range: integer
     required: false
   specimen_anatomic_location_code:
@@ -1437,7 +1731,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Indicate the ICD-O-3 topography code for the anatomic location of
       a specimen when it was collected. Please use C80.9 if the primary site of a
       specimen is Unkown.
-    title: Specimen Anatomic Location Code
+    title: specimen_anatomic_location_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
@@ -1451,19 +1745,19 @@ https://www.cihi.ca/en/cci-coding-structure'
     - MOH:specimen_anatomic_location_code
     range: string
     required: false
-    pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   specimen_anatomic_location_label:
     name: specimen_anatomic_location_label
     description: Provide the human readable label for the specimen anatomic location
       code.
-    title: Specimen Anatomic Location Label
+    title: specimen_anatomic_location_label
     range: string
     required: false
   specimen_laterality:
     name: specimen_laterality
     description: For cancer in a paired organ, indicate the side on which the specimen
       was obtained.
-    title: Specimen Laterality
+    title: specimen_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
     exact_mappings:
@@ -1474,7 +1768,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   specimen_processing:
     name: specimen_processing
     description: Indicate the technique used to process specimen.
-    title: Specimen Processing
+    title: specimen_processing
     exact_mappings:
     - Phenopacket:biosample.sample_processing
     - BeaconV2:biosample.sample_processing
@@ -1486,7 +1780,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: specimen_storage
     description: Indicate the method of long term storage for specimen that were not
       extracted freshly or immediately cultured.
-    title: Specimen Storage
+    title: specimen_storage
     exact_mappings:
     - Phenopacket:biosample.sample_storage
     - BeaconV2:biosample.sample_storage
@@ -1499,7 +1793,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Indicate the tissue source of the specimen from which a biopsy or
       other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
       SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
-    title: Specimen Tissue Source Code
+    title: specimen_tissue_source_code
     exact_mappings:
     - CQDG:biospecimen_tissue_source
     - mCODE.STU3:Specimen.type
@@ -1513,14 +1807,14 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: specimen_tissue_source_term
     description: Indicate the human readable label for the specimen tissue source
       code.
-    title: Specimen Tissue Source Term
+    title: specimen_tissue_source_term
     range: string
     required: false
   submitter_specimen_id:
     name: submitter_specimen_id
     description: Unique identifier of the specimen within the study, assigned by the
       data provider.
-    title: Submitter Specimen Id
+    title: submitter_specimen_id
     examples:
     - value: LAML_PO
     - value: '00445'
@@ -1539,7 +1833,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   age_at_diagnosis:
     name: age_at_diagnosis
     description: Age of participant (in days) at time of diagnosis of the condition.
-    title: Age At Diagnosis
+    title: age_at_diagnosis
     exact_mappings:
     - mCODE.STU3:condition.onset
     - FHIR:condition.onset
@@ -1551,16 +1845,19 @@ https://www.cihi.ca/en/cci-coding-structure'
   disease_category:
     name: disease_category
     description: A broader classification that groups diseases into categories.
-    title: Disease Category
+    title: disease_category
     range: disease_category_menu
     required: true
   disease_code:
     name: disease_code
     description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
-    title: Disease Code
+    title: disease_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+    examples:
+    - value: MONDO:0000001
+    - value: icd10:C34
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1571,14 +1868,11 @@ https://www.cihi.ca/en/cci-coding-structure'
     range: string
     required: true
     pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
-    examples:
-    - value: MONDO:0000001
-    - value: icd10:C34
   disease_term:
     name: disease_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the disease_code
-    title: Disease Term
+    title: disease_term
     exact_mappings:
     - mCODE.STU3:condition.code
     - FHIR:condition.code
@@ -1587,46 +1881,35 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   submitter_diagnosis_id:
     name: submitter_diagnosis_id
-    description: Unique identifier of the primary diagnosis event, assigned by the
-      data provider.
-    title: Submitter Diagnosis Id
-    examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
-    exact_mappings:
-    - mCODE.STU1:Condition.identifier
-    - mCODE.STU2:Condition.identifier
-    - FHIR:condition.code
-    - ARGO:submitter_diagnosis_id
-    - MOH:submitter_diagnosis_id
+    description: Unique identifier of the diagnosis within the study, assigned by
+      the data provider.
+    title: submitter_diagnosis_id
     range: string
     required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
   age_at_treatment:
     name: age_at_treatment
     description: Age (in days) of the participant at the time the treatment was administered.
-    title: Age At Treatment
+    title: age_at_treatment
     range: integer
     required: false
   treatment_duration:
     name: treatment_duration
     description: The length of time (in days) over which the treatment was administered.
-    title: Treatment Duration
+    title: treatment_duration
     range: integer
     required: false
   treatment_intent:
     name: treatment_intent
     description: The purpose of the treatment or the desired effect or outcome resulting
       from the treatment.
-    title: Treatment Intent
+    title: treatment_intent
     range: treatment_intent_menu
     required: false
   treatment_response:
     name: treatment_response
     description: The outcome of the treatment, indicating how the patient responded
       to the intervention
-    title: Treatment Response
+    title: treatment_response
     exact_mappings:
     - ARGO:treatment_response
     - MOH:treatment_response
@@ -1636,7 +1919,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   treatment_status:
     name: treatment_status
     description: Indicate the donor's status of the prescribed treatment.
-    title: Treatment Status
+    title: treatment_status
     exact_mappings:
     - ARGO:treatment_status
     - MOH:treatment_status
@@ -1645,59 +1928,59 @@ https://www.cihi.ca/en/cci-coding-structure'
   treatment_type:
     name: treatment_type
     description: The category or method of treatment administered
-    title: Treatment Type
+    title: treatment_type
     range: treatment_type_menu
     required: true
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
       specified in drug_dose_units.
-    title: Actual Cumulative Drug Dose
+    title: actual_cumulative_drug_dose
     range: decimal
     required: false
   drug_code:
     name: drug_code
     description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
       to represent the drug.
-    title: Drug Code
+    title: drug_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
       URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
       URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
-    range: string
-    required: true
-    pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
     examples:
     - value: rxnorm:221058
     - value: kegg.drug:D00123
     - value: pubchem.compound:100101
     - value: NCIT:C138986
+    range: string
+    required: true
+    pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
   drug_dose_units:
     name: drug_dose_units
     description: Indicate units used to record drug dose.
-    title: Drug Dose Units
+    title: drug_dose_units
     range: string
-    pattern: ^UO:\d{7}$
     required: false
+    pattern: ^UO:\d{7}$
   drug_term:
     name: drug_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the drug_code
-    title: Drug Term
+    title: drug_term
     range: string
     required: false
   prescribed_cumulative_drug_dose:
     name: prescribed_cumulative_drug_dose
     description: Indicate the total prescribed cumulative drug dose in the same units
       specified in drug_dose_units.
-    title: Prescribed Cumulative Drug Dose
+    title: prescribed_cumulative_drug_dose
     range: decimal
     required: false
   anatomical_site_irradiated_code:
     name: anatomical_site_irradiated_code
     description: Indicate the ICD-O-3 topography code to describe the irradiated site
       of radiation if applicable. Please use C80.9 if the site is Unkown.
-    title: Anatomical Site Irradiated Code
+    title: anatomical_site_irradiated_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
@@ -1711,57 +1994,44 @@ https://www.cihi.ca/en/cci-coding-structure'
     - ARGO:anatomical_site_irradiated_code
     range: string
     required: false
-    pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the anatomical_site_irradiated_code
-    title: Anatomical Site Irradiated Term
+    title: anatomical_site_irradiated_term
     range: string
     required: false
   radiation_dosage:
     name: radiation_dosage
     description: Indicate the total dose given in units of Gray (Gy).
-    title: Radiation Dosage
+    title: radiation_dosage
     range: integer
     required: false
   radiation_fractions:
     name: radiation_fractions
     description: Indicate the total number of fractions delivered as part of treatment.
-    title: Radiation Fractions
+    title: radiation_fractions
     range: integer
     required: false
   radiation_modality:
     name: radiation_modality
     description: Indicate NCIt code to denote the modality of radiation therapy.
-    title: Radiation Modality
+    title: radiation_modality
     range: radiation_modality_menu
     required: true
   submitter_sample_id:
     name: submitter_sample_id
-    description: 'Unique identifier of the sample within the study, assigned by the
+    description: Unique identifier of the sample within the study, assigned by the
       data provider.
-
-      '
-    title: Submitter Sample Id
-    examples:
-    - value: hnc_12
-    - value: CCG_34_94583
-    - value: BRCA47832-3239
-    exact_mappings:
-    - FHIR:submitter_sample_id
-    - mCODE:submitter_sample_id
-    - MOH:submitter_sample_id
-    - ARGO:submitter_sample_id
+    title: submitter_sample_id
     range: string
     required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
   sample_type:
     name: sample_type
     description: 'Indicate NCIt (NCI Thesaurus) code and term to denote the type of
-      molecular sample used for sequencing and analysis.
-      '
-    title: Sample Type
+      molecular sample used for sequencing and analysis. '
+    title: sample_type
     exact_mappings:
     - Phenopacket:biosample.sample_type
     - BeaconV2:biosample.sample_type
@@ -1772,7 +2042,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   sample_status:
     name: sample_status
     description: Indicate the status of the sample for data analysis.
-    title: Sample Status
+    title: sample_status
     exact_mappings:
     - Phenopacket:sample_status
     range: sample_status_menu
@@ -1781,7 +2051,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: matched_control_submitter_sample_id
     description: 'Indicate the matched control submitter sample id to use for data
       analysis. '
-    title: Matched Control Submitter Sample Id
+    title: matched_control_submitter_sample_id
     range: string
     required: false
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
@@ -1789,7 +2059,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: submitter_experiment_id
     description: Unique identifier of the experiment within the study, assigned by
       the data provider.
-    title: Submitter Experiment Id
+    title: submitter_experiment_id
     exact_mappings:
     - ARGO:submitter_experiment_id
     range: string
@@ -1799,7 +2069,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: experiment_type
     description: The broad type of sequencing experiment performed. A mixture of library
       strategy and source
-    title: Experiment Type
+    title: experiment_type
     exact_mappings:
     - GA4GHExperimentMetadataChecklist:experiment_type
     range: experiment_type_menu
@@ -1808,7 +2078,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: experimental_strategy
     description: The primary experimental method. For sequencing data it refers to
       how the sequencing library was made.
-    title: Experimental Strategy
+    title: experimental_strategy
     exact_mappings:
     - BeaconV2:runs.libraryStrategy
     - ARGO:experimental_strategy
@@ -1817,7 +2087,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   platform:
     name: platform
     description: The sequencing platform type used in data generation.
-    title: Platform
+    title: platform
     exact_mappings:
     - BeaconV2:runs.platform
     - ARGO:platform
@@ -1827,7 +2097,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: submitter_analysis_id
     description: Unique identifier of the analysis within the study, assigned by the
       data provider.
-    title: Submitter Analysis Id
+    title: submitter_analysis_id
     examples:
     - value: hnc_12
     - value: CCG_34_94583
@@ -1841,7 +2111,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   submitter_read_group_id:
     name: submitter_read_group_id
     description: The identifier of a read group; must be unique within each payload.
-    title: Submitter Read Group Id
+    title: submitter_read_group_id
     exact_mappings:
     - ARGO:submitter_read_group_id
     - BeaconV2:runs.id
@@ -1852,7 +2122,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: analysis_type
     description: Overall type of the analysis. Term chosen from a controlled vocabulary
       (CV) list.
-    title: Analysis Type
+    title: analysis_type
     exact_mappings:
     - ARGO:analysis_type
     - EGA:analysis_type
@@ -1862,13 +2132,13 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: submitter_workflow_id
     description: Indicate the unique identifier of the data processing workflow used
       in the analysis.
-    title: Submitter Workflow Id
+    title: submitter_workflow_id
     range: string
     required: false
   analysis_input_type:
     name: analysis_input_type
     description: An array specifying the types of data used as inputs for the analysis
-    title: Analysis Input Type
+    title: analysis_input_type
     exact_mappings:
     - ARGO:analysis_input_type
     - EGA:analysis_input_type
@@ -1881,7 +2151,7 @@ https://www.cihi.ca/en/cci-coding-structure'
       be ''Raw Sequencing Reads'', while that same type of data could be the input
       type of data for an analysis type of sequence alignment, which would then output
       ''Aligned Reads''. '
-    title: Analysis Output Type
+    title: analysis_output_type
     exact_mappings:
     - ARGO:analysis_output_type
     - EGA:analysis_output_type
@@ -1890,20 +2160,20 @@ https://www.cihi.ca/en/cci-coding-structure'
   genome_build:
     name: genome_build
     description: 'The reference genome build that is used in the workflow. '
-    title: Genome Build
+    title: genome_build
     range: genome_build_menu
     required: false
   genome_annotation:
     name: genome_annotation
     description: Indicates which genome annotation build or version was used in the
       analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
-    title: Genome Annotation
+    title: genome_annotation
     range: string
     required: false
   fileName:
     name: fileName
     description: Name of the file.
-    title: FileName
+    title: fileName
     exact_mappings:
     - ARGO:fileName
     range: string
@@ -1912,7 +2182,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   fileSize:
     name: fileSize
     description: Size of the file, in bytes.
-    title: FileSize
+    title: fileSize
     exact_mappings:
     - ARGO:fileSize
     range: integer
@@ -1920,7 +2190,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   fileMd5sum:
     name: fileMd5sum
     description: Computed md5sum of the file.
-    title: FileMd5sum
+    title: fileMd5sum
     exact_mappings:
     - ARGO:fileMd5sum
     range: string
@@ -1929,7 +2199,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   fileType:
     name: fileType
     description: Data format of files.
-    title: FileType
+    title: fileType
     exact_mappings:
     - EGA:fileType
     - ARGO:fileType
@@ -1938,7 +2208,7 @@ https://www.cihi.ca/en/cci-coding-structure'
   fileAccess:
     name: fileAccess
     description: The permission level of a file for public access.
-    title: FileAccess
+    title: fileAccess
     exact_mappings:
     - ARGO:fileAccess
     range: string
@@ -1946,13 +2216,13 @@ https://www.cihi.ca/en/cci-coding-structure'
   workflow_name:
     name: workflow_name
     description: The name of the genomic data processing workflow used for data analysis.
-    title: Workflow Name
+    title: workflow_name
     range: string
     required: true
   workflow_version:
     name: workflow_version
     description: 'The version of the workflow or pipeline being used. '
-    title: Workflow Version
+    title: workflow_version
     range: string
     required: false
   workflow_url:
@@ -1960,7 +2230,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: A URL linking to the workflow's repository or documentation. This
       could be a reference to a GitHub repository, a website where the workflow is
       described, or documentation on how to run the workflow.
-    title: Workflow Url
+    title: workflow_url
     range: string
     required: false
   duo_permission:
@@ -1968,7 +2238,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE)
       pattern to indicate permitted uses or focused areas of research for the Participant
       data.
-    title: Duo Permission
+    title: duo_permission
     exact_mappings:
     - CQDG:duo_permission
     range: duo_permission_menu
@@ -1978,7 +2248,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE)
       pattern to add requirements, limitations, or prohibitions within the permitted
       boundary for the Participant data.
-    title: Duo Modifier
+    title: duo_modifier
     exact_mappings:
     - CQDG:duo_modifier
     range: duo_modifier_menu
@@ -1988,7 +2258,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: disease_specific_modifier
     description: If the permission is DUO:0000007 (disease specific research), then
       MONDO codes must be provided to specify which disease(s) apply.
-    title: Disease Specific Modifier
+    title: disease_specific_modifier
     examples:
     - value: MONDO:0000001
     range: string
@@ -1999,7 +2269,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: submitter_sociodem_id
     description: Unique identifier for the sociodemographic record, assigned by the
       data provider.
-    title: Submitter Sociodem Id
+    title: submitter_sociodem_id
     examples:
     - value: '90234'
     - value: BLD_participant_89
@@ -2011,8 +2281,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: age_at_sociodem_collection
     description: Age (in days) of the participant at the time of sociodemographic
       data collection
-    title: Age At Sociodem Collection
-    notes: '
+    title: age_at_sociodem_collection
+    notes:
+    - '
 
       If projects do not have the exact date of birth, they may report an approximate
       age (in days) using the year of birth and year of study collection.
@@ -2030,8 +2301,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       \ the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if\
       \ the day is unknown but the month and year are known\n- Use YYYY if only the\
       \ year is known"
-    title: Sociodem Date Collection
-    notes: '
+    title: sociodem_date_collection
+    notes:
+    - '
 
       When the exact date is unknown it can be approximated based on the study''s
       year of commencement.
@@ -2047,8 +2319,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: A response which does not fall into any of the previous racial reporting
       categories (e.g., Pacific Islander, Indigenous identities outside of North America,
       etc.).
-    title: Race Another Racial Category
-    notes: '
+    title: race_another_racial_category
+    notes:
+    - '
 
       race_another_racial_category must be populated when race is "Another Racial
       Category"
@@ -2067,8 +2340,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       in (genetic) population structure with socially constructed racial categories,
       responses that were self-identified should not be aggregated with responses
       that were socially assigned or derived. '
-    title: Race Collect Method
-    notes: '
+    title: race_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data v1.0.
@@ -2080,8 +2354,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: gender_another_gender
     description: A response which does not fall into any of the previous gender reporting
       categories.
-    title: Gender Another Gender
-    notes: '
+    title: gender_another_gender
+    notes:
+    - '
 
       gender_another_gender must be populated when gender is "Another Gender"
 
@@ -2094,8 +2369,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: gender_collect_method
     description: 'Studies must report how the gender data was collected. This is necessary
       to enable data aggregation, harmonization, and reproducibility. '
-    title: Gender Collect Method
-    notes: '
+    title: gender_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data v1.0.
@@ -2108,8 +2384,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: A response which does not fall into any of the previous categories.
       For example, a response of “Other” from retrospective studies. Prospective projects
       should instead allow participants to freely self-identify.
-    title: Ethnicity Another Category
-    notes: '
+    title: ethnicity_another_category
+    notes:
+    - '
 
       ethnicity_another_category must be populated when ethnicity is "Free text input".
 
@@ -2122,8 +2399,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: ethnicity_collect_method
     description: 'Studies must report how the ethnicity data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Ethnicity Collect Method
-    notes: '
+    title: ethnicity_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2134,8 +2412,9 @@ https://www.cihi.ca/en/cci-coding-structure'
   sex_another_category:
     name: sex_another_category
     description: 'A response which does not fall into any of the previous categories. '
-    title: Sex Another Category
-    notes: '
+    title: sex_another_category
+    notes:
+    - '
 
       sex_another_category must be populated when sex is "Another Sex"..
 
@@ -2148,8 +2427,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: sex_collect_method
     description: 'Studies must report how the sex_at_birth data was collected. This
       is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Sex Collect Method
-    notes: '
+    title: sex_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2160,8 +2440,9 @@ https://www.cihi.ca/en/cci-coding-structure'
   education:
     name: education
     description: The highest level of education attained.
-    title: Education
-    notes: '
+    title: education
+    notes:
+    - '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2175,8 +2456,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: education_collect_method
     description: 'Studies must report how the education data was collected. This is
       necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Education Collect Method
-    notes: '
+    title: education_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2187,8 +2469,9 @@ https://www.cihi.ca/en/cci-coding-structure'
   personal_income:
     name: personal_income
     description: Personal annual income from all sources after taxes.
-    title: Personal Income
-    notes: '
+    title: personal_income
+    notes:
+    - '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2202,8 +2485,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: personal_income_collect_method
     description: 'Studies must report how the personal_income data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Personal Income Collect Method
-    notes: '
+    title: personal_income_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2214,8 +2498,9 @@ https://www.cihi.ca/en/cci-coding-structure'
   geographic_location:
     name: geographic_location
     description: 'A participant’s postal code at their current address of residence. '
-    title: Geographic Location
-    notes: '
+    title: geographic_location
+    notes:
+    - '
 
       "PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2231,15 +2516,16 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: geographic_location_additional
     description: When postal code is less specific, additional information may be
       reported.
-    title: Geographic Location Additional
+    title: geographic_location_additional
     range: string
     required: false
   geographic_location_collect_method:
     name: geographic_location_collect_method
     description: 'Studies must report how the geographic_location data was collected.
       This is necessary to enable data aggregation, harmonization, and reproducibility. '
-    title: Geographic Location Collect Method
-    notes: '
+    title: geographic_location_collect_method
+    notes:
+    - '
 
       Definitions and examples of methods of collections are provided in the PCGL
       Guidance Document for Participant Sociodemographic Data.
@@ -2251,7 +2537,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: sociodem_question
     description: Indicate whether the questions asked for the sociodemographic variable
       follow the PCGL reference question and standard reporting categories.
-    title: Sociodem Question
+    title: sociodem_question
     range: sociodem_question_menu
     required: true
   sociodem_question_detail:
@@ -2259,8 +2545,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Report the questions asked for the sociodemographic variable, including
       the provided response options/reporting categories if it does not follow the
       PCGL reference question and standard reporting categories.
-    title: Sociodem Question Detail
-    notes: '
+    title: sociodem_question_detail
+    notes:
+    - '
 
       "The sociodem_question_detail field provides additional context and is conditionally
       required based on the value of sociodem_question:
@@ -2281,7 +2568,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: sociodem_notes
     description: Studies may choose to report whether potential bias may exist due
       to the way reporting categories were defined and handled.
-    title: Sociodem Notes
+    title: sociodem_notes
     examples:
     - value: "\n    For example, in the Canadian Census, the order of the provided\
         \ response options for ethnicity were shown to influence number of received\
@@ -2296,7 +2583,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: 'Indicate NCIt code to denote the modality of radiation therapy.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Radiation Modality Code
+    title: radiation_modality_code
     examples:
     - value: NCIT:C28039
     exact_mappings:
@@ -2308,7 +2595,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: radiation_modality_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the radiation modality code.
-    title: Radiation Modality Term
+    title: radiation_modality_term
     examples:
     - value: Electron Beam
     range: string
@@ -2321,8 +2608,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       Provide code in Compact URI (CURIE) pattern.
 
       '
-    title: Exposure Code
-    notes: '
+    title: exposure_code
+    notes:
+    - '
 
       SNOMED-CT URL:
 
@@ -2348,7 +2636,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: exposure_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the exposure_code
-    title: Exposure Term
+    title: exposure_term
     examples:
     - value: Alcohol use
     range: string
@@ -2356,33 +2644,33 @@ https://www.cihi.ca/en/cci-coding-structure'
   exposure_status:
     name: exposure_status
     description: Provide the status of the exposure
-    title: Exposure Status
+    title: exposure_status
     range: exposure_status_menu
     required: true
   age_at_exposure:
     name: age_at_exposure
     description: 'Age (in days) when the participant was exposed (or first exposed)        '
-    title: Age At Exposure
+    title: age_at_exposure
     range: integer
     required: false
   exposure_duration:
     name: exposure_duration
     description: Duration of exposure period
-    title: Exposure Duration
+    title: exposure_duration
     range: integer
     required: false
   exposure_amount:
     name: exposure_amount
     description: Provide intensity, quantity or frequency of the exposure
-    title: Exposure Amount
-    notes: "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day,\
-      \ hours/week\n"
+    title: exposure_amount
+    notes:
+    - "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day, hours/week\n"
     range: integer
     required: false
   exposure_unit:
     name: exposure_unit
     description: Unit associated with exposure_amount
-    title: Exposure Unit
+    title: exposure_unit
     examples:
     - value: drinks/day
     range: string
@@ -2391,7 +2679,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: specimen_anatomic_location_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the specimen anatomic location code.
-    title: Specimen Anatomic Location Term
+    title: specimen_anatomic_location_term
     examples:
     - value: placental basal plate
     range: string
@@ -2402,7 +2690,7 @@ https://www.cihi.ca/en/cci-coding-structure'
       for sequencing and analysis.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Molecule Type Code
+    title: molecule_type_code
     examples:
     - value: NCIT:C449
     - value: NCIT:C812
@@ -2422,7 +2710,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: molecule_type_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with molecule type code.
-    title: Molecule Type Term
+    title: molecule_type_term
     examples:
     - value: DNA
     range: string
@@ -2430,10 +2718,11 @@ https://www.cihi.ca/en/cci-coding-structure'
   experiment_design:
     name: experiment_design
     description: The high-level experiment design including layout, protocol.
-    title: Experiment Design
-    notes: Added as a redundancy measure to prevent submission errors. Clinical API
-      will check study_id against user's selection. Also duplicates field study_id
-      in Participant b/c SONG's rigidity to rename
+    title: experiment_design
+    notes:
+    - Added as a redundancy measure to prevent submission errors. Clinical API will
+      check study_id against user's selection. Also duplicates field study_id in Participant
+      b/c SONG's rigidity to rename
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:design_description
     range: string
@@ -2444,8 +2733,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       the library for sequencing data.
 
       Provide code in Compact URI (CURIE) pattern.'
-    title: Assay Type Code
-    notes: '
+    title: assay_type_code
+    notes:
+    - '
 
       E.g,
 
@@ -2476,8 +2766,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: assay_type_term
     description: Provide the standardized and human readable term derived from the
       coding system associated with the assay type code.
-    title: Assay Type Term
-    notes: '
+    title: assay_type_term
+    notes:
+    - '
 
       E.g,
 
@@ -2521,8 +2812,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       OBI:0002630 (Illumina NovaSeq 6000)
 
       OBI:0002012 (PacBio RS II)'
-    title: Instrument
-    notes: '
+    title: instrument
+    notes:
+    - '
 
       Please make sure to include a space between the CURIE and the opening parenthesis.
 
@@ -2541,7 +2833,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: instrument_metadata
     description: Captures metadata about sequencing instrument usage (e.g. instruments
       parameters and usage conditions)
-    title: Instrument Metadata
+    title: instrument_metadata
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:instrument_metadata
     range: string
@@ -2553,7 +2845,7 @@ https://www.cihi.ca/en/cci-coding-structure'
       of dumping free text in this field.
 
       E.g, https://www.protocols.io/view/environmental-dna-edna-metabarcoding-protocol-for-rm7vzy3q2lx1/v1'
-    title: Sequencing Protocol
+    title: sequencing_protocol
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:sequencing_protocol
     range: string
@@ -2562,8 +2854,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: file_r1
     description: Name of the sequencing file containing reads from the first end of
       a sequencing run.
-    title: File R1
-    notes: Any string value. Must match a fileName identified in the files section.
+    title: file_r1
+    notes:
+    - Any string value. Must match a fileName identified in the files section.
     exact_mappings:
     - ARGO:file_r1
     range: string
@@ -2573,9 +2866,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Name of the sequencing file containing reads from the second end
       of a paired-end sequencing run. Required if and only if paired-end sequencing
       was done.
-    title: File R2
-    notes: Any string value or null. Must match a fileName identified in the files
-      section.
+    title: file_r2
+    notes:
+    - Any string value or null. Must match a fileName identified in the files section.
     exact_mappings:
     - ARGO:file_r2
     range: string
@@ -2584,8 +2877,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
       pool (multiplex sequencing).
-    title: Library Name
-    notes: Any string value.
+    title: library_name
+    notes:
+    - Any string value.
     exact_mappings:
     - ARGO.library_name
     - GA4GH.Experiment.Metadata.Checklist:library_extra_id
@@ -2595,7 +2889,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: library_layout
     description: Indicate whether the library was built as paired-end or single-end
       if applicable.
-    title: Library Layout
+    title: library_layout
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:library_layout
     - BeaconV2:runs.libraryLayout
@@ -2609,8 +2903,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific
       identifier. For non-multiplex sequencing, platform unit and read group have
       a one-to-one relationship.
-    title: Platform Unit
-    notes: Any string value.
+    title: platform_unit
+    notes:
+    - Any string value.
     exact_mappings:
     - ARGO.platform_unit
     range: string
@@ -2620,8 +2915,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Description of the nucleotide sequencing library, including targeting
       information, spot, gap descriptors, and any other information relevant to its
       construction
-    title: Library Description
-    notes: Any string value.
+    title: library_description
+    notes:
+    - Any string value.
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:library_description
     range: string
@@ -2632,8 +2928,9 @@ https://www.cihi.ca/en/cci-coding-structure'
       will be used to map the @RG ID in the BAM header to the submitter_read_group_id
       in the payload. After submission, the @RG ID in the payload will be used for
       all future headers. This cannot be submitted for FASTQ files.
-    title: Read Group Id In Bam
-    notes: Any string value.
+    title: read_group_id_in_bam
+    notes:
+    - Any string value.
     exact_mappings:
     - ARGO:read_group_id_in_bam
     range: string
@@ -2643,7 +2940,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: read_length_r1
     description: Length of sequencing reads in file_r1; this corresponds to the number
       of sequencing cycles of the first end.
-    title: Read Length R1
+    title: read_length_r1
     exact_mappings:
     - ARGO:read_length_r1
     range: integer
@@ -2653,7 +2950,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: read_length_r2
     description: Length of sequencing reads in file_r2; this corresponds to the number
       of sequencing cycles of the second end.
-    title: Read Length R2
+    title: read_length_r2
     exact_mappings:
     - ARGO:read_length_r2
     range: integer
@@ -2663,7 +2960,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: insert_size
     description: For paired-end sequencing, the average size of sequences between
       two sequencing ends. Required only for paired-end sequencing.
-    title: Insert Size
+    title: insert_size
     exact_mappings:
     - ARGO:insert_size
     - GA4GH.Experiment.Metadata.Checklist:insert_size
@@ -2673,10 +2970,11 @@ https://www.cihi.ca/en/cci-coding-structure'
   studyId:
     name: studyId
     description: Unique identifier of the study.
-    title: StudyId
-    notes: Added as a redundancy measure to prevent submission errors. Clinical API
-      will check study_id against user's selection. Also duplicates field study_id
-      in Participant b/c SONG's rigidity to rename
+    title: studyId
+    notes:
+    - Added as a redundancy measure to prevent submission errors. Clinical API will
+      check study_id against user's selection. Also duplicates field study_id in Participant
+      b/c SONG's rigidity to rename
     exact_mappings:
     - ARGO:studyId
     - CQDG:study_id
@@ -2686,7 +2984,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     name: analysisType
     description: Overall type of the analysis. Term chosen from a controlled vocabulary
       (CV) list.
-    title: AnalysisType
+    title: analysisType
     exact_mappings:
     - ARGO:analysisType
     - EGA:analysisType
@@ -2695,14 +2993,14 @@ https://www.cihi.ca/en/cci-coding-structure'
   data_category:
     name: data_category
     description: 'Indicate the category of data produced as outputs from the analysis. '
-    title: Data Category
+    title: data_category
     range: data_category_menu
     required: true
   variant_class:
     name: variant_class
     description: Indicates whether the called variants are germline, somatic, or of
       uncertain classification.
-    title: Variant Class
+    title: variant_class
     range: variant_class_menu
     required: false
   variant_calling_strategy:
@@ -2710,18 +3008,433 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: Indicate the approach used to identify genetic variants from sequencing
       data, based on the availability of reference samples (e.g., matched normal)
       and the study design.
-    title: Variant Calling Strategy
+    title: variant_calling_strategy
     range: variant_calling_strategy_menu
     required: false
   dataType:
     name: dataType
     description: 'Indicates the type of data produced as outputs from the analysis. '
-    title: DataType
+    title: dataType
     range: data_type_menu
     required: true
+  dob_month:
+    name: dob_month
+    description: Month of birth
+    title: dob_month
+    range: DobMonthMenu
+  dob_year:
+    name: dob_year
+    description: Year of birth
+    title: dob_year
+    range: integer
+  birth_country:
+    name: birth_country
+    description: Country of birth
+    title: birth_country
+    range: string
+  birth_place:
+    name: birth_place
+    description: Place of birth
+    title: birth_place
+    range: BirthPlaceMenu
+  ancestry:
+    name: ancestry
+    description: Ancestry
+    title: ancestry
+    range: AncestryMenu
+  height_cm:
+    name: height_cm
+    description: Height (cm)
+    title: height_cm
+    range: float
+  weight_kg:
+    name: weight_kg
+    description: Weight (Kg)
+    title: weight_kg
+    range: float
+  employment_status:
+    name: employment_status
+    description: Employment
+    title: employment_status
+    range: EmploymentStatusMenu
+  employment_other:
+    name: employment_other
+    description: Specify other employment
+    title: employment_other
+    range: string
+  residence_type:
+    name: residence_type
+    description: Type of residence
+    title: residence_type
+    range: ResidenceTypeMenu
+  residence_type_other:
+    name: residence_type_other
+    description: Specify other residence
+    title: residence_type_other
+    range: string
+  household_size:
+    name: household_size
+    description: Number of other people in patient's household
+    title: household_size
+    range: integer
+  currently_pregnant:
+    name: currently_pregnant
+    description: Currently pregnant
+    title: currently_pregnant
+    range: CurrentlyPregnantMenu
+  pregnancy_weeks:
+    name: pregnancy_weeks
+    description: Gestational weeks
+    title: pregnancy_weeks
+    range: float
+  host_hospital:
+    name: host_hospital
+    description: Host hospital
+    title: host_hospital
+    range: string
+  treat_hospital:
+    name: treat_hospital
+    description: Treating hospital
+    title: treat_hospital
+    range: string
+  outcome_self_care:
+    name: outcome_self_care
+    description: Ability to self-care at discharge versus before illness
+    title: outcome_self_care
+    range: OutcomeSelfCareMenu
+  outcome_transfer:
+    name: outcome_transfer
+    description: Transfer facility name
+    title: outcome_transfer
+    range: string
+  demographic_note:
+    name: demographic_note
+    description: Any additional info
+    title: demographic_note
+    range: string
+  diagnosis_date:
+    name: diagnosis_date
+    description: COVID-19 diagnosis date (by lab confirmed test) - First positive
+      test
+    title: diagnosis_date
+    range: string
+  disease_source_text:
+    name: disease_source_text
+    description: Description of the disease as originally recorded in the source system,
+      prior to ontology mapping.
+    title: disease_source_text
+    range: string
+  diagnosis_note:
+    name: diagnosis_note
+    description: Free text to record any additional information.
+    title: diagnosis_note
+    range: string
+  er_visit:
+    name: er_visit
+    description: Patient seen in ER
+    title: er_visit
+    range: ErVisitMenu
+  triage_date:
+    name: triage_date
+    description: ER triage date at reporting facility
+    title: triage_date
+    range: string
+  transfer_facility:
+    name: transfer_facility
+    description: Transfer from another facility
+    title: transfer_facility
+    range: TransferFacilityMenu
+  transfer_facility_name:
+    name: transfer_facility_name
+    description: Name of transfer facility
+    title: transfer_facility_name
+    range: string
+  transfer_facility_date:
+    name: transfer_facility_date
+    description: ER triage date at transfer facility
+    title: transfer_facility_date
+    range: string
+  transfer_facility_sourceid:
+    name: transfer_facility_sourceid
+    description: 'Source study ID # from transfer facility'
+    title: transfer_facility_sourceid
+    range: string
+  transfer_facility_hostseqid:
+    name: transfer_facility_hostseqid
+    description: 'HostSeq study ID # from transfer facility'
+    title: transfer_facility_hostseqid
+    range: string
+  hospitalized:
+    name: hospitalized
+    description: Patient hospitalized
+    title: hospitalized
+    range: HospitalizedMenu
+  ambulatory_state:
+    name: ambulatory_state
+    description: Ambulatory state
+    title: ambulatory_state
+    range: AmbulatoryStateMenu
+  date_admission:
+    name: date_admission
+    description: Date of admission
+    title: date_admission
+    range: string
+  hospitalized_state:
+    name: hospitalized_state
+    description: Hospitalized state
+    title: hospitalized_state
+    range: HospitalizedStateMenu
+  vent_days:
+    name: vent_days
+    description: Total duration of invasive ventilation
+    title: vent_days
+    range: string
+  who_covid19_severity:
+    name: who_covid19_severity
+    description: WHO COVID-19 severity scale
+    title: who_covid19_severity
+    range: WhoCovid19SeverityMenu
+  hgi_a2:
+    name: hgi_a2
+    description: 'COVID-19 HGI phenotype A2 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support
+      (intubation, CPAP, BiPAP, CNP (continue external negative pressure), Optiflow/very
+      high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with
+      COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g.,
+      2 L/min via nasal cannulae) only does not qualify for case status) Control:
+      Everyone that is not a case, e.g. population'
+    title: hgi_a2
+    range: HgiA2Menu
+  hhgi_a1:
+    name: hhgi_a1
+    description: 'COVID-19 HGI phenotype A1 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support
+      (intubation, CPAP, BiPAP, CNP (continued external negative pressure), Optiflow/very
+      high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with
+      COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g.,
+      2 L/min via nasal cannulae) only does not qualify for case status). Control:
+      Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND not
+      hospitalized 21 days after the test.'
+    title: hhgi_a1
+    range: HhgiA1Menu
+  hgi_b1:
+    name: hgi_b1
+    description: 'COVID-19 HGI phenotype B1 Case: Hospitalized laboratory confirmed
+      SARS-CoV-2 infection (RNA and/or serology based), hospitalization due to corona-related
+      symptoms. Control: Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology
+      based) AND not hospitalized 21 days after the test.'
+    title: hgi_b1
+    range: HgiB1Menu
+  hgi_c2:
+    name: hgi_c2
+    description: 'COVID-19 HGI phenotype C2 Case: Individuals with laboratory confirmation
+      of SARS-CoV-2 infection (RNA and/or serology based) OR EHR/ICD coding/Physician
+      confirmed COVID-19 OR self-reported COVID-19 positive (e.g., by questionnaire).
+      Control: Everybody that is not a case, e.g. population'
+    title: hgi_c2
+    range: HgiC2Menu
+  est_infection_time:
+    name: est_infection_time
+    description: Estimated time of COVID-19 infection (estimated by (1) first date
+      of PCR test. or (2) date of symptom onset, or (3) date of enrollment (only for
+      studies of prospective recruitment)
+    title: est_infection_time
+    range: string
+  covid19_test_date:
+    name: covid19_test_date
+    description: COVID-19 test date
+    title: covid19_test_date
+    range: string
+  negative_test_date:
+    name: negative_test_date
+    description: If tests are all negative, date of last negative test
+    title: negative_test_date
+    range: string
+  pcr:
+    name: pcr
+    description: PCR
+    title: pcr
+    range: PcrMenu
+  serology_result:
+    name: serology_result
+    description: Serology (choice=Negative)
+    title: serology_result
+    range: SerologyResultMenu
+    multivalued: true
+  serology_date:
+    name: serology_date
+    description: serology positive test date (First positive test)
+    title: serology_date
+    range: string
+  serology_kit:
+    name: serology_kit
+    description: Commercial serology test kit name (if known)
+    title: serology_kit
+    range: string
+  repeat_hosp:
+    name: repeat_hosp
+    description: Repeat hospital visit within 30 days?
+    title: repeat_hosp
+    range: RepeatHospMenu
+  repeat_hosp_date:
+    name: repeat_hosp_date
+    description: Date of repeat hospital visit
+    title: repeat_hosp_date
+    range: string
+  repeat_hosp_reason:
+    name: repeat_hosp_reason
+    description: Reason for repeat hospital visit
+    title: repeat_hosp_reason
+    range: string
+  treatment_note:
+    name: treatment_note
+    description: Free text to record any additional information.
+    title: treatment_note
+    range: string
+  procedure_source_text:
+    name: procedure_source_text
+    description: Description of the procedure as originally recorded in the source
+      system, prior to ontology mapping.
+    title: procedure_source_text
+    range: string
+  procedure_body_site_source_text:
+    name: procedure_body_site_source_text
+    description: Description of the anatomical site for a procedure, as originally
+      captured in the source.
+    title: procedure_body_site_source_text
+    range: string
+  procedure_note:
+    name: procedure_note
+    description: Free text to record any additional information.
+    title: procedure_note
+    range: string
+  drug_source_text:
+    name: drug_source_text
+    description: Description of the drug as originally recorded in the source system,
+      prior to ontology mapping.
+    title: drug_source_text
+    range: string
+  drug_note:
+    name: drug_note
+    description: Free text to record any additional information.
+    title: drug_note
+    range: string
+  measurement_source_text:
+    name: measurement_source_text
+    description: Free-text representation of a measurement, observation, or test,
+      as originally recorded in the source.
+    title: measurement_source_text
+    range: string
+  measurement_unit_source_text:
+    name: measurement_unit_source_text
+    description: Free-text representation of the unit of measurement as originally
+      recorded in the source system, prior to mapping to a standardized unit ontology
+      (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.
+    title: measurement_unit_source_text
+    range: string
+  measurement_note:
+    name: measurement_note
+    description: Free text to record any additional information.
+    title: measurement_note
+    range: string
+  phenotype_source_text:
+    name: phenotype_source_text
+    description: Free-text description of a phenotype or clinical feature, prior to
+      ontology mapping.
+    title: phenotype_source_text
+    range: string
+  phenotype_note:
+    name: phenotype_note
+    description: Free text to record any additional information.
+    title: phenotype_note
+    range: string
+  comorbidity_source_text:
+    name: comorbidity_source_text
+    description: Description of a comorbidity, as recorded in the source system, before
+      ontology mapping.
+    title: comorbidity_source_text
+    range: string
+  comorbidity_note:
+    name: comorbidity_note
+    description: Free text to record any additional information.
+    title: comorbidity_note
+    range: string
+  exposure_source_text:
+    name: exposure_source_text
+    description: Description of an exposure, as recorded in the source system, before
+      ontology mapping.
+    title: exposure_source_text
+    range: string
+  exposure_note:
+    name: exposure_note
+    description: Free text to record any additional information.
+    title: exposure_note
+    range: string
+  member_age_years:
+    name: member_age_years
+    description: Member's age in years
+    title: member_age_years
+    range: integer
+  member_disease_status:
+    name: member_disease_status
+    description: Member's disease status
+    title: member_disease_status
+    range: MemberDiseaseStatusMenu
+  member_relationship:
+    name: member_relationship
+    description: Member's relationship to patient
+    title: member_relationship
+    range: MemberRelationshipMenu
+  submitter_member_id:
+    name: submitter_member_id
+    description: Unique identifier of the family member within the study, assigned
+      by the data provider.
+    title: submitter_member_id
+    range: string
+    required: true
+  hla_optitype_a1:
+    name: hla_optitype_a1
+    description: HLA Optitype A1
+    title: hla_optitype_a1
+    range: string
+  hla_optitype_a2:
+    name: hla_optitype_a2
+    description: HLA Optitype A2
+    title: hla_optitype_a2
+    range: string
+  hla_optitype_b1:
+    name: hla_optitype_b1
+    description: HLA Optitype B1
+    title: hla_optitype_b1
+    range: string
+  hla_optitype_b2:
+    name: hla_optitype_b2
+    description: HLA Optitype B2
+    title: hla_optitype_b2
+    range: string
+  hla_optitype_c1:
+    name: hla_optitype_c1
+    description: HLA Optitype C1
+    title: hla_optitype_c1
+    range: string
+  hla_optitype_c2:
+    name: hla_optitype_c2
+    description: HLA Optitype C2
+    title: hla_optitype_c2
+    range: string
+  hla_optitype_objective:
+    name: hla_optitype_objective
+    description: HLA Optitype Objective
+    title: hla_optitype_objective
+    range: string
+  hla_optitype_reads:
+    name: hla_optitype_reads
+    description: HLA Optitype Reads
+    title: hla_optitype_reads
+    range: string
 classes:
-  base_Participant:
-    name: base_Participant
+  Participant:
+    name: Participant
     description: The collection of all data related to a specific individual human
       in the context of a specific study.
     title: Participant
@@ -2773,8 +3486,8 @@ classes:
             name: disease_specific_modifier
             required: false
             value_presence: ABSENT
-  base_Sociodemographic:
-    name: base_Sociodemographic
+  Sociodemographic:
+    name: Sociodemographic
     description: Captures sociodemographic characteristics of an individual that may
       vary over time and can influence health status, access to care, or disease outcomes.
       These factors are often collected longitudinally and reflect broader social
@@ -2808,13 +3521,27 @@ classes:
     - sociodem_notes
     - sociodem_question
     - sociodem_question_detail
+    - dob_month
+    - dob_year
+    - birth_country
+    - birth_place
+    - ancestry
+    - height_cm
+    - weight_kg
+    - employment_status
+    - employment_other
+    - residence_type
+    - residence_type_other
+    - household_size
+    - currently_pregnant
+    - pregnancy_weeks
     slot_usage:
-      submitter_sociodem_id:
-        name: submitter_sociodem_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_sociodem_id:
+        name: submitter_sociodem_id
         rank: 2
         slot_group: Database Identifiers
       age_at_sociodem_collection:
@@ -2913,6 +3640,62 @@ classes:
         name: sociodem_question_detail
         rank: 26
         slot_group: Sociodemographic
+      ancestry:
+        name: ancestry
+        rank: 27
+        slot_group: Extensions Sociodemographic
+      birth_country:
+        name: birth_country
+        rank: 28
+        slot_group: Extensions Sociodemographic
+      birth_place:
+        name: birth_place
+        rank: 29
+        slot_group: Extensions Sociodemographic
+      currently_pregnant:
+        name: currently_pregnant
+        rank: 30
+        slot_group: Extensions Sociodemographic
+      dob_month:
+        name: dob_month
+        rank: 31
+        slot_group: Extensions Sociodemographic
+      dob_year:
+        name: dob_year
+        rank: 32
+        slot_group: Extensions Sociodemographic
+      employment_other:
+        name: employment_other
+        rank: 33
+        slot_group: Extensions Sociodemographic
+      employment_status:
+        name: employment_status
+        rank: 34
+        slot_group: Extensions Sociodemographic
+      height_cm:
+        name: height_cm
+        rank: 35
+        slot_group: Extensions Sociodemographic
+      household_size:
+        name: household_size
+        rank: 36
+        slot_group: Extensions Sociodemographic
+      pregnancy_weeks:
+        name: pregnancy_weeks
+        rank: 37
+        slot_group: Extensions Sociodemographic
+      residence_type:
+        name: residence_type
+        rank: 38
+        slot_group: Extensions Sociodemographic
+      residence_type_other:
+        name: residence_type_other
+        rank: 39
+        slot_group: Extensions Sociodemographic
+      weight_kg:
+        name: weight_kg
+        rank: 40
+        slot_group: Extensions Sociodemographic
     unique_keys:
       main:
         unique_key_name: main
@@ -2926,7 +3709,7 @@ classes:
           race:
             name: race
             all_of:
-              multivalued: true
+            - multivalued: true
               has_member:
                 equals_string: Another Racial Category
       postconditions:
@@ -2965,7 +3748,7 @@ classes:
           ethnicity:
             name: ethnicity
             all_of:
-              multivalued: true
+            - multivalued: true
               has_member:
                 equals_string: Free text input
       postconditions:
@@ -3022,181 +3805,8 @@ classes:
             name: sociodem_question_detail
             required: false
             value_presence: ABSENT
-  base_Phenotype:
-    name: base_Phenotype
-    description: Individual phenotypic features, observed as either present or absent
-      (excluded), with possible onset, modifiers and frequency
-    title: Phenotype
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_phenotype
-    - phenotype_code
-    - phenotype_duration
-    - phenotype_observed
-    - phenotype_severity
-    - phenotype_term
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_phenotype:
-        name: age_at_phenotype
-        rank: 2
-        slot_group: Phenotype
-      phenotype_code:
-        name: phenotype_code
-        rank: 3
-        slot_group: Phenotype
-      phenotype_duration:
-        name: phenotype_duration
-        rank: 4
-        slot_group: Phenotype
-      phenotype_observed:
-        name: phenotype_observed
-        rank: 5
-        slot_group: Phenotype
-      phenotype_severity:
-        name: phenotype_severity
-        rank: 6
-        slot_group: Phenotype
-      phenotype_term:
-        name: phenotype_term
-        rank: 7
-        slot_group: Phenotype
-  base_Comorbidity:
-    name: base_Comorbidity
-    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
-      that have existed or may occur during the clinical course of the participant
-      who has the index disease under study.
-    title: Comorbidity
-    slots:
-    - submitter_participant_id
-    - age_at_comorbidity_diagnosis
-    - comorbidity_code
-    - comorbidity_status
-    - comorbidity_term
-    - comorbidity_treatment_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: Comorbidity
-      comorbidity_code:
-        name: comorbidity_code
-        rank: 3
-        slot_group: Comorbidity
-      comorbidity_status:
-        name: comorbidity_status
-        rank: 4
-        slot_group: Comorbidity
-      comorbidity_term:
-        name: comorbidity_term
-        rank: 5
-        slot_group: Comorbidity
-      comorbidity_treatment_status:
-        name: comorbidity_treatment_status
-        rank: 6
-        slot_group: Comorbidity
-  base_Measurement:
-    name: base_Measurement
-    description: Record individual measurements to capture quantitative, ordinal (e.g.,
-      absent/present), or categorical measurements.
-    title: Measurement
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_measurement
-    - measurement_code
-    - measurement_result_categorical
-    - measurement_result_numeric
-    - measurement_term
-    - measurement_unit
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: Measurement
-      measurement_code:
-        name: measurement_code
-        rank: 3
-        slot_group: Measurement
-      measurement_result_categorical:
-        name: measurement_result_categorical
-        rank: 4
-        slot_group: Measurement
-      measurement_result_numeric:
-        name: measurement_result_numeric
-        rank: 5
-        slot_group: Measurement
-      measurement_term:
-        name: measurement_term
-        rank: 6
-        slot_group: Measurement
-      measurement_unit:
-        name: measurement_unit
-        rank: 7
-        slot_group: Measurement
-  base_Exposure:
-    name: base_Exposure
-    description: Capture information about external factors, agents, or conditions
-      an individual has encountered that may influence health or disease outcomes.
-    title: Exposure
-    slots:
-    - submitter_participant_id
-    - age_at_exposure
-    - exposure_amount
-    - exposure_code
-    - exposure_duration
-    - exposure_status
-    - exposure_term
-    - exposure_unit
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_exposure:
-        name: age_at_exposure
-        rank: 2
-        slot_group: Exposure
-      exposure_amount:
-        name: exposure_amount
-        rank: 3
-        slot_group: Exposure
-      exposure_code:
-        name: exposure_code
-        rank: 4
-        slot_group: Exposure
-      exposure_duration:
-        name: exposure_duration
-        rank: 5
-        slot_group: Exposure
-      exposure_status:
-        name: exposure_status
-        rank: 6
-        slot_group: Exposure
-      exposure_term:
-        name: exposure_term
-        rank: 7
-        slot_group: Exposure
-      exposure_unit:
-        name: exposure_unit
-        rank: 8
-        slot_group: Exposure
-  base_Demographic:
-    name: base_Demographic
+  Demographic:
+    name: Demographic
     description: Data for the characterization of the participant by means of segmenting
       the population (e.g., characterization by age, sex, or race).
     title: Demographic
@@ -3208,6 +3818,11 @@ classes:
     - age_at_enrollment
     - cause_of_death
     - vital_status
+    - host_hospital
+    - treat_hospital
+    - outcome_self_care
+    - outcome_transfer
+    - demographic_note
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -3229,10 +3844,29 @@ classes:
         name: vital_status
         rank: 5
         slot_group: Demographic
+      demographic_note:
+        name: demographic_note
+        rank: 6
+        slot_group: Extensions Demographic
+      host_hospital:
+        name: host_hospital
+        rank: 7
+        slot_group: Extensions Demographic
+      outcome_self_care:
+        name: outcome_self_care
+        rank: 8
+        slot_group: Extensions Demographic
+      outcome_transfer:
+        name: outcome_transfer
+        rank: 9
+        slot_group: Extensions Demographic
+      treat_hospital:
+        name: treat_hospital
+        rank: 10
+        slot_group: Extensions Demographic
     rules:
     - preconditions:
-        description: cause_of_death populatable only if vital_status
-          is deceased
+        description: cause_of_death populatable only if vital_status is deceased
         slot_conditions:
           vital_status:
             name: vital_status
@@ -3248,8 +3882,7 @@ classes:
             name: cause_of_death
             value_presence: ABSENT
     - preconditions:
-        description: Age_at_death populatable only if vital_status
-          is deceased
+        description: Age_at_death populatable only if vital_status is deceased
         slot_conditions:
           vital_status:
             name: vital_status
@@ -3264,8 +3897,8 @@ classes:
           age_at_death:
             name: age_at_death
             value_presence: ABSENT
-  base_Diagnosis:
-    name: base_Diagnosis
+  Diagnosis:
+    name: Diagnosis
     description: The disease that is inferred to be present in the individual, family
       or cohort being analyzed.
     title: Diagnosis
@@ -3277,6 +3910,36 @@ classes:
     - age_at_diagnosis
     - disease_code
     - disease_term
+    - diagnosis_date
+    - disease_source_text
+    - diagnosis_note
+    - er_visit
+    - triage_date
+    - transfer_facility
+    - transfer_facility_name
+    - transfer_facility_date
+    - transfer_facility_sourceid
+    - transfer_facility_hostseqid
+    - hospitalized
+    - ambulatory_state
+    - date_admission
+    - hospitalized_state
+    - vent_days
+    - who_covid19_severity
+    - hgi_a2
+    - hhgi_a1
+    - hgi_b1
+    - hgi_c2
+    - est_infection_time
+    - covid19_test_date
+    - negative_test_date
+    - pcr
+    - serology_result
+    - serology_date
+    - serology_kit
+    - repeat_hosp
+    - repeat_hosp_date
+    - repeat_hosp_reason
     slot_usage:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
@@ -3298,36 +3961,133 @@ classes:
         name: disease_term
         rank: 5
         slot_group: Diagnosis
+      ambulatory_state:
+        name: ambulatory_state
+        rank: 6
+        slot_group: Extensions Diagnosis
+      covid19_test_date:
+        name: covid19_test_date
+        rank: 7
+        slot_group: Extensions Diagnosis
+      date_admission:
+        name: date_admission
+        rank: 8
+        slot_group: Extensions Diagnosis
+      diagnosis_date:
+        name: diagnosis_date
+        rank: 9
+        slot_group: Extensions Diagnosis
+      diagnosis_note:
+        name: diagnosis_note
+        rank: 10
+        slot_group: Extensions Diagnosis
+      disease_source_text:
+        name: disease_source_text
+        rank: 11
+        slot_group: Extensions Diagnosis
+      er_visit:
+        name: er_visit
+        rank: 12
+        slot_group: Extensions Diagnosis
+      est_infection_time:
+        name: est_infection_time
+        rank: 13
+        slot_group: Extensions Diagnosis
+      hgi_a2:
+        name: hgi_a2
+        rank: 14
+        slot_group: Extensions Diagnosis
+      hgi_b1:
+        name: hgi_b1
+        rank: 15
+        slot_group: Extensions Diagnosis
+      hgi_c2:
+        name: hgi_c2
+        rank: 16
+        slot_group: Extensions Diagnosis
+      hhgi_a1:
+        name: hhgi_a1
+        rank: 17
+        slot_group: Extensions Diagnosis
+      hospitalized:
+        name: hospitalized
+        rank: 18
+        slot_group: Extensions Diagnosis
+      hospitalized_state:
+        name: hospitalized_state
+        rank: 19
+        slot_group: Extensions Diagnosis
+      negative_test_date:
+        name: negative_test_date
+        rank: 20
+        slot_group: Extensions Diagnosis
+      pcr:
+        name: pcr
+        rank: 21
+        slot_group: Extensions Diagnosis
+      repeat_hosp:
+        name: repeat_hosp
+        rank: 22
+        slot_group: Extensions Diagnosis
+      repeat_hosp_date:
+        name: repeat_hosp_date
+        rank: 23
+        slot_group: Extensions Diagnosis
+      repeat_hosp_reason:
+        name: repeat_hosp_reason
+        rank: 24
+        slot_group: Extensions Diagnosis
+      serology_date:
+        name: serology_date
+        rank: 25
+        slot_group: Extensions Diagnosis
+      serology_kit:
+        name: serology_kit
+        rank: 26
+        slot_group: Extensions Diagnosis
+      serology_result:
+        name: serology_result
+        rank: 27
+        slot_group: Extensions Diagnosis
+      transfer_facility:
+        name: transfer_facility
+        rank: 28
+        slot_group: Extensions Diagnosis
+      transfer_facility_date:
+        name: transfer_facility_date
+        rank: 29
+        slot_group: Extensions Diagnosis
+      transfer_facility_hostseqid:
+        name: transfer_facility_hostseqid
+        rank: 30
+        slot_group: Extensions Diagnosis
+      transfer_facility_name:
+        name: transfer_facility_name
+        rank: 31
+        slot_group: Extensions Diagnosis
+      transfer_facility_sourceid:
+        name: transfer_facility_sourceid
+        rank: 32
+        slot_group: Extensions Diagnosis
+      triage_date:
+        name: triage_date
+        rank: 33
+        slot_group: Extensions Diagnosis
+      vent_days:
+        name: vent_days
+        rank: 34
+        slot_group: Extensions Diagnosis
+      who_covid19_severity:
+        name: who_covid19_severity
+        rank: 35
+        slot_group: Extensions Diagnosis
     unique_keys:
       main:
         unique_key_name: main
         unique_key_slots:
         - submitter_diagnosis_id
-  base_Follow_Up:
-    name: base_Follow_Up
-    description: 'Any point of contact with a patient after primary diagnosis. '
-    title: Follow up
-    todos:
-    - '{"reference": "ARGO", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_followup
-    - disease_status_at_followup
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: Follow_Up
-      disease_status_at_followup:
-        name: disease_status_at_followup
-        rank: 3
-        slot_group: Follow_Up
-  base_Treatment:
-    name: base_Treatment
+  Treatment:
+    name: Treatment
     description: Medications, procedures, other actions taken for clinical management
     title: Treatment
     todos:
@@ -3342,17 +4102,18 @@ classes:
     - treatment_response
     - treatment_status
     - treatment_type
+    - treatment_note
     slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
-        rank: 2
+        rank: 1
         slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_treatment_id:
+        name: submitter_treatment_id
         rank: 3
         slot_group: Database Identifiers
       age_at_treatment:
@@ -3379,16 +4140,15 @@ classes:
         name: treatment_type
         rank: 9
         slot_group: Treatment
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_treatment_id
+      treatment_note:
+        name: treatment_note
+        rank: 10
+        slot_group: Extensions Treatment
     attributes:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
-        description: Unique identifier of the primary diagnosis event, assigned by the
-          data provider. Redefined to allow requirement to be false
+        description: Unique identifier of the primary diagnosis event, assigned by
+          the data provider. Redefined to allow requirement to be false
         title: Submitter Diagnosis Id
         examples:
         - value: '90234'
@@ -3403,8 +4163,85 @@ classes:
         range: string
         required: false
         pattern: ^[A-Za-z0-9\-\._]{1,64}$
-  base_Medication:
-    name: base_Medication
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_treatment_id
+  Follow_Up:
+    name: Follow_Up
+    description: 'Any point of contact with a patient after primary diagnosis. '
+    title: Follow up
+    todos:
+    - '{"reference": "ARGO", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_followup
+    - disease_status_at_followup
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_followup:
+        name: age_at_followup
+        rank: 2
+        slot_group: Follow_Up
+      disease_status_at_followup:
+        name: disease_status_at_followup
+        rank: 3
+        slot_group: Follow_Up
+  Procedure:
+    name: Procedure
+    description: A clinical procedure performed on a subject. For example a surgical
+      or diagnostic procedure such as a biopsy.
+    title: Procedure
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_treatment_id
+    - procedure_body_site_code
+    - procedure_body_site_term
+    - procedure_code
+    - procedure_term
+    - procedure_source_text
+    - procedure_body_site_source_text
+    - procedure_note
+    slot_usage:
+      submitter_treatment_id:
+        name: submitter_treatment_id
+        rank: 1
+        slot_group: Database Identifiers
+      procedure_body_site_code:
+        name: procedure_body_site_code
+        rank: 2
+        slot_group: Procedure
+      procedure_body_site_term:
+        name: procedure_body_site_term
+        rank: 3
+        slot_group: Procedure
+      procedure_code:
+        name: procedure_code
+        rank: 4
+        slot_group: Procedure
+      procedure_term:
+        name: procedure_term
+        rank: 5
+        slot_group: Procedure
+      procedure_body_site_source_text:
+        name: procedure_body_site_source_text
+        rank: 6
+        slot_group: Extensions Procedure
+      procedure_note:
+        name: procedure_note
+        rank: 7
+        slot_group: Extensions Procedure
+      procedure_source_text:
+        name: procedure_source_text
+        rank: 8
+        slot_group: Extensions Procedure
+  Medication:
+    name: Medication
     description: An agent such as a drug (pharmaceutical agent), broadly defined as
       prescription and over-the-counter medicines, vaccines, and large-molecule biologic
       therapies.
@@ -3418,6 +4255,8 @@ classes:
     - drug_dose_units
     - drug_term
     - prescribed_cumulative_drug_dose
+    - drug_source_text
+    - drug_note
     slot_usage:
       submitter_treatment_id:
         name: submitter_treatment_id
@@ -3443,42 +4282,16 @@ classes:
         name: prescribed_cumulative_drug_dose
         rank: 6
         slot_group: Medication
-  base_Procedure:
-    name: base_Procedure
-    description: A clinical procedure performed on a subject. For example a surgical
-      or diagnostic procedure such as a biopsy.
-    title: Procedure
-    todos:
-    - '{"reference": "Phenopacket", "status": "v2"}'
-    slots:
-    - submitter_treatment_id
-    - procedure_body_site_code
-    - procedure_body_site_term
-    - procedure_code
-    - procedure_term
-    slot_usage:
-      submitter_treatment_id:
-        name: submitter_treatment_id
-        rank: 1
-        slot_group: Database Identifiers
-      procedure_body_site_code:
-        name: procedure_body_site_code
-        rank: 2
-        slot_group: Procedure
-      procedure_body_site_term:
-        name: procedure_body_site_term
-        rank: 3
-        slot_group: Procedure
-      procedure_code:
-        name: procedure_code
-        rank: 4
-        slot_group: Procedure
-      procedure_term:
-        name: procedure_term
-        rank: 5
-        slot_group: Procedure
-  base_Radiation:
-    name: base_Radiation
+      drug_note:
+        name: drug_note
+        rank: 7
+        slot_group: Extensions Medication
+      drug_source_text:
+        name: drug_source_text
+        rank: 8
+        slot_group: Extensions Medication
+  Radiation:
+    name: Radiation
     description: Uses ionizing radiation, generally as part of cancer treatment to
       control or kill malignant cells.
     title: Radiation
@@ -3519,8 +4332,226 @@ classes:
         name: radiation_modality_term
         rank: 7
         slot_group: Radiation
-  base_Specimen:
-    name: base_Specimen
+  Measurement:
+    name: Measurement
+    description: Record individual measurements to capture quantitative, ordinal (e.g.,
+      absent/present), or categorical measurements.
+    title: Measurement
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_measurement
+    - measurement_code
+    - measurement_result_categorical
+    - measurement_result_numeric
+    - measurement_term
+    - measurement_unit
+    - measurement_source_text
+    - measurement_unit_source_text
+    - measurement_note
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_measurement:
+        name: age_at_measurement
+        rank: 2
+        slot_group: Measurement
+      measurement_code:
+        name: measurement_code
+        rank: 3
+        slot_group: Measurement
+      measurement_result_categorical:
+        name: measurement_result_categorical
+        rank: 4
+        slot_group: Measurement
+      measurement_result_numeric:
+        name: measurement_result_numeric
+        rank: 5
+        slot_group: Measurement
+      measurement_term:
+        name: measurement_term
+        rank: 6
+        slot_group: Measurement
+      measurement_unit:
+        name: measurement_unit
+        rank: 7
+        slot_group: Measurement
+      measurement_note:
+        name: measurement_note
+        rank: 8
+        slot_group: Extensions Measurement
+      measurement_source_text:
+        name: measurement_source_text
+        rank: 9
+        slot_group: Extensions Measurement
+      measurement_unit_source_text:
+        name: measurement_unit_source_text
+        rank: 10
+        slot_group: Extensions Measurement
+  Phenotype:
+    name: Phenotype
+    description: Individual phenotypic features, observed as either present or absent
+      (excluded), with possible onset, modifiers and frequency
+    title: Phenotype
+    todos:
+    - '{"reference": "Phenopacket", "status": "v2"}'
+    slots:
+    - submitter_participant_id
+    - age_at_phenotype
+    - phenotype_code
+    - phenotype_duration
+    - phenotype_observed
+    - phenotype_severity
+    - phenotype_term
+    - phenotype_source_text
+    - phenotype_note
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_phenotype:
+        name: age_at_phenotype
+        rank: 2
+        slot_group: Phenotype
+      phenotype_code:
+        name: phenotype_code
+        rank: 3
+        slot_group: Phenotype
+      phenotype_duration:
+        name: phenotype_duration
+        rank: 4
+        slot_group: Phenotype
+      phenotype_observed:
+        name: phenotype_observed
+        rank: 5
+        slot_group: Phenotype
+      phenotype_severity:
+        name: phenotype_severity
+        rank: 6
+        slot_group: Phenotype
+      phenotype_term:
+        name: phenotype_term
+        rank: 7
+        slot_group: Phenotype
+      phenotype_note:
+        name: phenotype_note
+        rank: 8
+        slot_group: Extensions Phenotype
+      phenotype_source_text:
+        name: phenotype_source_text
+        rank: 9
+        slot_group: Extensions Phenotype
+  Comorbidity:
+    name: Comorbidity
+    description: Any medical conditions (e.g diabetes, prior cancer malignancies)
+      that have existed or may occur during the clinical course of the participant
+      who has the index disease under study.
+    title: Comorbidity
+    slots:
+    - submitter_participant_id
+    - age_at_comorbidity_diagnosis
+    - comorbidity_code
+    - comorbidity_status
+    - comorbidity_term
+    - comorbidity_treatment_status
+    - comorbidity_source_text
+    - comorbidity_note
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
+        rank: 2
+        slot_group: Comorbidity
+      comorbidity_code:
+        name: comorbidity_code
+        rank: 3
+        slot_group: Comorbidity
+      comorbidity_status:
+        name: comorbidity_status
+        rank: 4
+        slot_group: Comorbidity
+      comorbidity_term:
+        name: comorbidity_term
+        rank: 5
+        slot_group: Comorbidity
+      comorbidity_treatment_status:
+        name: comorbidity_treatment_status
+        rank: 6
+        slot_group: Comorbidity
+      comorbidity_note:
+        name: comorbidity_note
+        rank: 7
+        slot_group: Extensions Comorbidity
+      comorbidity_source_text:
+        name: comorbidity_source_text
+        rank: 8
+        slot_group: Extensions Comorbidity
+  Exposure:
+    name: Exposure
+    description: Capture information about external factors, agents, or conditions
+      an individual has encountered that may influence health or disease outcomes.
+    title: Exposure
+    slots:
+    - submitter_participant_id
+    - age_at_exposure
+    - exposure_amount
+    - exposure_code
+    - exposure_duration
+    - exposure_status
+    - exposure_term
+    - exposure_unit
+    - exposure_source_text
+    - exposure_note
+    slot_usage:
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      age_at_exposure:
+        name: age_at_exposure
+        rank: 2
+        slot_group: Exposure
+      exposure_amount:
+        name: exposure_amount
+        rank: 3
+        slot_group: Exposure
+      exposure_code:
+        name: exposure_code
+        rank: 4
+        slot_group: Exposure
+      exposure_duration:
+        name: exposure_duration
+        rank: 5
+        slot_group: Exposure
+      exposure_status:
+        name: exposure_status
+        rank: 6
+        slot_group: Exposure
+      exposure_term:
+        name: exposure_term
+        rank: 7
+        slot_group: Exposure
+      exposure_unit:
+        name: exposure_unit
+        rank: 8
+        slot_group: Exposure
+      exposure_note:
+        name: exposure_note
+        rank: 9
+        slot_group: Extensions Exposure
+      exposure_source_text:
+        name: exposure_source_text
+        rank: 10
+        slot_group: Extensions Exposure
+  Specimen:
+    name: Specimen
     description: Any material sample taken from a biological entity, living or dead,
       from physical object or the environment
     title: Specimen
@@ -3538,12 +4569,12 @@ classes:
     - specimen_tissue_source_code
     - specimen_tissue_source_term
     slot_usage:
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_participant_id:
         name: submitter_participant_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
         rank: 2
         slot_group: Database Identifiers
       age_at_specimen_collection:
@@ -3583,8 +4614,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_specimen_id
-  base_Sample:
-    name: base_Sample
+  Sample:
+    name: Sample
     description: Refers to the molecular material (e.g., DNA, RNA, protein) extracted
       from the specimen and used for experiments or analysis.
     title: Sample
@@ -3620,8 +4651,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_sample_id
-  base_Experiment:
-    name: base_Experiment
+  Experiment:
+    name: Experiment
     description: Contains information about the experimental design of the sequencing
     title: Experiment
     slots:
@@ -3681,8 +4712,8 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_experiment_id
-  base_Read_Group:
-    name: base_Read_Group
+  Read_Group:
+    name: Read_Group
     description: Holds the readgroup information about the raw reads generated in
       a run of sequencing
     title: Read Group
@@ -3700,12 +4731,12 @@ classes:
     - read_length_r1
     - read_length_r2
     slot_usage:
-      submitter_read_group_id:
-        name: submitter_read_group_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_experiment_id:
         name: submitter_experiment_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_read_group_id:
+        name: submitter_read_group_id
         rank: 2
         slot_group: Database Identifiers
       file_r1:
@@ -3771,125 +4802,8 @@ classes:
             name: file_r2
             required: false
             value_presence: ABSENT
-  base_Analysis:
-    name: base_Analysis
-    description: This entity is intended to contain metadata about a detailed examination
-      of data (mainly data processing protocols) in order to come to some conclusion.
-      It can be of different types (e.g. sequence variation, sequence alignment, phenotype
-      characterization, gene expression, etc.) that will mainly differ in the protocols
-      used to achieve the processed data of the analysis.
-    title: Analysis
-    slots:
-    - submitter_analysis_id
-    - submitter_experiment_id
-    - submitter_participant_id
-    - submitter_sample_id
-    - submitter_specimen_id
-    - analysisType
-    - data_category
-    - genome_annotation
-    - genome_build
-    - studyId
-    - variant_calling_strategy
-    - variant_class
-    slot_usage:
-      submitter_analysis_id:
-        name: submitter_analysis_id
-        rank: 1
-        slot_group: Database Identifiers
-      submitter_experiment_id:
-        name: submitter_experiment_id
-        rank: 2
-        slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 3
-        slot_group: Database Identifiers
-      submitter_sample_id:
-        name: submitter_sample_id
-        rank: 4
-        slot_group: Database Identifiers
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 5
-        slot_group: Database Identifiers
-      analysisType:
-        name: analysisType
-        rank: 6
-        slot_group: Analysis
-      data_category:
-        name: data_category
-        rank: 7
-        slot_group: Analysis
-      genome_annotation:
-        name: genome_annotation
-        rank: 8
-        slot_group: Analysis
-      genome_build:
-        name: genome_build
-        rank: 9
-        slot_group: Analysis
-      studyId:
-        name: studyId
-        rank: 10
-        slot_group: Analysis
-      variant_calling_strategy:
-        name: variant_calling_strategy
-        rank: 11
-        slot_group: Analysis
-      variant_class:
-        name: variant_class
-        rank: 12
-        slot_group: Analysis
-    unique_keys:
-      main:
-        unique_key_name: main
-        unique_key_slots:
-        - submitter_analysis_id
-  base_File:
-    name: base_File
-    description: Contains information about the files generated from a run of sequencing
-      or data analysis
-    title: File
-    slots:
-    - submitter_analysis_id
-    - dataType
-    - fileAccess
-    - fileMd5sum
-    - fileName
-    - fileSize
-    - fileType
-    slot_usage:
-      submitter_analysis_id:
-        name: submitter_analysis_id
-        rank: 1
-        slot_group: Database Identifiers
-      dataType:
-        name: dataType
-        rank: 2
-        slot_group: File
-      fileAccess:
-        name: fileAccess
-        rank: 3
-        slot_group: File
-      fileMd5sum:
-        name: fileMd5sum
-        rank: 4
-        slot_group: File
-      fileName:
-        name: fileName
-        rank: 5
-        slot_group: File
-      fileSize:
-        name: fileSize
-        rank: 6
-        slot_group: File
-      fileType:
-        name: fileType
-        rank: 7
-        slot_group: File
-  base_Workflow:
-    name: base_Workflow
+  Workflow:
+    name: Workflow
     description: Contains information about the analysis workflow generating the analysis
     title: Workflow
     slots:
@@ -3899,12 +4813,12 @@ classes:
     - workflow_url
     - workflow_version
     slot_usage:
-      submitter_workflow_id:
-        name: submitter_workflow_id
-        rank: 1
-        slot_group: Database Identifiers
       submitter_analysis_id:
         name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_workflow_id:
+        name: submitter_workflow_id
         rank: 2
         slot_group: Database Identifiers
       workflow_name:
@@ -3924,3 +4838,88 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_workflow_id
+  Household:
+    name: Household
+    title: household
+    slots:
+    - submitter_participant_id
+    - submitter_diagnosis_id
+    - submitter_member_id
+    - member_age_years
+    - member_relationship
+    - member_disease_status
+    slot_usage:
+      submitter_diagnosis_id:
+        name: submitter_diagnosis_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_member_id:
+        name: submitter_member_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 3
+        slot_group: Database Identifiers
+      member_age_years:
+        name: member_age_years
+        rank: 4
+        slot_group: Extensions Household
+      member_relationship:
+        name: member_relationship
+        rank: 5
+        slot_group: Extensions Household
+      member_disease_status:
+        name: member_disease_status
+        rank: 6
+        slot_group: Extensions Household
+  Hla:
+    name: Hla
+    title: hla
+    slots:
+    - submitter_sample_id
+    - hla_optitype_a1
+    - hla_optitype_a2
+    - hla_optitype_b1
+    - hla_optitype_b2
+    - hla_optitype_c1
+    - hla_optitype_c2
+    - hla_optitype_reads
+    - hla_optitype_objective
+    slot_usage:
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 1
+        slot_group: Database Identifiers
+      hla_optitype_a1:
+        name: hla_optitype_a1
+        rank: 2
+        slot_group: Extensions Hla
+      hla_optitype_a2:
+        name: hla_optitype_a2
+        rank: 3
+        slot_group: Extensions Hla
+      hla_optitype_b1:
+        name: hla_optitype_b1
+        rank: 4
+        slot_group: Extensions Hla
+      hla_optitype_b2:
+        name: hla_optitype_b2
+        rank: 5
+        slot_group: Extensions Hla
+      hla_optitype_c1:
+        name: hla_optitype_c1
+        rank: 6
+        slot_group: Extensions Hla
+      hla_optitype_c2:
+        name: hla_optitype_c2
+        rank: 7
+        slot_group: Extensions Hla
+      hla_optitype_reads:
+        name: hla_optitype_reads
+        rank: 8
+        slot_group: Extensions Hla
+      hla_optitype_objective:
+        name: hla_optitype_objective
+        rank: 9
+        slot_group: Extensions Hla

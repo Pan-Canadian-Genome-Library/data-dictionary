@@ -1,0 +1,27 @@
+classes:
+  extension_Comorbidity:
+    is_a: base_Comorbidity
+    name: extension_Comorbidity
+    slots:
+    - comorbidity_source_text
+    - comorbidity_note
+    title: comorbidity
+description: '...'
+enums: {}
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  comorbidity_note:
+    description: Free text to record any additional information.
+    name: comorbidity_note
+    range: string
+    title: Comorbidity Note
+  comorbidity_source_text:
+    description: Description of a comorbidity, as recorded in the source system, before
+      ontology mapping.
+    name: comorbidity_source_text
+    range: string
+    title: Comorbidity Source Text
+version: 1.0.0

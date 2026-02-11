@@ -1,9 +1,9 @@
-version: 0.0
+version: 0.1
 id: https://example.com/PCGL.yaml
 in_language:
 - en
-name: 'The_Pan-Canadian_Genome_Library_Data_Dictionary'
-description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
+name: PCGLST0002_pcgl_schema
+description: 'Hostseq custom schema that incorporates all PCGL base entities and study specific extension fields and entities'
 prefixes:
   linkml: https://w3id.org/linkml/
 
@@ -17,29 +17,29 @@ classes:
   Participant:
     is_a: base_Participant
   Sociodemographic:
-    is_a: base_Sociodemographic
+    is_a: extension_Sociodemographic
   Demographic:
-    is_a: base_Demographic
+    is_a: extension_Demographic
   Diagnosis:
-   is_a: base_Diagnosis
+   is_a: extension_Diagnosis
   Treatment:
-    is_a: base_Treatment
+    is_a: extension_Treatment
   Follow_Up:
     is_a: base_Follow_Up
   Procedure:
-    is_a: base_Procedure
+    is_a: extension_Procedure
   Medication:
-    is_a: base_Medication
+    is_a: extension_Medication
   Radiation:
     is_a: base_Radiation
   Measurement:
-    is_a: base_Measurement
+    is_a: extension_Measurement
   Phenotype:
-    is_a: base_Phenotype
+    is_a: extension_Phenotype
   Comorbidity:
-    is_a: base_Comorbidity
+    is_a: extension_Comorbidity
   Exposure:
-   is_a: base_Exposure
+   is_a: extension_Exposure
   Specimen:
     is_a: base_Specimen
   Sample:
@@ -48,5 +48,11 @@ classes:
     is_a: base_Experiment
   Read_Group:
     is_a: base_Read_Group
+  Workflow:
+    is_a: base_Workflow
+  Household:
+    is_a: extension_Household
+  Hla:
+    is_a: extension_Hla
 
 

@@ -1,11 +1,11 @@
 {
-  "name": "The Pan-Canadian Genome Library Data Dictionary",
-  "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results",
-  "version": "1.0",
+  "name": "PCGLST0002 pcgl schema",
+  "description": "Hostseq custom schema that incorporates all PCGL base entities and study specific extension fields and entities",
+  "version": "1.1",
   "meta": {
     "version": {
       "base": "1.0",
-      "extension": "0.0"
+      "extension": "0.1"
     }
   },
   "schemas": [
@@ -15,27 +15,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string",
           "unique": true
@@ -158,27 +143,12 @@
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -760,6 +730,189 @@
               "empty": true
             }
           }
+        },
+        {
+          "meta": {
+            "displayName": "dob_month"
+          },
+          "name": "dob_month",
+          "description": "Month of birth",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "April",
+              "August",
+              "December",
+              "Don't know",
+              "February",
+              "January",
+              "July",
+              "June",
+              "March",
+              "May",
+              "November",
+              "October",
+              "September"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "dob_year"
+          },
+          "name": "dob_year",
+          "description": "Year of birth",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "birth_country"
+          },
+          "name": "birth_country",
+          "description": "Country of birth",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "birth_place"
+          },
+          "name": "birth_place",
+          "description": "Place of birth",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Africa",
+              "Central and South America",
+              "East Asia/ Southeast Asia",
+              "East/West Europe",
+              "Middle East/ Central Asia",
+              "North America",
+              "Oceania",
+              "Other",
+              "South Asia"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "ancestry"
+          },
+          "name": "ancestry",
+          "description": "Ancestry",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Ashkenazi Jewish",
+              "Black",
+              "East Asian / Pacific Islander",
+              "Hispanic",
+              "Indigenous (First Nations, Metis, Inuit)",
+              "Middle Eastern or Central Asian",
+              "More than one race",
+              "Other",
+              "Prefer not to answer/ Don't know",
+              "Sephardic Jewish",
+              "South Asian",
+              "White"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "height_cm"
+          },
+          "name": "height_cm",
+          "description": "Height (cm)",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "weight_kg"
+          },
+          "name": "weight_kg",
+          "description": "Weight (Kg)",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "employment_status"
+          },
+          "name": "employment_status",
+          "description": "Employment",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Factory worker",
+              "Grocery store employee",
+              "Healthcare worker (excluding long-term health care provider)",
+              "Long-term care facility employee",
+              "Other",
+              "Tourism/travel worker",
+              "Unknown"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "employment_other"
+          },
+          "name": "employment_other",
+          "description": "Specify other employment",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "residence_type"
+          },
+          "name": "residence_type",
+          "description": "Type of residence",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Another institution",
+              "Long term care facility",
+              "Personal residence",
+              "Unknown"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "residence_type_other"
+          },
+          "name": "residence_type_other",
+          "description": "Specify other residence",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "household_size"
+          },
+          "name": "household_size",
+          "description": "Number of other people in patient's household",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "currently_pregnant"
+          },
+          "name": "currently_pregnant",
+          "description": "Currently pregnant",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "No",
+              "Yes"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "pregnancy_weeks"
+          },
+          "name": "pregnancy_weeks",
+          "description": "Gestational weeks",
+          "valueType": "number"
         }
       ],
       "restrictions": {
@@ -782,27 +935,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -868,6 +1006,54 @@
               "Missing - Restricted access"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "host_hospital"
+          },
+          "name": "host_hospital",
+          "description": "Host hospital",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "treat_hospital"
+          },
+          "name": "treat_hospital",
+          "description": "Treating hospital",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "outcome_self_care"
+          },
+          "name": "outcome_self_care",
+          "description": "Ability to self-care at discharge versus before illness",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Better",
+              "Don't know",
+              "Same as before illness",
+              "Worse"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "outcome_transfer"
+          },
+          "name": "outcome_transfer",
+          "description": "Transfer facility name",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "demographic_note"
+          },
+          "name": "demographic_note",
+          "description": "Any additional info",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -890,52 +1076,24 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_diagnosis_id",
-            "mappings": {
-              "mCODE.STU1": "Condition.identifier",
-              "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code",
-              "ARGO": "submitter_diagnosis_id",
-              "MOH": "submitter_diagnosis_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_diagnosis_id"
           },
           "name": "submitter_diagnosis_id",
-          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+          "description": "Unique identifier of the diagnosis within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            "required": true
           },
           "valueType": "string",
           "unique": true
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -993,6 +1151,345 @@
           "name": "disease_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the disease_code",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "diagnosis_date"
+          },
+          "name": "diagnosis_date",
+          "description": "COVID-19 diagnosis date (by lab confirmed test) - First positive test",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "disease_source_text"
+          },
+          "name": "disease_source_text",
+          "description": "Description of the disease as originally recorded in the source system, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "diagnosis_note"
+          },
+          "name": "diagnosis_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "er_visit"
+          },
+          "name": "er_visit",
+          "description": "Patient seen in ER",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "No",
+              "Yes"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "triage_date"
+          },
+          "name": "triage_date",
+          "description": "ER triage date at reporting facility",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "transfer_facility"
+          },
+          "name": "transfer_facility",
+          "description": "Transfer from another facility",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "No",
+              "Yes - facility is a study site",
+              "Yes - facility is not a study site"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "transfer_facility_name"
+          },
+          "name": "transfer_facility_name",
+          "description": "Name of transfer facility",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "transfer_facility_date"
+          },
+          "name": "transfer_facility_date",
+          "description": "ER triage date at transfer facility",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "transfer_facility_sourceid"
+          },
+          "name": "transfer_facility_sourceid",
+          "description": "Source study ID # from transfer facility",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "transfer_facility_hostseqid"
+          },
+          "name": "transfer_facility_hostseqid",
+          "description": "HostSeq study ID # from transfer facility",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hospitalized"
+          },
+          "name": "hospitalized",
+          "description": "Patient hospitalized",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "No",
+              "Yes"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "ambulatory_state"
+          },
+          "name": "ambulatory_state",
+          "description": "Ambulatory state",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Limitation of activities",
+              "No limitation of activities",
+              "Unknown"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "date_admission"
+          },
+          "name": "date_admission",
+          "description": "Date of admission",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hospitalized_state"
+          },
+          "name": "hospitalized_state",
+          "description": "Hospitalized state",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Intubation and mechanical ventilation",
+              "No oxygen therapy",
+              "Non-invasive ventilation or high-flow oxygen",
+              "Oxygen by mask or nasal prongs",
+              "Ventilation + additional organ support -pressor, RRT, ECMO"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "vent_days"
+          },
+          "name": "vent_days",
+          "description": "Total duration of invasive ventilation",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "who_covid19_severity"
+          },
+          "name": "who_covid19_severity",
+          "description": "WHO COVID-19 severity scale",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Ambulatory (limitation of activities)",
+              "Ambulatory (no limitation of activities)",
+              "Ambulatory (with or without limitation of activities)",
+              "Dead - death",
+              "Hospitalized - mild disease (hospitalized, no oxygen therapy)",
+              "Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)",
+              "Hospitalized - severe disease (intubation and mechanical ventilation)",
+              "Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen)",
+              "Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO)",
+              "Uninfected (no clinical or virological evidence of infection)"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "hgi_a2"
+          },
+          "name": "hgi_a2",
+          "description": "COVID-19 HGI phenotype A2 Case: Hospitalized laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support (intubation, CPAP, BiPAP, CNP (continue external negative pressure), Optiflow/very high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g., 2 L/min via nasal cannulae) only does not qualify for case status) Control: Everyone that is not a case, e.g. population",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Case",
+              "Control"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "hhgi_a1"
+          },
+          "name": "hhgi_a1",
+          "description": "COVID-19 HGI phenotype A1 Case: Hospitalized laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND (death or respiratory support (intubation, CPAP, BiPAP, CNP (continued external negative pressure), Optiflow/very high flow Positive End Expiratory Pressure Oxygen)) AND hospitalization with COVID-19 as a primary reason for admission (simple supplementary oxygen (e.g., 2 L/min via nasal cannulae) only does not qualify for case status). Control: Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND not hospitalized 21 days after the test.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Case",
+              "Control"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "hgi_b1"
+          },
+          "name": "hgi_b1",
+          "description": "COVID-19 HGI phenotype B1 Case: Hospitalized laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based), hospitalization due to corona-related symptoms. Control: Laboratory confirmed SARS-CoV-2 infection (RNA and/or serology based) AND not hospitalized 21 days after the test.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Case",
+              "Control"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "hgi_c2"
+          },
+          "name": "hgi_c2",
+          "description": "COVID-19 HGI phenotype C2 Case: Individuals with laboratory confirmation of SARS-CoV-2 infection (RNA and/or serology based) OR EHR/ICD coding/Physician confirmed COVID-19 OR self-reported COVID-19 positive (e.g., by questionnaire). Control: Everybody that is not a case, e.g. population",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Case",
+              "Control"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "est_infection_time"
+          },
+          "name": "est_infection_time",
+          "description": "Estimated time of COVID-19 infection (estimated by (1) first date of PCR test. or (2) date of symptom onset, or (3) date of enrollment (only for studies of prospective recruitment)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "covid19_test_date"
+          },
+          "name": "covid19_test_date",
+          "description": "COVID-19 test date",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "negative_test_date"
+          },
+          "name": "negative_test_date",
+          "description": "If tests are all negative, date of last negative test",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "pcr"
+          },
+          "name": "pcr",
+          "description": "PCR",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "No",
+              "Yes"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "serology_result"
+          },
+          "name": "serology_result",
+          "description": "Serology (choice=Negative)",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Ab Negative",
+              "Ab Positive",
+              "Equivocal",
+              "IgG Positive",
+              "IgM Positive",
+              "Negative",
+              "Not administered"
+            ]
+          },
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "serology_date"
+          },
+          "name": "serology_date",
+          "description": "serology positive test date (First positive test)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "serology_kit"
+          },
+          "name": "serology_kit",
+          "description": "Commercial serology test kit name (if known)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "repeat_hosp"
+          },
+          "name": "repeat_hosp",
+          "description": "Repeat hospital visit within 30 days?",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Don't know",
+              "No",
+              "Yes"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "repeat_hosp_date"
+          },
+          "name": "repeat_hosp_date",
+          "description": "Date of repeat hospital visit",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "repeat_hosp_reason"
+          },
+          "name": "repeat_hosp_reason",
+          "description": "Reason for repeat hospital visit",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1033,22 +1530,10 @@
         },
         {
           "meta": {
-            "displayName": "submitter_diagnosis_id",
-            "mappings": {
-              "mCODE.STU1": "Condition.identifier",
-              "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code",
-              "ARGO": "submitter_diagnosis_id",
-              "MOH": "submitter_diagnosis_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_diagnosis_id"
           },
           "name": "submitter_diagnosis_id",
-          "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
+          "description": "Unique identifier of the diagnosis within the study, assigned by the data provider.",
           "restrictions": {
             "if": {
               "conditions": [
@@ -1072,27 +1557,12 @@
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1216,6 +1686,14 @@
             ]
           },
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "treatment_note"
+          },
+          "name": "treatment_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1247,27 +1725,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1397,6 +1860,30 @@
           "name": "procedure_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_source_text"
+          },
+          "name": "procedure_source_text",
+          "description": "Description of the procedure as originally recorded in the source system, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_body_site_source_text"
+          },
+          "name": "procedure_body_site_source_text",
+          "description": "Description of the anatomical site for a procedure, as originally captured in the source.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_note"
+          },
+          "name": "procedure_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1489,6 +1976,22 @@
           "name": "prescribed_cumulative_drug_dose",
           "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
           "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "drug_source_text"
+          },
+          "name": "drug_source_text",
+          "description": "Description of the drug as originally recorded in the source system, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "drug_note"
+          },
+          "name": "drug_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1624,27 +2127,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1705,6 +2193,30 @@
           "restrictions": {
             "regex": "^UO:\\d{7}$"
           }
+        },
+        {
+          "meta": {
+            "displayName": "measurement_source_text"
+          },
+          "name": "measurement_source_text",
+          "description": "Free-text representation of a measurement, observation, or test, as originally recorded in the source.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "measurement_unit_source_text"
+          },
+          "name": "measurement_unit_source_text",
+          "description": "Free-text representation of the unit of measurement as originally recorded in the source system, prior to mapping to a standardized unit ontology (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "measurement_note"
+          },
+          "name": "measurement_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1727,27 +2239,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1825,6 +2322,22 @@
           "name": "phenotype_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "phenotype_source_text"
+          },
+          "name": "phenotype_source_text",
+          "description": "Free-text description of a phenotype or clinical feature, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "phenotype_note"
+          },
+          "name": "phenotype_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1847,27 +2360,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -1950,6 +2448,22 @@
               "Not applicable"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "comorbidity_source_text"
+          },
+          "name": "comorbidity_source_text",
+          "description": "Description of a comorbidity, as recorded in the source system, before ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "comorbidity_note"
+          },
+          "name": "comorbidity_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1972,27 +2486,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -2078,6 +2577,22 @@
           "name": "exposure_unit",
           "description": "Unit associated with exposure_amount",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_source_text"
+          },
+          "name": "exposure_source_text",
+          "description": "Description of an exposure, as recorded in the source system, before ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_note"
+          },
+          "name": "exposure_note",
+          "description": "Free text to record any additional information.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -2127,27 +2642,12 @@
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "CQDG": "submitter_participant_id",
-              "mCODE.STU3": "Patient.Identifier",
-              "FHIR": "Patient.Identifier",
-              "Phenopacket": "individual.id",
-              "BeaconV2": "individual.id",
-              "ARGO": "submitter_participant_id",
-              "MOH": "submitter_participant_id"
-            },
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
+            "displayName": "submitter_participant_id"
           },
           "name": "submitter_participant_id",
           "description": "Unique identifier of the participant within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "required": true
           },
           "valueType": "string"
         },
@@ -2331,24 +2831,12 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_sample_id",
-            "mappings": {
-              "FHIR": "submitter_sample_id",
-              "mCODE": "submitter_sample_id",
-              "MOH": "submitter_sample_id",
-              "ARGO": "submitter_sample_id"
-            },
-            "examples": [
-              "hnc_12",
-              "CCG_34_94583",
-              "BRCA47832-3239"
-            ]
+            "displayName": "submitter_sample_id"
           },
           "name": "submitter_sample_id",
-          "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            "required": true
           },
           "valueType": "string",
           "unique": true
@@ -2472,24 +2960,12 @@
         },
         {
           "meta": {
-            "displayName": "submitter_sample_id",
-            "mappings": {
-              "FHIR": "submitter_sample_id",
-              "mCODE": "submitter_sample_id",
-              "MOH": "submitter_sample_id",
-              "ARGO": "submitter_sample_id"
-            },
-            "examples": [
-              "hnc_12",
-              "CCG_34_94583",
-              "BRCA47832-3239"
-            ]
+            "displayName": "submitter_sample_id"
           },
           "name": "submitter_sample_id",
-          "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider.",
           "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+            "required": true
           },
           "valueType": "string"
         },
@@ -2857,6 +3333,266 @@
               {
                 "local": "submitter_experiment_id",
                 "foreign": "submitter_experiment_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "workflow",
+      "description": "Contains information about the analysis workflow generating the analysis",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_workflow_id"
+          },
+          "name": "submitter_workflow_id",
+          "description": "Indicate the unique identifier of the data processing workflow used in the analysis.",
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "submitter_analysis_id",
+            "mappings": {
+              "BeaconV2": "analyses.id",
+              "EGA": "submitter_analysis_id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_name"
+          },
+          "name": "workflow_name",
+          "description": "The name of the genomic data processing workflow used for data analysis.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_url"
+          },
+          "name": "workflow_url",
+          "description": "A URL linking to the workflow's repository or documentation. This could be a reference to a GitHub repository, a website where the workflow is described, or documentation on how to run the workflow.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_version"
+          },
+          "name": "workflow_version",
+          "description": "The version of the workflow or pipeline being used. ",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "name": "household",
+      "description": "...",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id"
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_diagnosis_id"
+          },
+          "name": "submitter_diagnosis_id",
+          "description": "Unique identifier of the diagnosis within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_member_id"
+          },
+          "name": "submitter_member_id",
+          "description": "Unique identifier of the family member within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "member_age_years"
+          },
+          "name": "member_age_years",
+          "description": "Member's age in years",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "member_relationship"
+          },
+          "name": "member_relationship",
+          "description": "Member's relationship to patient",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Aunt/uncle",
+              "Child",
+              "Cousin",
+              "Grandparent",
+              "Other",
+              "Parent",
+              "Spouse"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "member_disease_status"
+          },
+          "name": "member_disease_status",
+          "description": "Member's disease status",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Absent",
+              "Missing - Unknown",
+              "Present"
+            ]
+          }
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          },
+          {
+            "schema": "diagnosis",
+            "mappings": [
+              {
+                "local": "submitter_diagnosis_id",
+                "foreign": "submitter_diagnosis_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "hla",
+      "description": "...",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_sample_id"
+          },
+          "name": "submitter_sample_id",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_a1"
+          },
+          "name": "hla_optitype_a1",
+          "description": "HLA Optitype A1",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_a2"
+          },
+          "name": "hla_optitype_a2",
+          "description": "HLA Optitype A2",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_b1"
+          },
+          "name": "hla_optitype_b1",
+          "description": "HLA Optitype B1",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_b2"
+          },
+          "name": "hla_optitype_b2",
+          "description": "HLA Optitype B2",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_c1"
+          },
+          "name": "hla_optitype_c1",
+          "description": "HLA Optitype C1",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_c2"
+          },
+          "name": "hla_optitype_c2",
+          "description": "HLA Optitype C2",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_reads"
+          },
+          "name": "hla_optitype_reads",
+          "description": "HLA Optitype Reads",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "hla_optitype_objective"
+          },
+          "name": "hla_optitype_objective",
+          "description": "HLA Optitype Objective",
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "sample",
+            "mappings": [
+              {
+                "local": "submitter_sample_id",
+                "foreign": "submitter_sample_id"
               }
             ]
           }

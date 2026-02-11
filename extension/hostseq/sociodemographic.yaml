@@ -1,0 +1,216 @@
+classes:
+  extension_Sociodemographic:
+    is_a: base_Sociodemographic
+    name: extension_Sociodemographic
+    slots:
+    - dob_month
+    - dob_year
+    - birth_country
+    - birth_place
+    - ancestry
+    - height_cm
+    - weight_kg
+    - employment_status
+    - employment_other
+    - residence_type
+    - residence_type_other
+    - household_size
+    - currently_pregnant
+    - pregnancy_weeks
+    title: sociodemographic
+description: '...'
+enums:
+  AncestryMenu:
+    name: AncestryMenu
+    permissible_values:
+      Ashkenazi Jewish:
+        text: Ashkenazi Jewish
+      Black:
+        text: Black
+      East Asian / Pacific Islander:
+        text: East Asian / Pacific Islander
+      Hispanic:
+        text: Hispanic
+      Indigenous (First Nations, Metis, Inuit):
+        text: Indigenous (First Nations, Metis, Inuit)
+      Middle Eastern or Central Asian:
+        text: Middle Eastern or Central Asian
+      More than one race:
+        text: More than one race
+      Other:
+        text: Other
+      Prefer not to answer/ Don't know:
+        text: Prefer not to answer/ Don't know
+      Sephardic Jewish:
+        text: Sephardic Jewish
+      South Asian:
+        text: South Asian
+      White:
+        text: White
+    title: ancestry menu
+  BirthPlaceMenu:
+    name: BirthPlaceMenu
+    permissible_values:
+      Africa:
+        text: Africa
+      Central and South America:
+        text: Central and South America
+      East Asia/ Southeast Asia:
+        text: East Asia/ Southeast Asia
+      East/West Europe:
+        text: East/West Europe
+      Middle East/ Central Asia:
+        text: Middle East/ Central Asia
+      North America:
+        text: North America
+      Oceania:
+        text: Oceania
+      Other:
+        text: Other
+      South Asia:
+        text: South Asia
+    title: birth place menu
+  CurrentlyPregnantMenu:
+    name: CurrentlyPregnantMenu
+    permissible_values:
+      'No':
+        text: 'No'
+      'Yes':
+        text: 'Yes'
+    title: currently pregnant menu
+  DobMonthMenu:
+    name: DobMonthMenu
+    permissible_values:
+      April:
+        text: April
+      August:
+        text: August
+      December:
+        text: December
+      Don't know:
+        text: Don't know
+      February:
+        text: February
+      January:
+        text: January
+      July:
+        text: July
+      June:
+        text: June
+      March:
+        text: March
+      May:
+        text: May
+      November:
+        text: November
+      October:
+        text: October
+      September:
+        text: September
+    title: dob month menu
+  EmploymentStatusMenu:
+    name: EmploymentStatusMenu
+    permissible_values:
+      Factory worker:
+        text: Factory worker
+      Grocery store employee:
+        text: Grocery store employee
+      Healthcare worker (excluding long-term health care provider):
+        text: Healthcare worker (excluding long-term health care provider)
+      Long-term care facility employee:
+        text: Long-term care facility employee
+      Other:
+        text: Other
+      Tourism/travel worker:
+        text: Tourism/travel worker
+      Unknown:
+        text: Unknown
+    title: employment status menu
+  ResidenceTypeMenu:
+    name: ResidenceTypeMenu
+    permissible_values:
+      Another institution:
+        text: Another institution
+      Long term care facility:
+        text: Long term care facility
+      Personal residence:
+        text: Personal residence
+      Unknown:
+        text: Unknown
+    title: residence type menu
+id: https://example.com/base_schema.yaml
+in_language:
+- en
+name: PCGL_Base_Schema
+slots:
+  ancestry:
+    description: Ancestry
+    name: ancestry
+    range: AncestryMenu
+    title: Ancestry
+  birth_country:
+    description: Country of birth
+    name: birth_country
+    range: string
+    title: Birth Country
+  birth_place:
+    description: Place of birth
+    name: birth_place
+    range: BirthPlaceMenu
+    title: Birth Place
+  currently_pregnant:
+    description: Currently pregnant
+    name: currently_pregnant
+    range: CurrentlyPregnantMenu
+    title: Currently Pregnant
+  dob_month:
+    description: Month of birth
+    name: dob_month
+    range: DobMonthMenu
+    title: Dob Month
+  dob_year:
+    description: Year of birth
+    name: dob_year
+    range: integer
+    title: Dob Year
+  employment_other:
+    description: Specify other employment
+    name: employment_other
+    range: string
+    title: Employment Other
+  employment_status:
+    description: Employment
+    name: employment_status
+    range: EmploymentStatusMenu
+    title: Employment Status
+  height_cm:
+    description: Height (cm)
+    name: height_cm
+    range: float
+    title: Height Cm
+  household_size:
+    description: Number of other people in patient's household
+    name: household_size
+    range: integer
+    title: Household Size
+  pregnancy_weeks:
+    description: Gestational weeks
+    name: pregnancy_weeks
+    range: float
+    title: Pregnancy Weeks
+  residence_type:
+    description: Type of residence
+    name: residence_type
+    range: ResidenceTypeMenu
+    title: Residence Type
+  residence_type_other:
+    description: Specify other residence
+    name: residence_type_other
+    range: string
+    title: Residence Type Other
+  weight_kg:
+    description: Weight (Kg)
+    name: weight_kg
+    range: float
+    title: Weight Kg
+version: 1.0.0

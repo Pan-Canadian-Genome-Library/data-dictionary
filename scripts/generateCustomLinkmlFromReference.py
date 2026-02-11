@@ -63,12 +63,13 @@ def main():
 	updated_model=yaml_loader.load(cli_input.custom_schema, SchemaDefinition)
 
 	mapping=generateBaseAndExtenstionMappings(cli_input.custom_schema,reference_model,work_dir)
-	print(mapping)
+	#print(mapping)
 	cleanModel(updated_model)
 
 	cleanVersion(updated_model,mapping)
 
 	flattenInheritedProperties(reference_model,updated_model,mapping)
+	#print(updated_model)
 
 	dh_model=makeDataHarmonizerVersion(updated_model)
 
@@ -102,10 +103,21 @@ def cleanVersion(updated_model,mapping):
 	extension_version=re.search("^\\d.\\d", str(updated_model.version))
 
 	if not bool(base_version):
-		print('Error retrieve base version')
+		print('Error retrieving base version')
+		exit(1)
+
+	if not re.search(r"^\d.[0]+||^\d.",str(tmp_model.version)):
+		print('Error base version format is incompatible')
+		exit(1)
 
 	if not bool(extension_version):
-		print('Error retrieve extension version')
+		print('Error retrieving extension version')
+		exit(1)
+
+	if not re.search(r"^0.\d",str(updated_model.version)):
+		print('Error extension version format is incompatible')
+		print(str(updated_model.version))
+		exit(1)
 
 	updated_model.version="%s.%s" % (str(base_version[0]),str(extension_version[0]))
 
@@ -140,6 +152,7 @@ def generateBaseAndExtenstionMappings(custom_schema,model,working_directory):
 					#print("%s/%s.yaml" % (working_directory,import_key))
 					### If import is from extension and base, match yaml and class names for both
 					class_key_path = "%s/%s.yaml"%(os.path.split(custom_schema)[0].replace("custom", "extension"), class_key.lower())
+					##print(class_key_path)
 					tmp_model=yaml_loader.load(class_key_path, SchemaDefinition)
 					if tmp_model.classes[model.classes[class_key]['is_a']]['is_a'] is not None:
 						#print("%s yatzee B.A" % (import_key))
@@ -256,7 +269,7 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 				updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
 
 		for slot_item in  updated_model['slots'].keys():
-			print(slot_item)
+			#print(slot_item)
 			updated_model['slots'][slot_item]['title']=slot_item
 
 		
@@ -268,9 +281,12 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 			
 			###Add slots defintions
 			for slot_item in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
+				###Prevent extension from overriding existing base slot items
+				if slot_item in updated_model['slots']:
+					continue
 				updated_model.classes[key]['slots'].append(tmp_model['slots'][slot_item]['name'])
 				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
-				#print("A",slot_item,key,tmp_model['slots'][slot_item])
+				print("A",slot_item,key,tmp_model['slots'][slot_item])
 				#print(slot_item)
 				if bool(re.search('^\\[.*\\]$', tmp_model['slots'][slot_item]['range'])):
 					tmp_array=[]
@@ -302,7 +318,7 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 				elif slot.endswith("_id"):
 					slot_id.append(slot)
 				elif slot in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
-					print("D",key,tmp_model.classes[mapping[key]["extension_import_name"]]['slots'])
+					#print("D",key,tmp_model.classes[mapping[key]["extension_import_name"]]['slots'])
 					extensions.append(slot)
 				else:
 					others.append(slot)
@@ -357,7 +373,7 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 			if len(others)>0:
 				for slot in others:
 					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
-		print("C",key,usage)
+		#print("C",key,usage)
 		updated_model.classes[key]['slot_usage']=usage
 
 def makeDataHarmonizerVersion(model):

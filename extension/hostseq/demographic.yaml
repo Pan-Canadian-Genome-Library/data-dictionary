@@ -1,84 +1,56 @@
 classes:
-  demographic:
-    description: Data for the characterization of the participant by means of segmenting
-      the population (e.g., characterization by age, sex, or race).
-    name: demographic
+  extension_Demographic:
+    is_a: base_Demographic
+    name: extension_Demographic
     slots:
-    - country_of_birth
-    - ancestry
-    - hight
-    - weight
-    - highest_education_level_achieved
-    - employment
-    - type_of_residence
-    - number_of_other_people_in_household
-    - pregnancy
+    - host_hospital
+    - treat_hospital
+    - outcome_self_care
+    - outcome_transfer
+    - demographic_note
     title: demographic
-    todos: '{"reference": "GDC", "status": "v2"}'
 description: '...'
 enums:
-  PregnancyMenu:
-    name: PregnancyMenu
+  OutcomeSelfCareMenu:
+    name: OutcomeSelfCareMenu
     permissible_values:
-      'No':
-        text: 'No'
-      Unknown:
-        text: Unknown
-      'Yes':
-        text: 'Yes'
-    title: pregnancy menu
+      Better:
+        text: Better
+      Don't know:
+        text: Don't know
+      Same as before illness:
+        text: Same as before illness
+      Worse:
+        text: Worse
+    title: outcome self care menu
 id: https://example.com/base_schema.yaml
 in_language:
 - en
 name: PCGL_Base_Schema
 slots:
-  ancestry:
-    description: The genetic or genomic heritage of an individual, typically tracing
-      the origins of one's ancestors.
-    name: ancestry
+  demographic_note:
+    description: Any additional info
+    name: demographic_note
     range: string
-    title: Ancestry
-  country_of_birth:
-    description: The country where an individual was born, typically defined by current
-      geopolitical borders.
-    name: country_of_birth
+    title: Demographic Note
+  host_hospital:
+    description: Host hospital
+    name: host_hospital
     range: string
-    title: Country Of Birth
-  employment:
-    description: The current work status of an individual.
-    name: employment
+    title: Host Hospital
+  outcome_self_care:
+    description: Ability to self-care at discharge versus before illness
+    name: outcome_self_care
+    range: OutcomeSelfCareMenu
+    title: Outcome Self Care
+  outcome_transfer:
+    description: Transfer facility name
+    name: outcome_transfer
     range: string
-    title: Employment
-  highest_education_level_achieved:
-    description: The highest level of formal education an individual has completed.
-    name: highest_education_level_achieved
+    title: Outcome Transfer
+  treat_hospital:
+    description: Treating hospital
+    name: treat_hospital
     range: string
-    title: Highest Education Level Achieved
-  hight:
-    description: The measurement of an individual from head to toe recorded in centimeters
-      (cm).
-    name: hight
-    range: decimal
-    title: Hight
-  number_of_other_people_in_household:
-    description: The total number of individuals living in the same household as the
-      participant, excluding the participant.
-    name: number_of_other_people_in_household
-    range: integer
-    title: Number Of Other People In Household
-  pregnancy:
-    description: Indicates whether an individual is currently pregnant.
-    name: pregnancy
-    range: PregnancyMenu
-    title: Pregnancy
-  type_of_residence:
-    description: The kind of dwelling in which an individual lives.
-    name: type_of_residence
-    range: string
-    title: Type Of Residence
-  weight:
-    description: The mass or body weight of an individual measured in kilograms (kg).
-    name: weight
-    range: decimal
-    title: Weight
-version: 2.0.0
+    title: Treat Hospital
+version: 1.0.0
