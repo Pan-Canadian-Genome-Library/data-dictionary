@@ -1,11 +1,11 @@
 {
   "name": "PCGLST0001 pcgl schema",
   "description": "BQC19 custom schema that incorporates all PCGL base entities and study specific extension fields and entities",
-  "version": "1.1",
+  "version": "1.0",
   "meta": {
     "version": {
       "base": "1.0",
-      "extension": "0.1"
+      "extension": "0.0"
     }
   },
   "schemas": [

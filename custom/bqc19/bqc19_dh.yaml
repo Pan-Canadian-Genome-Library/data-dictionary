@@ -3,7 +3,7 @@ description: BQC19 custom schema that incorporates all PCGL base entities and st
   specific extension fields and entities
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.0.0.1
+version: 1.0.0.0
 imports:
 - linkml:types
 prefixes:
