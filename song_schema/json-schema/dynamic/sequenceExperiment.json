@@ -7,7 +7,7 @@
     ],
     "externalValidations": [
       {
-        "url": "https://submission.pcgl-dev.cumulus.genomeinformatics.org/health",
+        "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
         "jsonPath": "submitter_experiment_id"
       }
     ]
