@@ -1,83 +1,16 @@
-	schema	required	dataType	description	comments	exact_mappings	validation
-submitter_participant_id	treatment	True	string	Unique identifier of the participant within the study, assigned by the data provider.		"CQDG:submitter_participant_id
-mCODE.STU3:Patient.Identifier
-FHIR:Patient.Identifier
-Phenopacket:individual.id
-BeaconV2:individual.id"	pattern:^[A-Za-z0-9\-\._]{1,64}
+field	schema	required	dataType	description	comments	exact_mappings	validation
+submitter_participant_id	comorbidity	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
 age_at_comorbidity_diagnosis	comorbidity	False	integer	Indicate the age (in days) of comorbidity diagnosis.			
 comorbidity_code	comorbidity	True	string	Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed.	['Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo']		pattern:^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
-comorbidity_term	comorbidity	False	string	Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code		"mCODE.STU3:condition.code
-FHIR:condition.code
-Phenopacket:disease.term"	
-comorbidity_treatment_status	comorbidity	False	string	Indicate whether the comorbid condition is currently being treated or not.			"Enum:
-Treated and resolved
-Under treatment
-Unknown
-Untreated"
-comorbidity_status	comorbidity	False	string	Indicate the current state or activity of the comorbid condition.			"Enum:
-Active
-In Remission
-Resolved
-Unknown"
-study_id	participant	True	string	Unique identifier of the study.		CQDG:study_id	
-gender	demographic	True	string	Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada	['EDI indicator']	"mCODE.STU3:Patient.gender
-FHIR:Patient.gender
-Phenopacket:individual.gender
-BeaconV2:individual.gender"	"Enum:
-Man
-Missing
-Non-binary person
-Not Applicable
-Not Collected
-Not Provided
-Restricted Access
-Woman"
-sex_at_birth	demographic	True	string	Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada	['EDI indicator']	"All4One:Biological_sex
-CQDG:Sex
-mCODE.STU3:Patient.extension.birthsex
-FHIR:Patient.extension.birthsex
-Phenopacket:individual.sex
-BeaconV2:individual.sex"	"Enum:
-Female
-Male
-Missing
-Not Applicable
-Not Collected
-Not Provided
-Restricted Access"
-ethnicity	demographic	True	string	Refers to the ethnic or cultural origins of a person’s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada	['EDI indicator']	"mCODE.STU3:Patient.extension.ethnicity
-FHIR:Patient.extension.ethnicity"	"Enum:
-African
-Asian
-Caribbean
-European
-Latin, Central and South American
-Missing
-North American
-Not Applicable
-Not Collected
-Not Provided
-Oceanian
-Other ethnic and cultural
-Restricted Access"
-race	demographic	True	string	A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance	['EDI indicator']	"mCODE.STU3:Patient.extension.race
-FHIR:Patient.extension.race"	"Enum:
-Another race category
-Black
-Do not know
-East Asian
-Indigenous (First Nations, Inuk/Inuit, Metis)
-Latin American
-Middle Eastern
-Missing
-Not Applicable
-Not Collected
-Not Provided
-Prefer not to answer
-Restricted Access
-South Asian
-Southeast Asian
-White"
+comorbidity_term	comorbidity	False	string	Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code		mCODE.STU3:condition.code;FHIR:condition.code;Phenopacket:disease.term	
+comorbidity_treatment_status	comorbidity	False	string	Indicate whether the comorbid condition is currently being treated or not.			Enum:Treated and resolved,Under treatment,Unknown,Untreated
+comorbidity_status	comorbidity	False	string	Indicate the current state or activity of the comorbid condition.			Enum:Active,In Remission,Resolved,Unknown
+study_id	demographic	True	string	Unique identifier of the study.		CQDG:study_id	
+submitter_participant_id	demographic	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
+gender	demographic	True	string	Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada	['EDI indicator']	mCODE.STU3:Patient.gender;FHIR:Patient.gender;Phenopacket:individual.gender;BeaconV2:individual.gender	Enum:Man,Missing,Non-binary person,Not Applicable,Not Collected,Not Provided,Restricted Access,Woman
+sex_at_birth	demographic	True	string	Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics. The provided values are based on the categoried defined by Statistics Canada	['EDI indicator']	All4One:Biological_sex;CQDG:Sex;mCODE.STU3:Patient.extension.birthsex;FHIR:Patient.extension.birthsex;Phenopacket:individual.sex;BeaconV2:individual.sex	Enum:Female,Male,Missing,Not Applicable,Not Collected,Not Provided,Restricted Access
+ethnicity	demographic	True	string	Refers to the ethnic or cultural origins of a person’s ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada	['EDI indicator']	mCODE.STU3:Patient.extension.ethnicity;FHIR:Patient.extension.ethnicity	Enum:African,Asian,Caribbean,European,Latin, Central and South American,Missing,North American,Not Applicable,Not Collected,Not Provided,Oceanian,Other ethnic and cultural,Restricted Access
+race	demographic	True	string	A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance	['EDI indicator']	mCODE.STU3:Patient.extension.race;FHIR:Patient.extension.race	Enum:Another race category,Black,Do not know,East Asian,Indigenous (First Nations, Inuk/Inuit, Metis),Latin American,Middle Eastern,Missing,Not Applicable,Not Collected,Not Provided,Prefer not to answer,Restricted Access,South Asian,Southeast Asian,White
 country_of_birth	demographic	False	string	The country where an individual was born, typically defined by current geopolitical borders.			
 ancestry	demographic	False	string	The genetic or genomic heritage of an individual, typically tracing the origins of one's ancestors.			
 height	demographic	False	decimal	The measurement of an individual from head to toe recorded in centimeters (cm).			
@@ -86,224 +19,73 @@ highest_education_level_achieved	demographic	False	string	The highest level of f
 employment	demographic	False	string	The current work status of an individual.			
 type_of_residence	demographic	False	string	The kind of dwelling in which an individual lives.			
 number_of_other_people_in_household	demographic	False	integer	The total number of individuals living in the same household as the participant, excluding the participant.			
-pregnancy	demographic	False	string	Indicates whether an individual is currently pregnant.			"Enum:
-No
-Unknown
-Yes"
-submitter_diagnosis_id	diagnosis	True	string	Unique identifier of the primary diagnosis event, assigned by the data provider.		"mCODE.STU1:Condition.identifier
-mCODE.STU2:Condition.identifier
-FHIR:condition.code"	pattern:^[A-Za-z0-9\-\._]{1,64}$
-age_at_diagnosis	diagnosis	False	integer	Age of participant (in days) at time of diagnosis of the condition.		"mCODE.STU3:condition.onset
-FHIR:condition.onset
-Phenopacket:disease.onset"	
-disease_code	diagnosis	True	string	Use ICD-10 code or Mondo code to represent the disease diagnosed.	['Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo']	"mCODE.STU3:condition.code
-FHIR:condition.code
-Phenopacket:disease.term"	pattern:^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
-disease_term	diagnosis	False	string	Provide the standardized and human readable term derived from the coding system associated with the disease_code		"mCODE.STU3:condition.code
-FHIR:condition.code
-Phenopacket:disease.term"	
-disease_category	diagnosis	True	string	A broader classification that groups diseases into categories.			"Enum:
-Autoimmune disorder
-Cancer
-Infectious disease"
-covid19_severity	diagnosis	False	string	A measure of the severity of a COVID-19 infection, which can range from mild to severe or critical.			"Enum:
-Ambulatory (limitation of activities)
-Ambulatory (no limitation of activities)
-Ambulatory (with or without limitation of activities)
-Dead - death
-Hospitalized - mild disease (hospitalized, no oxygen therapy)
-Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs)
-Hospitalized - severe disease (intubation and mechanical ventilation)
-Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen)
-Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO)
-Uninfected (no clinical or virological evidence of infection)"
-covid19_vaccine_doses	diagnosis	False	string	The number of COVID-19 vaccine doses the patient has received.			"Enum:
-No
-Unknown
-Yes, four doses
-Yes, one dose
-Yes, three doses
-Yes, two doses"
-alcohol_consumption	exposure	False	string	Indicate current alcohol consumtion based on recommended daily limit.	['Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion.']		"Enum:
-Alcohol consumption unknown
-Alcohol intake exceeds recommended daily limit
-Alcohol intake within recommended daily limit
-No alcohol consumption"
-smoking_status	exposure	False	string	Indicate smoking status and history of a participant at the time of the data collection.			"Enum:
-Current reformed smoker for <= 15 years
-Current reformed smoker for > 15 years
-Current reformed smoker, duration not specified
-Current smoker
-Lifelong non-smoker (<100 cigarettes smoked in lifetime)
-Not applicable
-Smoking history not documented"
-physical_activity	exposure	False	string	Indicate how many times per week the participant exercises for at least 30 minutes.			"Enum:
-1-3 times a month
-Every day
-Less than once a month
-Most days but not every day
-Never
-Not applicable
-Once or twice a week
-Unknown"
+pregnancy	demographic	False	string	Indicates whether an individual is currently pregnant.			Enum:No,Unknown,Yes
+submitter_participant_id	diagnosis	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
+submitter_diagnosis_id	diagnosis	True	string	Unique identifier of the primary diagnosis event, assigned by the data provider.		mCODE.STU1:Condition.identifier;mCODE.STU2:Condition.identifier;FHIR:condition.code	pattern:^[A-Za-z0-9\-\._]{1,64}$
+age_at_diagnosis	diagnosis	False	integer	Age of participant (in days) at time of diagnosis of the condition.		mCODE.STU3:condition.onset;FHIR:condition.onset;Phenopacket:disease.onset	
+disease_code	diagnosis	True	string	Use ICD-10 code or Mondo code to represent the disease diagnosed.	['Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo']	mCODE.STU3:condition.code;FHIR:condition.code;Phenopacket:disease.term	pattern:^ICD10:[A-TV-Z][0-9][0-9AB].?[0-9A-TV-Z]{0,4}$|^(MONDO:)[0-9]{7}$
+disease_term	diagnosis	False	string	Provide the standardized and human readable term derived from the coding system associated with the disease_code		mCODE.STU3:condition.code;FHIR:condition.code;Phenopacket:disease.term	
+disease_category	diagnosis	True	string	A broader classification that groups diseases into categories.			Enum:Autoimmune disorder,Cancer,Infectious disease
+covid19_severity	diagnosis	False	string	A measure of the severity of a COVID-19 infection, which can range from mild to severe or critical.			Enum:Ambulatory (limitation of activities),Ambulatory (no limitation of activities),Ambulatory (with or without limitation of activities),Dead - death,Hospitalized - mild disease (hospitalized, no oxygen therapy),Hospitalized - mild disease (hospitalized, oxygen by mask or nasal prongs),Hospitalized - severe disease (intubation and mechanical ventilation),Hospitalized - severe disease (non-invasive ventilation or high-flow oxygen),Hospitalized - severe disease (ventilation and additional organ support, i.e. pressors, RRT, ECMO),Uninfected (no clinical or virological evidence of infection)
+covid19_vaccine_doses	diagnosis	False	string	The number of COVID-19 vaccine doses the patient has received.			Enum:No,Unknown,Yes, four doses,Yes, one dose,Yes, three doses,Yes, two doses
+submitter_participant_id	exposure	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
+alcohol_consumption	exposure	False	string	Indicate current alcohol consumtion based on recommended daily limit.	['Refer to the Canadian Centre on Substance Abuse, for men, no more than 15 drinks a week, with no more than 3 drinks a day most days. No more than 4 drinks on any single occasion. For women, no more than 10 drinks a week, with no more than 2 drinks a day most days. No more than 3 drinks on any single occasion.']		Enum:Alcohol consumption unknown,Alcohol intake exceeds recommended daily limit,Alcohol intake within recommended daily limit,No alcohol consumption
+smoking_status	exposure	False	string	Indicate smoking status and history of a participant at the time of the data collection.			Enum:Current reformed smoker for <= 15 years,Current reformed smoker for > 15 years,Current reformed smoker, duration not specified,Current smoker,Lifelong non-smoker (<100 cigarettes smoked in lifetime),Not applicable,Smoking history not documented
+physical_activity	exposure	False	string	Indicate how many times per week the participant exercises for at least 30 minutes.			Enum:1-3 times a month,Every day,Less than once a month,Most days but not every day,Never,Not applicable,Once or twice a week,Unknown
+submitter_participant_id	follow_up	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
 age_at_followup	follow_up	False	integer	Participant's age (in days) at time of the follow up event			
-disease_status_at_followup	follow_up	True	string	Indicate the participant's disease status at time of follow-up			"Enum:
-Complete remission
-Distant progression
-Loco-regional progression
-No evidence of disease
-Partial remission
-Progression NOS
-Relapse or recurrence
-Stable"
+disease_status_at_followup	follow_up	True	string	Indicate the participant's disease status at time of follow-up			Enum:Complete remission,Distant progression,Loco-regional progression,No evidence of disease,Partial remission,Progression NOS,Relapse or recurrence,Stable
+submitter_participant_id	measurement	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
 age_at_measurement	measurement	False	integer	Age (in days) of the participant at the time the lab test or measurement was conducted.			
 measurement_code	measurement	True	string	Use standartized LOINC (Logical Observation Identifiers Names and Codes) code to represent quantitative, ordinal, or categorical measurements.	['Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}']		pattern:^LOINC:[0-9]{1,5}-[0-9]$
 measurement_term	measurement	False	string	Provide the standardized and human readable term derived from the coding system associated with the measurement_code			
 measurement_result_numeric	measurement	False	decimal	The numeric result of the lab test or measurement.			
 measurement_unit	measurement	False	string	Indicate the unit of measurement for the result using LOINC code.			
 measurement_result_categorical	measurement	False	string	The categorical result of the lab test or measurement.			
-submitter_treatment_id	treatment	True	string	Unique identifier of the treatment, assigned by the data provider.			pattern:^[A-Za-z0-9\-\._]{1,64}$
+submitter_treatment_id	medication	True	string	Unique identifier of the treatment, assigned by the data provider.			pattern:^[A-Za-z0-9\-\._]{1,64}$
 drug_code	medication	True	string	Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt to represent the drug.	['Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}']		pattern:^RxNorm:\d{1,8}$|^KEGG:D\\d{5}$|^PubChem:\\d{1,9}$|^NCIt:C\\d{1,7}$
 drug_term	medication	False	string	Provide the standardized and human readable term derived from the coding system associated with the drug_code			
-drug_dose_units	medication	False	string	Indicate units used to record drug dose.			"Enum:
-IU/kg
-IU/m2
-Not available
-g/m2
-mg
-mg/kg
-mg/m2
-ug/m2"
+drug_dose_units	medication	False	string	Indicate units used to record drug dose.			Enum:IU/kg,IU/m2,Not available,g/m2,mg,mg/kg,mg/m2,ug/m2
 prescribed_cumulative_drug_dose	medication	False	decimal	Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.			
 actual_cumulative_drug_dose	medication	False	decimal	Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.			
+study_id	participant	True	string	Unique identifier of the study.		CQDG:study_id	
+submitter_participant_id	participant	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
 age_at_enrollment	participant	False	integer	Age (in days) of participant at time of enrollment into the study			
-vital_status	participant	False	string	Participant's last known state of living or deceased.		"CQDG:vital_status
-Phenopacket:individual.vital_status
-BeaconV2:individual.vital_status"	"Enum:
-Alive
-Deceased
-Missing
-Not Applicable
-Not Collected
-Not Provided
-Restricted Access"
-cause_of_death	participant	False	string	Indicate the cause of a participant's death.			"Enum:
-Died of cancer
-Died of other reasons
-Missing
-Not Applicable
-Not Collected
-Not Provided
-Restricted Access"
+vital_status	participant	False	string	Participant's last known state of living or deceased.		CQDG:vital_status;Phenopacket:individual.vital_status;BeaconV2:individual.vital_status	Enum:Alive,Deceased,Missing,Not Applicable,Not Collected,Not Provided,Restricted Access
+cause_of_death	participant	False	string	Indicate the cause of a participant's death.			Enum:Died of cancer,Died of other reasons,Missing,Not Applicable,Not Collected,Not Provided,Restricted Access
 age_at_death	participant	False	integer	Age of participant (in days) at time of death			
+submitter_participant_id	phenotype	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
 age_at_phenotype	phenotype	False	integer	Participant's age (in days) when phenotype was observed			
 phenotype_code	phenotype	True	string	Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.	['Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>']		pattern:^HP:[0-9]{7}$
 phenotype_term	phenotype	False	string	Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.			
-phenotype_observed	phenotype	True	string	Indicate whether the phenotype was observed in the participant.			"Enum:
-No
-Unknown
-Yes"
+phenotype_observed	phenotype	True	string	Indicate whether the phenotype was observed in the participant.			Enum:No,Unknown,Yes
 phenotype_duration	phenotype	False	integer	Indicate the length of time (in days) over which the phenotype was observed in the participant.			
-phenotype_severity	phenotype	False	string	The degree or severity of the observed phenotype.	['Permissible values from https://hpo.jax.org/browse/term/HP:0012824']		"Enum:
-Borderline
-Mild
-Moderate
-Profound
-Severe"
+phenotype_severity	phenotype	False	string	The degree or severity of the observed phenotype.	['Permissible values from https://hpo.jax.org/browse/term/HP:0012824']		Enum:Borderline,Mild,Moderate,Profound,Severe
+submitter_treatment_id	procedure	True	string	Unique identifier of the treatment, assigned by the data provider.			pattern:^[A-Za-z0-9\-\._]{1,64}$
 procedure_code	procedure	True	string	Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.	['Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>']		pattern:^NCIt:C\d{1,7}$|^SNOMEDCT:\d{6,9}$|^UMLS:C\d{7}$|^CCI:\d\.[A-Z]{2}\.\d{2}\.[A-Z]{2}$
 procedure_term	procedure	False	string	Provide the standardized and human readable term derived from the coding system associated with the procedure_code			
-procedure_body_site_code	procedure	False	string	Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.	['Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344']	"mCODE.STU3:Specimen.collection.bodySite
-FHIR:Specimen.collection.bodySite"	pattern:^[C][0-9]{2}(.[0-9]{1})?$
+procedure_body_site_code	procedure	False	string	Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.	['Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344']	mCODE.STU3:Specimen.collection.bodySite;FHIR:Specimen.collection.bodySite	pattern:^[C][0-9]{2}(.[0-9]{1})?$
 procedure_body_site_term	procedure	False	string	Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code			
-submitter_specimen_id	specimen	True	string	Unique identifier of the specimen within the study, assigned by the data provider.		"CQDG:submitter_biospecimen_id
-mCODE.STU3:Specimen.Identifier
-FHIR:Specimen.Identifier
-Phenopacket:biosample.id
-BeaconV2:biosample.id"	pattern:^[A-Za-z0-9\-\._]{1,64}$
-specimen_tissue_source_code	specimen	True	string	Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.		"CQDG:biospecimen_tissue_source
-mCODE.STU3:Specimen.type
-FHIR:Specimen.type
-Phenopacket:biosample.sampled_tissue
-BeaconV2:biosample.sampled_tissue"	pattern:^NCIT:C[0-9]+$|^SNOMEDCT:[0-9]+$
+submitter_participant_id	specimen	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
+submitter_specimen_id	specimen	True	string	Unique identifier of the specimen within the study, assigned by the data provider.		CQDG:submitter_biospecimen_id;mCODE.STU3:Specimen.Identifier;FHIR:Specimen.Identifier;Phenopacket:biosample.id;BeaconV2:biosample.id	pattern:^[A-Za-z0-9\-\._]{1,64}$
+specimen_tissue_source_code	specimen	True	string	Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.		CQDG:biospecimen_tissue_source;mCODE.STU3:Specimen.type;FHIR:Specimen.type;Phenopacket:biosample.sampled_tissue;BeaconV2:biosample.sampled_tissue	pattern:^NCIT:C[0-9]+$|^SNOMEDCT:[0-9]+$
 specimen_tissue_source_term	specimen	False	string	Indicate the human readable label for the specimen tissue source code.			
-specimen_storage	specimen	False	string	Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.		"Phenopacket:biosample.sample_storage
-BeaconV2:biosample.sample_storage"	"Enum:
-Cut slide
-Frozen in -70 freezer
-Frozen in liquid nitrogen
-Frozen in vapour phase
-Not Applicable
-Other
-Paraffin block
-RNA later frozen
-Unknown"
-specimen_processing	specimen	False	string	Indicate the technique used to process specimen.		"Phenopacket:biosample.sample_processing
-BeaconV2:biosample.sample_processing"	"Enum:
-Cryopreservation - other
-Cryopreservation in dry ice (dead tissue)
-Cryopreservation in liquid nitrogen (dead tissue)
-Cryopreservation of live cells in liquid nitrogen
-Formalin fixed & paraffin embedded
-Formalin fixed - buffered
-Formalin fixed - unbuffered
-Fresh
-Other
-Unknown"
+specimen_storage	specimen	False	string	Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.		Phenopacket:biosample.sample_storage;BeaconV2:biosample.sample_storage	Enum:Cut slide,Frozen in -70 freezer,Frozen in liquid nitrogen,Frozen in vapour phase,Not Applicable,Other,Paraffin block,RNA later frozen,Unknown
+specimen_processing	specimen	False	string	Indicate the technique used to process specimen.		Phenopacket:biosample.sample_processing;BeaconV2:biosample.sample_processing	Enum:Cryopreservation - other,Cryopreservation in dry ice (dead tissue),Cryopreservation in liquid nitrogen (dead tissue),Cryopreservation of live cells in liquid nitrogen,Formalin fixed & paraffin embedded,Formalin fixed - buffered,Formalin fixed - unbuffered,Fresh,Other,Unknown
 age_at_specimen_collection	specimen	False	integer	Indicate participant's age( in days) when specimen was collected.			
-specimen_anatomic_location_code	specimen	False	string	Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.	['Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.']	"mCODE.STU3:Specimen.collection.bodySite
-FHIR:Specimen.collection.bodySite"	pattern:^[C][0-9]{2}(.[0-9]{1})?$
+specimen_anatomic_location_code	specimen	False	string	Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.	['Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.']	mCODE.STU3:Specimen.collection.bodySite;FHIR:Specimen.collection.bodySite	pattern:^[C][0-9]{2}(.[0-9]{1})?$
 specimen_anatomic_location_label	specimen	False	string	Provide the human readable label for the specimen anatomic location code.			
-specimen_laterality	specimen	False	string	For cancer in a paired organ, indicate the side on which the specimen was obtained.	['Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0']	"mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier
-FHIR:Specimen.collection.bodySite.extension.lateralityQualifier"	"Enum:
-Left
-Not applicable
-Right
-Unknown"
-treatment_type	treatment	True	string	The category or method of treatment administered			"Enum:
-Medication
-Pharmacotherapy
-Procedure
-Radiation therapy
-Other"
+specimen_laterality	specimen	False	string	For cancer in a paired organ, indicate the side on which the specimen was obtained.	['Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0']	mCODE.STU3:Specimen.collection.bodySite.extension.lateralityQualifier;FHIR:Specimen.collection.bodySite.extension.lateralityQualifier	Enum:Left,Not applicable,Right,Unknown
+submitter_participant_id	treatment	True	string	Unique identifier of the participant within the study, assigned by the data provider.		CQDG:submitter_participant_id;mCODE.STU3:Patient.Identifier;FHIR:Patient.Identifier;Phenopacket:individual.id;BeaconV2:individual.id	pattern:^[A-Za-z0-9\-\._]{1,64}
+submitter_treatment_id	treatment	True	string	Unique identifier of the treatment, assigned by the data provider.			pattern:^[A-Za-z0-9\-\._]{1,64}$
+treatment_type	treatment	True	string	The category or method of treatment administered			Enum:Medication,Pharmacotherapy,Procedure,Radiation therapy,Other
 age_at_treatment	treatment	False	integer	Age (in days) of the participant at the time the treatment was administered.			
 treatment_duration	treatment	False	integer	The length of time (in days) over which the treatment was administered.			
-treatment_intent	treatment	False	string	The purpose of the treatment or the desired effect or outcome resulting from the treatment.			"Enum:
-Curative
-Diagnostic
-Forensic
-Guidance
-Palliative
-Preventative
-Screening
-Supportive"
-treatment_response	treatment	False	string	The outcome of the treatment, indicating how the patient responded to the intervention			"Enum:
-Clinical remission
-Disease Progression
-Improvement of symptoms
-No improvement of symptoms
-No sign of disease
-Not applicable
-Partial Response
-Stable Disease
-Treatment cessation due to toxicity
-Worsening of symptoms"
-treatment_status	treatment	False	string	Indicate the donor's status of the prescribed treatment.			"Enum:
-Not available
-Other
-Patient choice (stopped or interrupted treatment)
-Physician decision (stopped or interrupted treatment)
-Treatment completed as prescribed
-Treatment incomplete because patient died
-Treatment incomplete due to technical or organizational problems
-Treatment ongoing
-Treatment stopped due to acute toxicity
-Treatment stopped due to lack of efficacy (disease progression)"
+treatment_intent	treatment	False	string	The purpose of the treatment or the desired effect or outcome resulting from the treatment.			Enum:Curative,Diagnostic,Forensic,Guidance,Palliative,Preventative,Screening,Supportive
+treatment_response	treatment	False	string	The outcome of the treatment, indicating how the patient responded to the intervention			Enum:Clinical remission,Disease Progression,Improvement of symptoms,No improvement of symptoms,No sign of disease,Not applicable,Partial Response,Stable Disease,Treatment cessation due to toxicity,Worsening of symptoms
+treatment_status	treatment	False	string	Indicate the donor's status of the prescribed treatment.			Enum:Not available,Other,Patient choice (stopped or interrupted treatment),Physician decision (stopped or interrupted treatment),Treatment completed as prescribed,Treatment incomplete because patient died,Treatment incomplete due to technical or organizational problems,Treatment ongoing,Treatment stopped due to acute toxicity,Treatment stopped due to lack of efficacy (disease progression)
 image_hosted_url	imaging	False	string	A URL for where the image is hosted			
-image_hosted_format	imaging	False	string	Accepted data types for images			"Enum:
-PNG
-SVG
-PDF
-JPEG"
+image_hosted_format	imaging	False	string	Accepted data types for images			Enum:PNG,SVG,PDF,JPEG
 image_processing_pipeline	imaging	False	string	"Post processing pipeline dependent on image_hosted_format where:
  - image_hosted_format is PNG, choices are 
 * PipelineA
@@ -317,13 +99,7 @@ image_processing_pipeline	imaging	False	string	"Post processing pipeline depende
 * PipelineA
 * PipelineD
 * PipelineF
-"			"Enum:
-pipelineA
-pipelineB
-pipelineC
-pipelineD
-pipelineE
-pipelineF"
+"			Enum:pipelineA,pipelineB,pipelineC,pipelineD,pipelineE,pipelineF
 image_processing_personel	imaging	False	string	"String value for the person who processed the image.
 Must be provided.If not 'image_processing_null_reason' must be provided"			
 image_processing_null_reason	imaging	False	string	"Tracks reason for why image processing personnel was not provided.
@@ -332,7 +108,4 @@ Possible values:
 * Unknown
 * Revoked
 * Not Provided
-Otherwise leave empty"			"Enum:
-Unknown
-Not Provided
-Revoked"
+Otherwise leave empty"			Enum:Unknown,Not Provided,Revoked
