@@ -32,7 +32,7 @@ def main():
 	"""
 	parser = argparse.ArgumentParser(description='Simple script to split dataframes')
 	parser.add_argument('-i', '--input', dest="input", help="The custom schema that makes references to extension and base schemas", required=True,type=str)
-	parser.add_argument('-s', '--size', dest="size", help="The main directory containing folders : Base, Extension, Custom", default=True,type=str) 
+	parser.add_argument('-s', '--size', dest="size", help="Number of records the file should be divided into", default=True,type=int) 
 	parser.add_argument('-o', '--output_directory', dest="out_dir", help="The main directory containing folders : Base, Extension, Custom", default=True,type=str) 
 
 	cli_input= parser.parse_args()
@@ -41,20 +41,36 @@ def main():
 	output_root = cli_input.out_dir
 	chunk_size = cli_input.size
 
-	chunk_iter = pd.read_csv(input_file, chunksize=chunk_size)
+	if input_file.endswith(".csv"):
+		chunk_iter = pd.read_csv(input_file, chunksize=chunk_size,sep=',')
+	else:
+		chunk_iter = pd.read_csv(input_file, chunksize=chunk_size,sep='\t')		
 
 	for i, chunk in enumerate(chunk_iter, start=1):
 		base_file=input_file.split("/")[-1].replace(".csv","").replace(".tsv","")
 		output_dir="%s/%s_%s" % (output_root,base_file,str(i))
 		os.makedirs(output_dir, exist_ok=True)
-		output_file = "%s/%s.csv" % (output_dir,base_file)
+
+		if input_file.endswith(".csv"):
+			output_file = "%s/%s.csv" % (output_dir,base_file)
+		else:
+			output_file = "%s/%s.tsv" % (output_dir,base_file)			
 	    
-		chunk.to_csv(
-		output_file,
-		index=False,
-		sep=",",
-		encoding="utf-8-sig"  # UTF-8 with BOM
-		)
+
+		if input_file.endswith(".csv"):
+			chunk.to_csv(
+			output_file,
+			index=False,
+			sep=",",
+			encoding="utf-8-sig"  # UTF-8 with BOM
+			)
+		else:
+			chunk.to_csv(
+			output_file,
+			index=False,
+			sep="\t",
+			encoding="utf-8-sig"  # UTF-8 with BOM
+			)	
 
 		print(output_dir,output_file)
 
