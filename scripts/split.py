@@ -31,9 +31,9 @@ def main():
 	Simple script that takes a TSV/CSV file and spltis according to size. Subsetted files are saved into enumerated folders named after the input TSV. 
 	"""
 	parser = argparse.ArgumentParser(description='Simple script to split dataframes')
-	parser.add_argument('-i', '--input', dest="input", help="The custom schema that makes references to extension and base schemas", required=True,type=str)
-	parser.add_argument('-s', '--size', dest="size", help="Number of records the file should be divided into", default=True,type=int) 
-	parser.add_argument('-o', '--output_directory', dest="out_dir", help="The main directory containing folders : Base, Extension, Custom", default=True,type=str) 
+	parser.add_argument('-i', '--input', dest="input", help="Input CSV/TSV to be split", required=True,type=str)
+	parser.add_argument('-s', '--size', dest="size", help="Number of records the file should be divided into", required=True,type=int) 
+	parser.add_argument('-o', '--output_directory', dest="out_dir", help="Output directory to save divided records.", required=True,type=str) 
 
 	cli_input= parser.parse_args()
 
