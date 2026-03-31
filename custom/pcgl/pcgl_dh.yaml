@@ -1,6 +1,7 @@
-name: The_Pan-Canadian_Genome_Library_Data_Dictionary
+name: Pan-Canadian_Genome_Library_Data_Dictionary
 description: Defines the base schema of shared data elements used across all domains,
-  including patient demographics, vital status, and laboratory results
+  including patient demographics, vital status, and laboratory results. Please note
+  view is strictly for data dictionary.
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
 version: 1.0.0.0
@@ -1065,6 +1066,52 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
+  status_menu:
+    name: status_menu
+    title: status_menu
+    permissible_values:
+      Ongoing:
+        text: Ongoing
+      Completed:
+        text: Completed
+  context_menu:
+    name: context_menu
+    title: context_menu
+    permissible_values:
+      Clinical:
+        text: Clinical
+      Research:
+        text: Research
+  domain_menu:
+    name: domain_menu
+    title: domain_menu
+    permissible_values:
+      Aging:
+        text: Aging
+      Birth Defects:
+        text: Birth Defects
+      Cancer:
+        text: Cancer
+      Circulatory and Respiratory Health:
+        text: Circulatory and Respiratory Health
+      General Health:
+        text: General Health
+      Infection and Immunity:
+        text: Infection and Immunity
+      Musculoskeletal Health and Arthritis:
+        text: Musculoskeletal Health and Arthritis
+      Neurodevelopmental Conditions:
+        text: Neurodevelopmental Conditions
+      Neurosciences, Mental Health and Addiction:
+        text: Neurosciences, Mental Health and Addiction
+      Nutrition, Metabolism and Diabetes:
+        text: Nutrition, Metabolism and Diabetes
+      Population Genomics:
+        text: Population Genomics
+      Rare Diseases:
+        text: Rare Diseases
+      Other:
+        text: Other
 slots:
   age_at_death:
     name: age_at_death
@@ -1369,9 +1416,9 @@ slots:
       performed.
     title: procedure_code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
-      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>
-      CCI URL: https://www.cihi.ca/en/cci-coding-structure'
+    - "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n\
+      \  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>\
+      \ CCI URL:https://www.cihi.ca/en/cci-coding-structure"
     examples:
     - value: NCIT:C51894
     - value: snomedct:284196006
@@ -2067,21 +2114,20 @@ slots:
     required: false
   race_collect_method:
     name: race_collect_method
-    description: 'Studies must report how race data was collected. This is necessary
-      to enable data aggregation, harmonization, and reproducibility. Responses from
-      prospective projects should always be self-identified. To respect participants’
-      autonomy and right to self-determination, as well as to avoid conflating differences
-      in (genetic) population structure with socially constructed racial categories,
-      responses that were self-identified should not be aggregated with responses
-      that were socially assigned or derived. '
+    description: 'Studies must report how race data was collected
+
+      . This is necessary to enable data aggregation, harmonization, and reproducibility
+
+      . Responses from prospective projects should always be self-identified
+
+      . To respect participants'' autonomy and right to self-determination, as well
+      as to avoid conflating differences in (genetic) population structure with socially
+      constructed racial categories,responses that were self-identified should not
+      be aggregated with responses that were socially assigned or derived.'
     title: race_collect_method
     notes:
-    - '
-
-      Definitions and examples of methods of collections are provided in the PCGL
+    - Definitions and examples of methods of collections are provided in the PCGL\n.
       Guidance Document for Participant Sociodemographic Data v1.0.
-
-      '
     range: race_collect_method_menu
     required: true
   gender_another_gender:
@@ -2231,7 +2277,7 @@ slots:
     required: true
   geographic_location:
     name: geographic_location
-    description: 'A participant’s postal code at their current address of residence. '
+    description: A participant's postal code at their current address of residence.
     title: geographic_location
     notes:
     - '
@@ -2751,7 +2797,262 @@ slots:
     title: dataType
     range: data_type_menu
     required: true
+  study_name:
+    name: study_name
+    description: The official name of the study
+    title: study_name
+    range: string
+    required: true
+  study_description:
+    name: study_description
+    description: A detailed description of the study's purpose, hypothesis, and design.
+    title: study_description
+    range: string
+    required: true
+  program_name:
+    name: program_name
+    description: Indicate the overarching program the study belongs to (if applicable)
+    title: program_name
+    range: string
+  keywords:
+    name: keywords
+    description: List of specific terms that describe the focus and content of the
+      study. In case there are several, place each on separate line.
+    title: keywords
+    range: string
+    multivalued: true
+  status:
+    name: status
+    description: Indicate if the study is completed or ongoing.
+    title: status
+    range: status_menu
+    required: true
+  context:
+    name: context
+    description: Indicate if the study was conducted in a clinical setting or as part
+      of a research project.
+    title: context
+    range: context_menu
+    required: true
+  domain:
+    name: domain
+    description: List of specific scientific or clinical domains addressed by the
+      study. In case there are several, place each on separate line.
+    title: domain
+    range: domain_menu
+    required: true
+    multivalued: true
+  dac_id:
+    name: dac_id
+    description: Unique identifier of the Data Access Committee (DAC) in PCGL to which
+      the study is assigned. This will be supplied by PCGL Admin
+    title: dac_id
+    range: string
+    required: true
+  participant_criteria:
+    name: participant_criteria
+    description: Inclusion/exclusion criteria for participants (e.g., specific cancer
+      type, age range).
+    title: participant_criteria
+    range: string
+    multivalued: true
+  principal_investigators:
+    name: principal_investigators
+    description: 'List of lead researchers responsible for the study.
+
+      In case there are several, please list each investigator on a separate line
+      in the format:
+
+      FirstName LastName, Affiliation'
+    title: principal_investigators
+    examples:
+    - value: John Doe, Example Research Institute
+    range: string
+    required: true
+    multivalued: true
+  lead_organizations:
+    name: lead_organizations
+    description: 'List of institutions or organizations leading the study.
+
+      In case there are several, please list each lead organization on a separate
+      line using its full official name.'
+    title: lead_organizations
+    range: string
+    required: true
+    multivalued: true
+  collaborators:
+    name: collaborators
+    description: 'List of researchers, institutions or companies involved in the study.
+
+
+      In case there are several, please list each collaborator on a separate line
+      in the format:
+
+      FirstName LastName (if individula) or Organization full official name, Role'
+    title: collaborators
+    examples:
+    - value: Biotech Inc., Industry Partner
+    - value: Emily John, Data Contributor
+    range: string
+    multivalued: true
+  funding_sources:
+    name: funding_sources
+    description: "List of organizations or agencies funding the study. \n\nIn case\
+      \ there are several, please list each funding source on a separate line in the\
+      \ format:\nFunder name, Grant number\nE.g,\nNational Example Foundation, NEF-12345\n\
+      Example Health Research Council"
+    title: funding_sources
+    range: string
+    required: true
+    multivalued: true
+  publication_links:
+    name: publication_links
+    description: "List of URL links to academic papers or reports associated with\
+      \ the study. \nIn case there are several, please list each publication on a\
+      \ separate line by providing a DOI URL formatted as https://doi.org/ followed\
+      \ by the DOI number."
+    title: publication_links
+    range: string
+    multivalued: true
+  dac_name:
+    name: dac_name
+    description: Full name of the DAC.
+    title: dac_name
+    range: string
+    required: true
+  dac_description:
+    name: dac_description
+    description: An in-depth description of the DAC, including its overall purpose,
+      scope and responsibilities.
+    title: dac_description
+    range: string
+    required: true
+  contact_name:
+    name: contact_name
+    description: 'The full name of the primary contact person. Please provide in the
+      format: FirstName LastName'
+    title: contact_name
+    examples:
+    - value: Jone Smith
+    range: string
+    required: true
+  contact_email:
+    name: contact_email
+    description: Contact email for communication.
+    title: contact_email
+    range: string
+    required: true
 classes:
+  Study:
+    name: Study
+    description: 'Study refers to a specific research project conducted as part of
+      a larger program. It involves data collection, analysis, and interpretation
+      related to the program''s goals. Each study is focused on particular research
+      questions related to set of objectives. Upon registration will be provided a
+      PCGL ID following the regex convention: `PCGLST[0-9]{4}`'
+    title: study
+    slots:
+    - study_name
+    - study_description
+    - program_name
+    - keywords
+    - status
+    - context
+    - domain
+    - dac_id
+    - participant_criteria
+    - principal_investigators
+    - lead_organizations
+    - collaborators
+    - funding_sources
+    - publication_links
+    slot_usage:
+      dac_id:
+        name: dac_id
+        rank: 1
+        slot_group: Database Identifiers
+      collaborators:
+        name: collaborators
+        rank: 2
+        slot_group: Study
+      context:
+        name: context
+        rank: 3
+        slot_group: Study
+      domain:
+        name: domain
+        rank: 4
+        slot_group: Study
+      funding_sources:
+        name: funding_sources
+        rank: 5
+        slot_group: Study
+      keywords:
+        name: keywords
+        rank: 6
+        slot_group: Study
+      lead_organizations:
+        name: lead_organizations
+        rank: 7
+        slot_group: Study
+      participant_criteria:
+        name: participant_criteria
+        rank: 8
+        slot_group: Study
+      principal_investigators:
+        name: principal_investigators
+        rank: 9
+        slot_group: Study
+      program_name:
+        name: program_name
+        rank: 10
+        slot_group: Study
+      publication_links:
+        name: publication_links
+        rank: 11
+        slot_group: Study
+      status:
+        name: status
+        rank: 12
+        slot_group: Study
+      study_description:
+        name: study_description
+        rank: 13
+        slot_group: Study
+      study_name:
+        name: study_name
+        rank: 14
+        slot_group: Study
+    is_a: dh_interface
+  Dac:
+    name: Dac
+    description: 'A group fo individuals responsible for reviewing and approving or
+      denying access requests to data based on established policies. Upon registration
+      will be provided a PCGL ID following the regex convention: `PCGLDA[0-9]{4}`'
+    title: dac
+    slots:
+    - dac_name
+    - dac_description
+    - contact_name
+    - contact_email
+    slot_usage:
+      contact_email:
+        name: contact_email
+        rank: 1
+        slot_group: Dac
+      contact_name:
+        name: contact_name
+        rank: 2
+        slot_group: Dac
+      dac_description:
+        name: dac_description
+        rank: 3
+        slot_group: Dac
+      dac_name:
+        name: dac_name
+        rank: 4
+        slot_group: Dac
+    is_a: dh_interface
   Participant:
     name: Participant
     description: The collection of all data related to a specific individual human
@@ -3817,6 +4118,162 @@ classes:
             name: file_r2
             required: false
             value_presence: ABSENT
+    is_a: dh_interface
+  Analysis:
+    name: Analysis
+    description: This entity is intended to contain metadata about a detailed examination
+      of data (mainly data processing protocols) in order to come to some conclusion.
+      It can be of different types (e.g. sequence variation, sequence alignment, phenotype
+      characterization, gene expression, etc.) that will mainly differ in the protocols
+      used to achieve the processed data of the analysis.
+    title: Analysis
+    slots:
+    - submitter_analysis_id
+    - submitter_experiment_id
+    - submitter_participant_id
+    - submitter_sample_id
+    - submitter_specimen_id
+    - analysisType
+    - data_category
+    - genome_annotation
+    - genome_build
+    - studyId
+    - variant_calling_strategy
+    - variant_class
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_experiment_id:
+        name: submitter_experiment_id
+        rank: 2
+        slot_group: Database Identifiers
+      submitter_participant_id:
+        name: submitter_participant_id
+        rank: 3
+        slot_group: Database Identifiers
+      submitter_sample_id:
+        name: submitter_sample_id
+        rank: 4
+        slot_group: Database Identifiers
+      submitter_specimen_id:
+        name: submitter_specimen_id
+        rank: 5
+        slot_group: Database Identifiers
+      analysisType:
+        name: analysisType
+        rank: 6
+        slot_group: Analysis
+      data_category:
+        name: data_category
+        rank: 7
+        slot_group: Analysis
+      genome_annotation:
+        name: genome_annotation
+        rank: 8
+        slot_group: Analysis
+      genome_build:
+        name: genome_build
+        rank: 9
+        slot_group: Analysis
+      studyId:
+        name: studyId
+        rank: 10
+        slot_group: Analysis
+      variant_calling_strategy:
+        name: variant_calling_strategy
+        rank: 11
+        slot_group: Analysis
+      variant_class:
+        name: variant_class
+        rank: 12
+        slot_group: Analysis
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_analysis_id
+    is_a: dh_interface
+  Workflow:
+    name: Workflow
+    description: Contains information about the analysis workflow generating the analysis
+    title: Workflow
+    slots:
+    - submitter_workflow_id
+    - submitter_analysis_id
+    - workflow_name
+    - workflow_url
+    - workflow_version
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      submitter_workflow_id:
+        name: submitter_workflow_id
+        rank: 2
+        slot_group: Database Identifiers
+      workflow_name:
+        name: workflow_name
+        rank: 3
+        slot_group: Workflow
+      workflow_url:
+        name: workflow_url
+        rank: 4
+        slot_group: Workflow
+      workflow_version:
+        name: workflow_version
+        rank: 5
+        slot_group: Workflow
+    unique_keys:
+      main:
+        unique_key_name: main
+        unique_key_slots:
+        - submitter_workflow_id
+    is_a: dh_interface
+  File:
+    name: File
+    description: Contains information about the files generated from a run of sequencing
+      or data analysis
+    title: File
+    slots:
+    - submitter_analysis_id
+    - dataType
+    - fileAccess
+    - fileMd5sum
+    - fileName
+    - fileSize
+    - fileType
+    slot_usage:
+      submitter_analysis_id:
+        name: submitter_analysis_id
+        rank: 1
+        slot_group: Database Identifiers
+      dataType:
+        name: dataType
+        rank: 2
+        slot_group: File
+      fileAccess:
+        name: fileAccess
+        rank: 3
+        slot_group: File
+      fileMd5sum:
+        name: fileMd5sum
+        rank: 4
+        slot_group: File
+      fileName:
+        name: fileName
+        rank: 5
+        slot_group: File
+      fileSize:
+        name: fileSize
+        rank: 6
+        slot_group: File
+      fileType:
+        name: fileType
+        rank: 7
+        slot_group: File
     is_a: dh_interface
   dh_interface:
     name: dh_interface
