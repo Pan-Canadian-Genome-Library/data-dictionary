@@ -1335,7 +1335,9 @@ slots:
     required: false
   measurement_unit:
     name: measurement_unit
-    description: Indicate the unit of measurement for the result using LOINC code.
+    description: 'Provide the ontology of standardized units to indicate units used
+      to record measurement result. Provide code in Compact URI (CURIE) pattern. UO
+      URL: http://purl.obolibrary.org/obo/UO_{code}'
     title: measurement_unit
     range: string
     required: false
@@ -1387,7 +1389,7 @@ slots:
   procedure_body_site_code:
     name: procedure_body_site_code
     description: Indicate the ICD-O-3 topography code to describe the site of the
-      surgery if applicable. Please use C80.9 if the site is Unkown.
+      surgery if applicable. Please use C80.9 if the site is Unknown.
     title: procedure_body_site_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1486,16 +1488,22 @@ slots:
     required: false
   specimen_anatomic_location_code:
     name: specimen_anatomic_location_code
-    description: Indicate the ICD-O-3 topography code for the anatomic location of
-      a specimen when it was collected. Please use C80.9 if the primary site of a
-      specimen is Unkown.
+    description: 'Indicate the ICD-O-3 topography code or UBERON code for the anatomic
+      location of a specimen when it was collected. Please use C80.9 if the anatomic
+      location of a specimen is Unkown.
+
+      Provide code in Compact URI (CURIE) pattern.
+
+      Refer to the International Classification of Diseases for Oncology, 3rd Edition
+      (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
+
+      UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}'
     title: specimen_anatomic_location_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
     examples:
-    - value: C50.1
-    - value: C18
+    - value: UBERON:8600019
     exact_mappings:
     - mCODE.STU3:Specimen.collection.bodySite
     - FHIR:Specimen.collection.bodySite
@@ -1548,10 +1556,13 @@ slots:
     required: false
   specimen_tissue_source_code:
     name: specimen_tissue_source_code
-    description: Indicate the tissue source of the specimen from which a biopsy or
-      other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
-      SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
+    description: 'Indicate the tissue source of the specimen from which a biopsy or
+      other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).
+
+      Provide code in Compact URI (CURIE) pattern.'
     title: specimen_tissue_source_code
+    examples:
+    - value: NCIT:C12434
     exact_mappings:
     - CQDG:biospecimen_tissue_source
     - mCODE.STU3:Specimen.type
@@ -1608,7 +1619,8 @@ slots:
     required: true
   disease_code:
     name: disease_code
-    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    description: Use ICD-10 code or MONDO code to represent the disease diagnosed.
+      Provide code in Compact URI (CURIE) pattern.
     title: disease_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
@@ -1747,8 +1759,12 @@ slots:
     required: false
   anatomical_site_irradiated_code:
     name: anatomical_site_irradiated_code
-    description: Indicate the ICD-O-3 topography code to describe the irradiated site
-      of radiation if applicable. Please use C80.9 if the site is Unkown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic\
+      \ location where radiation therapy was administered.\n Please use C80.9 if the\
+      \ anatomic location is Unkown. Provide code in Compact URI (CURIE) pattern.\n\
+      \n Refer to the International Classification of Diseases for Oncology, 3rd Edition\
+      \ (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\
+      \n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}"
     title: anatomical_site_irradiated_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1953,7 +1969,8 @@ slots:
     required: false
   fileName:
     name: fileName
-    description: Name of the file.
+    description: Name of the file. Can be absolute path on hosting server, relative
+      file path on hosting server or base filename. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow.
     title: fileName
     exact_mappings:
     - ARGO:fileName
@@ -1962,20 +1979,22 @@ slots:
     pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
   fileSize:
     name: fileSize
-    description: Size of the file, in bytes.
+    description: Size of the file, in bytes. If not provided, will be populated by
+      molecular submission workflow.
     title: fileSize
     exact_mappings:
     - ARGO:fileSize
     range: integer
-    required: true
+    required: false
   fileMd5sum:
     name: fileMd5sum
-    description: Computed md5sum of the file.
+    description: Computed md5sum of the file. If not provided, will be populated by
+      molecular submission workflow.
     title: fileMd5sum
     exact_mappings:
     - ARGO:fileMd5sum
     range: string
-    required: true
+    required: false
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
@@ -2509,7 +2528,7 @@ slots:
     required: false
   assay_type_code:
     name: assay_type_code
-    description: 'Indicate OBI code to provide the sequencing technique intented for
+    description: 'Indicate OBI code to provide the sequencing technique intended for
       the library for sequencing data.
 
       Provide code in Compact URI (CURIE) pattern.'
@@ -2580,18 +2599,7 @@ slots:
       OBI (Ontology for Biomedical Investigations) code and term to ensure precision.
 
 
-      Use the format: OBI code in CURIE format (OBI term)
-
-
-      Example values:
-
-      OBI:0002752 (Oxford Nanopore PromethION)
-
-      OBI:0000759 (Illumina)
-
-      OBI:0002630 (Illumina NovaSeq 6000)
-
-      OBI:0002012 (PacBio RS II)'
+      Use the format: OBI code in CURIE format (OBI term) '
     title: instrument
     notes:
     - '
@@ -2888,7 +2896,7 @@ slots:
       In case there are several, please list each collaborator on a separate line
       in the format:
 
-      FirstName LastName (if individula) or Organization full official name, Role'
+      FirstName LastName (if individual) or Organization full official name, Role'
     title: collaborators
     examples:
     - value: Biotech Inc., Industry Partner
@@ -2899,9 +2907,11 @@ slots:
     name: funding_sources
     description: "List of organizations or agencies funding the study. \n\nIn case\
       \ there are several, please list each funding source on a separate line in the\
-      \ format:\nFunder name, Grant number\nE.g,\nNational Example Foundation, NEF-12345\n\
-      Example Health Research Council"
+      \ format:\nFunder name, Grant number"
     title: funding_sources
+    examples:
+    - value: National Example Foundation, NEF-12345
+    - value: Example Health Research Council
     range: string
     required: true
     multivalued: true
@@ -3025,7 +3035,7 @@ classes:
         slot_group: Study
   Dac:
     name: Dac
-    description: 'A group fo individuals responsible for reviewing and approving or
+    description: 'A group of individuals responsible for reviewing and approving or
       denying access requests to data based on established policies. Upon registration
       will be provided a PCGL ID following the regex convention: `PCGLDA[0-9]{4}`'
     title: dac
