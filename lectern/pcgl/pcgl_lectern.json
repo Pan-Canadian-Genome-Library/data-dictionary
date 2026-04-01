@@ -1,6 +1,6 @@
 {
-  "name": "The Pan-Canadian Genome Library Data Dictionary",
-  "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results",
+  "name": "Pan-Canadian Genome Library Data Dictionary",
+  "description": "Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results. Please note view is strictly for data dictionary.",
   "version": "1.0",
   "meta": {
     "version": {
@@ -9,6 +9,254 @@
     }
   },
   "schemas": [
+    {
+      "name": "study",
+      "description": "Study refers to a specific research project conducted as part of a larger program. It involves data collection, analysis, and interpretation related to the program's goals. Each study is focused on particular research questions related to set of objectives. Upon registration will be provided a PCGL ID following the regex convention: `PCGLST[0-9]{4}`",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "study_name"
+          },
+          "name": "study_name",
+          "description": "The official name of the study",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "study_description"
+          },
+          "name": "study_description",
+          "description": "A detailed description of the study's purpose, hypothesis, and design.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "program_name"
+          },
+          "name": "program_name",
+          "description": "Indicate the overarching program the study belongs to (if applicable)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "keywords"
+          },
+          "name": "keywords",
+          "description": "List of specific terms that describe the focus and content of the study. In case there are several, place each on separate line.",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "status"
+          },
+          "name": "status",
+          "description": "Indicate if the study is completed or ongoing.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Ongoing",
+              "Completed"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "context"
+          },
+          "name": "context",
+          "description": "Indicate if the study was conducted in a clinical setting or as part of a research project.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Clinical",
+              "Research"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "domain"
+          },
+          "name": "domain",
+          "description": "List of specific scientific or clinical domains addressed by the study. In case there are several, place each on separate line.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Aging",
+              "Birth Defects",
+              "Cancer",
+              "Circulatory and Respiratory Health",
+              "General Health",
+              "Infection and Immunity",
+              "Musculoskeletal Health and Arthritis",
+              "Neurodevelopmental Conditions",
+              "Neurosciences, Mental Health and Addiction",
+              "Nutrition, Metabolism and Diabetes",
+              "Population Genomics",
+              "Rare Diseases",
+              "Other"
+            ]
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "dac_id"
+          },
+          "name": "dac_id",
+          "description": "Unique identifier of the Data Access Committee (DAC) in PCGL to which the study is assigned. This will be supplied by PCGL Admin",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "participant_criteria"
+          },
+          "name": "participant_criteria",
+          "description": "Inclusion/exclusion criteria for participants (e.g., specific cancer type, age range).",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "principal_investigators",
+            "examples": [
+              "John Doe, Example Research Institute"
+            ]
+          },
+          "name": "principal_investigators",
+          "description": "List of lead researchers responsible for the study.\nIn case there are several, please list each investigator on a separate line in the format:\nFirstName LastName, Affiliation",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "lead_organizations"
+          },
+          "name": "lead_organizations",
+          "description": "List of institutions or organizations leading the study.\nIn case there are several, please list each lead organization on a separate line using its full official name.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "collaborators",
+            "examples": [
+              "Biotech Inc., Industry Partner",
+              "Emily John, Data Contributor"
+            ]
+          },
+          "name": "collaborators",
+          "description": "List of researchers, institutions or companies involved in the study.\n\nIn case there are several, please list each collaborator on a separate line in the format:\nFirstName LastName (if individual) or Organization full official name, Role",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "funding_sources",
+            "examples": [
+              "National Example Foundation, NEF-12345",
+              "Example Health Research Council"
+            ]
+          },
+          "name": "funding_sources",
+          "description": "List of organizations or agencies funding the study. \n\nIn case there are several, please list each funding source on a separate line in the format:\nFunder name, Grant number",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "publication_links"
+          },
+          "name": "publication_links",
+          "description": "List of URL links to academic papers or reports associated with the study. \nIn case there are several, please list each publication on a separate line by providing a DOI URL formatted as https://doi.org/ followed by the DOI number.",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        }
+      ]
+    },
+    {
+      "name": "dac",
+      "description": "A group of individuals responsible for reviewing and approving or denying access requests to data based on established policies. Upon registration will be provided a PCGL ID following the regex convention: `PCGLDA[0-9]{4}`",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "dac_name"
+          },
+          "name": "dac_name",
+          "description": "Full name of the DAC.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "dac_description"
+          },
+          "name": "dac_description",
+          "description": "An in-depth description of the DAC, including its overall purpose, scope and responsibilities.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "contact_name",
+            "examples": [
+              "Jone Smith"
+            ]
+          },
+          "name": "contact_name",
+          "description": "The full name of the primary contact person. Please provide in the format: FirstName LastName",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "contact_email"
+          },
+          "name": "contact_email",
+          "description": "Contact email for communication.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        }
+      ]
+    },
     {
       "name": "participant",
       "description": "The collection of all data related to a specific individual human in the context of a specific study.",
@@ -420,7 +668,7 @@
             }
           },
           "name": "geographic_location",
-          "description": "A participant\u2019s postal code at their current address of residence. ",
+          "description": "A participant's postal code at their current address of residence.",
           "restrictions": {
             "required": true,
             "regex": "^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
@@ -581,7 +829,7 @@
             "displayName": "race_collect_method"
           },
           "name": "race_collect_method",
-          "description": "Studies must report how race data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. Responses from prospective projects should always be self-identified. To respect participants\u2019 autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories, responses that were self-identified should not be aggregated with responses that were socially assigned or derived. ",
+          "description": "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility\n. Responses from prospective projects should always be self-identified\n. To respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -974,7 +1222,7 @@
             ]
           },
           "name": "disease_code",
-          "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
+          "description": "Use ICD-10 code or MONDO code to represent the disease diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
             "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
@@ -1354,7 +1602,7 @@
             ]
           },
           "name": "procedure_body_site_code",
-          "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.",
+          "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unknown.",
           "restrictions": {
             "required": true,
             "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
@@ -1373,7 +1621,7 @@
           "meta": {
             "displayName": "procedure_code",
             "required": [
-              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL: https://www.cihi.ca/en/cci-coding-structure"
+              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
             ],
             "examples": [
               "NCIT:C51894",
@@ -1544,7 +1792,7 @@
             ]
           },
           "name": "anatomical_site_irradiated_code",
-          "description": "Indicate the ICD-O-3 topography code to describe the irradiated site of radiation if applicable. Please use C80.9 if the site is Unkown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unkown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
           "valueType": "string",
           "restrictions": {
             "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
@@ -1700,7 +1948,7 @@
             "displayName": "measurement_unit"
           },
           "name": "measurement_unit",
-          "description": "Indicate the unit of measurement for the result using LOINC code.",
+          "description": "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}",
           "valueType": "string",
           "restrictions": {
             "regex": "^UO:\\d{7}$"
@@ -2172,12 +2420,11 @@
               "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
             ],
             "examples": [
-              "C50.1",
-              "C18"
+              "UBERON:8600019"
             ]
           },
           "name": "specimen_anatomic_location_code",
-          "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unkown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
           "valueType": "string",
           "restrictions": {
             "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
@@ -2292,10 +2539,13 @@
               "FHIR": "Specimen.type",
               "Phenopacket": "biosample.sampled_tissue",
               "BeaconV2": "biosample.sampled_tissue"
-            }
+            },
+            "examples": [
+              "NCIT:C12434"
+            ]
           },
           "name": "specimen_tissue_source_code",
-          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
+          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
             "regex": "^NCIT:C[0-9]+$"
@@ -2505,7 +2755,7 @@
             ]
           },
           "name": "assay_type_code",
-          "description": "Indicate OBI code to provide the sequencing technique intented for the library for sequencing data.\nProvide code in Compact URI (CURIE) pattern.",
+          "description": "Indicate OBI code to provide the sequencing technique intended for the library for sequencing data.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
             "regex": "^OBI:\\d{7}$"
@@ -2569,7 +2819,7 @@
             ]
           },
           "name": "instrument",
-          "description": "Provide detailed information about the sequencing platform or technology used, including the name and/or model number of the specific instrument. Whenever possible, specify the exact model or revision rather than the general manufacturer name. It is recommended to use standardized terminology by including the appropriate OBI (Ontology for Biomedical Investigations) code and term to ensure precision.\n\nUse the format: OBI code in CURIE format (OBI term)\n\nExample values:\nOBI:0002752 (Oxford Nanopore PromethION)\nOBI:0000759 (Illumina)\nOBI:0002630 (Illumina NovaSeq 6000)\nOBI:0002012 (PacBio RS II)",
+          "description": "Provide detailed information about the sequencing platform or technology used, including the name and/or model number of the specific instrument. Whenever possible, specify the exact model or revision rather than the general manufacturer name. It is recommended to use standardized terminology by including the appropriate OBI (Ontology for Biomedical Investigations) code and term to ensure precision.\n\nUse the format: OBI code in CURIE format (OBI term) ",
           "restrictions": {
             "required": true,
             "regex": "^OBI:\\d{7} \\(.*\\)$"
@@ -2857,6 +3107,488 @@
               {
                 "local": "submitter_experiment_id",
                 "foreign": "submitter_experiment_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "analysis",
+      "description": "This entity is intended to contain metadata about a detailed examination of data (mainly data processing protocols) in order to come to some conclusion. It can be of different types (e.g. sequence variation, sequence alignment, phenotype characterization, gene expression, etc.) that will mainly differ in the protocols used to achieve the processed data of the analysis.",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_analysis_id",
+            "mappings": {
+              "BeaconV2": "analyses.id",
+              "EGA": "submitter_analysis_id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "submitter_experiment_id",
+            "mappings": {
+              "ARGO": "submitter_experiment_id"
+            }
+          },
+          "name": "submitter_experiment_id",
+          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "mappings": {
+              "CQDG": "submitter_participant_id",
+              "mCODE.STU3": "Patient.Identifier",
+              "FHIR": "Patient.Identifier",
+              "Phenopacket": "individual.id",
+              "BeaconV2": "individual.id",
+              "ARGO": "submitter_participant_id",
+              "MOH": "submitter_participant_id"
+            },
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_sample_id",
+            "mappings": {
+              "FHIR": "submitter_sample_id",
+              "mCODE": "submitter_sample_id",
+              "MOH": "submitter_sample_id",
+              "ARGO": "submitter_sample_id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_sample_id",
+          "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_specimen_id",
+            "mappings": {
+              "CQDG": "submitter_biospecimen_id",
+              "mCODE.STU3": "Specimen.Identifier",
+              "FHIR": "Specimen.Identifier",
+              "Phenopacket": "biosample.id",
+              "BeaconV2": "biosample.id",
+              "ARGO": "submitter_specimen_id",
+              "MOH": "submitter_specimen_id"
+            },
+            "examples": [
+              "LAML_PO",
+              "00445",
+              "THY_099-tumour"
+            ]
+          },
+          "name": "submitter_specimen_id",
+          "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "analysisType",
+            "mappings": {
+              "ARGO": "analysisType",
+              "EGA": "analysisType"
+            }
+          },
+          "name": "analysisType",
+          "description": "Overall type of the analysis. Term chosen from a controlled vocabulary (CV) list.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "sequenceExperiment",
+              "sequenceAlignment",
+              "variantCall",
+              "variantAnnotation"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "data_category"
+          },
+          "name": "data_category",
+          "description": "Indicate the category of data produced as outputs from the analysis. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Genomics",
+              "Transcriptomics",
+              "Proteomics",
+              "Epigenomics",
+              "Imaging",
+              "Reference"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "genome_annotation"
+          },
+          "name": "genome_annotation",
+          "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "genome_build"
+          },
+          "name": "genome_build",
+          "description": "The reference genome build that is used in the workflow. ",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "GRCh38",
+              "GRCh37"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "studyId",
+            "mappings": {
+              "ARGO": "studyId",
+              "CQDG": "study_id"
+            }
+          },
+          "name": "studyId",
+          "description": "Unique identifier of the study.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "variant_calling_strategy"
+          },
+          "name": "variant_calling_strategy",
+          "description": "Indicate the approach used to identify genetic variants from sequencing data, based on the availability of reference samples (e.g., matched normal) and the study design.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Tumour only",
+              "Tumour normal",
+              "Single sample",
+              "Family based",
+              "RNA based",
+              "Joint calling"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "variant_class"
+          },
+          "name": "variant_class",
+          "description": "Indicates whether the called variants are germline, somatic, or of uncertain classification.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Germline",
+              "Somatic",
+              "Unknown"
+            ]
+          }
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "experiment",
+            "mappings": [
+              {
+                "local": "submitter_experiment_id",
+                "foreign": "submitter_experiment_id"
+              }
+            ]
+          },
+          {
+            "schema": "participant",
+            "mappings": [
+              {
+                "local": "submitter_participant_id",
+                "foreign": "submitter_participant_id"
+              }
+            ]
+          },
+          {
+            "schema": "sample",
+            "mappings": [
+              {
+                "local": "submitter_sample_id",
+                "foreign": "submitter_sample_id"
+              }
+            ]
+          },
+          {
+            "schema": "specimen",
+            "mappings": [
+              {
+                "local": "submitter_specimen_id",
+                "foreign": "submitter_specimen_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "workflow",
+      "description": "Contains information about the analysis workflow generating the analysis",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_workflow_id"
+          },
+          "name": "submitter_workflow_id",
+          "description": "Indicate the unique identifier of the data processing workflow used in the analysis.",
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "submitter_analysis_id",
+            "mappings": {
+              "BeaconV2": "analyses.id",
+              "EGA": "submitter_analysis_id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_name"
+          },
+          "name": "workflow_name",
+          "description": "The name of the genomic data processing workflow used for data analysis.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_url"
+          },
+          "name": "workflow_url",
+          "description": "A URL linking to the workflow's repository or documentation. This could be a reference to a GitHub repository, a website where the workflow is described, or documentation on how to run the workflow.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "workflow_version"
+          },
+          "name": "workflow_version",
+          "description": "The version of the workflow or pipeline being used. ",
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "analysis",
+            "mappings": [
+              {
+                "local": "submitter_analysis_id",
+                "foreign": "submitter_analysis_id"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "file",
+      "description": "Contains information about the files generated from a run of sequencing or data analysis",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_analysis_id",
+            "mappings": {
+              "BeaconV2": "analyses.id",
+              "EGA": "submitter_analysis_id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_analysis_id",
+          "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "dataType"
+          },
+          "name": "dataType",
+          "description": "Indicates the type of data produced as outputs from the analysis. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Raw Sequencing Reads",
+              "Aligned Reads",
+              "Aligned Reads Index",
+              "Single Nucleotide Variants (SNVs)",
+              "Insertions and Deletions (InDels)",
+              "Structural Variations (SVs)",
+              "Copy Number Variations (CNVs)",
+              "Variant Calls Index",
+              "Quality Control Metrics",
+              "Gene Fusions",
+              "Alternative Splicing",
+              "Gene Expression Quantification",
+              "Transcript Expression Quantification",
+              "Single-Cell Expression Matrices",
+              "Splicing Junctions",
+              "Differential Expression Analysis"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "fileAccess",
+            "mappings": {
+              "ARGO": "fileAccess"
+            }
+          },
+          "name": "fileAccess",
+          "description": "The permission level of a file for public access.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "fileMd5sum",
+            "mappings": {
+              "ARGO": "fileMd5sum"
+            }
+          },
+          "name": "fileMd5sum",
+          "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[a-fA-F0-9]{32}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "fileName",
+            "mappings": {
+              "ARGO": "fileName"
+            }
+          },
+          "name": "fileName",
+          "description": "Name of the file. Can be absolute path on hosting server, relative file path on hosting server or base filename. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$."
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "fileSize",
+            "mappings": {
+              "ARGO": "fileSize"
+            }
+          },
+          "name": "fileSize",
+          "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "fileType",
+            "mappings": {
+              "EGA": "fileType",
+              "ARGO": "fileType"
+            }
+          },
+          "name": "fileType",
+          "description": "Data format of files.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        }
+      ],
+      "restrictions": {
+        "foreignKey": [
+          {
+            "schema": "analysis",
+            "mappings": [
+              {
+                "local": "submitter_analysis_id",
+                "foreign": "submitter_analysis_id"
               }
             ]
           }
