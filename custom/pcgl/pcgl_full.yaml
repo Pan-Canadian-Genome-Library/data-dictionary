@@ -1,7 +1,7 @@
 name: Pan-Canadian_Genome_Library_Data_Dictionary
-description: Defines the base schema of shared data elements used across all domains,
-  including patient demographics, vital status, and laboratory results. Please note
-  view is strictly for data dictionary.
+description: The PCGL Data Dictionary specifies the standardized data elements, controlled
+  vocabulary, data types, validation rules, and interoperability mappings for all
+  health and genomic data submitted to the Pan-Canadian Genome Library.
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
 version: 1.0.0.0
@@ -13,6 +13,14 @@ default_curi_maps:
 - semweb_context
 default_prefix: https://example.com/PCGL.yaml/
 enums:
+  file_access_menu:
+    name: file_access_menu
+    title: file_access_menu
+    permissible_values:
+      open:
+        text: open
+      controlled:
+        text: controlled
   cause_of_death_menu:
     name: cause_of_death_menu
     title: cause of death menu
@@ -21,8 +29,8 @@ enums:
         text: Died of cancer
       Died of other reasons:
         text: Died of other reasons
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -39,8 +47,8 @@ enums:
         text: Alive
       Deceased:
         text: Deceased
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -349,8 +357,8 @@ enums:
         text: Frozen in liquid nitrogen
       Frozen in vapour phase:
         text: Frozen in vapour phase
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Other:
         text: Other
       Paraffin block:
@@ -365,8 +373,6 @@ enums:
         text: Missing - Restricted access
       Missing - Unknown:
         text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
   disease_category_menu:
     name: disease_category_menu
     title: disease category menu
@@ -479,8 +485,6 @@ enums:
     permissible_values:
       Medication:
         text: Medication
-      Pharmacotherapy:
-        text: Pharmacotherapy
       Procedure:
         text: Procedure
       Radiation therapy:
@@ -1166,9 +1170,20 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: Refers to the ethnic or cultural origins of a person's ancestors.
-      The provided values are based on the list of ethnic or cultural origins 2021
-      defined by Statistics Canada
+    description: 'Ethnicity is a ''multi-dimensional concept referring to community
+      belonging and a shared cultural group membership.
+
+      It is related to sociodemographic characteristics, including language, religion,
+      geographic origin, nationality, cultural traditions, ancestry and migration
+      history, among others,''
+
+      [REF: Canadian Institute for Health Information. Guidance on the Use of Standards
+      for Race-Based and Indigenous Identity Data Collection and Health Reporting
+      in Canada (2022)].
+
+      Participants may have multiple ethnic and/or cultural identities.
+
+      All categories entered by the participants should be reported.'
     title: ethnicity
     notes:
     - '
@@ -1190,9 +1205,11 @@ slots:
     multivalued: true
   gender:
     name: gender
-    description: Refers to an individual's personal and social identity as a man,
-      woman or non-binary person (a person who is not exclusively a man or a woman).
-      The provided values are based on the categories defined by Statistics Canada
+    description: 'Gender refers to the socially constructed roles, behaviours, expressions
+      and identities of girls, women, boys, men, and gender diverse people.
+
+      A person’s gender may be the same as or different from their assigned sex at
+      birth and may change over time.'
     title: gender
     notes:
     - '
@@ -1209,11 +1226,19 @@ slots:
     required: true
   race:
     name: race
-    description: A social construct used to judge and categorize people based on perceived
-      differences in physical appearance in ways that create and maintain power differentials
-      within social hierarchies. There is no scientifically supported biological basis
-      for discrete racial groups. The provided values are based on race-based data
-      standard defined by CIHI guidance
+    description: 'Race is a social construct used to judge and categorize people based
+      on perceived differences in physical appearance in ways that create and maintain
+      power differentials within social hierarchies.
+
+      There is no scientifically supported biological basis for discrete racial groups
+
+      [REF: Canadian Institute for Health Information.Guidance on the Use of Standards
+      for Race-Based and Indigenous Identity Data Collection and Health Reporting
+      in Canada. (2022)].
+
+      Participants may have multiple racial identities.
+
+      All categories selected by the participants should be reported.'
     title: race
     comments:
     - EDI indicator
@@ -1224,9 +1249,9 @@ slots:
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
-    description: Refers to sex assigned at birth. Sex at birth is typically assigned
-      based on a person's reproductive system and other physical characteristics.
-      The provided values are based on the categoried defined by Statistics Canada
+    description: Sex is a biological concept that has been historically defined solely
+      based on external anatomy; however, sex is also influenced by our physiology,
+      genes, and hormones.
     title: sex_at_birth
     notes:
     - '
@@ -1249,8 +1274,10 @@ slots:
     required: false
   phenotype_code:
     name: phenotype_code
-    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
+    description: 'Use standardized HPO (Human Phenotype Ontology) codes to represent
       the phenotype.
+
+      Provide code in Compact URI (CURIE) pattern.'
     title: phenotype_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
@@ -1306,8 +1333,10 @@ slots:
     required: false
   measurement_code:
     name: measurement_code
-    description: Use standartized LOINC (Logical Observation Identifiers Names and
+    description: 'Use standardized LOINC (Logical Observation Identifiers Names and
       Codes) code to represent quantitative, ordinal, or categorical measurements.
+
+      Provide code in Compact URI (CURIE) pattern.'
     title: measurement_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
@@ -1388,8 +1417,12 @@ slots:
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
-    description: Indicate the ICD-O-3 topography code to describe the site of the
-      surgery if applicable. Please use C80.9 if the site is Unknown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic\
+      \ location of a specimen when it was collected.\nPlease use C80.9 if the anatomic\
+      \ location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\n\
+      Refer to the International Classification of Diseases for Oncology, 3rd Edition\
+      \ (WHO ICD-O-3) manual for guidelines at \nhttps://apps.who.int/iris/handle/10665/42344\n\
+      UBERON URL:\nhttp://purl.obolibrary.org/obo/UBERON_{code}"
     title: procedure_body_site_code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1414,8 +1447,25 @@ slots:
     required: false
   procedure_code:
     name: procedure_code
-    description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
-      performed.
+    description: 'Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
+      performed. Provide code in Compact URI (CURIE) pattern.
+
+
+      NCIt URL:
+
+      http://purl.obolibrary.org/obo/NCIT_{code}
+
+      SNOMED-CT URL:
+
+      http://snomed.info/id/{code}
+
+      UMLS URL:
+
+      https://uts.nlm.nih.gov/uts/umls/concept/{code}
+
+      CCI URL:
+
+      https://www.cihi.ca/en/cci-coding-structure'
     title: procedure_code
     comments:
     - "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n\
@@ -1521,7 +1571,7 @@ slots:
     required: false
   specimen_laterality:
     name: specimen_laterality
-    description: For cancer in a paired organ, indicate the side on which the specimen
+    description: For disease in a paired organ, indicate the side on which the specimen
       was obtained.
     title: specimen_laterality
     comments:
@@ -1574,8 +1624,8 @@ slots:
     pattern: ^NCIT:C[0-9]+$
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
-    description: Indicate the human readable label for the specimen tissue source
-      code.
+    description: Provide the standardized and human readable term derived from the
+      coding system associated with the specimen tissue source code.
     title: specimen_tissue_source_term
     range: string
     required: false
@@ -1699,7 +1749,7 @@ slots:
     required: false
   treatment_status:
     name: treatment_status
-    description: Indicate the donor's status of the prescribed treatment.
+    description: Indicate the participant's status of the prescribed treatment.
     title: treatment_status
     exact_mappings:
     - ARGO:treatment_status
@@ -1721,8 +1771,26 @@ slots:
     required: false
   drug_code:
     name: drug_code
-    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
-      to represent the drug.
+    description: 'Provide the standardized code from RxNorm, KEGG drug database, PubChem
+      Compound or NCIt to represent the drug.
+
+      Provide code in Compact URI (CURIE) pattern.
+
+      RxNorm URL:
+
+      https://rxnav.nlm.nih.gov/REST/rxcui/{code}
+
+      KEGG URL:
+
+      https://www.kegg.jp/entry/{code}
+
+      PubChem URL:
+
+      https://pubchem.ncbi.nlm.nih.gov/compound/{code}
+
+      NCIt URL:
+
+      https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'''
     title: drug_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
@@ -1738,7 +1806,8 @@ slots:
     pattern: ^rxnorm:\d{1,8}$|^kegg\.drug:D\d+$|^pubchem\.chem:\d+$|^NCIT:C\d{1,7}$
   drug_dose_units:
     name: drug_dose_units
-    description: Indicate units used to record drug dose.
+    description: Provide the ontology of standardized units to indicate units used
+      to record drug dose.
     title: drug_dose_units
     range: string
     required: false
@@ -1778,7 +1847,7 @@ slots:
     - MOH:anatomical_site_irradiated_code
     - ARGO:anatomical_site_irradiated_code
     range: string
-    required: false
+    required: true
     pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
@@ -1838,7 +1907,13 @@ slots:
     required: true
   sample_status:
     name: sample_status
-    description: Indicate the status of the sample for data analysis.
+    description: 'Indicate the status of the sample for data analysis.
+
+      Case sample refers to a sample that meets the disease or exposure criteria under
+      investigation.
+
+      Control sample refers to of the same type that does not meet the criteria, representing
+      a normal or baseline state for comparison.'
     title: sample_status
     exact_mappings:
     - Phenopacket:sample_status
@@ -1864,8 +1939,8 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   experiment_type:
     name: experiment_type
-    description: The broad type of sequencing experiment performed. A mixture of library
-      strategy and source
+    description: Indicate NCIt (NCI Thesaurus) code and term to denote the broad type
+      of sequencing experiment performed. A mixture of library strategy and source.
     title: experiment_type
     exact_mappings:
     - GA4GHExperimentMetadataChecklist:experiment_type
@@ -1963,14 +2038,15 @@ slots:
   genome_annotation:
     name: genome_annotation
     description: Indicates which genome annotation build or version was used in the
-      analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
+      analysis (e.g., Ensembl release, RefSeq release, etc.).
     title: genome_annotation
     range: string
     required: false
+    pattern: ^(?:Ensembl \d{1,5}|RefSeq \d{1,5}|Gencode v\d{1,5})$
   fileName:
     name: fileName
-    description: Name of the file. Can be absolute path on hosting server, relative
-      file path on hosting server or base filename. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow.
+    description: File name, subdirectory-relative path, or absolute path of the data
+      file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.
     title: fileName
     exact_mappings:
     - ARGO:fileName
@@ -2011,7 +2087,7 @@ slots:
     title: fileAccess
     exact_mappings:
     - ARGO:fileAccess
-    range: string
+    range: file_access_menu
     required: true
   workflow_name:
     name: workflow_name
@@ -2135,11 +2211,11 @@ slots:
     name: race_collect_method
     description: 'Studies must report how race data was collected
 
-      . This is necessary to enable data aggregation, harmonization, and reproducibility
+      . This is necessary to enable data aggregation, harmonization, and reproducibility.
 
-      . Responses from prospective projects should always be self-identified
+      Responses from prospective projects should always be self-identified.
 
-      . To respect participants'' autonomy and right to self-determination, as well
+      To respect participants'' autonomy and right to self-determination, as well
       as to avoid conflating differences in (genetic) population structure with socially
       constructed racial categories,responses that were self-identified should not
       be aggregated with responses that were socially assigned or derived.'
@@ -2369,9 +2445,9 @@ slots:
       to the way reporting categories were defined and handled.
     title: sociodem_notes
     examples:
-    - value: "\n    For example, in the Canadian Census, the order of the provided\
-        \ response options for ethnicity were shown to influence number of received\
-        \ responses per reporting option. \n\nOther examples may include inclusion/exclusion\
+    - value: "For example, in the Canadian Census, the order of the provided response\
+        \ options for ethnicity were shown to influence number of received responses\
+        \ per reporting option. \n\nOther examples may include inclusion/exclusion\
         \ criteria based on sociodemographic variables."
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
@@ -2454,7 +2530,7 @@ slots:
     required: false
   exposure_duration:
     name: exposure_duration
-    description: Duration of exposure period
+    description: Duration of exposure period in days
     title: exposure_duration
     range: integer
     required: false
@@ -2464,7 +2540,7 @@ slots:
     title: exposure_amount
     notes:
     - "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day, hours/week\n"
-    range: integer
+    range: decimal
     required: false
   exposure_unit:
     name: exposure_unit
@@ -2962,75 +3038,75 @@ classes:
       PCGL ID following the regex convention: `PCGLST[0-9]{4}`'
     title: study
     slots:
-    - study_name
-    - study_description
-    - program_name
-    - keywords
-    - status
+    - dac_id
     - context
     - domain
-    - dac_id
-    - participant_criteria
-    - principal_investigators
-    - lead_organizations
-    - collaborators
     - funding_sources
+    - lead_organizations
+    - principal_investigators
+    - status
+    - study_description
+    - study_name
+    - collaborators
+    - keywords
+    - participant_criteria
+    - program_name
     - publication_links
     slot_usage:
       dac_id:
         name: dac_id
         rank: 1
         slot_group: Database Identifiers
-      collaborators:
-        name: collaborators
-        rank: 2
-        slot_group: Study
       context:
         name: context
-        rank: 3
+        rank: 2
         slot_group: Study
       domain:
         name: domain
-        rank: 4
+        rank: 3
         slot_group: Study
       funding_sources:
         name: funding_sources
-        rank: 5
-        slot_group: Study
-      keywords:
-        name: keywords
-        rank: 6
+        rank: 4
         slot_group: Study
       lead_organizations:
         name: lead_organizations
-        rank: 7
-        slot_group: Study
-      participant_criteria:
-        name: participant_criteria
-        rank: 8
+        rank: 5
         slot_group: Study
       principal_investigators:
         name: principal_investigators
-        rank: 9
-        slot_group: Study
-      program_name:
-        name: program_name
-        rank: 10
-        slot_group: Study
-      publication_links:
-        name: publication_links
-        rank: 11
+        rank: 6
         slot_group: Study
       status:
         name: status
-        rank: 12
+        rank: 7
         slot_group: Study
       study_description:
         name: study_description
-        rank: 13
+        rank: 8
         slot_group: Study
       study_name:
         name: study_name
+        rank: 9
+        slot_group: Study
+      collaborators:
+        name: collaborators
+        rank: 10
+        slot_group: Study
+      keywords:
+        name: keywords
+        rank: 11
+        slot_group: Study
+      participant_criteria:
+        name: participant_criteria
+        rank: 12
+        slot_group: Study
+      program_name:
+        name: program_name
+        rank: 13
+        slot_group: Study
+      publication_links:
+        name: publication_links
         rank: 14
         slot_group: Study
   Dac:
@@ -3040,10 +3116,10 @@ classes:
       will be provided a PCGL ID following the regex convention: `PCGLDA[0-9]{4}`'
     title: dac
     slots:
-    - dac_name
-    - dac_description
-    - contact_name
     - contact_email
+    - contact_name
+    - dac_description
+    - dac_name
     slot_usage:
       contact_email:
         name: contact_email
@@ -3070,24 +3146,24 @@ classes:
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
+    - duo_permission
     - disease_specific_modifier
     - duo_modifier
-    - duo_permission
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
+      duo_permission:
+        name: duo_permission
+        rank: 2
+        slot_group: Participant
       disease_specific_modifier:
         name: disease_specific_modifier
-        rank: 2
+        rank: 3
         slot_group: Participant
       duo_modifier:
         name: duo_modifier
-        rank: 3
-        slot_group: Participant
-      duo_permission:
-        name: duo_permission
         rank: 4
         slot_group: Participant
     unique_keys:
@@ -3123,31 +3199,31 @@ classes:
       variables defined by the Canadian Institute for Health Information (CIHI).
     title: Sociodemographic
     slots:
-    - submitter_sociodem_id
     - submitter_participant_id
+    - submitter_sociodem_id
     - age_at_sociodem_collection
     - education
     - education_collect_method
     - ethnicity
-    - ethnicity_another_category
     - ethnicity_collect_method
     - gender
-    - gender_another_gender
     - gender_collect_method
     - geographic_location
-    - geographic_location_additional
     - geographic_location_collect_method
     - personal_income
     - personal_income_collect_method
     - race
-    - race_another_racial_category
     - race_collect_method
-    - sex_another_category
     - sex_at_birth
     - sex_collect_method
     - sociodem_date_collection
-    - sociodem_notes
     - sociodem_question
+    - ethnicity_another_category
+    - gender_another_gender
+    - geographic_location_additional
+    - race_another_racial_category
+    - sex_another_category
+    - sociodem_notes
     - sociodem_question_detail
     slot_usage:
       submitter_participant_id:
@@ -3174,80 +3250,80 @@ classes:
         name: ethnicity
         rank: 6
         slot_group: Sociodemographic
-      ethnicity_another_category:
-        name: ethnicity_another_category
-        rank: 7
-        slot_group: Sociodemographic
       ethnicity_collect_method:
         name: ethnicity_collect_method
-        rank: 8
+        rank: 7
         slot_group: Sociodemographic
       gender:
         name: gender
-        rank: 9
-        slot_group: Sociodemographic
-      gender_another_gender:
-        name: gender_another_gender
-        rank: 10
+        rank: 8
         slot_group: Sociodemographic
       gender_collect_method:
         name: gender_collect_method
-        rank: 11
+        rank: 9
         slot_group: Sociodemographic
       geographic_location:
         name: geographic_location
-        rank: 12
-        slot_group: Sociodemographic
-      geographic_location_additional:
-        name: geographic_location_additional
-        rank: 13
+        rank: 10
         slot_group: Sociodemographic
       geographic_location_collect_method:
         name: geographic_location_collect_method
-        rank: 14
+        rank: 11
         slot_group: Sociodemographic
       personal_income:
         name: personal_income
-        rank: 15
+        rank: 12
         slot_group: Sociodemographic
       personal_income_collect_method:
         name: personal_income_collect_method
-        rank: 16
+        rank: 13
         slot_group: Sociodemographic
       race:
         name: race
-        rank: 17
-        slot_group: Sociodemographic
-      race_another_racial_category:
-        name: race_another_racial_category
-        rank: 18
+        rank: 14
         slot_group: Sociodemographic
       race_collect_method:
         name: race_collect_method
-        rank: 19
-        slot_group: Sociodemographic
-      sex_another_category:
-        name: sex_another_category
-        rank: 20
+        rank: 15
         slot_group: Sociodemographic
       sex_at_birth:
         name: sex_at_birth
-        rank: 21
+        rank: 16
         slot_group: Sociodemographic
       sex_collect_method:
         name: sex_collect_method
-        rank: 22
+        rank: 17
         slot_group: Sociodemographic
       sociodem_date_collection:
         name: sociodem_date_collection
-        rank: 23
-        slot_group: Sociodemographic
-      sociodem_notes:
-        name: sociodem_notes
-        rank: 24
+        rank: 18
         slot_group: Sociodemographic
       sociodem_question:
         name: sociodem_question
+        rank: 19
+        slot_group: Sociodemographic
+      ethnicity_another_category:
+        name: ethnicity_another_category
+        rank: 20
+        slot_group: Sociodemographic
+      gender_another_gender:
+        name: gender_another_gender
+        rank: 21
+        slot_group: Sociodemographic
+      geographic_location_additional:
+        name: geographic_location_additional
+        rank: 22
+        slot_group: Sociodemographic
+      race_another_racial_category:
+        name: race_another_racial_category
+        rank: 23
+        slot_group: Sociodemographic
+      sex_another_category:
+        name: sex_another_category
+        rank: 24
+        slot_group: Sociodemographic
+      sociodem_notes:
+        name: sociodem_notes
         rank: 25
         slot_group: Sociodemographic
       sociodem_question_detail:
@@ -3440,8 +3516,8 @@ classes:
     slots:
     - submitter_diagnosis_id
     - submitter_participant_id
-    - age_at_diagnosis
     - disease_code
+    - age_at_diagnosis
     - disease_term
     slot_usage:
       submitter_diagnosis_id:
@@ -3452,12 +3528,12 @@ classes:
         name: submitter_participant_id
         rank: 2
         slot_group: Database Identifiers
-      age_at_diagnosis:
-        name: age_at_diagnosis
-        rank: 3
-        slot_group: Diagnosis
       disease_code:
         name: disease_code
+        rank: 3
+        slot_group: Diagnosis
+      age_at_diagnosis:
+        name: age_at_diagnosis
         rank: 4
         slot_group: Diagnosis
       disease_term:
@@ -3476,15 +3552,15 @@ classes:
     todos:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
-    - submitter_treatment_id
     - submitter_diagnosis_id
     - submitter_participant_id
+    - submitter_treatment_id
+    - treatment_type
     - age_at_treatment
     - treatment_duration
     - treatment_intent
     - treatment_response
     - treatment_status
-    - treatment_type
     slot_usage:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
@@ -3498,28 +3574,28 @@ classes:
         name: submitter_treatment_id
         rank: 3
         slot_group: Database Identifiers
+      treatment_type:
+        name: treatment_type
+        rank: 4
+        slot_group: Treatment
       age_at_treatment:
         name: age_at_treatment
-        rank: 4
+        rank: 5
         slot_group: Treatment
       treatment_duration:
         name: treatment_duration
-        rank: 5
+        rank: 6
         slot_group: Treatment
       treatment_intent:
         name: treatment_intent
-        rank: 6
+        rank: 7
         slot_group: Treatment
       treatment_response:
         name: treatment_response
-        rank: 7
+        rank: 8
         slot_group: Treatment
       treatment_status:
         name: treatment_status
-        rank: 8
-        slot_group: Treatment
-      treatment_type:
-        name: treatment_type
         rank: 9
         slot_group: Treatment
     attributes:
@@ -3554,19 +3630,19 @@ classes:
     - '{"reference": "ARGO", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - age_at_followup
     - disease_status_at_followup
+    - age_at_followup
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      age_at_followup:
-        name: age_at_followup
-        rank: 2
-        slot_group: Follow_Up
       disease_status_at_followup:
         name: disease_status_at_followup
+        rank: 2
+        slot_group: Follow_Up
+      age_at_followup:
+        name: age_at_followup
         rank: 3
         slot_group: Follow_Up
   Procedure:
@@ -3579,8 +3655,8 @@ classes:
     slots:
     - submitter_treatment_id
     - procedure_body_site_code
-    - procedure_body_site_term
     - procedure_code
+    - procedure_body_site_term
     - procedure_term
     slot_usage:
       submitter_treatment_id:
@@ -3591,12 +3667,12 @@ classes:
         name: procedure_body_site_code
         rank: 2
         slot_group: Procedure
-      procedure_body_site_term:
-        name: procedure_body_site_term
-        rank: 3
-        slot_group: Procedure
       procedure_code:
         name: procedure_code
+        rank: 3
+        slot_group: Procedure
+      procedure_body_site_term:
+        name: procedure_body_site_term
         rank: 4
         slot_group: Procedure
       procedure_term:
@@ -3613,8 +3689,8 @@ classes:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_treatment_id
-    - actual_cumulative_drug_dose
     - drug_code
+    - actual_cumulative_drug_dose
     - drug_dose_units
     - drug_term
     - prescribed_cumulative_drug_dose
@@ -3623,12 +3699,12 @@ classes:
         name: submitter_treatment_id
         rank: 1
         slot_group: Database Identifiers
-      actual_cumulative_drug_dose:
-        name: actual_cumulative_drug_dose
-        rank: 2
-        slot_group: Medication
       drug_code:
         name: drug_code
+        rank: 2
+        slot_group: Medication
+      actual_cumulative_drug_dose:
+        name: actual_cumulative_drug_dose
         rank: 3
         slot_group: Medication
       drug_dose_units:
@@ -3651,10 +3727,10 @@ classes:
     slots:
     - submitter_treatment_id
     - anatomical_site_irradiated_code
+    - radiation_modality_code
     - anatomical_site_irradiated_term
     - radiation_dosage
     - radiation_fractions
-    - radiation_modality_code
     - radiation_modality_term
     slot_usage:
       submitter_treatment_id:
@@ -3665,20 +3741,20 @@ classes:
         name: anatomical_site_irradiated_code
         rank: 2
         slot_group: Radiation
+      radiation_modality_code:
+        name: radiation_modality_code
+        rank: 3
+        slot_group: Radiation
       anatomical_site_irradiated_term:
         name: anatomical_site_irradiated_term
-        rank: 3
+        rank: 4
         slot_group: Radiation
       radiation_dosage:
         name: radiation_dosage
-        rank: 4
+        rank: 5
         slot_group: Radiation
       radiation_fractions:
         name: radiation_fractions
-        rank: 5
-        slot_group: Radiation
-      radiation_modality_code:
-        name: radiation_modality_code
         rank: 6
         slot_group: Radiation
       radiation_modality_term:
@@ -3694,8 +3770,8 @@ classes:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - age_at_measurement
     - measurement_code
+    - age_at_measurement
     - measurement_result_categorical
     - measurement_result_numeric
     - measurement_term
@@ -3705,12 +3781,12 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      age_at_measurement:
-        name: age_at_measurement
-        rank: 2
-        slot_group: Measurement
       measurement_code:
         name: measurement_code
+        rank: 2
+        slot_group: Measurement
+      age_at_measurement:
+        name: age_at_measurement
         rank: 3
         slot_group: Measurement
       measurement_result_categorical:
@@ -3738,10 +3814,10 @@ classes:
     - '{"reference": "Phenopacket", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - age_at_phenotype
     - phenotype_code
-    - phenotype_duration
     - phenotype_observed
+    - age_at_phenotype
+    - phenotype_duration
     - phenotype_severity
     - phenotype_term
     slot_usage:
@@ -3749,20 +3825,20 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      age_at_phenotype:
-        name: age_at_phenotype
-        rank: 2
-        slot_group: Phenotype
       phenotype_code:
         name: phenotype_code
-        rank: 3
-        slot_group: Phenotype
-      phenotype_duration:
-        name: phenotype_duration
-        rank: 4
+        rank: 2
         slot_group: Phenotype
       phenotype_observed:
         name: phenotype_observed
+        rank: 3
+        slot_group: Phenotype
+      age_at_phenotype:
+        name: age_at_phenotype
+        rank: 4
+        slot_group: Phenotype
+      phenotype_duration:
+        name: phenotype_duration
         rank: 5
         slot_group: Phenotype
       phenotype_severity:
@@ -3781,8 +3857,8 @@ classes:
     title: Comorbidity
     slots:
     - submitter_participant_id
-    - age_at_comorbidity_diagnosis
     - comorbidity_code
+    - age_at_comorbidity_diagnosis
     - comorbidity_status
     - comorbidity_term
     - comorbidity_treatment_status
@@ -3791,12 +3867,12 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      age_at_comorbidity_diagnosis:
-        name: age_at_comorbidity_diagnosis
-        rank: 2
-        slot_group: Comorbidity
       comorbidity_code:
         name: comorbidity_code
+        rank: 2
+        slot_group: Comorbidity
+      age_at_comorbidity_diagnosis:
+        name: age_at_comorbidity_diagnosis
         rank: 3
         slot_group: Comorbidity
       comorbidity_status:
@@ -3818,11 +3894,11 @@ classes:
     title: Exposure
     slots:
     - submitter_participant_id
+    - exposure_code
+    - exposure_status
     - age_at_exposure
     - exposure_amount
-    - exposure_code
     - exposure_duration
-    - exposure_status
     - exposure_term
     - exposure_unit
     slot_usage:
@@ -3830,24 +3906,24 @@ classes:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      age_at_exposure:
-        name: age_at_exposure
-        rank: 2
-        slot_group: Exposure
-      exposure_amount:
-        name: exposure_amount
-        rank: 3
-        slot_group: Exposure
       exposure_code:
         name: exposure_code
-        rank: 4
-        slot_group: Exposure
-      exposure_duration:
-        name: exposure_duration
-        rank: 5
+        rank: 2
         slot_group: Exposure
       exposure_status:
         name: exposure_status
+        rank: 3
+        slot_group: Exposure
+      age_at_exposure:
+        name: age_at_exposure
+        rank: 4
+        slot_group: Exposure
+      exposure_amount:
+        name: exposure_amount
+        rank: 5
+        slot_group: Exposure
+      exposure_duration:
+        name: exposure_duration
         rank: 6
         slot_group: Exposure
       exposure_term:
@@ -3866,15 +3942,15 @@ classes:
     todos:
     - '{"reference": "HL7/FHIR", "status": "v2"}'
     slots:
-    - submitter_specimen_id
     - submitter_participant_id
+    - submitter_specimen_id
+    - specimen_tissue_source_code
     - age_at_specimen_collection
     - specimen_anatomic_location_code
     - specimen_anatomic_location_term
     - specimen_laterality
     - specimen_processing
     - specimen_storage
-    - specimen_tissue_source_code
     - specimen_tissue_source_term
     slot_usage:
       submitter_participant_id:
@@ -3885,32 +3961,32 @@ classes:
         name: submitter_specimen_id
         rank: 2
         slot_group: Database Identifiers
+      specimen_tissue_source_code:
+        name: specimen_tissue_source_code
+        rank: 3
+        slot_group: Specimen
       age_at_specimen_collection:
         name: age_at_specimen_collection
-        rank: 3
+        rank: 4
         slot_group: Specimen
       specimen_anatomic_location_code:
         name: specimen_anatomic_location_code
-        rank: 4
+        rank: 5
         slot_group: Specimen
       specimen_anatomic_location_term:
         name: specimen_anatomic_location_term
-        rank: 5
+        rank: 6
         slot_group: Specimen
       specimen_laterality:
         name: specimen_laterality
-        rank: 6
+        rank: 7
         slot_group: Specimen
       specimen_processing:
         name: specimen_processing
-        rank: 7
+        rank: 8
         slot_group: Specimen
       specimen_storage:
         name: specimen_storage
-        rank: 8
-        slot_group: Specimen
-      specimen_tissue_source_code:
-        name: specimen_tissue_source_code
         rank: 9
         slot_group: Specimen
       specimen_tissue_source_term:
@@ -3931,8 +4007,8 @@ classes:
     - submitter_sample_id
     - submitter_specimen_id
     - molecule_type_code
-    - molecule_type_term
     - sample_status
+    - molecule_type_term
     slot_usage:
       submitter_sample_id:
         name: submitter_sample_id
@@ -3946,12 +4022,12 @@ classes:
         name: molecule_type_code
         rank: 3
         slot_group: Sample
-      molecule_type_term:
-        name: molecule_type_term
-        rank: 4
-        slot_group: Sample
       sample_status:
         name: sample_status
+        rank: 4
+        slot_group: Sample
+      molecule_type_term:
+        name: molecule_type_term
         rank: 5
         slot_group: Sample
     unique_keys:
@@ -3967,12 +4043,12 @@ classes:
     - submitter_experiment_id
     - submitter_sample_id
     - assay_type_code
-    - assay_type_term
-    - experiment_design
     - experiment_type
     - instrument
-    - instrument_metadata
     - platform
+    - assay_type_term
+    - experiment_design
+    - instrument_metadata
     - sequencing_protocol
     slot_usage:
       submitter_experiment_id:
@@ -3987,28 +4063,28 @@ classes:
         name: assay_type_code
         rank: 3
         slot_group: Experiment
-      assay_type_term:
-        name: assay_type_term
-        rank: 4
-        slot_group: Experiment
-      experiment_design:
-        name: experiment_design
-        rank: 5
-        slot_group: Experiment
       experiment_type:
         name: experiment_type
-        rank: 6
+        rank: 4
         slot_group: Experiment
       instrument:
         name: instrument
-        rank: 7
-        slot_group: Experiment
-      instrument_metadata:
-        name: instrument_metadata
-        rank: 8
+        rank: 5
         slot_group: Experiment
       platform:
         name: platform
+        rank: 6
+        slot_group: Experiment
+      assay_type_term:
+        name: assay_type_term
+        rank: 7
+        slot_group: Experiment
+      experiment_design:
+        name: experiment_design
+        rank: 8
+        slot_group: Experiment
+      instrument_metadata:
+        name: instrument_metadata
         rank: 9
         slot_group: Experiment
       sequencing_protocol:
@@ -4026,15 +4102,15 @@ classes:
       a run of sequencing
     title: Read Group
     slots:
-    - submitter_read_group_id
     - submitter_experiment_id
+    - submitter_read_group_id
     - file_r1
-    - file_r2
-    - insert_size
-    - library_description
     - library_layout
     - library_name
     - platform_unit
+    - file_r2
+    - insert_size
+    - library_description
     - read_group_id_in_bam
     - read_length_r1
     - read_length_r2
@@ -4051,28 +4127,28 @@ classes:
         name: file_r1
         rank: 3
         slot_group: Read_Group
-      file_r2:
-        name: file_r2
-        rank: 4
-        slot_group: Read_Group
-      insert_size:
-        name: insert_size
-        rank: 5
-        slot_group: Read_Group
-      library_description:
-        name: library_description
-        rank: 6
-        slot_group: Read_Group
       library_layout:
         name: library_layout
-        rank: 7
+        rank: 4
         slot_group: Read_Group
       library_name:
         name: library_name
-        rank: 8
+        rank: 5
         slot_group: Read_Group
       platform_unit:
         name: platform_unit
+        rank: 6
+        slot_group: Read_Group
+      file_r2:
+        name: file_r2
+        rank: 7
+        slot_group: Read_Group
+      insert_size:
+        name: insert_size
+        rank: 8
+        slot_group: Read_Group
+      library_description:
+        name: library_description
         rank: 9
         slot_group: Read_Group
       read_group_id_in_bam:
@@ -4126,9 +4202,9 @@ classes:
     - submitter_specimen_id
     - analysisType
     - data_category
+    - studyId
     - genome_annotation
     - genome_build
-    - studyId
     - variant_calling_strategy
     - variant_class
     slot_usage:
@@ -4160,16 +4236,16 @@ classes:
         name: data_category
         rank: 7
         slot_group: Analysis
+      studyId:
+        name: studyId
+        rank: 8
+        slot_group: Analysis
       genome_annotation:
         name: genome_annotation
-        rank: 8
+        rank: 9
         slot_group: Analysis
       genome_build:
         name: genome_build
-        rank: 9
-        slot_group: Analysis
-      studyId:
-        name: studyId
         rank: 10
         slot_group: Analysis
       variant_calling_strategy:
@@ -4190,8 +4266,8 @@ classes:
     description: Contains information about the analysis workflow generating the analysis
     title: Workflow
     slots:
-    - submitter_workflow_id
     - submitter_analysis_id
+    - submitter_workflow_id
     - workflow_name
     - workflow_url
     - workflow_version
@@ -4230,10 +4306,10 @@ classes:
     - submitter_analysis_id
     - dataType
     - fileAccess
-    - fileMd5sum
     - fileName
-    - fileSize
     - fileType
+    - fileMd5sum
+    - fileSize
     slot_usage:
       submitter_analysis_id:
         name: submitter_analysis_id
@@ -4247,19 +4323,19 @@ classes:
         name: fileAccess
         rank: 3
         slot_group: File
-      fileMd5sum:
-        name: fileMd5sum
-        rank: 4
-        slot_group: File
       fileName:
         name: fileName
-        rank: 5
-        slot_group: File
-      fileSize:
-        name: fileSize
-        rank: 6
+        rank: 4
         slot_group: File
       fileType:
         name: fileType
+        rank: 5
+        slot_group: File
+      fileMd5sum:
+        name: fileMd5sum
+        rank: 6
+        slot_group: File
+      fileSize:
+        name: fileSize
         rank: 7
         slot_group: File

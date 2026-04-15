@@ -3,7 +3,7 @@ id: https://example.com/PCGL.yaml
 in_language:
 - en
 name: 'Pan-Canadian_Genome_Library_Data_Dictionary'
-description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results. Please note view is strictly for data dictionary.'
+description: 'The PCGL Data Dictionary specifies the standardized data elements, controlled vocabulary, data types, validation rules, and interoperability mappings for all health and genomic data submitted to the Pan-Canadian Genome Library.'
 prefixes:
   linkml: https://w3id.org/linkml/
 

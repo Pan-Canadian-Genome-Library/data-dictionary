@@ -13,6 +13,14 @@ default_curi_maps:
 - semweb_context
 default_prefix: https://example.com/base_schema.yaml/
 enums:
+  file_access_menu:
+    name: file_access_menu
+    title: file_access_menu
+    permissible_values:
+      open:
+        text: open
+      controlled:
+        text: controlled
   cause_of_death_menu:
     name: cause_of_death_menu
     title: cause of death menu
@@ -21,8 +29,8 @@ enums:
         text: Died of cancer
       Died of other reasons:
         text: Died of other reasons
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -39,8 +47,8 @@ enums:
         text: Alive
       Deceased:
         text: Deceased
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -349,8 +357,8 @@ enums:
         text: Frozen in liquid nitrogen
       Frozen in vapour phase:
         text: Frozen in vapour phase
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Other:
         text: Other
       Paraffin block:
@@ -365,8 +373,6 @@ enums:
         text: Missing - Restricted access
       Missing - Unknown:
         text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
   disease_category_menu:
     name: disease_category_menu
     title: disease category menu
@@ -479,8 +485,6 @@ enums:
     permissible_values:
       Medication:
         text: Medication
-      Pharmacotherapy:
-        text: Pharmacotherapy
       Procedure:
         text: Procedure
       Radiation therapy:
@@ -1164,9 +1168,7 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: Refers to the ethnic or cultural origins of a person's ancestors.
-      The provided values are based on the list of ethnic or cultural origins 2021
-      defined by Statistics Canada
+    description: "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)].\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported."
     title: Ethnicity
     notes: '
 
@@ -1187,9 +1189,7 @@ slots:
     multivalued: true
   gender:
     name: gender
-    description: Refers to an individual's personal and social identity as a man,
-      woman or non-binary person (a person who is not exclusively a man or a woman).
-      The provided values are based on the categories defined by Statistics Canada
+    description: "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person’s gender may be the same as or different from their assigned sex at birth and may change over time."
     title: Gender
     notes: '
 
@@ -1205,11 +1205,7 @@ slots:
     required: true
   race:
     name: race
-    description: A social construct used to judge and categorize people based on perceived
-      differences in physical appearance in ways that create and maintain power differentials
-      within social hierarchies. There is no scientifically supported biological basis
-      for discrete racial groups. The provided values are based on race-based data
-      standard defined by CIHI guidance
+    description: "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)].\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported."
     title: Race
     comments:
     - EDI indicator
@@ -1220,9 +1216,7 @@ slots:
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
-    description: Refers to sex assigned at birth. Sex at birth is typically assigned
-      based on a person's reproductive system and other physical characteristics.
-      The provided values are based on the categoried defined by Statistics Canada
+    description: "Sex is a biological concept that has been historically defined solely based on external anatomy; however, sex is also influenced by our physiology, genes, and hormones."
     title: Sex At Birth
     notes: '
 
@@ -1244,8 +1238,7 @@ slots:
     required: false
   phenotype_code:
     name: phenotype_code
-    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
-      the phenotype.
+    description: "Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.\nProvide code in Compact URI (CURIE) pattern."
     title: Phenotype Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
@@ -1301,8 +1294,7 @@ slots:
     required: false
   measurement_code:
     name: measurement_code
-    description: Use standartized LOINC (Logical Observation Identifiers Names and
-      Codes) code to represent quantitative, ordinal, or categorical measurements.
+    description: "Use standardized LOINC (Logical Observation Identifiers Names and Codes) code to represent quantitative, ordinal, or categorical measurements.\nProvide code in Compact URI (CURIE) pattern."
     title: Measurement Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
@@ -1380,8 +1372,7 @@ slots:
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
-    description: Indicate the ICD-O-3 topography code to describe the site of the
-      surgery if applicable. Please use C80.9 if the site is Unknown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected.\nPlease use C80.9 if the anatomic location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at \nhttps://apps.who.int/iris/handle/10665/42344\nUBERON URL:\nhttp://purl.obolibrary.org/obo/UBERON_{code}"
     title: Procedure Body Site Code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1406,8 +1397,7 @@ slots:
     required: false
   procedure_code:
     name: procedure_code
-    description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
-      performed.
+    description: "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed. Provide code in Compact URI (CURIE) pattern.\n\nNCIt URL:\nhttp://purl.obolibrary.org/obo/NCIT_{code}\nSNOMED-CT URL:\nhttp://snomed.info/id/{code}\nUMLS URL:\nhttps://uts.nlm.nih.gov/uts/umls/concept/{code}\nCCI URL:\nhttps://www.cihi.ca/en/cci-coding-structure"
     title: Procedure Code
     comments:
     - "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
@@ -1502,8 +1492,7 @@ slots:
     required: false
   specimen_laterality:
     name: specimen_laterality
-    description: For cancer in a paired organ, indicate the side on which the specimen
-      was obtained.
+    description: "For disease in a paired organ, indicate the side on which the specimen was obtained."
     title: Specimen Laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
@@ -1552,8 +1541,7 @@ slots:
     - value: "NCIT:C12434"
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
-    description: Indicate the human readable label for the specimen tissue source
-      code.
+    description: "Provide the standardized and human readable term derived from the coding system associated with the specimen tissue source code."
     title: Specimen Tissue Source Term
     range: string
     required: false
@@ -1676,7 +1664,7 @@ slots:
     required: false
   treatment_status:
     name: treatment_status
-    description: Indicate the donor's status of the prescribed treatment.
+    description: Indicate the participant's status of the prescribed treatment.
     title: Treatment Status
     exact_mappings:
     - ARGO:treatment_status
@@ -1698,8 +1686,7 @@ slots:
     required: false
   drug_code:
     name: drug_code
-    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
-      to represent the drug.
+    description: "Provide the standardized code from RxNorm, KEGG drug database, PubChem Compound or NCIt to represent the drug.\nProvide code in Compact URI (CURIE) pattern.\nRxNorm URL:\nhttps://rxnav.nlm.nih.gov/REST/rxcui/{code}\nKEGG URL:\nhttps://www.kegg.jp/entry/{code}\nPubChem URL:\nhttps://pubchem.ncbi.nlm.nih.gov/compound/{code}\nNCIt URL:\nhttps://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'"
     title: Drug Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
@@ -1715,7 +1702,7 @@ slots:
     - value: NCIT:C138986
   drug_dose_units:
     name: drug_dose_units
-    description: Indicate units used to record drug dose.
+    description: "Provide the ontology of standardized units to indicate units used to record drug dose."
     title: Drug Dose Units
     range: string
     pattern: ^UO:\d{7}$
@@ -1750,7 +1737,7 @@ slots:
     - MOH:anatomical_site_irradiated_code
     - ARGO:anatomical_site_irradiated_code
     range: string
-    required: false
+    required: true
     pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
@@ -1811,7 +1798,7 @@ slots:
     required: true
   sample_status:
     name: sample_status
-    description: Indicate the status of the sample for data analysis.
+    description: "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to of the same type that does not meet the criteria, representing a normal or baseline state for comparison."
     title: Sample Status
     exact_mappings:
     - Phenopacket:sample_status
@@ -1837,8 +1824,7 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   experiment_type:
     name: experiment_type
-    description: The broad type of sequencing experiment performed. A mixture of library
-      strategy and source
+    description: "Indicate NCIt (NCI Thesaurus) code and term to denote the broad type of sequencing experiment performed. A mixture of library strategy and source."
     title: Experiment Type
     exact_mappings:
     - GA4GHExperimentMetadataChecklist:experiment_type
@@ -1935,14 +1921,14 @@ slots:
     required: false
   genome_annotation:
     name: genome_annotation
-    description: Indicates which genome annotation build or version was used in the
-      analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
+    description: "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.)."
     title: Genome Annotation
     range: string
     required: false
+    pattern: ^(?:Ensembl \d{1,5}|RefSeq \d{1,5}|Gencode v\d{1,5})$
   fileName:
     name: fileName
-    description: "Name of the file. Can be absolute path on hosting server, relative file path on hosting server or base filename. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow."
+    description: "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md."
     title: FileName
     exact_mappings:
     - ARGO:fileName
@@ -1981,7 +1967,7 @@ slots:
     title: FileAccess
     exact_mappings:
     - ARGO:fileAccess
-    range: string
+    range: file_access_menu
     required: true
   workflow_name:
     name: workflow_name
@@ -2100,7 +2086,7 @@ slots:
     required: false
   race_collect_method:
     name: race_collect_method
-    description: "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility\n. Responses from prospective projects should always be self-identified\n. To respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived."
+    description: "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived."
     title: Race Collect Method
     notes: 'Definitions and examples of methods of collections are provided in the PCGL\n. Guidance Document for Participant Sociodemographic Data v1.0.'
     range: race_collect_method_menu
@@ -2312,7 +2298,7 @@ slots:
       to the way reporting categories were defined and handled.
     title: Sociodem Notes
     examples:
-    - value: "\n    For example, in the Canadian Census, the order of the provided\
+    - value: "For example, in the Canadian Census, the order of the provided\
         \ response options for ethnicity were shown to influence number of received\
         \ responses per reporting option. \n\nOther examples may include inclusion/exclusion\
         \ criteria based on sociodemographic variables."
@@ -2396,7 +2382,7 @@ slots:
     required: false
   exposure_duration:
     name: exposure_duration
-    description: Duration of exposure period
+    description: "Duration of exposure period in days"
     title: Exposure Duration
     range: integer
     required: false
@@ -2406,7 +2392,7 @@ slots:
     title: Exposure Amount
     notes: "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day,\
       \ hours/week\n"
-    range: integer
+    range: decimal
     required: false
   exposure_unit:
     name: exposure_unit

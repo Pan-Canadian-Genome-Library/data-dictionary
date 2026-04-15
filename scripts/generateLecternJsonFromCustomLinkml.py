@@ -112,7 +112,8 @@ def populateFieldProperties(model,lectern):
       "integer":"integer",
       "string":"string",
       "decimal":"number",
-      "float":"number"
+      "float":"number",
+      "number":"number"
   }
 
 
