@@ -20,6 +20,8 @@ cd /Users/esu/Desktop/GitHub/DataHarmonizer
 yarn dev
 ###Navigate to default http://localhost:8080/
 ```
+### Sort Lectern schema according to spread sheet
+python scripts/sort_schema_fields.py -k 1OsgXXvrb6jR_UApxlBeTiKFihdBAsNT_1WXHZ3N93bc -g 169771343 -j lectern/pcgl/pcgl_lectern.json -o .
 ### Generate data dictionary package
 ```
 python scripts/generateDataHarmonizerPackage.py -o $(pwd) -s $HOME/Desktop/GitHub/pcgl/data-dictionary

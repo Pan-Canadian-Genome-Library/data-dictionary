@@ -1168,7 +1168,7 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)].\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported."
+    description: "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)][REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada.(2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported."
     title: Ethnicity
     notes: '
 
@@ -1205,7 +1205,7 @@ slots:
     required: true
   race:
     name: race
-    description: "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)].\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported."
+    description: "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported."
     title: Race
     comments:
     - EDI indicator
