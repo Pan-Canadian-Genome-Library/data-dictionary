@@ -13,6 +13,14 @@ default_curi_maps:
 - semweb_context
 default_prefix: https://example.com/base_schema.yaml/
 enums:
+  file_access_menu:
+    name: file_access_menu
+    title: file_access_menu
+    permissible_values:
+      open:
+        text: open
+      controlled:
+        text: controlled
   cause_of_death_menu:
     name: cause_of_death_menu
     title: cause of death menu
@@ -21,8 +29,8 @@ enums:
         text: Died of cancer
       Died of other reasons:
         text: Died of other reasons
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -39,8 +47,8 @@ enums:
         text: Alive
       Deceased:
         text: Deceased
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -349,8 +357,8 @@ enums:
         text: Frozen in liquid nitrogen
       Frozen in vapour phase:
         text: Frozen in vapour phase
-      Not Applicable:
-        text: Not Applicable
+      Not applicable:
+        text: Not applicable
       Other:
         text: Other
       Paraffin block:
@@ -365,8 +373,6 @@ enums:
         text: Missing - Restricted access
       Missing - Unknown:
         text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
   disease_category_menu:
     name: disease_category_menu
     title: disease category menu
@@ -479,8 +485,6 @@ enums:
     permissible_values:
       Medication:
         text: Medication
-      Pharmacotherapy:
-        text: Pharmacotherapy
       Procedure:
         text: Procedure
       Radiation therapy:
@@ -1064,6 +1068,52 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
+  status_menu:
+    name: status_menu
+    title: status_menu
+    permissible_values:
+      Ongoing:
+        text: Ongoing
+      Completed:
+        text: Completed
+  context_menu:
+    name: context_menu
+    title: context_menu
+    permissible_values:
+      Clinical:
+        text: Clinical
+      Research:
+        text: Research
+  domain_menu:
+    name: domain_menu
+    title: domain_menu
+    permissible_values:
+      Aging:
+        text: Aging
+      Birth Defects:
+        text: Birth Defects
+      Cancer:
+        text: Cancer
+      Circulatory and Respiratory Health:
+        text: Circulatory and Respiratory Health
+      General Health:
+        text: General Health
+      Infection and Immunity:
+        text: Infection and Immunity
+      Musculoskeletal Health and Arthritis:
+        text: Musculoskeletal Health and Arthritis
+      Neurodevelopmental Conditions:
+        text: Neurodevelopmental Conditions
+      Neurosciences, Mental Health and Addiction:
+        text: Neurosciences, Mental Health and Addiction
+      Nutrition, Metabolism and Diabetes:
+        text: Nutrition, Metabolism and Diabetes
+      Population Genomics:
+        text: Population Genomics
+      Rare Diseases:
+        text: Rare Diseases
+      Other:
+        text: Other
 slots:
   age_at_death:
     name: age_at_death
@@ -1118,9 +1168,7 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: Refers to the ethnic or cultural origins of a person's ancestors.
-      The provided values are based on the list of ethnic or cultural origins 2021
-      defined by Statistics Canada
+    description: "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)][REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada.(2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported."
     title: Ethnicity
     notes: '
 
@@ -1141,9 +1189,7 @@ slots:
     multivalued: true
   gender:
     name: gender
-    description: Refers to an individual's personal and social identity as a man,
-      woman or non-binary person (a person who is not exclusively a man or a woman).
-      The provided values are based on the categories defined by Statistics Canada
+    description: "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person’s gender may be the same as or different from their assigned sex at birth and may change over time."
     title: Gender
     notes: '
 
@@ -1159,11 +1205,7 @@ slots:
     required: true
   race:
     name: race
-    description: A social construct used to judge and categorize people based on perceived
-      differences in physical appearance in ways that create and maintain power differentials
-      within social hierarchies. There is no scientifically supported biological basis
-      for discrete racial groups. The provided values are based on race-based data
-      standard defined by CIHI guidance
+    description: "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported."
     title: Race
     comments:
     - EDI indicator
@@ -1174,9 +1216,7 @@ slots:
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
-    description: Refers to sex assigned at birth. Sex at birth is typically assigned
-      based on a person's reproductive system and other physical characteristics.
-      The provided values are based on the categoried defined by Statistics Canada
+    description: "Sex is a biological concept that has been historically defined solely based on external anatomy; however, sex is also influenced by our physiology, genes, and hormones."
     title: Sex At Birth
     notes: '
 
@@ -1198,8 +1238,7 @@ slots:
     required: false
   phenotype_code:
     name: phenotype_code
-    description: Use standardized HPO (Human Phenotype Ontology) codes to represent
-      the phenotype.
+    description: "Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.\nProvide code in Compact URI (CURIE) pattern."
     title: Phenotype Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
@@ -1255,8 +1294,7 @@ slots:
     required: false
   measurement_code:
     name: measurement_code
-    description: Use standartized LOINC (Logical Observation Identifiers Names and
-      Codes) code to represent quantitative, ordinal, or categorical measurements.
+    description: "Use standardized LOINC (Logical Observation Identifiers Names and Codes) code to represent quantitative, ordinal, or categorical measurements.\nProvide code in Compact URI (CURIE) pattern."
     title: Measurement Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
@@ -1284,7 +1322,7 @@ slots:
     required: false
   measurement_unit:
     name: measurement_unit
-    description: Indicate the unit of measurement for the result using LOINC code.
+    description: "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}"
     title: Measurement Unit
     range: string
     pattern : ^UO:\d{7}$
@@ -1334,8 +1372,7 @@ slots:
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
-    description: Indicate the ICD-O-3 topography code to describe the site of the
-      surgery if applicable. Please use C80.9 if the site is Unkown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected.\nPlease use C80.9 if the anatomic location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at \nhttps://apps.who.int/iris/handle/10665/42344\nUBERON URL:\nhttp://purl.obolibrary.org/obo/UBERON_{code}"
     title: Procedure Body Site Code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1360,13 +1397,10 @@ slots:
     required: false
   procedure_code:
     name: procedure_code
-    description: Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure
-      performed.
+    description: "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed. Provide code in Compact URI (CURIE) pattern.\n\nNCIt URL:\nhttp://purl.obolibrary.org/obo/NCIT_{code}\nSNOMED-CT URL:\nhttp://snomed.info/id/{code}\nUMLS URL:\nhttps://uts.nlm.nih.gov/uts/umls/concept/{code}\nCCI URL:\nhttps://www.cihi.ca/en/cci-coding-structure"
     title: Procedure Code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT
-      URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:
-https://www.cihi.ca/en/cci-coding-structure'
+    - "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
     range: string
     required: true
     pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
@@ -1434,16 +1468,13 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   specimen_anatomic_location_code:
     name: specimen_anatomic_location_code
-    description: Indicate the ICD-O-3 topography code for the anatomic location of
-      a specimen when it was collected. Please use C80.9 if the primary site of a
-      specimen is Unkown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unkown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}"
     title: Specimen Anatomic Location Code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344.
     examples:
-    - value: C50.1
-    - value: C18
+    - value: "UBERON:8600019"
     exact_mappings:
     - mCODE.STU3:Specimen.collection.bodySite
     - FHIR:Specimen.collection.bodySite
@@ -1461,8 +1492,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   specimen_laterality:
     name: specimen_laterality
-    description: For cancer in a paired organ, indicate the side on which the specimen
-      was obtained.
+    description: "For disease in a paired organ, indicate the side on which the specimen was obtained."
     title: Specimen Laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
@@ -1496,9 +1526,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   specimen_tissue_source_code:
     name: specimen_tissue_source_code
-    description: Indicate the tissue source of the specimen from which a biopsy or
-      other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or
-      SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.
+    description: "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern."
     title: Specimen Tissue Source Code
     exact_mappings:
     - CQDG:biospecimen_tissue_source
@@ -1509,10 +1537,11 @@ https://www.cihi.ca/en/cci-coding-structure'
     range: string
     required: true
     pattern: ^NCIT:C[0-9]+$
+    examples:
+    - value: "NCIT:C12434"
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
-    description: Indicate the human readable label for the specimen tissue source
-      code.
+    description: "Provide the standardized and human readable term derived from the coding system associated with the specimen tissue source code."
     title: Specimen Tissue Source Term
     range: string
     required: false
@@ -1556,7 +1585,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: true
   disease_code:
     name: disease_code
-    description: Use ICD-10 code or Mondo code to represent the disease diagnosed.
+    description: "Use ICD-10 code or MONDO code to represent the disease diagnosed. Provide code in Compact URI (CURIE) pattern."
     title: Disease Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
@@ -1635,7 +1664,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   treatment_status:
     name: treatment_status
-    description: Indicate the donor's status of the prescribed treatment.
+    description: Indicate the participant's status of the prescribed treatment.
     title: Treatment Status
     exact_mappings:
     - ARGO:treatment_status
@@ -1657,8 +1686,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   drug_code:
     name: drug_code
-    description: Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt
-      to represent the drug.
+    description: "Provide the standardized code from RxNorm, KEGG drug database, PubChem Compound or NCIt to represent the drug.\nProvide code in Compact URI (CURIE) pattern.\nRxNorm URL:\nhttps://rxnav.nlm.nih.gov/REST/rxcui/{code}\nKEGG URL:\nhttps://www.kegg.jp/entry/{code}\nPubChem URL:\nhttps://pubchem.ncbi.nlm.nih.gov/compound/{code}\nNCIt URL:\nhttps://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'"
     title: Drug Code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
@@ -1674,7 +1702,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     - value: NCIT:C138986
   drug_dose_units:
     name: drug_dose_units
-    description: Indicate units used to record drug dose.
+    description: "Provide the ontology of standardized units to indicate units used to record drug dose."
     title: Drug Dose Units
     range: string
     pattern: ^UO:\d{7}$
@@ -1695,8 +1723,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   anatomical_site_irradiated_code:
     name: anatomical_site_irradiated_code
-    description: Indicate the ICD-O-3 topography code to describe the irradiated site
-      of radiation if applicable. Please use C80.9 if the site is Unkown.
+    description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unkown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}"
     title: Anatomical Site Irradiated Code
     comments:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1710,7 +1737,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     - MOH:anatomical_site_irradiated_code
     - ARGO:anatomical_site_irradiated_code
     range: string
-    required: false
+    required: true
     pattern:  ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
@@ -1771,7 +1798,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: true
   sample_status:
     name: sample_status
-    description: Indicate the status of the sample for data analysis.
+    description: "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to of the same type that does not meet the criteria, representing a normal or baseline state for comparison."
     title: Sample Status
     exact_mappings:
     - Phenopacket:sample_status
@@ -1797,8 +1824,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   experiment_type:
     name: experiment_type
-    description: The broad type of sequencing experiment performed. A mixture of library
-      strategy and source
+    description: "Indicate NCIt (NCI Thesaurus) code and term to denote the broad type of sequencing experiment performed. A mixture of library strategy and source."
     title: Experiment Type
     exact_mappings:
     - GA4GHExperimentMetadataChecklist:experiment_type
@@ -1895,14 +1921,14 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   genome_annotation:
     name: genome_annotation
-    description: Indicates which genome annotation build or version was used in the
-      analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).
+    description: "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.)."
     title: Genome Annotation
     range: string
     required: false
+    pattern: ^(?:Ensembl \d{1,5}|RefSeq \d{1,5}|Gencode v\d{1,5})$
   fileName:
     name: fileName
-    description: Name of the file.
+    description: "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md."
     title: FileName
     exact_mappings:
     - ARGO:fileName
@@ -1911,20 +1937,20 @@ https://www.cihi.ca/en/cci-coding-structure'
     pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
   fileSize:
     name: fileSize
-    description: Size of the file, in bytes.
+    description: Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.
     title: FileSize
     exact_mappings:
     - ARGO:fileSize
     range: integer
-    required: true
+    required: false
   fileMd5sum:
     name: fileMd5sum
-    description: Computed md5sum of the file.
+    description: Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.
     title: FileMd5sum
     exact_mappings:
     - ARGO:fileMd5sum
     range: string
-    required: true
+    required: false
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
@@ -1941,7 +1967,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     title: FileAccess
     exact_mappings:
     - ARGO:fileAccess
-    range: string
+    range: file_access_menu
     required: true
   workflow_name:
     name: workflow_name
@@ -2060,20 +2086,9 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   race_collect_method:
     name: race_collect_method
-    description: 'Studies must report how race data was collected. This is necessary
-      to enable data aggregation, harmonization, and reproducibility. Responses from
-      prospective projects should always be self-identified. To respect participants’
-      autonomy and right to self-determination, as well as to avoid conflating differences
-      in (genetic) population structure with socially constructed racial categories,
-      responses that were self-identified should not be aggregated with responses
-      that were socially assigned or derived. '
+    description: "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived."
     title: Race Collect Method
-    notes: '
-
-      Definitions and examples of methods of collections are provided in the PCGL
-      Guidance Document for Participant Sociodemographic Data v1.0.
-
-      '
+    notes: 'Definitions and examples of methods of collections are provided in the PCGL\n. Guidance Document for Participant Sociodemographic Data v1.0.'
     range: race_collect_method_menu
     required: true
   gender_another_gender:
@@ -2213,7 +2228,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: true
   geographic_location:
     name: geographic_location
-    description: 'A participant’s postal code at their current address of residence. '
+    description: "A participant's postal code at their current address of residence."
     title: Geographic Location
     notes: '
 
@@ -2283,7 +2298,7 @@ https://www.cihi.ca/en/cci-coding-structure'
       to the way reporting categories were defined and handled.
     title: Sociodem Notes
     examples:
-    - value: "\n    For example, in the Canadian Census, the order of the provided\
+    - value: "For example, in the Canadian Census, the order of the provided\
         \ response options for ethnicity were shown to influence number of received\
         \ responses per reporting option. \n\nOther examples may include inclusion/exclusion\
         \ criteria based on sociodemographic variables."
@@ -2367,7 +2382,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   exposure_duration:
     name: exposure_duration
-    description: Duration of exposure period
+    description: "Duration of exposure period in days"
     title: Exposure Duration
     range: integer
     required: false
@@ -2377,7 +2392,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     title: Exposure Amount
     notes: "\nProvide context-appropriate unit. \nE.g, drinks/week, cigarettes/day,\
       \ hours/week\n"
-    range: integer
+    range: decimal
     required: false
   exposure_unit:
     name: exposure_unit
@@ -2440,7 +2455,7 @@ https://www.cihi.ca/en/cci-coding-structure'
     required: false
   assay_type_code:
     name: assay_type_code
-    description: 'Indicate OBI code to provide the sequencing technique intented for
+    description: 'Indicate OBI code to provide the sequencing technique intended for
       the library for sequencing data.
 
       Provide code in Compact URI (CURIE) pattern.'
@@ -2510,17 +2525,7 @@ https://www.cihi.ca/en/cci-coding-structure'
 
 
       Use the format: OBI code in CURIE format (OBI term)
-
-
-      Example values:
-
-      OBI:0002752 (Oxford Nanopore PromethION)
-
-      OBI:0000759 (Illumina)
-
-      OBI:0002630 (Illumina NovaSeq 6000)
-
-      OBI:0002012 (PacBio RS II)'
+      '
     title: Instrument
     notes: '
 
@@ -2718,6 +2723,127 @@ https://www.cihi.ca/en/cci-coding-structure'
     description: 'Indicates the type of data produced as outputs from the analysis. '
     title: DataType
     range: data_type_menu
+    required: true
+  study_name: 
+    description: "The official name of the study"
+    name: study_name
+    range: string
+    title: Study Name
+    required: true
+  study_description:
+    description: "A detailed description of the study's purpose, hypothesis, and design."
+    name: study_description
+    range: string
+    title: Study Description
+    required: true
+  program_name:
+    description: "Indicate the overarching program the study belongs to (if applicable)"
+    name: program_name
+    range: string
+    title: Program Name
+  keywords:
+    description: "List of specific terms that describe the focus and content of the study. In case there are several, place each on separate line."
+    name: keywords
+    range: string
+    title: Keywords
+    multivalued: true
+  status:
+    description: "Indicate if the study is completed or ongoing."
+    name: status
+    range: status_menu
+    title: Status
+    required: true
+  context:
+    description: "Indicate if the study was conducted in a clinical setting or as part of a research project."
+    name: context
+    range: context_menu
+    title: Context
+    required: true
+  domain:
+    description: "List of specific scientific or clinical domains addressed by the study. In case there are several, place each on separate line."
+    name: domain
+    range: domain_menu
+    title: Domain
+    required: true
+    multivalued: true
+  dac_id:
+    description: "Unique identifier of the Data Access Committee (DAC) in PCGL to which the study is assigned. This will be supplied by PCGL Admin"
+    name: dac_id
+    range: string
+    title: DAC Id
+    required: true
+  participant_criteria: 
+    description: "Inclusion/exclusion criteria for participants (e.g., specific cancer type, age range)."
+    name: participant_criteria
+    range: string
+    title: Participant Criteria
+    multivalued: true
+  principal_investigators:
+    description: "List of lead researchers responsible for the study.\nIn case there are several, please list each investigator on a separate line in the format:\nFirstName LastName, Affiliation"
+    name: principal_investigators
+    range: string
+    title: Principal Investigators
+    required: true
+    multivalued: true
+    examples:
+    - value: "John Doe, Example Research Institute"
+  lead_organizations:
+    description: "List of institutions or organizations leading the study.\nIn case there are several, please list each lead organization on a separate line using its full official name."
+    name: lead_organizations
+    range: string
+    title: Lead Organizations
+    required: true
+    multivalued: true
+  collaborators:
+    description: "List of researchers, institutions or companies involved in the study.\n\nIn case there are several, please list each collaborator on a separate line in the format:\nFirstName LastName (if individual) or Organization full official name, Role"
+    name: collaborators
+    range: string
+    title: Collaborators
+    multivalued: true
+    examples:
+    - value : "Biotech Inc., Industry Partner"
+    - value : "Emily John, Data Contributor"
+  funding_sources:
+    description: "List of organizations or agencies funding the study. \n\nIn case there are several, please list each funding source on a separate line in the format:\nFunder name, Grant number"
+    name: funding_sources
+    range: string
+    title: Funding Sources
+    required: true
+    multivalued: true
+    examples:
+    - value: "National Example Foundation, NEF-12345"
+    - value: "Example Health Research Council"
+  publication_links:
+    description: "List of URL links to academic papers or reports associated with the study. \nIn case there are several, please list each publication on a separate line by providing a DOI URL formatted as https://doi.org/ followed by the DOI number."
+    name: publication_links
+    range: string
+    title: Publication Links
+    multivalued: true
+  dac_name:
+    description: Full name of the DAC.
+    name: dac_name
+    range: string
+    title: DAC Name
+    required: true
+  dac_description:
+    description: An in-depth description of the DAC, including its overall purpose, scope and responsibilities.
+    name: dac_description
+    range: string
+    title: DAC Description
+    required: true
+  contact_name:
+    description: "The full name of the primary contact person. Please provide in the format: FirstName LastName"
+    name: contact_name
+    range: string
+    title: Contact Name
+    required: true
+    examples:
+      - value: "Jone Smith"
+  contact_email:
+    description: Contact email for communication.
+    name: contact_email
+    range: string
+    title: Contact Email
     required: true
 classes:
   base_Participant:
@@ -3924,3 +4050,49 @@ classes:
         unique_key_name: main
         unique_key_slots:
         - submitter_workflow_id
+  base_Dac:
+    name: base_Dac
+    slots:
+      - dac_name
+      - dac_description
+      - contact_name
+      - contact_email
+    title: dac
+    description: 'A group of individuals responsible for reviewing and approving or denying access requests to data based on established policies. Upon registration will be provided a PCGL ID following the regex convention: `PCGLDA[0-9]{4}`'
+    slot_usage:
+      dac_name:
+        name: dac_name
+        rank: 1
+        slot_group: DAC
+      dac_description:
+        name: dac_description
+        rank: 2
+        slot_group: DAC
+      contact_name:
+        name: contact_name
+        rank: 3
+        slot_group: DAC
+      contact_email:
+        name: contact_email
+        rank: 4
+        slot_group: DAC
+  base_Study:
+    name: base_Study
+    slots:
+      - study_name
+      - study_description
+      - program_name
+      - keywords
+      - status
+      - context
+      - domain
+      - dac_id
+      - participant_criteria
+      - principal_investigators
+      - lead_organizations
+      - collaborators
+      - funding_sources
+      - publication_links
+    title: study
+    description: "Study refers to a specific research project conducted as part of a larger program. It involves data collection, analysis, and interpretation related to the program's goals. Each study is focused on particular research questions related to set of objectives. Upon registration will be provided a PCGL ID following the regex convention: `PCGLST[0-9]{4}`"
+    slot_usage:

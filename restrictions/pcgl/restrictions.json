@@ -164,6 +164,83 @@
                     }
                 }
             ]
+        },
+        {
+            "name": "analysis",
+            "fields" : [
+                {
+                    "name":"submitter_experiment_id",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["submitter_participant_id","submitter_sample_id","submitter_specimen_id"],
+                                    "match":{"exists": false},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                },
+                {
+                    "name":"submitter_participant_id",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["submitter_experiment_id","submitter_sample_id","submitter_specimen_id"],
+                                    "match":{"exists": false},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                },
+                {
+                    "name":"submitter_sample_id",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_specimen_id"],
+                                    "match":{"exists": false},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                },
+                {
+                    "name":"submitter_specimen_id",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_sample_id"],
+                                    "match":{"exists": false},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                }
+            ]
         }
     ]
 }
