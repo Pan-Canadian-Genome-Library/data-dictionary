@@ -175,15 +175,20 @@
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_participant_id","submitter_sample_id","submitter_specimen_id"],
-                                    "match":{"exists": false},
-                                    "case": "all"
+                                    "fields": ["analysisType"],
+                                    "match":{
+                                        "codeList":[
+                                            "sequenceExperiment",
+                                            "sequenceAlignment",
+                                            "variantCall"
+                                            ]
+                                        },
+                                    "case": "any"
                                 }
                             ]
-
                         },
-                        "then":{"required":false,"empty":true},
-                        "else":{"required":true}
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
                     }
                 },
                 {
@@ -194,8 +199,8 @@
                             "conditions": [
                                 {
                                     "fields":["submitter_experiment_id","submitter_sample_id","submitter_specimen_id"],
-                                    "match":{"exists": false},
-                                    "case": "all"
+                                    "match":{"exists": true},
+                                    "case": "any"
                                 }
                             ]
 
@@ -212,8 +217,8 @@
                             "conditions": [
                                 {
                                     "fields":["submitter_participant_id","submitter_experiment_id","submitter_specimen_id"],
-                                    "match":{"exists": false},
-                                    "case": "all"
+                                    "match":{"exists": true},
+                                    "case": "any"
                                 }
                             ]
 
@@ -230,8 +235,8 @@
                             "conditions": [
                                 {
                                     "fields":["submitter_participant_id","submitter_experiment_id","submitter_sample_id"],
-                                    "match":{"exists": false},
-                                    "case": "all"
+                                    "match":{"exists": true},
+                                    "case": "any"
                                 }
                             ]
 

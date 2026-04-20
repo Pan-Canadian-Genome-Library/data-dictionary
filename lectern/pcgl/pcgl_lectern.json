@@ -3199,14 +3199,14 @@
                         "if": {
                             "conditions": [
                                 {
-                                    "case": "all",
+                                    "case": "any",
                                     "fields": [
                                         "submitter_experiment_id",
                                         "submitter_sample_id",
                                         "submitter_specimen_id"
                                     ],
                                     "match": {
-                                        "exists": false
+                                        "exists": true
                                     }
                                 }
                             ]
@@ -3245,14 +3245,14 @@
                         "if": {
                             "conditions": [
                                 {
-                                    "case": "all",
+                                    "case": "any",
                                     "fields": [
                                         "submitter_participant_id",
                                         "submitter_experiment_id",
                                         "submitter_sample_id"
                                     ],
                                     "match": {
-                                        "exists": false
+                                        "exists": true
                                     }
                                 }
                             ]
@@ -3288,14 +3288,14 @@
                         "if": {
                             "conditions": [
                                 {
-                                    "case": "all",
+                                    "case": "any",
                                     "fields": [
                                         "submitter_participant_id",
                                         "submitter_experiment_id",
                                         "submitter_specimen_id"
                                     ],
                                     "match": {
-                                        "exists": false
+                                        "exists": true
                                     }
                                 }
                             ]
@@ -3318,26 +3318,28 @@
                     "name": "submitter_experiment_id",
                     "restrictions": {
                         "else": {
-                            "required": true
+                            "empty": true,
+                            "required": false
                         },
                         "if": {
                             "conditions": [
                                 {
-                                    "case": "all",
+                                    "case": "any",
                                     "fields": [
-                                        "submitter_participant_id",
-                                        "submitter_sample_id",
-                                        "submitter_specimen_id"
+                                        "analysisType"
                                     ],
                                     "match": {
-                                        "exists": false
+                                        "codeList": [
+                                            "sequenceExperiment",
+                                            "sequenceAlignment",
+                                            "variantCall"
+                                        ]
                                     }
                                 }
                             ]
                         },
                         "then": {
-                            "empty": true,
-                            "required": false
+                            "required": true
                         }
                     },
                     "valueType": "string"
