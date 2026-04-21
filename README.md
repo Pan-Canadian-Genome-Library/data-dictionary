@@ -66,7 +66,7 @@ The schemas are coded in linkML format. The following are reasons for utilizing 
 - Supports mapping for establish onotologies.
 
 ### Lectern and Lyric support
-Both are overture products where lectern manages schemas while lyric manages data ingestion and validation.
+PCGL data submission uses multiple components of the [Overture](https://docs.overture.bio/) platform. [Lectern](https://docs.overture.bio/docs/core-software/lectern/overview/) manages schemas while [Lyric](https://docs.overture.bio/docs/under-development/Lyric) manages data ingestion and validation.
 
 Lectern utilizes a custom JSON formatted syntax that requires conversion from linkML format to Lectern accepted. We keep schemas in linkML format due to the previously mentioned strengths. For more details on downsides see `restrictions/README.md`.
 
