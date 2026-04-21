@@ -1,6 +1,7 @@
-# Pan Canadian Genome Library Clinical Metadata Schema Repository
+# PGCL Clinical Data and Sequencing Metadata Schemas
+
 ## About 
-The repository serves as a resource for researchers and data coordination team to harmonize clinical metadata collection, utilizing existing ontologies and standards, provide an extensible interoperable framework for ease of data sharing.
+This repository contains the schemas used for data ingestion into the PCGL. The PCGL schemas use existing ontologies and standards, providing an extensible interoperable framework for ease of data sharing.
 
 ### Schema Framework
 The Schema framework is divided into three parts and defined as follows:
