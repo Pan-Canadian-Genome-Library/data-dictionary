@@ -82,9 +82,9 @@ Lectern utilizes a custom JSON formatted syntax that requires conversion from li
 |--|--|
 |Base| Contains linkML files for core data model entities|
 |Extension| Sub-divided per project, contains YAML files that extend base entities|
-|Custom| Sub-divided per project, contains 3 YAMLs. See README.md within folder for more details |
+|Custom| Sub-divided per project, contains 3 YAMLs |
 |Scripts| Scripts for aggregating schemas and exporting into various types.  See `README.md` within folder for more details |
-|Lectern| Sub-divided per project,JSON schema files containing aggregated entities into a signle schema. See README.md within folder for more details |
+|Lectern| Sub-divided per project, JSON schema files containing aggregated entities into a signle schema |
 |Restrictions| Sub-divided per project,JSON schema files containing specialized restrictions for entities. |
 |Test_data| Sub-divided per project, contains examples of good and bad data for testing.|
 |CSV| Sub-divided per project, contains the flattened CSV version of custom YAML|
