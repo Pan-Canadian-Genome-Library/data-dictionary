@@ -307,6 +307,8 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 		usage={}
 		main_slot_id=None
 		slot_id=[]
+		required_others=[]
+		#conditional_others=[]
 		others=[]
 		extensions=[]
 
@@ -321,15 +323,23 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 					#print("D",key,tmp_model.classes[mapping[key]["extension_import_name"]]['slots'])
 					extensions.append(slot)
 				else:
-					others.append(slot)
+					if updated_model.slots[slot]['required']==True:
+							required_others.append(slot)
+					else:
+						others.append(slot)
+
 			slot_id.sort()
 			others.sort()
+			required_others.sort()
 			extensions.sort()
 			if main_slot_id:
 				usage[main_slot_id]=SlotDefinition(name=main_slot_id,rank=1,slot_group="Database Identifiers")
 			if len(slot_id)>0:
 				for slot in slot_id:
 					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Database Identifiers")
+			if len(required_others)>0:
+				for slot in required_others:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
 			if len(others)>0:
 				for slot in others:
 					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
@@ -362,7 +372,11 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 				elif slot.endswith("_id"):
 					slot_id.append(slot)
 				else:
-					others.append(slot)
+					if updated_model.slots[slot]['required']==True:
+							required_others.append(slot)
+					else:
+						others.append(slot)
+			required_others.sort()
 			slot_id.sort()
 			others.sort()
 			if main_slot_id:
@@ -370,11 +384,18 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 			if len(slot_id)>0:
 				for slot in slot_id:
 					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group="Database Identifiers")
+			if len(required_others)>0:
+				for slot in required_others:
+					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
 			if len(others)>0:
 				for slot in others:
 					usage[slot]=SlotDefinition(name=slot,rank=len(usage.keys())+1,slot_group=key)
 		#print("C",key,usage)
 		updated_model.classes[key]['slot_usage']=usage
+
+		
+		updated_model.classes[key]['slots']=list(updated_model.classes[key]['slot_usage'].keys())
+		
 
 def makeDataHarmonizerVersion(model):
 	"""
