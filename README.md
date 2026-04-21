@@ -64,8 +64,8 @@ Entities will contain fields which serve to collect a specific type of informati
 ** INSERT ER DIAGRAM HERE **
 
 ### LinkML
-The schemas are coded in linkML format. We have chosen linkML becuase: 
-- schemas can be used with DataHarmonizer, a browser spreadsheet editor locally and offline
+The schemas are coded in [linkML](https://linkml.io/) format. We have chosen linkML becuase: 
+- schemas can be used with [DataHarmonizer](https://github.com/cidgoh/DataHarmonizer), a browser spreadsheet editor locally and offline
 - Data can validated through command line tools locally and offline
 - linkML supports object-like inheritance
 - Supports mapping for establish onotologies
@@ -80,7 +80,7 @@ Lectern utilizes a custom JSON formatted syntax that requires conversion from li
 
 |Folder|Purpose|
 |--|--|
-|Base| Contains YAML files of base entities|
+|Base| Contains linkML files for core data model entities|
 |Extension| Sub-divided per project, contains YAML files that extend base entities|
 |Custom| Sub-divided per project, contains 3 YAMLs. See README.md within folder for more details |
 |Scripts| Scripts for aggregating schemas and exporting into various types.  See `README.md` within folder for more details |
