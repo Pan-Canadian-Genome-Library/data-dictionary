@@ -53,7 +53,9 @@ The Schema framework is divided into three parts and defined as follows:
     </tbody>
 </table>
 
-** INSERT Extensible schema DIAGRAM HERE **
+Base schema diagram
+
+![diagram of base schema](./assets/pcgl-base-schema.png)
 
 ### Schema Overview
 
