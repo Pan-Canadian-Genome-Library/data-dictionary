@@ -3,6 +3,10 @@
 ## About 
 This repository contains the schemas used for data ingestion into the PCGL. The PCGL schemas use existing ontologies and standards, providing an extensible interoperable framework for ease of data sharing.
 
+The PCGL data model adopts a three-tiered schema structure: Base, Extension, and Custom. The **Base** schema is the core PCGL data model required for all data submission. If studies have additional well-curated data fields that they want to submit, they can create an **Extension** schema with the additional fields and combine the Base + Extension to form a **Custom** schema for their study. 
+
+The canonical version of the core data model is the LinkML document in the `base` directory. All other data model artifacts and documentation are derived from the `base.yaml` LinkML document. 
+
 ### Schema Framework
 The Schema framework is divided into three parts and defined as follows:
 <table>
@@ -60,11 +64,11 @@ Entities will contain fields which serve to collect a specific type of informati
 ** INSERT ER DIAGRAM HERE **
 
 ### LinkML
-The schemas are coded in linkML format. The following are reasons for utilizing linkML
+The schemas are coded in linkML format. We have chosen linkML becuase: 
 - schemas can be used with DataHarmonizer, a browser spreadsheet editor locally and offline
-- Data can validated through command line command locally and offline
-- linkML supports object like inheritance
-- Supports mapping for establish onotologies.
+- Data can validated through command line tools locally and offline
+- linkML supports object-like inheritance
+- Supports mapping for establish onotologies
 
 ### Lectern and Lyric support
 PCGL data submission uses multiple components of the [Overture](https://docs.overture.bio/) platform. [Lectern](https://docs.overture.bio/docs/core-software/lectern/overview/) manages schemas while [Lyric](https://docs.overture.bio/docs/under-development/Lyric) manages data ingestion and validation.
