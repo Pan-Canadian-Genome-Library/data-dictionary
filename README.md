@@ -1,6 +1,11 @@
-# Pan Canadian Genome Library Clinical Metadata Schema Repository
+# PGCL Clinical Data and Sequencing Metadata Schemas
+
 ## About 
-The repository serves as a resource for researchers and data coordination team to harmonize clinical metadata collection, utilizing existing ontologies and standards, provide an extensible interoperable framework for ease of data sharing.
+This repository contains the schemas used for data ingestion into the PCGL. The PCGL schemas use existing ontologies and standards, providing an extensible interoperable framework for ease of data sharing.
+
+The PCGL data model adopts a three-tiered schema structure: Base, Extension, and Custom. The **Base** schema is the core PCGL data model required for all data submission. If studies have additional well-curated data fields that they want to submit, they can create an **Extension** schema with the additional fields and combine the Base + Extension to form a **Custom** schema for their study. 
+
+The canonical version of the core data model is the LinkML document in the `base` directory. All other data model artifacts and documentation are derived from the `base.yaml` LinkML document. 
 
 ### Schema Framework
 The Schema framework is divided into three parts and defined as follows:
@@ -48,7 +53,9 @@ The Schema framework is divided into three parts and defined as follows:
     </tbody>
 </table>
 
-** INSERT Extensible schema DIAGRAM HERE **
+Base schema diagram
+
+![diagram of base schema](./assets/pcgl-base-schema.png)
 
 ### Schema Overview
 
@@ -59,14 +66,14 @@ Entities will contain fields which serve to collect a specific type of informati
 ** INSERT ER DIAGRAM HERE **
 
 ### LinkML
-The schemas are coded in linkML format. The following are reasons for utilizing linkML
-- schemas can be used with DataHarmonizer, a browser spreadsheet editor locally and offline
-- Data can validated through command line command locally and offline
-- linkML supports object like inheritance
-- Supports mapping for establish onotologies.
+The schemas are coded in [linkML](https://linkml.io/) format. We have chosen linkML becuase: 
+- schemas can be used with [DataHarmonizer](https://github.com/cidgoh/DataHarmonizer), a browser spreadsheet editor locally and offline
+- Data can validated through command line tools locally and offline
+- linkML supports object-like inheritance
+- Supports mapping for establish onotologies
 
 ### Lectern and Lyric support
-Both are overture products where lectern manages schemas while lyric manages data ingestion and validation.
+PCGL data submission uses multiple components of the [Overture](https://docs.overture.bio/) platform. [Lectern](https://docs.overture.bio/docs/core-software/lectern/overview/) manages schemas while [Lyric](https://docs.overture.bio/docs/under-development/Lyric) manages data ingestion and validation.
 
 Lectern utilizes a custom JSON formatted syntax that requires conversion from linkML format to Lectern accepted. We keep schemas in linkML format due to the previously mentioned strengths. For more details on downsides see `restrictions/README.md`.
 
@@ -75,11 +82,11 @@ Lectern utilizes a custom JSON formatted syntax that requires conversion from li
 
 |Folder|Purpose|
 |--|--|
-|Base| Contains YAML files of base entities|
+|Base| Contains linkML files for core data model entities|
 |Extension| Sub-divided per project, contains YAML files that extend base entities|
-|Custom| Sub-divided per project, contains 3 YAMLs. See README.md within folder for more details |
+|Custom| Sub-divided per project, contains 3 YAMLs |
 |Scripts| Scripts for aggregating schemas and exporting into various types.  See `README.md` within folder for more details |
-|Lectern| Sub-divided per project,JSON schema files containing aggregated entities into a signle schema. See README.md within folder for more details |
+|Lectern| Sub-divided per project, JSON schema files containing aggregated entities into a signle schema |
 |Restrictions| Sub-divided per project,JSON schema files containing specialized restrictions for entities. |
 |Test_data| Sub-divided per project, contains examples of good and bad data for testing.|
 |CSV| Sub-divided per project, contains the flattened CSV version of custom YAML|
