@@ -150,7 +150,8 @@ def populateFieldProperties(model,lectern):
             if model['slots'][slot]['comments']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
-                tmp['meta']['required']=model['slots'][slot]['comments']
+                #tmp['meta']['required']=model['slots'][slot]['comments']
+                tmp['meta']['comments']=model['slots'][slot]['comments']
 
             if len(model['slots'][slot]['examples'])>0:
                 if not tmp.get('meta'):
@@ -218,7 +219,6 @@ def populateFieldProperties(model,lectern):
                     if field['name']==unique_key:
                         #print(unique_key)
                         field['unique']=True
-                        
   ###Handle foreign keys
   for entity in lectern['schemas']:
     for field in entity['fields']:
