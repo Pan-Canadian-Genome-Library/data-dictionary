@@ -1084,8 +1084,8 @@ slots:
     title: age_at_death
     comments:
     - 'FHIR.v5.0.0 mapping: [Patient.deceased.dateTime] - [Patient.birthDate]'
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - 'mCODE.v4.0.0 mapping: [Patient.deceased.dateTime] - [Patient.birthDate]'
     - 'MOHCCN.v3.1 mapping: [Donor.date_at_death] - [Donor.date_of_birth]'
     exact_mappings:
@@ -1121,7 +1121,7 @@ slots:
     - CQDG:submitter_participant_id
     - mCODE.v4.0.0:Patient.identifier
     - FHIR.v5.0.0:Patient.identifier
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.identifier
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier
     - Phenopackets.v2.0:Individual.id
     - Beacon.v2.0:individual.id
     - ARGO.v1.34:submitter_donor_id
@@ -1135,7 +1135,7 @@ slots:
     title: vital_status
     comments:
     - 'FHIR.v5.0.0 mapping: derive from Patient.deceased.boolean'
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
     exact_mappings:
     - CQDG:vital_status
     - Phenopackets.v2.0:Individual.vital_status
@@ -1251,8 +1251,8 @@ slots:
     comments:
     - EDI indicator
     - 'FHIR.v5.0.0 mapping: [Observation.effectiveDateTime] - [Patient.birthDate]'
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     exact_mappings:
     - Phenopackets.v2.0:PhenotypicFeature:onset
     range: integer
@@ -1268,7 +1268,7 @@ slots:
     - 'Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>'
     exact_mappings:
     - FHIR.v5.0.0:Observation.code.coding.code
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     - Phenopackets.v2.0:PhenotypicFeature.type.id
     range: string
     required: true
@@ -1282,7 +1282,7 @@ slots:
     - 'Phenopackets.v2.0 mapping: [PhenotypicFeature.resolution] - [PhenotypicFeature.onset]'
     exact_mappings:
     - FHIR.v5.0.0:Observation.effectivePeriod
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
     range: integer
     required: false
   phenotype_observed:
@@ -1308,7 +1308,7 @@ slots:
     title: phenotype_term
     exact_mappings:
     - FHIR.v5.0.0:Observation.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     - Phenopackets.v2.0:PhenotypicFeature.type.label
     range: string
     required: false
@@ -1318,8 +1318,8 @@ slots:
     title: age_at_followup
     comments:
     - FHIR.v5.0.0 mapping:[Observation.effectiveDateTime]- [Patient.birthDate]
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - MOHCCN.v3.1 mapping:[follow_up.date_of_followup] - [donor.date_of_birth]
     - ARGO.v1.34 mapping:[primary_diagnosis.age_at_diagnosis] + [followup.interval_of_followup]
     range: integer
@@ -1340,8 +1340,8 @@ slots:
     title: age_at_measurement
     comments:
     - FHIR.v5.0.0 mapping:Observation.effectiveDateTime - Patient.birthDate
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     exact_mappings:
     - Phenopackets.v2.0:Measurement.timeObserved.timeElement.age
     range: integer
@@ -1356,7 +1356,7 @@ slots:
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
     - FHIR.v5.0.0 mapping:[Observation.code.coding.system]:[Observation.code.coding.code]
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     exact_mappings:
     - Phenopackets.v2.0:Measurement.assay.id
     range: string
@@ -1368,7 +1368,7 @@ slots:
     title: measurement_result_categorical
     exact_mappings:
     - FHIR.v5.0.0:Observation.value.valueCodeableConcept
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
     - Phenopackets.v2.0:Measurement.measurement.value.quantity.value
     range: string
     required: false
@@ -1378,7 +1378,7 @@ slots:
     title: measurement_result_numeric
     exact_mappings:
     - FHIR.v5.0.0:Observation.value.valueQuantity.value
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
     - Phenopackets.v2.0:Measurement.measurement.value.quantity.value
     range: decimal
     required: false
@@ -1389,7 +1389,7 @@ slots:
     title: measurement_term
     exact_mappings:
     - FHIR.v5.0.0:Observation.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     - Phenopackets.v2.0:Measurement.assay.label
     range: string
     required: false
@@ -1401,7 +1401,7 @@ slots:
     title: measurement_unit
     exact_mappings:
     - FHIR.v5.0.0:Observation.value.valueQuantity.unit
-    - FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
     - Phenopackets.v2.0:Measurement.measurement.value.quantity.unit
     range: string
     required: false
@@ -1412,8 +1412,8 @@ slots:
     title: age_at_comorbidity_diagnosis
     comments:
     - FHIR.v5.0.0 mapping:Condition.onsetDateTime - Patient.birthDate
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     exact_mappings:
     - MOHCCN.v3.1:Comorbidity.age_at_comorbidity_diagnosis
     - ARGO.v1.34:Comorbidity.age_at_comorbidity_diagnosis
@@ -1432,7 +1432,7 @@ slots:
     - value: icd10:C34
     exact_mappings:
     - FHIR.v.5.0.0:Condition.code.coding.code
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - ARGO.v1.34:Comorbidity.comorbidity_type_code
     - MOHCCN.v3.1:Comorbidity.comorbidity_type_code
     range: string
@@ -1444,7 +1444,7 @@ slots:
     title: comorbidity_status
     exact_mappings:
     - FHIR.v5.0.0:Condition.clinicalStatus
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.clinicalStatus
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.clinicalStatus
     range: comorbidity_status_menu
     required: false
   comorbidity_term:
@@ -1455,7 +1455,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:condition.code.coding.display
     - FHIR.v5.0.0:Condition.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - Phenopackets.v2.0:disease.term
     range: string
     required: false
@@ -1468,10 +1468,11 @@ slots:
     required: false
   procedure_body_site_code:
     name: procedure_body_site_code
-    description: Indicate the ICD-O-3 topography code to describe the site of the
-      surgery if applicable. Please use C80.9 if the site is Unknown.
+    description: Indicate the ICD-O-3 topography code or UBERON code for the anatomic
+      location of a specimen when it was collected. Please use C80.9 if the anatomic
+      location of a specimen is Unknown.
     title: procedure_body_site_code
-    comments:
+    notes:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
       (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344
     examples:
@@ -1480,7 +1481,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Specimen.collection.bodySite
     - FHIR.v5.0.0:Procedure.bodySite.coding.code
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     - ARGO.v1.34:surgery.surgery_site
     - MOHCCN.v3.1:surgery.surgery_site
     - Phenopackets.v2.0:Procedure.body_site.id
@@ -1494,7 +1495,7 @@ slots:
     title: procedure_body_site_term
     exact_mappings:
     - FHIR.v5.0.0:Procedure.bodySite.coding.display
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     - Phenopackets.v2.0:Procedure.body_site.label
     range: string
     required: false
@@ -1525,7 +1526,7 @@ slots:
       \  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code>\
       \ CCI URL:https://www.cihi.ca/en/cci-coding-structure"
     - FHIR.v5.0.0 mapping:[Procedure.code.coding.system]:[Procedure.code]
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     examples:
     - value: NCIT:C51894
     - value: snomedct:284196006
@@ -1543,7 +1544,7 @@ slots:
     title: procedure_term
     exact_mappings:
     - FHIR.v5.0.0:Procedure.code.display
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     - Phenopackets.v2.0:Procedure.code.label
     range: string
     required: false
@@ -1557,7 +1558,7 @@ slots:
     - value: AML-90
     exact_mappings:
     - FHIR.v5.0.0:Procedure.identifier
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
@@ -1602,8 +1603,8 @@ slots:
     comments:
     - mCODE.v4.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]
     - FHIR.v5.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - ARGOv1.34 mapping:[donor.age_at_diagnosis] + [specimen.specimen_acquisition_interval]
     - MOHCCN.v3.1 mapping:[specimen.specimen_collection_date] - [donor.date_of_birth]
     exact_mappings:
@@ -1627,7 +1628,7 @@ slots:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
     - mCODE.v4.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]
     - FHIR.v5.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
     examples:
     - value: UBERON:8600019
     exact_mappings:
@@ -1646,7 +1647,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Specimen.collection.bodySite.coding.display
     - FHIR.v5.0.0:Specimen.collection.bodySite.coding.display
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
     range: string
     required: false
   specimen_laterality:
@@ -1694,7 +1695,7 @@ slots:
     title: specimen_tissue_source_code
     comments:
     - FHIR.v5.0.0 mapping:[Specimen.type.coding.system]:[Specimen.type.coding.code]
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
     examples:
     - value: NCIT:C12434
     exact_mappings:
@@ -1712,7 +1713,7 @@ slots:
     title: specimen_tissue_source_term
     exact_mappings:
     - FHIR.v5.0.0:Specimen.type.coding.display
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
     - ARGO.v1.34:sample_registration.specimen_tissue_source
     - MOHCCN.v3.1:specimen.specimen_tissue_source
     range: string
@@ -1730,7 +1731,7 @@ slots:
     - CQDG:submitter_biospecimen_id
     - mCODE.v4.0.0:Specimen.identifier
     - FHIR.v5.0.0:Specimen.identifier
-    - FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier
     - Phenopackets.v2.0:Biosample.derived_from_id
     - Beacon.v2.0:biosample.id
     - ARGO.v1.34:specimen.submitter_specimen_id
@@ -1747,7 +1748,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Condition.onset
     - FHIR.v5.0.0:Condition.onset.onsetAge
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
     - Phenopackets.v2.0:Disease.onset
     - ARGO.v1.34:primary_diagnosis.age_at_diagnosis
     range: integer
@@ -1766,7 +1767,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Condition.code.coding.code
     - FHIR.v5.0.0:Condition.code.coding.code
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - Phenopackets.v2.0:disease.term.id
     - ARGO.v1.34:primary_diagnosis.cancer_type_code
     - MOHCCN.v3.1:primary_diagnosis.cancer_type_code
@@ -1782,7 +1783,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Condition.code.coding.display
     - FHIR.v5.0.0:Condition.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - Phenopackets.v2.0:disease.term.label
     range: string
     required: false
@@ -1798,7 +1799,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Condition.identifier
     - FHIR.v5.0.0:Condition.identifier
-    - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
     - ARGO.v1.34:primary_diagnosis.submitter_diagnosis_id
     - MOHCCN.v3.1:primary_diagnosis.submitter_diagnosis_id
     range: string
@@ -1810,8 +1811,8 @@ slots:
     title: age_at_treatment
     comments:
     - FHIR.v5.0.0 mapping:[Procedure.occurrenceDateTime] - [Patient.birthDate]
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
-    - FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - Phenopackets.v2.0 mapping:[TherapeuticRegimen.end_time] - [Individual.date_of_birth]
     - ARGO.v1.34 mapping:[treatment.treatment_start_interval] + [donor.age_at_diagnosis]
     - MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Donor.date_of_birth]
@@ -1826,7 +1827,7 @@ slots:
     - MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Systemic_therapy.end_date]
     exact_mappings:
     - FHIR.v5.0.0:Procedure.occurrencePeriod
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
     - ARGO.v1.34:treatment.treatment_duration
     range: integer
     required: false
@@ -1908,7 +1909,7 @@ slots:
       : [chemotherapy|hormone_therapy|immunotherapy].drug_rxnormcui OR [chemotherapy|hormone_therapy|immunotherapy].drug_id'
     - FHIR.v5.0.0 mapping:[MedicationAdministration.medication.code.coding.system]
       :[MedicationAdministration.medication.code.coding.code]
-    - FHIRSpec:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
     - MOHCCN.v3.1 mapping:[Systemic_therapy.drug_reference_database]:[Systemic_therapy.drug_reference_identifier]
     examples:
     - value: rxnorm:221058
@@ -1951,7 +1952,7 @@ slots:
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.prescribed_cumulative_drug_dose
     - FHIR:MedicationAdministration.medication.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
     range: decimal
     required: false
   anatomical_site_irradiated_code:
@@ -1972,7 +1973,7 @@ slots:
     exact_mappings:
     - mCODE.v4.0.0:Specimen.collection.bodySite
     - FHIR.v5.0.0:Procedure.bodySite
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     - MOHCCN.v3.1:radiation.anatomical_site_irradiated_code
     - ARGO.v1.34:radiation.anatomical_site_irradiated_code
     - Phenopackets.v2.0:RadiationTherapy.body_site
@@ -1993,8 +1994,8 @@ slots:
     comments:
     - FHIR.v5.0.0 mapping:Observation.valueQuantity and link Observation to radiation
       therapy Procedure using Observation.partOf -> Procedure
-    - 'FHIRSpec: https://hl7.org/fhir/observation-definitions.html#Observation.value_x_'
-    - FHIRSpec:http://hl7.org/fhir/observation-definitions.html#Observation.partOf
+    - 'FHIRSpec.v5.0.0: https://hl7.org/fhir/observation-definitions.html#Observation.value_x_'
+    - FHIRSpec.v5.0.0:http://hl7.org/fhir/observation-definitions.html#Observation.partOf
     exact_mappings:
     - ARGO.v1.34:radiation.radiation_therapy_dosage
     - MOHCCN.v3.1:radiation.radiation_therapy_dosage
@@ -2541,7 +2542,7 @@ slots:
     title: radiation_modality_code
     comments:
     - FHIR v5.0.0 mapping:[Procedure.code.coding.system] :[Procedure.code]
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     examples:
     - value: NCIT:C28039
     exact_mappings:
@@ -2558,7 +2559,7 @@ slots:
     - value: Electron Beam
     exact_mappings:
     - FHIR.v5.0.0:Procedure.code.coding.display
-    - FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     range: string
     required: false
   exposure_code:
@@ -3688,7 +3689,7 @@ classes:
         exact_mappings:
         - mCODE.v4.0.0:Condition.identifier
         - FHIR.v5.0.0:Condition.identifier
-        - FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
+        - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
         - ARGO.v1.34:submitter_primary_diagnosis_id
         - MOHCCN.v3.1:submitter_diagnosis_id
         range: string
