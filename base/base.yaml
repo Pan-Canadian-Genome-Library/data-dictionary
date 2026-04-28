@@ -1083,14 +1083,14 @@ slots:
     title: Age At Death
     range: integer
     required: false
-    comments:
-      - "FHIR.v5.0.0 mapping: [Patient.deceased.dateTime] - [Patient.birthDate]"
-      - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
-      - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-      - "mCODE.v4.0.0 mapping: [Patient.deceased.dateTime] - [Patient.birthDate]"
-      - "MOHCCN.v3.1 mapping: [Donor.date_at_death] - [Donor.date_of_birth]"
     exact_mappings:
     - Phenopackets.v2.0:VitalStatus.survival_time_in_days
+    related_mappings:
+    - FHIR.v5.0.0:Patient.deceased.dateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - mCODE.v4.0.0:Patient.deceased.dateTime-Patient.birthDate
+    - MOHCCN.v3.1:Donor.date_at_death-Donor.date_of_birth
   age_at_enrollment:
     name: age_at_enrollment
     description: Age (in days) of participant at time of enrollment into the study
@@ -1117,14 +1117,14 @@ slots:
     - value: BLD_donor_89
     - value: AML-90
     exact_mappings:
+    - ARGO.v1.34:submitter_donor_id
+    - Beacon.v2.0:individual.id
     - CQDG:submitter_participant_id
-    - mCODE.v4.0.0:Patient.identifier
     - FHIR.v5.0.0:Patient.identifier
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier
-    - Phenopackets.v2.0:Individual.id
-    - Beacon.v2.0:individual.id
-    - ARGO.v1.34:submitter_donor_id
+    - mCODE.v4.0.0:Patient.identifier
     - MOHCCN.v3.1:submitter_donor_id
+    - Phenopackets.v2.0:Individual.id
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}
@@ -1132,15 +1132,15 @@ slots:
     name: vital_status
     description: Participant's last known state of living or deceased.
     title: Vital Status
-    comments:
-    - "FHIR.v5.0.0 mapping: derive from Patient.deceased.boolean"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
     exact_mappings:
-    - CQDG:vital_status
-    - Phenopackets.v2.0:Individual.vital_status
-    - Beacon.v2.0:individual.vital_status
-    - MOHCCN.v3.1:Donor.is_deceased
     - ARGO.v1.34:Donor.vital_status
+    - Beacon.v2.0:individual.vital_status
+    - CQDG:vital_status
+    - MOHCCN.v3.1:Donor.is_deceased
+    - Phenopackets.v2.0:Individual.vital_status
+    related_mappings:
+    - FHIR.v5.0.0:derive_from_Patient.deceased.boolean
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
     range: vital_status_menu
     required: false
   ethnicity:
@@ -1215,11 +1215,12 @@ slots:
     required: false
     comments:
     - EDI indicator
-    - "FHIR.v5.0.0 mapping: [Observation.effectiveDateTime] - [Patient.birthDate]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
     exact_mappings:
     - Phenopackets.v2.0:PhenotypicFeature:onset
+    related_mappings:
+    - FHIR.v5.0.0:Observation.effectiveDateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
   phenotype_code:
     name: phenotype_code
     description: "Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.\nProvide code in Compact URI (CURIE) pattern."
@@ -1240,11 +1241,11 @@ slots:
     title: Phenotype Duration
     range: integer
     required: false
-    comments:
-    - "Phenopackets.v2.0 mapping: [PhenotypicFeature.resolution] - [PhenotypicFeature.onset]"
     exact_mappings:
     - FHIR.v5.0.0:Observation.effectivePeriod
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    related_mappings:
+    - Phenopackets.v2.0:PhenotypicFeature.resolution-PhenotypicFeature.onset
   phenotype_observed:
     name: phenotype_observed
     description: Indicate whether the phenotype was observed in the participant.
@@ -1278,13 +1279,12 @@ slots:
     title: Age At Followup
     range: integer
     required: false
-    comments:
-    - "FHIR.v5.0.0 mapping:[Observation.effectiveDateTime]- [Patient.birthDate]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-    - "MOHCCN.v3.1 mapping:[follow_up.date_of_followup] - [donor.date_of_birth]"
-    - "ARGO.v1.34 mapping:[primary_diagnosis.age_at_diagnosis] + [followup.interval_of_followup]"
-    exact_mappings:
+    related_mappings:
+    - ARGO.v1.34:primary_diagnosis.age_at_diagnosis+followup.interval_of_followup
+    - FHIR.v5.0.0:Observation.effectiveDateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - MOHCCN.v3.1:follow_up.date_of_followup-donor.date_of_birth
   disease_status_at_followup:
     name: disease_status_at_followup
     description: Indicate the participant's disease status at time of follow-up
@@ -1293,7 +1293,7 @@ slots:
     required: true
     exact_mappings:
     - ARGO.v1.34:followup.disease_status_at_followup
-    - MOHCCN.v3.1:followup.disease_status_at_followup/
+    - MOHCCN.v3.1:followup.disease_status_at_followup
   age_at_measurement:
     name: age_at_measurement
     description: Age (in days) of the participant at the time the lab test or measurement
@@ -1301,10 +1301,10 @@ slots:
     title: Age At Measurement
     range: integer
     required: false
-    comments:
-    - "FHIR.v5.0.0 mapping:Observation.effectiveDateTime - Patient.birthDate"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+    related_mappings:
+    - FHIR.v5.0.0:Observation.effectiveDateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     exact_mappings:
     - Phenopackets.v2.0:Measurement.timeObserved.timeElement.age
   measurement_code:
@@ -1316,8 +1316,9 @@ slots:
     pattern: ^LOINC:[0-9]{1,5}-[0-9]$
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
-    - "FHIR.v5.0.0 mapping:[Observation.code.coding.system]:[Observation.code.coding.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+    related_mappings:
+    - FHIR.v5.0.0:Observation.code.coding.system:Observation.code.coding.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     exact_mappings:
     - Phenopackets.v2.0:Measurement.assay.id
   measurement_result_categorical:
@@ -1368,13 +1369,13 @@ slots:
     title: Age At Comorbidity Diagnosis
     range: integer
     required: false
-    comments:
-    - "FHIR.v5.0.0 mapping:Condition.onsetDateTime - Patient.birthDate"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+    related_mappings:
+    - FHIR.v5.0.0:Condition.onsetDateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     exact_mappings:
-    - MOHCCN.v3.1:Comorbidity.age_at_comorbidity_diagnosis
     - ARGO.v1.34:Comorbidity.age_at_comorbidity_diagnosis
+    - MOHCCN.v3.1:Comorbidity.age_at_comorbidity_diagnosis
   comorbidity_code:
     name: comorbidity_code
     description: "Use ICD-10 code or Mondo code to indicate the comorbidity diagnosed. Provide code in Compact URI (CURIE) pattern."
@@ -1389,9 +1390,9 @@ slots:
     - value : MONDO:0000001
     - value : icd10:C34
     exact_mappings:
+    - ARGO.v1.34:Comorbidity.comorbidity_type_code
     - FHIR.v.5.0.0:Condition.code.coding.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
-    - ARGO.v1.34:Comorbidity.comorbidity_type_code
     - MOHCCN.v3.1:Comorbidity.comorbidity_type_code
   comorbidity_status:
     name: comorbidity_status
@@ -1432,10 +1433,10 @@ slots:
     - value: C50.1
     - value: C18
     exact_mappings:
-    - mCODE.v4.0.0:Specimen.collection.bodySite
+    - ARGO.v1.34:surgery.surgery_site
     - FHIR.v5.0.0:Procedure.bodySite.coding.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
-    - ARGO.v1.34:surgery.surgery_site
+    - mCODE.v4.0.0:Specimen.collection.bodySite
     - MOHCCN.v3.1:surgery.surgery_site
     - Phenopackets.v2.0:Procedure.body_site.id
     range: string
@@ -1466,8 +1467,9 @@ slots:
     - value: CCI:1CA14STCDR
     comments:
     - "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
-    - "FHIR.v5.0.0 mapping:[Procedure.code.coding.system]:[Procedure.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+    related_mappings:
+    - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     exact_mappings:
     - Phenopackets.v2.0:Procedure.code.id
   procedure_term:
@@ -1525,8 +1527,8 @@ slots:
     title: Smoking Status
     exact_mappings:
     - ARGO.v1.34:exposure.tobacco_smoking_status
-    - MOHCCN.v3.1:exposure.tobacco_smoking_status
     - CQDG:smoking_status
+    - MOHCCN.v3.1:exposure.tobacco_smoking_status
     range: smoking_status_menu
     required: false
   age_at_specimen_collection:
@@ -1535,13 +1537,13 @@ slots:
     title: Age At Specimen Collection
     range: integer
     required: false
-    comments:
-    - "mCODE.v4.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]"
-    - "FHIR.v5.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-    - "ARGOv1.34 mapping:[donor.age_at_diagnosis] + [specimen.specimen_acquisition_interval]"
-    - "MOHCCN.v3.1 mapping:[specimen.specimen_collection_date] - [donor.date_of_birth]"
+    related_mappings:
+    - ARGO.v1.34:donor.age_at_diagnosis+specimen.specimen_acquisition_interval
+    - FHIR.v5.0.0:Specimen.collectedDateTime-Patient.dateBirth
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - mCODE.v4.0.0:Specimen.collectedDateTime-Patient.dateBirth
+    - MOHCCN.v3.1:specimen.specimen_collection_date-donor.date_of_birth
     exact_mappings:
     - Phenopackets.v2.0:Biosample.time_of_collection
   specimen_anatomic_location_code:
@@ -1552,9 +1554,10 @@ slots:
     - value: "UBERON:8600019"
     comments:
     - "Refer to the International Classification of Diseases for Oncology, 3rd Edition"
-    - "mCODE.v4.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]"
-    - "FHIR.v5.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
+    related_mappings:
+    - FHIR.v5.0.0:Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
+    - mCODE.v4.0.0:Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code
     exact_mappings:
     - ARGO.v1.34:specimen.specimen_anatomic_location
     - MOHCCN.v3.1:specimen.specimen_anatomic_location
@@ -1571,9 +1574,9 @@ slots:
     range: string
     required: false
     exact_mappings:
-    - mCODE.v4.0.0:Specimen.collection.bodySite.coding.display
     - FHIR.v5.0.0:Specimen.collection.bodySite.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
+    - mCODE.v4.0.0:Specimen.collection.bodySite.coding.display
   specimen_laterality:
     name: specimen_laterality
     description: "For disease in a paired organ, indicate the side on which the specimen was obtained."
@@ -1581,8 +1584,8 @@ slots:
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
     exact_mappings:
-    - mCODE.v4.0.0:Specimen.collection.bodySite.extension.lateralityQualifier
     - ARGO.v1.34:specimen.specimen.laterality
+    - mCODE.v4.0.0:Specimen.collection.bodySite.extension.lateralityQualifier
     - MOHCCN.v3.1:specimen.specimen.laterality
     range: specimen_laterality_menu
     required: false
@@ -1591,10 +1594,10 @@ slots:
     description: Indicate the technique used to process specimen.
     title: Specimen Processing
     exact_mappings:
-    - Phenopackets.v2.0:biosample.sample_processing
-    - Beacon.v2.0:biosample.sample_processing
     - ARGO.v1.34:specimen.specimen_processing
+    - Beacon.v2.0:biosample.sample_processing
     - MOHCCN.v3.1:specimen.specimen_processing
+    - Phenopackets.v2.0:biosample.sample_processing
     range: specimen_processing_menu
     required: false
   specimen_storage:
@@ -1603,24 +1606,24 @@ slots:
       extracted freshly or immediately cultured.
     title: Specimen Storage
     exact_mappings:
-    - Phenopackets.v2.0:Biosample.sample_storage
-    - Beacon.v2.0:biosample.sample_storage
     - ARGO.v1.34:specimen.specimen_storage
+    - Beacon.v2.0:biosample.sample_storage
     - MOHCCN.v3.1:specimen.specimen_storage
+    - Phenopackets.v2.0:Biosample.sample_storage
     range: specimen_storage_menu
     required: false
   specimen_tissue_source_code:
     name: specimen_tissue_source_code
     description: "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern."
     title: Specimen Tissue Source Code
-    comments:
-    - "FHIR.v5.0.0 mapping:[Specimen.type.coding.system]:[Specimen.type.coding.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
+    related_mappings:
+    - FHIR.v5.0.0:Specimen.type.coding.system:Specimen.type.coding.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
     exact_mappings:
+    - Beacon.v2.0:biosample.sampled_tissue
     - CQDG:biospecimen_tissue_source
     - mCODE.v4.0.0:Specimen.type
     - Phenopackets.v2.0:Biosample.sampled_tissue
-    - Beacon.v2.0:biosample.sampled_tissue
     range: string
     required: true
     pattern: ^NCIT:C[0-9]+$
@@ -1633,9 +1636,9 @@ slots:
     range: string
     required: false
     exact_mappings:
+    - ARGO.v1.34:sample_registration.specimen_tissue_source
     - FHIR.v5.0.0:Specimen.type.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
-    - ARGO.v1.34:sample_registration.specimen_tissue_source
     - MOHCCN.v3.1:specimen.specimen_tissue_source
   submitter_specimen_id:
     name: submitter_specimen_id
@@ -1647,14 +1650,14 @@ slots:
     - value: '00445'
     - value: THY_099-tumour
     exact_mappings:
+    - ARGO.v1.34:specimen.submitter_specimen_id
+    - Beacon.v2.0:biosample.id
     - CQDG:submitter_biospecimen_id
-    - mCODE.v4.0.0:Specimen.identifier
     - FHIR.v5.0.0:Specimen.identifier
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier
-    - Phenopackets.v2.0:Biosample.derived_from_id
-    - Beacon.v2.0:biosample.id
-    - ARGO.v1.34:specimen.submitter_specimen_id
+    - mCODE.v4.0.0:Specimen.identifier
     - MOHCCN.v3.1:specimen.submitter_specimen_id
+    - Phenopackets.v2.0:Biosample.derived_from_id
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
@@ -1662,14 +1665,14 @@ slots:
     name: age_at_diagnosis
     description: Age of participant (in days) at time of diagnosis of the condition.
     title: Age At Diagnosis
-    comments:
-    - "MOHCCN.v3.1 mapping:[primary_diagnosis.date_of_diagnosis] - [donor.date_of_birth]"
+    related_mappings:
+    - MOHCCN.v3.1:primary_diagnosis.date_of_diagnosis-donor.date_of_birth
     exact_mappings:
-    - mCODE.v4.0.0:Condition.onset
+    - ARGO.v1.34:primary_diagnosis.age_at_diagnosis
     - FHIR.v5.0.0:Condition.onset.onsetAge
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_
+    - mCODE.v4.0.0:Condition.onset
     - Phenopackets.v2.0:Disease.onset
-    - ARGO.v1.34:primary_diagnosis.age_at_diagnosis
     range: integer
     required: false
   disease_code:
@@ -1680,13 +1683,13 @@ slots:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
       MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
     exact_mappings:
-    - mCODE.v4.0.0:Condition.code.coding.code
+    - ARGO.v1.34:primary_diagnosis.cancer_type_code
+    - CQDG:disease_code
     - FHIR.v5.0.0:Condition.code.coding.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
-    - Phenopackets.v2.0:disease.term.id
-    - ARGO.v1.34:primary_diagnosis.cancer_type_code
+    - mCODE.v4.0.0:Condition.code.coding.code
     - MOHCCN.v3.1:primary_diagnosis.cancer_type_code
-    - CQDG:disease_code
+    - Phenopackets.v2.0:disease.term.id
     range: string
     required: true
     pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
@@ -1699,9 +1702,9 @@ slots:
       coding system associated with the disease_code
     title: Disease Term
     exact_mappings:
-    - mCODE.v4.0.0:Condition.code.coding.display
     - FHIR.v5.0.0:Condition.code.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
+    - mCODE.v4.0.0:Condition.code.coding.display
     - Phenopackets.v2.0:disease.term.label
     range: string
     required: false
@@ -1715,10 +1718,10 @@ slots:
     - value: BLD_donor_89
     - value: AML-90
     exact_mappings:
-    - mCODE.v4.0.0:Condition.identifier
+    - ARGO.v1.34:primary_diagnosis.submitter_diagnosis_id
     - FHIR.v5.0.0:Condition.identifier
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
-    - ARGO.v1.34:primary_diagnosis.submitter_diagnosis_id
+    - mCODE.v4.0.0:Condition.identifier
     - MOHCCN.v3.1:primary_diagnosis.submitter_diagnosis_id
     range: string
     required: true
@@ -1729,26 +1732,26 @@ slots:
     title: Age At Treatment
     range: integer
     required: false
-    comments:
-    - "FHIR.v5.0.0 mapping:[Procedure.occurrenceDateTime] - [Patient.birthDate]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-    - "Phenopackets.v2.0 mapping:[TherapeuticRegimen.end_time] - [Individual.date_of_birth]"
-    - "ARGO.v1.34 mapping:[treatment.treatment_start_interval] + [donor.age_at_diagnosis]"
-    - "MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Donor.date_of_birth]"
+    related_mappings:
+    - FHIR.v5.0.0:Procedure.occurrenceDateTime-Patient.birthDate
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
+    - Phenopackets.v2.0:TherapeuticRegimen.end_time-Individual.date_of_birth
+    - ARGO.v1.34:treatment.treatment_start_interval+donor.age_at_diagnosis
+    - MOHCCN.v3.1:Systemic_therapy.start_date-Donor.date_of_birth
   treatment_duration:
     name: treatment_duration
     description: The length of time (in days) over which the treatment was administered.
     title: Treatment Duration
     range: integer
     required: false
-    comments:
-    - "Phenopackets.v2.0 mapping:[TreatmentRegimen.end_time] - [TreatmentRegimen.start_time]"
-    - "MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Systemic_therapy.end_date]"
+    related_mappings:
+    - MOHCCN.v3.1:Systemic_therapy.start_date-Systemic_therapy.end_date
+    - Phenopackets.v2.0:TreatmentRegimen.end_time-TreatmentRegimen.start_time
     exact_mappings:
+    - ARGO.v1.34:treatment.treatment_duration
     - FHIR.v5.0.0:Procedure.occurrencePeriod
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_
-    - ARGO.v1.34:treatment.treatment_duration
   treatment_intent:
     name: treatment_intent
     description: The purpose of the treatment or the desired effect or outcome resulting
@@ -1792,8 +1795,10 @@ slots:
     title: Actual Cumulative Drug Dose
     range: decimal
     required: false
-    comments:
-    - "ARGO.v1.34 mapping:[chemotherapy|hormone_therapy|immunotherapy].actual_cumulative_drug_dose"
+    related_mappings:
+    - ARGO.v1.34:chemotherapy.actual_cumulative_drug_dose
+    - ARGO.v1.34:hormone_therapy.actual_cumulative_drug_dose
+    - ARGO.v1.34:immunotherapy.actual_cumulative_drug_dose
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.actual_cumulative_drug_dose
   drug_code:
@@ -1812,10 +1817,16 @@ slots:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
       URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt
       URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
-    - "ARGO.v1.34 mapping: [chemotherapy|hormone_therapy|immunotherapy].drug_database : [chemotherapy|hormone_therapy|immunotherapy].drug_rxnormcui OR [chemotherapy|hormone_therapy|immunotherapy].drug_id"
-    - "FHIR.v5.0.0 mapping:[MedicationAdministration.medication.code.coding.system] :[MedicationAdministration.medication.code.coding.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
-    - "MOHCCN.v3.1 mapping:[Systemic_therapy.drug_reference_database]:[Systemic_therapy.drug_reference_identifier]"
+    related_mappings:
+    - ARGO.v1.34:chemotherapy.drug_database:chemotherapy.drug_rxnormcui 
+    - ARGO.v1.34:chemotherapy.drug_id
+    - ARGO.v1.34:hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui 
+    - ARGO.v1.34:hormone_therapy.drug_id
+    - ARGO.v1.34:immunotherapy.drug_database:immunotherapy.drug_rxnormcui
+    - ARGO.v1.34:immunotherapy.drug_id
+    - FHIR.v5.0.0:MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
+    - MOHCCN.v3.1:Systemic_therapy.drug_reference_database:Systemic_therapy.drug_reference_identifier
   drug_dose_units:
     name: drug_dose_units
     description: "Provide the ontology of standardized units to indicate units used to record drug dose."
@@ -1823,8 +1834,10 @@ slots:
     range: string
     pattern: ^UO:\d{7}$
     required: false
-    comments:
-    - "ARGO.v1.34 mapping:[chemotherapy.chemotherapy_drug_dose_units|hormone_therapy.hormone_drug_dose_units|immunotherapy.immunotherapy_drug_dose_units]"
+    related_mappings:
+    - ARGO.v1.34:chemotherapy.chemotherapy_drug_dose_units
+    - ARGO.v1.34:hormone_therapy.hormone_drug_dose_units
+    - ARGO.v1.34:immunotherapy.immunotherapy_drug_dose_units
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.drug_dose_units
   drug_term:
@@ -1834,8 +1847,10 @@ slots:
     title: Drug Term
     range: string
     required: false
-    comments:
-    - "ARGO.v1.34 mapping:[chemotherapy|hormone_therapy|immunotherapy].drug_name"
+    related_mappings:
+    - ARGO.v1.34:chemotherapy.drug_name
+    - ARGO.v1.34:hormone_therapy.drug_name
+    - ARGO.v1.34:immunotherapy.drug_name
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.drug_name
   prescribed_cumulative_drug_dose:
@@ -1845,12 +1860,14 @@ slots:
     title: Prescribed Cumulative Drug Dose
     range: decimal
     required: false
-    comments:
-    - "ARGO.v1.34 mapping:[chemotherapy|hormone_therapy|immunotherapy].prescribed_cumulative_drug_dose"
+    related_mappings:
+    - ARGO.v1.34:chemotherapy.prescribed_cumulative_drug_dose
+    - ARGO.v1.34:hormone_therapy.prescribed_cumulative_drug_dose
+    - ARGO.v1.34:immunotherapy.prescribed_cumulative_drug_dose
     exact_mappings:
-    - MOHCCN.v3.1:Systemic_therapy.prescribed_cumulative_drug_dose
     - FHIR:MedicationAdministration.medication.code.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication
+    - MOHCCN.v3.1:Systemic_therapy.prescribed_cumulative_drug_dose
   anatomical_site_irradiated_code:
     name: anatomical_site_irradiated_code
     description: "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unknown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}"
@@ -1862,11 +1879,11 @@ slots:
     - value: C50.1
     - value: C18
     exact_mappings:
-    - mCODE.v4.0.0:Specimen.collection.bodySite
+    - ARGO.v1.34:radiation.anatomical_site_irradiated_code
     - FHIR.v5.0.0:Procedure.bodySite
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
+    - mCODE.v4.0.0:Specimen.collection.bodySite
     - MOHCCN.v3.1:radiation.anatomical_site_irradiated_code
-    - ARGO.v1.34:radiation.anatomical_site_irradiated_code
     - Phenopackets.v2.0:RadiationTherapy.body_site
     range: string
     required: true
@@ -1885,9 +1902,10 @@ slots:
     range: integer
     required: false
     comments:
-    - "FHIR.v5.0.0 mapping:Observation.valueQuantity and link Observation to radiation therapy Procedure using Observation.partOf -> Procedure"
-    - "FHIRSpec.v5.0.0: https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
-    - "FHIRSpec.v5.0.0:http://hl7.org/fhir/observation-definitions.html#Observation.partOf"
+    - 'For FHIR.v5.0.0 mapping:Observation.valueQuantity and link Observation to radiation therapy Procedure using Observation.partOf -> Procedure'
+    related_mappings:
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
+    - FHIRSpec.v5.0.0:http://hl7.org/fhir/observation-definitions.html#Observation.partOf
     exact_mappings:
     - ARGO.v1.34:radiation.radiation_therapy_dosage
     - MOHCCN.v3.1:radiation.radiation_therapy_dosage
@@ -1924,10 +1942,10 @@ slots:
     - value: CCG_34_94583
     - value: BRCA47832-3239
     exact_mappings:
+    - ARGO.v1.34:sample_registration.submitter_sample_id
     - FHIR.v5.0.0:submitter_sample_id
     - mCODE.v4.0.0:submitter_sample_id
     - MOHCCN.v3.1:Sample_registration.submitter_sample_id
-    - ARGO.v1.34:sample_registration.submitter_sample_id
     - Phenopackets.v2.0:Biosample.id
     range: string
     required: true
@@ -1961,8 +1979,8 @@ slots:
     description: The sequencing platform type used in data generation.
     title: Platform
     exact_mappings:
-    - Beacon.v2.0:runs.platform
     - ARGO.v1.34:experiment.platform
+    - Beacon.v2.0:runs.platform
     range: platform_menu
     required: true
   submitter_analysis_id:
@@ -2396,9 +2414,9 @@ slots:
     title: Radiation Modality Code
     examples:
     - value: NCIT:C28039
-    comments:
-    - "FHIR v5.0.0 mapping:[Procedure.code.coding.system] :[Procedure.code]"
-    - "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+    related_mappings:
+    - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
+    - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
     exact_mappings:
     - Phenopackets.v2.0:radiation_modality_code
     range: string
