@@ -135,7 +135,7 @@ def populateFieldProperties(model,lectern):
 
             ###Handle mappings to other ontologies
             ###For lectern store under meta
-            if model['slots'][slot]['exact_mappings']:
+            if model['slots'][slot]['exact_mappings'] or model['slots'][slot]['related_mappings']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
                 if not tmp['meta'].get('mappings'):
@@ -145,6 +145,10 @@ def populateFieldProperties(model,lectern):
                 for mapping in model['slots'][slot]['exact_mappings']:
                     key=mapping.split(":")[0]
                     val=mapping.split(":")[-1]
+                    tmp['meta']['mappings'][key]=val
+ 
+                for mapping in model['slots'][slot]['related_mappings']:
+                    key, val=mapping.split(":", 1)
                     tmp['meta']['mappings'][key]=val
 
             if model['slots'][slot]['comments']:
