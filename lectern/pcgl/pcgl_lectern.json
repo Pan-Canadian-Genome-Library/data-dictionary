@@ -274,7 +274,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -418,7 +418,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -1042,7 +1042,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -1066,7 +1066,7 @@
                     "description": "Participant's last known state of living or deceased.",
                     "meta": {
                         "comments": [
-                            "FHIR mapping: derive from Patient.deceased.booleen",
+                            "FHIR.v5.0.0 mapping: derive from Patient.deceased.boolean",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
                         ],
                         "displayName": "vital_status",
@@ -1074,7 +1074,7 @@
                             "ARGO.v1.34": "Donor.vital_status",
                             "Beacon.v2.0": "individual.vital_status",
                             "CQDG": "vital_status",
-                            "MOH.v3.1": "Donor.is_deceased",
+                            "MOHCCN.v3.1": "Donor.is_deceased",
                             "Phenopackets.v2.0": "Individual.vital_status"
                         }
                     },
@@ -1098,8 +1098,8 @@
                         "displayName": "cause_of_death",
                         "mappings": {
                             "ARGO.v1.34": "donor.cause_of_death",
-                            "MOH.v3.1": "donor.cause_of_death",
-                            "Phenopackets.v2": "VitalStatus.cause_of_death"
+                            "MOHCCN.v3.1": "donor.cause_of_death",
+                            "Phenopackets.v2.0": "VitalStatus.cause_of_death"
                         }
                     },
                     "name": "cause_of_death",
@@ -1124,7 +1124,7 @@
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "mCODE.v4.0.0 mapping: [Patient.deceased.dateTime] - [Patient.birthDate]",
-                            "MOH.v3.1 mapping: [Donor.date_at_death] - [Donor.date_of_birth]"
+                            "MOHCCN.v3.1 mapping: [Donor.date_at_death] - [Donor.date_of_birth]"
                         ],
                         "displayName": "age_at_death",
                         "mappings": {
@@ -1168,7 +1168,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -1193,7 +1193,7 @@
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
                             "FHIRSpec": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
-                            "MOH.v3.1": "primary_diagnosis.submitter_diagnosis_id",
+                            "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
                         }
                     },
@@ -1209,7 +1209,7 @@
                     "description": "Age of participant (in days) at time of diagnosis of the condition.",
                     "meta": {
                         "comments": [
-                            "MOH.v3.1:[primary_diagnosis.date_of_diagnosis] - [donor.date_of_birth]"
+                            "MOHCCN.v3.1 mapping:[primary_diagnosis.date_of_diagnosis] - [donor.date_of_birth]"
                         ],
                         "displayName": "age_at_diagnosis",
                         "mappings": {
@@ -1239,7 +1239,7 @@
                             "CQDG": "disease_code",
                             "FHIR.v5.0.0": "Condition.code.coding.code",
                             "FHIRSpec": "//hl7.org/fhir/condition-definitions.html#Condition.code",
-                            "MOH.v3.1": "primary_diagnosis.cancer_type_code",
+                            "MOHCCN.v3.1": "primary_diagnosis.cancer_type_code",
                             "Phenopackets.v2.0": "disease.term.id",
                             "mCODE.v4.0.0": "Condition.code.coding.code"
                         }
@@ -1299,7 +1299,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -1363,7 +1363,7 @@
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
                             "FHIRSpec": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
-                            "MOH.v3.1": "primary_diagnosis.submitter_diagnosis_id",
+                            "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
                         }
                     },
@@ -1393,12 +1393,12 @@
                     "description": "Age (in days) of the participant at the time the treatment was administered.",
                     "meta": {
                         "comments": [
-                            "FHIR.v5.0.0:[Procedure.occurrenceDateTime] - [Patient.birthDate]",
+                            "FHIR.v5.0.0 mapping:[Procedure.occurrenceDateTime] - [Patient.birthDate]",
                             "FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "Phenopackets.v2.0:[TherapeuticRegimen.end_time] - [Individual.date_of_birth]",
-                            "ARGO.v1.34:[treatment.treatment_start_interval] + [donor.age_at_diagnosis]",
-                            "MOH.v3.1:[Systemic_therapy.start_date] - [Donor.date_of_birth]"
+                            "Phenopackets.v2.0 mapping:[TherapeuticRegimen.end_time] - [Individual.date_of_birth]",
+                            "ARGO.v1.34 mapping:[treatment.treatment_start_interval] + [donor.age_at_diagnosis]",
+                            "MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Donor.date_of_birth]"
                         ],
                         "displayName": "age_at_treatment"
                     },
@@ -1409,8 +1409,8 @@
                     "description": "The length of time (in days) over which the treatment was administered.",
                     "meta": {
                         "comments": [
-                            "Phenopackets.v2.0:[TreatmentRegimen.end_time] - [TreatmentRegimen.start_time]",
-                            "MOH.v3.1:[Systemic_therapy.start_date] - [Systemic_therapy.end_date]"
+                            "Phenopackets.v2.0 mapping:[TreatmentRegimen.end_time] - [TreatmentRegimen.start_time]",
+                            "MOHCCN.v3.1 mapping:[Systemic_therapy.start_date] - [Systemic_therapy.end_date]"
                         ],
                         "displayName": "treatment_duration",
                         "mappings": {
@@ -1428,7 +1428,7 @@
                         "displayName": "treatment_intent",
                         "mappings": {
                             "ARGO.v1.34": "treatment.treatment_intent",
-                            "MOH.v3.1": "Treatment.treatment_intent"
+                            "MOHCCN.v3.1": "Treatment.treatment_intent"
                         }
                     },
                     "name": "treatment_intent",
@@ -1459,7 +1459,7 @@
                         "mappings": {
                             "ARGO.v1.34": "treatment.response_to_treatment",
                             "CQDG": "treatment_response",
-                            "MOH.v3.1": "Treatment.response_to_treatment"
+                            "MOHCCN.v3.1": "Treatment.response_to_treatment"
                         }
                     },
                     "name": "treatment_response",
@@ -1489,7 +1489,7 @@
                         "displayName": "treatment_status",
                         "mappings": {
                             "ARGO.v1.34": "treatment.outcome_of_treatment",
-                            "MOH.v3.1": "Treatment.status_of_treatment"
+                            "MOHCCN.v3.1": "Treatment.status_of_treatment"
                         }
                     },
                     "name": "treatment_status",
@@ -1556,7 +1556,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -1575,7 +1575,7 @@
                             "FHIR.v5.0.0 mapping:[Observation.effectiveDateTime]- [Patient.birthDate]",
                             "FHIRSpec:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "MOH.v3.1 mapping:[follow_up.date_of_followup] - [donor.date_of_birth]",
+                            "MOHCCN.v3.1 mapping:[follow_up.date_of_followup] - [donor.date_of_birth]",
                             "ARGO.v1.34 mapping:[primary_diagnosis.age_at_diagnosis] + [followup.interval_of_followup]"
                         ],
                         "displayName": "age_at_followup"
@@ -1589,7 +1589,7 @@
                         "displayName": "disease_status_at_followup",
                         "mappings": {
                             "ARGO.v1.34": "followup.disease_status_at_followup",
-                            "MOH.v3.1": "followup.disease_status_at_followup/"
+                            "MOHCCN.v3.1": "followup.disease_status_at_followup/"
                         }
                     },
                     "name": "disease_status_at_followup",
@@ -1653,7 +1653,7 @@
                     "meta": {
                         "comments": [
                             "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure",
-                            "FHIR.v5.0.0:[Procedure.code.coding.system]:[Procedure.code]",
+                            "FHIR.v5.0.0 mapping:[Procedure.code.coding.system]:[Procedure.code]",
                             "FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
                         ],
                         "displayName": "procedure_code",
@@ -1702,7 +1702,7 @@
                             "ARGO.v1.34": "surgery.surgery_site",
                             "FHIR.v5.0.0": "Procedure.bodySite.coding.code",
                             "FHIRSpec": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
-                            "MOH.v3.1": "surgery.surgery_site",
+                            "MOHCCN.v3.1": "surgery.surgery_site",
                             "Phenopackets.v2.0": "Procedure.body_site.id",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
                         }
@@ -1772,10 +1772,10 @@
                     "meta": {
                         "comments": [
                             "Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}",
-                            "ARGO.v.13.4: [chemotherapy|hormone_therapy|immunotherapy].drug_database : [chemotherapy|hormone_therapy|immunotherapy].drug_rxnormcui OR [chemotherapy|hormone_therapy|immunotherapy].drug_id",
-                            "FHIR.v5.0.0:[MedicationAdministration.medication.code.coding.system] :[MedicationAdministration.medication.code.coding.code]",
+                            "ARGO.v1.34 mapping: [chemotherapy|hormone_therapy|immunotherapy].drug_database : [chemotherapy|hormone_therapy|immunotherapy].drug_rxnormcui OR [chemotherapy|hormone_therapy|immunotherapy].drug_id",
+                            "FHIR.v5.0.0 mapping:[MedicationAdministration.medication.code.coding.system] :[MedicationAdministration.medication.code.coding.code]",
                             "FHIRSpec:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
-                            "MOH.v3.1:[Systemic_therapy.drug_reference_database]:[Systemic_therapy.drug_reference_identifier]"
+                            "MOHCCN.v3.1 mapping:[Systemic_therapy.drug_reference_database]:[Systemic_therapy.drug_reference_identifier]"
                         ],
                         "displayName": "drug_code",
                         "examples": [
@@ -1796,11 +1796,11 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
                     "meta": {
                         "comments": [
-                            "ARGO.v1.34:[chemotherapy|hormone_therapy|immunotherapy].drug_name"
+                            "ARGO.v1.34 mapping:[chemotherapy|hormone_therapy|immunotherapy].drug_name"
                         ],
                         "displayName": "drug_term",
                         "mappings": {
-                            "MOH.v3.1": "Systemic_therapy.drug_name"
+                            "MOHCCN.v3.1": "Systemic_therapy.drug_name"
                         }
                     },
                     "name": "drug_term",
@@ -1810,11 +1810,11 @@
                     "description": "Provide the ontology of standardized units to indicate units used to record drug dose.",
                     "meta": {
                         "comments": [
-                            "ARGO.v1.34:[chemotherapy.chemotherapy_drug_dose_units|hormone_therapy.hormone_drug_dose_units|immunotherapy.immunotherapy_drug_dose_units]"
+                            "ARGO.v1.34 mapping:[chemotherapy.chemotherapy_drug_dose_units|hormone_therapy.hormone_drug_dose_units|immunotherapy.immunotherapy_drug_dose_units]"
                         ],
                         "displayName": "drug_dose_units",
                         "mappings": {
-                            "MOH.v3.1": "Systemic_therapy.drug_dose_units"
+                            "MOHCCN.v3.1": "Systemic_therapy.drug_dose_units"
                         }
                     },
                     "name": "drug_dose_units",
@@ -1827,13 +1827,13 @@
                     "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
                     "meta": {
                         "comments": [
-                            "ARGO.v1.34:[chemotherapy|hormone_therapy|immunotherapy].prescribed_cumulative_drug_dose"
+                            "ARGO.v1.34 mapping:[chemotherapy|hormone_therapy|immunotherapy].prescribed_cumulative_drug_dose"
                         ],
                         "displayName": "prescribed_cumulative_drug_dose",
                         "mappings": {
                             "FHIR": "MedicationAdministration.medication.code.coding.display",
                             "FHIRSpec": "//hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
-                            "MOH.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
+                            "MOHCCN.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
                         }
                     },
                     "name": "prescribed_cumulative_drug_dose",
@@ -1847,7 +1847,7 @@
                         ],
                         "displayName": "actual_cumulative_drug_dose",
                         "mappings": {
-                            "MOH.v3.1": "Systemic_therapy.actual_cumulative_drug_dose"
+                            "MOHCCN.v3.1": "Systemic_therapy.actual_cumulative_drug_dose"
                         }
                     },
                     "name": "actual_cumulative_drug_dose",
@@ -1897,7 +1897,7 @@
                     "description": "Indicate NCIt code to denote the modality of radiation therapy.\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "comments": [
-                            "FHIR:[Procedure.code.coding.system] :[Procedure.code]",
+                            "FHIR v5.0.0 mapping:[Procedure.code.coding.system] :[Procedure.code]",
                             "FHIRSpec:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
                         ],
                         "displayName": "radiation_modality_code",
@@ -1936,7 +1936,7 @@
                         "displayName": "radiation_fractions",
                         "mappings": {
                             "ARGO.v1.34": "radiation.radiation_therapy_fractions",
-                            "MOH.v3.1": "radiation.radiation_therapy_fractions",
+                            "MOHCCN.v3.1": "radiation.radiation_therapy_fractions",
                             "Phenopackets.v2.0": "RadiationTherapy.fractions"
                         }
                     },
@@ -1947,14 +1947,14 @@
                     "description": "Indicate the total dose given in units of Gray (Gy).",
                     "meta": {
                         "comments": [
-                            "FHIR.v5.0.0:Observation.valueQuantity and link Observation to radiation therapy Procedure using Observation.partOf -> Procedure",
+                            "FHIR.v5.0.0 mapping:Observation.valueQuantity and link Observation to radiation therapy Procedure using Observation.partOf -> Procedure",
                             "FHIRSpec: https://hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "FHIRSpec:http://hl7.org/fhir/observation-definitions.html#Observation.partOf"
                         ],
                         "displayName": "radiation_dosage",
                         "mappings": {
                             "ARGO.v1.34": "radiation.radiation_therapy_dosage",
-                            "MOH.v3.1": "radiation.radiation_therapy_dosage",
+                            "MOHCCN.v3.1": "radiation.radiation_therapy_dosage",
                             "Phenopackets.v2.0": "RadiationTherapy.dosage"
                         }
                     },
@@ -1962,7 +1962,7 @@
                     "valueType": "integer"
                 },
                 {
-                    "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unkown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
+                    "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unknown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
                     "meta": {
                         "comments": [
                             "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
@@ -1976,7 +1976,7 @@
                             "ARGO.v1.34": "radiation.anatomical_site_irradiated_code",
                             "FHIR.v5.0.0": "Procedure.bodySite",
                             "FHIRSpec": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
-                            "MOH.v3.1": "radiation.anatomical_site_irradiated_code",
+                            "MOHCCN.v3.1": "radiation.anatomical_site_irradiated_code",
                             "Phenopackets.v2.0": "RadiationTherapy.body_site",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
                         }
@@ -2030,7 +2030,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -2167,7 +2167,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -2190,7 +2190,7 @@
                         ],
                         "displayName": "age_at_phenotype",
                         "mappings": {
-                            "Phenopackets": "onset"
+                            "Phenopackets.v2.0": "onset"
                         }
                     },
                     "name": "age_at_phenotype",
@@ -2317,7 +2317,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -2333,14 +2333,14 @@
                     "description": "Indicate the age (in days) of comorbidity diagnosis.",
                     "meta": {
                         "comments": [
-                            "FHIR.v5.0.0:Condition.onsetDateTime - Patient.birthDate",
+                            "FHIR.v5.0.0 mapping:Condition.onsetDateTime - Patient.birthDate",
                             "FHIRSpec:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
                         ],
                         "displayName": "age_at_comorbidity_diagnosis",
                         "mappings": {
                             "ARGO.v1.34": "Comorbidity.age_at_comorbidity_diagnosis",
-                            "MOH.v3.1": "Comorbidity.age_at_comorbidity_diagnosis"
+                            "MOHCCN.v3.1": "Comorbidity.age_at_comorbidity_diagnosis"
                         }
                     },
                     "name": "age_at_comorbidity_diagnosis",
@@ -2361,7 +2361,7 @@
                             "ARGO.v1.34": "Comorbidity.comorbidity_type_code",
                             "FHIR.v.5.0.0": "Condition.code.coding.code",
                             "FHIRSpec": "//hl7.org/fhir/condition-definitions.html#Condition.code",
-                            "MOH.v3.1": "Comorbidity.comorbidity_type_code"
+                            "MOHCCN.v3.1": "Comorbidity.comorbidity_type_code"
                         }
                     },
                     "name": "comorbidity_code",
@@ -2463,7 +2463,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -2592,7 +2592,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -2619,7 +2619,7 @@
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
-                            "MOH.v3.1": "specimen.submitter_specimen_id",
+                            "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
                         }
@@ -2636,7 +2636,7 @@
                     "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "comments": [
-                            "FHIR.v5.0.0:[Specimen.type.coding.system]:[Specimen.type.coding.code]",
+                            "FHIR.v5.0.0 mapping:[Specimen.type.coding.system]:[Specimen.type.coding.code]",
                             "FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
                         ],
                         "displayName": "specimen_tissue_source_code",
@@ -2665,7 +2665,7 @@
                             "ARGO.v1.34": "sample_registration.specimen_tissue_source",
                             "FHIR.v5.0.0": "Specimen.type.coding.display",
                             "FHIRSpec": "//hl7.org/fhir/specimen-definitions.html#Specimen.type",
-                            "MOH.v3.1": "specimen.specimen_tissue_source"
+                            "MOHCCN.v3.1": "specimen.specimen_tissue_source"
                         }
                     },
                     "name": "specimen_tissue_source_term",
@@ -2678,7 +2678,7 @@
                         "mappings": {
                             "ARGO.v1.34": "specimen.specimen_storage",
                             "Beacon.v2.0": "biosample.sample_storage",
-                            "MOH.v3.1": "specimen.specimen_storage",
+                            "MOHCCN.v3.1": "specimen.specimen_storage",
                             "Phenopackets.v2.0": "Biosample.sample_storage"
                         }
                     },
@@ -2708,7 +2708,7 @@
                         "mappings": {
                             "ARGO.v1.34": "specimen.specimen_processing",
                             "Beacon.v2.0": "biosample.sample_processing",
-                            "MOH.v3.1": "specimen.specimen_processing",
+                            "MOHCCN.v3.1": "specimen.specimen_processing",
                             "Phenopackets.v2.0": "biosample.sample_processing"
                         }
                     },
@@ -2737,28 +2737,28 @@
                     "description": "Indicate participant's age( in days) when specimen was collected.",
                     "meta": {
                         "comments": [
-                            "mCODE.v4.0.0:[Specimen.collectedDateTime] - [Patient.dateBirth]",
-                            "FHIR.v5.0.0:[Specimen.collectedDateTime] - [Patient.dateBirth]",
+                            "mCODE.v4.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]",
+                            "FHIR.v5.0.0 mapping:[Specimen.collectedDateTime] - [Patient.dateBirth]",
                             "FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_",
                             "FHIRSpec:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "ARGOv1.34:[donor.age_at_diagnosis] + [specimen.specimen_acquisition_interval]",
-                            "MOH.v3.1:[specimen.specimen_collection_date] - [donor.date_of_birth]"
+                            "ARGOv1.34 mapping:[donor.age_at_diagnosis] + [specimen.specimen_acquisition_interval]",
+                            "MOHCCN.v3.1 mapping:[specimen.specimen_collection_date] - [donor.date_of_birth]"
                         ],
                         "displayName": "age_at_specimen_collection",
                         "mappings": {
-                            "Phenopackets.v2": "Biosample.time_of_collection"
+                            "Phenopackets.v2.0": "Biosample.time_of_collection"
                         }
                     },
                     "name": "age_at_specimen_collection",
                     "valueType": "integer"
                 },
                 {
-                    "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unkown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
+                    "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
                     "meta": {
                         "comments": [
                             "Refer to the International Classification of Diseases for Oncology, 3rd Edition",
-                            "mCODE.v4.0.0:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]",
-                            "FHIR.v5.0.0:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]",
+                            "mCODE.v4.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]",
+                            "FHIR.v5.0.0 mapping:[Specimen.collection.bodySite.coding.system]:[Specimen.collection.bodySite.coding.code]",
                             "FHIRSpec:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
                         ],
                         "displayName": "specimen_anatomic_location_code",
@@ -2767,7 +2767,7 @@
                         ],
                         "mappings": {
                             "ARGO.v1.34": "specimen.specimen_anatomic_location",
-                            "MOH.v3.1": "specimen.specimen_anatomic_location"
+                            "MOHCCN.v3.1": "specimen.specimen_anatomic_location"
                         }
                     },
                     "name": "specimen_anatomic_location_code",
@@ -2780,6 +2780,9 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen anatomic location code.",
                     "meta": {
                         "displayName": "specimen_anatomic_location_term",
+                        "examples": [
+                            "placental basal plate"
+                        ],
                         "mappings": {
                             "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.display",
                             "FHIRSpec": "//hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite",
@@ -2798,7 +2801,7 @@
                         "displayName": "specimen_laterality",
                         "mappings": {
                             "ARGO.v1.34": "specimen.specimen.laterality",
-                            "MOH.v3.1": "specimen.specimen.laterality",
+                            "MOHCCN.v3.1": "specimen.specimen.laterality",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.extension.lateralityQualifier"
                         }
                     },
@@ -2847,7 +2850,7 @@
                         "mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
-                            "MOH.v3.1": "Sample_registration.submitter_sample_id",
+                            "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
                         }
@@ -2875,7 +2878,7 @@
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
-                            "MOH.v3.1": "specimen.submitter_specimen_id",
+                            "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
                         }
@@ -2894,7 +2897,7 @@
                         "examples": [
                             "NCIT:C449",
                             "NCIT:C812",
-                            "NNCIT:C80376",
+                            "NCIT:C80376",
                             "SO:0000991",
                             "SO:0000234",
                             "SO:0001877"
@@ -2987,7 +2990,7 @@
                         "mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
-                            "MOH.v3.1": "Sample_registration.submitter_sample_id",
+                            "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
                         }
@@ -3150,7 +3153,7 @@
             }
         },
         {
-            "description": "Holds the readgroup information about the raw reads generated in a run of sequencing",
+            "description": "Holds the read group information about the raw reads generated in a run of sequencing",
             "fields": [
                 {
                     "description": "The identifier of a read group; must be unique within each payload.",
@@ -3189,7 +3192,7 @@
                     "meta": {
                         "displayName": "file_r1",
                         "mappings": {
-                            "ARGO": "file_r1"
+                            "ARGO": "read_groups.file_r1"
                         }
                     },
                     "name": "file_r1",
@@ -3203,7 +3206,7 @@
                     "meta": {
                         "displayName": "file_r2",
                         "mappings": {
-                            "ARGO": "file_r2"
+                            "ARGO": "read_groups.file_r2"
                         }
                     },
                     "name": "file_r2",
@@ -3236,7 +3239,7 @@
                     "meta": {
                         "displayName": "library_name",
                         "mappings": {
-                            "ARGO": "library_name",
+                            "ARGO": "read_groups.library_name",
                             "GA4GH.Experiment.Metadata.Checklist": "library_extra_id"
                         }
                     },
@@ -3271,7 +3274,7 @@
                     "meta": {
                         "displayName": "platform_unit",
                         "mappings": {
-                            "ARGO.platform_unit": "ARGO.platform_unit"
+                            "ARGO": "read_groups.platform_unit"
                         }
                     },
                     "name": "platform_unit",
@@ -3296,7 +3299,7 @@
                     "meta": {
                         "displayName": "read_group_id_in_bam",
                         "mappings": {
-                            "ARGO": "read_group_id_in_bam"
+                            "ARGO": "read_groups.read_group_id_in_bam"
                         }
                     },
                     "name": "read_group_id_in_bam",
@@ -3310,7 +3313,7 @@
                     "meta": {
                         "displayName": "read_length_r1",
                         "mappings": {
-                            "ARGO": "read_length_r1"
+                            "ARGO": "read_groups.read_length_r1"
                         }
                     },
                     "name": "read_length_r1",
@@ -3326,7 +3329,7 @@
                     "meta": {
                         "displayName": "read_length_r2",
                         "mappings": {
-                            "ARGO": "read_length_r2"
+                            "ARGO": "read_groups.read_length_r2"
                         }
                     },
                     "name": "read_length_r2",
@@ -3342,7 +3345,7 @@
                     "meta": {
                         "displayName": "insert_size",
                         "mappings": {
-                            "ARGO": "insert_size",
+                            "ARGO": "read_groups.insert_size",
                             "GA4GH.Experiment.Metadata.Checklist": "insert_size"
                         }
                     },
@@ -3378,7 +3381,7 @@
                     "meta": {
                         "displayName": "studyId",
                         "mappings": {
-                            "ARGO": "studyId",
+                            "ARGO.v1.34": "program_id",
                             "CQDG": "study_id"
                         }
                     },
@@ -3399,7 +3402,7 @@
                         ],
                         "mappings": {
                             "Beacon.v2.0": "analyses.id",
-                            "EGA": "submitter_analysis_id"
+                            "EGA": "ANALYSIS_ALIAS"
                         }
                     },
                     "name": "submitter_analysis_id",
@@ -3416,7 +3419,7 @@
                         "displayName": "analysisType",
                         "mappings": {
                             "ARGO": "analysisType",
-                            "EGA": "analysisType"
+                            "EGA": "ANALYSIS/ANALYSIS_TYPE"
                         }
                     },
                     "name": "analysisType",
@@ -3446,7 +3449,7 @@
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
                             "FHIRSpec": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOH.v3.1": "submitter_donor_id",
+                            "MOHCCN.v3.1": "submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
                         }
@@ -3493,7 +3496,7 @@
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
-                            "MOH.v3.1": "specimen.submitter_specimen_id",
+                            "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
                         }
@@ -3537,7 +3540,7 @@
                         "mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
-                            "MOH.v3.1": "Sample_registration.submitter_sample_id",
+                            "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
                         }
@@ -3749,7 +3752,7 @@
                         ],
                         "mappings": {
                             "Beacon.v2.0": "analyses.id",
-                            "EGA": "submitter_analysis_id"
+                            "EGA": "ANALYSIS_ALIAS"
                         }
                     },
                     "name": "submitter_analysis_id",
@@ -3816,7 +3819,7 @@
                         ],
                         "mappings": {
                             "Beacon.v2.0": "analyses.id",
-                            "EGA": "submitter_analysis_id"
+                            "EGA": "ANALYSIS_ALIAS"
                         }
                     },
                     "name": "submitter_analysis_id",
@@ -3872,7 +3875,7 @@
                         "displayName": "fileType",
                         "mappings": {
                             "ARGO": "files.format",
-                            "EGA": "fileType"
+                            "EGA": "ANALYSIS/FILES/FILE@filetype"
                         }
                     },
                     "name": "fileType",
