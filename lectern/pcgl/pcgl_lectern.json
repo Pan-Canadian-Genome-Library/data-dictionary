@@ -263,21 +263,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -291,7 +291,7 @@
                     "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Participant data.",
                     "meta": {
                         "displayName": "duo_permission",
-                        "mappings": {
+                        "exact_mappings": {
                             "CQDG": "duo_permission"
                         }
                     },
@@ -314,7 +314,7 @@
                     "isArray": true,
                     "meta": {
                         "displayName": "duo_modifier",
-                        "mappings": {
+                        "exact_mappings": {
                             "CQDG": "duo_modifier"
                         }
                     },
@@ -407,21 +407,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -434,7 +434,7 @@
                     "description": "Age (in days) of the participant at the time of sociodemographic data collection",
                     "meta": {
                         "displayName": "age_at_sociodem_collection",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -448,7 +448,7 @@
                     "description": "Many sociodemographic variables are social constructs, and the way participants self-identify may evolve over time. \nPlease indicate the actual date when the data was collected in format: YYYY-MM-DD, if available. \nIf the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if the day is unknown but the month and year are known\n- Use YYYY if only the year is known",
                     "meta": {
                         "displayName": "sociodem_date_collection",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -468,7 +468,7 @@
                             "EDI indicator"
                         ],
                         "displayName": "race",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -499,7 +499,7 @@
                     "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
                     "meta": {
                         "displayName": "race_another_racial_category",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -557,7 +557,7 @@
                             "EDI indicator"
                         ],
                         "displayName": "gender",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
                             "Phenopackets.v2.0": "Individual.gender"
                         }
@@ -583,7 +583,7 @@
                     "description": "A response which does not fall into any of the previous gender reporting categories.",
                     "meta": {
                         "displayName": "gender_another_gender",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -640,7 +640,7 @@
                             "EDI indicator"
                         ],
                         "displayName": "ethnicity",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -665,7 +665,7 @@
                     "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
                     "meta": {
                         "displayName": "ethnicity_another_category",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -720,7 +720,7 @@
                     "description": "Sex is a biological concept that has been historically defined solely based on external anatomy; however, sex is also influenced by our physiology, genes, and hormones.",
                     "meta": {
                         "displayName": "sex_at_birth",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
                             "Phenopackets.v2.0": "Individual.sex"
                         }
@@ -745,7 +745,7 @@
                     "description": "A response which does not fall into any of the previous categories. ",
                     "meta": {
                         "displayName": "sex_another_category",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -799,7 +799,7 @@
                     "description": "The highest level of education attained.",
                     "meta": {
                         "displayName": "education",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -850,7 +850,7 @@
                     "description": "Personal annual income from all sources after taxes.",
                     "meta": {
                         "displayName": "personal_income",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -901,7 +901,7 @@
                     "description": "A participant's postal code at their current address of residence.",
                     "meta": {
                         "displayName": "geographic_location",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -962,7 +962,7 @@
                     "description": "Report the questions asked for the sociodemographic variable, including the provided response options/reporting categories if it does not follow the PCGL reference question and standard reporting categories.",
                     "meta": {
                         "displayName": "sociodem_question_detail",
-                        "mappings": {
+                        "exact_mappings": {
                             "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
                         }
                     },
@@ -998,12 +998,12 @@
                     "description": "Studies may choose to report whether potential bias may exist due to the way reporting categories were defined and handled.",
                     "meta": {
                         "displayName": "sociodem_notes",
+                        "exact_mappings": {
+                            "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+                        },
                         "examples": [
                             "For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
-                        ],
-                        "mappings": {
-                            "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-                        }
+                        ]
                     },
                     "name": "sociodem_notes",
                     "valueType": "string"
@@ -1031,21 +1031,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -1066,14 +1066,15 @@
                     "description": "Participant's last known state of living or deceased.",
                     "meta": {
                         "displayName": "vital_status",
-                        "mappings": {
-                            "ARGO.v1.34": "Donor.vital_status",
-                            "Beacon.v2.0": "individual.vital_status",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.vital_status",
                             "CQDG": "vital_status",
-                            "FHIR.v5.0.0": "derive_from_Patient.deceased.boolean",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_",
                             "MOHCCN.v3.1": "Donor.is_deceased",
                             "Phenopackets.v2.0": "Individual.vital_status"
+                        },
+                        "related_mappings": {
+                            "FHIR.v5.0.0": "derive_from_Patient.deceased.boolean",
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
                         }
                     },
                     "name": "vital_status",
@@ -1094,9 +1095,9 @@
                     "description": "Indicate the cause of a participant's death.",
                     "meta": {
                         "displayName": "cause_of_death",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "donor.cause_of_death",
-                            "MOHCCN.v3.1": "donor.cause_of_death",
+                            "MOHCCN.v3.1": "Donor.cause_of_death",
                             "Phenopackets.v2.0": "VitalStatus.cause_of_death"
                         }
                     },
@@ -1118,13 +1119,18 @@
                     "description": "Age of participant (in days) at time of death",
                     "meta": {
                         "displayName": "age_at_death",
-                        "mappings": {
+                        "exact_mappings": {
+                            "Phenopackets.v2.0": "VitalStatus.survival_time_in_days"
+                        },
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Patient.deceased.dateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "MOHCCN.v3.1": "Donor.date_at_death-Donor.date_of_birth",
-                            "Phenopackets.v2.0": "VitalStatus.survival_time_in_days",
                             "mCODE.v4.0.0": "Patient.deceased.dateTime-Patient.birthDate"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_death",
                     "valueType": "integer"
@@ -1152,21 +1158,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -1179,18 +1185,18 @@
                     "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_diagnosis_id",
-                        "examples": [
-                            "90234",
-                            "BLD_donor_89",
-                            "AML-90"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
                             "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
-                        }
+                        },
+                        "examples": [
+                            "90234",
+                            "BLD_donor_89",
+                            "AML-90"
+                        ]
                     },
                     "name": "submitter_diagnosis_id",
                     "restrictions": {
@@ -1204,13 +1210,15 @@
                     "description": "Age of participant (in days) at time of diagnosis of the condition.",
                     "meta": {
                         "displayName": "age_at_diagnosis",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.age_at_diagnosis",
                             "FHIR.v5.0.0": "Condition.onset.onsetAge",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.onset_x_",
-                            "MOHCCN.v3.1": "primary_diagnosis.date_of_diagnosis-donor.date_of_birth",
                             "Phenopackets.v2.0": "Disease.onset",
                             "mCODE.v4.0.0": "Condition.onset"
+                        },
+                        "related_mappings": {
+                            "MOHCCN.v3.1": "primary_diagnosis.date_of_diagnosis-donor.date_of_birth"
                         }
                     },
                     "name": "age_at_diagnosis",
@@ -1223,19 +1231,19 @@
                             "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
                         ],
                         "displayName": "disease_code",
-                        "examples": [
-                            "MONDO:0000001",
-                            "icd10:C34"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.cancer_type_code",
                             "CQDG": "disease_code",
                             "FHIR.v5.0.0": "Condition.code.coding.code",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "MOHCCN.v3.1": "primary_diagnosis.cancer_type_code",
-                            "Phenopackets.v2.0": "disease.term.id",
+                            "Phenopackets.v2.0": "Disease.term.id",
                             "mCODE.v4.0.0": "Condition.code.coding.code"
-                        }
+                        },
+                        "examples": [
+                            "MONDO:0000001",
+                            "icd10:C34"
+                        ]
                     },
                     "name": "disease_code",
                     "restrictions": {
@@ -1248,10 +1256,10 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the disease_code",
                     "meta": {
                         "displayName": "disease_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Condition.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
-                            "Phenopackets.v2.0": "disease.term.label",
+                            "Phenopackets.v2.0": "Disease.term.label",
                             "mCODE.v4.0.0": "Condition.code.coding.display"
                         }
                     },
@@ -1281,21 +1289,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -1308,15 +1316,15 @@
                     "description": "Unique identifier of the treatment, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_treatment_id",
+                        "exact_mappings": {
+                            "FHIR.v5.0.0": "Procedure.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_treatment_id",
                     "restrictions": {
@@ -1347,18 +1355,18 @@
                     "description": "Unique identifier of the primary diagnosis event, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_diagnosis_id",
-                        "examples": [
-                            "90234",
-                            "BLD_donor_89",
-                            "AML-90"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
                             "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
-                        }
+                        },
+                        "examples": [
+                            "90234",
+                            "BLD_donor_89",
+                            "AML-90"
+                        ]
                     },
                     "name": "submitter_diagnosis_id",
                     "restrictions": {
@@ -1386,7 +1394,7 @@
                     "description": "Age (in days) of the participant at the time the treatment was administered.",
                     "meta": {
                         "displayName": "age_at_treatment",
-                        "mappings": {
+                        "related_mappings": {
                             "ARGO.v1.34": "treatment.treatment_start_interval+donor.age_at_diagnosis",
                             "FHIR.v5.0.0": "Procedure.occurrenceDateTime-Patient.birthDate",
                             "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
@@ -1401,10 +1409,12 @@
                     "description": "The length of time (in days) over which the treatment was administered.",
                     "meta": {
                         "displayName": "treatment_duration",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "treatment.treatment_duration",
                             "FHIR.v5.0.0": "Procedure.occurrencePeriod",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_"
+                        },
+                        "related_mappings": {
                             "MOHCCN.v3.1": "Systemic_therapy.start_date-Systemic_therapy.end_date",
                             "Phenopackets.v2.0": "TreatmentRegimen.end_time-TreatmentRegimen.start_time"
                         }
@@ -1416,7 +1426,7 @@
                     "description": "The purpose of the treatment or the desired effect or outcome resulting from the treatment.",
                     "meta": {
                         "displayName": "treatment_intent",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "treatment.treatment_intent",
                             "MOHCCN.v3.1": "Treatment.treatment_intent"
                         }
@@ -1446,7 +1456,7 @@
                     "description": "The outcome of the treatment, indicating how the patient responded to the intervention",
                     "meta": {
                         "displayName": "treatment_response",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "treatment.response_to_treatment",
                             "CQDG": "treatment_response",
                             "MOHCCN.v3.1": "Treatment.response_to_treatment"
@@ -1477,7 +1487,7 @@
                     "description": "Indicate the participant's status of the prescribed treatment.",
                     "meta": {
                         "displayName": "treatment_status",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "treatment.outcome_of_treatment",
                             "MOHCCN.v3.1": "Treatment.status_of_treatment"
                         }
@@ -1535,21 +1545,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -1562,11 +1572,11 @@
                     "description": "Participant's age (in days) at time of the follow up event",
                     "meta": {
                         "displayName": "age_at_followup",
-                        "mappings": {
+                        "related_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.age_at_diagnosis+followup.interval_of_followup",
                             "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
                             "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "MOHCCN.v3.1": "follow_up.date_of_followup-donor.date_of_birth"
+                            "MOHCCN.v3.1": "Follow_up.date_of_followup-Donor.date_of_birth"
                         }
                     },
                     "name": "age_at_followup",
@@ -1576,9 +1586,9 @@
                     "description": "Indicate the participant's disease status at time of follow-up",
                     "meta": {
                         "displayName": "disease_status_at_followup",
-                        "mappings": {
-                            "ARGO.v1.34": "followup.disease_status_at_followup",
-                            "MOHCCN.v3.1": "followup.disease_status_at_followup"
+                        "exact_mappings": {
+                            "ARGO.v1.34": "follow_up.disease_status_at_followup",
+                            "MOHCCN.v3.1": "Follow_up.disease_status_at_followup"
                         }
                     },
                     "name": "disease_status_at_followup",
@@ -1620,15 +1630,15 @@
                     "description": "Unique identifier of the treatment, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_treatment_id",
+                        "exact_mappings": {
+                            "FHIR.v5.0.0": "Procedure.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_treatment_id",
                     "restrictions": {
@@ -1644,16 +1654,18 @@
                             "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
                         ],
                         "displayName": "procedure_code",
+                        "exact_mappings": {
+                            "Phenopackets.v2.0": "Procedure.code.id"
+                        },
                         "examples": [
                             "NCIT:C51894",
                             "snomedct:284196006",
                             "umls:C2584994",
                             "CCI:1CA14STCDR"
                         ],
-                        "mappings": {
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code",
-                            "Phenopackets.v2.0": "Procedure.code.id"
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
                         }
                     },
                     "name": "procedure_code",
@@ -1667,7 +1679,7 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
                     "meta": {
                         "displayName": "procedure_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Procedure.code.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.code",
                             "Phenopackets.v2.0": "Procedure.code.label"
@@ -1680,18 +1692,18 @@
                     "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.",
                     "meta": {
                         "displayName": "procedure_body_site_code",
-                        "examples": [
-                            "C50.1",
-                            "C18"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "surgery.surgery_site",
                             "FHIR.v5.0.0": "Procedure.bodySite.coding.code",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
-                            "MOHCCN.v3.1": "surgery.surgery_site",
+                            "MOHCCN.v3.1": "Surgery.surgery_site",
                             "Phenopackets.v2.0": "Procedure.body_site.id",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
-                        }
+                        },
+                        "examples": [
+                            "C50.1",
+                            "C18"
+                        ]
                     },
                     "name": "procedure_body_site_code",
                     "restrictions": {
@@ -1704,7 +1716,7 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
                     "meta": {
                         "displayName": "procedure_body_site_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Procedure.bodySite.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
                             "Phenopackets.v2.0": "Procedure.body_site.label"
@@ -1736,15 +1748,15 @@
                     "description": "Unique identifier of the treatment, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_treatment_id",
+                        "exact_mappings": {
+                            "FHIR.v5.0.0": "Procedure.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_treatment_id",
                     "restrictions": {
@@ -1766,7 +1778,7 @@
                             "pubchem.compound:100101",
                             "NCIT:C138986"
                         ],
-                        "mappings": {
+                        "related_mappings": {
                             "ARGO.v1.34": "immunotherapy.drug_id",
                             "FHIR.v5.0.0": "MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code",
                             "FHIRSpec.v5.0.0": "https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
@@ -1784,9 +1796,11 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
                     "meta": {
                         "displayName": "drug_term",
-                        "mappings": {
-                            "ARGO.v1.34": "immunotherapy.drug_name",
+                        "exact_mappings": {
                             "MOHCCN.v3.1": "Systemic_therapy.drug_name"
+                        },
+                        "related_mappings": {
+                            "ARGO.v1.34": "immunotherapy.drug_name"
                         }
                     },
                     "name": "drug_term",
@@ -1796,9 +1810,11 @@
                     "description": "Provide the ontology of standardized units to indicate units used to record drug dose.",
                     "meta": {
                         "displayName": "drug_dose_units",
-                        "mappings": {
-                            "ARGO.v1.34": "immunotherapy.immunotherapy_drug_dose_units",
+                        "exact_mappings": {
                             "MOHCCN.v3.1": "Systemic_therapy.drug_dose_units"
+                        },
+                        "related_mappings": {
+                            "ARGO.v1.34": "immunotherapy.immunotherapy_drug_dose_units"
                         }
                     },
                     "name": "drug_dose_units",
@@ -1811,11 +1827,13 @@
                     "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
                     "meta": {
                         "displayName": "prescribed_cumulative_drug_dose",
-                        "mappings": {
-                            "ARGO.v1.34": "immunotherapy.prescribed_cumulative_drug_dose",
+                        "exact_mappings": {
                             "FHIR": "MedicationAdministration.medication.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
                             "MOHCCN.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
+                        },
+                        "related_mappings": {
+                            "ARGO.v1.34": "immunotherapy.prescribed_cumulative_drug_dose"
                         }
                     },
                     "name": "prescribed_cumulative_drug_dose",
@@ -1825,9 +1843,11 @@
                     "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
                     "meta": {
                         "displayName": "actual_cumulative_drug_dose",
-                        "mappings": {
-                            "ARGO.v1.34": "immunotherapy.actual_cumulative_drug_dose",
+                        "exact_mappings": {
                             "MOHCCN.v3.1": "Systemic_therapy.actual_cumulative_drug_dose"
+                        },
+                        "related_mappings": {
+                            "ARGO.v1.34": "immunotherapy.actual_cumulative_drug_dose"
                         }
                     },
                     "name": "actual_cumulative_drug_dose",
@@ -1856,15 +1876,15 @@
                     "description": "Unique identifier of the treatment, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_treatment_id",
+                        "exact_mappings": {
+                            "FHIR.v5.0.0": "Procedure.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_treatment_id",
                     "restrictions": {
@@ -1877,13 +1897,15 @@
                     "description": "Indicate NCIt code to denote the modality of radiation therapy.\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "displayName": "radiation_modality_code",
+                        "exact_mappings": {
+                            "Phenopackets.v2.0": "RadiationTherapy.modality"
+                        },
                         "examples": [
                             "NCIT:C28039"
                         ],
-                        "mappings": {
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code",
-                            "Phenopackets.v2.0": "radiation_modality_code"
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
                         }
                     },
                     "name": "radiation_modality_code",
@@ -1897,13 +1919,13 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the radiation modality code.",
                     "meta": {
                         "displayName": "radiation_modality_term",
-                        "examples": [
-                            "Electron Beam"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Procedure.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.code"
-                        }
+                        },
+                        "examples": [
+                            "Electron Beam"
+                        ]
                     },
                     "name": "radiation_modality_term",
                     "valueType": "string"
@@ -1912,9 +1934,9 @@
                     "description": "Indicate the total number of fractions delivered as part of treatment.",
                     "meta": {
                         "displayName": "radiation_fractions",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "radiation.radiation_therapy_fractions",
-                            "MOHCCN.v3.1": "radiation.radiation_therapy_fractions",
+                            "MOHCCN.v3.1": "Radiation.radiation_therapy_fractions",
                             "Phenopackets.v2.0": "RadiationTherapy.fractions"
                         }
                     },
@@ -1928,11 +1950,13 @@
                             "For FHIR.v5.0.0 mapping:Observation.valueQuantity and link Observation to radiation therapy Procedure using Observation.partOf -> Procedure"
                         ],
                         "displayName": "radiation_dosage",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "radiation.radiation_therapy_dosage",
-                            "FHIRSpec.v5.0.0": "http://hl7.org/fhir/observation-definitions.html#Observation.partOf",
-                            "MOHCCN.v3.1": "radiation.radiation_therapy_dosage",
+                            "MOHCCN.v3.1": "Radiation.radiation_therapy_dosage",
                             "Phenopackets.v2.0": "RadiationTherapy.dosage"
+                        },
+                        "related_mappings": {
+                            "FHIRSpec.v5.0.0": "http://hl7.org/fhir/observation-definitions.html#Observation.partOf"
                         }
                     },
                     "name": "radiation_dosage",
@@ -1945,18 +1969,18 @@
                             "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
                         ],
                         "displayName": "anatomical_site_irradiated_code",
-                        "examples": [
-                            "C50.1",
-                            "C18"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "radiation.anatomical_site_irradiated_code",
                             "FHIR.v5.0.0": "Procedure.bodySite",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
-                            "MOHCCN.v3.1": "radiation.anatomical_site_irradiated_code",
+                            "MOHCCN.v3.1": "Radiation.anatomical_site_irradiated_code",
                             "Phenopackets.v2.0": "RadiationTherapy.body_site",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
-                        }
+                        },
+                        "examples": [
+                            "C50.1",
+                            "C18"
+                        ]
                     },
                     "name": "anatomical_site_irradiated_code",
                     "restrictions": {
@@ -1996,21 +2020,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -2023,10 +2047,12 @@
                     "description": "Age (in days) of the participant at the time the lab test or measurement was conducted.",
                     "meta": {
                         "displayName": "age_at_measurement",
-                        "mappings": {
-                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
+                        "exact_mappings": {
                             "Phenopackets.v2.0": "Measurement.timeObserved.timeElement.age"
+                        },
+                        "related_mappings": {
+                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
                         }
                     },
                     "name": "age_at_measurement",
@@ -2039,10 +2065,12 @@
                             "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}"
                         ],
                         "displayName": "measurement_code",
-                        "mappings": {
-                            "FHIR.v5.0.0": "Observation.code.coding.system:Observation.code.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/observation-definitions.html#Observation.code",
+                        "exact_mappings": {
                             "Phenopackets.v2.0": "Measurement.assay.id"
+                        },
+                        "related_mappings": {
+                            "FHIR.v5.0.0": "Observation.code.coding.system:Observation.code.coding.code",
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/observation-definitions.html#Observation.code"
                         }
                     },
                     "name": "measurement_code",
@@ -2056,7 +2084,7 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the measurement_code",
                     "meta": {
                         "displayName": "measurement_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "Measurement.assay.label"
@@ -2069,7 +2097,7 @@
                     "description": "The numeric result of the lab test or measurement.",
                     "meta": {
                         "displayName": "measurement_result_numeric",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueQuantity.value",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
@@ -2082,7 +2110,7 @@
                     "description": "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}",
                     "meta": {
                         "displayName": "measurement_unit",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueQuantity.unit",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.unit"
@@ -2098,7 +2126,7 @@
                     "description": "The categorical result of the lab test or measurement.",
                     "meta": {
                         "displayName": "measurement_result_categorical",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueCodeableConcept",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
@@ -2130,21 +2158,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -2160,10 +2188,12 @@
                             "EDI indicator"
                         ],
                         "displayName": "age_at_phenotype",
-                        "mappings": {
+                        "exact_mappings": {
+                            "Phenopackets.v2.0": "PhenotypicFeature.onset"
+                        },
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "Phenopackets.v2.0": "onset"
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
                         }
                     },
                     "name": "age_at_phenotype",
@@ -2176,7 +2206,7 @@
                             "Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>"
                         ],
                         "displayName": "phenotype_code",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.code",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "PhenotypicFeature.type.id"
@@ -2193,7 +2223,7 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.",
                     "meta": {
                         "displayName": "phenotype_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "PhenotypicFeature.type.label"
@@ -2222,9 +2252,11 @@
                     "description": "Indicate the length of time (in days) over which the phenotype was observed in the participant.",
                     "meta": {
                         "displayName": "phenotype_duration",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.effectivePeriod",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
+                        },
+                        "related_mappings": {
                             "Phenopackets.v2.0": "PhenotypicFeature.resolution-PhenotypicFeature.onset"
                         }
                     },
@@ -2238,7 +2270,7 @@
                             "Permissible values from https://hpo.jax.org/browse/term/HP:0012824"
                         ],
                         "displayName": "phenotype_severity",
-                        "mappings": {
+                        "exact_mappings": {
                             "Phenopackets.v2.0": "PhenotypicFeature.severity"
                         }
                     },
@@ -2277,21 +2309,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -2304,11 +2336,13 @@
                     "description": "Indicate the age (in days) of comorbidity diagnosis.",
                     "meta": {
                         "displayName": "age_at_comorbidity_diagnosis",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "Comorbidity.age_at_comorbidity_diagnosis",
-                            "FHIR.v5.0.0": "Condition.onsetDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "MOHCCN.v3.1": "Comorbidity.age_at_comorbidity_diagnosis"
+                        },
+                        "related_mappings": {
+                            "FHIR.v5.0.0": "Condition.onsetDateTime-Patient.birthDate",
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
                         }
                     },
                     "name": "age_at_comorbidity_diagnosis",
@@ -2321,16 +2355,16 @@
                             "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
                         ],
                         "displayName": "comorbidity_code",
-                        "examples": [
-                            "MONDO:0000001",
-                            "icd10:C34"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "Comorbidity.comorbidity_type_code",
                             "FHIR.v.5.0.0": "Condition.code.coding.code",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "MOHCCN.v3.1": "Comorbidity.comorbidity_type_code"
-                        }
+                        },
+                        "examples": [
+                            "MONDO:0000001",
+                            "icd10:C34"
+                        ]
                     },
                     "name": "comorbidity_code",
                     "restrictions": {
@@ -2343,10 +2377,10 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the comorbidity_code",
                     "meta": {
                         "displayName": "comorbidity_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Condition.code.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
-                            "Phenopackets.v2.0": "disease.term",
+                            "Phenopackets.v2.0": "Disease.term",
                             "mCODE.v4.0.0": "condition.code.coding.display"
                         }
                     },
@@ -2377,7 +2411,7 @@
                     "description": "Indicate the current state or activity of the comorbid condition.",
                     "meta": {
                         "displayName": "comorbidity_status",
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Condition.clinicalStatus",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.clinicalStatus"
                         }
@@ -2420,21 +2454,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -2549,21 +2583,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -2576,21 +2610,21 @@
                     "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_specimen_id",
-                        "examples": [
-                            "LAML_PO",
-                            "00445",
-                            "THY_099-tumour"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.submitter_specimen_id",
-                            "Beacon.v2.0": "biosample.id",
+                            "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
-                        }
+                        },
+                        "examples": [
+                            "LAML_PO",
+                            "00445",
+                            "THY_099-tumour"
+                        ]
                     },
                     "name": "submitter_specimen_id",
                     "restrictions": {
@@ -2604,16 +2638,19 @@
                     "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "displayName": "specimen_tissue_source_code",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "sample_registration.specimen_tissue_source",
+                            "Beacon.v2.2.0": "biosample.sampleOriginType",
+                            "CQDG": "biospecimen_tissue_source",
+                            "Phenopackets.v2.0": "Biosample.sampled_tissue",
+                            "mCODE.v4.0.0": "Specimen.type"
+                        },
                         "examples": [
                             "NCIT:C12434"
                         ],
-                        "mappings": {
-                            "Beacon.v2.0": "biosample.sampled_tissue",
-                            "CQDG": "biospecimen_tissue_source",
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Specimen.type.coding.system:Specimen.type.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/specimen-definitions.html#Specimen.type",
-                            "Phenopackets.v2.0": "Biosample.sampled_tissue",
-                            "mCODE.v4.0.0": "Specimen.type"
+                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
                         }
                     },
                     "name": "specimen_tissue_source_code",
@@ -2627,11 +2664,11 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen tissue source code.",
                     "meta": {
                         "displayName": "specimen_tissue_source_term",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.specimen_tissue_source",
                             "FHIR.v5.0.0": "Specimen.type.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.type",
-                            "MOHCCN.v3.1": "specimen.specimen_tissue_source"
+                            "MOHCCN.v3.1": "Specimen.specimen_tissue_source"
                         }
                     },
                     "name": "specimen_tissue_source_term",
@@ -2641,9 +2678,9 @@
                     "description": "Indicate the method of long term storage for specimen that were not extracted freshly or immediately cultured.",
                     "meta": {
                         "displayName": "specimen_storage",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.specimen_storage",
-                            "Beacon.v2.0": "biosample.sample_storage",
+                            "Beacon.v2.2.0": "biosample.sampleStorage",
                             "MOHCCN.v3.1": "specimen.specimen_storage",
                             "Phenopackets.v2.0": "Biosample.sample_storage"
                         }
@@ -2671,11 +2708,11 @@
                     "description": "Indicate the technique used to process specimen.",
                     "meta": {
                         "displayName": "specimen_processing",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.specimen_processing",
-                            "Beacon.v2.0": "biosample.sample_processing",
-                            "MOHCCN.v3.1": "specimen.specimen_processing",
-                            "Phenopackets.v2.0": "biosample.sample_processing"
+                            "Beacon.v2.2.0": "biosample.sampleProcessing",
+                            "MOHCCN.v3.1": "Specimen.specimen_processing",
+                            "Phenopackets.v2.0": "Biosample.sample_processing"
                         }
                     },
                     "name": "specimen_processing",
@@ -2703,12 +2740,14 @@
                     "description": "Indicate participant's age( in days) when specimen was collected.",
                     "meta": {
                         "displayName": "age_at_specimen_collection",
-                        "mappings": {
+                        "exact_mappings": {
+                            "Phenopackets.v2.0": "Biosample.time_of_collection"
+                        },
+                        "related_mappings": {
                             "ARGO.v1.34": "donor.age_at_diagnosis+specimen.specimen_acquisition_interval",
                             "FHIR.v5.0.0": "Specimen.collectedDateTime-Patient.dateBirth",
                             "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
-                            "MOHCCN.v3.1": "specimen.specimen_collection_date-donor.date_of_birth",
-                            "Phenopackets.v2.0": "Biosample.time_of_collection",
+                            "MOHCCN.v3.1": "Specimen.specimen_collection_date-Donor.date_of_birth",
                             "mCODE.v4.0.0": "Specimen.collectedDateTime-Patient.dateBirth"
                         }
                     },
@@ -2722,14 +2761,16 @@
                             "Refer to the International Classification of Diseases for Oncology, 3rd Edition"
                         ],
                         "displayName": "specimen_anatomic_location_code",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "specimen.specimen_anatomic_location",
+                            "MOHCCN.v3.1": "Specimen.specimen_anatomic_location"
+                        },
                         "examples": [
                             "UBERON:8600019"
                         ],
-                        "mappings": {
-                            "ARGO.v1.34": "specimen.specimen_anatomic_location",
+                        "related_mappings": {
                             "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code",
                             "FHIRSpec.v5.0.0": "https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite",
-                            "MOHCCN.v3.1": "specimen.specimen_anatomic_location",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code"
                         }
                     },
@@ -2743,14 +2784,14 @@
                     "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen anatomic location code.",
                     "meta": {
                         "displayName": "specimen_anatomic_location_term",
-                        "examples": [
-                            "placental basal plate"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.display",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.display"
-                        }
+                        },
+                        "examples": [
+                            "placental basal plate"
+                        ]
                     },
                     "name": "specimen_anatomic_location_term",
                     "valueType": "string"
@@ -2762,7 +2803,7 @@
                             "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
                         ],
                         "displayName": "specimen_laterality",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.specimen.laterality",
                             "MOHCCN.v3.1": "specimen.specimen.laterality",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.extension.lateralityQualifier"
@@ -2805,18 +2846,18 @@
                     "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
                     "meta": {
                         "displayName": "submitter_sample_id",
-                        "examples": [
-                            "hnc_12",
-                            "CCG_34_94583",
-                            "BRCA47832-3239"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
-                        }
+                        },
+                        "examples": [
+                            "hnc_12",
+                            "CCG_34_94583",
+                            "BRCA47832-3239"
+                        ]
                     },
                     "name": "submitter_sample_id",
                     "restrictions": {
@@ -2830,21 +2871,21 @@
                     "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_specimen_id",
-                        "examples": [
-                            "LAML_PO",
-                            "00445",
-                            "THY_099-tumour"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.submitter_specimen_id",
-                            "Beacon.v2.0": "biosample.id",
+                            "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
-                        }
+                        },
+                        "examples": [
+                            "LAML_PO",
+                            "00445",
+                            "THY_099-tumour"
+                        ]
                     },
                     "name": "submitter_specimen_id",
                     "restrictions": {
@@ -2857,6 +2898,12 @@
                     "description": "Indicate NCIT or SO code to denote the type of source material used for sequencing and analysis.\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "displayName": "molecule_type_code",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "biosample.sample_type",
+                            "CQDG": "sample_type",
+                            "GA4GH.Experiment.Metadata.Checklist": "molecule_type",
+                            "Phenopackets.v2.0": "sample_type"
+                        },
                         "examples": [
                             "NCIT:C449",
                             "NCIT:C812",
@@ -2864,13 +2911,7 @@
                             "SO:0000991",
                             "SO:0000234",
                             "SO:0001877"
-                        ],
-                        "mappings": {
-                            "Beacon.v2.0": "biosample.sample_type",
-                            "CQDG": "sample_type",
-                            "GA4GH.Experiment.Metadata.Checklist": "molecule_type",
-                            "Phenopackets.v2.0": "sample_type"
-                        }
+                        ]
                     },
                     "name": "molecule_type_code",
                     "restrictions": {
@@ -2929,7 +2970,7 @@
                     "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_experiment_id",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
                         }
                     },
@@ -2945,18 +2986,18 @@
                     "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
                     "meta": {
                         "displayName": "submitter_sample_id",
-                        "examples": [
-                            "hnc_12",
-                            "CCG_34_94583",
-                            "BRCA47832-3239"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
-                        }
+                        },
+                        "examples": [
+                            "hnc_12",
+                            "CCG_34_94583",
+                            "BRCA47832-3239"
+                        ]
                     },
                     "name": "submitter_sample_id",
                     "restrictions": {
@@ -2969,7 +3010,7 @@
                     "description": "Indicate NCIt (NCI Thesaurus) code and term to denote the broad type of sequencing experiment performed. A mixture of library strategy and source.",
                     "meta": {
                         "displayName": "experiment_type",
-                        "mappings": {
+                        "exact_mappings": {
                             "GA4GHExperimentMetadataChecklist": "experiment_type"
                         }
                     },
@@ -2990,7 +3031,7 @@
                     "description": "The high-level experiment design including layout, protocol.",
                     "meta": {
                         "displayName": "experiment_design",
-                        "mappings": {
+                        "exact_mappings": {
                             "GA4GH.Experiment.Metadata.Checklist": "design_description"
                         }
                     },
@@ -3001,13 +3042,13 @@
                     "description": "Indicate OBI code to provide the sequencing technique intended for the library for sequencing data.\nProvide code in Compact URI (CURIE) pattern.",
                     "meta": {
                         "displayName": "assay_type_code",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "runs.libraryStrategy",
+                            "GA4GH.Experiment.Metadata.Checklist": "assay_type"
+                        },
                         "examples": [
                             "OBI:0002117"
-                        ],
-                        "mappings": {
-                            "Beacon.v2.0": "runs.libraryStrategy",
-                            "GA4GH.Experiment.Metadata.Checklist": "assay_type"
-                        }
+                        ]
                     },
                     "name": "assay_type_code",
                     "restrictions": {
@@ -3031,9 +3072,9 @@
                     "description": "The sequencing platform type used in data generation.",
                     "meta": {
                         "displayName": "platform",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "experiment.platform",
-                            "Beacon.v2.0": "runs.platform"
+                            "Beacon.v2.2.0": "runs.platform"
                         }
                     },
                     "name": "platform",
@@ -3060,15 +3101,15 @@
                     "description": "Provide detailed information about the sequencing platform or technology used, including the name and/or model number of the specific instrument. Whenever possible, specify the exact model or revision rather than the general manufacturer name. It is recommended to use standardized terminology by including the appropriate OBI (Ontology for Biomedical Investigations) code and term to ensure precision.\n\nUse the format: OBI code in CURIE format (OBI term) ",
                     "meta": {
                         "displayName": "instrument",
+                        "exact_mappings": {
+                            "GA4GH.Experiment.Metadata.Checklist": "instrument"
+                        },
                         "examples": [
                             "OBI:0002752 (Oxford Nanopore PromethION)",
                             "OBI:0000759 (Illumina)",
                             "OBI:0002630 (Illumina NovaSeq 6000)",
                             "OBI:0002012 (PacBio RS II)"
-                        ],
-                        "mappings": {
-                            "GA4GH.Experiment.Metadata.Checklist": "instrument"
-                        }
+                        ]
                     },
                     "name": "instrument",
                     "restrictions": {
@@ -3081,7 +3122,7 @@
                     "description": "Captures metadata about sequencing instrument usage (e.g. instruments parameters and usage conditions)",
                     "meta": {
                         "displayName": "instrument_metadata",
-                        "mappings": {
+                        "exact_mappings": {
                             "GA4GH.Experiment.Metadata.Checklist": "instrument_metadata"
                         }
                     },
@@ -3092,7 +3133,7 @@
                     "description": "Set of rules which guides how the sequencing protocol was followed. Change-tracking services such as Protocol.io or GitHub are encouraged instead of dumping free text in this field.\nE.g, https://www.protocols.io/view/environmental-dna-edna-metabarcoding-protocol-for-rm7vzy3q2lx1/v1",
                     "meta": {
                         "displayName": "sequencing_protocol",
-                        "mappings": {
+                        "exact_mappings": {
                             "GA4GH.Experiment.Metadata.Checklist": "sequencing_protocol"
                         }
                     },
@@ -3122,9 +3163,9 @@
                     "description": "The identifier of a read group; must be unique within each payload.",
                     "meta": {
                         "displayName": "submitter_read_group_id",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "read_groups.submitter_read_group_id",
-                            "Beacon.v2.0": "runs.id"
+                            "Beacon.v2.2.0": "runs.id"
                         }
                     },
                     "name": "submitter_read_group_id",
@@ -3139,7 +3180,7 @@
                     "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_experiment_id",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
                         }
                     },
@@ -3154,7 +3195,7 @@
                     "description": "Name of the sequencing file containing reads from the first end of a sequencing run.",
                     "meta": {
                         "displayName": "file_r1",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.file_r1"
                         }
                     },
@@ -3168,7 +3209,7 @@
                     "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
                     "meta": {
                         "displayName": "file_r2",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.file_r2"
                         }
                     },
@@ -3201,7 +3242,7 @@
                     "description": "Name of a sequencing library made from a molecular sample or a sample pool (multiplex sequencing).",
                     "meta": {
                         "displayName": "library_name",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.library_name",
                             "GA4GH.Experiment.Metadata.Checklist": "library_extra_id"
                         }
@@ -3216,8 +3257,8 @@
                     "description": "Indicate whether the library was built as paired-end or single-end if applicable.",
                     "meta": {
                         "displayName": "library_layout",
-                        "mappings": {
-                            "Beacon.v2.0": "runs.libraryLayout",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "runs.libraryLayout",
                             "GA4GH.Experiment.Metadata.Checklist": "library_layout"
                         }
                     },
@@ -3236,7 +3277,7 @@
                     "description": "Unique identifier for each read group. For example, Illumina has format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers to the unique identifier for a particular flow cell. The {LANE} indicates the lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific identifier. For non-multiplex sequencing, platform unit and read group have a one-to-one relationship.",
                     "meta": {
                         "displayName": "platform_unit",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.platform_unit"
                         }
                     },
@@ -3250,7 +3291,7 @@
                     "description": "Description of the nucleotide sequencing library, including targeting information, spot, gap descriptors, and any other information relevant to its construction",
                     "meta": {
                         "displayName": "library_description",
-                        "mappings": {
+                        "exact_mappings": {
                             "GA4GH.Experiment.Metadata.Checklist": "library_description"
                         }
                     },
@@ -3261,7 +3302,7 @@
                     "description": "Optional field indicating the @RD ID in the BAM. If submitted, this will be used to map the @RG ID in the BAM header to the submitter_read_group_id in the payload. After submission, the @RG ID in the payload will be used for all future headers. This cannot be submitted for FASTQ files.",
                     "meta": {
                         "displayName": "read_group_id_in_bam",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.read_group_id_in_bam"
                         }
                     },
@@ -3275,7 +3316,7 @@
                     "description": "Length of sequencing reads in file_r1; this corresponds to the number of sequencing cycles of the first end.",
                     "meta": {
                         "displayName": "read_length_r1",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.read_length_r1"
                         }
                     },
@@ -3291,7 +3332,7 @@
                     "description": "Length of sequencing reads in file_r2; this corresponds to the number of sequencing cycles of the second end.",
                     "meta": {
                         "displayName": "read_length_r2",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.read_length_r2"
                         }
                     },
@@ -3307,7 +3348,7 @@
                     "description": "For paired-end sequencing, the average size of sequences between two sequencing ends. Required only for paired-end sequencing.",
                     "meta": {
                         "displayName": "insert_size",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "read_groups.insert_size",
                             "GA4GH.Experiment.Metadata.Checklist": "insert_size"
                         }
@@ -3343,7 +3384,7 @@
                     "description": "Unique identifier of the study.",
                     "meta": {
                         "displayName": "studyId",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "program_id",
                             "CQDG": "study_id"
                         }
@@ -3358,15 +3399,15 @@
                     "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_analysis_id",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "analyses.id",
+                            "EGA": "ANALYSIS_ALIAS"
+                        },
                         "examples": [
                             "hnc_12",
                             "CCG_34_94583",
                             "BRCA47832-3239"
-                        ],
-                        "mappings": {
-                            "Beacon.v2.0": "analyses.id",
-                            "EGA": "ANALYSIS_ALIAS"
-                        }
+                        ]
                     },
                     "name": "submitter_analysis_id",
                     "restrictions": {
@@ -3380,7 +3421,7 @@
                     "description": "Overall type of the analysis. Term chosen from a controlled vocabulary (CV) list.",
                     "meta": {
                         "displayName": "analysisType",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "analysisType",
                             "EGA": "ANALYSIS/ANALYSIS_TYPE"
                         }
@@ -3401,21 +3442,21 @@
                     "description": "Unique identifier of the participant within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_participant_id",
+                        "exact_mappings": {
+                            "ARGO.v1.34": "donor.submitter_donor_id",
+                            "Beacon.v2.2.0": "individual.id",
+                            "CQDG": "submitter_participant_id",
+                            "FHIR.v5.0.0": "Patient.identifier",
+                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
+                            "MOHCCN.v3.1": "Donor.submitter_donor_id",
+                            "Phenopackets.v2.0": "Individual.id",
+                            "mCODE.v4.0.0": "Patient.identifier"
+                        },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
-                        ],
-                        "mappings": {
-                            "ARGO.v1.34": "submitter_donor_id",
-                            "Beacon.v2.0": "individual.id",
-                            "CQDG": "submitter_participant_id",
-                            "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
-                            "MOHCCN.v3.1": "submitter_donor_id",
-                            "Phenopackets.v2.0": "Individual.id",
-                            "mCODE.v4.0.0": "Patient.identifier"
-                        }
+                        ]
                     },
                     "name": "submitter_participant_id",
                     "restrictions": {
@@ -3448,21 +3489,21 @@
                     "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_specimen_id",
-                        "examples": [
-                            "LAML_PO",
-                            "00445",
-                            "THY_099-tumour"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "specimen.submitter_specimen_id",
-                            "Beacon.v2.0": "biosample.id",
+                            "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
                             "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
-                        }
+                        },
+                        "examples": [
+                            "LAML_PO",
+                            "00445",
+                            "THY_099-tumour"
+                        ]
                     },
                     "name": "submitter_specimen_id",
                     "restrictions": {
@@ -3495,18 +3536,18 @@
                     "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
                     "meta": {
                         "displayName": "submitter_sample_id",
-                        "examples": [
-                            "hnc_12",
-                            "CCG_34_94583",
-                            "BRCA47832-3239"
-                        ],
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
                             "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
                             "Phenopackets.v2.0": "Biosample.id",
                             "mCODE.v4.0.0": "submitter_sample_id"
-                        }
+                        },
+                        "examples": [
+                            "hnc_12",
+                            "CCG_34_94583",
+                            "BRCA47832-3239"
+                        ]
                     },
                     "name": "submitter_sample_id",
                     "restrictions": {
@@ -3539,7 +3580,7 @@
                     "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_experiment_id",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
                         }
                     },
@@ -3708,15 +3749,15 @@
                     "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_analysis_id",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "analyses.id",
+                            "EGA": "ANALYSIS_ALIAS"
+                        },
                         "examples": [
                             "hnc_12",
                             "CCG_34_94583",
                             "BRCA47832-3239"
-                        ],
-                        "mappings": {
-                            "Beacon.v2.0": "analyses.id",
-                            "EGA": "ANALYSIS_ALIAS"
-                        }
+                        ]
                     },
                     "name": "submitter_analysis_id",
                     "restrictions": {
@@ -3775,15 +3816,15 @@
                     "description": "Unique identifier of the analysis within the study, assigned by the data provider.",
                     "meta": {
                         "displayName": "submitter_analysis_id",
+                        "exact_mappings": {
+                            "Beacon.v2.2.0": "analyses.id",
+                            "EGA": "ANALYSIS_ALIAS"
+                        },
                         "examples": [
                             "hnc_12",
                             "CCG_34_94583",
                             "BRCA47832-3239"
-                        ],
-                        "mappings": {
-                            "Beacon.v2.0": "analyses.id",
-                            "EGA": "ANALYSIS_ALIAS"
-                        }
+                        ]
                     },
                     "name": "submitter_analysis_id",
                     "restrictions": {
@@ -3796,7 +3837,7 @@
                     "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
                     "meta": {
                         "displayName": "fileName",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "fileName"
                         }
                     },
@@ -3811,7 +3852,7 @@
                     "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
                     "meta": {
                         "displayName": "fileSize",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "files.size"
                         }
                     },
@@ -3822,7 +3863,7 @@
                     "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
                     "meta": {
                         "displayName": "fileMd5sum",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "files.md5sum"
                         }
                     },
@@ -3836,7 +3877,7 @@
                     "description": "Data format of files.",
                     "meta": {
                         "displayName": "fileType",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "files.format",
                             "EGA": "ANALYSIS/FILES/FILE@filetype"
                         }
@@ -3851,7 +3892,7 @@
                     "description": "The permission level of a file for public access.",
                     "meta": {
                         "displayName": "fileAccess",
-                        "mappings": {
+                        "exact_mappings": {
                             "ARGO": "fileAccess"
                         }
                     },
