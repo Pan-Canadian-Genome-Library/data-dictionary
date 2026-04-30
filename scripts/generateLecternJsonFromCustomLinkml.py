@@ -135,6 +135,7 @@ def populateFieldProperties(model,lectern):
 
             ###Handle mappings to other ontologies
             ###For lectern store under meta
+            # 'exact_mappings' contains mapping info for fields that map one to one
             if model['slots'][slot]['exact_mappings']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
@@ -146,6 +147,7 @@ def populateFieldProperties(model,lectern):
                     val=mapping.split(":")[-1]
                     tmp['meta']['exact_mappings'][key]=val
  
+	    # 'related_mappings' contain mapping info that can be calculated using more than one field.
             if model['slots'][slot]['related_mappings']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
@@ -156,6 +158,7 @@ def populateFieldProperties(model,lectern):
                     key, val=mapping.split(":", 1)
                     tmp['meta']['related_mappings'][key]=val
 
+	    # The specifications for data mapping elements was stored in 'annotations' in the base.yaml file to keep semantics clean and separate from mapping info in 'exact_mappings' and 'related_mappings'. This allows for the additional specifications to be added in the future for other data models. Specifications had to be stored as a string delimited by ';' character in the base.yaml file since 'annotations' did not allow for a nested or key/value pair. Using delimiter here to parse the specifications into a list that will show in lectern schema.
             if model['slots'][slot]['annotations']:
               if 'specifications' in model['slots'][slot]['annotations']:
                 if not tmp.get('meta'):

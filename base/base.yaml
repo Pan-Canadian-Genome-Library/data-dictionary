@@ -1087,15 +1087,10 @@ slots:
     - Phenopackets.v2.0:VitalStatus.survival_time_in_days
     related_mappings:
     - FHIR.v5.0.0:Patient.deceased.dateTime-Patient.birthDate
-    #- FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
-    #- FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - mCODE.v4.0.0:Patient.deceased.dateTime-Patient.birthDate
     - MOHCCN.v3.1:Donor.date_at_death-Donor.date_of_birth
     annotations:
       specifications: "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_;FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-      #specifications: |
-      #   FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
-      #   FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
   age_at_enrollment:
     name: age_at_enrollment
     description: Age (in days) of participant at time of enrollment into the study
