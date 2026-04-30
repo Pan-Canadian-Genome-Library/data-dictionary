@@ -135,26 +135,40 @@ def populateFieldProperties(model,lectern):
 
             ###Handle mappings to other ontologies
             ###For lectern store under meta
-            if model['slots'][slot]['exact_mappings'] or model['slots'][slot]['related_mappings']:
+            if model['slots'][slot]['exact_mappings']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
-                if not tmp['meta'].get('mappings'):
-                    tmp['meta']['mappings']={}
+                if not tmp['meta'].get('exact_mappings'):
+                    tmp['meta']['exact_mappings']={}
                     
-                tmp['meta']['mappings']={}
                 for mapping in model['slots'][slot]['exact_mappings']:
                     key=mapping.split(":")[0]
                     val=mapping.split(":")[-1]
-                    tmp['meta']['mappings'][key]=val
+                    tmp['meta']['exact_mappings'][key]=val
  
+            if model['slots'][slot]['related_mappings']:
+                if not tmp.get('meta'):
+                    tmp['meta']={}
+                if not tmp['meta'].get('related_mappings'):
+                    tmp['meta']['related_mappings']={}
+
                 for mapping in model['slots'][slot]['related_mappings']:
                     key, val=mapping.split(":", 1)
-                    tmp['meta']['mappings'][key]=val
+                    tmp['meta']['related_mappings'][key]=val
+
+            if model['slots'][slot]['annotations']:
+              if 'specifications' in model['slots'][slot]['annotations']:
+                if not tmp.get('meta'):
+                   tmp['meta']={}
+                if not tmp['meta'].get('specifications'):
+                   tmp['meta']['specifications'] = []
+                values = model['slots'][slot]['annotations']['specifications'].value
+                tmp['meta']['specifications'].extend(values.split(';', 1))
+                  
 
             if model['slots'][slot]['comments']:
                 if not tmp.get('meta'):
                     tmp['meta']={}
-                #tmp['meta']['required']=model['slots'][slot]['comments']
                 tmp['meta']['comments']=model['slots'][slot]['comments']
 
             if len(model['slots'][slot]['examples'])>0:
