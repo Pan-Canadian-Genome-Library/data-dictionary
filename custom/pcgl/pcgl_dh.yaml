@@ -1080,14 +1080,16 @@ enums:
 slots:
   age_at_death:
     name: age_at_death
+    annotations:
+      specifications:
+        tag: specifications
+        value: FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_;FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     description: Age of participant (in days) at time of death
     title: age_at_death
     exact_mappings:
     - Phenopackets.v2.0:VitalStatus.survival_time_in_days
     related_mappings:
     - FHIR.v5.0.0:Patient.deceased.dateTime-Patient.birthDate
-    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_
-    - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - mCODE.v4.0.0:Patient.deceased.dateTime-Patient.birthDate
     - MOHCCN.v3.1:Donor.date_at_death-Donor.date_of_birth
     range: integer
@@ -1104,7 +1106,7 @@ slots:
     title: cause_of_death
     exact_mappings:
     - ARGO.v1.34:donor.cause_of_death
-    - MOHCCN.v3.1:donor.cause_of_death
+    - MOHCCN.v3.1:Donor.cause_of_death
     - Phenopackets.v2.0:VitalStatus.cause_of_death
     range: cause_of_death_menu
     required: false
@@ -1118,13 +1120,13 @@ slots:
     - value: BLD_donor_89
     - value: AML-90
     exact_mappings:
-    - ARGO.v1.34:submitter_donor_id
-    - Beacon.v2.0:individual.id
+    - ARGO.v1.34:donor.submitter_donor_id
+    - Beacon.v2.2.0:individual.id
     - CQDG:submitter_participant_id
     - FHIR.v5.0.0:Patient.identifier
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier
     - mCODE.v4.0.0:Patient.identifier
-    - MOHCCN.v3.1:submitter_donor_id
+    - MOHCCN.v3.1:Donor.submitter_donor_id
     - Phenopackets.v2.0:Individual.id
     range: string
     required: true
@@ -1134,8 +1136,7 @@ slots:
     description: Participant's last known state of living or deceased.
     title: vital_status
     exact_mappings:
-    - ARGO.v1.34:Donor.vital_status
-    - Beacon.v2.0:individual.vital_status
+    - ARGO.v1.34:donor.vital_status
     - CQDG:vital_status
     - MOHCCN.v3.1:Donor.is_deceased
     - Phenopackets.v2.0:Individual.vital_status
@@ -1251,7 +1252,7 @@ slots:
     comments:
     - EDI indicator
     exact_mappings:
-    - Phenopackets.v2.0:PhenotypicFeature:onset
+    - Phenopackets.v2.0:PhenotypicFeature.onset
     related_mappings:
     - FHIR.v5.0.0:Observation.effectiveDateTime-Patient.birthDate
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
@@ -1322,7 +1323,7 @@ slots:
     - FHIR.v5.0.0:Observation.effectiveDateTime-Patient.birthDate
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
-    - MOHCCN.v3.1:follow_up.date_of_followup-donor.date_of_birth
+    - MOHCCN.v3.1:Follow_up.date_of_followup-Donor.date_of_birth
     range: integer
     required: false
   disease_status_at_followup:
@@ -1330,8 +1331,8 @@ slots:
     description: Indicate the participant's disease status at time of follow-up
     title: disease_status_at_followup
     exact_mappings:
-    - ARGO.v1.34:followup.disease_status_at_followup
-    - MOHCCN.v3.1:followup.disease_status_at_followup
+    - ARGO.v1.34:follow_up.disease_status_at_followup
+    - MOHCCN.v3.1:Follow_up.disease_status_at_followup
     range: disease_status_at_followup_menu
     required: true
   age_at_measurement:
@@ -1458,7 +1459,7 @@ slots:
     - mCODE.v4.0.0:condition.code.coding.display
     - FHIR.v5.0.0:Condition.code.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
-    - Phenopackets.v2.0:disease.term
+    - Phenopackets.v2.0:Disease.term
     range: string
     required: false
   comorbidity_treatment_status:
@@ -1485,7 +1486,7 @@ slots:
     - FHIR.v5.0.0:Procedure.bodySite.coding.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     - mCODE.v4.0.0:Specimen.collection.bodySite
-    - MOHCCN.v3.1:surgery.surgery_site
+    - MOHCCN.v3.1:Surgery.surgery_site
     - Phenopackets.v2.0:Procedure.body_site.id
     range: string
     required: true
@@ -1611,7 +1612,7 @@ slots:
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate
     - mCODE.v4.0.0:Specimen.collectedDateTime-Patient.dateBirth
-    - MOHCCN.v3.1:specimen.specimen_collection_date-donor.date_of_birth
+    - MOHCCN.v3.1:Specimen.specimen_collection_date-Donor.date_of_birth
     range: integer
     required: false
   specimen_anatomic_location_code:
@@ -1633,7 +1634,7 @@ slots:
     - value: UBERON:8600019
     exact_mappings:
     - ARGO.v1.34:specimen.specimen_anatomic_location
-    - MOHCCN.v3.1:specimen.specimen_anatomic_location
+    - MOHCCN.v3.1:Specimen.specimen_anatomic_location
     related_mappings:
     - FHIR.v5.0.0:Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite
@@ -1673,9 +1674,9 @@ slots:
     title: specimen_processing
     exact_mappings:
     - ARGO.v1.34:specimen.specimen_processing
-    - Beacon.v2.0:biosample.sample_processing
-    - MOHCCN.v3.1:specimen.specimen_processing
-    - Phenopackets.v2.0:biosample.sample_processing
+    - Beacon.v2.2.0:biosample.sampleProcessing
+    - MOHCCN.v3.1:Specimen.specimen_processing
+    - Phenopackets.v2.0:Biosample.sample_processing
     range: specimen_processing_menu
     required: false
   specimen_storage:
@@ -1685,7 +1686,7 @@ slots:
     title: specimen_storage
     exact_mappings:
     - ARGO.v1.34:specimen.specimen_storage
-    - Beacon.v2.0:biosample.sample_storage
+    - Beacon.v2.2.0:biosample.sampleStorage
     - MOHCCN.v3.1:specimen.specimen_storage
     - Phenopackets.v2.0:Biosample.sample_storage
     range: specimen_storage_menu
@@ -1700,7 +1701,8 @@ slots:
     examples:
     - value: NCIT:C12434
     exact_mappings:
-    - Beacon.v2.0:biosample.sampled_tissue
+    - ARGO.v1.34:sample_registration.specimen_tissue_source
+    - Beacon.v2.2.0:biosample.sampleOriginType
     - CQDG:biospecimen_tissue_source
     - mCODE.v4.0.0:Specimen.type
     - Phenopackets.v2.0:Biosample.sampled_tissue
@@ -1719,7 +1721,7 @@ slots:
     - ARGO.v1.34:sample_registration.specimen_tissue_source
     - FHIR.v5.0.0:Specimen.type.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type
-    - MOHCCN.v3.1:specimen.specimen_tissue_source
+    - MOHCCN.v3.1:Specimen.specimen_tissue_source
     range: string
     required: false
   submitter_specimen_id:
@@ -1733,7 +1735,7 @@ slots:
     - value: THY_099-tumour
     exact_mappings:
     - ARGO.v1.34:specimen.submitter_specimen_id
-    - Beacon.v2.0:biosample.id
+    - Beacon.v2.2.0:biosample.id
     - CQDG:submitter_biospecimen_id
     - FHIR.v5.0.0:Specimen.identifier
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier
@@ -1775,7 +1777,7 @@ slots:
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - mCODE.v4.0.0:Condition.code.coding.code
     - MOHCCN.v3.1:primary_diagnosis.cancer_type_code
-    - Phenopackets.v2.0:disease.term.id
+    - Phenopackets.v2.0:Disease.term.id
     range: string
     required: true
     pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
@@ -1788,7 +1790,7 @@ slots:
     - FHIR.v5.0.0:Condition.code.coding.display
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
     - mCODE.v4.0.0:Condition.code.coding.display
-    - Phenopackets.v2.0:disease.term.label
+    - Phenopackets.v2.0:Disease.term.label
     range: string
     required: false
   submitter_diagnosis_id:
@@ -1991,7 +1993,7 @@ slots:
     - FHIR.v5.0.0:Procedure.bodySite
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     - mCODE.v4.0.0:Specimen.collection.bodySite
-    - MOHCCN.v3.1:radiation.anatomical_site_irradiated_code
+    - MOHCCN.v3.1:Radiation.anatomical_site_irradiated_code
     - Phenopackets.v2.0:RadiationTherapy.body_site
     range: string
     required: true
@@ -2012,7 +2014,7 @@ slots:
       therapy Procedure using Observation.partOf -> Procedure
     exact_mappings:
     - ARGO.v1.34:radiation.radiation_therapy_dosage
-    - MOHCCN.v3.1:radiation.radiation_therapy_dosage
+    - MOHCCN.v3.1:Radiation.radiation_therapy_dosage
     - Phenopackets.v2.0:RadiationTherapy.dosage
     related_mappings:
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
@@ -2025,7 +2027,7 @@ slots:
     title: radiation_fractions
     exact_mappings:
     - ARGO.v1.34:radiation.radiation_therapy_fractions
-    - MOHCCN.v3.1:radiation.radiation_therapy_fractions
+    - MOHCCN.v3.1:Radiation.radiation_therapy_fractions
     - Phenopackets.v2.0:RadiationTherapy.fractions
     range: integer
     required: false
@@ -2035,7 +2037,7 @@ slots:
     title: radiation_modality
     exact_mappings:
     - ARGO.v1.34:radiation.radiation_therapy_modality
-    - MOHCCN.v3.1:radiation.radiation_therapy_modality
+    - MOHCCN.v3.1:Radiation.radiation_therapy_modality
     - Phenopackets.v2.0:RadiationTherapy.modality
     range: radiation_modality_menu
     required: true
@@ -2096,7 +2098,7 @@ slots:
     title: platform
     exact_mappings:
     - ARGO.v1.34:experiment.platform
-    - Beacon.v2.0:runs.platform
+    - Beacon.v2.2.0:runs.platform
     range: platform_menu
     required: true
   submitter_analysis_id:
@@ -2109,7 +2111,7 @@ slots:
     - value: CCG_34_94583
     - value: BRCA47832-3239
     exact_mappings:
-    - Beacon.v2.0:analyses.id
+    - Beacon.v2.2.0:analyses.id
     - EGA:ANALYSIS_ALIAS
     range: string
     required: true
@@ -2120,7 +2122,7 @@ slots:
     title: submitter_read_group_id
     exact_mappings:
     - ARGO.v1.34:read_groups.submitter_read_group_id
-    - Beacon.v2.0:runs.id
+    - Beacon.v2.2.0:runs.id
     range: string
     required: true
     pattern: ^[a-zA-Z0-9\-_:\.']+$
@@ -2560,7 +2562,7 @@ slots:
     examples:
     - value: NCIT:C28039
     exact_mappings:
-    - Phenopackets.v2.0:radiation_modality_code
+    - Phenopackets.v2.0:RadiationTherapy.modality
     related_mappings:
     - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
     - FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code
@@ -2671,7 +2673,7 @@ slots:
     exact_mappings:
     - CQDG:Sample.Registration:sample_type
     - Phenopackets.v2.0:Biosample:sample_type
-    - Beacon.v2.0:biosample.sample_type
+    - Beacon.v2.2.0:biosample.sample_type
     - GA4GH.Experiment.Metadata.Checklist:molecule_type
     range: string
     required: true
@@ -2728,7 +2730,7 @@ slots:
     - value: OBI:0002117
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:assay_type
-    - Beacon.v2.0:runs.libraryStrategy
+    - Beacon.v2.2.0:runs.libraryStrategy
     range: string
     required: true
     pattern: ^OBI:\d{7}$
@@ -2851,7 +2853,7 @@ slots:
     title: library_layout
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:library_layout
-    - Beacon.v2.0:runs.libraryLayout
+    - Beacon.v2.2.0:runs.libraryLayout
     range: library_layout_menu
     required: true
   platform_unit:
@@ -3713,8 +3715,8 @@ classes:
         - mCODE.v4.0.0:Condition.identifier
         - FHIR.v5.0.0:Condition.identifier
         - FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier
-        - ARGO.v1.34:submitter_primary_diagnosis_id
-        - MOHCCN.v3.1:submitter_diagnosis_id
+        - ARGO.v1.34:primary_diagnosis.submitter_primary_diagnosis_id
+        - MOHCCN.v3.1:Primary_diagnosis.submitter_primary_diagnosis_id
         range: string
         required: false
         pattern: ^[A-Za-z0-9\-\._]{1,64}$
