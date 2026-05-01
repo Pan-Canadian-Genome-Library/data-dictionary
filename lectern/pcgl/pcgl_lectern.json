@@ -2961,10 +2961,8 @@
                         "displayName": "submitter_sample_id",
                         "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
-                            "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
-                            "Phenopackets.v2.0": "Biosample.id",
-                            "mCODE.v4.0.0": "submitter_sample_id"
+                            "Phenopackets.v2.0": "Biosample.id"
                         },
                         "examples": [
                             "hnc_12",
@@ -3103,10 +3101,8 @@
                         "displayName": "submitter_sample_id",
                         "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
-                            "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
-                            "Phenopackets.v2.0": "Biosample.id",
-                            "mCODE.v4.0.0": "submitter_sample_id"
+                            "Phenopackets.v2.0": "Biosample.id"
                         },
                         "examples": [
                             "hnc_12",
@@ -3657,10 +3653,8 @@
                         "displayName": "submitter_sample_id",
                         "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.submitter_sample_id",
-                            "FHIR.v5.0.0": "submitter_sample_id",
                             "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
-                            "Phenopackets.v2.0": "Biosample.id",
-                            "mCODE.v4.0.0": "submitter_sample_id"
+                            "Phenopackets.v2.0": "Biosample.id"
                         },
                         "examples": [
                             "hnc_12",
