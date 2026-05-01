@@ -268,7 +268,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -277,6 +276,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -412,7 +414,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -421,6 +422,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -1036,7 +1040,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -1045,6 +1048,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -1073,9 +1079,11 @@
                             "Phenopackets.v2.0": "Individual.vital_status"
                         },
                         "related_mappings": {
-                            "FHIR.v5.0.0": "derive_from_Patient.deceased.boolean",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
-                        }
+                            "FHIR.v5.0.0": "derive_from_Patient.deceased.boolean"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
+                        ]
                     },
                     "name": "vital_status",
                     "restrictions": {
@@ -1163,7 +1171,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -1172,6 +1179,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -1188,7 +1198,6 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
                             "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
                         },
@@ -1196,6 +1205,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier"
                         ]
                     },
                     "name": "submitter_diagnosis_id",
@@ -1213,13 +1225,15 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.age_at_diagnosis",
                             "FHIR.v5.0.0": "Condition.onset.onsetAge",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.onset_x_",
                             "Phenopackets.v2.0": "Disease.onset",
                             "mCODE.v4.0.0": "Condition.onset"
                         },
                         "related_mappings": {
                             "MOHCCN.v3.1": "primary_diagnosis.date_of_diagnosis-donor.date_of_birth"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_"
+                        ]
                     },
                     "name": "age_at_diagnosis",
                     "valueType": "integer"
@@ -1235,7 +1249,6 @@
                             "ARGO.v1.34": "primary_diagnosis.cancer_type_code",
                             "CQDG": "disease_code",
                             "FHIR.v5.0.0": "Condition.code.coding.code",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "MOHCCN.v3.1": "primary_diagnosis.cancer_type_code",
                             "Phenopackets.v2.0": "Disease.term.id",
                             "mCODE.v4.0.0": "Condition.code.coding.code"
@@ -1243,6 +1256,9 @@
                         "examples": [
                             "MONDO:0000001",
                             "icd10:C34"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
                         ]
                     },
                     "name": "disease_code",
@@ -1258,10 +1274,12 @@
                         "displayName": "disease_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Condition.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "Phenopackets.v2.0": "Disease.term.label",
                             "mCODE.v4.0.0": "Condition.code.coding.display"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
+                        ]
                     },
                     "name": "disease_term",
                     "valueType": "string"
@@ -1294,7 +1312,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -1303,6 +1320,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -1317,13 +1337,15 @@
                     "meta": {
                         "displayName": "submitter_treatment_id",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                            "FHIR.v5.0.0": "Procedure.identifier"
                         },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
                         ]
                     },
                     "name": "submitter_treatment_id",
@@ -1358,7 +1380,6 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
                             "FHIR.v5.0.0": "Condition.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.identifier",
                             "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id",
                             "mCODE.v4.0.0": "Condition.identifier"
                         },
@@ -1366,6 +1387,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier"
                         ]
                     },
                     "name": "submitter_diagnosis_id",
@@ -1397,10 +1421,13 @@
                         "related_mappings": {
                             "ARGO.v1.34": "treatment.treatment_start_interval+donor.age_at_diagnosis",
                             "FHIR.v5.0.0": "Procedure.occurrenceDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "MOHCCN.v3.1": "Systemic_therapy.start_date-Donor.date_of_birth",
                             "Phenopackets.v2.0": "TherapeuticRegimen.end_time-Individual.date_of_birth"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_treatment",
                     "valueType": "integer"
@@ -1411,13 +1438,15 @@
                         "displayName": "treatment_duration",
                         "exact_mappings": {
                             "ARGO.v1.34": "treatment.treatment_duration",
-                            "FHIR.v5.0.0": "Procedure.occurrencePeriod",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_"
+                            "FHIR.v5.0.0": "Procedure.occurrencePeriod"
                         },
                         "related_mappings": {
                             "MOHCCN.v3.1": "Systemic_therapy.start_date-Systemic_therapy.end_date",
                             "Phenopackets.v2.0": "TreatmentRegimen.end_time-TreatmentRegimen.start_time"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_"
+                        ]
                     },
                     "name": "treatment_duration",
                     "valueType": "integer"
@@ -1550,7 +1579,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -1559,6 +1587,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -1575,9 +1606,12 @@
                         "related_mappings": {
                             "ARGO.v1.34": "primary_diagnosis.age_at_diagnosis+followup.interval_of_followup",
                             "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "MOHCCN.v3.1": "Follow_up.date_of_followup-Donor.date_of_birth"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_followup",
                     "valueType": "integer"
@@ -1631,13 +1665,15 @@
                     "meta": {
                         "displayName": "submitter_treatment_id",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                            "FHIR.v5.0.0": "Procedure.identifier"
                         },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
                         ]
                     },
                     "name": "submitter_treatment_id",
@@ -1664,9 +1700,11 @@
                             "CCI:1CA14STCDR"
                         ],
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
-                        }
+                            "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+                        ]
                     },
                     "name": "procedure_code",
                     "restrictions": {
@@ -1681,9 +1719,11 @@
                         "displayName": "procedure_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Procedure.code.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.code",
                             "Phenopackets.v2.0": "Procedure.code.label"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+                        ]
                     },
                     "name": "procedure_term",
                     "valueType": "string"
@@ -1695,7 +1735,6 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "surgery.surgery_site",
                             "FHIR.v5.0.0": "Procedure.bodySite.coding.code",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
                             "MOHCCN.v3.1": "Surgery.surgery_site",
                             "Phenopackets.v2.0": "Procedure.body_site.id",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
@@ -1703,6 +1742,9 @@
                         "examples": [
                             "C50.1",
                             "C18"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite"
                         ]
                     },
                     "name": "procedure_body_site_code",
@@ -1718,9 +1760,11 @@
                         "displayName": "procedure_body_site_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Procedure.bodySite.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
                             "Phenopackets.v2.0": "Procedure.body_site.label"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite"
+                        ]
                     },
                     "name": "procedure_body_site_term",
                     "valueType": "string"
@@ -1749,13 +1793,15 @@
                     "meta": {
                         "displayName": "submitter_treatment_id",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                            "FHIR.v5.0.0": "Procedure.identifier"
                         },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
                         ]
                     },
                     "name": "submitter_treatment_id",
@@ -1781,9 +1827,11 @@
                         "related_mappings": {
                             "ARGO.v1.34": "immunotherapy.drug_id",
                             "FHIR.v5.0.0": "MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
                             "MOHCCN.v3.1": "Systemic_therapy.drug_reference_database:Systemic_therapy.drug_reference_identifier"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
+                        ]
                     },
                     "name": "drug_code",
                     "restrictions": {
@@ -1829,12 +1877,14 @@
                         "displayName": "prescribed_cumulative_drug_dose",
                         "exact_mappings": {
                             "FHIR": "MedicationAdministration.medication.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication",
                             "MOHCCN.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
                         },
                         "related_mappings": {
                             "ARGO.v1.34": "immunotherapy.prescribed_cumulative_drug_dose"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
+                        ]
                     },
                     "name": "prescribed_cumulative_drug_dose",
                     "valueType": "number"
@@ -1877,13 +1927,15 @@
                     "meta": {
                         "displayName": "submitter_treatment_id",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Procedure.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+                            "FHIR.v5.0.0": "Procedure.identifier"
                         },
                         "examples": [
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
                         ]
                     },
                     "name": "submitter_treatment_id",
@@ -1904,9 +1956,11 @@
                             "NCIT:C28039"
                         ],
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
-                        }
+                            "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+                        ]
                     },
                     "name": "radiation_modality_code",
                     "restrictions": {
@@ -1920,11 +1974,13 @@
                     "meta": {
                         "displayName": "radiation_modality_term",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Procedure.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.code"
+                            "FHIR.v5.0.0": "Procedure.code.coding.display"
                         },
                         "examples": [
                             "Electron Beam"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
                         ]
                     },
                     "name": "radiation_modality_term",
@@ -1955,9 +2011,10 @@
                             "MOHCCN.v3.1": "Radiation.radiation_therapy_dosage",
                             "Phenopackets.v2.0": "RadiationTherapy.dosage"
                         },
-                        "related_mappings": {
-                            "FHIRSpec.v5.0.0": "http://hl7.org/fhir/observation-definitions.html#Observation.partOf"
-                        }
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_",
+                            "FHIRSpec.v5.0.0:http://hl7.org/fhir/observation-definitions.html#Observation.partOf"
+                        ]
                     },
                     "name": "radiation_dosage",
                     "valueType": "integer"
@@ -1972,7 +2029,6 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "radiation.anatomical_site_irradiated_code",
                             "FHIR.v5.0.0": "Procedure.bodySite",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/procedure-definitions.html#Procedure.bodySite",
                             "MOHCCN.v3.1": "Radiation.anatomical_site_irradiated_code",
                             "Phenopackets.v2.0": "RadiationTherapy.body_site",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite"
@@ -1980,6 +2036,9 @@
                         "examples": [
                             "C50.1",
                             "C18"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite"
                         ]
                     },
                     "name": "anatomical_site_irradiated_code",
@@ -2025,7 +2084,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -2034,6 +2092,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -2051,9 +2112,12 @@
                             "Phenopackets.v2.0": "Measurement.timeObserved.timeElement.age"
                         },
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-                        }
+                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_measurement",
                     "valueType": "integer"
@@ -2069,9 +2133,11 @@
                             "Phenopackets.v2.0": "Measurement.assay.id"
                         },
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Observation.code.coding.system:Observation.code.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/observation-definitions.html#Observation.code"
-                        }
+                            "FHIR.v5.0.0": "Observation.code.coding.system:Observation.code.coding.code"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+                        ]
                     },
                     "name": "measurement_code",
                     "restrictions": {
@@ -2086,9 +2152,11 @@
                         "displayName": "measurement_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "Measurement.assay.label"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+                        ]
                     },
                     "name": "measurement_term",
                     "valueType": "string"
@@ -2099,9 +2167,11 @@
                         "displayName": "measurement_result_numeric",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueQuantity.value",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
+                        ]
                     },
                     "name": "measurement_result_numeric",
                     "valueType": "number"
@@ -2112,9 +2182,11 @@
                         "displayName": "measurement_unit",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueQuantity.unit",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.unit"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
+                        ]
                     },
                     "name": "measurement_unit",
                     "restrictions": {
@@ -2128,9 +2200,11 @@
                         "displayName": "measurement_result_categorical",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.value.valueCodeableConcept",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.value_x_",
                             "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
+                        ]
                     },
                     "name": "measurement_result_categorical",
                     "valueType": "string"
@@ -2163,7 +2237,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -2172,6 +2245,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -2192,9 +2268,12 @@
                             "Phenopackets.v2.0": "PhenotypicFeature.onset"
                         },
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-                        }
+                            "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_phenotype",
                     "valueType": "integer"
@@ -2208,9 +2287,11 @@
                         "displayName": "phenotype_code",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.code",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "PhenotypicFeature.type.id"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+                        ]
                     },
                     "name": "phenotype_code",
                     "restrictions": {
@@ -2225,9 +2306,11 @@
                         "displayName": "phenotype_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Observation.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.code",
                             "Phenopackets.v2.0": "PhenotypicFeature.type.label"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+                        ]
                     },
                     "name": "phenotype_term",
                     "valueType": "string"
@@ -2253,12 +2336,14 @@
                     "meta": {
                         "displayName": "phenotype_duration",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Observation.effectivePeriod",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
+                            "FHIR.v5.0.0": "Observation.effectivePeriod"
                         },
                         "related_mappings": {
                             "Phenopackets.v2.0": "PhenotypicFeature.resolution-PhenotypicFeature.onset"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
+                        ]
                     },
                     "name": "phenotype_duration",
                     "valueType": "integer"
@@ -2314,7 +2399,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -2323,6 +2407,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -2341,9 +2428,12 @@
                             "MOHCCN.v3.1": "Comorbidity.age_at_comorbidity_diagnosis"
                         },
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Condition.onsetDateTime-Patient.birthDate",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
-                        }
+                            "FHIR.v5.0.0": "Condition.onsetDateTime-Patient.birthDate"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_comorbidity_diagnosis",
                     "valueType": "integer"
@@ -2358,12 +2448,14 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "Comorbidity.comorbidity_type_code",
                             "FHIR.v.5.0.0": "Condition.code.coding.code",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "MOHCCN.v3.1": "Comorbidity.comorbidity_type_code"
                         },
                         "examples": [
                             "MONDO:0000001",
                             "icd10:C34"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
                         ]
                     },
                     "name": "comorbidity_code",
@@ -2379,10 +2471,12 @@
                         "displayName": "comorbidity_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Condition.code.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.code",
                             "Phenopackets.v2.0": "Disease.term",
                             "mCODE.v4.0.0": "condition.code.coding.display"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
+                        ]
                     },
                     "name": "comorbidity_term",
                     "valueType": "string"
@@ -2412,9 +2506,11 @@
                     "meta": {
                         "displayName": "comorbidity_status",
                         "exact_mappings": {
-                            "FHIR.v5.0.0": "Condition.clinicalStatus",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/condition-definitions.html#Condition.clinicalStatus"
-                        }
+                            "FHIR.v5.0.0": "Condition.clinicalStatus"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.clinicalStatus"
+                        ]
                     },
                     "name": "comorbidity_status",
                     "restrictions": {
@@ -2459,7 +2555,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -2468,6 +2563,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -2588,7 +2686,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -2597,6 +2694,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -2615,7 +2715,6 @@
                             "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
@@ -2624,6 +2723,9 @@
                             "LAML_PO",
                             "00445",
                             "THY_099-tumour"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
                         ]
                     },
                     "name": "submitter_specimen_id",
@@ -2649,9 +2751,11 @@
                             "NCIT:C12434"
                         ],
                         "related_mappings": {
-                            "FHIR.v5.0.0": "Specimen.type.coding.system:Specimen.type.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
-                        }
+                            "FHIR.v5.0.0": "Specimen.type.coding.system:Specimen.type.coding.code"
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
+                        ]
                     },
                     "name": "specimen_tissue_source_code",
                     "restrictions": {
@@ -2667,9 +2771,11 @@
                         "exact_mappings": {
                             "ARGO.v1.34": "sample_registration.specimen_tissue_source",
                             "FHIR.v5.0.0": "Specimen.type.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.type",
                             "MOHCCN.v3.1": "Specimen.specimen_tissue_source"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
+                        ]
                     },
                     "name": "specimen_tissue_source_term",
                     "valueType": "string"
@@ -2746,10 +2852,13 @@
                         "related_mappings": {
                             "ARGO.v1.34": "donor.age_at_diagnosis+specimen.specimen_acquisition_interval",
                             "FHIR.v5.0.0": "Specimen.collectedDateTime-Patient.dateBirth",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/patient-definitions.html#Patient.birthDate",
                             "MOHCCN.v3.1": "Specimen.specimen_collection_date-Donor.date_of_birth",
                             "mCODE.v4.0.0": "Specimen.collectedDateTime-Patient.dateBirth"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_",
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+                        ]
                     },
                     "name": "age_at_specimen_collection",
                     "valueType": "integer"
@@ -2770,9 +2879,11 @@
                         ],
                         "related_mappings": {
                             "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code",
-                            "FHIRSpec.v5.0.0": "https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code"
-                        }
+                        },
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
+                        ]
                     },
                     "name": "specimen_anatomic_location_code",
                     "restrictions": {
@@ -2786,11 +2897,13 @@
                         "displayName": "specimen_anatomic_location_term",
                         "exact_mappings": {
                             "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.display",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite",
                             "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.display"
                         },
                         "examples": [
                             "placental basal plate"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
                         ]
                     },
                     "name": "specimen_anatomic_location_term",
@@ -2876,7 +2989,6 @@
                             "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
@@ -2885,6 +2997,9 @@
                             "LAML_PO",
                             "00445",
                             "THY_099-tumour"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
                         ]
                     },
                     "name": "submitter_specimen_id",
@@ -3447,7 +3562,6 @@
                             "Beacon.v2.2.0": "individual.id",
                             "CQDG": "submitter_participant_id",
                             "FHIR.v5.0.0": "Patient.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/patient-definitions.html#Patient.identifier",
                             "MOHCCN.v3.1": "Donor.submitter_donor_id",
                             "Phenopackets.v2.0": "Individual.id",
                             "mCODE.v4.0.0": "Patient.identifier"
@@ -3456,6 +3570,9 @@
                             "90234",
                             "BLD_donor_89",
                             "AML-90"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
                         ]
                     },
                     "name": "submitter_participant_id",
@@ -3494,7 +3611,6 @@
                             "Beacon.v2.2.0": "biosample.id",
                             "CQDG": "submitter_biospecimen_id",
                             "FHIR.v5.0.0": "Specimen.identifier",
-                            "FHIRSpec.v5.0.0": "//hl7.org/fhir/specimen-definitions.html#Specimen.identifier",
                             "MOHCCN.v3.1": "specimen.submitter_specimen_id",
                             "Phenopackets.v2.0": "Biosample.derived_from_id",
                             "mCODE.v4.0.0": "Specimen.identifier"
@@ -3503,6 +3619,9 @@
                             "LAML_PO",
                             "00445",
                             "THY_099-tumour"
+                        ],
+                        "specifications": [
+                            "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
                         ]
                     },
                     "name": "submitter_specimen_id",
