@@ -1825,7 +1825,7 @@
                             "NCIT:C138986"
                         ],
                         "related_mappings": {
-                            "ARGO.v1.34": "immunotherapy.drug_id",
+                            "ARGO.v1.34": "chemotherapy.drug_database:chemotherapy.drug_rxnormcui,chemotherapy.drug_id,hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui,hormone_therapy.drug_id,immunotherapy.drug_database:immunotherapy.drug_rxnormcui,immunotherapy.drug_id",
                             "FHIR.v5.0.0": "MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code",
                             "MOHCCN.v3.1": "Systemic_therapy.drug_reference_database:Systemic_therapy.drug_reference_identifier"
                         },
@@ -1848,7 +1848,7 @@
                             "MOHCCN.v3.1": "Systemic_therapy.drug_name"
                         },
                         "related_mappings": {
-                            "ARGO.v1.34": "immunotherapy.drug_name"
+                            "ARGO.v1.34": "chemotherapy.drug_name,hormone_therapy.drug_name,immunotherapy.drug_name"
                         }
                     },
                     "name": "drug_term",
@@ -1862,7 +1862,7 @@
                             "MOHCCN.v3.1": "Systemic_therapy.drug_dose_units"
                         },
                         "related_mappings": {
-                            "ARGO.v1.34": "immunotherapy.immunotherapy_drug_dose_units"
+                            "ARGO.v1.34": "chemotherapy.chemotherapy_drug_dose_units,hormone_therapy.hormone_drug_dose_units,immunotherapy.immunotherapy_drug_dose_units"
                         }
                     },
                     "name": "drug_dose_units",
@@ -1880,7 +1880,7 @@
                             "MOHCCN.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
                         },
                         "related_mappings": {
-                            "ARGO.v1.34": "immunotherapy.prescribed_cumulative_drug_dose"
+                            "ARGO.v1.34": "chemotherapy.prescribed_cumulative_drug_dose,hormone_therapy.prescribed_cumulative_drug_dose,immunotherapy.prescribed_cumulative_drug_dose"
                         },
                         "specifications": [
                             "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
@@ -1897,7 +1897,7 @@
                             "MOHCCN.v3.1": "Systemic_therapy.actual_cumulative_drug_dose"
                         },
                         "related_mappings": {
-                            "ARGO.v1.34": "immunotherapy.actual_cumulative_drug_dose"
+                            "ARGO.v1.34": "chemotherapy.actual_cumulative_drug_dose,hormone_therapy.actual_cumulative_drug_dose,immunotherapy.actual_cumulative_drug_dose"
                         }
                     },
                     "name": "actual_cumulative_drug_dose",

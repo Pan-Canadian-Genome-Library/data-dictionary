@@ -1500,8 +1500,8 @@ slots:
       coding system associated with the comorbidity_code
     title: comorbidity_term
     exact_mappings:
-    - mCODE.v4.0.0:condition.code.coding.display
     - FHIR.v5.0.0:Condition.code.coding.display
+    - mCODE.v4.0.0:condition.code.coding.display
     - Phenopackets.v2.0:Disease.term
     range: string
     required: false
@@ -1907,10 +1907,10 @@ slots:
     description: Age (in days) of the participant at the time the treatment was administered.
     title: age_at_treatment
     related_mappings:
-    - FHIR.v5.0.0:Procedure.occurrenceDateTime-Patient.birthDate
-    - Phenopackets.v2.0:TherapeuticRegimen.end_time-Individual.date_of_birth
     - ARGO.v1.34:treatment.treatment_start_interval+donor.age_at_diagnosis
+    - FHIR.v5.0.0:Procedure.occurrenceDateTime-Patient.birthDate
     - MOHCCN.v3.1:Systemic_therapy.start_date-Donor.date_of_birth
+    - Phenopackets.v2.0:TherapeuticRegimen.end_time-Individual.date_of_birth
     range: integer
     required: false
   treatment_duration:
@@ -1946,8 +1946,8 @@ slots:
     title: treatment_response
     exact_mappings:
     - ARGO.v1.34:treatment.response_to_treatment
-    - MOHCCN.v3.1:Treatment.response_to_treatment
     - CQDG:treatment_response
+    - MOHCCN.v3.1:Treatment.response_to_treatment
     range: treatment_response_menu
     required: false
   treatment_status:
@@ -1973,9 +1973,7 @@ slots:
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.actual_cumulative_drug_dose
     related_mappings:
-    - ARGO.v1.34:chemotherapy.actual_cumulative_drug_dose
-    - ARGO.v1.34:hormone_therapy.actual_cumulative_drug_dose
-    - ARGO.v1.34:immunotherapy.actual_cumulative_drug_dose
+    - ARGO.v1.34:chemotherapy.actual_cumulative_drug_dose,hormone_therapy.actual_cumulative_drug_dose,immunotherapy.actual_cumulative_drug_dose
     range: decimal
     required: false
   drug_code:
@@ -2015,12 +2013,7 @@ slots:
     - value: pubchem.compound:100101
     - value: NCIT:C138986
     related_mappings:
-    - ARGO.v1.34:chemotherapy.drug_database:chemotherapy.drug_rxnormcui
-    - ARGO.v1.34:chemotherapy.drug_id
-    - ARGO.v1.34:hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui
-    - ARGO.v1.34:hormone_therapy.drug_id
-    - ARGO.v1.34:immunotherapy.drug_database:immunotherapy.drug_rxnormcui
-    - ARGO.v1.34:immunotherapy.drug_id
+    - ARGO.v1.34:chemotherapy.drug_database:chemotherapy.drug_rxnormcui,chemotherapy.drug_id,hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui,hormone_therapy.drug_id,immunotherapy.drug_database:immunotherapy.drug_rxnormcui,immunotherapy.drug_id
     - FHIR.v5.0.0:MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code
     - MOHCCN.v3.1:Systemic_therapy.drug_reference_database:Systemic_therapy.drug_reference_identifier
     range: string
@@ -2034,9 +2027,7 @@ slots:
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.drug_dose_units
     related_mappings:
-    - ARGO.v1.34:chemotherapy.chemotherapy_drug_dose_units
-    - ARGO.v1.34:hormone_therapy.hormone_drug_dose_units
-    - ARGO.v1.34:immunotherapy.immunotherapy_drug_dose_units
+    - ARGO.v1.34:chemotherapy.chemotherapy_drug_dose_units,hormone_therapy.hormone_drug_dose_units,immunotherapy.immunotherapy_drug_dose_units
     range: string
     required: false
     pattern: ^UO:\d{7}$
@@ -2048,9 +2039,7 @@ slots:
     exact_mappings:
     - MOHCCN.v3.1:Systemic_therapy.drug_name
     related_mappings:
-    - ARGO.v1.34:chemotherapy.drug_name
-    - ARGO.v1.34:hormone_therapy.drug_name
-    - ARGO.v1.34:immunotherapy.drug_name
+    - ARGO.v1.34:chemotherapy.drug_name,hormone_therapy.drug_name,immunotherapy.drug_name
     range: string
     required: false
   prescribed_cumulative_drug_dose:
@@ -2066,9 +2055,7 @@ slots:
     - FHIR:MedicationAdministration.medication.code.coding.display
     - MOHCCN.v3.1:Systemic_therapy.prescribed_cumulative_drug_dose
     related_mappings:
-    - ARGO.v1.34:chemotherapy.prescribed_cumulative_drug_dose
-    - ARGO.v1.34:hormone_therapy.prescribed_cumulative_drug_dose
-    - ARGO.v1.34:immunotherapy.prescribed_cumulative_drug_dose
+    - ARGO.v1.34:chemotherapy.prescribed_cumulative_drug_dose,hormone_therapy.prescribed_cumulative_drug_dose,immunotherapy.prescribed_cumulative_drug_dose
     range: decimal
     required: false
   anatomical_site_irradiated_code:
@@ -2281,8 +2268,8 @@ slots:
     description: Data format of files.
     title: fileType
     exact_mappings:
-    - EGA:ANALYSIS/FILES/FILE@filetype
     - ARGO:files.format
+    - EGA:ANALYSIS/FILES/FILE@filetype
     range: string
     required: true
   fileAccess:
@@ -2777,10 +2764,10 @@ slots:
     - value: SO:0000234
     - value: SO:0001877
     exact_mappings:
-    - CQDG:Sample.Registration:sample_type
-    - Phenopackets.v2.0:Biosample:sample_type
     - Beacon.v2.2.0:biosample.sample_type
+    - CQDG:Sample.Registration:sample_type
     - GA4GH.Experiment.Metadata.Checklist:molecule_type
+    - Phenopackets.v2.0:Biosample:sample_type
     range: string
     required: true
     pattern: ^NCIT:C[0-9]+$|^SO:\d{7}$
@@ -2835,8 +2822,8 @@ slots:
     examples:
     - value: OBI:0002117
     exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:assay_type
     - Beacon.v2.2.0:runs.libraryStrategy
+    - GA4GH.Experiment.Metadata.Checklist:assay_type
     range: string
     required: true
     pattern: ^OBI:\d{7}$
@@ -2958,8 +2945,8 @@ slots:
       if applicable.
     title: library_layout
     exact_mappings:
-    - GA4GH.Experiment.Metadata.Checklist:library_layout
     - Beacon.v2.2.0:runs.libraryLayout
+    - GA4GH.Experiment.Metadata.Checklist:library_layout
     range: library_layout_menu
     required: true
   platform_unit:
@@ -3816,9 +3803,9 @@ classes:
         - value: BLD_donor_89
         - value: AML-90
         exact_mappings:
-        - mCODE.v4.0.0:Condition.identifier
-        - FHIR.v5.0.0:Condition.identifier
         - ARGO.v1.34:primary_diagnosis.submitter_primary_diagnosis_id
+        - FHIR.v5.0.0:Condition.identifier
+        - mCODE.v4.0.0:Condition.identifier
         - MOHCCN.v3.1:Primary_diagnosis.submitter_primary_diagnosis_id
         range: string
         required: false
