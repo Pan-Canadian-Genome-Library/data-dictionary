@@ -137,6 +137,8 @@ def populateFieldProperties(model,lectern):
             ###For lectern store under meta
             # 'exact_mappings' contains mapping info for fields that map one to one
             if model['slots'][slot]['exact_mappings']:
+                exact_mappings = {}
+                related_mappings = {}
                 if not tmp.get('meta'):
                     tmp['meta']={}
                 if not tmp['meta'].get('exact_mappings'):
@@ -145,7 +147,8 @@ def populateFieldProperties(model,lectern):
                 for mapping in model['slots'][slot]['exact_mappings']:
                     key=mapping.split(":")[0]
                     val=mapping.split(":")[-1]
-                    tmp['meta']['exact_mappings'][key]=val
+                    exact_mappings[key]=val
+                tmp['meta']['exact_mappings'] = dict(sorted(exact_mappings.items(), key=lambda item:item[0].lower()))
  
 	    # 'related_mappings' contain mapping info that can be calculated using more than one field.
             if model['slots'][slot]['related_mappings']:
@@ -156,9 +159,10 @@ def populateFieldProperties(model,lectern):
 
                 for mapping in model['slots'][slot]['related_mappings']:
                     key, val=mapping.split(":", 1)
-                    tmp['meta']['related_mappings'][key]=val
-
-	    # The specifications for data mapping elements was stored in 'annotations' in the base.yaml file to keep semantics clean and separate from mapping info in 'exact_mappings' and 'related_mappings'. This allows for the additional specifications to be added in the future for other data models. Specifications had to be stored as a string delimited by ';' character in the base.yaml file since 'annotations' did not allow for a nested or key/value pair. Using delimiter here to parse the specifications into a list that will show in lectern schema.
+                    related_mappings[key]=val
+                tmp['meta']['related_mappings'] = dict(sorted(related_mappings.items(), key=lambda item:item[0].lower()))
+	    
+            # The specifications for data mapping elements was stored in 'annotations' in the base.yaml file to keep semantics clean and separate from mapping info in 'exact_mappings' and 'related_mappings'. This allows for the additional specifications to be added in the future for other data models. Specifications had to be stored as a string delimited by ';' character in the base.yaml file since 'annotations' did not allow for a nested or key/value pair. Using delimiter here to parse the specifications into a list that will show in lectern schema.
             if model['slots'][slot]['annotations']:
               if 'specifications' in model['slots'][slot]['annotations']:
                 if not tmp.get('meta'):

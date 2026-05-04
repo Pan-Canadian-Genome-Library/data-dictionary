@@ -1084,6 +1084,7 @@ slots:
     range: integer
     required: false
     exact_mappings:
+    - ARGO.v1.34:donor.survival_time
     - Phenopackets.v2.0:VitalStatus.survival_time_in_days
     related_mappings:
     - FHIR.v5.0.0:Patient.deceased.dateTime-Patient.birthDate
