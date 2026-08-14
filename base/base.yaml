@@ -1130,6 +1130,31 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}
+  submitter_participant_ids:
+    name: submitter_participant_ids
+    description: A list of Unique identifiers for participants within the study, assigned by
+      the data provider.
+    title: Submitter Participant Ids
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    exact_mappings:
+    - ARGO.v1.34:donor.submitter_donor_id
+    - Beacon.v2.2.0:individual.id
+    - CQDG:submitter_participant_id
+    - FHIR.v5.0.0:Patient.identifier
+    - mCODE.v4.0.0:Patient.identifier
+    - MOHCCN.v3.1:Donor.submitter_donor_id
+    - Phenopackets.v2.0:Individual.id
+    annotations:
+      specifications: "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    multivalued: true
+    minimum_cardinality: 1
+    list_elements_unique: true
   vital_status:
     name: vital_status
     description: Participant's last known state of living or deceased.
@@ -1681,6 +1706,31 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_specimen_ids:
+    name: submitter_specimen_ids
+    description: List of Unique identifiers for specimens within the study, assigned by the
+      data provider.
+    title: Submitter Specimen Ids
+    examples:
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
+    exact_mappings:
+    - ARGO.v1.34:specimen.submitter_specimen_id
+    - Beacon.v2.2.0:biosample.id
+    - CQDG:submitter_biospecimen_id
+    - FHIR.v5.0.0:Specimen.identifier
+    - mCODE.v4.0.0:Specimen.identifier
+    - MOHCCN.v3.1:specimen.submitter_specimen_id
+    - Phenopackets.v2.0:Biosample.derived_from_id
+    annotations:
+      specifications: "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    multivalued: true
+    minimum_cardinality: 1
+    list_elements_unique: true
   age_at_diagnosis:
     name: age_at_diagnosis
     description: Age of participant (in days) at time of diagnosis of the condition.
@@ -1962,6 +2012,27 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_sample_ids:
+    name: submitter_sample_ids
+    description: 'List of Unique identifiers for samples within the study, assigned by the
+      data provider.
+
+      '
+    title: Submitter Sample Ids
+    examples:
+    - value: hnc_12
+    - value: CCG_34_94583
+    - value: BRCA47832-3239
+    exact_mappings:
+    - ARGO.v1.34:sample_registration.submitter_sample_id
+    - MOHCCN.v3.1:Sample_registration.submitter_sample_id
+    - Phenopackets.v2.0:Biosample.id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    multivalued: true
+    minimum_cardinality: 1
+    list_elements_unique: true
   sample_status:
     name: sample_status
     description: "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to of the same type that does not meet the criteria, representing a normal or baseline state for comparison."
@@ -1978,6 +2049,19 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_experiment_ids:
+    name: submitter_experiment_ids
+    description: List of Unique identifier for experiments within the study, assigned by
+      the data provider.
+    title: Submitter Experiment Ids
+    exact_mappings:
+    - ARGO.v1.34:experiment.submitter_sequencing_experiment_id
+    range: string
+    required: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    multivalued: true
+    minimum_cardinality: 1
+    list_elements_unique: true
   experiment_type:
     name: experiment_type
     description: "Indicate NCIt (NCI Thesaurus) code and term to denote the broad type of sequencing experiment performed. A mixture of library strategy and source."
@@ -4019,10 +4103,10 @@ classes:
     title: Analysis
     slots:
     - submitter_analysis_id
-    - submitter_experiment_id
-    - submitter_participant_id
-    - submitter_sample_id
-    - submitter_specimen_id
+    - submitter_experiment_ids
+    - submitter_participant_ids
+    - submitter_sample_ids
+    - submitter_specimen_ids
     - analysisType
     - data_category
     - genome_annotation

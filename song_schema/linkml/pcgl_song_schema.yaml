@@ -66,7 +66,7 @@ classes:
     title: Sequence Experiment
     is_a: Analysis
     slots:
-    - submitter_experiment_id
+    - submitter_experiment_ids
     slot_usage:
       submitter_experiment_id:
         required: true
@@ -79,11 +79,11 @@ classes:
     title: Sequence Alignment
     is_a: Analysis
     slots:
-    - submitter_experiment_id
+    - submitter_experiment_ids
     - workflow
     - genome_build
     slot_usage:
-      submitter_experiment_id:
+      submitter_experiment_ids:
         required: true
       workflow:
         required: true
@@ -98,14 +98,14 @@ classes:
     title: Variant Call
     is_a: Analysis
     slots:
-    - submitter_experiment_id
+    - submitter_experiment_ids
     - variant_calling_strategy
     - variant_class
     - workflow
     - genome_build
     - genome_annotation
     slot_usage:
-      submitter_experiment_id:
+      submitter_experiment_ids:
         required: true
       variant_calling_strategy:
         required: true

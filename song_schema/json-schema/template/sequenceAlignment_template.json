@@ -16,7 +16,9 @@
   "genome_build": "<genome_build>",
   "studyId": "<studyId>",
   "submitter_analysis_id": "<submitter_analysis_id>",
-  "submitter_experiment_id": "<submitter_experiment_id>",
+  "submitter_experiment_ids": [
+    {}
+  ],
   "workflow": {
     "submitter_workflow_id": "<submitter_workflow_id>",
     "workflow_name": "<workflow_name>",
