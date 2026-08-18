@@ -1132,7 +1132,7 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}
   submitter_participant_ids:
     name: submitter_participant_ids
-    description: A list of Unique identifiers for participants within the study, assigned by
+    description: A list of Unique identifiers (min 1) for participants within the study, assigned by
       the data provider.
     title: Submitter Participant Ids
     examples:
@@ -1708,7 +1708,7 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_specimen_ids:
     name: submitter_specimen_ids
-    description: List of Unique identifiers for specimens within the study, assigned by the
+    description: List of Unique identifiers (min 1) for specimens within the study, assigned by the
       data provider.
     title: Submitter Specimen Ids
     examples:
@@ -2014,7 +2014,7 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_sample_ids:
     name: submitter_sample_ids
-    description: 'List of Unique identifiers for samples within the study, assigned by the
+    description: 'List of Unique identifiers (min 1) for samples within the study, assigned by the
       data provider.
 
       '
@@ -2051,7 +2051,7 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_experiment_ids:
     name: submitter_experiment_ids
-    description: List of Unique identifier for experiments within the study, assigned by
+    description: A list of Unique identifiers (min 1) for experiments within the study, assigned by
       the data provider.
     title: Submitter Experiment Ids
     exact_mappings:
