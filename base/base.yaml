@@ -2115,7 +2115,7 @@ slots:
     - ARGO:fileName
     range: string
     required: true
-    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
+    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$
   fileSize:
     name: fileSize
     description: Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.
