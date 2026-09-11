@@ -1,10 +1,10 @@
 {
   "name": "Pan-Canadian Genome Library Data Dictionary",
   "description": "The PCGL Data Dictionary specifies the standardized data elements, controlled vocabulary, data types, validation rules, and interoperability mappings for all health and genomic data submitted to the Pan-Canadian Genome Library.",
-  "version": "1.0",
+  "version": "1.1",
   "meta": {
     "version": {
-      "base": "1.0",
+      "base": "1.1",
       "extension": "0.0"
     }
   },
@@ -1842,7 +1842,7 @@
           "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed. Provide code in Compact URI (CURIE) pattern.\n\nNCIt URL:\nhttp://purl.obolibrary.org/obo/NCIT_{code}\nSNOMED-CT URL:\nhttp://snomed.info/id/{code}\nUMLS URL:\nhttps://uts.nlm.nih.gov/uts/umls/concept/{code}\nCCI URL:\nhttps://www.cihi.ca/en/cci-coding-structure",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:[CRPA]\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
+            "regex": "^NCIT:[C]\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
           },
           "valueType": "string"
         },
@@ -2147,7 +2147,7 @@
           "description": "Indicate NCIt code to denote the modality of radiation therapy.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:[CRPA]\\d+$"
+            "regex": "^NCIT:[C]\\d+$"
           },
           "valueType": "string"
         },
@@ -2991,7 +2991,7 @@
           "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C[0-9]+$"
+            "regex": "^NCIT:C\\d+$"
           },
           "valueType": "string"
         },
@@ -3276,7 +3276,7 @@
           "description": "Indicate NCIT or SO code to denote the type of source material used for sequencing and analysis.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C[0-9]+$|^SO:\\d{7}$"
+            "regex": "^NCIT:C\\d+$|^SO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -4285,7 +4285,7 @@
           "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$."
+            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$"
           },
           "valueType": "string"
         },

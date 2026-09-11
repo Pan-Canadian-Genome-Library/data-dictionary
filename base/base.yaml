@@ -2,7 +2,7 @@ name: PCGL_Base_Schema
 description: 'Defines the base schema of shared data elements used across all domains, including patient demographics, vital status, and laboratory results'
 in_language: '[''en'']'
 id: https://example.com/base_schema.yaml
-version: '1.0'
+version: '1.1'
 imports:
 - linkml:types
 prefixes:
@@ -295,45 +295,9 @@ enums:
         text: Not applicable
       Smoking history not documented:
         text: Smoking history not documented
-  body_site_laterality_menu:
-    name: body_site_laterality_menu
-    title: body site laterality menu
-    permissible_values:
-      Left:
-        text: Left
-      Right:
-        text: Right
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  irradiated_site_laterality_menu:
-    name: irradiated_site_laterality_menu
-    title: irradiated site laterality menu
-    permissible_values:
-      Left:
-        text: Left
-      Right:
-        text: Right
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  specimen_laterality_menu:
-    name: specimen_laterality_menu
-    title: specimen laterality menu
+  laterality_menu:
+    name: laterality_menu
+    title: laterality menu
     permissible_values:
       Left:
         text: Left
@@ -1512,7 +1476,7 @@ slots:
     title: Procedure Code
     range: string
     required: true
-    pattern: ^NCIT:[CRPA]\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIT:[C]\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
     examples:
     - value: NCIT:C51894 
     - value: snomedct:284196006
@@ -1645,7 +1609,7 @@ slots:
     - ARGO.v1.34:specimen.specimen.laterality
     - mCODE.v4.0.0:Specimen.collection.bodySite.extension.lateralityQualifier
     - MOHCCN.v3.1:specimen.specimen.laterality
-    range: specimen_laterality_menu
+    range: laterality_menu
     required: false
   body_site_laterality:
     name: body_site_laterality
@@ -1653,7 +1617,7 @@ slots:
     title: Body Site Laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
-    range: body_site_laterality_menu
+    range: laterality_menu
     required: false
   irradiated_site_laterality:
     name: irradiated_site_laterality
@@ -1661,7 +1625,7 @@ slots:
     title: Irradiated Site Laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
-    range: irradiated_site_laterality_menu
+    range: laterality_menu
     required: false
   specimen_processing:
     name: specimen_processing
@@ -1702,7 +1666,7 @@ slots:
     - Phenopackets.v2.0:Biosample.sampled_tissue
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$
+    pattern: ^NCIT:C\d+$
     examples:
     - value: "NCIT:C12434"
   specimen_tissue_source_term:
@@ -2515,7 +2479,7 @@ slots:
     - Phenopackets.v2.0:RadiationTherapy.modality
     range: string
     required: true
-    pattern: ^NCIT:[CRPA]\d+$
+    pattern: ^NCIT:[C]\d+$
   radiation_modality_term:
     name: radiation_modality_term
     description: Provide the standardized and human readable term derived from the
@@ -2626,7 +2590,7 @@ slots:
     - Phenopackets.v2.0:Biosample:sample_type
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$|^SO:\d{7}$
+    pattern: ^NCIT:C\d+$|^SO:\d{7}$
   molecule_type_term:
     name: molecule_type_term
     description: Provide the standardized and human readable term derived from the

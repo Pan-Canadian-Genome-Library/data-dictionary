@@ -4,7 +4,7 @@ description: The PCGL Data Dictionary specifies the standardized data elements, 
   health and genomic data submitted to the Pan-Canadian Genome Library.
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.0.0.0
+version: 1.1.0.0
 imports:
 - linkml:types
 prefixes:
@@ -295,45 +295,9 @@ enums:
         text: Not applicable
       Smoking history not documented:
         text: Smoking history not documented
-  body_site_laterality_menu:
-    name: body_site_laterality_menu
-    title: body site laterality menu
-    permissible_values:
-      Left:
-        text: Left
-      Right:
-        text: Right
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  irradiated_site_laterality_menu:
-    name: irradiated_site_laterality_menu
-    title: irradiated site laterality menu
-    permissible_values:
-      Left:
-        text: Left
-      Right:
-        text: Right
-      Missing - Not collected:
-        text: Missing - Not collected
-      Missing - Not provided:
-        text: Missing - Not provided
-      Missing - Restricted access:
-        text: Missing - Restricted access
-      Missing - Unknown:
-        text: Missing - Unknown
-      Not applicable:
-        text: Not applicable
-  specimen_laterality_menu:
-    name: specimen_laterality_menu
-    title: specimen laterality menu
+  laterality_menu:
+    name: laterality_menu
+    title: laterality menu
     permissible_values:
       Left:
         text: Left
@@ -1638,7 +1602,7 @@ slots:
     - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
     range: string
     required: true
-    pattern: ^NCIT:[CRPA]\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIT:[C]\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
   procedure_term:
     name: procedure_term
     annotations:
@@ -1778,7 +1742,7 @@ slots:
     - ARGO.v1.34:specimen.specimen.laterality
     - mCODE.v4.0.0:Specimen.collection.bodySite.extension.lateralityQualifier
     - MOHCCN.v3.1:specimen.specimen.laterality
-    range: specimen_laterality_menu
+    range: laterality_menu
     required: false
   body_site_laterality:
     name: body_site_laterality
@@ -1786,7 +1750,7 @@ slots:
     title: body_site_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
-    range: body_site_laterality_menu
+    range: laterality_menu
     required: false
   irradiated_site_laterality:
     name: irradiated_site_laterality
@@ -1794,7 +1758,7 @@ slots:
     title: irradiated_site_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
-    range: irradiated_site_laterality_menu
+    range: laterality_menu
     required: false
   specimen_processing:
     name: specimen_processing
@@ -1842,7 +1806,7 @@ slots:
     - FHIR.v5.0.0:Specimen.type.coding.system:Specimen.type.coding.code
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$
+    pattern: ^NCIT:C\d+$
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
     annotations:
@@ -2312,7 +2276,7 @@ slots:
     - ARGO:fileName
     range: string
     required: true
-    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
+    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$
   fileSize:
     name: fileSize
     description: Size of the file, in bytes. If not provided, will be populated by
@@ -2741,7 +2705,7 @@ slots:
     - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
     range: string
     required: true
-    pattern: ^NCIT:[CRPA]\d+$
+    pattern: ^NCIT:[C]\d+$
   radiation_modality_term:
     name: radiation_modality_term
     annotations:
@@ -2853,7 +2817,7 @@ slots:
     - Phenopackets.v2.0:Biosample:sample_type
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$|^SO:\d{7}$
+    pattern: ^NCIT:C\d+$|^SO:\d{7}$
   molecule_type_term:
     name: molecule_type_term
     description: Provide the standardized and human readable term derived from the
