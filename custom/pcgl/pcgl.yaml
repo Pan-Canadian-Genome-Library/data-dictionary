@@ -16,6 +16,8 @@ imports:
 classes:
   Study:
     is_a: base_Study
+  Study_Translation:
+    is_a: base_Study_Translation
   Dac:
     is_a: base_Dac
   Participant:
@@ -57,7 +59,7 @@ classes:
   Workflow:
     is_a: base_Workflow
   File:
-    is_a: base_File
+    is_a: extension_File
 
 
 

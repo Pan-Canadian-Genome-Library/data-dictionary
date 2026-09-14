@@ -85,12 +85,12 @@ def populateLecternProperties(model,lectern):
   lectern['name']=lectern['name'].replace("_"," ")
 
   if lectern.get("version"):
-    if not re.findall(r'\d\.0\.0.\d',lectern.get("version")):
+    if not re.findall(r'\d\.\d\.0\.\d',lectern.get("version")):
         print(lectern.get("version"))
-        print("Schema version regex is not correct. Should follow '\\d.0.0.\\d'")
+        print("Schema version regex is not correct. Should follow '\\d.\\d.0.\\d'")
         exit(1)
     else:
-        lectern['version']="%s.%s" % (lectern['version'].split(".")[0],lectern['version'].split(".")[-1])
+        lectern['version']="%s.%s" % (lectern['version'].split(".")[0],str(int(lectern['version'].split(".")[-1])+int(lectern['version'].split(".")[-3])))
         lectern['meta']={}
         lectern['meta']['version']={
             "base":".".join(model[val].split(".")[:2]),

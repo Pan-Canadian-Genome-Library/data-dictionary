@@ -143,6 +143,7 @@ def generate_template(schema):
 
 def update_schema(schema, top_class, file_type_enum, data_type_enum):
     # Update the name property within the analysisType property to be a constant value from top_class
+    #print("A",schema)
     if 'analysisType' in schema.get('properties', {}):
         if 'properties' in schema['properties']['analysisType']:
             schema['properties']['analysisType']['properties']['name'] = {"const": top_class}
@@ -153,8 +154,9 @@ def update_schema(schema, top_class, file_type_enum, data_type_enum):
             if 'properties' in schema['properties']['files']['items']:
                 if 'fileType' in schema['properties']['files']['items']['properties']:
                     schema['properties']['files']['items']['properties']['fileType']['enum'] = file_type_enum
-                if 'dataType' in schema['properties']['files']['items']['properties']:
-                    schema['properties']['files']['items']['properties']['dataType']['enum'] = data_type_enum
+                #if 'dataType' in schema['properties']['files']['items']['properties']:
+                #    schema['properties']['files']['items']['properties']['dataType']['enum'] = data_type_enum
+    #print("B",schema)
     return schema
 
 def ensure_directory_exists(directory):
@@ -168,7 +170,6 @@ def process_schema(input_file, top_class, options, schema_dir):
 
     # Resolve references in the JSON schema
     schema_with_refs = resolve_references(json_schema_str)
-
     # # Create a copy of the resolved schema
     # schema_copy = copy.deepcopy(schema_with_refs)
 
@@ -176,7 +177,6 @@ def process_schema(input_file, top_class, options, schema_dir):
     fields_to_drop = ["$id", "$defs", "description", "version", "title",
                       "additionalProperties", "metamodel_version"]
     schema_clean = drop_fields(copy.deepcopy(schema_with_refs), fields_to_drop)
-
     # Update the name property within the analysisType property
     file_type_enum = options.get('options', []).get('fileTypes', [])
     data_type_enum = options.get('dataType', []) 
@@ -184,7 +184,6 @@ def process_schema(input_file, top_class, options, schema_dir):
 
     # Remove all "title" fields from the schema
     remove_titles(schema_clean)
-
     # Prepare output paths
     full_schema_path = os.path.join(schema_dir, "full", f"{top_class}.json")
     template_path = os.path.join(schema_dir, "template", f"{top_class}_template.json")

@@ -27,7 +27,8 @@
         "type": "string"
       },
       "genome_annotation": {
-        "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).",
+        "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.).",
+        "pattern": "^(?:Ensembl \\d{1,5}|RefSeq \\d{1,5}|Gencode v\\d{1,5})$",
         "type": [
           "string",
           "null"

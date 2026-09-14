@@ -33,32 +33,29 @@
         "description": "Contains information about the files generated from a run of sequencing or data analysis",
         "properties": {
           "dataType": {
-            "description": "",
-            "enum": [
-              "Single Nucleotide Variants (SNVs)",
-              "Insertions and Deletions (InDels)",
-              "Structural Variations (SVs)",
-              "Copy Number Variations (CNVs)",
-              "Variant Calls Index"
-            ],
+            "description": "Indicates the type of data produced as outputs from the analysis. ",
             "type": "string"
           },
           "fileAccess": {
             "description": "The permission level of a file for public access.",
+            "enum": [
+              "open",
+              "controlled"
+            ],
             "type": "string"
           },
           "fileMd5sum": {
-            "description": "Computed md5sum of the file.",
+            "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
             "pattern": "^[a-fA-F0-9]{32}$",
             "type": "string"
           },
           "fileName": {
-            "description": "Name of the file.",
-            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
+            "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
+            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$",
             "type": "string"
           },
           "fileSize": {
-            "description": "Size of the file, in bytes.",
+            "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
             "type": "integer"
           },
           "fileType": {
@@ -83,7 +80,8 @@
       "type": "array"
     },
     "genome_annotation": {
-      "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).",
+      "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.).",
+      "pattern": "^(?:Ensembl \\d{1,5}|RefSeq \\d{1,5}|Gencode v\\d{1,5})$",
       "type": [
         "string",
         "null"
