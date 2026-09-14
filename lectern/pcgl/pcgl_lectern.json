@@ -4227,37 +4227,6 @@
         },
         {
           "meta": {
-            "displayName": "dataType"
-          },
-          "name": "dataType",
-          "description": "Indicates the type of data produced as outputs from the analysis. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Raw Sequencing Reads",
-              "Aligned Reads",
-              "Aligned Reads Index",
-              "Single Nucleotide Variants (SNVs)",
-              "Insertions and Deletions (InDels)",
-              "Structural Variations (SVs)",
-              "Copy Number Variations (CNVs)",
-              "Variant Calls Index",
-              "Quality Control Metrics",
-              "Gene Fusions",
-              "Alternative Splicing",
-              "Gene Expression Quantification",
-              "Transcript Expression Quantification",
-              "Single-Cell Expression Matrices",
-              "Splicing Junctions",
-              "Differential Expression Analysis"
-            ]
-          },
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
             "displayName": "fileAccess",
             "exact_mappings": {
               "ARGO": "fileAccess"
@@ -4306,7 +4275,38 @@
         },
         {
           "meta": {
-            "displayName": "fileMd5sum",
+            "displayName": "DataType"
+          },
+          "name": "dataType",
+          "description": "Indicates the type of data produced as outputs from the analysis. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Raw Sequencing Reads",
+              "Aligned Reads",
+              "Aligned Reads Index",
+              "Single Nucleotide Variants (SNVs)",
+              "Insertions and Deletions (InDels)",
+              "Structural Variations (SVs)",
+              "Copy Number Variations (CNVs)",
+              "Variant Calls Index",
+              "Quality Control Metrics",
+              "Gene Fusions",
+              "Alternative Splicing",
+              "Gene Expression Quantification",
+              "Transcript Expression Quantification",
+              "Single-Cell Expression Matrices",
+              "Splicing Junctions",
+              "Differential Expression Analysis"
+            ]
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "FileMd5sum",
             "exact_mappings": {
               "ARGO": "files.md5sum"
             }
@@ -4320,7 +4320,7 @@
         },
         {
           "meta": {
-            "displayName": "fileSize",
+            "displayName": "FileSize",
             "exact_mappings": {
               "ARGO": "files.size"
             }

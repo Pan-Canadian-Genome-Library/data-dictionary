@@ -2281,7 +2281,7 @@ slots:
     name: fileSize
     description: Size of the file, in bytes. If not provided, will be populated by
       molecular submission workflow.
-    title: fileSize
+    title: FileSize
     exact_mappings:
     - ARGO:files.size
     range: integer
@@ -2290,7 +2290,7 @@ slots:
     name: fileMd5sum
     description: Computed md5sum of the file. If not provided, will be populated by
       molecular submission workflow.
-    title: fileMd5sum
+    title: FileMd5sum
     exact_mappings:
     - ARGO:files.md5sum
     range: string
@@ -3115,7 +3115,7 @@ slots:
   dataType:
     name: dataType
     description: 'Indicates the type of data produced as outputs from the analysis. '
-    title: dataType
+    title: DataType
     range: data_type_menu
     required: true
     multivalued: true
@@ -4793,10 +4793,10 @@ classes:
     title: File
     slots:
     - submitter_analysis_id
-    - dataType
     - fileAccess
     - fileName
     - fileType
+    - dataType
     - fileMd5sum
     - fileSize
     slot_usage:
@@ -4804,27 +4804,27 @@ classes:
         name: submitter_analysis_id
         rank: 1
         slot_group: Database Identifiers
-      dataType:
-        name: dataType
-        rank: 2
-        slot_group: File
       fileAccess:
         name: fileAccess
-        rank: 3
+        rank: 2
         slot_group: File
       fileName:
         name: fileName
-        rank: 4
+        rank: 3
         slot_group: File
       fileType:
         name: fileType
-        rank: 5
+        rank: 4
         slot_group: File
+      dataType:
+        name: dataType
+        rank: 6
+        slot_group: Extensions File
       fileMd5sum:
         name: fileMd5sum
-        rank: 6
-        slot_group: File
+        rank: 7
+        slot_group: Extensions File
       fileSize:
         name: fileSize
-        rank: 7
-        slot_group: File
+        rank: 8
+        slot_group: Extensions File

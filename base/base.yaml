@@ -2087,7 +2087,7 @@ slots:
     exact_mappings:
     - ARGO:files.size
     range: integer
-    required: false
+    required: true
   fileMd5sum:
     name: fileMd5sum
     description: Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.
@@ -2095,7 +2095,7 @@ slots:
     exact_mappings:
     - ARGO:files.md5sum
     range: string
-    required: false
+    required: true
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
@@ -2880,9 +2880,8 @@ slots:
     name: dataType
     description: 'Indicates the type of data produced as outputs from the analysis. '
     title: DataType
-    range: data_type_menu
+    range: string
     required: true
-    multivalued: true
   study_name: 
     description: "The official name of the study"
     name: study_name
