@@ -44,21 +44,25 @@
             "type": "string"
           },
           "fileAccess": {
-            "description": "The permission level of a file for public access.",
+            "description": "",
+            "enum": [
+              "open",
+              "controlled"
+            ],
             "type": "string"
           },
           "fileMd5sum": {
-            "description": "Computed md5sum of the file.",
+            "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
             "pattern": "^[a-fA-F0-9]{32}$",
             "type": "string"
           },
           "fileName": {
-            "description": "Name of the file.",
+            "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
             "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
             "type": "string"
           },
           "fileSize": {
-            "description": "Size of the file, in bytes.",
+            "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
             "type": "integer"
           },
           "fileType": {
@@ -73,17 +77,18 @@
         "required": [
           "dataType",
           "fileAccess",
-          "fileMd5sum",
           "fileName",
+          "fileType",
           "fileSize",
-          "fileType"
+          "fileMd5sum"
         ],
         "type": "object"
       },
       "type": "array"
     },
     "genome_annotation": {
-      "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, and Gencode release.).",
+      "description": "Indicates which genome annotation build or version was used in the analysis (e.g., Ensembl release, RefSeq release, etc.).",
+      "pattern": "^(?:Ensembl \\d{1,5}|RefSeq \\d{1,5}|Gencode v\\d{1,5})$",
       "type": [
         "string",
         "null"
@@ -106,10 +111,15 @@
       "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
       "type": "string"
     },
-    "submitter_experiment_id": {
-      "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
-      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
-      "type": "string"
+    "submitter_experiment_ids": {
+      "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the data provider.",
+      "items": {
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
     },
     "variant_calling_strategy": {
       "description": "",
@@ -167,7 +177,7 @@
     }
   },
   "required": [
-    "submitter_experiment_id",
+    "submitter_experiment_ids",
     "variant_calling_strategy",
     "variant_class",
     "workflow",

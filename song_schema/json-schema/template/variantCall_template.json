@@ -17,7 +17,9 @@
   "genome_build": "<genome_build>",
   "studyId": "<studyId>",
   "submitter_analysis_id": "<submitter_analysis_id>",
-  "submitter_experiment_id": "<submitter_experiment_id>",
+  "submitter_experiment_ids": [
+    "<submitter_experiment_ids>"
+  ],
   "variant_calling_strategy": "<variant_calling_strategy>",
   "variant_class": "<variant_class>",
   "workflow": {
