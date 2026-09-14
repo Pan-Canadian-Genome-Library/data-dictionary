@@ -1156,6 +1156,7 @@ slots:
     - mCODE.v4.0.0:Patient.identifier
     - MOHCCN.v3.1:Donor.submitter_donor_id
     - Phenopackets.v2.0:Individual.id
+    is_a: submitter_participant_id
     list_elements_unique: true
     range: string
     required: true
@@ -1869,6 +1870,7 @@ slots:
     - mCODE.v4.0.0:Specimen.identifier
     - MOHCCN.v3.1:specimen.submitter_specimen_id
     - Phenopackets.v2.0:Biosample.derived_from_id
+    is_a: submitter_specimen_id
     list_elements_unique: true
     range: string
     required: true
@@ -2218,6 +2220,7 @@ slots:
     - ARGO.v1.34:sample_registration.submitter_sample_id
     - MOHCCN.v3.1:Sample_registration.submitter_sample_id
     - Phenopackets.v2.0:Biosample.id
+    is_a: submitter_sample_id
     list_elements_unique: true
     range: string
     required: true
@@ -2253,6 +2256,7 @@ slots:
     title: submitter_experiment_ids
     exact_mappings:
     - ARGO.v1.34:experiment.submitter_sequencing_experiment_id
+    is_a: submitter_experiment_id
     list_elements_unique: true
     range: string
     required: true

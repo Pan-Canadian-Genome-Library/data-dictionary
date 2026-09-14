@@ -48,7 +48,7 @@
         "type": "string"
       },
       "submitter_experiment_ids": {
-        "description": "List of Unique identifier for experiments within the study, assigned by the data provider.",
+        "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the data provider.",
         "items": {
           "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
           "type": "string"

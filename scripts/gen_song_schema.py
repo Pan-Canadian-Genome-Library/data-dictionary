@@ -131,11 +131,16 @@ def generate_template(schema):
                 template[prop] = 0.0
             elif prop_type == 'boolean':
                 template[prop] = False
+            # elif prop_type == 'array':
+            #     if 'items' in prop_schema and 'enum' in prop_schema['items']:
+            #         template[prop] = [f"<{prop}>"]
+            #     else:
+            #         template[prop] = [generate_template(prop_schema['items'])]
             elif prop_type == 'array':
-                if 'items' in prop_schema and 'enum' in prop_schema['items']:
-                    template[prop] = [f"<{prop}>"]
-                else:
+                if 'properties' in prop_schema.get('items', {}):
                     template[prop] = [generate_template(prop_schema['items'])]
+                else:
+                    template[prop] = [f"<{prop}>"]
             elif prop_type == 'object':
                 template[prop] = generate_template(prop_schema)
     return template

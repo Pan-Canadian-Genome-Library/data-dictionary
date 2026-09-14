@@ -68,7 +68,7 @@ classes:
     slots:
     - submitter_experiment_ids
     slot_usage:
-      submitter_experiment_id:
+      submitter_experiment_ids:
         required: true
     annotations:
       base_version: 1.0

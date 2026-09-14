@@ -1,7 +1,7 @@
 {
-  "name": "prod_pcgl_schema",
+  "name": "Pan-Canadian Genome Library Data Dictionary",
   "description": "The PCGL Data Dictionary specifies the standardized data elements, controlled vocabulary, data types, validation rules, and interoperability mappings for all health and genomic data submitted to the Pan-Canadian Genome Library.",
-  "version": "2.0",
+  "version": "1.0",
   "meta": {
     "version": {
       "base": "1.0",

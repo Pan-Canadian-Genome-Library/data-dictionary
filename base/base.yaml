@@ -1132,26 +1132,10 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}
   submitter_participant_ids:
     name: submitter_participant_ids
+    is_a : submitter_participant_id
     description: A list of Unique identifiers (min 1) for participants within the study, assigned by
       the data provider.
     title: Submitter Participant Ids
-    examples:
-    - value: '90234'
-    - value: BLD_donor_89
-    - value: AML-90
-    exact_mappings:
-    - ARGO.v1.34:donor.submitter_donor_id
-    - Beacon.v2.2.0:individual.id
-    - CQDG:submitter_participant_id
-    - FHIR.v5.0.0:Patient.identifier
-    - mCODE.v4.0.0:Patient.identifier
-    - MOHCCN.v3.1:Donor.submitter_donor_id
-    - Phenopackets.v2.0:Individual.id
-    annotations:
-      specifications: "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}
     multivalued: true
     minimum_cardinality: 1
     list_elements_unique: true
@@ -1708,26 +1692,10 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_specimen_ids:
     name: submitter_specimen_ids
+    is_a: submitter_specimen_id
     description: List of Unique identifiers (min 1) for specimens within the study, assigned by the
       data provider.
     title: Submitter Specimen Ids
-    examples:
-    - value: LAML_PO
-    - value: '00445'
-    - value: THY_099-tumour
-    exact_mappings:
-    - ARGO.v1.34:specimen.submitter_specimen_id
-    - Beacon.v2.2.0:biosample.id
-    - CQDG:submitter_biospecimen_id
-    - FHIR.v5.0.0:Specimen.identifier
-    - mCODE.v4.0.0:Specimen.identifier
-    - MOHCCN.v3.1:specimen.submitter_specimen_id
-    - Phenopackets.v2.0:Biosample.derived_from_id
-    annotations:
-      specifications: "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
     multivalued: true
     minimum_cardinality: 1
     list_elements_unique: true
@@ -2014,22 +1982,12 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_sample_ids:
     name: submitter_sample_ids
+    is_a: submitter_sample_id
     description: 'List of Unique identifiers (min 1) for samples within the study, assigned by the
       data provider.
 
       '
     title: Submitter Sample Ids
-    examples:
-    - value: hnc_12
-    - value: CCG_34_94583
-    - value: BRCA47832-3239
-    exact_mappings:
-    - ARGO.v1.34:sample_registration.submitter_sample_id
-    - MOHCCN.v3.1:Sample_registration.submitter_sample_id
-    - Phenopackets.v2.0:Biosample.id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
     multivalued: true
     minimum_cardinality: 1
     list_elements_unique: true
@@ -2051,14 +2009,10 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_experiment_ids:
     name: submitter_experiment_ids
+    is_a: submitter_experiment_id
     description: A list of Unique identifiers (min 1) for experiments within the study, assigned by
       the data provider.
     title: Submitter Experiment Ids
-    exact_mappings:
-    - ARGO.v1.34:experiment.submitter_sequencing_experiment_id
-    range: string
-    required: true
-    pattern: ^[A-Za-z0-9\-\._]{1,64}$
     multivalued: true
     minimum_cardinality: 1
     list_elements_unique: true
@@ -4119,20 +4073,20 @@ classes:
         name: submitter_analysis_id
         rank: 1
         slot_group: Database Identifiers
-      submitter_experiment_id:
-        name: submitter_experiment_id
+      submitter_experiment_ids:
+        name: submitter_experiment_ids
         rank: 2
         slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
+      submitter_participant_ids:
+        name: submitter_participant_ids
         rank: 3
         slot_group: Database Identifiers
-      submitter_sample_id:
-        name: submitter_sample_id
+      submitter_sample_ids:
+        name: submitter_sample_ids
         rank: 4
         slot_group: Database Identifiers
-      submitter_specimen_id:
-        name: submitter_specimen_id
+      submitter_specimen_ids:
+        name: submitter_specimen_ids
         rank: 5
         slot_group: Database Identifiers
       analysisType:
