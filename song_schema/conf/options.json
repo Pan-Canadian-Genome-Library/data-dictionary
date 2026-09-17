@@ -5,7 +5,7 @@
       "externalValidations":[
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
-          "jsonPath": "submitter_experiment_id"
+          "jsonPath": "submitter_experiment_ids"
         }
       ]
     },
@@ -18,7 +18,7 @@
       "externalValidations":[
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
-          "jsonPath": "submitter_experiment_id"
+          "jsonPath": "submitter_experiment_ids"
         }
       ]
     },
@@ -32,7 +32,7 @@
       "externalValidations":[
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
-          "jsonPath": "submitter_experiment_id"
+          "jsonPath": "submitter_experiment_ids"
         }
       ]
     },
