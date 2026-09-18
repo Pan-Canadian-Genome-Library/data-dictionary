@@ -508,7 +508,7 @@
               "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
               "College, CEGEP, or other non-university certificate or diploma",
               "Bachelor's degree",
-              "Postgraduate degree or other professional designation (e.g., Master\u2019s. PhD, MD, DDS. DMD, DVM, OD)",
+              "Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD)",
               "Prefer not to answer",
               "Not applicable",
               "Missing - Unknown",
@@ -600,7 +600,7 @@
             ]
           },
           "name": "gender",
-          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person\u2019s gender may be the same as or different from their assigned sex at birth and may change over time.",
+          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person's gender may be the same as or different from their assigned sex at birth and may change over time.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -3794,183 +3794,6 @@
         },
         {
           "meta": {
-            "displayName": "submitter_experiment_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
-            }
-          },
-          "name": "submitter_experiment_id",
-          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "analysisType"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "sequenceExperiment",
-                      "sequenceAlignment",
-                      "variantCall"
-                    ]
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "submitter_participant_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "donor.submitter_donor_id",
-              "Beacon.v2.2.0": "individual.id",
-              "CQDG": "submitter_participant_id",
-              "FHIR.v5.0.0": "Patient.identifier",
-              "mCODE.v4.0.0": "Patient.identifier",
-              "MOHCCN.v3.1": "Donor.submitter_donor_id",
-              "Phenopackets.v2.0": "Individual.id"
-            },
-            "specifications": [
-              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
-            ],
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "submitter_experiment_id",
-                    "submitter_sample_id",
-                    "submitter_specimen_id"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "submitter_sample_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "sample_registration.submitter_sample_id",
-              "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
-              "Phenopackets.v2.0": "Biosample.id"
-            },
-            "examples": [
-              "hnc_12",
-              "CCG_34_94583",
-              "BRCA47832-3239"
-            ]
-          },
-          "name": "submitter_sample_id",
-          "description": "Unique identifier of the sample within the study, assigned by the data provider.\n",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "submitter_participant_id",
-                    "submitter_experiment_id",
-                    "submitter_specimen_id"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "submitter_specimen_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "specimen.submitter_specimen_id",
-              "Beacon.v2.2.0": "biosample.id",
-              "CQDG": "submitter_biospecimen_id",
-              "FHIR.v5.0.0": "Specimen.identifier",
-              "mCODE.v4.0.0": "Specimen.identifier",
-              "MOHCCN.v3.1": "specimen.submitter_specimen_id",
-              "Phenopackets.v2.0": "Biosample.derived_from_id"
-            },
-            "specifications": [
-              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
-            ],
-            "examples": [
-              "LAML_PO",
-              "00445",
-              "THY_099-tumour"
-            ]
-          },
-          "name": "submitter_specimen_id",
-          "description": "Unique identifier of the specimen within the study, assigned by the data provider.",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "submitter_participant_id",
-                    "submitter_experiment_id",
-                    "submitter_sample_id"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "analysisType",
             "exact_mappings": {
               "ARGO": "analysisType",
@@ -4023,6 +3846,191 @@
             "required": true
           },
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_experiment_ids",
+            "exact_mappings": {
+              "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
+            }
+          },
+          "name": "submitter_experiment_ids",
+          "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the data provider.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "analysisType"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "sequenceExperiment",
+                      "sequenceAlignment",
+                      "variantCall"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_participant_ids",
+            "exact_mappings": {
+              "ARGO.v1.34": "donor.submitter_donor_id",
+              "Beacon.v2.2.0": "individual.id",
+              "CQDG": "submitter_participant_id",
+              "FHIR.v5.0.0": "Patient.identifier",
+              "mCODE.v4.0.0": "Patient.identifier",
+              "MOHCCN.v3.1": "Donor.submitter_donor_id",
+              "Phenopackets.v2.0": "Individual.id"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
+            ],
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_participant_ids",
+          "description": "A list of Unique identifiers (min 1) for participants within the study, assigned by the data provider.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "submitter_experiment_ids",
+                    "submitter_sample_ids",
+                    "submitter_specimen_ids"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_sample_ids",
+            "exact_mappings": {
+              "ARGO.v1.34": "sample_registration.submitter_sample_id",
+              "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
+              "Phenopackets.v2.0": "Biosample.id"
+            },
+            "examples": [
+              "hnc_12",
+              "CCG_34_94583",
+              "BRCA47832-3239"
+            ]
+          },
+          "name": "submitter_sample_ids",
+          "description": "List of Unique identifiers (min 1) for samples within the study, assigned by the data provider.\n",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "submitter_participant_ids",
+                    "submitter_experiment_ids",
+                    "submitter_specimen_ids"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_specimen_ids",
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.submitter_specimen_id",
+              "Beacon.v2.2.0": "biosample.id",
+              "CQDG": "submitter_biospecimen_id",
+              "FHIR.v5.0.0": "Specimen.identifier",
+              "mCODE.v4.0.0": "Specimen.identifier",
+              "MOHCCN.v3.1": "specimen.submitter_specimen_id",
+              "Phenopackets.v2.0": "Biosample.derived_from_id"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
+            ],
+            "examples": [
+              "LAML_PO",
+              "00445",
+              "THY_099-tumour"
+            ]
+          },
+          "name": "submitter_specimen_ids",
+          "description": "List of Unique identifiers (min 1) for specimens within the study, assigned by the data provider.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "submitter_participant_ids",
+                    "submitter_experiment_ids",
+                    "submitter_sample_ids"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
         },
         {
           "meta": {
@@ -4082,47 +4090,7 @@
             ]
           }
         }
-      ],
-      "restrictions": {
-        "foreignKey": [
-          {
-            "schema": "experiment",
-            "mappings": [
-              {
-                "local": "submitter_experiment_id",
-                "foreign": "submitter_experiment_id"
-              }
-            ]
-          },
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          },
-          {
-            "schema": "sample",
-            "mappings": [
-              {
-                "local": "submitter_sample_id",
-                "foreign": "submitter_sample_id"
-              }
-            ]
-          },
-          {
-            "schema": "specimen",
-            "mappings": [
-              {
-                "local": "submitter_specimen_id",
-                "foreign": "submitter_specimen_id"
-              }
-            ]
-          }
-        ]
-      }
+      ]
     },
     {
       "name": "workflow",
@@ -4227,55 +4195,7 @@
         },
         {
           "meta": {
-            "displayName": "fileAccess",
-            "exact_mappings": {
-              "ARGO": "fileAccess"
-            }
-          },
-          "name": "fileAccess",
-          "description": "The permission level of a file for public access.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "open",
-              "controlled"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "fileName",
-            "exact_mappings": {
-              "ARGO": "fileName"
-            }
-          },
-          "name": "fileName",
-          "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "fileType",
-            "exact_mappings": {
-              "ARGO": "files.format",
-              "EGA": "ANALYSIS/FILES/FILE@filetype"
-            }
-          },
-          "name": "fileType",
-          "description": "Data format of files.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "DataType"
+            "displayName": "dataType"
           },
           "name": "dataType",
           "description": "Indicates the type of data produced as outputs from the analysis. ",
@@ -4306,28 +4226,80 @@
         },
         {
           "meta": {
-            "displayName": "FileMd5sum",
+            "displayName": "fileAccess",
+            "exact_mappings": {
+              "ARGO": "fileAccess"
+            }
+          },
+          "name": "fileAccess",
+          "description": "The permission level of a file for public access.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "open",
+              "controlled"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "fileMd5sum",
             "exact_mappings": {
               "ARGO": "files.md5sum"
             }
           },
           "name": "fileMd5sum",
           "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
-          "valueType": "string",
           "restrictions": {
+            "required": true,
             "regex": "^[a-fA-F0-9]{32}$"
-          }
+          },
+          "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "FileSize",
+            "displayName": "fileName",
+            "exact_mappings": {
+              "ARGO": "fileName"
+            }
+          },
+          "name": "fileName",
+          "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "fileSize",
             "exact_mappings": {
               "ARGO": "files.size"
             }
           },
           "name": "fileSize",
           "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
+          "restrictions": {
+            "required": true
+          },
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "fileType",
+            "exact_mappings": {
+              "ARGO": "files.format",
+              "EGA": "ANALYSIS/FILES/FILE@filetype"
+            }
+          },
+          "name": "fileType",
+          "description": "Data format of files.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
         }
       ],
       "restrictions": {

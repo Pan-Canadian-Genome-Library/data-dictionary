@@ -666,8 +666,8 @@ enums:
         text: College, CEGEP, or other non-university certificate or diploma
       Bachelor's degree:
         text: Bachelor's degree
-      Postgraduate degree or other professional designation (e.g., Master’s. PhD, MD, DDS. DMD, DVM, OD):
-        text: Postgraduate degree or other professional designation (e.g., Master’s.
+      Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD):
+        text: Postgraduate degree or other professional designation (e.g., Master's.
           PhD, MD, DDS. DMD, DVM, OD)
       Prefer not to answer:
         text: Prefer not to answer
@@ -1142,6 +1142,34 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}
+  submitter_participant_ids:
+    name: submitter_participant_ids
+    annotations:
+      specifications:
+        tag: specifications
+        value: FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier
+    description: A list of Unique identifiers (min 1) for participants within the
+      study, assigned by the data provider.
+    title: submitter_participant_ids
+    examples:
+    - value: '90234'
+    - value: BLD_donor_89
+    - value: AML-90
+    exact_mappings:
+    - ARGO.v1.34:donor.submitter_donor_id
+    - Beacon.v2.2.0:individual.id
+    - CQDG:submitter_participant_id
+    - FHIR.v5.0.0:Patient.identifier
+    - mCODE.v4.0.0:Patient.identifier
+    - MOHCCN.v3.1:Donor.submitter_donor_id
+    - Phenopackets.v2.0:Individual.id
+    is_a: submitter_participant_id
+    list_elements_unique: true
+    range: string
+    required: true
+    multivalued: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}
+    minimum_cardinality: 1
   vital_status:
     name: vital_status
     annotations:
@@ -1197,7 +1225,7 @@ slots:
     description: 'Gender refers to the socially constructed roles, behaviours, expressions
       and identities of girls, women, boys, men, and gender diverse people.
 
-      A person’s gender may be the same as or different from their assigned sex at
+      A person''s gender may be the same as or different from their assigned sex at
       birth and may change over time.'
     title: gender
     notes:
@@ -1846,6 +1874,34 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_specimen_ids:
+    name: submitter_specimen_ids
+    annotations:
+      specifications:
+        tag: specifications
+        value: FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier
+    description: List of Unique identifiers (min 1) for specimens within the study,
+      assigned by the data provider.
+    title: submitter_specimen_ids
+    examples:
+    - value: LAML_PO
+    - value: '00445'
+    - value: THY_099-tumour
+    exact_mappings:
+    - ARGO.v1.34:specimen.submitter_specimen_id
+    - Beacon.v2.2.0:biosample.id
+    - CQDG:submitter_biospecimen_id
+    - FHIR.v5.0.0:Specimen.identifier
+    - mCODE.v4.0.0:Specimen.identifier
+    - MOHCCN.v3.1:specimen.submitter_specimen_id
+    - Phenopackets.v2.0:Biosample.derived_from_id
+    is_a: submitter_specimen_id
+    list_elements_unique: true
+    range: string
+    required: true
+    multivalued: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    minimum_cardinality: 1
   age_at_diagnosis:
     name: age_at_diagnosis
     annotations:
@@ -2181,6 +2237,28 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_sample_ids:
+    name: submitter_sample_ids
+    description: 'List of Unique identifiers (min 1) for samples within the study,
+      assigned by the data provider.
+
+      '
+    title: submitter_sample_ids
+    examples:
+    - value: hnc_12
+    - value: CCG_34_94583
+    - value: BRCA47832-3239
+    exact_mappings:
+    - ARGO.v1.34:sample_registration.submitter_sample_id
+    - MOHCCN.v3.1:Sample_registration.submitter_sample_id
+    - Phenopackets.v2.0:Biosample.id
+    is_a: submitter_sample_id
+    list_elements_unique: true
+    range: string
+    required: true
+    multivalued: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    minimum_cardinality: 1
   sample_status:
     name: sample_status
     description: 'Indicate the status of the sample for data analysis.
@@ -2203,6 +2281,20 @@ slots:
     range: string
     required: true
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
+  submitter_experiment_ids:
+    name: submitter_experiment_ids
+    description: A list of Unique identifiers (min 1) for experiments within the study,
+      assigned by the data provider.
+    title: submitter_experiment_ids
+    exact_mappings:
+    - ARGO.v1.34:experiment.submitter_sequencing_experiment_id
+    is_a: submitter_experiment_id
+    list_elements_unique: true
+    range: string
+    required: true
+    multivalued: true
+    pattern: ^[A-Za-z0-9\-\._]{1,64}$
+    minimum_cardinality: 1
   experiment_type:
     name: experiment_type
     description: Indicate NCIt (NCI Thesaurus) code and term to denote the broad type
@@ -2281,20 +2373,20 @@ slots:
     name: fileSize
     description: Size of the file, in bytes. If not provided, will be populated by
       molecular submission workflow.
-    title: FileSize
+    title: fileSize
     exact_mappings:
     - ARGO:files.size
     range: integer
-    required: false
+    required: true
   fileMd5sum:
     name: fileMd5sum
     description: Computed md5sum of the file. If not provided, will be populated by
       molecular submission workflow.
-    title: FileMd5sum
+    title: fileMd5sum
     exact_mappings:
     - ARGO:files.md5sum
     range: string
-    required: false
+    required: true
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
@@ -3115,7 +3207,7 @@ slots:
   dataType:
     name: dataType
     description: 'Indicates the type of data produced as outputs from the analysis. '
-    title: DataType
+    title: dataType
     range: data_type_menu
     required: true
     multivalued: true
@@ -4705,13 +4797,13 @@ classes:
     title: Analysis
     slots:
     - submitter_analysis_id
-    - submitter_experiment_id
-    - submitter_participant_id
-    - submitter_sample_id
-    - submitter_specimen_id
     - analysisType
     - data_category
     - studyId
+    - submitter_experiment_ids
+    - submitter_participant_ids
+    - submitter_sample_ids
+    - submitter_specimen_ids
     - genome_annotation
     - genome_build
     - variant_calling_strategy
@@ -4721,32 +4813,32 @@ classes:
         name: submitter_analysis_id
         rank: 1
         slot_group: Database Identifiers
-      submitter_experiment_id:
-        name: submitter_experiment_id
-        rank: 2
-        slot_group: Database Identifiers
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 3
-        slot_group: Database Identifiers
-      submitter_sample_id:
-        name: submitter_sample_id
-        rank: 4
-        slot_group: Database Identifiers
-      submitter_specimen_id:
-        name: submitter_specimen_id
-        rank: 5
-        slot_group: Database Identifiers
       analysisType:
         name: analysisType
-        rank: 6
+        rank: 2
         slot_group: Analysis
       data_category:
         name: data_category
-        rank: 7
+        rank: 3
         slot_group: Analysis
       studyId:
         name: studyId
+        rank: 4
+        slot_group: Analysis
+      submitter_experiment_ids:
+        name: submitter_experiment_ids
+        rank: 5
+        slot_group: Analysis
+      submitter_participant_ids:
+        name: submitter_participant_ids
+        rank: 6
+        slot_group: Analysis
+      submitter_sample_ids:
+        name: submitter_sample_ids
+        rank: 7
+        slot_group: Analysis
+      submitter_specimen_ids:
+        name: submitter_specimen_ids
         rank: 8
         slot_group: Analysis
       genome_annotation:
@@ -4815,41 +4907,41 @@ classes:
     title: File
     slots:
     - submitter_analysis_id
-    - fileAccess
-    - fileName
-    - fileType
     - dataType
+    - fileAccess
     - fileMd5sum
+    - fileName
     - fileSize
+    - fileType
     slot_usage:
       submitter_analysis_id:
         name: submitter_analysis_id
         rank: 1
         slot_group: Database Identifiers
+      dataType:
+        name: dataType
+        rank: 2
+        slot_group: File
       fileAccess:
         name: fileAccess
-        rank: 2
+        rank: 3
+        slot_group: File
+      fileMd5sum:
+        name: fileMd5sum
+        rank: 4
         slot_group: File
       fileName:
         name: fileName
-        rank: 3
+        rank: 5
+        slot_group: File
+      fileSize:
+        name: fileSize
+        rank: 6
         slot_group: File
       fileType:
         name: fileType
-        rank: 4
-        slot_group: File
-      dataType:
-        name: dataType
-        rank: 6
-        slot_group: Extensions File
-      fileMd5sum:
-        name: fileMd5sum
         rank: 7
-        slot_group: Extensions File
-      fileSize:
-        name: fileSize
-        rank: 8
-        slot_group: Extensions File
+        slot_group: File
     is_a: dh_interface
   dh_interface:
     name: dh_interface

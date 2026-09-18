@@ -222,8 +222,7 @@
             "name": "analysis",
             "fields" : [
                 {
-                    "name":"submitter_experiment_id",
-                    "valueType": "string",
+                    "name":"submitter_experiment_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
@@ -245,13 +244,12 @@
                     }
                 },
                 {
-                    "name":"submitter_participant_id",
-                    "valueType": "string",
+                    "name":"submitter_participant_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_experiment_id","submitter_sample_id","submitter_specimen_id"],
+                                    "fields":["submitter_experiment_ids","submitter_sample_ids","submitter_specimen_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }
@@ -263,13 +261,12 @@
                     }
                 },
                 {
-                    "name":"submitter_sample_id",
-                    "valueType": "string",
+                    "name":"submitter_sample_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_specimen_id"],
+                                    "fields":["submitter_participant_ids","submitter_experiment_ids","submitter_specimen_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }
@@ -281,13 +278,12 @@
                     }
                 },
                 {
-                    "name":"submitter_specimen_id",
-                    "valueType": "string",
+                    "name":"submitter_specimen_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_sample_id"],
+                                    "fields":["submitter_participant_ids","submitter_experiment_ids","submitter_sample_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }

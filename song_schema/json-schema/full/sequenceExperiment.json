@@ -34,10 +34,32 @@
         "properties": {
           "dataType": {
             "description": "Indicates the type of data produced as outputs from the analysis. ",
-            "type": "string"
+            "items": {
+              "description": "",
+              "enum": [
+                "Raw Sequencing Reads",
+                "Aligned Reads",
+                "Aligned Reads Index",
+                "Single Nucleotide Variants (SNVs)",
+                "Insertions and Deletions (InDels)",
+                "Structural Variations (SVs)",
+                "Copy Number Variations (CNVs)",
+                "Variant Calls Index",
+                "Quality Control Metrics",
+                "Gene Fusions",
+                "Alternative Splicing",
+                "Gene Expression Quantification",
+                "Transcript Expression Quantification",
+                "Single-Cell Expression Matrices",
+                "Splicing Junctions",
+                "Differential Expression Analysis"
+              ],
+              "type": "string"
+            },
+            "type": "array"
           },
           "fileAccess": {
-            "description": "The permission level of a file for public access.",
+            "description": "",
             "enum": [
               "open",
               "controlled"
@@ -88,14 +110,25 @@
       "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
       "type": "string"
     },
-    "submitter_experiment_id": {
-      "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
-      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
-      "type": "string"
+    "submitter_experiment_ids": {
+      "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the data provider.",
+      "items": {
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "dataType": {
+      "description": "Controlled Data Type list. Not populatable",
+      "enum": [
+        "Raw Sequencing Reads"
+      ],
+      "not": {}
     }
   },
   "required": [
-    "submitter_experiment_id",
+    "submitter_experiment_ids",
     "studyId",
     "analysisType",
     "submitter_analysis_id",

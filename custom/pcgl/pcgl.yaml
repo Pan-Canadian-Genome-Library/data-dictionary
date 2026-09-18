@@ -59,7 +59,7 @@ classes:
   Workflow:
     is_a: base_Workflow
   File:
-    is_a: extension_File
+    is_a: base_File
 
 
 
