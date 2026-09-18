@@ -41,7 +41,8 @@
           "type": "string"
         },
         "minItems": 1,
-        "type": "array"
+        "type": "array",
+        "uniqueItems": true
       },
       "dataType": {
         "description": "Controlled Data Type list. Not populatable",

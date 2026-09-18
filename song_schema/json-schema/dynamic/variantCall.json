@@ -61,7 +61,8 @@
           "type": "string"
         },
         "minItems": 1,
-        "type": "array"
+        "type": "array",
+        "uniqueItems": true
       },
       "variant_calling_strategy": {
         "description": "",

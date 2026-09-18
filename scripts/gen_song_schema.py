@@ -168,7 +168,12 @@ def update_schema(schema, top_class, file_type_enum):#, data_type_enum):
                 if 'fileMd5sum' in schema['properties']['files']['items']['properties']:
                     schema['properties']['files']['items']['properties']['fileMd5sum']['type']="string"
                     schema['properties']['files']['items']['required'].append('fileMd5sum') if 'fileMd5sum' not in schema['properties']['files']['items']['required'] else None
-    #print("B",schema)
+
+    # LinkML to JSON Schema misses converting `list_elements_unique: true` to `"uniqueItems": true`. Manually add
+    for property in schema['properties'].keys():
+        if property.endswith("_ids"):
+            schema['properties'][property]['uniqueItems']=True
+
     return schema
 
 def ensure_directory_exists(directory):
