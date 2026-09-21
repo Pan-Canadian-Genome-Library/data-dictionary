@@ -2142,7 +2142,7 @@ slots:
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
-    description: Data format of files.
+    description: "Data format of files.\nIf 'analysisType' is 'sequenceExperiment', 'fileType' options are : 'BAM','FASTQ'\nIf 'analysisType' is 'sequenceAlignment', 'fileType' options are : 'BAM','CRAM','BAI','CRAI'\nIf 'analysisType' is 'variantCall', 'fileType' options are : 'VCF','TBI'"
     title: FileType
     exact_mappings:
     - ARGO:files.format
@@ -2921,7 +2921,7 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: 'Indicates the type of data produced as outputs from the analysis. '
+    description: "Indicates the type of data produced as outputs from the analysis.\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are : 'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are : 'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are : 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'"
     title: DataType
     range: data_type_menu
     required: true
