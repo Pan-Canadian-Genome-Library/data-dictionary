@@ -7,6 +7,10 @@
       "BAI",
       "CRAI"
     ],
+    "dataType": [
+      "Aligned Reads",
+      "Aligned Reads Index"
+    ],
     "externalValidations": [
       {
         "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
@@ -83,6 +87,14 @@
           "workflow_name"
         ],
         "type": "object"
+      },
+      "dataType": {
+        "description": "Controlled Data Type list. Not populatable",
+        "enum": [
+          "Aligned Reads",
+          "Aligned Reads Index"
+        ],
+        "not": {}
       }
     },
     "required": [

@@ -5,6 +5,13 @@
       "VCF",
       "TBI"
     ],
+    "dataType": [
+      "Single Nucleotide Variants (SNVs)",
+      "Insertions and Deletions (InDels)",
+      "Structural Variations (SVs)",
+      "Copy Number Variations (CNVs)",
+      "Variant Calls Index"
+    ],
     "externalValidations": [
       {
         "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
@@ -110,6 +117,17 @@
           "workflow_name"
         ],
         "type": "object"
+      },
+      "dataType": {
+        "description": "Controlled Data Type list. Not populatable",
+        "enum": [
+          "Single Nucleotide Variants (SNVs)",
+          "Insertions and Deletions (InDels)",
+          "Structural Variations (SVs)",
+          "Copy Number Variations (CNVs)",
+          "Variant Calls Index"
+        ],
+        "not": {}
       }
     },
     "required": [

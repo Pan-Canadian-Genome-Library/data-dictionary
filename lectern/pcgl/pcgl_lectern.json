@@ -1,10 +1,10 @@
 {
   "name": "Pan-Canadian Genome Library Data Dictionary",
   "description": "The PCGL Data Dictionary specifies the standardized data elements, controlled vocabulary, data types, validation rules, and interoperability mappings for all health and genomic data submitted to the Pan-Canadian Genome Library.",
-  "version": "1.0",
+  "version": "1.1",
   "meta": {
     "version": {
-      "base": "1.0",
+      "base": "1.1",
       "extension": "0.0"
     }
   },
@@ -69,23 +69,6 @@
         },
         {
           "meta": {
-            "displayName": "funding_sources",
-            "examples": [
-              "National Example Foundation, NEF-12345",
-              "Example Health Research Council"
-            ]
-          },
-          "name": "funding_sources",
-          "description": "List of organizations or agencies funding the study. \n\nIn case there are several, please list each funding source on a separate line in the format:\nFunder name, Grant number",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
             "displayName": "lead_organizations"
           },
           "name": "lead_organizations",
@@ -130,17 +113,6 @@
         },
         {
           "meta": {
-            "displayName": "study_description"
-          },
-          "name": "study_description",
-          "description": "A detailed description of the study's purpose, hypothesis, and design.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "study_name"
           },
           "name": "study_name",
@@ -163,6 +135,65 @@
           "valueType": "string",
           "isArray": true,
           "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "publication_links"
+          },
+          "name": "publication_links",
+          "description": "List of URL links to academic papers or reports associated with the study. \nIn case there are several, please list each publication on a separate line by providing a DOI URL formatted as https://doi.org/ followed by the DOI number.",
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        }
+      ]
+    },
+    {
+      "name": "study_translation",
+      "description": "Study_translation refers language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences.",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "language_id",
+            "examples": [
+              "en-ca",
+              "fr-ca"
+            ]
+          },
+          "name": "language_id",
+          "description": "Short form string of the language",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "funding_sources",
+            "examples": [
+              "National Example Foundation, NEF-12345",
+              "Example Health Research Council"
+            ]
+          },
+          "name": "funding_sources",
+          "description": "List of organizations or agencies funding the study. \n\nIn case there are several, please list each funding source on a separate line in the format:\nFunder name, Grant number",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "study_description"
+          },
+          "name": "study_description",
+          "description": "A detailed description of the study's purpose, hypothesis, and design.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
         },
         {
           "meta": {
@@ -191,16 +222,6 @@
           "name": "program_name",
           "description": "Indicate the overarching program the study belongs to (if applicable)",
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "publication_links"
-          },
-          "name": "publication_links",
-          "description": "List of URL links to academic papers or reports associated with the study. \nIn case there are several, please list each publication on a separate line by providing a DOI URL formatted as https://doi.org/ followed by the DOI number.",
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
         }
       ]
     },
@@ -446,7 +467,26 @@
           "name": "age_at_sociodem_collection",
           "description": "Age (in days) of the participant at the time of sociodemographic data collection",
           "restrictions": {
-            "required": true
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection_missing_reason"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
           },
           "valueType": "integer"
         },
@@ -468,10 +508,7 @@
               "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
               "College, CEGEP, or other non-university certificate or diploma",
               "Bachelor's degree",
-              "Degree in medicine, dentistry, veterinary medicine or optometry",
-              "Master's degree",
-              "Doctoral degree",
-              "Post-doctoral fellowship or training",
+              "Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD)",
               "Prefer not to answer",
               "Not applicable",
               "Missing - Unknown",
@@ -563,7 +600,7 @@
             ]
           },
           "name": "gender",
-          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person\u2019s gender may be the same as or different from their assigned sex at birth and may change over time.",
+          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person's gender may be the same as or different from their assigned sex at birth and may change over time.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -610,7 +647,7 @@
           "description": "A participant's postal code at their current address of residence.",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
+            "regex": "^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
           },
           "valueType": "string"
         },
@@ -797,7 +834,7 @@
           "description": "Many sociodemographic variables are social constructs, and the way participants self-identify may evolve over time. \nPlease indicate the actual date when the data was collected in format: YYYY-MM-DD, if available. \nIf the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if the day is unknown but the month and year are known\n- Use YYYY if only the year is known",
           "restrictions": {
             "required": true,
-            "regex": "^(?:\\d{4}|\\d{4}-\\d{2}|\\d{4}-\\d{2}-\\d{2})$"
+            "regex": "^(?:\\d{4}|\\d{4}-\\d{2}|\\d{4}-\\d{2}-\\d{2})$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
           },
           "valueType": "string"
         },
@@ -819,6 +856,39 @@
             ]
           },
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_sociodem_collection_missing_reason",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "age_at_sociodem_collection_missing_reason",
+          "description": "Reason for why `age_at_sociodem_collection` is not provided",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          }
         },
         {
           "meta": {
@@ -1236,7 +1306,7 @@
               "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
             ],
             "comments": [
-              "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+              "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo ORPHANET code : refer to https://www.orpha.net/en/disease "
             ],
             "examples": [
               "MONDO:0000001",
@@ -1244,10 +1314,10 @@
             ]
           },
           "name": "disease_code",
-          "description": "Use ICD-10 code or MONDO code to represent the disease diagnosed. Provide code in Compact URI (CURIE) pattern.",
+          "description": "Use ICD-10 code, MONDO code, ORPHANET code to represent the disease diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$|^ORPHA:C?\\d+$"
           },
           "valueType": "string"
         },
@@ -1270,6 +1340,14 @@
           "name": "age_at_diagnosis",
           "description": "Age of participant (in days) at time of diagnosis of the condition.",
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "disease_source_text"
+          },
+          "name": "disease_source_text",
+          "description": "Free-text disease description as originally recorded in the source system, prior to ontology mapping.",
+          "valueType": "string"
         },
         {
           "meta": {
@@ -1544,6 +1622,32 @@
               "Not applicable"
             ]
           }
+        },
+        {
+          "meta": {
+            "displayName": "treatment_type_other"
+          },
+          "name": "treatment_type_other",
+          "description": "If the treatment type is 'other', please specify via free text string",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "treatment_type"
+                  ],
+                  "match": {
+                    "value": "Other"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            }
+          }
         }
       ],
       "restrictions": {
@@ -1708,7 +1812,7 @@
           "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.",
           "restrictions": {
             "required": true,
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+            "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
           },
           "valueType": "string"
         },
@@ -1738,8 +1842,38 @@
           "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed. Provide code in Compact URI (CURIE) pattern.\n\nNCIt URL:\nhttp://purl.obolibrary.org/obo/NCIT_{code}\nSNOMED-CT URL:\nhttp://snomed.info/id/{code}\nUMLS URL:\nhttps://uts.nlm.nih.gov/uts/umls/concept/{code}\nCCI URL:\nhttps://www.cihi.ca/en/cci-coding-structure",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
+            "regex": "^NCIT:[C]\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
           },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "body_site_laterality",
+            "comments": [
+              "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+            ]
+          },
+          "name": "body_site_laterality",
+          "description": "Indicate which side on the procedure occured on.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Left",
+              "Right",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "procedure_body_site_source_text"
+          },
+          "name": "procedure_body_site_source_text",
+          "description": "Free-text description of the anatomical site for a procedure, as originally captured in the source.",
           "valueType": "string"
         },
         {
@@ -1755,6 +1889,14 @@
           },
           "name": "procedure_body_site_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_source_text"
+          },
+          "name": "procedure_source_text",
+          "description": "Free-text description of the procedure as entered in the source data, before mapping to standardized terms.",
           "valueType": "string"
         },
         {
@@ -1876,6 +2018,14 @@
         },
         {
           "meta": {
+            "displayName": "drug_source_text"
+          },
+          "name": "drug_source_text",
+          "description": "Free-text drug name or description as recorded in the source, prior to normalization or ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "drug_term",
             "exact_mappings": {
               "MOHCCN.v3.1": "Systemic_therapy.drug_name"
@@ -1973,7 +2123,7 @@
           "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location where radiation therapy was administered.\n Please use C80.9 if the anatomic location is Unknown. Provide code in Compact URI (CURIE) pattern.\n\n Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\n\n UBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
           "restrictions": {
             "required": true,
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+            "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
           },
           "valueType": "string"
         },
@@ -1997,8 +2147,16 @@
           "description": "Indicate NCIt code to denote the modality of radiation therapy.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C\\d+$"
+            "regex": "^NCIT:[C]\\d+$"
           },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "anatomical_site_irradiated_source_text"
+          },
+          "name": "anatomical_site_irradiated_source_text",
+          "description": "Free-text description of the anatomical site irradiated, as originally recorded in the source.",
           "valueType": "string"
         },
         {
@@ -2008,6 +2166,28 @@
           "name": "anatomical_site_irradiated_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the anatomical_site_irradiated_code",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "irradiated_site_laterality",
+            "comments": [
+              "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+            ]
+          },
+          "name": "irradiated_site_laterality",
+          "description": "Indicate which side on the radiation procedure occured on.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Left",
+              "Right",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
         },
         {
           "meta": {
@@ -2041,6 +2221,14 @@
           "name": "radiation_fractions",
           "description": "Indicate the total number of fractions delivered as part of treatment.",
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "radiation_modality_source_text"
+          },
+          "name": "radiation_modality_source_text",
+          "description": "Free-text description of the radiation modality as provided in the source record, before mapping to controlled terms.",
+          "valueType": "string"
         },
         {
           "meta": {
@@ -2120,14 +2308,14 @@
               "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
             ],
             "comments": [
-              "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}"
+              "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}\\nSNOMED-CT URL:\\nhttp://snomed.info/id/{code}"
             ]
           },
           "name": "measurement_code",
-          "description": "Use standardized LOINC (Logical Observation Identifiers Names and Codes) code to represent quantitative, ordinal, or categorical measurements.\nProvide code in Compact URI (CURIE) pattern.",
+          "description": "Use standardized LOINC (Logical Observation Identifiers Names and Codes) or SNOMED-CT code to represent quantitative, ordinal, or categorical measurements.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^LOINC:[0-9]{1,5}-[0-9]$"
+            "regex": "^LOINC:(\\d|\\w)+-\\d$|^snomedct:(\\w+)?\\d+$"
           },
           "valueType": "string"
         },
@@ -2181,6 +2369,14 @@
         },
         {
           "meta": {
+            "displayName": "measurement_source_text"
+          },
+          "name": "measurement_source_text",
+          "description": "Free-text representation of a measurement, observation, or test, as originally recorded in the source.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "measurement_term",
             "exact_mappings": {
               "FHIR.v5.0.0": "Observation.code.coding.display",
@@ -2206,11 +2402,19 @@
             ]
           },
           "name": "measurement_unit",
-          "description": "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}",
+          "description": "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}\n UCUM URL: https://ucum.nlm.nih.gov/ucum-lhc/demo.html",
           "valueType": "string",
           "restrictions": {
-            "regex": "^UO:\\d{7}$"
+            "regex": "^UO:\\d{7}$|^UCUM:.*$"
           }
+        },
+        {
+          "meta": {
+            "displayName": "measurement_unit_source_text"
+          },
+          "name": "measurement_unit_source_text",
+          "description": "Free-text representation of the unit of measurement as originally recorded in the source system, prior to mapping to a standardized unit ontology (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -2361,6 +2565,14 @@
         },
         {
           "meta": {
+            "displayName": "phenotype_source_text"
+          },
+          "name": "phenotype_source_text",
+          "description": "Free-text description of a phenotype or clinical feature, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "phenotype_term",
             "exact_mappings": {
               "FHIR.v5.0.0": "Observation.code.coding.display",
@@ -2467,6 +2679,14 @@
           "name": "age_at_comorbidity_diagnosis",
           "description": "Indicate the age (in days) of comorbidity diagnosis.",
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "comorbidity_source_text"
+          },
+          "name": "comorbidity_source_text",
+          "description": "Free-text description of a comorbidity, as recorded in the source system, before mapping to controlled vocabularies.",
+          "valueType": "string"
         },
         {
           "meta": {
@@ -2586,10 +2806,10 @@
             ]
           },
           "name": "exposure_code",
-          "description": "Provide the standardized codes from SNOMED CT, ExO, LOINC to represent the type of exposure.\nProvide code in Compact URI (CURIE) pattern.\n",
+          "description": "Provide the standardized codes from SNOMED CT, ExO, LOINC, ECTO to represent the type of exposure.\nProvide code in Compact URI (CURIE) pattern.\n",
           "restrictions": {
             "required": true,
-            "regex": "^snomedct:(\\w+)?\\d+$|^ExO:\\d{7}$|^LOINC:[0-9]{1,5}-[0-9]$"
+            "regex": "^snomedct:(\\w+)?\\d+$|^ExO:\\d{7}$|^LOINC:(\\d|\\w)+-\\d$|^ECTO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -2638,6 +2858,14 @@
           "name": "exposure_duration",
           "description": "Duration of exposure period in days",
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_source_text"
+          },
+          "name": "exposure_source_text",
+          "description": "Free-text description of an exposure (e.g., environmental, occupational), prior to mapping to ontology terms.",
+          "valueType": "string"
         },
         {
           "meta": {
@@ -2763,7 +2991,7 @@
           "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C[0-9]+$"
+            "regex": "^NCIT:C\\d+$"
           },
           "valueType": "string"
         },
@@ -2813,8 +3041,16 @@
           "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
           "valueType": "string",
           "restrictions": {
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+            "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
           }
+        },
+        {
+          "meta": {
+            "displayName": "specimen_anatomic_location_source_text"
+          },
+          "name": "specimen_anatomic_location_source_text",
+          "description": "Free-text description of the anatomical location of specimen collection, prior to ontology coding.",
+          "valueType": "string"
         },
         {
           "meta": {
@@ -2938,6 +3174,14 @@
           "name": "specimen_tissue_source_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen tissue source code.",
           "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "specimen_tissue_source_text"
+          },
+          "name": "specimen_tissue_source_text",
+          "description": "Free-text description of the tissue source for a specimen, as captured in the source system.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -3032,7 +3276,7 @@
           "description": "Indicate NCIT or SO code to denote the type of source material used for sequencing and analysis.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C[0-9]+$|^SO:\\d{7}$"
+            "regex": "^NCIT:C\\d+$|^SO:\\d{7}$"
           },
           "valueType": "string"
         },
@@ -3050,6 +3294,14 @@
               "Not applicable"
             ]
           },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "molecular_type_source_text"
+          },
+          "name": "molecular_type_source_text",
+          "description": "Free-text description of the molecular analyte type (e.g., DNA, RNA, protein) as captured in the source record.",
           "valueType": "string"
         },
         {
@@ -3212,6 +3464,14 @@
         },
         {
           "meta": {
+            "displayName": "assay_type_source_text"
+          },
+          "name": "assay_type_source_text",
+          "description": "Free-text description of the assay type used, as originally recorded in the source system.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "assay_type_term",
             "examples": [
               "whole genome sequencing assay"
@@ -3241,6 +3501,14 @@
           },
           "name": "instrument_metadata",
           "description": "Captures metadata about sequencing instrument usage (e.g. instruments parameters and usage conditions)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "instrument_source_text"
+          },
+          "name": "instrument_source_text",
+          "description": "Free-text description of the sequencing instrument or platform as originally recorded in the source, prior to ontology mapping.",
           "valueType": "string"
         },
         {
@@ -3427,6 +3695,14 @@
           },
           "name": "library_description",
           "description": "Description of the nucleotide sequencing library, including targeting information, spot, gap descriptors, and any other information relevant to its construction",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "library_layout_source_text"
+          },
+          "name": "library_layout_source_text",
+          "description": "Free-text description of the sequencing library layout as originally recorded in the source system.",
           "valueType": "string"
         },
         {
@@ -3922,7 +4198,7 @@
             "displayName": "dataType"
           },
           "name": "dataType",
-          "description": "Indicates the type of data produced as outputs from the analysis. ",
+          "description": "Indicates the type of data produced as outputs from the analysis.\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are : 'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are : 'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are : 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -3944,7 +4220,9 @@
               "Differential Expression Analysis"
             ]
           },
-          "valueType": "string"
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
         },
         {
           "meta": {
@@ -3966,6 +4244,21 @@
         },
         {
           "meta": {
+            "displayName": "fileMd5sum",
+            "exact_mappings": {
+              "ARGO": "files.md5sum"
+            }
+          },
+          "name": "fileMd5sum",
+          "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[a-fA-F0-9]{32}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "fileName",
             "exact_mappings": {
               "ARGO": "fileName"
@@ -3975,38 +4268,9 @@
           "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$."
+            "regex": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$"
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "fileType",
-            "exact_mappings": {
-              "ARGO": "files.format",
-              "EGA": "ANALYSIS/FILES/FILE@filetype"
-            }
-          },
-          "name": "fileType",
-          "description": "Data format of files.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "fileMd5sum",
-            "exact_mappings": {
-              "ARGO": "files.md5sum"
-            }
-          },
-          "name": "fileMd5sum",
-          "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
-          "valueType": "string",
-          "restrictions": {
-            "regex": "^[a-fA-F0-9]{32}$"
-          }
         },
         {
           "meta": {
@@ -4017,7 +4281,25 @@
           },
           "name": "fileSize",
           "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
+          "restrictions": {
+            "required": true
+          },
           "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "fileType",
+            "exact_mappings": {
+              "ARGO": "files.format",
+              "EGA": "ANALYSIS/FILES/FILE@filetype"
+            }
+          },
+          "name": "fileType",
+          "description": "Data format of files.\nIf 'analysisType' is 'sequenceExperiment', 'fileType' options are : 'BAM','FASTQ'\nIf 'analysisType' is 'sequenceAlignment', 'fileType' options are : 'BAM','CRAM','BAI','CRAI'\nIf 'analysisType' is 'variantCall', 'fileType' options are : 'VCF','TBI'",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
         }
       ],
       "restrictions": {

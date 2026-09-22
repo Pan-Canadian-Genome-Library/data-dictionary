@@ -275,7 +275,6 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 					for z in available_definitions:
 						if z not in provided_definitions:
 							updated_model['slots'][slot_item][z]=updated_model['slots'][parent_slot][z]
-						
 		   
 		### For extended without base imports, we also want every property except empty ones and name	 
 		if mapping[key].get("extension_import") and not mapping[key].get("base_import"):
@@ -320,7 +319,8 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 			###Add slots defintions
 			for slot_item in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
 				###Prevent extension from overriding existing base slot items
-				if slot_item in updated_model['slots']:
+				if slot_item in updated_model['slots'] and (slot_item!='dataType' and slot_item!='fileSize' and slot_item!='fileMd5sum'):
+					print("BLOCK",slot_item)
 					continue
 				updated_model.classes[key]['slots'].append(tmp_model['slots'][slot_item]['name'])
 				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]

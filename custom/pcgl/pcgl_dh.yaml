@@ -4,7 +4,7 @@ description: The PCGL Data Dictionary specifies the standardized data elements, 
   health and genomic data submitted to the Pan-Canadian Genome Library.
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.0.0.0
+version: 1.1.0.0
 imports:
 - linkml:types
 prefixes:
@@ -295,9 +295,9 @@ enums:
         text: Not applicable
       Smoking history not documented:
         text: Smoking history not documented
-  specimen_laterality_menu:
-    name: specimen_laterality_menu
-    title: specimen laterality menu
+  laterality_menu:
+    name: laterality_menu
+    title: laterality menu
     permissible_values:
       Left:
         text: Left
@@ -666,14 +666,9 @@ enums:
         text: College, CEGEP, or other non-university certificate or diploma
       Bachelor's degree:
         text: Bachelor's degree
-      Degree in medicine, dentistry, veterinary medicine or optometry:
-        text: Degree in medicine, dentistry, veterinary medicine or optometry
-      Master's degree:
-        text: Master's degree
-      Doctoral degree:
-        text: Doctoral degree
-      Post-doctoral fellowship or training:
-        text: Post-doctoral fellowship or training
+      Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD):
+        text: Postgraduate degree or other professional designation (e.g., Master's.
+          PhD, MD, DDS. DMD, DVM, OD)
       Prefer not to answer:
         text: Prefer not to answer
       Not applicable:
@@ -1077,6 +1072,18 @@ enums:
         text: Rare Diseases
       Other:
         text: Other
+  age_at_sociodem_collection_missing_reason_menu:
+    name: age_at_sociodem_collection_missing_reason_menu
+    title: age_at_sociodem_collection_missing_reason_menu
+    permissible_values:
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
 slots:
   age_at_death:
     name: age_at_death
@@ -1218,7 +1225,7 @@ slots:
     description: 'Gender refers to the socially constructed roles, behaviours, expressions
       and identities of girls, women, boys, men, and gender diverse people.
 
-      A person’s gender may be the same as or different from their assigned sex at
+      A person''s gender may be the same as or different from their assigned sex at
       birth and may change over time.'
     title: gender
     notes:
@@ -1401,19 +1408,21 @@ slots:
         tag: specifications
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code
     description: 'Use standardized LOINC (Logical Observation Identifiers Names and
-      Codes) code to represent quantitative, ordinal, or categorical measurements.
+      Codes) or SNOMED-CT code to represent quantitative, ordinal, or categorical
+      measurements.
 
       Provide code in Compact URI (CURIE) pattern.'
     title: measurement_code
     comments:
-    - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}'
+    - 'Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}\nSNOMED-CT
+      URL:\nhttp://snomed.info/id/{code}'
     exact_mappings:
     - Phenopackets.v2.0:Measurement.assay.id
     related_mappings:
     - FHIR.v5.0.0:Observation.code.coding.system:Observation.code.coding.code
     range: string
     required: true
-    pattern: ^LOINC:[0-9]{1,5}-[0-9]$
+    pattern: ^LOINC:(\d|\w)+-\d$|^snomedct:(\w+)?\d+$
   measurement_result_categorical:
     name: measurement_result_categorical
     annotations:
@@ -1460,16 +1469,16 @@ slots:
       specifications:
         tag: specifications
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_
-    description: 'Provide the ontology of standardized units to indicate units used
-      to record measurement result. Provide code in Compact URI (CURIE) pattern. UO
-      URL: http://purl.obolibrary.org/obo/UO_{code}'
+    description: "Provide the ontology of standardized units to indicate units used\
+      \ to record measurement result. Provide code in Compact URI (CURIE) pattern.\
+      \ UO URL: http://purl.obolibrary.org/obo/UO_{code}\n UCUM URL: https://ucum.nlm.nih.gov/ucum-lhc/demo.html"
     title: measurement_unit
     exact_mappings:
     - FHIR.v5.0.0:Observation.value.valueQuantity.unit
     - Phenopackets.v2.0:Measurement.measurement.value.quantity.unit
     range: string
     required: false
-    pattern: ^UO:\d{7}$
+    pattern: ^UO:\d{7}$|^UCUM:.*$
   age_at_comorbidity_diagnosis:
     name: age_at_comorbidity_diagnosis
     annotations:
@@ -1565,7 +1574,7 @@ slots:
     - Phenopackets.v2.0:Procedure.body_site.id
     range: string
     required: true
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern: ^ICDO3:C[0-9]{2}(\.[0-9])?$|^UBERON:\d{7,}$
   procedure_body_site_term:
     name: procedure_body_site_term
     annotations:
@@ -1621,7 +1630,7 @@ slots:
     - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
     range: string
     required: true
-    pattern: ^NCIT:C\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
+    pattern: ^NCIT:[C]\d+$|^snomedct:(\w+)?\d+$|^umls:C\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$
   procedure_term:
     name: procedure_term
     annotations:
@@ -1733,7 +1742,7 @@ slots:
     - mCODE.v4.0.0:Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code
     range: string
     required: false
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern: ^ICDO3:C[0-9]{2}(\.[0-9])?$|^UBERON:\d{7,}$
   specimen_anatomic_location_term:
     name: specimen_anatomic_location_term
     annotations:
@@ -1761,7 +1770,23 @@ slots:
     - ARGO.v1.34:specimen.specimen.laterality
     - mCODE.v4.0.0:Specimen.collection.bodySite.extension.lateralityQualifier
     - MOHCCN.v3.1:specimen.specimen.laterality
-    range: specimen_laterality_menu
+    range: laterality_menu
+    required: false
+  body_site_laterality:
+    name: body_site_laterality
+    description: Indicate which side on the procedure occured on.
+    title: body_site_laterality
+    comments:
+    - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
+    range: laterality_menu
+    required: false
+  irradiated_site_laterality:
+    name: irradiated_site_laterality
+    description: Indicate which side on the radiation procedure occured on.
+    title: irradiated_site_laterality
+    comments:
+    - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
+    range: laterality_menu
     required: false
   specimen_processing:
     name: specimen_processing
@@ -1809,7 +1834,7 @@ slots:
     - FHIR.v5.0.0:Specimen.type.coding.system:Specimen.type.coding.code
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$
+    pattern: ^NCIT:C\d+$
   specimen_tissue_source_term:
     name: specimen_tissue_source_term
     annotations:
@@ -1900,12 +1925,13 @@ slots:
       specifications:
         tag: specifications
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code
-    description: Use ICD-10 code or MONDO code to represent the disease diagnosed.
-      Provide code in Compact URI (CURIE) pattern.
+    description: Use ICD-10 code, MONDO code, ORPHANET code to represent the disease
+      diagnosed. Provide code in Compact URI (CURIE) pattern.
     title: disease_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en
-      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo'
+      MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo ORPHANET code
+      : refer to https://www.orpha.net/en/disease '
     examples:
     - value: MONDO:0000001
     - value: icd10:C34
@@ -1918,7 +1944,7 @@ slots:
     - Phenopackets.v2.0:Disease.term.id
     range: string
     required: true
-    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$
+    pattern: ^icd10:[A-Z][0-9][A-Z0-9](\.[A-Z0-9]{1,4})?$|^MONDO:\d{7}$|^ORPHA:C?\d+$
   disease_term:
     name: disease_term
     annotations:
@@ -2022,6 +2048,12 @@ slots:
     title: treatment_type
     range: treatment_type_menu
     required: true
+  treatment_type_other:
+    name: treatment_type_other
+    description: If the treatment type is 'other', please specify via free text string
+    title: treatment_type_other
+    range: string
+    required: false
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
@@ -2142,7 +2174,7 @@ slots:
     - Phenopackets.v2.0:RadiationTherapy.body_site
     range: string
     required: true
-    pattern: ^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\d{7,}$
+    pattern: ^ICDO3:C[0-9]{2}(\.[0-9])?$|^UBERON:\d{7,}$
   anatomical_site_irradiated_term:
     name: anatomical_site_irradiated_term
     description: Provide the standardized and human readable term derived from the
@@ -2336,7 +2368,7 @@ slots:
     - ARGO:fileName
     range: string
     required: true
-    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$.
+    pattern: ^[A-Za-z0-9_\.\-\[\]\(\)]+$
   fileSize:
     name: fileSize
     description: Size of the file, in bytes. If not provided, will be populated by
@@ -2345,7 +2377,7 @@ slots:
     exact_mappings:
     - ARGO:files.size
     range: integer
-    required: false
+    required: true
   fileMd5sum:
     name: fileMd5sum
     description: Computed md5sum of the file. If not provided, will be populated by
@@ -2354,11 +2386,17 @@ slots:
     exact_mappings:
     - ARGO:files.md5sum
     range: string
-    required: false
+    required: true
     pattern: ^[a-fA-F0-9]{32}$
   fileType:
     name: fileType
-    description: Data format of files.
+    description: 'Data format of files.
+
+      If ''analysisType'' is ''sequenceExperiment'', ''fileType'' options are : ''BAM'',''FASTQ''
+
+      If ''analysisType'' is ''sequenceAlignment'', ''fileType'' options are : ''BAM'',''CRAM'',''BAI'',''CRAI''
+
+      If ''analysisType'' is ''variantCall'', ''fileType'' options are : ''VCF'',''TBI'''
     title: fileType
     exact_mappings:
     - ARGO:files.format
@@ -2446,13 +2484,26 @@ slots:
     - '
 
       If projects do not have the exact date of birth, they may report an approximate
-      age (in days) using the year of birth and year of study collection.
-
-      '
+      age (in days) using the year of birth and year of study collection. If left
+      empty, must populate \"age_at_sociodem_collection_missing_reason\" '
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: integer
     required: true
+  age_at_sociodem_collection_missing_reason:
+    name: age_at_sociodem_collection_missing_reason
+    description: Reason for why `age_at_sociodem_collection` is not provided
+    title: age_at_sociodem_collection_missing_reason
+    notes:
+    - '
+
+      If \"age_at_sociodem_collection\"left empty, must be populated
+
+      '
+    exact_mappings:
+    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    range: age_at_sociodem_collection_missing_reason_menu
+    required: false
   sociodem_date_collection:
     name: sociodem_date_collection
     description: "Many sociodemographic variables are social constructs, and the way\
@@ -2473,7 +2524,8 @@ slots:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
     required: true
-    pattern: ^(?:\d{4}|\d{4}-\d{2}|\d{4}-\d{2}-\d{2})$
+    pattern: ^(?:\d{4}|\d{4}-\d{2}|\d{4}-\d{2}-\d{2})$|^Missing \- Unknown$|^Missing
+      \- Not collected$|^Missing \- Not provided$|^Missing \- Restricted access$
   race_another_racial_category:
     name: race_another_racial_category
     description: A response which does not fall into any of the previous racial reporting
@@ -2669,7 +2721,7 @@ slots:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
     required: true
-    pattern: ^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$|^Missing \- Unknown$|^Missing
+    pattern: ^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \- Unknown$|^Missing
       \- Not collected$|^Missing \- Not provided$|^Missing \- Restricted access$
   geographic_location_additional:
     name: geographic_location_additional
@@ -2751,7 +2803,7 @@ slots:
     - FHIR.v5.0.0:Procedure.code.coding.system:Procedure.code
     range: string
     required: true
-    pattern: ^NCIT:C\d+$
+    pattern: ^NCIT:[C]\d+$
   radiation_modality_term:
     name: radiation_modality_term
     annotations:
@@ -2769,8 +2821,8 @@ slots:
     required: false
   exposure_code:
     name: exposure_code
-    description: 'Provide the standardized codes from SNOMED CT, ExO, LOINC to represent
-      the type of exposure.
+    description: 'Provide the standardized codes from SNOMED CT, ExO, LOINC, ECTO
+      to represent the type of exposure.
 
       Provide code in Compact URI (CURIE) pattern.
 
@@ -2793,12 +2845,12 @@ slots:
 
       https://loinc.org/{code}
 
-      '
+      ECTO URL: http://purl.obolibrary.org/obo/ECTO_{code} '
     examples:
     - value: LOINC:43164-0
     range: string
     required: true
-    pattern: ^snomedct:(\w+)?\d+$|^ExO:\d{7}$|^LOINC:[0-9]{1,5}-[0-9]$
+    pattern: ^snomedct:(\w+)?\d+$|^ExO:\d{7}$|^LOINC:(\d|\w)+-\d$|^ECTO:\d{7}$
   exposure_term:
     name: exposure_term
     description: Provide the standardized and human readable term derived from the
@@ -2863,7 +2915,7 @@ slots:
     - Phenopackets.v2.0:Biosample:sample_type
     range: string
     required: true
-    pattern: ^NCIT:C[0-9]+$|^SO:\d{7}$
+    pattern: ^NCIT:C\d+$|^SO:\d{7}$
   molecule_type_term:
     name: molecule_type_term
     description: Provide the standardized and human readable term derived from the
@@ -3160,10 +3212,21 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: 'Indicates the type of data produced as outputs from the analysis. '
+    description: 'Indicates the type of data produced as outputs from the analysis.
+
+      If ''analysisType'' is ''sequenceExperiment'', ''dataType'' options are : ''Raw
+      Sequencing Reads''
+
+      If ''analysisType'' is ''sequenceAlignment'', ''dataType'' options are : ''Aligned
+      Reads'',''Aligned Reads Index''
+
+      If ''analysisType'' is ''variantCall'', dataType options are : ''Single Nucleotide
+      Variants (SNVs)'',''Insertions and Deletions (InDels)'',''Structural Variations
+      (SVs)'',''Copy Number Variations (CNVs)'',''Variant Calls Index'''
     title: dataType
     range: data_type_menu
     required: true
+    multivalued: true
   study_name:
     name: study_name
     description: The official name of the study
@@ -3311,6 +3374,135 @@ slots:
     title: contact_email
     range: string
     required: true
+  disease_source_text:
+    name: disease_source_text
+    description: Free-text disease description as originally recorded in the source
+      system, prior to ontology mapping.
+    title: disease_source_text
+    range: string
+    required: false
+  drug_source_text:
+    name: drug_source_text
+    description: Free-text drug name or description as recorded in the source, prior
+      to normalization or ontology mapping.
+    title: drug_source_text
+    range: string
+    required: false
+  procedure_source_text:
+    name: procedure_source_text
+    description: Free-text description of the procedure as entered in the source data,
+      before mapping to standardized terms.
+    title: procedure_source_text
+    range: string
+    required: false
+  procedure_body_site_source_text:
+    name: procedure_body_site_source_text
+    description: Free-text description of the anatomical site for a procedure, as
+      originally captured in the source.
+    title: procedure_body_site_source_text
+    range: string
+    required: false
+  radiation_modality_source_text:
+    name: radiation_modality_source_text
+    description: Free-text description of the radiation modality as provided in the
+      source record, before mapping to controlled terms.
+    title: radiation_modality_source_text
+    range: string
+    required: false
+  anatomical_site_irradiated_source_text:
+    name: anatomical_site_irradiated_source_text
+    description: Free-text description of the anatomical site irradiated, as originally
+      recorded in the source.
+    title: anatomical_site_irradiated_source_text
+    range: string
+    required: false
+  phenotype_source_text:
+    name: phenotype_source_text
+    description: Free-text description of a phenotype or clinical feature, prior to
+      ontology mapping.
+    title: phenotype_source_text
+    range: string
+    required: false
+  comorbidity_source_text:
+    name: comorbidity_source_text
+    description: Free-text description of a comorbidity, as recorded in the source
+      system, before mapping to controlled vocabularies.
+    title: comorbidity_source_text
+    range: string
+    required: false
+  measurement_source_text:
+    name: measurement_source_text
+    description: Free-text representation of a measurement, observation, or test,
+      as originally recorded in the source.
+    title: measurement_source_text
+    range: string
+    required: false
+  measurement_unit_source_text:
+    name: measurement_unit_source_text
+    description: Free-text representation of the unit of measurement as originally
+      recorded in the source system, prior to mapping to a standardized unit ontology
+      (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.
+    title: measurement_unit_source_text
+    range: string
+    required: false
+  exposure_source_text:
+    name: exposure_source_text
+    description: Free-text description of an exposure (e.g., environmental, occupational),
+      prior to mapping to ontology terms.
+    title: exposure_source_text
+    range: string
+    required: false
+  specimen_tissue_source_text:
+    name: specimen_tissue_source_text
+    description: Free-text description of the tissue source for a specimen, as captured
+      in the source system.
+    title: specimen_tissue_source_text
+    range: string
+    required: false
+  specimen_anatomic_location_source_text:
+    name: specimen_anatomic_location_source_text
+    description: Free-text description of the anatomical location of specimen collection,
+      prior to ontology coding.
+    title: specimen_anatomic_location_source_text
+    range: string
+    required: false
+  molecular_type_source_text:
+    name: molecular_type_source_text
+    description: Free-text description of the molecular analyte type (e.g., DNA, RNA,
+      protein) as captured in the source record.
+    title: molecular_type_source_text
+    range: string
+    required: false
+  assay_type_source_text:
+    name: assay_type_source_text
+    description: Free-text description of the assay type used, as originally recorded
+      in the source system.
+    title: assay_type_source_text
+    range: string
+    required: false
+  instrument_source_text:
+    name: instrument_source_text
+    description: Free-text description of the sequencing instrument or platform as
+      originally recorded in the source, prior to ontology mapping.
+    title: instrument_source_text
+    range: string
+    required: false
+  library_layout_source_text:
+    name: library_layout_source_text
+    description: Free-text description of the sequencing library layout as originally
+      recorded in the source system.
+    title: library_layout_source_text
+    range: string
+    required: false
+  language_id:
+    name: language_id
+    description: Short form string of the language
+    title: language_id
+    examples:
+    - value: en-ca
+    - value: fr-ca
+    range: string
+    required: true
 classes:
   Study:
     name: Study
@@ -3324,16 +3516,11 @@ classes:
     - dac_id
     - context
     - domain
-    - funding_sources
     - lead_organizations
     - principal_investigators
     - status
-    - study_description
     - study_name
     - collaborators
-    - keywords
-    - participant_criteria
-    - program_name
     - publication_links
     slot_usage:
       dac_id:
@@ -3348,50 +3535,70 @@ classes:
         name: domain
         rank: 3
         slot_group: Study
-      funding_sources:
-        name: funding_sources
-        rank: 4
-        slot_group: Study
       lead_organizations:
         name: lead_organizations
-        rank: 5
+        rank: 4
         slot_group: Study
       principal_investigators:
         name: principal_investigators
-        rank: 6
+        rank: 5
         slot_group: Study
       status:
         name: status
-        rank: 7
-        slot_group: Study
-      study_description:
-        name: study_description
-        rank: 8
+        rank: 6
         slot_group: Study
       study_name:
         name: study_name
-        rank: 9
+        rank: 7
         slot_group: Study
       collaborators:
         name: collaborators
-        rank: 10
-        slot_group: Study
-      keywords:
-        name: keywords
-        rank: 11
-        slot_group: Study
-      participant_criteria:
-        name: participant_criteria
-        rank: 12
-        slot_group: Study
-      program_name:
-        name: program_name
-        rank: 13
+        rank: 8
         slot_group: Study
       publication_links:
         name: publication_links
-        rank: 14
+        rank: 9
         slot_group: Study
+    is_a: dh_interface
+  Study_Translation:
+    name: Study_Translation
+    description: Study_translation refers language-specific, localized representation
+      of a Study's descriptive metadata. It allows the descriptive and contextual
+      information associated with a study to be presented in multiple languages, ensuring
+      accessibility for diverse audiences.
+    title: study
+    slots:
+    - language_id
+    - funding_sources
+    - study_description
+    - keywords
+    - participant_criteria
+    - program_name
+    slot_usage:
+      language_id:
+        name: language_id
+        rank: 1
+        slot_group: Database Identifiers
+      funding_sources:
+        name: funding_sources
+        rank: 2
+        slot_group: Study_Translation
+      study_description:
+        name: study_description
+        rank: 3
+        slot_group: Study_Translation
+      keywords:
+        name: keywords
+        rank: 4
+        slot_group: Study_Translation
+      participant_criteria:
+        name: participant_criteria
+        rank: 5
+        slot_group: Study_Translation
+      program_name:
+        name: program_name
+        rank: 6
+        slot_group: Study_Translation
     is_a: dh_interface
   Dac:
     name: Dac
@@ -3504,6 +3711,7 @@ classes:
     - sex_collect_method
     - sociodem_date_collection
     - sociodem_question
+    - age_at_sociodem_collection_missing_reason
     - ethnicity_another_category
     - gender_another_gender
     - geographic_location_additional
@@ -3588,33 +3796,37 @@ classes:
         name: sociodem_question
         rank: 19
         slot_group: Sociodemographic
+      age_at_sociodem_collection_missing_reason:
+        name: age_at_sociodem_collection_missing_reason
+        rank: 20
+        slot_group: Sociodemographic
       ethnicity_another_category:
         name: ethnicity_another_category
-        rank: 20
+        rank: 21
         slot_group: Sociodemographic
       gender_another_gender:
         name: gender_another_gender
-        rank: 21
+        rank: 22
         slot_group: Sociodemographic
       geographic_location_additional:
         name: geographic_location_additional
-        rank: 22
+        rank: 23
         slot_group: Sociodemographic
       race_another_racial_category:
         name: race_another_racial_category
-        rank: 23
+        rank: 24
         slot_group: Sociodemographic
       sex_another_category:
         name: sex_another_category
-        rank: 24
+        rank: 25
         slot_group: Sociodemographic
       sociodem_notes:
         name: sociodem_notes
-        rank: 25
+        rank: 26
         slot_group: Sociodemographic
       sociodem_question_detail:
         name: sociodem_question_detail
-        rank: 26
+        rank: 27
         slot_group: Sociodemographic
     unique_keys:
       main:
@@ -3806,6 +4018,7 @@ classes:
     - submitter_participant_id
     - disease_code
     - age_at_diagnosis
+    - disease_source_text
     - disease_term
     slot_usage:
       submitter_diagnosis_id:
@@ -3824,9 +4037,13 @@ classes:
         name: age_at_diagnosis
         rank: 4
         slot_group: Diagnosis
+      disease_source_text:
+        name: disease_source_text
+        rank: 5
+        slot_group: Diagnosis
       disease_term:
         name: disease_term
-        rank: 5
+        rank: 6
         slot_group: Diagnosis
     unique_keys:
       main:
@@ -3850,6 +4067,7 @@ classes:
     - treatment_intent
     - treatment_response
     - treatment_status
+    - treatment_type_other
     slot_usage:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
@@ -3886,6 +4104,10 @@ classes:
       treatment_status:
         name: treatment_status
         rank: 9
+        slot_group: Treatment
+      treatment_type_other:
+        name: treatment_type_other
+        rank: 10
         slot_group: Treatment
     attributes:
       submitter_diagnosis_id:
@@ -3950,7 +4172,10 @@ classes:
     - submitter_treatment_id
     - procedure_body_site_code
     - procedure_code
+    - body_site_laterality
+    - procedure_body_site_source_text
     - procedure_body_site_term
+    - procedure_source_text
     - procedure_term
     slot_usage:
       submitter_treatment_id:
@@ -3965,13 +4190,25 @@ classes:
         name: procedure_code
         rank: 3
         slot_group: Procedure
+      body_site_laterality:
+        name: body_site_laterality
+        rank: 4
+        slot_group: Procedure
+      procedure_body_site_source_text:
+        name: procedure_body_site_source_text
+        rank: 5
+        slot_group: Procedure
       procedure_body_site_term:
         name: procedure_body_site_term
-        rank: 4
+        rank: 6
+        slot_group: Procedure
+      procedure_source_text:
+        name: procedure_source_text
+        rank: 7
         slot_group: Procedure
       procedure_term:
         name: procedure_term
-        rank: 5
+        rank: 8
         slot_group: Procedure
     is_a: dh_interface
   Medication:
@@ -3987,6 +4224,7 @@ classes:
     - drug_code
     - actual_cumulative_drug_dose
     - drug_dose_units
+    - drug_source_text
     - drug_term
     - prescribed_cumulative_drug_dose
     slot_usage:
@@ -4006,13 +4244,17 @@ classes:
         name: drug_dose_units
         rank: 4
         slot_group: Medication
+      drug_source_text:
+        name: drug_source_text
+        rank: 5
+        slot_group: Medication
       drug_term:
         name: drug_term
-        rank: 5
+        rank: 6
         slot_group: Medication
       prescribed_cumulative_drug_dose:
         name: prescribed_cumulative_drug_dose
-        rank: 6
+        rank: 7
         slot_group: Medication
     is_a: dh_interface
   Radiation:
@@ -4024,9 +4266,12 @@ classes:
     - submitter_treatment_id
     - anatomical_site_irradiated_code
     - radiation_modality_code
+    - anatomical_site_irradiated_source_text
     - anatomical_site_irradiated_term
+    - irradiated_site_laterality
     - radiation_dosage
     - radiation_fractions
+    - radiation_modality_source_text
     - radiation_modality_term
     slot_usage:
       submitter_treatment_id:
@@ -4041,21 +4286,33 @@ classes:
         name: radiation_modality_code
         rank: 3
         slot_group: Radiation
+      anatomical_site_irradiated_source_text:
+        name: anatomical_site_irradiated_source_text
+        rank: 4
+        slot_group: Radiation
       anatomical_site_irradiated_term:
         name: anatomical_site_irradiated_term
-        rank: 4
+        rank: 5
+        slot_group: Radiation
+      irradiated_site_laterality:
+        name: irradiated_site_laterality
+        rank: 6
         slot_group: Radiation
       radiation_dosage:
         name: radiation_dosage
-        rank: 5
+        rank: 7
         slot_group: Radiation
       radiation_fractions:
         name: radiation_fractions
-        rank: 6
+        rank: 8
+        slot_group: Radiation
+      radiation_modality_source_text:
+        name: radiation_modality_source_text
+        rank: 9
         slot_group: Radiation
       radiation_modality_term:
         name: radiation_modality_term
-        rank: 7
+        rank: 10
         slot_group: Radiation
     is_a: dh_interface
   Measurement:
@@ -4071,8 +4328,10 @@ classes:
     - age_at_measurement
     - measurement_result_categorical
     - measurement_result_numeric
+    - measurement_source_text
     - measurement_term
     - measurement_unit
+    - measurement_unit_source_text
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -4094,13 +4353,21 @@ classes:
         name: measurement_result_numeric
         rank: 5
         slot_group: Measurement
+      measurement_source_text:
+        name: measurement_source_text
+        rank: 6
+        slot_group: Measurement
       measurement_term:
         name: measurement_term
-        rank: 6
+        rank: 7
         slot_group: Measurement
       measurement_unit:
         name: measurement_unit
-        rank: 7
+        rank: 8
+        slot_group: Measurement
+      measurement_unit_source_text:
+        name: measurement_unit_source_text
+        rank: 9
         slot_group: Measurement
     is_a: dh_interface
   Phenotype:
@@ -4117,6 +4384,7 @@ classes:
     - age_at_phenotype
     - phenotype_duration
     - phenotype_severity
+    - phenotype_source_text
     - phenotype_term
     slot_usage:
       submitter_participant_id:
@@ -4143,9 +4411,13 @@ classes:
         name: phenotype_severity
         rank: 6
         slot_group: Phenotype
+      phenotype_source_text:
+        name: phenotype_source_text
+        rank: 7
+        slot_group: Phenotype
       phenotype_term:
         name: phenotype_term
-        rank: 7
+        rank: 8
         slot_group: Phenotype
     is_a: dh_interface
   Comorbidity:
@@ -4158,6 +4430,7 @@ classes:
     - submitter_participant_id
     - comorbidity_code
     - age_at_comorbidity_diagnosis
+    - comorbidity_source_text
     - comorbidity_status
     - comorbidity_term
     - comorbidity_treatment_status
@@ -4174,17 +4447,21 @@ classes:
         name: age_at_comorbidity_diagnosis
         rank: 3
         slot_group: Comorbidity
+      comorbidity_source_text:
+        name: comorbidity_source_text
+        rank: 4
+        slot_group: Comorbidity
       comorbidity_status:
         name: comorbidity_status
-        rank: 4
+        rank: 5
         slot_group: Comorbidity
       comorbidity_term:
         name: comorbidity_term
-        rank: 5
+        rank: 6
         slot_group: Comorbidity
       comorbidity_treatment_status:
         name: comorbidity_treatment_status
-        rank: 6
+        rank: 7
         slot_group: Comorbidity
     is_a: dh_interface
   Exposure:
@@ -4199,6 +4476,7 @@ classes:
     - age_at_exposure
     - exposure_amount
     - exposure_duration
+    - exposure_source_text
     - exposure_term
     - exposure_unit
     slot_usage:
@@ -4226,13 +4504,17 @@ classes:
         name: exposure_duration
         rank: 6
         slot_group: Exposure
+      exposure_source_text:
+        name: exposure_source_text
+        rank: 7
+        slot_group: Exposure
       exposure_term:
         name: exposure_term
-        rank: 7
+        rank: 8
         slot_group: Exposure
       exposure_unit:
         name: exposure_unit
-        rank: 8
+        rank: 9
         slot_group: Exposure
     is_a: dh_interface
   Specimen:
@@ -4248,11 +4530,13 @@ classes:
     - specimen_tissue_source_code
     - age_at_specimen_collection
     - specimen_anatomic_location_code
+    - specimen_anatomic_location_source_text
     - specimen_anatomic_location_term
     - specimen_laterality
     - specimen_processing
     - specimen_storage
     - specimen_tissue_source_term
+    - specimen_tissue_source_text
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -4274,25 +4558,33 @@ classes:
         name: specimen_anatomic_location_code
         rank: 5
         slot_group: Specimen
+      specimen_anatomic_location_source_text:
+        name: specimen_anatomic_location_source_text
+        rank: 6
+        slot_group: Specimen
       specimen_anatomic_location_term:
         name: specimen_anatomic_location_term
-        rank: 6
+        rank: 7
         slot_group: Specimen
       specimen_laterality:
         name: specimen_laterality
-        rank: 7
+        rank: 8
         slot_group: Specimen
       specimen_processing:
         name: specimen_processing
-        rank: 8
+        rank: 9
         slot_group: Specimen
       specimen_storage:
         name: specimen_storage
-        rank: 9
+        rank: 10
         slot_group: Specimen
       specimen_tissue_source_term:
         name: specimen_tissue_source_term
-        rank: 10
+        rank: 11
+        slot_group: Specimen
+      specimen_tissue_source_text:
+        name: specimen_tissue_source_text
+        rank: 12
         slot_group: Specimen
     unique_keys:
       main:
@@ -4310,6 +4602,7 @@ classes:
     - submitter_specimen_id
     - molecule_type_code
     - sample_status
+    - molecular_type_source_text
     - molecule_type_term
     slot_usage:
       submitter_sample_id:
@@ -4328,9 +4621,13 @@ classes:
         name: sample_status
         rank: 4
         slot_group: Sample
+      molecular_type_source_text:
+        name: molecular_type_source_text
+        rank: 5
+        slot_group: Sample
       molecule_type_term:
         name: molecule_type_term
-        rank: 5
+        rank: 6
         slot_group: Sample
     unique_keys:
       main:
@@ -4349,9 +4646,11 @@ classes:
     - experiment_type
     - instrument
     - platform
+    - assay_type_source_text
     - assay_type_term
     - experiment_design
     - instrument_metadata
+    - instrument_source_text
     - sequencing_protocol
     slot_usage:
       submitter_experiment_id:
@@ -4378,21 +4677,29 @@ classes:
         name: platform
         rank: 6
         slot_group: Experiment
+      assay_type_source_text:
+        name: assay_type_source_text
+        rank: 7
+        slot_group: Experiment
       assay_type_term:
         name: assay_type_term
-        rank: 7
+        rank: 8
         slot_group: Experiment
       experiment_design:
         name: experiment_design
-        rank: 8
+        rank: 9
         slot_group: Experiment
       instrument_metadata:
         name: instrument_metadata
-        rank: 9
+        rank: 10
+        slot_group: Experiment
+      instrument_source_text:
+        name: instrument_source_text
+        rank: 11
         slot_group: Experiment
       sequencing_protocol:
         name: sequencing_protocol
-        rank: 10
+        rank: 12
         slot_group: Experiment
     unique_keys:
       main:
@@ -4415,6 +4722,7 @@ classes:
     - file_r2
     - insert_size
     - library_description
+    - library_layout_source_text
     - read_group_id_in_bam
     - read_length_r1
     - read_length_r2
@@ -4455,17 +4763,21 @@ classes:
         name: library_description
         rank: 9
         slot_group: Read_Group
+      library_layout_source_text:
+        name: library_layout_source_text
+        rank: 10
+        slot_group: Read_Group
       read_group_id_in_bam:
         name: read_group_id_in_bam
-        rank: 10
+        rank: 11
         slot_group: Read_Group
       read_length_r1:
         name: read_length_r1
-        rank: 11
+        rank: 12
         slot_group: Read_Group
       read_length_r2:
         name: read_length_r2
-        rank: 12
+        rank: 13
         slot_group: Read_Group
     unique_keys:
       main:
@@ -4613,10 +4925,10 @@ classes:
     - submitter_analysis_id
     - dataType
     - fileAccess
-    - fileName
-    - fileType
     - fileMd5sum
+    - fileName
     - fileSize
+    - fileType
     slot_usage:
       submitter_analysis_id:
         name: submitter_analysis_id
@@ -4630,20 +4942,20 @@ classes:
         name: fileAccess
         rank: 3
         slot_group: File
-      fileName:
-        name: fileName
-        rank: 4
-        slot_group: File
-      fileType:
-        name: fileType
-        rank: 5
-        slot_group: File
       fileMd5sum:
         name: fileMd5sum
-        rank: 6
+        rank: 4
+        slot_group: File
+      fileName:
+        name: fileName
+        rank: 5
         slot_group: File
       fileSize:
         name: fileSize
+        rank: 6
+        slot_group: File
+      fileType:
+        name: fileType
         rank: 7
         slot_group: File
     is_a: dh_interface

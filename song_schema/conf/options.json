@@ -1,46 +1,60 @@
 {
   "sequenceExperiment": {
     "options": {
-      "fileTypes":["BAM", "FASTQ"],
-      "externalValidations":[
+      "dataType": [
+        "Raw Sequencing Reads"
+      ],
+      "fileTypes": [
+        "BAM",
+        "FASTQ"
+      ],
+      "externalValidations": [
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
           "jsonPath": "submitter_experiment_ids"
         }
       ]
-    },
-    "dataType":[
-      "Raw Sequencing Reads"]
-  },   
+    }
+  },
   "sequenceAlignment": {
     "options": {
-      "fileTypes":["BAM", "CRAM", "BAI", "CRAI"],
-      "externalValidations":[
+      "fileTypes": [
+        "BAM",
+        "CRAM",
+        "BAI",
+        "CRAI"
+      ],
+      "dataType": [
+        "Aligned Reads",
+        "Aligned Reads Index"
+      ],
+      "externalValidations": [
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
           "jsonPath": "submitter_experiment_ids"
         }
       ]
-    },
-    "dataType":[
-      "Aligned Reads",
-      "Aligned Reads Index"]
+    }
   },
   "variantCall": {
     "options": {
-      "fileTypes":["VCF", "TBI"],
-      "externalValidations":[
+      "fileTypes": [
+        "VCF",
+        "TBI"
+      ],
+      "dataType": [
+        "Single Nucleotide Variants (SNVs)",
+        "Insertions and Deletions (InDels)",
+        "Structural Variations (SVs)",
+        "Copy Number Variations (CNVs)",
+        "Variant Calls Index"
+      ],
+      "externalValidations": [
         {
           "url": "http://submission.submission.svc.cluster.local/validator/entity/experiment/field/submitter_experiment_id/exists?study={study}&value={value}",
           "jsonPath": "submitter_experiment_ids"
         }
       ]
-    },
-    "dataType":[
-      "Single Nucleotide Variants (SNVs)",
-      "Insertions and Deletions (InDels)",
-      "Structural Variations (SVs)",
-      "Copy Number Variations (CNVs)",
-      "Variant Calls Index"]
-  } 
+    }
+  }
 }

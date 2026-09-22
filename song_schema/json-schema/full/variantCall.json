@@ -33,15 +33,30 @@
         "description": "Contains information about the files generated from a run of sequencing or data analysis",
         "properties": {
           "dataType": {
-            "description": "",
-            "enum": [
-              "Single Nucleotide Variants (SNVs)",
-              "Insertions and Deletions (InDels)",
-              "Structural Variations (SVs)",
-              "Copy Number Variations (CNVs)",
-              "Variant Calls Index"
-            ],
-            "type": "string"
+            "description": "Indicates the type of data produced as outputs from the analysis. ",
+            "items": {
+              "description": "",
+              "enum": [
+                "Raw Sequencing Reads",
+                "Aligned Reads",
+                "Aligned Reads Index",
+                "Single Nucleotide Variants (SNVs)",
+                "Insertions and Deletions (InDels)",
+                "Structural Variations (SVs)",
+                "Copy Number Variations (CNVs)",
+                "Variant Calls Index",
+                "Quality Control Metrics",
+                "Gene Fusions",
+                "Alternative Splicing",
+                "Gene Expression Quantification",
+                "Transcript Expression Quantification",
+                "Single-Cell Expression Matrices",
+                "Splicing Junctions",
+                "Differential Expression Analysis"
+              ],
+              "type": "string"
+            },
+            "type": "array"
           },
           "fileAccess": {
             "description": "",
@@ -58,7 +73,7 @@
           },
           "fileName": {
             "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
-            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
+            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$",
             "type": "string"
           },
           "fileSize": {
@@ -174,6 +189,17 @@
         "workflow_name"
       ],
       "type": "object"
+    },
+    "dataType": {
+      "description": "Controlled Data Type list. Not populatable",
+      "enum": [
+        "Single Nucleotide Variants (SNVs)",
+        "Insertions and Deletions (InDels)",
+        "Structural Variations (SVs)",
+        "Copy Number Variations (CNVs)",
+        "Variant Calls Index"
+      ],
+      "not": {}
     }
   },
   "required": [

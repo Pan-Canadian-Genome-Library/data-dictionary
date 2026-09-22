@@ -1,6 +1,9 @@
 {
   "name": "sequenceExperiment",
   "options": {
+    "dataType": [
+      "Raw Sequencing Reads"
+    ],
     "fileTypes": [
       "BAM",
       "FASTQ"
@@ -40,6 +43,13 @@
         "minItems": 1,
         "type": "array",
         "uniqueItems": true
+      },
+      "dataType": {
+        "description": "Controlled Data Type list. Not populatable",
+        "enum": [
+          "Raw Sequencing Reads"
+        ],
+        "not": {}
       }
     },
     "required": [

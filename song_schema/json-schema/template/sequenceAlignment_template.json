@@ -5,7 +5,9 @@
   "data_category": "<data_category>",
   "files": [
     {
-      "dataType": "<dataType>",
+      "dataType": [
+        "<dataType>"
+      ],
       "fileAccess": "<fileAccess>",
       "fileMd5sum": "<fileMd5sum>",
       "fileName": "<fileName>",
@@ -24,5 +26,6 @@
     "workflow_name": "<workflow_name>",
     "workflow_url": "<workflow_url>",
     "workflow_version": "<workflow_version>"
-  }
+  },
+  "dataType": "<dataType>"
 }
