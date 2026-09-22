@@ -24,7 +24,7 @@
   "genome_build": "GRCh37",
   "studyId": "test-001",
   "submitter_analysis_id": "analysis_003",
-  "submitter_experiment_id": "exp_003",
+  "submitter_experiment_id": ["exp_003"],
   "workflow": {
     "submitter_workflow_id": "workflow_001",
     "workflow_name": "DNA Seq Alignment",

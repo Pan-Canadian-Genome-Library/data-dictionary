@@ -92,10 +92,10 @@
         "required": [
           "dataType",
           "fileAccess",
-          "fileMd5sum",
           "fileName",
+          "fileType",
           "fileSize",
-          "fileType"
+          "fileMd5sum"
         ],
         "type": "object"
       },

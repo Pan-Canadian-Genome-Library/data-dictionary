@@ -19,6 +19,5 @@
   "submitter_analysis_id": "<submitter_analysis_id>",
   "submitter_experiment_ids": [
     "<submitter_experiment_ids>"
-  ],
-  "dataType": "<dataType>"
+  ]
 }
