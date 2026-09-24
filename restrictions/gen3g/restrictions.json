@@ -44,6 +44,24 @@
                         },
                         "then":{"required": false, "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"}
                     }
+                },
+                {
+                    "name":"treatment_type_other",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["treatment_type"],
+                                    "match":{"value": "Other"},
+                                    "case" : "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required": true},
+                        "else":{"required": false, "empty": true}
+                    }
                 }
             ]
         },

@@ -187,6 +187,39 @@
         },
         {
           "meta": {
+            "displayName": "age_at_sociodem_collection_missing_reason",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "age_at_sociodem_collection_missing_reason",
+          "description": "Reason for why `age_at_sociodem_collection` is not provided",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "education",
             "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
@@ -265,6 +298,41 @@
         },
         {
           "meta": {
+            "displayName": "ethnicity_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "ethnicity_another_category",
+          "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "ethnicity"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Free text input"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "ethnicity_collect_method"
           },
           "name": "ethnicity_collect_method",
@@ -309,6 +377,39 @@
               "Missing - Not provided",
               "Missing - Restricted access"
             ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "gender_another_gender",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "gender_another_gender",
+          "description": "A response which does not fall into any of the previous gender reporting categories.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "gender"
+                  ],
+                  "match": {
+                    "value": "Another Gender"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
           },
           "valueType": "string"
         },
@@ -454,6 +555,41 @@
         },
         {
           "meta": {
+            "displayName": "race_another_racial_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "race_another_racial_category",
+          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "race"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Racial Category"
+                    ]
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "race_collect_method"
           },
           "name": "race_collect_method",
@@ -469,6 +605,39 @@
               "Missing - Not provided",
               "Missing - Restricted access"
             ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sex_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "sex_another_category",
+          "description": "A response which does not fall into any of the previous categories. ",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "sex_at_birth"
+                  ],
+                  "match": {
+                    "value": "Another Sex"
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
           },
           "valueType": "string"
         },
@@ -554,180 +723,11 @@
         },
         {
           "meta": {
-            "displayName": "age_at_sociodem_collection_missing_reason",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "age_at_sociodem_collection_missing_reason",
-          "description": "Reason for why `age_at_sociodem_collection` is not provided",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "age_at_sociodem_collection"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "ethnicity_another_category",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "ethnicity_another_category",
-          "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "ethnicity"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Free text input"
-                    ]
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "gender_another_gender",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "gender_another_gender",
-          "description": "A response which does not fall into any of the previous gender reporting categories.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "gender"
-                  ],
-                  "match": {
-                    "value": "Another Gender"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
             "displayName": "geographic_location_additional"
           },
           "name": "geographic_location_additional",
           "description": "When postal code is less specific, additional information may be reported.",
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "race_another_racial_category",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "race_another_racial_category",
-          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "race"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Another Racial Category"
-                    ]
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "sex_another_category",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "sex_another_category",
-          "description": "A response which does not fall into any of the previous categories. ",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "sex_at_birth"
-                  ],
-                  "match": {
-                    "value": "Another Sex"
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {
@@ -1671,6 +1671,36 @@
         },
         {
           "meta": {
+            "displayName": "treatment_type_other"
+          },
+          "name": "treatment_type_other",
+          "description": "If the treatment type is 'other', please specify via free text string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "treatment_type"
+                  ],
+                  "match": {
+                    "value": "Other"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "age_at_treatment",
             "related_mappings": {
               "ARGO.v1.34": "treatment.treatment_start_interval+donor.age_at_diagnosis",
@@ -1796,14 +1826,6 @@
               "Not applicable"
             ]
           }
-        },
-        {
-          "meta": {
-            "displayName": "treatment_type_other"
-          },
-          "name": "treatment_type_other",
-          "description": "If the treatment type is 'other', please specify via free text string",
-          "valueType": "string"
         },
         {
           "meta": {
@@ -3671,6 +3693,39 @@
         },
         {
           "meta": {
+            "displayName": "file_r2",
+            "exact_mappings": {
+              "ARGO": "read_groups.file_r2"
+            }
+          },
+          "name": "file_r2",
+          "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "library_layout"
+                  ],
+                  "match": {
+                    "value": "OBI:0000722 (paired-end library)"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "library_layout",
             "exact_mappings": {
               "Beacon.v2.2.0": "runs.libraryLayout",
@@ -3717,39 +3772,6 @@
             "required": true
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "file_r2",
-            "exact_mappings": {
-              "ARGO": "read_groups.file_r2"
-            }
-          },
-          "name": "file_r2",
-          "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "library_layout"
-                  ],
-                  "match": {
-                    "value": "OBI:0000722 (paired-end library)"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {

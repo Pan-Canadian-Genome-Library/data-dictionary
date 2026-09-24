@@ -2053,7 +2053,7 @@ slots:
     description: If the treatment type is 'other', please specify via free text string
     title: treatment_type_other
     range: string
-    required: false
+    required: true
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
@@ -2503,7 +2503,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: age_at_sociodem_collection_missing_reason_menu
-    required: false
+    required: true
   sociodem_date_collection:
     name: sociodem_date_collection
     description: "Many sociodemographic variables are social constructs, and the way\
@@ -2542,7 +2542,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   race_collect_method:
     name: race_collect_method
     description: 'Studies must report how race data was collected
@@ -2575,7 +2575,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   gender_collect_method:
     name: gender_collect_method
     description: 'Studies must report how the gender data was collected. This is necessary
@@ -2605,7 +2605,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   ethnicity_collect_method:
     name: ethnicity_collect_method
     description: 'Studies must report how the ethnicity data was collected. This is
@@ -2633,7 +2633,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   sex_collect_method:
     name: sex_collect_method
     description: 'Studies must report how the sex_at_birth data was collected. This
@@ -3071,7 +3071,7 @@ slots:
     exact_mappings:
     - ARGO:read_groups.file_r2
     range: string
-    required: false
+    required: true
   library_name:
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
@@ -3212,17 +3212,14 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: 'Indicates the type of data produced as outputs from the analysis.
-
-      If ''analysisType'' is ''sequenceExperiment'', ''dataType'' options are : ''Raw
-      Sequencing Reads''
-
-      If ''analysisType'' is ''sequenceAlignment'', ''dataType'' options are : ''Aligned
-      Reads'',''Aligned Reads Index''
-
-      If ''analysisType'' is ''variantCall'', dataType options are : ''Single Nucleotide
-      Variants (SNVs)'',''Insertions and Deletions (InDels)'',''Structural Variations
-      (SVs)'',''Copy Number Variations (CNVs)'',''Variant Calls Index'''
+    description: "Indicates the type of data produced as outputs from the analysis.\n\
+      To include multiple values, separate values with a pipe delimiter '|' within\
+      \ your file\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are\
+      \ :\n'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType'\
+      \ options are :\n'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is\
+      \ 'variantCall', dataType options are \n 'Single Nucleotide Variants (SNVs)','Insertions\
+      \ and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations\
+      \ (CNVs)','Variant Calls Index'"
     title: dataType
     range: data_type_menu
     required: true
@@ -3691,28 +3688,28 @@ classes:
     - submitter_participant_id
     - submitter_sociodem_id
     - age_at_sociodem_collection
+    - age_at_sociodem_collection_missing_reason
     - education
     - education_collect_method
     - ethnicity
+    - ethnicity_another_category
     - ethnicity_collect_method
     - gender
+    - gender_another_gender
     - gender_collect_method
     - geographic_location
     - geographic_location_collect_method
     - personal_income
     - personal_income_collect_method
     - race
+    - race_another_racial_category
     - race_collect_method
+    - sex_another_category
     - sex_at_birth
     - sex_collect_method
     - sociodem_date_collection
     - sociodem_question
-    - age_at_sociodem_collection_missing_reason
-    - ethnicity_another_category
-    - gender_another_gender
     - geographic_location_additional
-    - race_another_racial_category
-    - sex_another_category
     - sociodem_notes
     - sociodem_question_detail
     slot_usage:
@@ -3728,92 +3725,92 @@ classes:
         name: age_at_sociodem_collection
         rank: 3
         slot_group: Sociodemographic
+      age_at_sociodem_collection_missing_reason:
+        name: age_at_sociodem_collection_missing_reason
+        rank: 4
+        slot_group: Sociodemographic
       education:
         name: education
-        rank: 4
+        rank: 5
         slot_group: Sociodemographic
       education_collect_method:
         name: education_collect_method
-        rank: 5
+        rank: 6
         slot_group: Sociodemographic
       ethnicity:
         name: ethnicity
-        rank: 6
-        slot_group: Sociodemographic
-      ethnicity_collect_method:
-        name: ethnicity_collect_method
         rank: 7
-        slot_group: Sociodemographic
-      gender:
-        name: gender
-        rank: 8
-        slot_group: Sociodemographic
-      gender_collect_method:
-        name: gender_collect_method
-        rank: 9
-        slot_group: Sociodemographic
-      geographic_location:
-        name: geographic_location
-        rank: 10
-        slot_group: Sociodemographic
-      geographic_location_collect_method:
-        name: geographic_location_collect_method
-        rank: 11
-        slot_group: Sociodemographic
-      personal_income:
-        name: personal_income
-        rank: 12
-        slot_group: Sociodemographic
-      personal_income_collect_method:
-        name: personal_income_collect_method
-        rank: 13
-        slot_group: Sociodemographic
-      race:
-        name: race
-        rank: 14
-        slot_group: Sociodemographic
-      race_collect_method:
-        name: race_collect_method
-        rank: 15
-        slot_group: Sociodemographic
-      sex_at_birth:
-        name: sex_at_birth
-        rank: 16
-        slot_group: Sociodemographic
-      sex_collect_method:
-        name: sex_collect_method
-        rank: 17
-        slot_group: Sociodemographic
-      sociodem_date_collection:
-        name: sociodem_date_collection
-        rank: 18
-        slot_group: Sociodemographic
-      sociodem_question:
-        name: sociodem_question
-        rank: 19
-        slot_group: Sociodemographic
-      age_at_sociodem_collection_missing_reason:
-        name: age_at_sociodem_collection_missing_reason
-        rank: 20
         slot_group: Sociodemographic
       ethnicity_another_category:
         name: ethnicity_another_category
-        rank: 21
+        rank: 8
+        slot_group: Sociodemographic
+      ethnicity_collect_method:
+        name: ethnicity_collect_method
+        rank: 9
+        slot_group: Sociodemographic
+      gender:
+        name: gender
+        rank: 10
         slot_group: Sociodemographic
       gender_another_gender:
         name: gender_another_gender
-        rank: 22
+        rank: 11
         slot_group: Sociodemographic
-      geographic_location_additional:
-        name: geographic_location_additional
-        rank: 23
+      gender_collect_method:
+        name: gender_collect_method
+        rank: 12
+        slot_group: Sociodemographic
+      geographic_location:
+        name: geographic_location
+        rank: 13
+        slot_group: Sociodemographic
+      geographic_location_collect_method:
+        name: geographic_location_collect_method
+        rank: 14
+        slot_group: Sociodemographic
+      personal_income:
+        name: personal_income
+        rank: 15
+        slot_group: Sociodemographic
+      personal_income_collect_method:
+        name: personal_income_collect_method
+        rank: 16
+        slot_group: Sociodemographic
+      race:
+        name: race
+        rank: 17
         slot_group: Sociodemographic
       race_another_racial_category:
         name: race_another_racial_category
-        rank: 24
+        rank: 18
+        slot_group: Sociodemographic
+      race_collect_method:
+        name: race_collect_method
+        rank: 19
         slot_group: Sociodemographic
       sex_another_category:
         name: sex_another_category
+        rank: 20
+        slot_group: Sociodemographic
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 21
+        slot_group: Sociodemographic
+      sex_collect_method:
+        name: sex_collect_method
+        rank: 22
+        slot_group: Sociodemographic
+      sociodem_date_collection:
+        name: sociodem_date_collection
+        rank: 23
+        slot_group: Sociodemographic
+      sociodem_question:
+        name: sociodem_question
+        rank: 24
+        slot_group: Sociodemographic
+      geographic_location_additional:
+        name: geographic_location_additional
         rank: 25
         slot_group: Sociodemographic
       sociodem_notes:
@@ -4055,12 +4052,12 @@ classes:
     - submitter_participant_id
     - submitter_treatment_id
     - treatment_type
+    - treatment_type_other
     - age_at_treatment
     - treatment_duration
     - treatment_intent
     - treatment_response
     - treatment_status
-    - treatment_type_other
     slot_usage:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
@@ -4078,28 +4075,28 @@ classes:
         name: treatment_type
         rank: 4
         slot_group: Treatment
+      treatment_type_other:
+        name: treatment_type_other
+        rank: 5
+        slot_group: Treatment
       age_at_treatment:
         name: age_at_treatment
-        rank: 5
+        rank: 6
         slot_group: Treatment
       treatment_duration:
         name: treatment_duration
-        rank: 6
+        rank: 7
         slot_group: Treatment
       treatment_intent:
         name: treatment_intent
-        rank: 7
+        rank: 8
         slot_group: Treatment
       treatment_response:
         name: treatment_response
-        rank: 8
+        rank: 9
         slot_group: Treatment
       treatment_status:
         name: treatment_status
-        rank: 9
-        slot_group: Treatment
-      treatment_type_other:
-        name: treatment_type_other
         rank: 10
         slot_group: Treatment
     attributes:
@@ -4697,10 +4694,10 @@ classes:
     - submitter_experiment_id
     - submitter_read_group_id
     - file_r1
+    - file_r2
     - library_layout
     - library_name
     - platform_unit
-    - file_r2
     - insert_size
     - library_description
     - library_layout_source_text
@@ -4720,20 +4717,20 @@ classes:
         name: file_r1
         rank: 3
         slot_group: Read_Group
+      file_r2:
+        name: file_r2
+        rank: 4
+        slot_group: Read_Group
       library_layout:
         name: library_layout
-        rank: 4
+        rank: 5
         slot_group: Read_Group
       library_name:
         name: library_name
-        rank: 5
+        rank: 6
         slot_group: Read_Group
       platform_unit:
         name: platform_unit
-        rank: 6
-        slot_group: Read_Group
-      file_r2:
-        name: file_r2
         rank: 7
         slot_group: Read_Group
       insert_size:

@@ -59,7 +59,8 @@
                             ]
 
                         },
-                        "then":{"required": true}
+                        "then":{"required": true},
+                        "else":{"required": false, "empty": true}
                     }
                 }
             ]

@@ -1866,7 +1866,7 @@ slots:
     description: "If the treatment type is 'other', please specify via free text string"
     title: Treatment Type Other
     range: string
-    required: false
+    required: true
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
@@ -2248,7 +2248,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: age_at_sociodem_collection_missing_reason_menu
-    required: false
+    required: true
   sociodem_date_collection:
     name: sociodem_date_collection
     description: "Many sociodemographic variables are social constructs, and the way\
@@ -2285,7 +2285,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   race_collect_method:
     name: race_collect_method
     description: "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived."
@@ -2306,7 +2306,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   gender_collect_method:
     name: gender_collect_method
     description: 'Studies must report how the gender data was collected. This is necessary
@@ -2334,7 +2334,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   ethnicity_collect_method:
     name: ethnicity_collect_method
     description: 'Studies must report how the ethnicity data was collected. This is
@@ -2360,7 +2360,7 @@ slots:
     exact_mappings:
     - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   sex_collect_method:
     name: sex_collect_method
     description: 'Studies must report how the sex_at_birth data was collected. This
@@ -2785,7 +2785,7 @@ slots:
     exact_mappings:
     - ARGO:read_groups.file_r2
     range: string
-    required: false
+    required: true
   library_name:
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
@@ -2921,7 +2921,7 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: "Indicates the type of data produced as outputs from the analysis.\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are : 'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are : 'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are : 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'"
+    description: "Indicates the type of data produced as outputs from the analysis.\nTo include multiple values, separate values with a pipe delimiter '|' within your file\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are :\n'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are :\n'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are \n 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'"
     title: DataType
     range: data_type_menu
     required: true
