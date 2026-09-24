@@ -1,9 +1,12 @@
 {
-  "name": "gen3g_schema",
-  "version": "1.1",
-  "description": "GEN3G clinical schema that incorporates all PCGL base entities and extends with additional GEN3G fields and entities",
+  "name": "PCGLST0003 pcgl schema",
+  "description": "Gen3G clinical schema that incorporates all PCGL base entities (minus radiation and comorbidity), adds new entities pedigree, firsttrimestervisit, secondtrimestervisit,deliveryvisit and extends demographic, participiant and experiment",
+  "version": "1.2",
   "meta": {
-    "notes": "Remove sociodem_id foreign key in sociodemographics. Replace class null description with TBD. Remove family Id foreign key in pedigree"
+    "version": {
+      "base": "1.1",
+      "extension": "0.1"
+    }
   },
   "schemas": [
     {
@@ -12,8 +15,19 @@
       "fields": [
         {
           "meta": {
+            "displayName": "pooled_participant_id",
+            "exact_mappings": {
+              "dbGap": "POOLED_SUBJECT_ID"
+            }
+          },
+          "name": "pooled_participant_id",
+          "description": "Pooled participant ID.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -28,16 +42,22 @@
         },
         {
           "meta": {
-            "displayName": "study_id",
-            "mappings": {
-              "ARGO": "studyId",
-              "CQDG": "study_id"
+            "displayName": "duo_permission",
+            "exact_mappings": {
+              "CQDG": "duo_permission"
             }
           },
-          "name": "study_id",
-          "description": "Unique identifier of the study.",
+          "name": "duo_permission",
+          "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Participant data.",
           "restrictions": {
-            "required": true
+            "required": true,
+            "codeList": [
+              "DUO:0000042 (general research use)",
+              "DUO:0000006 (health or medical or biomedical research)",
+              "DUO:0000007 (disease specific research)",
+              "DUO:0000011 (population origins or ancestry research only)",
+              "DUO:0000004 (no restriction)"
+            ]
           },
           "valueType": "string"
         },
@@ -80,7 +100,7 @@
         {
           "meta": {
             "displayName": "duo_modifier",
-            "mappings": {
+            "exact_mappings": {
               "CQDG": "duo_modifier"
             }
           },
@@ -111,38 +131,6 @@
           },
           "isArray": true,
           "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "duo_permission",
-            "mappings": {
-              "CQDG": "duo_permission"
-            }
-          },
-          "name": "duo_permission",
-          "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Participant data.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "DUO:0000042 (general research use)",
-              "DUO:0000006 (health or medical or biomedical research)",
-              "DUO:0000007 (disease specific research)",
-              "DUO:0000011 (population origins or ancestry research only)",
-              "DUO:0000004 (no restriction)"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "pooled_participant_id",
-            "mappings": {
-              "dbGap": "POOLED_SUBJECT_ID"
-            }
-          },
-          "name": "pooled_participant_id",
-          "description": "Pooled participant ID.",
-          "valueType": "string"
         }
       ]
     },
@@ -150,6 +138,21 @@
       "name": "sociodemographic",
       "description": "Captures sociodemographic characteristics of an individual that may vary over time and can influence health status, access to care, or disease outcomes. These factors are often collected longitudinally and reflect broader social determinants of health. The PCGL requires information on eight key sociodemographic variables defined by the Canadian Institute for Health Information (CIHI).",
       "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "exact_mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
         {
           "meta": {
             "displayName": "submitter_sociodem_id",
@@ -170,37 +173,41 @@
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "dbGap": "SUBJECT_ID",
-              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
-            }
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "age_at_sociodem_collection",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
           "name": "age_at_sociodem_collection",
           "description": "Age (in days) of the participant at the time of sociodemographic data collection",
           "restrictions": {
-            "required": true
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection_missing_reason"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
           },
           "valueType": "integer"
         },
         {
           "meta": {
             "displayName": "education",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
@@ -214,11 +221,8 @@
               "High school (secondary school) diploma or equivalency certificate",
               "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
               "College, CEGEP, or other non-university certificate or diploma",
-              "Bachelor\u2019s degree",
-              "Degree in medicine, dentistry, veterinary medicine or optometry",
-              "Master\u2019s degree",
-              "Doctoral degree",
-              "Post-doctoral fellowship or training",
+              "Bachelor's degree",
+              "Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD)",
               "Prefer not to answer",
               "Not applicable",
               "Missing - Unknown",
@@ -251,15 +255,15 @@
         {
           "meta": {
             "displayName": "ethnicity",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             },
-            "required": [
+            "comments": [
               "EDI indicator"
             ]
           },
           "name": "ethnicity",
-          "description": "Refers to the ethnic or cultural origins of a person's ancestors. The provided values are based on the list of ethnic or cultural origins 2021 defined by Statistics Canada",
+          "description": "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)][REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada.(2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -277,41 +281,6 @@
           "valueType": "string",
           "isArray": true,
           "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "ethnicity_another_category",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "ethnicity_another_category",
-          "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "ethnicity"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Free text input"
-                    ]
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {
@@ -336,15 +305,16 @@
         {
           "meta": {
             "displayName": "gender",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
+              "Phenopackets.v2.0": "Individual.gender"
             },
-            "required": [
+            "comments": [
               "EDI indicator"
             ]
           },
           "name": "gender",
-          "description": "Refers to an individual's personal and social identity as a man, woman or non-binary person (a person who is not exclusively a man or a woman). The provided values are based on the categories defined by Statistics Canada",
+          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person's gender may be the same as or different from their assigned sex at birth and may change over time.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -360,39 +330,6 @@
             ]
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "gender_another_gender",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "gender_another_gender",
-          "description": "A response which does not fall into any of the previous gender reporting categories.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "gender"
-                  ],
-                  "match": {
-                    "value": "Another Gender"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {
@@ -416,24 +353,16 @@
         {
           "meta": {
             "displayName": "geographic_location",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
           "name": "geographic_location",
-          "description": "A participant\u2019s postal code at their current address of residence. ",
+          "description": "A participant's postal code at their current address of residence.",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z][0-9][A-Za-z][0-9][A-Za-z][0-9]$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
+            "regex": "^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
           },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "geographic_location_additional"
-          },
-          "name": "geographic_location_additional",
-          "description": "When postal code is less specific, additional information may be reported.",
           "valueType": "string"
         },
         {
@@ -458,7 +387,7 @@
         {
           "meta": {
             "displayName": "personal_income",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
@@ -509,15 +438,15 @@
         {
           "meta": {
             "displayName": "race",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             },
-            "required": [
+            "comments": [
               "EDI indicator"
             ]
           },
           "name": "race",
-          "description": "A social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies. There is no scientifically supported biological basis for discrete racial groups. The provided values are based on race-based data standard defined by CIHI guidance",
+          "description": "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -544,45 +473,10 @@
         },
         {
           "meta": {
-            "displayName": "race_another_racial_category",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "race_another_racial_category",
-          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "race"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Another Racial Category"
-                    ]
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
             "displayName": "race_collect_method"
           },
           "name": "race_collect_method",
-          "description": "Studies must report how race data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. Responses from prospective projects should always be self-identified. To respect participants\u2019 autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories, responses that were self-identified should not be aggregated with responses that were socially assigned or derived. ",
+          "description": "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -599,41 +493,8 @@
         },
         {
           "meta": {
-            "displayName": "sex_another_category",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "sex_another_category",
-          "description": "A response which does not fall into any of the previous categories. ",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "sex_at_birth"
-                  ],
-                  "match": {
-                    "value": "Another Sex"
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
             "displayName": "sex_at_birth",
-            "mappings": {
+            "exact_mappings": {
               "Phenopacket.sex_at_birth": "Phenopacket.sex_at_birth"
             }
           },
@@ -668,7 +529,7 @@
         {
           "meta": {
             "displayName": "sociodem_date_collection",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
@@ -676,22 +537,8 @@
           "description": "Many sociodemographic variables are social constructs, and the way participants self-identify may evolve over time. \nPlease indicate the actual date when the data was collected in format: YYYY-MM-DD, if available. \nIf the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if the day is unknown but the month and year are known\n- Use YYYY if only the year is known",
           "restrictions": {
             "required": true,
-            "regex": "^(?:\\d{4}|\\d{4}-\\d{2}|\\d{4}-\\d{2}-\\d{2})$"
+            "regex": "^(?:\\d{4}|\\d{4}-\\d{2}|\\d{4}-\\d{2}-\\d{2})$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
           },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sociodem_notes",
-            "mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "examples": [
-              "\n    For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
-            ]
-          },
-          "name": "sociodem_notes",
-          "description": "Studies may choose to report whether potential bias may exist due to the way reporting categories were defined and handled.",
           "valueType": "string"
         },
         {
@@ -715,8 +562,199 @@
         },
         {
           "meta": {
+            "displayName": "age_at_sociodem_collection_missing_reason",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "age_at_sociodem_collection_missing_reason",
+          "description": "Reason for why `age_at_sociodem_collection` is not provided",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "ethnicity_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "ethnicity_another_category",
+          "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "ethnicity"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Free text input"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "gender_another_gender",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "gender_another_gender",
+          "description": "A response which does not fall into any of the previous gender reporting categories.",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "gender"
+                  ],
+                  "match": {
+                    "value": "Another Gender"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "geographic_location_additional"
+          },
+          "name": "geographic_location_additional",
+          "description": "When postal code is less specific, additional information may be reported.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "race_another_racial_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "race_another_racial_category",
+          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "race"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Racial Category"
+                    ]
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "sex_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "sex_another_category",
+          "description": "A response which does not fall into any of the previous categories. ",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "sex_at_birth"
+                  ],
+                  "match": {
+                    "value": "Another Sex"
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_notes",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "examples": [
+              "For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
+            ]
+          },
+          "name": "sociodem_notes",
+          "description": "Studies may choose to report whether potential bias may exist due to the way reporting categories were defined and handled.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "sociodem_question_detail",
-            "mappings": {
+            "exact_mappings": {
               "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
@@ -771,7 +809,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -785,7 +823,20 @@
         },
         {
           "meta": {
-            "displayName": "age_at_death"
+            "displayName": "age_at_death",
+            "exact_mappings": {
+              "ARGO.v1.34": "donor.survival_time",
+              "Phenopackets.v2.0": "VitalStatus.survival_time_in_days"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Patient.deceased.dateTime-Patient.birthDate",
+              "mCODE.v4.0.0": "Patient.deceased.dateTime-Patient.birthDate",
+              "MOHCCN.v3.1": "Donor.date_at_death-Donor.date_of_birth"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_",
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+            ]
           },
           "name": "age_at_death",
           "description": "Age of participant (in days) at time of death",
@@ -802,9 +853,10 @@
         {
           "meta": {
             "displayName": "cause_of_death",
-            "mappings": {
-              "ARGO": "cause_of_death",
-              "MOH": "cause_of_death"
+            "exact_mappings": {
+              "ARGO.v1.34": "donor.cause_of_death",
+              "MOHCCN.v3.1": "Donor.cause_of_death",
+              "Phenopackets.v2.0": "VitalStatus.cause_of_death"
             }
           },
           "name": "cause_of_death",
@@ -814,7 +866,7 @@
             "codeList": [
               "Died of cancer",
               "Died of other reasons",
-              "Not Applicable",
+              "Not applicable",
               "Missing - Unknown",
               "Missing - Not collected",
               "Missing - Not provided",
@@ -825,11 +877,18 @@
         {
           "meta": {
             "displayName": "vital_status",
-            "mappings": {
+            "exact_mappings": {
+              "ARGO.v1.34": "donor.vital_status",
               "CQDG": "vital_status",
-              "Phenopacket": "individual.vital_status",
-              "BeaconV2": "individual.vital_status"
-            }
+              "MOHCCN.v3.1": "Donor.is_deceased",
+              "Phenopackets.v2.0": "Individual.vital_status"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "derive_from_Patient.deceased.boolean"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.deceased_x_"
+            ]
           },
           "name": "vital_status",
           "description": "Participant's last known state of living or deceased.",
@@ -838,7 +897,7 @@
             "codeList": [
               "Alive",
               "Deceased",
-              "Not Applicable",
+              "Not applicable",
               "Missing - Unknown",
               "Missing - Not collected",
               "Missing - Not provided",
@@ -848,126 +907,31 @@
         },
         {
           "meta": {
-            "displayName": "Patient_Diabete_famille",
-            "mappings": {
-              "dbGaP.Patient_Diabete_famille": "dbGaP.Patient_Diabete_famille"
+            "displayName": "Accouchement_Sexe",
+            "exact_mappings": {
+              "dbGaP.Accouchement_Sexe": "dbGaP.Accouchement_Sexe"
             }
           },
-          "name": "Patient_Diabete_famille",
-          "description": "Do any of your family members have diabetes?. Collected in 1st trimester visit.",
+          "name": "Accouchement_Sexe",
+          "description": "Child's sex. Collected at delivery (in medical records).",
           "valueType": "string",
           "restrictions": {
             "codeList": [
-              "0",
               "1",
+              "2",
               "999"
             ]
           }
         },
         {
           "meta": {
-            "displayName": "Patient_Nbre_grossesse",
-            "mappings": {
-              "dbGaP.Patient_Nbre_grossesse": "dbGaP.Patient_Nbre_grossesse"
+            "displayName": "Patient_Allergies",
+            "exact_mappings": {
+              "dbGaP.Patient_Allergies": "dbGaP.Patient_Allergies"
             }
           },
-          "name": "Patient_Nbre_grossesse",
-          "description": "Total umber of pregnancies including the current one. Collected in 1st trimester visit.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Nbre_a_terme",
-            "mappings": {
-              "dbGaP.Patient_Nbre_a_terme": "dbGaP.Patient_Nbre_a_terme"
-            }
-          },
-          "name": "Patient_Nbre_a_terme",
-          "description": "Number of term babies (more than 37 weeks). Collected in 1st trimester visit.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Nbre_pas_a_terme",
-            "mappings": {
-              "dbGaP.Patient_Nbre_pas_a_terme": "dbGaP.Patient_Nbre_pas_a_terme"
-            }
-          },
-          "name": "Patient_Nbre_pas_a_terme",
-          "description": "Number of preterm babies (less than 37 weeks). Collected in 1st trimester visit.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Nbre_bebe_avorte",
-            "mappings": {
-              "dbGaP.Patient_Nbre_bebe_avorte": "dbGaP.Patient_Nbre_bebe_avorte"
-            }
-          },
-          "name": "Patient_Nbre_bebe_avorte",
-          "description": "Number of voluntary abortion. Collected in 1st trimester visit.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Nb_faussescouches",
-            "mappings": {
-              "dbGaP.Patient_Nb_faussescouches": "dbGaP.Patient_Nb_faussescouches"
-            }
-          },
-          "name": "Patient_Nb_faussescouches",
-          "description": "Number of spontaneous abortions. Collected in 1st trimester visit.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Poids_av_gros_kg",
-            "mappings": {
-              "dbGaP.Patient_Poids_av_gros_kg": "dbGaP.Patient_Poids_av_gros_kg"
-            }
-          },
-          "name": "Patient_Poids_av_gros_kg",
-          "description": "Self-reported weight before pregnancy. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
-          "valueType": "number"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_IMC_avant_grossesse",
-            "mappings": {
-              "dbGaP.Patient_IMC_avant_grossesse": "dbGaP.Patient_IMC_avant_grossesse"
-            }
-          },
-          "name": "Patient_IMC_avant_grossesse",
-          "description": "Pre-pregnancy body mass index (calculated based on self-reported pre-pregnancy weight and measured height). Collected in 1st trimester visit. Measured in kg/m2. 999=Missing.",
-          "valueType": "number"
-        },
-        {
-          "meta": {
-            "displayName": "Patient_SOPK",
-            "mappings": {
-              "dbGaP.Patient_SOPK": "dbGaP.Patient_SOPK"
-            }
-          },
-          "name": "Patient_SOPK",
-          "description": "Indication if the participant has polycystic ovarian syndrome (ovarian dysfunction). Collected in 1st trimester visit.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "0",
-              "1",
-              "999"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Patient_Corticosteroides",
-            "mappings": {
-              "dbGaP.Patient_Corticosteroides": "dbGaP.Patient_Corticosteroides"
-            }
-          },
-          "name": "Patient_Corticosteroides",
-          "description": "Indication if the participant is taking corticosteroids. Collected in 1st trimester visit.",
+          "name": "Patient_Allergies",
+          "description": "Indication if the participant has allergies. Collected in 1st trimester visit.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -980,7 +944,7 @@
         {
           "meta": {
             "displayName": "Patient_Asthme",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Asthme": "dbGaP.Patient_Asthme"
             }
           },
@@ -997,8 +961,128 @@
         },
         {
           "meta": {
+            "displayName": "Patient_Corticosteroides",
+            "exact_mappings": {
+              "dbGaP.Patient_Corticosteroides": "dbGaP.Patient_Corticosteroides"
+            }
+          },
+          "name": "Patient_Corticosteroides",
+          "description": "Indication if the participant is taking corticosteroids. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Diabete_famille",
+            "exact_mappings": {
+              "dbGaP.Patient_Diabete_famille": "dbGaP.Patient_Diabete_famille"
+            }
+          },
+          "name": "Patient_Diabete_famille",
+          "description": "Do any of your family members have diabetes?. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "Patient_IMC_avant_grossesse",
+            "exact_mappings": {
+              "dbGaP.Patient_IMC_avant_grossesse": "dbGaP.Patient_IMC_avant_grossesse"
+            }
+          },
+          "name": "Patient_IMC_avant_grossesse",
+          "description": "Pre-pregnancy body mass index (calculated based on self-reported pre-pregnancy weight and measured height). Collected in 1st trimester visit. Measured in kg/m2. 999=Missing.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nb_faussescouches",
+            "exact_mappings": {
+              "dbGaP.Patient_Nb_faussescouches": "dbGaP.Patient_Nb_faussescouches"
+            }
+          },
+          "name": "Patient_Nb_faussescouches",
+          "description": "Number of spontaneous abortions. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_a_terme",
+            "exact_mappings": {
+              "dbGaP.Patient_Nbre_a_terme": "dbGaP.Patient_Nbre_a_terme"
+            }
+          },
+          "name": "Patient_Nbre_a_terme",
+          "description": "Number of term babies (more than 37 weeks). Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_bebe_avorte",
+            "exact_mappings": {
+              "dbGaP.Patient_Nbre_bebe_avorte": "dbGaP.Patient_Nbre_bebe_avorte"
+            }
+          },
+          "name": "Patient_Nbre_bebe_avorte",
+          "description": "Number of voluntary abortion. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_grossesse",
+            "exact_mappings": {
+              "dbGaP.Patient_Nbre_grossesse": "dbGaP.Patient_Nbre_grossesse"
+            }
+          },
+          "name": "Patient_Nbre_grossesse",
+          "description": "Total umber of pregnancies including the current one. Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Nbre_pas_a_terme",
+            "exact_mappings": {
+              "dbGaP.Patient_Nbre_pas_a_terme": "dbGaP.Patient_Nbre_pas_a_terme"
+            }
+          },
+          "name": "Patient_Nbre_pas_a_terme",
+          "description": "Number of preterm babies (less than 37 weeks). Collected in 1st trimester visit.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "Patient_Pb_sante_mentale",
+            "exact_mappings": {
+              "dbGaP.Patient_Pb_sante_mentale": "dbGaP.Patient_Pb_sante_mentale"
+            }
+          },
+          "name": "Patient_Pb_sante_mentale",
+          "description": "Indication if the participant has mental health problems. Collected in 1st trimester visit.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "0",
+              "1",
+              "999"
+            ]
+          }
+        },
+        {
+          "meta": {
             "displayName": "Patient_Pb_thyroidien",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Pb_thyroidien": "dbGaP.Patient_Pb_thyroidien"
             }
           },
@@ -1016,7 +1100,7 @@
         {
           "meta": {
             "displayName": "Patient_Pb_urinaire",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Pb_urinaire": "dbGaP.Patient_Pb_urinaire"
             }
           },
@@ -1033,26 +1117,19 @@
         },
         {
           "meta": {
-            "displayName": "Patient_Allergies",
-            "mappings": {
-              "dbGaP.Patient_Allergies": "dbGaP.Patient_Allergies"
+            "displayName": "Patient_Poids_av_gros_kg",
+            "exact_mappings": {
+              "dbGaP.Patient_Poids_av_gros_kg": "dbGaP.Patient_Poids_av_gros_kg"
             }
           },
-          "name": "Patient_Allergies",
-          "description": "Indication if the participant has allergies. Collected in 1st trimester visit.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "0",
-              "1",
-              "999"
-            ]
-          }
+          "name": "Patient_Poids_av_gros_kg",
+          "description": "Self-reported weight before pregnancy. Collected in 1st trimester visit. Measured in kg. 999=Missing.",
+          "valueType": "number"
         },
         {
           "meta": {
             "displayName": "Patient_Reflux",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Reflux": "dbGaP.Patient_Reflux"
             }
           },
@@ -1069,36 +1146,18 @@
         },
         {
           "meta": {
-            "displayName": "Patient_Pb_sante_mentale",
-            "mappings": {
-              "dbGaP.Patient_Pb_sante_mentale": "dbGaP.Patient_Pb_sante_mentale"
+            "displayName": "Patient_SOPK",
+            "exact_mappings": {
+              "dbGaP.Patient_SOPK": "dbGaP.Patient_SOPK"
             }
           },
-          "name": "Patient_Pb_sante_mentale",
-          "description": "Indication if the participant has mental health problems. Collected in 1st trimester visit.",
+          "name": "Patient_SOPK",
+          "description": "Indication if the participant has polycystic ovarian syndrome (ovarian dysfunction). Collected in 1st trimester visit.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
               "0",
               "1",
-              "999"
-            ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "Accouchement_Sexe",
-            "mappings": {
-              "dbGaP.Accouchement_Sexe": "dbGaP.Accouchement_Sexe"
-            }
-          },
-          "name": "Accouchement_Sexe",
-          "description": "Child's sex. Collected at delivery (in medical records).",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "1",
-              "2",
               "999"
             ]
           }
@@ -1125,13 +1184,15 @@
         {
           "meta": {
             "displayName": "submitter_diagnosis_id",
-            "mappings": {
-              "mCODE.STU1": "Condition.identifier",
-              "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code",
-              "ARGO": "submitter_diagnosis_id",
-              "MOH": "submitter_diagnosis_id"
+            "exact_mappings": {
+              "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
+              "FHIR.v5.0.0": "Condition.identifier",
+              "mCODE.v4.0.0": "Condition.identifier",
+              "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id"
             },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier"
+            ],
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1150,7 +1211,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -1164,32 +1225,20 @@
         },
         {
           "meta": {
-            "displayName": "age_at_diagnosis",
-            "mappings": {
-              "mCODE.STU3": "condition.onset",
-              "FHIR": "condition.onset",
-              "Phenopacket": "disease.onset",
-              "ARGO": "age_at_diagnosis",
-              "MOH": "age_at_diagnosis"
-            }
-          },
-          "name": "age_at_diagnosis",
-          "description": "Age of participant (in days) at time of diagnosis of the condition.",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
             "displayName": "disease_code",
-            "mappings": {
-              "mCODE.STU3": "condition.code",
-              "FHIR": "condition.code",
-              "Phenopacket": "disease.term",
-              "ARGO": "disease_code",
-              "MOH": "disease_code",
-              "CQDG": "disease_code"
+            "exact_mappings": {
+              "ARGO.v1.34": "primary_diagnosis.cancer_type_code",
+              "CQDG": "disease_code",
+              "FHIR.v5.0.0": "Condition.code.coding.code",
+              "mCODE.v4.0.0": "Condition.code.coding.code",
+              "MOHCCN.v3.1": "primary_diagnosis.cancer_type_code",
+              "Phenopackets.v2.0": "Disease.term.id"
             },
-            "required": [
-              "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo"
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
+            ],
+            "comments": [
+              "Provide code in Compact URI (CURIE) pattern. ICD-10 code: refer to https://icd.who.int/browse10/2019/en MONDO code: refer to https://www.ebi.ac.uk/ols/ontologies/mondo ORPHANET code : refer to https://www.orpha.net/en/disease "
             ],
             "examples": [
               "MONDO:0000001",
@@ -1197,21 +1246,52 @@
             ]
           },
           "name": "disease_code",
-          "description": "Use ICD-10 code or Mondo code to represent the disease diagnosed.",
+          "description": "Use ICD-10 code, MONDO code, ORPHANET code to represent the disease diagnosed. Provide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^icd10:(([XVI]+)|([A-Z][0-9]+((-[A-Z][0-9]+)|(\\.[0-9]))?))$|^MONDO:\\d{7}$"
+            "regex": "^icd10:[A-Z][0-9][A-Z0-9](\\.[A-Z0-9]{1,4})?$|^MONDO:\\d{7}$|^ORPHA:C?\\d+$"
           },
           "valueType": "string"
         },
         {
           "meta": {
+            "displayName": "age_at_diagnosis",
+            "exact_mappings": {
+              "ARGO.v1.34": "primary_diagnosis.age_at_diagnosis",
+              "FHIR.v5.0.0": "Condition.onset.onsetAge",
+              "mCODE.v4.0.0": "Condition.onset",
+              "Phenopackets.v2.0": "Disease.onset"
+            },
+            "related_mappings": {
+              "MOHCCN.v3.1": "primary_diagnosis.date_of_diagnosis-donor.date_of_birth"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.onset_x_"
+            ]
+          },
+          "name": "age_at_diagnosis",
+          "description": "Age of participant (in days) at time of diagnosis of the condition.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "disease_source_text"
+          },
+          "name": "disease_source_text",
+          "description": "Free-text disease description as originally recorded in the source system, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "disease_term",
-            "mappings": {
-              "mCODE.STU3": "condition.code",
-              "FHIR": "condition.code",
-              "Phenopacket": "disease.term"
-            }
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Condition.code.coding.display",
+              "mCODE.v4.0.0": "Condition.code.coding.display",
+              "Phenopackets.v2.0": "Disease.term.label"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.code"
+            ]
           },
           "name": "disease_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the disease_code",
@@ -1238,32 +1318,16 @@
       "fields": [
         {
           "meta": {
-            "displayName": "submitter_treatment_id",
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_treatment_id",
-          "description": "Unique identifier of the treatment, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          },
-          "valueType": "string",
-          "unique": true
-        },
-        {
-          "meta": {
             "displayName": "submitter_diagnosis_id",
-            "mappings": {
-              "mCODE.STU1": "Condition.identifier",
-              "mCODE.STU2": "Condition.identifier",
-              "FHIR": "condition.code",
-              "ARGO": "submitter_diagnosis_id",
-              "MOH": "submitter_diagnosis_id"
+            "exact_mappings": {
+              "ARGO.v1.34": "primary_diagnosis.submitter_diagnosis_id",
+              "FHIR.v5.0.0": "Condition.identifier",
+              "mCODE.v4.0.0": "Condition.identifier",
+              "MOHCCN.v3.1": "primary_diagnosis.submitter_diagnosis_id"
             },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/condition-definitions.html#Condition.identifier"
+            ],
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1296,7 +1360,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -1310,7 +1374,58 @@
         },
         {
           "meta": {
-            "displayName": "age_at_treatment"
+            "displayName": "submitter_treatment_id",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Procedure.identifier"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+            ],
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_treatment_id",
+          "description": "Unique identifier of the treatment, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "treatment_type"
+          },
+          "name": "treatment_type",
+          "description": "The category or method of treatment administered",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Medication",
+              "Procedure",
+              "Radiation therapy",
+              "Other"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_treatment",
+            "related_mappings": {
+              "ARGO.v1.34": "treatment.treatment_start_interval+donor.age_at_diagnosis",
+              "FHIR.v5.0.0": "Procedure.occurrenceDateTime-Patient.birthDate",
+              "MOHCCN.v3.1": "Systemic_therapy.start_date-Donor.date_of_birth",
+              "Phenopackets.v2.0": "TherapeuticRegimen.end_time-Individual.date_of_birth"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_",
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+            ]
           },
           "name": "age_at_treatment",
           "description": "Age (in days) of the participant at the time the treatment was administered.",
@@ -1318,7 +1433,18 @@
         },
         {
           "meta": {
-            "displayName": "treatment_duration"
+            "displayName": "treatment_duration",
+            "exact_mappings": {
+              "ARGO.v1.34": "treatment.treatment_duration",
+              "FHIR.v5.0.0": "Procedure.occurrencePeriod"
+            },
+            "related_mappings": {
+              "MOHCCN.v3.1": "Systemic_therapy.start_date-Systemic_therapy.end_date",
+              "Phenopackets.v2.0": "TreatmentRegimen.end_time-TreatmentRegimen.start_time"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.occurrence_x_"
+            ]
           },
           "name": "treatment_duration",
           "description": "The length of time (in days) over which the treatment was administered.",
@@ -1326,7 +1452,11 @@
         },
         {
           "meta": {
-            "displayName": "treatment_intent"
+            "displayName": "treatment_intent",
+            "exact_mappings": {
+              "ARGO.v1.34": "treatment.treatment_intent",
+              "MOHCCN.v3.1": "Treatment.treatment_intent"
+            }
           },
           "name": "treatment_intent",
           "description": "The purpose of the treatment or the desired effect or outcome resulting from the treatment.",
@@ -1353,10 +1483,10 @@
         {
           "meta": {
             "displayName": "treatment_response",
-            "mappings": {
-              "ARGO": "treatment_response",
-              "MOH": "treatment_response",
-              "CQDG": "treatment_response"
+            "exact_mappings": {
+              "ARGO.v1.34": "treatment.response_to_treatment",
+              "CQDG": "treatment_response",
+              "MOHCCN.v3.1": "Treatment.response_to_treatment"
             }
           },
           "name": "treatment_response",
@@ -1384,13 +1514,13 @@
         {
           "meta": {
             "displayName": "treatment_status",
-            "mappings": {
-              "ARGO": "treatment_status",
-              "MOH": "treatment_status"
+            "exact_mappings": {
+              "ARGO.v1.34": "treatment.outcome_of_treatment",
+              "MOHCCN.v3.1": "Treatment.status_of_treatment"
             }
           },
           "name": "treatment_status",
-          "description": "Indicate the donor's status of the prescribed treatment.",
+          "description": "Indicate the participant's status of the prescribed treatment.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -1413,20 +1543,10 @@
         },
         {
           "meta": {
-            "displayName": "treatment_type"
+            "displayName": "treatment_type_other"
           },
-          "name": "treatment_type",
-          "description": "The category or method of treatment administered",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Medication",
-              "Pharmacotherapy",
-              "Procedure",
-              "Radiation therapy",
-              "Other"
-            ]
-          },
+          "name": "treatment_type_other",
+          "description": "If the treatment type is 'other', please specify via free text string",
           "valueType": "string"
         }
       ],
@@ -1460,6 +1580,12 @@
         {
           "meta": {
             "displayName": "submitter_treatment_id",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Procedure.identifier"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+            ],
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1477,14 +1603,15 @@
         {
           "meta": {
             "displayName": "procedure_body_site_code",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite",
-              "ARGO": "procedure_body_site_code",
-              "MOH": "procedure_body_site_code"
+            "exact_mappings": {
+              "ARGO.v1.34": "surgery.surgery_site",
+              "FHIR.v5.0.0": "Procedure.bodySite.coding.code",
+              "mCODE.v4.0.0": "Specimen.collection.bodySite",
+              "MOHCCN.v3.1": "Surgery.surgery_site",
+              "Phenopackets.v2.0": "Procedure.body_site.id"
             },
-            "required": [
-              "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344"
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite"
             ],
             "examples": [
               "C50.1",
@@ -1492,26 +1619,27 @@
             ]
           },
           "name": "procedure_body_site_code",
-          "description": "Indicate the ICD-O-3 topography code to describe the site of the surgery if applicable. Please use C80.9 if the site is Unkown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.",
           "restrictions": {
             "required": true,
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+            "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
           },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "procedure_body_site_term"
-          },
-          "name": "procedure_body_site_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
           "valueType": "string"
         },
         {
           "meta": {
             "displayName": "procedure_code",
-            "required": [
-              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>  SNOMED-CT URL: http://snomed.info/id/<code>  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL: https://www.cihi.ca/en/cci-coding-structure"
+            "exact_mappings": {
+              "Phenopackets.v2.0": "Procedure.code.id"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Procedure.code.coding.system:Procedure.code"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+            ],
+            "comments": [
+              "Provide code in Compact URI (CURIE) pattern.  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C<code>\n  SNOMED-CT URL: http://snomed.info/id/<code>\n  UMLS URL: https://uts.nlm.nih.gov/uts/umls/concept/<code> CCI URL:https://www.cihi.ca/en/cci-coding-structure"
             ],
             "examples": [
               "NCIT:C51894",
@@ -1521,16 +1649,76 @@
             ]
           },
           "name": "procedure_code",
-          "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed.",
+          "description": "Use code from NCIt, SNOMED-CT, UMLS or CCI to represent the procedure performed. Provide code in Compact URI (CURIE) pattern.\n\nNCIt URL:\nhttp://purl.obolibrary.org/obo/NCIT_{code}\nSNOMED-CT URL:\nhttp://snomed.info/id/{code}\nUMLS URL:\nhttps://uts.nlm.nih.gov/uts/umls/concept/{code}\nCCI URL:\nhttps://www.cihi.ca/en/cci-coding-structure",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
+            "regex": "^NCIT:[C]\\d+$|^snomedct:(\\w+)?\\d+$|^umls:C\\d+$|^CCI:[A-Z0-9]([0-9]{2}|[A-Z]{2}){3}(([0-9]{2}|[A-Z]{2})[A-Z0-9]?)?$"
           },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "procedure_term"
+            "displayName": "body_site_laterality",
+            "comments": [
+              "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
+            ]
+          },
+          "name": "body_site_laterality",
+          "description": "Indicate which side on the procedure occured on.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Left",
+              "Right",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "procedure_body_site_source_text"
+          },
+          "name": "procedure_body_site_source_text",
+          "description": "Free-text description of the anatomical site for a procedure, as originally captured in the source.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_body_site_term",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Procedure.bodySite.coding.display",
+              "Phenopackets.v2.0": "Procedure.body_site.label"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite"
+            ]
+          },
+          "name": "procedure_body_site_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_body_site_code",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_source_text"
+          },
+          "name": "procedure_source_text",
+          "description": "Free-text description of the procedure as entered in the source data, before mapping to standardized terms.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "procedure_term",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Procedure.code.display",
+              "Phenopackets.v2.0": "Procedure.code.label"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.code"
+            ]
           },
           "name": "procedure_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the procedure_code",
@@ -1558,6 +1746,12 @@
         {
           "meta": {
             "displayName": "submitter_treatment_id",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Procedure.identifier"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.identifier"
+            ],
             "examples": [
               "90234",
               "BLD_donor_89",
@@ -1574,16 +1768,16 @@
         },
         {
           "meta": {
-            "displayName": "actual_cumulative_drug_dose"
-          },
-          "name": "actual_cumulative_drug_dose",
-          "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
-          "valueType": "number"
-        },
-        {
-          "meta": {
             "displayName": "drug_code",
-            "required": [
+            "related_mappings": {
+              "ARGO.v1.34": "chemotherapy.drug_database:chemotherapy.drug_rxnormcui,chemotherapy.drug_id,hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui,hormone_therapy.drug_id,immunotherapy.drug_database:immunotherapy.drug_rxnormcui,immunotherapy.drug_id",
+              "FHIR.v5.0.0": "MedicationAdministration.medication.code.coding.system:MedicationAdministration.medication.code.coding.code",
+              "MOHCCN.v3.1": "Systemic_therapy.drug_reference_database:Systemic_therapy.drug_reference_identifier"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
+            ],
+            "comments": [
               "Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG URL: https://www.kegg.jp/entry/{code}  PubChem URL: https://pubchem.ncbi.nlm.nih.gov/compound/{code}  NCIt URL: https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}"
             ],
             "examples": [
@@ -1594,7 +1788,7 @@
             ]
           },
           "name": "drug_code",
-          "description": "Provide the standardized code from RxNorm, KEGG,  PubChem or NCIt to represent the drug.",
+          "description": "Provide the standardized code from RxNorm, KEGG drug database, PubChem Compound or NCIt to represent the drug.\nProvide code in Compact URI (CURIE) pattern.\nRxNorm URL:\nhttps://rxnav.nlm.nih.gov/REST/rxcui/{code}\nKEGG URL:\nhttps://www.kegg.jp/entry/{code}\nPubChem URL:\nhttps://pubchem.ncbi.nlm.nih.gov/compound/{code}\nNCIt URL:\nhttps://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'",
           "restrictions": {
             "required": true,
             "regex": "^rxnorm:\\d{1,8}$|^kegg\\.drug:D\\d+$|^pubchem\\.chem:\\d+$|^NCIT:C\\d{1,7}$"
@@ -1603,10 +1797,30 @@
         },
         {
           "meta": {
-            "displayName": "drug_dose_units"
+            "displayName": "actual_cumulative_drug_dose",
+            "exact_mappings": {
+              "MOHCCN.v3.1": "Systemic_therapy.actual_cumulative_drug_dose"
+            },
+            "related_mappings": {
+              "ARGO.v1.34": "chemotherapy.actual_cumulative_drug_dose,hormone_therapy.actual_cumulative_drug_dose,immunotherapy.actual_cumulative_drug_dose"
+            }
+          },
+          "name": "actual_cumulative_drug_dose",
+          "description": "Indicate the total actual cumulative drug dose in the same units specified in drug_dose_units.",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "drug_dose_units",
+            "exact_mappings": {
+              "MOHCCN.v3.1": "Systemic_therapy.drug_dose_units"
+            },
+            "related_mappings": {
+              "ARGO.v1.34": "chemotherapy.chemotherapy_drug_dose_units,hormone_therapy.hormone_drug_dose_units,immunotherapy.immunotherapy_drug_dose_units"
+            }
           },
           "name": "drug_dose_units",
-          "description": "Indicate units used to record drug dose.",
+          "description": "Provide the ontology of standardized units to indicate units used to record drug dose.",
           "valueType": "string",
           "restrictions": {
             "regex": "^UO:\\d{7}$"
@@ -1614,7 +1828,21 @@
         },
         {
           "meta": {
-            "displayName": "drug_term"
+            "displayName": "drug_source_text"
+          },
+          "name": "drug_source_text",
+          "description": "Free-text drug name or description as recorded in the source, prior to normalization or ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "drug_term",
+            "exact_mappings": {
+              "MOHCCN.v3.1": "Systemic_therapy.drug_name"
+            },
+            "related_mappings": {
+              "ARGO.v1.34": "chemotherapy.drug_name,hormone_therapy.drug_name,immunotherapy.drug_name"
+            }
           },
           "name": "drug_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the drug_code",
@@ -1622,7 +1850,17 @@
         },
         {
           "meta": {
-            "displayName": "prescribed_cumulative_drug_dose"
+            "displayName": "prescribed_cumulative_drug_dose",
+            "exact_mappings": {
+              "FHIR": "MedicationAdministration.medication.code.coding.display",
+              "MOHCCN.v3.1": "Systemic_therapy.prescribed_cumulative_drug_dose"
+            },
+            "related_mappings": {
+              "ARGO.v1.34": "chemotherapy.prescribed_cumulative_drug_dose,hormone_therapy.prescribed_cumulative_drug_dose,immunotherapy.prescribed_cumulative_drug_dose"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/medicationadministration-definitions.html#MedicationAdministration.medication"
+            ]
           },
           "name": "prescribed_cumulative_drug_dose",
           "description": "Indicate the total prescribed cumulative drug dose in the same units specified in drug_dose_units.",
@@ -1650,7 +1888,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -1664,7 +1902,41 @@
         },
         {
           "meta": {
-            "displayName": "age_at_measurement"
+            "displayName": "measurement_code",
+            "exact_mappings": {
+              "Phenopackets.v2.0": "Measurement.assay.id"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Observation.code.coding.system:Observation.code.coding.code"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+            ],
+            "comments": [
+              "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}\\nSNOMED-CT URL:\\nhttp://snomed.info/id/{code}"
+            ]
+          },
+          "name": "measurement_code",
+          "description": "Use standardized LOINC (Logical Observation Identifiers Names and Codes) or SNOMED-CT code to represent quantitative, ordinal, or categorical measurements.\nProvide code in Compact URI (CURIE) pattern.",
+          "restrictions": {
+            "required": true,
+            "regex": "^LOINC:(\\d|\\w)+-\\d$|^snomedct:(\\w+)?\\d+$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_measurement",
+            "exact_mappings": {
+              "Phenopackets.v2.0": "Measurement.timeObserved.timeElement.age"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+            ]
           },
           "name": "age_at_measurement",
           "description": "Age (in days) of the participant at the time the lab test or measurement was conducted.",
@@ -1672,22 +1944,14 @@
         },
         {
           "meta": {
-            "displayName": "measurement_code",
-            "required": [
-              "Provide code in Compact URI (CURIE) pattern. LOINC URL: https://loinc.org/{code}"
+            "displayName": "measurement_result_categorical",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.value.valueCodeableConcept",
+              "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
             ]
-          },
-          "name": "measurement_code",
-          "description": "Use standartized LOINC (Logical Observation Identifiers Names and Codes) code to represent quantitative, ordinal, or categorical measurements.",
-          "restrictions": {
-            "required": true,
-            "regex": "^LOINC:[0-9]{1,5}-[0-9]$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "measurement_result_categorical"
           },
           "name": "measurement_result_categorical",
           "description": "The categorical result of the lab test or measurement.",
@@ -1695,7 +1959,14 @@
         },
         {
           "meta": {
-            "displayName": "measurement_result_numeric"
+            "displayName": "measurement_result_numeric",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.value.valueQuantity.value",
+              "Phenopackets.v2.0": "Measurement.measurement.value.quantity.value"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
+            ]
           },
           "name": "measurement_result_numeric",
           "description": "The numeric result of the lab test or measurement.",
@@ -1703,7 +1974,22 @@
         },
         {
           "meta": {
-            "displayName": "measurement_term"
+            "displayName": "measurement_source_text"
+          },
+          "name": "measurement_source_text",
+          "description": "Free-text representation of a measurement, observation, or test, as originally recorded in the source.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "measurement_term",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.code.coding.display",
+              "Phenopackets.v2.0": "Measurement.assay.label"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+            ]
           },
           "name": "measurement_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the measurement_code",
@@ -1711,14 +1997,29 @@
         },
         {
           "meta": {
-            "displayName": "measurement_unit"
+            "displayName": "measurement_unit",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.value.valueQuantity.unit",
+              "Phenopackets.v2.0": "Measurement.measurement.value.quantity.unit"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.value_x_"
+            ]
           },
           "name": "measurement_unit",
-          "description": "Indicate the unit of measurement for the result using LOINC code.",
+          "description": "Provide the ontology of standardized units to indicate units used to record measurement result. Provide code in Compact URI (CURIE) pattern. UO URL: http://purl.obolibrary.org/obo/UO_{code}\n UCUM URL: https://ucum.nlm.nih.gov/ucum-lhc/demo.html",
           "valueType": "string",
           "restrictions": {
-            "regex": "^UO:\\d{7}$"
+            "regex": "^UO:\\d{7}$|^UCUM:.*$"
           }
+        },
+        {
+          "meta": {
+            "displayName": "measurement_unit_source_text"
+          },
+          "name": "measurement_unit_source_text",
+          "description": "Free-text representation of the unit of measurement as originally recorded in the source system, prior to mapping to a standardized unit ontology (e.g., UO or UCUM). This preserves verbatim units provided by labs or instruments.",
+          "valueType": "string"
         }
       ],
       "restrictions": {
@@ -1742,7 +2043,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -1756,34 +2057,25 @@
         },
         {
           "meta": {
-            "displayName": "age_at_phenotype"
-          },
-          "name": "age_at_phenotype",
-          "description": "Participant's age (in days) when phenotype was observed",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
             "displayName": "phenotype_code",
-            "required": [
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.code.coding.code",
+              "Phenopackets.v2.0": "PhenotypicFeature.type.id"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+            ],
+            "comments": [
               "Provide code in Compact URI (CURIE) pattern.  HPO URL: https://hpo.jax.org/app/browse/term/HP:<code>"
             ]
           },
           "name": "phenotype_code",
-          "description": "Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.",
+          "description": "Use standardized HPO (Human Phenotype Ontology) codes to represent the phenotype.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
             "regex": "^HP:[0-9]{7}$"
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "phenotype_duration"
-          },
-          "name": "phenotype_duration",
-          "description": "Indicate the length of time (in days) over which the phenotype was observed in the participant.",
-          "valueType": "integer"
         },
         {
           "meta": {
@@ -1803,8 +2095,49 @@
         },
         {
           "meta": {
+            "displayName": "age_at_phenotype",
+            "exact_mappings": {
+              "Phenopackets.v2.0": "PhenotypicFeature.onset"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Observation.effectiveDateTime-Patient.birthDate"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_",
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+            ],
+            "comments": [
+              "EDI indicator"
+            ]
+          },
+          "name": "age_at_phenotype",
+          "description": "Participant's age (in days) when phenotype was observed",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "phenotype_duration",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.effectivePeriod"
+            },
+            "related_mappings": {
+              "Phenopackets.v2.0": "PhenotypicFeature.resolution-PhenotypicFeature.onset"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.effective_x_"
+            ]
+          },
+          "name": "phenotype_duration",
+          "description": "Indicate the length of time (in days) over which the phenotype was observed in the participant.",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
             "displayName": "phenotype_severity",
-            "required": [
+            "exact_mappings": {
+              "Phenopackets.v2.0": "PhenotypicFeature.severity"
+            },
+            "comments": [
               "Permissible values from https://hpo.jax.org/browse/term/HP:0012824"
             ]
           },
@@ -1823,7 +2156,22 @@
         },
         {
           "meta": {
-            "displayName": "phenotype_term"
+            "displayName": "phenotype_source_text"
+          },
+          "name": "phenotype_source_text",
+          "description": "Free-text description of a phenotype or clinical feature, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "phenotype_term",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Observation.code.coding.display",
+              "Phenopackets.v2.0": "PhenotypicFeature.type.label"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/observation-definitions.html#Observation.code"
+            ]
           },
           "name": "phenotype_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with the phenotype_code.",
@@ -1851,7 +2199,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -1865,42 +2213,18 @@
         },
         {
           "meta": {
-            "displayName": "age_at_exposure"
-          },
-          "name": "age_at_exposure",
-          "description": "Age (in days) when the participant was exposed (or first exposed)        ",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "exposure_amount"
-          },
-          "name": "exposure_amount",
-          "description": "Provide intensity, quantity or frequency of the exposure",
-          "valueType": "integer"
-        },
-        {
-          "meta": {
             "displayName": "exposure_code",
             "examples": [
               "LOINC:43164-0"
             ]
           },
           "name": "exposure_code",
-          "description": "Provide the standardized codes from SNOMED CT, ExO, LOINC to represent the type of exposure.\nProvide code in Compact URI (CURIE) pattern.\n",
+          "description": "Provide the standardized codes from SNOMED CT, ExO, LOINC, ECTO to represent the type of exposure.\nProvide code in Compact URI (CURIE) pattern.\n",
           "restrictions": {
             "required": true,
-            "regex": "^snomedct:(\\w+)?\\d+$|^ExO:\\d{7}$|^LOINC:[0-9]{1,5}-[0-9]$"
+            "regex": "^snomedct:(\\w+)?\\d+$|^ExO:\\d{7}$|^LOINC:(\\d|\\w)+-\\d$|^ECTO:\\d{7}$"
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "exposure_duration"
-          },
-          "name": "exposure_duration",
-          "description": "Duration of exposure period",
-          "valueType": "integer"
         },
         {
           "meta": {
@@ -1922,6 +2246,38 @@
               "Not applicable"
             ]
           },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_exposure"
+          },
+          "name": "age_at_exposure",
+          "description": "Age (in days) when the participant was exposed (or first exposed)        ",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_amount"
+          },
+          "name": "exposure_amount",
+          "description": "Provide intensity, quantity or frequency of the exposure",
+          "valueType": "number"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_duration"
+          },
+          "name": "exposure_duration",
+          "description": "Duration of exposure period in days",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "exposure_source_text"
+          },
+          "name": "exposure_source_text",
+          "description": "Free-text description of an exposure (e.g., environmental, occupational), prior to mapping to ontology terms.",
           "valueType": "string"
         },
         {
@@ -1967,16 +2323,34 @@
       "fields": [
         {
           "meta": {
+            "displayName": "submitter_participant_id",
+            "exact_mappings": {
+              "dbGap": "SUBJECT_ID",
+              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
+            }
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "submitter_specimen_id",
-            "mappings": {
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.submitter_specimen_id",
+              "Beacon.v2.2.0": "biosample.id",
               "CQDG": "submitter_biospecimen_id",
-              "mCODE.STU3": "Specimen.Identifier",
-              "FHIR": "Specimen.Identifier",
-              "Phenopacket": "biosample.id",
-              "BeaconV2": "biosample.id",
-              "ARGO": "submitter_specimen_id",
-              "MOH": "submitter_specimen_id"
+              "FHIR.v5.0.0": "Specimen.identifier",
+              "mCODE.v4.0.0": "Specimen.identifier",
+              "MOHCCN.v3.1": "specimen.submitter_specimen_id",
+              "Phenopackets.v2.0": "Biosample.derived_from_id"
             },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
+            ],
             "examples": [
               "LAML_PO",
               "00445",
@@ -1994,22 +2368,48 @@
         },
         {
           "meta": {
-            "displayName": "submitter_participant_id",
-            "mappings": {
-              "dbGap": "SUBJECT_ID",
-              "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
-            }
+            "displayName": "specimen_tissue_source_code",
+            "exact_mappings": {
+              "ARGO.v1.34": "sample_registration.specimen_tissue_source",
+              "Beacon.v2.2.0": "biosample.sampleOriginType",
+              "CQDG": "biospecimen_tissue_source",
+              "mCODE.v4.0.0": "Specimen.type",
+              "Phenopackets.v2.0": "Biosample.sampled_tissue"
+            },
+            "related_mappings": {
+              "FHIR.v5.0.0": "Specimen.type.coding.system:Specimen.type.coding.code"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
+            ],
+            "examples": [
+              "NCIT:C12434"
+            ]
           },
-          "name": "submitter_participant_id",
-          "description": "Unique and de-identified identifier of the participant within the study, assigned by the data provider.. Collected in 1st trimester visit.",
+          "name": "specimen_tissue_source_code",
+          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained using codes from NCIt (NCI Thesaurus).\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
-            "required": true
+            "required": true,
+            "regex": "^NCIT:C\\d+$"
           },
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "age_at_specimen_collection"
+            "displayName": "age_at_specimen_collection",
+            "exact_mappings": {
+              "Phenopackets.v2.0": "Biosample.time_of_collection"
+            },
+            "related_mappings": {
+              "ARGO.v1.34": "donor.age_at_diagnosis+specimen.specimen_acquisition_interval",
+              "FHIR.v5.0.0": "Specimen.collectedDateTime-Patient.dateBirth",
+              "mCODE.v4.0.0": "Specimen.collectedDateTime-Patient.dateBirth",
+              "MOHCCN.v3.1": "Specimen.specimen_collection_date-Donor.date_of_birth"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.collected_x_",
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.birthDate"
+            ]
           },
           "name": "age_at_specimen_collection",
           "description": "Indicate participant's age( in days) when specimen was collected.",
@@ -2018,30 +2418,49 @@
         {
           "meta": {
             "displayName": "specimen_anatomic_location_code",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite",
-              "FHIR": "Specimen.collection.bodySite",
-              "ARGO": "specimen_anatomic_location_code",
-              "MOH": "specimen_anatomic_location_code"
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.specimen_anatomic_location",
+              "MOHCCN.v3.1": "Specimen.specimen_anatomic_location"
             },
-            "required": [
-              "Refer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344."
+            "related_mappings": {
+              "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code",
+              "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.system:Specimen.collection.bodySite.coding.code"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
+            ],
+            "comments": [
+              "Refer to the International Classification of Diseases for Oncology, 3rd Edition"
             ],
             "examples": [
-              "C50.1",
-              "C18"
+              "UBERON:8600019"
             ]
           },
           "name": "specimen_anatomic_location_code",
-          "description": "Indicate the ICD-O-3 topography code for the anatomic location of a specimen when it was collected. Please use C80.9 if the primary site of a specimen is Unkown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.\nProvide code in Compact URI (CURIE) pattern.\nRefer to the International Classification of Diseases for Oncology, 3rd Edition (WHO ICD-O-3) manual for guidelines at https://apps.who.int/iris/handle/10665/42344\nUBERON URL: http://purl.obolibrary.org/obo/UBERON_{code}",
           "valueType": "string",
           "restrictions": {
-            "regex": "^ICDO3:[C][0-9]{2}(.[0-9]{1})?$|^UBERON:\\d{7,}$"
+            "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
           }
         },
         {
           "meta": {
+            "displayName": "specimen_anatomic_location_source_text"
+          },
+          "name": "specimen_anatomic_location_source_text",
+          "description": "Free-text description of the anatomical location of specimen collection, prior to ontology coding.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "specimen_anatomic_location_term",
+            "exact_mappings": {
+              "FHIR.v5.0.0": "Specimen.collection.bodySite.coding.display",
+              "mCODE.v4.0.0": "Specimen.collection.bodySite.coding.display"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.collection.bodySite"
+            ],
             "examples": [
               "placental basal plate"
             ]
@@ -2053,16 +2472,17 @@
         {
           "meta": {
             "displayName": "specimen_laterality",
-            "mappings": {
-              "mCODE.STU3": "Specimen.collection.bodySite.extension.lateralityQualifier",
-              "FHIR": "Specimen.collection.bodySite.extension.lateralityQualifier"
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.specimen.laterality",
+              "mCODE.v4.0.0": "Specimen.collection.bodySite.extension.lateralityQualifier",
+              "MOHCCN.v3.1": "specimen.specimen.laterality"
             },
-            "required": [
+            "comments": [
               "Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0"
             ]
           },
           "name": "specimen_laterality",
-          "description": "For cancer in a paired organ, indicate the side on which the specimen was obtained.",
+          "description": "For disease in a paired organ, indicate the side on which the specimen was obtained.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -2079,11 +2499,11 @@
         {
           "meta": {
             "displayName": "specimen_processing",
-            "mappings": {
-              "Phenopacket": "biosample.sample_processing",
-              "BeaconV2": "biosample.sample_processing",
-              "ARGO": "specimen_processing",
-              "MOH": "specimen_processing"
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.specimen_processing",
+              "Beacon.v2.2.0": "biosample.sampleProcessing",
+              "MOHCCN.v3.1": "Specimen.specimen_processing",
+              "Phenopackets.v2.0": "Biosample.sample_processing"
             }
           },
           "name": "specimen_processing",
@@ -2111,11 +2531,11 @@
         {
           "meta": {
             "displayName": "specimen_storage",
-            "mappings": {
-              "Phenopacket": "biosample.sample_storage",
-              "BeaconV2": "biosample.sample_storage",
-              "ARGO": "specimen_storage",
-              "MOH": "specimen_storage"
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.specimen_storage",
+              "Beacon.v2.2.0": "biosample.sampleStorage",
+              "MOHCCN.v3.1": "specimen.specimen_storage",
+              "Phenopackets.v2.0": "Biosample.sample_storage"
             }
           },
           "name": "specimen_storage",
@@ -2127,43 +2547,39 @@
               "Frozen in -70 freezer",
               "Frozen in liquid nitrogen",
               "Frozen in vapour phase",
-              "Not Applicable",
+              "Not applicable",
               "Other",
               "Paraffin block",
               "RNA later frozen",
               "Missing - Not collected",
               "Missing - Not provided",
               "Missing - Restricted access",
-              "Missing - Unknown",
-              "Not applicable"
+              "Missing - Unknown"
             ]
           }
         },
         {
           "meta": {
-            "displayName": "specimen_tissue_source_code",
-            "mappings": {
-              "CQDG": "biospecimen_tissue_source",
-              "mCODE.STU3": "Specimen.type",
-              "FHIR": "Specimen.type",
-              "Phenopacket": "biosample.sampled_tissue",
-              "BeaconV2": "biosample.sampled_tissue"
-            }
+            "displayName": "specimen_tissue_source_term",
+            "exact_mappings": {
+              "ARGO.v1.34": "sample_registration.specimen_tissue_source",
+              "FHIR.v5.0.0": "Specimen.type.coding.display",
+              "MOHCCN.v3.1": "Specimen.specimen_tissue_source"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.type"
+            ]
           },
-          "name": "specimen_tissue_source_code",
-          "description": "Indicate the tissue source of the specimen from which a biopsy or other tissue specimen was obtained.  Use codes from NCIt (NCI Thesaurus) or SNOMED-CT (SNOMED Clinical Terms) in Compact URI (CURIE) pattern.",
-          "restrictions": {
-            "required": true,
-            "regex": "^NCIT:C[0-9]+$"
-          },
+          "name": "specimen_tissue_source_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the specimen tissue source code.",
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "specimen_tissue_source_term"
+            "displayName": "specimen_tissue_source_text"
           },
-          "name": "specimen_tissue_source_term",
-          "description": "Indicate the human readable label for the specimen tissue source code.",
+          "name": "specimen_tissue_source_text",
+          "description": "Free-text description of the tissue source for a specimen, as captured in the source system.",
           "valueType": "string"
         }
       ],
@@ -2188,11 +2604,10 @@
         {
           "meta": {
             "displayName": "submitter_sample_id",
-            "mappings": {
-              "FHIR": "submitter_sample_id",
-              "mCODE": "submitter_sample_id",
-              "MOH": "submitter_sample_id",
-              "ARGO": "submitter_sample_id"
+            "exact_mappings": {
+              "ARGO.v1.34": "sample_registration.submitter_sample_id",
+              "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
+              "Phenopackets.v2.0": "Biosample.id"
             },
             "examples": [
               "hnc_12",
@@ -2212,15 +2627,18 @@
         {
           "meta": {
             "displayName": "submitter_specimen_id",
-            "mappings": {
+            "exact_mappings": {
+              "ARGO.v1.34": "specimen.submitter_specimen_id",
+              "Beacon.v2.2.0": "biosample.id",
               "CQDG": "submitter_biospecimen_id",
-              "mCODE.STU3": "Specimen.Identifier",
-              "FHIR": "Specimen.Identifier",
-              "Phenopacket": "biosample.id",
-              "BeaconV2": "biosample.id",
-              "ARGO": "submitter_specimen_id",
-              "MOH": "submitter_specimen_id"
+              "FHIR.v5.0.0": "Specimen.identifier",
+              "mCODE.v4.0.0": "Specimen.identifier",
+              "MOHCCN.v3.1": "specimen.submitter_specimen_id",
+              "Phenopackets.v2.0": "Biosample.derived_from_id"
             },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/specimen-definitions.html#Specimen.identifier"
+            ],
             "examples": [
               "LAML_PO",
               "00445",
@@ -2238,16 +2656,16 @@
         {
           "meta": {
             "displayName": "molecule_type_code",
-            "mappings": {
+            "exact_mappings": {
+              "Beacon.v2.2.0": "biosample.sample_type",
               "CQDG": "sample_type",
-              "Phenopacket": "sample_type",
-              "BeaconV2": "biosample.sample_type",
-              "GA4GH.Experiment.Metadata.Checklist": "molecule_type"
+              "GA4GH.Experiment.Metadata.Checklist": "molecule_type",
+              "Phenopackets.v2.0": "sample_type"
             },
             "examples": [
               "NCIT:C449",
               "NCIT:C812",
-              "NNCIT:C80376",
+              "NCIT:C80376",
               "SO:0000991",
               "SO:0000234",
               "SO:0001877"
@@ -2257,8 +2675,32 @@
           "description": "Indicate NCIT or SO code to denote the type of source material used for sequencing and analysis.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
-            "regex": "^NCIT:C[0-9]+$|^SO:\\d{7}$"
+            "regex": "^NCIT:C\\d+$|^SO:\\d{7}$"
           },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sample_status"
+          },
+          "name": "sample_status",
+          "description": "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to of the same type that does not meet the criteria, representing a normal or baseline state for comparison.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Case",
+              "Control",
+              "Not applicable"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "molecular_type_source_text"
+          },
+          "name": "molecular_type_source_text",
+          "description": "Free-text description of the molecular analyte type (e.g., DNA, RNA, protein) as captured in the source record.",
           "valueType": "string"
         },
         {
@@ -2270,25 +2712,6 @@
           },
           "name": "molecule_type_term",
           "description": "Provide the standardized and human readable term derived from the coding system associated with molecule type code.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sample_status",
-            "mappings": {
-              "Phenopacket": "sample_status"
-            }
-          },
-          "name": "sample_status",
-          "description": "Indicate the status of the sample for data analysis.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Case",
-              "Control",
-              "Not applicable"
-            ]
-          },
           "valueType": "string"
         }
       ],
@@ -2313,8 +2736,8 @@
         {
           "meta": {
             "displayName": "submitter_experiment_id",
-            "mappings": {
-              "ARGO": "submitter_experiment_id"
+            "exact_mappings": {
+              "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
             }
           },
           "name": "submitter_experiment_id",
@@ -2329,11 +2752,10 @@
         {
           "meta": {
             "displayName": "submitter_sample_id",
-            "mappings": {
-              "FHIR": "submitter_sample_id",
-              "mCODE": "submitter_sample_id",
-              "MOH": "submitter_sample_id",
-              "ARGO": "submitter_sample_id"
+            "exact_mappings": {
+              "ARGO.v1.34": "sample_registration.submitter_sample_id",
+              "MOHCCN.v3.1": "Sample_registration.submitter_sample_id",
+              "Phenopackets.v2.0": "Biosample.id"
             },
             "examples": [
               "hnc_12",
@@ -2352,16 +2774,16 @@
         {
           "meta": {
             "displayName": "assay_type_code",
-            "mappings": {
-              "GA4GH.Experiment.Metadata.Checklist": "assay_type",
-              "BeaconV2": "runs.libraryStrategy"
+            "exact_mappings": {
+              "Beacon.v2.2.0": "runs.libraryStrategy",
+              "GA4GH.Experiment.Metadata.Checklist": "assay_type"
             },
             "examples": [
               "OBI:0002117"
             ]
           },
           "name": "assay_type_code",
-          "description": "Indicate OBI code to provide the sequencing technique intented for the library for sequencing data.\nProvide code in Compact URI (CURIE) pattern.",
+          "description": "Indicate OBI code to provide the sequencing technique intended for the library for sequencing data.\nProvide code in Compact URI (CURIE) pattern.",
           "restrictions": {
             "required": true,
             "regex": "^OBI:\\d{7}$"
@@ -2370,35 +2792,13 @@
         },
         {
           "meta": {
-            "displayName": "assay_type_term",
-            "examples": [
-              "whole genome sequencing assay"
-            ]
-          },
-          "name": "assay_type_term",
-          "description": "Provide the standardized and human readable term derived from the coding system associated with the assay type code.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "experiment_design",
-            "mappings": {
-              "GA4GH.Experiment.Metadata.Checklist": "design_description"
-            }
-          },
-          "name": "experiment_design",
-          "description": "The high-level experiment design including layout, protocol.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "experiment_type",
-            "mappings": {
+            "exact_mappings": {
               "GA4GHExperimentMetadataChecklist": "experiment_type"
             }
           },
           "name": "experiment_type",
-          "description": "The broad type of sequencing experiment performed. A mixture of library strategy and source",
+          "description": "Indicate NCIt (NCI Thesaurus) code and term to denote the broad type of sequencing experiment performed. A mixture of library strategy and source.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -2414,7 +2814,7 @@
         {
           "meta": {
             "displayName": "instrument",
-            "mappings": {
+            "exact_mappings": {
               "GA4GH.Experiment.Metadata.Checklist": "instrument"
             },
             "examples": [
@@ -2425,7 +2825,7 @@
             ]
           },
           "name": "instrument",
-          "description": "Provide detailed information about the sequencing platform or technology used, including the name and/or model number of the specific instrument. Whenever possible, specify the exact model or revision rather than the general manufacturer name. It is recommended to use standardized terminology by including the appropriate OBI (Ontology for Biomedical Investigations) code and term to ensure precision.\n\nUse the format: OBI code in CURIE format (OBI term)\n\nExample values:\nOBI:0002752 (Oxford Nanopore PromethION)\nOBI:0000759 (Illumina)\nOBI:0002630 (Illumina NovaSeq 6000)\nOBI:0002012 (PacBio RS II)",
+          "description": "Provide detailed information about the sequencing platform or technology used, including the name and/or model number of the specific instrument. Whenever possible, specify the exact model or revision rather than the general manufacturer name. It is recommended to use standardized terminology by including the appropriate OBI (Ontology for Biomedical Investigations) code and term to ensure precision.\n\nUse the format: OBI code in CURIE format (OBI term) ",
           "restrictions": {
             "required": true,
             "regex": "^OBI:\\d{7} \\(.*\\)$"
@@ -2434,21 +2834,10 @@
         },
         {
           "meta": {
-            "displayName": "instrument_metadata",
-            "mappings": {
-              "GA4GH.Experiment.Metadata.Checklist": "instrument_metadata"
-            }
-          },
-          "name": "instrument_metadata",
-          "description": "Captures metadata about sequencing instrument usage (e.g. instruments parameters and usage conditions)",
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "platform",
-            "mappings": {
-              "BeaconV2": "runs.platform",
-              "ARGO": "platform"
+            "exact_mappings": {
+              "ARGO.v1.34": "experiment.platform",
+              "Beacon.v2.2.0": "runs.platform"
             }
           },
           "name": "platform",
@@ -2474,8 +2863,57 @@
         },
         {
           "meta": {
+            "displayName": "assay_type_source_text"
+          },
+          "name": "assay_type_source_text",
+          "description": "Free-text description of the assay type used, as originally recorded in the source system.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "assay_type_term",
+            "examples": [
+              "whole genome sequencing assay"
+            ]
+          },
+          "name": "assay_type_term",
+          "description": "Provide the standardized and human readable term derived from the coding system associated with the assay type code.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "experiment_design",
+            "exact_mappings": {
+              "GA4GH.Experiment.Metadata.Checklist": "design_description"
+            }
+          },
+          "name": "experiment_design",
+          "description": "The high-level experiment design including layout, protocol.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "instrument_metadata",
+            "exact_mappings": {
+              "GA4GH.Experiment.Metadata.Checklist": "instrument_metadata"
+            }
+          },
+          "name": "instrument_metadata",
+          "description": "Captures metadata about sequencing instrument usage (e.g. instruments parameters and usage conditions)",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "instrument_source_text"
+          },
+          "name": "instrument_source_text",
+          "description": "Free-text description of the sequencing instrument or platform as originally recorded in the source, prior to ontology mapping.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "sequencing_protocol",
-            "mappings": {
+            "exact_mappings": {
               "GA4GH.Experiment.Metadata.Checklist": "sequencing_protocol"
             }
           },
@@ -2516,14 +2954,29 @@
     },
     {
       "name": "read_group",
-      "description": "Holds the readgroup information about the raw reads generated in a run of sequencing",
+      "description": "Holds the read group information about the raw reads generated in a run of sequencing",
       "fields": [
         {
           "meta": {
+            "displayName": "submitter_experiment_id",
+            "exact_mappings": {
+              "ARGO.v1.34": "experiment.submitter_sequencing_experiment_id"
+            }
+          },
+          "name": "submitter_experiment_id",
+          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "submitter_read_group_id",
-            "mappings": {
-              "ARGO": "submitter_read_group_id",
-              "BeaconV2": "runs.id"
+            "exact_mappings": {
+              "ARGO.v1.34": "read_groups.submitter_read_group_id",
+              "Beacon.v2.2.0": "runs.id"
             }
           },
           "name": "submitter_read_group_id",
@@ -2537,24 +2990,9 @@
         },
         {
           "meta": {
-            "displayName": "submitter_experiment_id",
-            "mappings": {
-              "ARGO": "submitter_experiment_id"
-            }
-          },
-          "name": "submitter_experiment_id",
-          "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
             "displayName": "file_r1",
-            "mappings": {
-              "ARGO": "file_r1"
+            "exact_mappings": {
+              "ARGO": "read_groups.file_r1"
             }
           },
           "name": "file_r1",
@@ -2566,9 +3004,58 @@
         },
         {
           "meta": {
+            "displayName": "library_layout",
+            "exact_mappings": {
+              "Beacon.v2.2.0": "runs.libraryLayout",
+              "GA4GH.Experiment.Metadata.Checklist": "library_layout"
+            }
+          },
+          "name": "library_layout",
+          "description": "Indicate whether the library was built as paired-end or single-end if applicable.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "OBI:0000722 (paired-end library)",
+              "OBI:0000736 (single fragment library)",
+              "Not applicable"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "library_name",
+            "exact_mappings": {
+              "ARGO": "read_groups.library_name",
+              "GA4GH.Experiment.Metadata.Checklist": "library_extra_id"
+            }
+          },
+          "name": "library_name",
+          "description": "Name of a sequencing library made from a molecular sample or a sample pool (multiplex sequencing).",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "platform_unit",
+            "exact_mappings": {
+              "ARGO": "read_groups.platform_unit"
+            }
+          },
+          "name": "platform_unit",
+          "description": "Unique identifier for each read group. For example, Illumina has format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers to the unique identifier for a particular flow cell. The {LANE} indicates the lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific identifier. For non-multiplex sequencing, platform unit and read group have a one-to-one relationship.",
+          "restrictions": {
+            "required": true
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "file_r2",
-            "mappings": {
-              "ARGO": "file_r2"
+            "exact_mappings": {
+              "ARGO": "read_groups.file_r2"
             }
           },
           "name": "file_r2",
@@ -2600,8 +3087,8 @@
         {
           "meta": {
             "displayName": "insert_size",
-            "mappings": {
-              "ARGO": "insert_size",
+            "exact_mappings": {
+              "ARGO": "read_groups.insert_size",
               "GA4GH.Experiment.Metadata.Checklist": "insert_size"
             }
           },
@@ -2617,7 +3104,7 @@
         {
           "meta": {
             "displayName": "library_description",
-            "mappings": {
+            "exact_mappings": {
               "GA4GH.Experiment.Metadata.Checklist": "library_description"
             }
           },
@@ -2627,58 +3114,17 @@
         },
         {
           "meta": {
-            "displayName": "library_layout",
-            "mappings": {
-              "GA4GH.Experiment.Metadata.Checklist": "library_layout",
-              "BeaconV2": "runs.libraryLayout"
-            }
+            "displayName": "library_layout_source_text"
           },
-          "name": "library_layout",
-          "description": "Indicate whether the library was built as paired-end or single-end if applicable.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "OBI:0000722 (paired-end library)",
-              "OBI:0000736 (single fragment library)",
-              "Not applicable"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "library_name",
-            "mappings": {
-              "ARGO.library_name": "ARGO.library_name",
-              "GA4GH.Experiment.Metadata.Checklist": "library_extra_id"
-            }
-          },
-          "name": "library_name",
-          "description": "Name of a sequencing library made from a molecular sample or a sample pool (multiplex sequencing).",
-          "restrictions": {
-            "required": true
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "platform_unit",
-            "mappings": {
-              "ARGO.platform_unit": "ARGO.platform_unit"
-            }
-          },
-          "name": "platform_unit",
-          "description": "Unique identifier for each read group. For example, Illumina has format {FLOWCELL_BARCODE}.{LANE}.{SAMPLE_BARCODE}. The {FLOWCELL_BARCODE} refers to the unique identifier for a particular flow cell. The {LANE} indicates the lane of the flow cell and the {SAMPLE_BARCODE} is a sample/library-specific identifier. For non-multiplex sequencing, platform unit and read group have a one-to-one relationship.",
-          "restrictions": {
-            "required": true
-          },
+          "name": "library_layout_source_text",
+          "description": "Free-text description of the sequencing library layout as originally recorded in the source system.",
           "valueType": "string"
         },
         {
           "meta": {
             "displayName": "read_group_id_in_bam",
-            "mappings": {
-              "ARGO": "read_group_id_in_bam"
+            "exact_mappings": {
+              "ARGO": "read_groups.read_group_id_in_bam"
             }
           },
           "name": "read_group_id_in_bam",
@@ -2691,8 +3137,8 @@
         {
           "meta": {
             "displayName": "read_length_r1",
-            "mappings": {
-              "ARGO": "read_length_r1"
+            "exact_mappings": {
+              "ARGO": "read_groups.read_length_r1"
             }
           },
           "name": "read_length_r1",
@@ -2707,8 +3153,8 @@
         {
           "meta": {
             "displayName": "read_length_r2",
-            "mappings": {
-              "ARGO": "read_length_r2"
+            "exact_mappings": {
+              "ARGO": "read_groups.read_length_r2"
             }
           },
           "name": "read_length_r2",
@@ -2737,12 +3183,40 @@
     },
     {
       "name": "pedigree",
-      "description": "TBD",
+      "description": "...",
       "fields": [
         {
           "meta": {
+            "displayName": "father_id",
+            "exact_mappings": {
+              "Phenopacket.father_id": "Phenopacket.father_id"
+            }
+          },
+          "name": "father_id",
+          "description": "Unique and de-identified identifier for the father.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          }
+        },
+        {
+          "meta": {
+            "displayName": "mother_id",
+            "exact_mappings": {
+              "Phenopacket.mother_id": "Phenopacket.mother_id"
+            }
+          },
+          "name": "mother_id",
+          "description": "Unique and de-identified identifier for the mother.",
+          "valueType": "string",
+          "restrictions": {
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          }
+        },
+        {
+          "meta": {
             "displayName": "submitter_family_id",
-            "mappings": {
+            "exact_mappings": {
               "Phenopacket.submitter_family_id": "Phenopacket.submitter_family_id"
             }
           },
@@ -2757,7 +3231,7 @@
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -2771,36 +3245,8 @@
         },
         {
           "meta": {
-            "displayName": "father_id",
-            "mappings": {
-              "Phenopacket.father_id": "Phenopacket.father_id"
-            }
-          },
-          "name": "father_id",
-          "description": "Unique and de-identified identifier for the father.",
-          "valueType": "string",
-          "restrictions": {
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          }
-        },
-        {
-          "meta": {
-            "displayName": "mother_id",
-            "mappings": {
-              "Phenopacket.mother_id": "Phenopacket.mother_id"
-            }
-          },
-          "name": "mother_id",
-          "description": "Unique and de-identified identifier for the mother.",
-          "valueType": "string",
-          "restrictions": {
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          }
-        },
-        {
-          "meta": {
             "displayName": "sex_at_birth",
-            "mappings": {
+            "exact_mappings": {
               "Phenopacket.sex_at_birth": "Phenopacket.sex_at_birth"
             }
           },
@@ -2828,12 +3274,12 @@
     },
     {
       "name": "firsttrimestervisit",
-      "description": "TBD",
+      "description": "...",
       "fields": [
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -2848,7 +3294,7 @@
         {
           "meta": {
             "displayName": "Patient_age_calc_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_age_calc_V1": "dbGaP.Patient_age_calc_V1"
             }
           },
@@ -2859,7 +3305,7 @@
         {
           "meta": {
             "displayName": "Patient_Alcool",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Alcool": "dbGaP.Patient_Alcool"
             }
           },
@@ -2877,7 +3323,7 @@
         {
           "meta": {
             "displayName": "Patient_Consommezvous",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Consommezvous": "dbGaP.Patient_Consommezvous"
             }
           },
@@ -2896,7 +3342,7 @@
         {
           "meta": {
             "displayName": "Patient_Consommationsjour",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Consommationsjour": "dbGaP.Patient_Consommationsjour"
             }
           },
@@ -2907,7 +3353,7 @@
         {
           "meta": {
             "displayName": "Patient_Deja_fume",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Deja_fume": "dbGaP.Patient_Deja_fume"
             }
           },
@@ -2925,7 +3371,7 @@
         {
           "meta": {
             "displayName": "Patient_Fumezvous",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Fumezvous": "dbGaP.Patient_Fumezvous"
             }
           },
@@ -2944,7 +3390,7 @@
         {
           "meta": {
             "displayName": "Patient_Nbre_cigjr",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Nbre_cigjr": "dbGaP.Patient_Nbre_cigjr"
             }
           },
@@ -2955,7 +3401,7 @@
         {
           "meta": {
             "displayName": "Patient_Taille",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Patient_Taille": "dbGaP.Patient_Taille"
             }
           },
@@ -2966,7 +3412,7 @@
         {
           "meta": {
             "displayName": "Visite_Sem_Gestation_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Sem_Gestation_V1": "dbGaP.Visite_Sem_Gestation_V1"
             }
           },
@@ -2977,7 +3423,7 @@
         {
           "meta": {
             "displayName": "Visite_MedicationVitamines_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_MedicationVitamines_V1": "dbGaP.Visite_MedicationVitamines_V1"
             }
           },
@@ -2988,7 +3434,7 @@
         {
           "meta": {
             "displayName": "Visite_Poids_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Poids_V1": "dbGaP.Visite_Poids_V1"
             }
           },
@@ -2999,7 +3445,7 @@
         {
           "meta": {
             "displayName": "Visite_IMC_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_IMC_V1": "dbGaP.Visite_IMC_V1"
             }
           },
@@ -3010,7 +3456,7 @@
         {
           "meta": {
             "displayName": "Visite_Tour_de_taille_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Tour_de_taille_V1": "dbGaP.Visite_Tour_de_taille_V1"
             }
           },
@@ -3021,7 +3467,7 @@
         {
           "meta": {
             "displayName": "Visite_TAS_M_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_TAS_M_V1": "dbGaP.Visite_TAS_M_V1"
             }
           },
@@ -3032,7 +3478,7 @@
         {
           "meta": {
             "displayName": "Visite_TAD_M_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_TAD_M_V1": "dbGaP.Visite_TAD_M_V1"
             }
           },
@@ -3043,7 +3489,7 @@
         {
           "meta": {
             "displayName": "Visite_Diagnostic_de_DG_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Diagnostic_de_DG_V1": "dbGaP.Visite_Diagnostic_de_DG_V1"
             }
           },
@@ -3061,7 +3507,7 @@
         {
           "meta": {
             "displayName": "Visite_Saison_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Saison_V1": "dbGaP.Visite_Saison_V1"
             }
           },
@@ -3080,7 +3526,7 @@
         {
           "meta": {
             "displayName": "Visite__gras_BI_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite__gras_BI_V1": "dbGaP.Visite__gras_BI_V1"
             }
           },
@@ -3091,7 +3537,7 @@
         {
           "meta": {
             "displayName": "Visite_Impedance_BI_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Impedance_BI_V1": "dbGaP.Visite_Impedance_BI_V1"
             }
           },
@@ -3102,7 +3548,7 @@
         {
           "meta": {
             "displayName": "Visite_Masse_grasse_BI_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Masse_grasse_BI_V1": "dbGaP.Visite_Masse_grasse_BI_V1"
             }
           },
@@ -3113,7 +3559,7 @@
         {
           "meta": {
             "displayName": "Visite_Fat_free_mass_BI_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Fat_free_mass_BI_V1": "dbGaP.Visite_Fat_free_mass_BI_V1"
             }
           },
@@ -3124,7 +3570,7 @@
         {
           "meta": {
             "displayName": "Visite_Tot_body_water_BI_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Tot_body_water_BI_V1": "dbGaP.Visite_Tot_body_water_BI_V1"
             }
           },
@@ -3135,7 +3581,7 @@
         {
           "meta": {
             "displayName": "Act_sedentaires_9_Dormirsemaine_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Act_sedentaires_9_Dormirsemaine_V1": "dbGaP.Act_sedentaires_9_Dormirsemaine_V1"
             }
           },
@@ -3146,7 +3592,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Fruits_frequence_jour_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Fruits_frequence_jour_V1": "dbGaP.Nutrition_Fruits_frequence_jour_V1"
             }
           },
@@ -3157,7 +3603,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Legumes_frequence_jour_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Legumes_frequence_jour_V1": "dbGaP.Nutrition_Legumes_frequence_jour_V1"
             }
           },
@@ -3168,7 +3614,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Dejeuner_frequence_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Dejeuner_frequence_V1": "dbGaP.Nutrition_Dejeuner_frequence_V1"
             }
           },
@@ -3190,7 +3636,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Restaurant_frequence_semaine_V1",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Restaurant_frequence_semaine_V1": "dbGaP.Nutrition_Restaurant_frequence_semaine_V1"
             }
           },
@@ -3215,12 +3661,12 @@
     },
     {
       "name": "secondtrimestervisit",
-      "description": "TBD",
+      "description": "...",
       "fields": [
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -3235,7 +3681,7 @@
         {
           "meta": {
             "displayName": "Visite_Sem_Gestation_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Sem_Gestation_V2": "dbGaP.Visite_Sem_Gestation_V2"
             }
           },
@@ -3246,7 +3692,7 @@
         {
           "meta": {
             "displayName": "Visite_MedicationVitamines_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_MedicationVitamines_V2": "dbGaP.Visite_MedicationVitamines_V2"
             }
           },
@@ -3264,7 +3710,7 @@
         {
           "meta": {
             "displayName": "Visite_Poids_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Poids_V2": "dbGaP.Visite_Poids_V2"
             }
           },
@@ -3275,7 +3721,7 @@
         {
           "meta": {
             "displayName": "Visite_IMC_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_IMC_V2": "dbGaP.Visite_IMC_V2"
             }
           },
@@ -3286,7 +3732,7 @@
         {
           "meta": {
             "displayName": "Visite_TAS_M_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_TAS_M_V2": "dbGaP.Visite_TAS_M_V2"
             }
           },
@@ -3297,7 +3743,7 @@
         {
           "meta": {
             "displayName": "Visite_TAD_M_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_TAD_M_V2": "dbGaP.Visite_TAD_M_V2"
             }
           },
@@ -3308,7 +3754,7 @@
         {
           "meta": {
             "displayName": "Visite_Diagnostic_de_DG_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Diagnostic_de_DG_V2": "dbGaP.Visite_Diagnostic_de_DG_V2"
             }
           },
@@ -3326,7 +3772,7 @@
         {
           "meta": {
             "displayName": "Visite_Saison_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Saison_V2": "dbGaP.Visite_Saison_V2"
             }
           },
@@ -3346,7 +3792,7 @@
         {
           "meta": {
             "displayName": "Visite__gras_BI_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite__gras_BI_V2": "dbGaP.Visite__gras_BI_V2"
             }
           },
@@ -3357,7 +3803,7 @@
         {
           "meta": {
             "displayName": "Visite_Impedance_BI_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Impedance_BI_V2": "dbGaP.Visite_Impedance_BI_V2"
             }
           },
@@ -3368,7 +3814,7 @@
         {
           "meta": {
             "displayName": "Visite_Masse_grasse_BI_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Masse_grasse_BI_V2": "dbGaP.Visite_Masse_grasse_BI_V2"
             }
           },
@@ -3379,7 +3825,7 @@
         {
           "meta": {
             "displayName": "Visite_Fat_free_mass_BI_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Fat_free_mass_BI_V2": "dbGaP.Visite_Fat_free_mass_BI_V2"
             }
           },
@@ -3390,7 +3836,7 @@
         {
           "meta": {
             "displayName": "Visite_Tot_body_water_BI_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Visite_Tot_body_water_BI_V2": "dbGaP.Visite_Tot_body_water_BI_V2"
             }
           },
@@ -3401,7 +3847,7 @@
         {
           "meta": {
             "displayName": "Act_sedentaires_9_Dormirsemaine_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Act_sedentaires_9_Dormirsemaine_V2": "dbGaP.Act_sedentaires_9_Dormirsemaine_V2"
             }
           },
@@ -3412,7 +3858,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Fruits_frequence_jour_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Fruits_frequence_jour_V2": "dbGaP.Nutrition_Fruits_frequence_jour_V2"
             }
           },
@@ -3423,7 +3869,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Legumes_frequence_jour_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Legumes_frequence_jour_V2": "dbGaP.Nutrition_Legumes_frequence_jour_V2"
             }
           },
@@ -3434,7 +3880,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Dejeuner_frequence_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Dejeuner_frequence_V2": "dbGaP.Nutrition_Dejeuner_frequence_V2"
             }
           },
@@ -3455,7 +3901,7 @@
         {
           "meta": {
             "displayName": "Nutrition_Restaurant_frequence_semaine_V2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Nutrition_Restaurant_frequence_semaine_V2": "dbGaP.Nutrition_Restaurant_frequence_semaine_V2"
             }
           },
@@ -3466,7 +3912,7 @@
         {
           "meta": {
             "displayName": "MATSUDA",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.MATSUDA": "dbGaP.MATSUDA"
             }
           },
@@ -3477,7 +3923,7 @@
         {
           "meta": {
             "displayName": "Stumvoll",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Stumvoll": "dbGaP.Stumvoll"
             }
           },
@@ -3488,7 +3934,7 @@
         {
           "meta": {
             "displayName": "Homa_ir",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Homa_ir": "dbGaP.Homa_ir"
             }
           },
@@ -3513,12 +3959,12 @@
     },
     {
       "name": "deliveryvisit",
-      "description": "TBD",
+      "description": "...",
       "fields": [
         {
           "meta": {
             "displayName": "submitter_participant_id",
-            "mappings": {
+            "exact_mappings": {
               "dbGap": "SUBJECT_ID",
               "PCGL.submitter_participant_id": "PCGL.submitter_participant_id"
             }
@@ -3533,7 +3979,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Sem_gest_accouch",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Sem_gest_accouch": "dbGaP.Accouchement_Sem_gest_accouch"
             }
           },
@@ -3544,7 +3990,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Type_Traitement",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Type_Traitement": "dbGaP.Accouchement_Type_Traitement"
             }
           },
@@ -3564,7 +4010,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Poids_mere_nd",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Poids_mere_nd": "dbGaP.Accouchement_Poids_mere_nd"
             }
           },
@@ -3575,7 +4021,7 @@
         {
           "meta": {
             "displayName": "Accouchement_GA_poids",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_GA_poids": "dbGaP.Accouchement_GA_poids"
             }
           },
@@ -3586,7 +4032,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Complications_fin_HTA",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Complications_fin_HTA": "dbGaP.Accouchement_Complications_fin_HTA"
             }
           },
@@ -3604,7 +4050,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Complications_fin_decollement_placentaire",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Complications_fin_decollement_placentaire": "dbGaP.Accouchement_Complications_fin_decollement_placentaire"
             }
           },
@@ -3622,7 +4068,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Complications_fin_hydramnios",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Complications_fin_hydramnios": "dbGaP.Accouchement_Complications_fin_hydramnios"
             }
           },
@@ -3640,7 +4086,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Complications_fin_saignement",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Complications_fin_saignement": "dbGaP.Accouchement_Complications_fin_saignement"
             }
           },
@@ -3658,7 +4104,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Duree_tot_travail_min",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Duree_tot_travail_min": "dbGaP.Accouchement_Duree_tot_travail_min"
             }
           },
@@ -3669,7 +4115,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Analgesie_",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Analgesie_": "dbGaP.Accouchement_Analgesie_"
             }
           },
@@ -3687,7 +4133,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Corticosteroides",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Corticosteroides": "dbGaP.Accouchement_Corticosteroides"
             }
           },
@@ -3705,7 +4151,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Antibiotiques",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Antibiotiques": "dbGaP.Accouchement_Antibiotiques"
             }
           },
@@ -3723,7 +4169,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Anesthesie_generale",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Anesthesie_generale": "dbGaP.Accouchement_Anesthesie_generale"
             }
           },
@@ -3741,7 +4187,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Anesthesie_peridurale",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Anesthesie_peridurale": "dbGaP.Accouchement_Anesthesie_peridurale"
             }
           },
@@ -3759,7 +4205,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Anesthesie_rachidienne",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Anesthesie_rachidienne": "dbGaP.Accouchement_Anesthesie_rachidienne"
             }
           },
@@ -3777,7 +4223,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Anesthesie_bloc_honteux",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Anesthesie_bloc_honteux": "dbGaP.Accouchement_Anesthesie_bloc_honteux"
             }
           },
@@ -3795,7 +4241,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Anesthesie_locale",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Anesthesie_locale": "dbGaP.Accouchement_Anesthesie_locale"
             }
           },
@@ -3813,7 +4259,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Mode",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Mode": "dbGaP.Accouchement_Mode"
             }
           },
@@ -3831,7 +4277,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Type",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Type": "dbGaP.Accouchement_Type"
             }
           },
@@ -3850,7 +4296,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Tete",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Tete": "dbGaP.Accouchement_Tete"
             }
           },
@@ -3870,7 +4316,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Cesarienne",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Cesarienne": "dbGaP.Accouchement_Cesarienne"
             }
           },
@@ -3889,7 +4335,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Type_de_cesarienne",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Type_de_cesarienne": "dbGaP.Accouchement_Type_de_cesarienne"
             }
           },
@@ -3908,7 +4354,7 @@
         {
           "meta": {
             "displayName": "Accouchement_pH",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_pH": "dbGaP.Accouchement_pH"
             }
           },
@@ -3919,7 +4365,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Episiotomie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Episiotomie": "dbGaP.Accouchement_Episiotomie"
             }
           },
@@ -3938,7 +4384,7 @@
         {
           "meta": {
             "displayName": "Accouchement_pCO2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_pCO2": "dbGaP.Accouchement_pCO2"
             }
           },
@@ -3949,7 +4395,7 @@
         {
           "meta": {
             "displayName": "Accouchement_pO2",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_pO2": "dbGaP.Accouchement_pO2"
             }
           },
@@ -3960,7 +4406,7 @@
         {
           "meta": {
             "displayName": "Accouchement_HC03",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_HC03": "dbGaP.Accouchement_HC03"
             }
           },
@@ -3971,7 +4417,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Exces_base",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Exces_base": "dbGaP.Accouchement_Exces_base"
             }
           },
@@ -3982,7 +4428,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Neonatalogie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Neonatalogie": "dbGaP.Accouchement_Neonatalogie"
             }
           },
@@ -4000,7 +4446,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Perte_sanguine",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Perte_sanguine": "dbGaP.Accouchement_Perte_sanguine"
             }
           },
@@ -4011,7 +4457,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Bradycardie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Bradycardie": "dbGaP.Accouchement_Bradycardie"
             }
           },
@@ -4029,7 +4475,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Probs_respiratoires",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Probs_respiratoires": "dbGaP.Accouchement_Probs_respiratoires"
             }
           },
@@ -4047,7 +4493,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Hypoglycemie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Hypoglycemie": "dbGaP.Accouchement_Hypoglycemie"
             }
           },
@@ -4065,7 +4511,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Hypocalcemie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Hypocalcemie": "dbGaP.Accouchement_Hypocalcemie"
             }
           },
@@ -4083,7 +4529,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Hyperbilirubinemie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Hyperbilirubinemie": "dbGaP.Accouchement_Hyperbilirubinemie"
             }
           },
@@ -4101,7 +4547,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Liquide_amniotique",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Liquide_amniotique": "dbGaP.Accouchement_Liquide_amniotique"
             }
           },
@@ -4120,7 +4566,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Polycythemie",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Polycythemie": "dbGaP.Accouchement_Polycythemie"
             }
           },
@@ -4138,7 +4584,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Fracturedislocation",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Fracturedislocation": "dbGaP.Accouchement_Fracturedislocation"
             }
           },
@@ -4156,7 +4602,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Admission_SI",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Admission_SI": "dbGaP.Accouchement_Admission_SI"
             }
           },
@@ -4174,7 +4620,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Therapie_resp",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Therapie_resp": "dbGaP.Accouchement_Therapie_resp"
             }
           },
@@ -4192,7 +4638,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Couleur",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Couleur": "dbGaP.Accouchement_Couleur"
             }
           },
@@ -4212,7 +4658,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Meconiel",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Meconiel": "dbGaP.Accouchement_Meconiel"
             }
           },
@@ -4232,7 +4678,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Evacuation",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Evacuation": "dbGaP.Accouchement_Evacuation"
             }
           },
@@ -4250,7 +4696,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Vaisseaux_ombelicaux",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Vaisseaux_ombelicaux": "dbGaP.Accouchement_Vaisseaux_ombelicaux"
             }
           },
@@ -4261,7 +4707,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Reversion_uterine",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Reversion_uterine": "dbGaP.Accouchement_Reversion_uterine"
             }
           },
@@ -4279,7 +4725,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Etat",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Etat": "dbGaP.Accouchement_Etat"
             }
           },
@@ -4297,7 +4743,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Poids",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Poids": "dbGaP.Accouchement_Poids"
             }
           },
@@ -4308,7 +4754,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Longueur",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Longueur": "dbGaP.Accouchement_Longueur"
             }
           },
@@ -4319,7 +4765,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Alimentation",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Alimentation": "dbGaP.Accouchement_Alimentation"
             }
           },
@@ -4338,7 +4784,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Reanimation",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Reanimation": "dbGaP.Accouchement_Reanimation"
             }
           },
@@ -4356,7 +4802,7 @@
         {
           "meta": {
             "displayName": "Accouchement_APGAR_1_min",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_APGAR_1_min": "dbGaP.Accouchement_APGAR_1_min"
             }
           },
@@ -4367,7 +4813,7 @@
         {
           "meta": {
             "displayName": "Accouchement_APGAR_5_min",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_APGAR_5_min": "dbGaP.Accouchement_APGAR_5_min"
             }
           },
@@ -4378,7 +4824,7 @@
         {
           "meta": {
             "displayName": "Accouchement_tmps_hospi_dur_tot",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_tmps_hospi_dur_tot": "dbGaP.Accouchement_tmps_hospi_dur_tot"
             }
           },
@@ -4389,7 +4835,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Malformation",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Malformation": "dbGaP.Accouchement_Malformation"
             }
           },
@@ -4407,7 +4853,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Circonf_de_la_tete",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Circonf_de_la_tete": "dbGaP.Accouchement_Circonf_de_la_tete"
             }
           },
@@ -4418,7 +4864,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Hemoglo_du_bebe_Hb",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Hemoglo_du_bebe_Hb": "dbGaP.Accouchement_Hemoglo_du_bebe_Hb"
             }
           },
@@ -4429,7 +4875,7 @@
         {
           "meta": {
             "displayName": "Accouchement_Glucose_du_bebe",
-            "mappings": {
+            "exact_mappings": {
               "dbGaP.Accouchement_Glucose_du_bebe": "dbGaP.Accouchement_Glucose_du_bebe"
             }
           },
