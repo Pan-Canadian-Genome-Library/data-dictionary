@@ -5,7 +5,9 @@
   "data_category": "<data_category>",
   "files": [
     {
-      "dataType": "<dataType>",
+      "dataType": [
+        "<dataType>"
+      ],
       "fileAccess": "<fileAccess>",
       "fileMd5sum": "<fileMd5sum>",
       "fileName": "<fileName>",
@@ -15,5 +17,7 @@
   ],
   "studyId": "<studyId>",
   "submitter_analysis_id": "<submitter_analysis_id>",
-  "submitter_experiment_id": "<submitter_experiment_id>"
+  "submitter_experiment_ids": [
+    "<submitter_experiment_ids>"
+  ]
 }

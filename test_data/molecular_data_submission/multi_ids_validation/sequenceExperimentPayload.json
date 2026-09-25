@@ -53,7 +53,7 @@
     "dataType": "Raw Sequencing Reads"
     }
   ],
-  "studyId": "test-001",
+  "studyId": "PCGLST0003",
   "submitter_analysis_id": "analysis_001",
-  "submitter_experiment_id": ["exp_001"]
+  "submitter_experiment_id": ["EXP_001"]
 }

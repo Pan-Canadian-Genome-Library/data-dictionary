@@ -224,7 +224,10 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]
 				### Conversion from YAML to python object stringifies Menu,None need to fix
 				#print(slot_item)
-				if bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
+
+				if updated_model['slots'][slot_item]['range']==None:
+					continue
+				elif bool(re.search('^\\[.*\\]$', updated_model['slots'][slot_item]['range'])):
 					#print("A",updated_model['slots'][slot_item]['range'])
 					tmp_array=[]
 					old_value=updated_model['slots'][slot_item]['range']
@@ -238,6 +241,40 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 					#print("B",updated_model['slots'][slot_item]['range'])
 			for enum_item in tmp_model['enums']:
 				updated_model['enums'][enum_item]=tmp_model['enums'][enum_item]
+
+			for slot_item in updated_model['slots']:
+				if updated_model['slots'][slot_item]['is_a']!=None:
+					parent_slot=updated_model['slots'][slot_item]['is_a']
+
+					available_definitions=[]
+					for z in updated_model['slots'][parent_slot]:
+						print(z,updated_model['slots'][parent_slot][z])
+						if updated_model['slots'][parent_slot][z]==None:
+							continue
+						elif isinstance(updated_model['slots'][parent_slot][z], bool):
+							available_definitions.append(z)
+						elif len(updated_model['slots'][parent_slot][z])==0:
+							continue
+						else:
+							available_definitions.append(z)
+
+					provided_definitions=[]
+					for z in updated_model['slots'][slot_item]:
+						print(z,updated_model['slots'][slot_item][z])
+						if updated_model['slots'][slot_item][z]==None:
+							continue
+						elif isinstance(updated_model['slots'][slot_item][z], bool):
+							provided_definitions.append(z)
+						elif isinstance(updated_model['slots'][slot_item][z], int):
+							provided_definitions.append(z)
+						elif len(updated_model['slots'][slot_item][z])==0:
+							continue
+						else:
+							provided_definitions.append(z)
+
+					for z in available_definitions:
+						if z not in provided_definitions:
+							updated_model['slots'][slot_item][z]=updated_model['slots'][parent_slot][z]
 		   
 		### For extended without base imports, we also want every property except empty ones and name	 
 		if mapping[key].get("extension_import") and not mapping[key].get("base_import"):
@@ -282,7 +319,8 @@ def flattenInheritedProperties(reference_model,updated_model,mapping):
 			###Add slots defintions
 			for slot_item in tmp_model.classes[mapping[key]["extension_import_name"]]['slots']:
 				###Prevent extension from overriding existing base slot items
-				if slot_item in updated_model['slots']:
+				if slot_item in updated_model['slots'] and (slot_item!='dataType' and slot_item!='fileSize' and slot_item!='fileMd5sum'):
+					print("BLOCK",slot_item)
 					continue
 				updated_model.classes[key]['slots'].append(tmp_model['slots'][slot_item]['name'])
 				updated_model['slots'][slot_item]=tmp_model['slots'][slot_item]

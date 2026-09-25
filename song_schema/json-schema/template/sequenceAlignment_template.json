@@ -5,7 +5,9 @@
   "data_category": "<data_category>",
   "files": [
     {
-      "dataType": "<dataType>",
+      "dataType": [
+        "<dataType>"
+      ],
       "fileAccess": "<fileAccess>",
       "fileMd5sum": "<fileMd5sum>",
       "fileName": "<fileName>",
@@ -16,11 +18,14 @@
   "genome_build": "<genome_build>",
   "studyId": "<studyId>",
   "submitter_analysis_id": "<submitter_analysis_id>",
-  "submitter_experiment_id": "<submitter_experiment_id>",
+  "submitter_experiment_ids": [
+    "<submitter_experiment_ids>"
+  ],
   "workflow": {
     "submitter_workflow_id": "<submitter_workflow_id>",
     "workflow_name": "<workflow_name>",
     "workflow_url": "<workflow_url>",
     "workflow_version": "<workflow_version>"
-  }
+  },
+  "dataType": "<dataType>"
 }

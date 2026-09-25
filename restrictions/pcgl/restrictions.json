@@ -44,12 +44,66 @@
                         },
                         "then":{"required": false, "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"}
                     }
+                },
+                {
+                    "name":"treatment_type_other",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["treatment_type"],
+                                    "match":{"value": "Other"},
+                                    "case" : "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required": true},
+                        "else":{"required": false, "empty": true}
+                    }
                 }
             ]
         },
         {
             "name": "sociodemographic",
             "fields" : [
+                {
+                    "name":"age_at_sociodem_collection",
+                    "valueType": "integer",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["age_at_sociodem_collection_missing_reason"],
+                                    "match":{"exists":true},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                },
+                {
+                    "name":"age_at_sociodem_collection_missing_reason",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["age_at_sociodem_collection"],
+                                    "match":{"exists":true},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
+                    }
+                },
                 {
                     "name":"race_another_racial_category",
                     "valueType": "string",
@@ -169,8 +223,7 @@
             "name": "analysis",
             "fields" : [
                 {
-                    "name":"submitter_experiment_id",
-                    "valueType": "string",
+                    "name":"submitter_experiment_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
@@ -192,13 +245,12 @@
                     }
                 },
                 {
-                    "name":"submitter_participant_id",
-                    "valueType": "string",
+                    "name":"submitter_participant_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_experiment_id","submitter_sample_id","submitter_specimen_id"],
+                                    "fields":["submitter_experiment_ids","submitter_sample_ids","submitter_specimen_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }
@@ -210,13 +262,12 @@
                     }
                 },
                 {
-                    "name":"submitter_sample_id",
-                    "valueType": "string",
+                    "name":"submitter_sample_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_specimen_id"],
+                                    "fields":["submitter_participant_ids","submitter_experiment_ids","submitter_specimen_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }
@@ -228,13 +279,12 @@
                     }
                 },
                 {
-                    "name":"submitter_specimen_id",
-                    "valueType": "string",
+                    "name":"submitter_specimen_ids",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["submitter_participant_id","submitter_experiment_id","submitter_sample_id"],
+                                    "fields":["submitter_participant_ids","submitter_experiment_ids","submitter_sample_ids"],
                                     "match":{"exists": true},
                                     "case": "any"
                                 }

@@ -15,5 +15,5 @@
   ],
   "studyId": "test-001",
   "submitter_analysis_id": "analysis_002",
-  "submitter_experiment_id": "exp_002"
+  "submitter_experiment_id": ["exp_002"]
 }

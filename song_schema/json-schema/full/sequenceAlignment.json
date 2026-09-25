@@ -33,29 +33,51 @@
         "description": "Contains information about the files generated from a run of sequencing or data analysis",
         "properties": {
           "dataType": {
+            "description": "Indicates the type of data produced as outputs from the analysis. ",
+            "items": {
+              "description": "",
+              "enum": [
+                "Raw Sequencing Reads",
+                "Aligned Reads",
+                "Aligned Reads Index",
+                "Single Nucleotide Variants (SNVs)",
+                "Insertions and Deletions (InDels)",
+                "Structural Variations (SVs)",
+                "Copy Number Variations (CNVs)",
+                "Variant Calls Index",
+                "Quality Control Metrics",
+                "Gene Fusions",
+                "Alternative Splicing",
+                "Gene Expression Quantification",
+                "Transcript Expression Quantification",
+                "Single-Cell Expression Matrices",
+                "Splicing Junctions",
+                "Differential Expression Analysis"
+              ],
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "fileAccess": {
             "description": "",
             "enum": [
-              "Aligned Reads",
-              "Aligned Reads Index"
+              "open",
+              "controlled"
             ],
             "type": "string"
           },
-          "fileAccess": {
-            "description": "The permission level of a file for public access.",
-            "type": "string"
-          },
           "fileMd5sum": {
-            "description": "Computed md5sum of the file.",
+            "description": "Computed md5sum of the file. If not provided, will be populated by molecular submission workflow.",
             "pattern": "^[a-fA-F0-9]{32}$",
             "type": "string"
           },
           "fileName": {
-            "description": "Name of the file.",
-            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$.",
+            "description": "File name, subdirectory-relative path, or absolute path of the data file. For more details see https://github.com/Pan-Canadian-Genome-Library/molecular-data-submission-workflow/blob/main/docs/input.md.",
+            "pattern": "^[A-Za-z0-9_\\.\\-\\[\\]\\(\\)]+$",
             "type": "string"
           },
           "fileSize": {
-            "description": "Size of the file, in bytes.",
+            "description": "Size of the file, in bytes. If not provided, will be populated by molecular submission workflow.",
             "type": "integer"
           },
           "fileType": {
@@ -72,10 +94,10 @@
         "required": [
           "dataType",
           "fileAccess",
-          "fileMd5sum",
           "fileName",
+          "fileType",
           "fileSize",
-          "fileType"
+          "fileMd5sum"
         ],
         "type": "object"
       },
@@ -98,10 +120,15 @@
       "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
       "type": "string"
     },
-    "submitter_experiment_id": {
-      "description": "Unique identifier of the experiment within the study, assigned by the data provider.",
-      "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
-      "type": "string"
+    "submitter_experiment_ids": {
+      "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the data provider.",
+      "items": {
+        "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+        "type": "string"
+      },
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
     },
     "workflow": {
       "additionalProperties": false,
@@ -135,10 +162,18 @@
         "workflow_name"
       ],
       "type": "object"
+    },
+    "dataType": {
+      "description": "Controlled Data Type list. Not populatable",
+      "enum": [
+        "Aligned Reads",
+        "Aligned Reads Index"
+      ],
+      "not": {}
     }
   },
   "required": [
-    "submitter_experiment_id",
+    "submitter_experiment_ids",
     "workflow",
     "genome_build",
     "studyId",

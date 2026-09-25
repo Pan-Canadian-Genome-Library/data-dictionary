@@ -16,6 +16,8 @@ imports:
 classes:
   Study:
     is_a: base_Study
+  Study_Translation:
+    is_a: base_Study_Translation
   Dac:
     is_a: base_Dac
   Participant:
