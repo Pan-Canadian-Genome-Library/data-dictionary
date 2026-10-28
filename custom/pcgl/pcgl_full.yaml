@@ -4,7 +4,7 @@ description: The PCGL Data Dictionary specifies the standardized data elements, 
   health and genomic data submitted to the Pan-Canadian Genome Library.
 in_language: '[''en'']'
 id: https://example.com/PCGL.yaml
-version: 1.1.0.0
+version: 2.0.0.0
 imports:
 - linkml:types
 prefixes:
@@ -61,16 +61,14 @@ enums:
     name: ethnicity_menu
     title: ethnicity_menu
     permissible_values:
-      Free text input:
-        text: Free text input
       Another Ethnic or Cultural Origin:
         text: Another Ethnic or Cultural Origin
       Do not know:
         text: Do not know
       Prefer not to answer:
         text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -79,6 +77,1024 @@ enums:
         text: Missing - Not provided
       Missing - Restricted access:
         text: Missing - Restricted access
+      Abenaki:
+        text: Abenaki
+      Ahousaht:
+        text: Ahousaht
+      Algonquin:
+        text: Algonquin
+      Anishinaabe:
+        text: Anishinaabe
+      Apache:
+        text: Apache
+      Assiniboine:
+        text: Assiniboine
+      Atikamekw:
+        text: Atikamekw
+      Beaver (Dunne-za):
+        text: Beaver (Dunne-za)
+      Blackfoot:
+        text: Blackfoot
+      Blood (Kainai):
+        text: Blood (Kainai)
+      Carrier (Dakelh):
+        text: Carrier (Dakelh)
+      Cayuga:
+        text: Cayuga
+      Chemainus (Stzuminus):
+        text: Chemainus (Stzuminus)
+      Cherokee:
+        text: Cherokee
+      Cheyenne:
+        text: Cheyenne
+      Chilcotin (Tsilhqotin):
+        text: Chilcotin (Tsilhqotin)
+      Chipewyan (Denesuline):
+        text: Chipewyan (Denesuline)
+      Choctaw:
+        text: Choctaw
+      Coast Salish:
+        text: Coast Salish
+      Cowichan:
+        text: Cowichan
+      Cree:
+        text: Cree
+      Crow:
+        text: Crow
+      Dakota:
+        text: Dakota
+      Delaware (Lenape):
+        text: Delaware (Lenape)
+      Dene:
+        text: Dene
+      Dene Tha' (Slavey):
+        text: Dene Tha' (Slavey)
+      Ditidaht:
+        text: Ditidaht
+      Dzawada'enuxw:
+        text: Dzawada'enuxw
+      Ehattesaht:
+        text: Ehattesaht
+      First Nations:
+        text: First Nations
+      Gitxsan:
+        text: Gitxsan
+      Gwa'sala:
+        text: Gwa'sala
+      Gwich'in:
+        text: Gwich'in
+      Haida:
+        text: Haida
+      Haisla:
+        text: Haisla
+      Halalt:
+        text: Halalt
+      Hän (Trondëk Hwëchin):
+        text: Hän (Trondëk Hwëchin)
+      Heiltsuk:
+        text: Heiltsuk
+      Hesquiaht:
+        text: Hesquiaht
+      Homalco:
+        text: Homalco
+      Huron (Wendat):
+        text: Huron (Wendat)
+      Huu-ay-aht:
+        text: Huu-ay-aht
+      Innu:
+        text: Innu
+      Interior Salish:
+        text: Interior Salish
+      Inuit:
+        text: Inuit
+      Inuvialuit:
+        text: Inuvialuit
+      Iroquois (Haudenosaunee):
+        text: Iroquois (Haudenosaunee)
+      Kaska:
+        text: Kaska
+      K'omoks:
+        text: K'omoks
+      Ktunaxa (Kutenai):
+        text: Ktunaxa (Kutenai)
+      Kwakiutl:
+        text: Kwakiutl
+      Kwakwa̱ka̱ʼwakw:
+        text: Kwakwa̱ka̱ʼwakw
+      Kyuquot/Cheklesaht:
+        text: Kyuquot/Cheklesaht
+      Laich-kwil-tach:
+        text: Laich-kwil-tach
+      Lakota:
+        text: Lakota
+      Lekwungen:
+        text: Lekwungen
+      Malahat:
+        text: Malahat
+      Maliseet:
+        text: Maliseet
+      Mamalilikulla:
+        text: Mamalilikulla
+      Métis:
+        text: Métis
+      Mi'kmaq:
+        text: Mi'kmaq
+      Mohawk:
+        text: Mohawk
+      Montagnais:
+        text: Montagnais
+      Moose Cree:
+        text: Moose Cree
+      Mowachaht/Muchalaht:
+        text: Mowachaht/Muchalaht
+      Musqueam:
+        text: Musqueam
+      Nakwaxda'xw:
+        text: Nakwaxda'xw
+      '''Namgis':
+        text: '''Namgis'
+      Naskapi:
+        text: Naskapi
+      Navajo:
+        text: Navajo
+      Nez Perce:
+        text: Nez Perce
+      Nisga'a:
+        text: Nisga'a
+      Nlaka'pamux (Thompson):
+        text: Nlaka'pamux (Thompson)
+      Nuchatlaht:
+        text: Nuchatlaht
+      Nuu-chah-nulth:
+        text: Nuu-chah-nulth
+      Nuxalk:
+        text: Nuxalk
+      Odawa:
+        text: Odawa
+      Ojibway:
+        text: Ojibway
+      Oji-Cree:
+        text: Oji-Cree
+      Okanagan (Syilx):
+        text: Okanagan (Syilx)
+      Oneida:
+        text: Oneida
+      Onondaga:
+        text: Onondaga
+      Passamaquoddy:
+        text: Passamaquoddy
+      Penelakut:
+        text: Penelakut
+      Piikani:
+        text: Piikani
+      Plains Cree:
+        text: Plains Cree
+      Potawatomi:
+        text: Potawatomi
+      Qalipu Mi'kmaq:
+        text: Qalipu Mi'kmaq
+      Quatsino:
+        text: Quatsino
+      Sahtú (North Slavey):
+        text: Sahtú (North Slavey)
+      Salish:
+        text: Salish
+      Saulteaux:
+        text: Saulteaux
+      Secwepemc (Shuswap):
+        text: Secwepemc (Shuswap)
+      Seneca:
+        text: Seneca
+      Shawnee:
+        text: Shawnee
+      Shishalh (Sechelt):
+        text: Shishalh (Sechelt)
+      Siksika:
+        text: Siksika
+      Sioux:
+        text: Sioux
+      Snuneymuxw:
+        text: Snuneymuxw
+      Squamish:
+        text: Squamish
+      St'at'imc (Lillooet):
+        text: St'at'imc (Lillooet)
+      Stó:lō:
+        text: Stó:lō
+      Stoney (Nakoda):
+        text: Stoney (Nakoda)
+      Swampy Cree:
+        text: Swampy Cree
+      Tagish:
+        text: Tagish
+      Tahltan:
+        text: Tahltan
+      Tla'amin (Sliammon):
+        text: Tla'amin (Sliammon)
+      Tla-o-qui-aht:
+        text: Tla-o-qui-aht
+      Tlatlasikwala:
+        text: Tlatlasikwala
+      Tlicho (Dogrib):
+        text: Tlicho (Dogrib)
+      Tlingit:
+        text: Tlingit
+      Tlowitsis:
+        text: Tlowitsis
+      Tsek'ene (Sekani):
+        text: Tsek'ene (Sekani)
+      Tseshaht:
+        text: Tseshaht
+      Tsimshian:
+        text: Tsimshian
+      T'Sou-ke:
+        text: T'Sou-ke
+      Tsuu T'ina (Sarcee):
+        text: Tsuu T'ina (Sarcee)
+      Tuscarora:
+        text: Tuscarora
+      Tutchone:
+        text: Tutchone
+      Ucluelet:
+        text: Ucluelet
+      Wet'suwet'en:
+        text: Wet'suwet'en
+      Woodland Cree:
+        text: Woodland Cree
+      W̱SÁNEĆ (Saanich):
+        text: W̱SÁNEĆ (Saanich)
+      Wuikinuxv:
+        text: Wuikinuxv
+      Afghan:
+        text: Afghan
+      Cuban:
+        text: Cuban
+      Japanese:
+        text: Japanese
+      Albanian:
+        text: Albanian
+      Cypriot:
+        text: Cypriot
+      Jordanian:
+        text: Jordanian
+      Algerian:
+        text: Algerian
+      Czech:
+        text: Czech
+      Kazakh:
+        text: Kazakh
+      American:
+        text: American
+      Danish:
+        text: Danish
+      Kenyan:
+        text: Kenyan
+      Angolan:
+        text: Angolan
+      Djiboutian:
+        text: Djiboutian
+      Kittitian/Nevisian:
+        text: Kittitian/Nevisian
+      Anguillan:
+        text: Anguillan
+      Dominica Islander:
+        text: Dominica Islander
+      Korean:
+        text: Korean
+      Antiguan:
+        text: Antiguan
+      Dominican:
+        text: Dominican
+      Kosovar:
+        text: Kosovar
+      Argentinian:
+        text: Argentinian
+      Dutch:
+        text: Dutch
+      Kuwaiti:
+        text: Kuwaiti
+      Armenian:
+        text: Armenian
+      Ecuadorian:
+        text: Ecuadorian
+      Kyrgyz:
+        text: Kyrgyz
+      Aruban:
+        text: Aruban
+      Egyptian:
+        text: Egyptian
+      Laotian:
+        text: Laotian
+      Australian:
+        text: Australian
+      English:
+        text: English
+      Latvian:
+        text: Latvian
+      Austrian:
+        text: Austrian
+      Eritrean:
+        text: Eritrean
+      Lebanese:
+        text: Lebanese
+      Azerbaijani:
+        text: Azerbaijani
+      Estonian:
+        text: Estonian
+      Liberian:
+        text: Liberian
+      Azorean:
+        text: Azorean
+      Ethiopian:
+        text: Ethiopian
+      Libyan:
+        text: Libyan
+      Bahamian:
+        text: Bahamian
+      Faroese:
+        text: Faroese
+      Liechtensteiner:
+        text: Liechtensteiner
+      Bahraini:
+        text: Bahraini
+      Fijian:
+        text: Fijian
+      Lithuanian:
+        text: Lithuanian
+      Bangladeshi:
+        text: Bangladeshi
+      Filipino:
+        text: Filipino
+      Luxembourger:
+        text: Luxembourger
+      Barbadian:
+        text: Barbadian
+      Finnish:
+        text: Finnish
+      Macedonian:
+        text: Macedonian
+      Belgian:
+        text: Belgian
+      French:
+        text: French
+      Malagasy:
+        text: Malagasy
+      Belizean:
+        text: Belizean
+      Gabonese:
+        text: Gabonese
+      Malawian:
+        text: Malawian
+      Beninese:
+        text: Beninese
+      Gambian:
+        text: Gambian
+      Malaysian:
+        text: Malaysian
+      Bermudian:
+        text: Bermudian
+      Georgian:
+        text: Georgian
+      Malian:
+        text: Malian
+      Bhutanese:
+        text: Bhutanese
+      German:
+        text: German
+      Maltese:
+        text: Maltese
+      Bolivian:
+        text: Bolivian
+      Ghanaian:
+        text: Ghanaian
+      Manx:
+        text: Manx
+      Bosnian:
+        text: Bosnian
+      Gibraltarian:
+        text: Gibraltarian
+      Martinican:
+        text: Martinican
+      Brazilian:
+        text: Brazilian
+      Greek:
+        text: Greek
+      Mauritanian:
+        text: Mauritanian
+      Bruneian:
+        text: Bruneian
+      Greenlandic:
+        text: Greenlandic
+      Mauritian:
+        text: Mauritian
+      Bulgarian:
+        text: Bulgarian
+      Grenadian:
+        text: Grenadian
+      Mexican:
+        text: Mexican
+      Burkinabe:
+        text: Burkinabe
+      Guadeloupean:
+        text: Guadeloupean
+      Moldovan:
+        text: Moldovan
+      Burmese:
+        text: Burmese
+      Guatemalan:
+        text: Guatemalan
+      Mongolian:
+        text: Mongolian
+      Burundian:
+        text: Burundian
+      Guinean:
+        text: Guinean
+      Montenegrin:
+        text: Montenegrin
+      Byelorussian:
+        text: Byelorussian
+      Guyanese:
+        text: Guyanese
+      Montserratan:
+        text: Montserratan
+      Cambodian:
+        text: Cambodian
+      Haitian:
+        text: Haitian
+      Moroccan:
+        text: Moroccan
+      Cameroonian:
+        text: Cameroonian
+      Honduran:
+        text: Honduran
+      Mozambican:
+        text: Mozambican
+      Canadian:
+        text: Canadian
+      Hong Konger:
+        text: Hong Konger
+      Namibian:
+        text: Namibian
+      Cape Verdean:
+        text: Cape Verdean
+      Hungarian:
+        text: Hungarian
+      Nepali:
+        text: Nepali
+      Caymanian:
+        text: Caymanian
+      Icelandic:
+        text: Icelandic
+      New Zealander:
+        text: New Zealander
+      Central African:
+        text: Central African
+      Indian (India):
+        text: Indian (India)
+      Nicaraguan:
+        text: Nicaraguan
+      Chadian:
+        text: Chadian
+      Indonesian:
+        text: Indonesian
+      Nigerian:
+        text: Nigerian
+      Chilean:
+        text: Chilean
+      Iranian:
+        text: Iranian
+      Nigerien:
+        text: Nigerien
+      Chinese:
+        text: Chinese
+      Iraqi:
+        text: Iraqi
+      Northern Irish:
+        text: Northern Irish
+      Colombian:
+        text: Colombian
+      Irish:
+        text: Irish
+      Norwegian:
+        text: Norwegian
+      Comorian:
+        text: Comorian
+      Israeli:
+        text: Israeli
+      Omani:
+        text: Omani
+      Congolese:
+        text: Congolese
+      Italian:
+        text: Italian
+      Pakistani:
+        text: Pakistani
+      Costa Rican:
+        text: Costa Rican
+      Ivorian:
+        text: Ivorian
+      Palestinian:
+        text: Palestinian
+      Croatian:
+        text: Croatian
+      Jamaican:
+        text: Jamaican
+      Panamanian:
+        text: Panamanian
+      Papua New Guinean:
+        text: Papua New Guinean
+      Paraguayan:
+        text: Paraguayan
+      Peruvian:
+        text: Peruvian
+      Polish:
+        text: Polish
+      Portuguese:
+        text: Portuguese
+      Puerto Rican:
+        text: Puerto Rican
+      Réunionnais:
+        text: Réunionnais
+      Romanian:
+        text: Romanian
+      Russian:
+        text: Russian
+      Rwandan:
+        text: Rwandan
+      Saint Helenian:
+        text: Saint Helenian
+      Salvadorean:
+        text: Salvadorean
+      Samoan:
+        text: Samoan
+      Saudi Arabian:
+        text: Saudi Arabian
+      Scottish:
+        text: Scottish
+      Senegalese:
+        text: Senegalese
+      Serbian:
+        text: Serbian
+      Seychellois:
+        text: Seychellois
+      Sierra Leonean:
+        text: Sierra Leonean
+      Singaporean:
+        text: Singaporean
+      Slovak:
+        text: Slovak
+      Slovenian:
+        text: Slovenian
+      Somali:
+        text: Somali
+      South African:
+        text: South African
+      South Sudanese:
+        text: South Sudanese
+      Spanish:
+        text: Spanish
+      Sri Lankan:
+        text: Sri Lankan
+      St. Lucian:
+        text: St. Lucian
+      Sudanese:
+        text: Sudanese
+      Surinamese:
+        text: Surinamese
+      Swazi:
+        text: Swazi
+      Swedish:
+        text: Swedish
+      Swiss:
+        text: Swiss
+      Syrian:
+        text: Syrian
+      Tahitian:
+        text: Tahitian
+      Taiwanese:
+        text: Taiwanese
+      Tajik:
+        text: Tajik
+      Tanzanian:
+        text: Tanzanian
+      Thai:
+        text: Thai
+      Togolese:
+        text: Togolese
+      Tongan:
+        text: Tongan
+      Trinidadian/Tobagonian:
+        text: Trinidadian/Tobagonian
+      Tunisian:
+        text: Tunisian
+      Turkish:
+        text: Turkish
+      Turkmen:
+        text: Turkmen
+      Ugandan:
+        text: Ugandan
+      Ukrainian:
+        text: Ukrainian
+      Uruguayan:
+        text: Uruguayan
+      Uzbek:
+        text: Uzbek
+      Venezuelan:
+        text: Venezuelan
+      Vietnamese:
+        text: Vietnamese
+      Vincentian:
+        text: Vincentian
+      Welsh:
+        text: Welsh
+      Yemeni:
+        text: Yemeni
+      Zambian:
+        text: Zambian
+      Zimbabwean:
+        text: Zimbabwean
+      Acadian:
+        text: Acadian
+      Afar:
+        text: Afar
+      African:
+        text: African
+      African American:
+        text: African American
+      African Canadian:
+        text: African Canadian
+      African Caribbean:
+        text: African Caribbean
+      African Nova Scotian:
+        text: African Nova Scotian
+      Afrikaner:
+        text: Afrikaner
+      Akan:
+        text: Akan
+      Albertan:
+        text: Albertan
+      Alsatian:
+        text: Alsatian
+      Amhara:
+        text: Amhara
+      Amish:
+        text: Amish
+      Anglo-Indian:
+        text: Anglo-Indian
+      Arab:
+        text: Arab
+      Arawak:
+        text: Arawak
+      Ashanti:
+        text: Ashanti
+      Asian:
+        text: Asian
+      Assyrian:
+        text: Assyrian
+      Baloch:
+        text: Baloch
+      Bambara:
+        text: Bambara
+      Bamileke:
+        text: Bamileke
+      Bantu:
+        text: Bantu
+      Baoulé:
+        text: Baoulé
+      Bashkir:
+        text: Bashkir
+      Basque:
+        text: Basque
+      Batswana:
+        text: Batswana
+      Bavarian:
+        text: Bavarian
+      Bengali:
+        text: Bengali
+      Berber:
+        text: Berber
+      Black:
+        text: Black
+      Bohemian:
+        text: Bohemian
+      Bosniak:
+        text: Bosniak
+      Breton:
+        text: Breton
+      British:
+        text: British
+      British Columbian:
+        text: British Columbian
+      Buddhist:
+        text: Buddhist
+      Cape Bretoner:
+        text: Cape Bretoner
+      Carib:
+        text: Carib
+      Caribbean:
+        text: Caribbean
+      Catalan:
+        text: Catalan
+      Caucasian (White):
+        text: Caucasian (White)
+      Celtic:
+        text: Celtic
+      Central American:
+        text: Central American
+      Central American Indian (Indigenous):
+        text: Central American Indian (Indigenous)
+      Central Asian:
+        text: Central Asian
+      Chaldean:
+        text: Chaldean
+      Channel Islander:
+        text: Channel Islander
+      Chechen:
+        text: Chechen
+      Chin:
+        text: Chin
+      Christian:
+        text: Christian
+      Circassian:
+        text: Circassian
+      Coptic:
+        text: Coptic
+      Cornish:
+        text: Cornish
+      Corsican:
+        text: Corsican
+      Creole:
+        text: Creole
+      Czechoslovakian:
+        text: Czechoslovakian
+      Dinka:
+        text: Dinka
+      Doukhobor:
+        text: Doukhobor
+      East African:
+        text: East African
+      East Asian:
+        text: East Asian
+      Eastern European:
+        text: Eastern European
+      Edo:
+        text: Edo
+      Esan:
+        text: Esan
+      Eurasian:
+        text: Eurasian
+      European:
+        text: European
+      Ewe:
+        text: Ewe
+      Fante:
+        text: Fante
+      Flemish:
+        text: Flemish
+      Franco Ontarian:
+        text: Franco Ontarian
+      French Canadian:
+        text: French Canadian
+      Frisian:
+        text: Frisian
+      Fulani:
+        text: Fulani
+      Ga-Adangbe:
+        text: Ga-Adangbe
+      Galician:
+        text: Galician
+      Gaspesian:
+        text: Gaspesian
+      Goan:
+        text: Goan
+      Greek Cypriot:
+        text: Greek Cypriot
+      Gujarati:
+        text: Gujarati
+      Harari:
+        text: Harari
+      Hausa:
+        text: Hausa
+      Hawaiian:
+        text: Hawaiian
+      Hazara:
+        text: Hazara
+      Hindu:
+        text: Hindu
+      Hispanic:
+        text: Hispanic
+      Hmong:
+        text: Hmong
+      Huguenot:
+        text: Huguenot
+      Hutterite:
+        text: Hutterite
+      Hutu:
+        text: Hutu
+      Igbo:
+        text: Igbo
+      Igorot:
+        text: Igorot
+      Ilocano:
+        text: Ilocano
+      Indo-Caribbean:
+        text: Indo-Caribbean
+      Indo-Fijian:
+        text: Indo-Fijian
+      Indo-Guyanese:
+        text: Indo-Guyanese
+      Jatt:
+        text: Jatt
+      Javanese:
+        text: Javanese
+      Jewish:
+        text: Jewish
+      Kabyle:
+        text: Kabyle
+      Karen:
+        text: Karen
+      Kashmiri:
+        text: Kashmiri
+      Kashubian:
+        text: Kashubian
+      Khmer:
+        text: Khmer
+      Kikuyu:
+        text: Kikuyu
+      Kurdish:
+        text: Kurdish
+      Latin American:
+        text: Latin American
+      Luba:
+        text: Luba
+      Luo:
+        text: Luo
+      Maghrebi:
+        text: Maghrebi
+      Maharashtrian:
+        text: Maharashtrian
+      Malay:
+        text: Malay
+      Malayali:
+        text: Malayali
+      Malinké:
+        text: Malinké
+      Manitoban:
+        text: Manitoban
+      Maori:
+        text: Maori
+      Mapuche:
+        text: Mapuche
+      Maroon:
+        text: Maroon
+      Mayan:
+        text: Mayan
+      Mennonite:
+        text: Mennonite
+      Middle Eastern:
+        text: Middle Eastern
+      Moravian:
+        text: Moravian
+      Mossi:
+        text: Mossi
+      Muslim:
+        text: Muslim
+      Ndebele:
+        text: Ndebele
+      New Brunswicker:
+        text: New Brunswicker
+      Newfoundlander:
+        text: Newfoundlander
+      Norman:
+        text: Norman
+      North African:
+        text: North African
+      North American:
+        text: North American
+      Northern European:
+        text: Northern European
+      Nova Scotian:
+        text: Nova Scotian
+      Nubian:
+        text: Nubian
+      Oceanian:
+        text: Oceanian
+      Ontarian:
+        text: Ontarian
+      Orcadian:
+        text: Orcadian
+      Oromo:
+        text: Oromo
+      Pacific Islander:
+        text: Pacific Islander
+      Pashtun:
+        text: Pashtun
+      Pennsylvania Dutch:
+        text: Pennsylvania Dutch
+      Persian:
+        text: Persian
+      Pipil:
+        text: Pipil
+      Polynesian:
+        text: Polynesian
+      Prince Edward Islander:
+        text: Prince Edward Islander
+      Punjabi:
+        text: Punjabi
+      Québécois:
+        text: Québécois
+      Quechua:
+        text: Quechua
+      Rohingya:
+        text: Rohingya
+      Roma:
+        text: Roma
+      Ruthenian:
+        text: Ruthenian
+      Sami:
+        text: Sami
+      Saskatchewanian:
+        text: Saskatchewanian
+      Scandinavian:
+        text: Scandinavian
+      Serer:
+        text: Serer
+      Shona:
+        text: Shona
+      Sicilian:
+        text: Sicilian
+      Sikh:
+        text: Sikh
+      Sindhi:
+        text: Sindhi
+      Sinhalese:
+        text: Sinhalese
+      Slavic:
+        text: Slavic
+      Soninke:
+        text: Soninke
+      South American:
+        text: South American
+      South American Indian (Indigenous):
+        text: South American Indian (Indigenous)
+      South Asian:
+        text: South Asian
+      Southeast Asian:
+        text: Southeast Asian
+      Southeast European:
+        text: Southeast European
+      Southern European:
+        text: Southern European
+      Swahili:
+        text: Swahili
+      Tamil:
+        text: Tamil
+      Tatar:
+        text: Tatar
+      Telugu:
+        text: Telugu
+      Tibetan:
+        text: Tibetan
+      Tigrian:
+        text: Tigrian
+      Transylvanian:
+        text: Transylvanian
+      Tswana:
+        text: Tswana
+      Turkish Cypriot:
+        text: Turkish Cypriot
+      Tutsi:
+        text: Tutsi
+      Ulster Scot:
+        text: Ulster Scot
+      United Empire Loyalist:
+        text: United Empire Loyalist
+      Uyghur:
+        text: Uyghur
+      Walloon:
+        text: Walloon
+      West African:
+        text: West African
+      West Asian:
+        text: West Asian
+      West Indian:
+        text: West Indian
+      Western European:
+        text: Western European
+      Wolof:
+        text: Wolof
+      Xhosa:
+        text: Xhosa
+      Yazidi:
+        text: Yazidi
+      Yoruba:
+        text: Yoruba
+      Yugoslavian:
+        text: Yugoslavian
+      Zoroastrian:
+        text: Zoroastrian
+      Zulu:
+        text: Zulu
   gender_menu:
     name: gender_menu
     title: gender_menu
@@ -91,8 +1107,8 @@ enums:
         text: Another Gender
       Prefer not to answer:
         text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -153,6 +1169,8 @@ enums:
         text: Intersex
       Another Sex:
         text: Another Sex
+      Prefer not to answer:
+        text: Prefer not to answer
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -481,6 +1499,16 @@ enums:
         text: Radiation therapy
       Other:
         text: Other
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+      Missing - Unknown:
+        text: Missing - Unknown
+      Not applicable:
+        text: Not applicable
   radiation_modality_menu:
     name: radiation_modality_menu
     title: radiation modality menu
@@ -624,6 +1652,8 @@ enums:
         text: Self-identified
       Derived:
         text: Derived
+      Another method of collection:
+        text: Another method of collection
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -638,8 +1668,12 @@ enums:
     permissible_values:
       Self-identified:
         text: Self-identified
-      Other:
-        text: Other
+      Socially assigned:
+        text: Socially assigned
+      Administrative gender:
+        text: Administrative gender
+      Another method of collection:
+        text: Another method of collection
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -664,15 +1698,15 @@ enums:
           designation), or other trades certificate or diploma
       College, CEGEP, or other non-university certificate or diploma:
         text: College, CEGEP, or other non-university certificate or diploma
-      Bachelor's degree:
-        text: Bachelor's degree
+      Undergraduate degree:
+        text: Undergraduate degree
       Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD):
         text: Postgraduate degree or other professional designation (e.g., Master's.
           PhD, MD, DDS. DMD, DVM, OD)
       Prefer not to answer:
         text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -687,6 +1721,10 @@ enums:
     permissible_values:
       Self-identified:
         text: Self-identified
+      Administratively collected:
+        text: Administratively collected
+      Another method of collection:
+        text: Another method of collection
       Derived:
         text: Derived
       Missing - Unknown:
@@ -723,8 +1761,8 @@ enums:
         text: $ 150,000 or more
       Prefer not to answer:
         text: Prefer not to answer
-      Not applicable:
-        text: Not applicable
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -737,10 +1775,12 @@ enums:
     name: personal_income_collect_method_menu
     title: personal_income_collect_method_menu
     permissible_values:
-      Self-identified:
-        text: Self-identified
-      Derived:
-        text: Derived
+      Before taxes:
+        text: Before taxes
+      After taxes:
+        text: After taxes
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -757,6 +1797,10 @@ enums:
         text: Self-identified
       Derived:
         text: Derived
+      Another method of collection:
+        text: Another method of collection
+      Administratively collected:
+        text: Administratively collected
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -1014,10 +2058,14 @@ enums:
         text: Self-identified
       Clinician-recorded:
         text: Clinician-recorded
+      Socially assigned:
+        text: Socially assigned
       Derived:
         text: Derived
-      Other:
-        text: Other
+      Legal sex:
+        text: Legal sex
+      Another method of collection:
+        text: Another method of collection
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -1076,6 +2124,389 @@ enums:
     name: age_at_sociodem_collection_missing_reason_menu
     title: age_at_sociodem_collection_missing_reason_menu
     permissible_values:
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  accommodation_duration_menu:
+    name: accommodation_duration_menu
+    title: accommodation_duration_menu
+    permissible_values:
+      Less than 1 year:
+        text: Less than 1 year
+      1 - 5 years:
+        text: 1 - 5 years
+      6 - 10 years:
+        text: 6 - 10 years
+      11 - 20 years:
+        text: 11 - 20 years
+      More than 20 years:
+        text: More than 20 years
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  accommodation_type_menu:
+    name: accommodation_type_menu
+    title: accommodation_type_menu
+    permissible_values:
+      Single-detached house:
+        text: Single-detached house
+      Single-attached house, semi-detached house or row house/townhouse:
+        text: Single-attached house, semi-detached house or row house/townhouse
+      Apartment:
+        text: Apartment
+      Student housing:
+        text: Student housing
+      Mobile home and other movable dwellings (including houseboats or railroad cars):
+        text: Mobile home and other movable dwellings (including houseboats or railroad
+          cars)
+      Hospital, rehabilitation centre, drug treatment centre, or other related facilities:
+        text: Hospital, rehabilitation centre, drug treatment centre, or other related
+          facilities
+      Correctional and custodial facilities:
+        text: Correctional and custodial facilities
+      Transitional housing (including emergency shelters and shelters for the unhoused):
+        text: Transitional housing (including emergency shelters and shelters for
+          the unhoused)
+      Service collective dwellings (including hotels, motels, and rooming houses):
+        text: Service collective dwellings (including hotels, motels, and rooming
+          houses)
+      Religious establishments (including convents, seminaries, and monasteries):
+        text: Religious establishments (including convents, seminaries, and monasteries)
+      Work camps (such as accommodations provided to employees of an industry such as mining):
+        text: Work camps (such as accommodations provided to employees of an industry
+          such as mining)
+      Military bases:
+        text: Military bases
+      Anywhere outside (for example, street, vehicle, abandoned building):
+        text: Anywhere outside (for example, street, vehicle, abandoned building)
+      Another accommodation type:
+        text: Another accommodation type
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  arrival_in_canada_menu:
+    name: arrival_in_canada_menu
+    title: arrival_in_canada_menu
+    permissible_values:
+      Less than 5 years:
+        text: Less than 5 years
+      5-9 years:
+        text: 5-9 years
+      10 or more years:
+        text: 10 or more years
+      Do not know:
+        text: Do not know
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  date_of_birth_collection_method_menu:
+    name: date_of_birth_collection_method_menu
+    title: date_of_birth_collection_method_menu
+    permissible_values:
+      Self-identified:
+        text: Self-identified
+      Derived:
+        text: Derived
+      Administratively collected:
+        text: Administratively collected
+      Another method of collection:
+        text: Another method of collection
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  disability_status_menu:
+    name: disability_status_menu
+    title: disability_status_menu
+    permissible_values:
+      Person with disability:
+        text: Person with disability
+      Person without disability:
+        text: Person without disability
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  employment_status_menu:
+    name: employment_status_menu
+    title: employment_status_menu
+    permissible_values:
+      Employed full-time:
+        text: Employed full-time
+      Employed part-time:
+        text: Employed part-time
+      Employed casual, on-call, temporary, or seasonal:
+        text: Employed casual, on-call, temporary, or seasonal
+      Self-employed:
+        text: Self-employed
+      Parental leave of absence:
+        text: Parental leave of absence
+      Out of work or unemployed for 1 year or more:
+        text: Out of work or unemployed for 1 year or more
+      Out of work or unemployed for less than 1 year:
+        text: Out of work or unemployed for less than 1 year
+      Looking after home and/or family:
+        text: Looking after home and/or family
+      A student:
+        text: A student
+      Retired:
+        text: Retired
+      Unable to work (for example, because of sickness or disability):
+        text: Unable to work (for example, because of sickness or disability)
+      Another status of employment:
+        text: Another status of employment
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Not applicable:
+        text: Missing - Not applicable
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  first_language_menu:
+    name: first_language_menu
+    title: first_language_menu
+    permissible_values:
+      English:
+        text: English
+      French:
+        text: French
+      Another Language:
+        text: Another Language
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  household_tenure_menu:
+    name: household_tenure_menu
+    title: household_tenure_menu
+    permissible_values:
+      Owner:
+        text: Owner
+      Renter:
+        text: Renter
+      Another status of tenure:
+        text: Another status of tenure
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  knowledge_official_language_menu:
+    name: knowledge_official_language_menu
+    title: knowledge_official_language_menu
+    permissible_values:
+      English:
+        text: English
+      French:
+        text: French
+      Non-official language:
+        text: Non-official language
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  knowledge_official_language_preference_menu:
+    name: knowledge_official_language_preference_menu
+    title: knowledge_official_language_preference_menu
+    permissible_values:
+      English:
+        text: English
+      French:
+        text: French
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  place_of_birth_menu:
+    name: place_of_birth_menu
+    title: place_of_birth_menu
+    permissible_values:
+      Canada:
+        text: Canada
+      Outside of Canada:
+        text: Outside of Canada
+      Do not know:
+        text: Do not know
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  religion_menu:
+    name: religion_menu
+    title: religion_menu
+    permissible_values:
+      Religious:
+        text: Religious
+      Not religious:
+        text: Not religious
+      Do not know:
+        text: Do not know
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  sexual_orientation_menu:
+    name: sexual_orientation_menu
+    title: sexual_orientation_menu
+    permissible_values:
+      LGB+:
+        text: LGB+
+      Heterosexual:
+        text: Heterosexual
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Not applicable:
+        text: Missing - Not applicable
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  total_income_collect_method_menu:
+    name: total_income_collect_method_menu
+    title: total_income_collect_method_menu
+    permissible_values:
+      Self-identified:
+        text: Self-identified
+      Derived:
+        text: Derived
+      Administratively collected:
+        text: Administratively collected
+      Another method of collection:
+        text: Another method of collection
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  total_income_menu:
+    name: total_income_menu
+    title: total_income_menu
+    permissible_values:
+      $ 0 to $ 4,999:
+        text: $ 0 to $ 4,999
+      $ 5,000 to $ 9,999:
+        text: $ 5,000 to $ 9,999
+      $ 10,000 to $ 14,999:
+        text: $ 10,000 to $ 14,999
+      $ 15,000 to $ 19,999:
+        text: $ 15,000 to $ 19,999
+      $ 20,000 to $ 24,999:
+        text: $ 20,000 to $ 24,999
+      $ 25,000 to $ 34,999:
+        text: $ 25,000 to $ 34,999
+      $ 35,000 to $ 49,999:
+        text: $ 35,000 to $ 49,999
+      $ 50,000 to $ 74,999:
+        text: $ 50,000 to $ 74,999
+      $ 75,000 to $ 99,999:
+        text: $ 75,000 to $ 99,999
+      $ 100,000 to $ 149,999:
+        text: $ 100,000 to $ 149,999
+      $ 150,000 to $ 199,999:
+        text: $ 150,000 to $ 199,999
+      $ 200,000 to $ 249,999:
+        text: $ 200,000 to $ 249,999
+      $ 250,000 and over:
+        text: $ 250,000 and over
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Unknown:
+        text: Missing - Unknown
+      Missing - Not collected:
+        text: Missing - Not collected
+      Missing - Not provided:
+        text: Missing - Not provided
+      Missing - Restricted access:
+        text: Missing - Restricted access
+  transgender_menu:
+    name: transgender_menu
+    title: transgender_menu
+    permissible_values:
+      Transgender person:
+        text: Transgender person
+      Non-transgender person:
+        text: Non-transgender person
+      Prefer not to answer:
+        text: Prefer not to answer
+      Missing - Not applicable:
+        text: Missing - Not applicable
       Missing - Unknown:
         text: Missing - Unknown
       Missing - Not collected:
@@ -1189,22 +2620,18 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: 'Ethnicity is a ''multi-dimensional concept referring to community
-      belonging and a shared cultural group membership.
+    description: 'Refers to the ethnic or cultural origins the person''s ancestors.
 
-      It is related to sociodemographic characteristics, including language, religion,
-      geographic origin, nationality, cultural traditions, ancestry and migration
-      history, among others,''
+      Ancestors may have Indigenous origins, or origins that refer to different countries,
+      or other origins that may not refer to different countries.
 
-      [REF: Canadian Institute for Health Information. Guidance on the Use of Standards
-      for Race-Based and Indigenous Identity Data Collection and Health Reporting
-      in Canada (2022)][REF: Canadian Institute for Health Information.Guidance on
-      the Use of Standards for Race-Based and Indigenous Identity Data Collection
-      and Health Reporting in Canada.(2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).
+      Participants may have multiple ethnic and/or cultural identities. All categories
+      entered by the participants should be reported.
 
-      Participants may have multiple ethnic and/or cultural identities.
+      To include multiple values, separate values with a pipe delimiter ''|'' within.
 
-      All categories entered by the participants should be reported.'
+      [REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of
+      person, April 1, 2021]'
     title: ethnicity
     notes:
     - '"PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
@@ -1216,17 +2643,24 @@ slots:
     comments:
     - EDI indicator
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: ethnicity_menu
     required: true
     multivalued: true
   gender:
     name: gender
-    description: 'Gender refers to the socially constructed roles, behaviours, expressions
-      and identities of girls, women, boys, men, and gender diverse people.
+    description: 'Refers to an individual''s personal and social identity as a man,
+      woman, or non-binary person (a person who is not exclusively a man or woman).
 
-      A person''s gender may be the same as or different from their assigned sex at
-      birth and may change over time.'
+      A person''s gender may differ from their sex at birth, and from what is indicated
+      on their current identification or legal documents such as their birth certificate,
+      passport or driver''s license.
+
+      A person''s gender may change over time and some people may not identify with
+      a specific gender.
+
+      [REF: Statistics Canada Departmental Standard, Gender of person, October 1,
+      2021]'
     title: gender
     notes:
     - '
@@ -1238,38 +2672,42 @@ slots:
     comments:
     - EDI indicator
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     - Phenopackets.v2.0:Individual.gender
     range: gender_menu
     required: true
   race:
     name: race
-    description: 'Race is a social construct used to judge and categorize people based
-      on perceived differences in physical appearance in ways that create and maintain
-      power differentials within social hierarchies.
+    description: 'Refers to a person who identifies as a visible minority under the
+      Employment Equity Act, and Indigenous Peoples.
 
-      There is no scientifically supported biological basis for discrete racial groups
-
-      [REF: Canadian Institute for Health Information.Guidance on the Use of Standards
-      for Race-Based and Indigenous Identity Data Collection and Health Reporting
-      in Canada. (2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).
+      The Employment Equity Act defines visible minorities as ''persons, other than
+      Aboriginal peoples, who are non-Caucasian in race or non-white in colour''.
 
       Participants may have multiple racial identities.
 
-      All categories selected by the participants should be reported.'
+      All categories selected by the participants should be reported.
+
+      To include multiple values, separate values with a pipe delimiter ''|'' within.
+
+      [REF: Statistics Canada Departmental Standard, Visible minority of person, August
+      25, 2021]'
     title: race
     comments:
     - EDI indicator
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: race_menu
     required: true
     multivalued: true
   sex_at_birth:
     name: sex_at_birth
-    description: Sex is a biological concept that has been historically defined solely
-      based on external anatomy; however, sex is also influenced by our physiology,
-      genes, and hormones.
+    description: 'Refers to sex assigned at birth. Sex at birth is typically assigned
+      based on a person''s reproductive system and other physical characteristics;
+      however, sex is also influenced by our physiology, genes, and hormones.
+
+      [REF: Statistics Canada Departmental Standard, Sex at birth of person, October
+      1, 2021]'
     title: sex_at_birth
     notes:
     - '
@@ -1279,7 +2717,7 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     - Phenopackets.v2.0:Individual.sex
     range: sex_at_birth_menu
     required: true
@@ -1558,7 +2996,7 @@ slots:
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     description: Indicate the ICD-O-3 topography code or UBERON code for the anatomic
       location of a specimen when it was collected. Please use C80.9 if the anatomic
-      location of a specimen is Unknown.
+      location of the procedure is Unknown.
     title: procedure_body_site_code
     notes:
     - Refer to the International Classification of Diseases for Oncology, 3rd Edition
@@ -1774,7 +3212,7 @@ slots:
     required: false
   body_site_laterality:
     name: body_site_laterality
-    description: Indicate which side on the procedure occured on.
+    description: Indicate which side on the procedure occurred on.
     title: body_site_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
@@ -2053,7 +3491,7 @@ slots:
     description: If the treatment type is 'other', please specify via free text string
     title: treatment_type_other
     range: string
-    required: false
+    required: true
   actual_cumulative_drug_dose:
     name: actual_cumulative_drug_dose
     description: Indicate the total actual cumulative drug dose in the same units
@@ -2090,7 +3528,7 @@ slots:
 
       NCIt URL:
 
-      https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'''
+      https://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'
     title: drug_code
     comments:
     - 'Provide code in Compact URI (CURIE) pattern.  RxNorm URL: https://rxnav.nlm.nih.gov/REST/rxcui/{code}  KEGG
@@ -2099,7 +3537,7 @@ slots:
     examples:
     - value: rxnorm:221058
     - value: kegg.drug:D00123
-    - value: pubchem.compound:100101
+    - value: pubchem.chem:100101
     - value: NCIT:C138986
     related_mappings:
     - ARGO.v1.34:chemotherapy.drug_database:chemotherapy.drug_rxnormcui,chemotherapy.drug_id,hormone_therapy.drug_database:hormone_therapy.drug_rxnormcui,hormone_therapy.drug_id,immunotherapy.drug_database:immunotherapy.drug_rxnormcui,immunotherapy.drug_id
@@ -2239,10 +3677,8 @@ slots:
     pattern: ^[A-Za-z0-9\-\._]{1,64}$
   submitter_sample_ids:
     name: submitter_sample_ids
-    description: 'List of Unique identifiers (min 1) for samples within the study,
+    description: List of Unique identifiers (min 1) for samples within the study,
       assigned by the data provider.
-
-      '
     title: submitter_sample_ids
     examples:
     - value: hnc_12
@@ -2266,8 +3702,8 @@ slots:
       Case sample refers to a sample that meets the disease or exposure criteria under
       investigation.
 
-      Control sample refers to of the same type that does not meet the criteria, representing
-      a normal or baseline state for comparison.'
+      Control sample refers to a sample of the same type that does not meet the criteria,
+      representing a normal or baseline state for comparison.'
     title: sample_status
     range: sample_status_menu
     required: true
@@ -2344,7 +3780,7 @@ slots:
       in the analysis.
     title: submitter_workflow_id
     range: string
-    required: false
+    required: true
   genome_build:
     name: genome_build
     description: 'The reference genome build that is used in the workflow. '
@@ -2434,7 +3870,7 @@ slots:
   duo_permission:
     name: duo_permission
     description: Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE)
-      pattern to indicate permitted uses or focused areas of research for the Participant
+      pattern to indicate permitted uses or focused areas of research for the Study
       data.
     title: duo_permission
     exact_mappings:
@@ -2445,7 +3881,7 @@ slots:
     name: duo_modifier
     description: Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE)
       pattern to add requirements, limitations, or prohibitions within the permitted
-      boundary for the Participant data.
+      boundary for the Study data.
     title: duo_modifier
     exact_mappings:
     - CQDG:duo_modifier
@@ -2454,8 +3890,10 @@ slots:
     multivalued: true
   disease_specific_modifier:
     name: disease_specific_modifier
-    description: If the permission is DUO:0000007 (disease specific research), then
+    description: 'If the permission is DUO:0000007 (disease specific research), then
       MONDO codes must be provided to specify which disease(s) apply.
+
+      To include multiple values, separate values with a pipe delimiter ''|'' within'
     title: disease_specific_modifier
     examples:
     - value: MONDO:0000001
@@ -2487,7 +3925,7 @@ slots:
       age (in days) using the year of birth and year of study collection. If left
       empty, must populate \"age_at_sociodem_collection_missing_reason\" '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: integer
     required: true
   age_at_sociodem_collection_missing_reason:
@@ -2501,31 +3939,24 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: age_at_sociodem_collection_missing_reason_menu
-    required: false
+    required: true
   sociodem_date_collection:
     name: sociodem_date_collection
     description: "Many sociodemographic variables are social constructs, and the way\
       \ participants self-identify may evolve over time. \nPlease indicate the actual\
-      \ date when the data was collected in format: YYYY-MM-DD, if available. \nIf\
-      \ the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if\
-      \ the day is unknown but the month and year are known\n- Use YYYY if only the\
-      \ year is known"
+      \ date when the data was collected in format: YYYY, if available."
     title: sociodem_date_collection
     notes:
-    - '
-
-      When the exact date is unknown it can be approximated based on the study''s
-      year of commencement.
-
-      '
+    - ' When the exact date is unknown it can be approximated based on the study''s
+      year of commencement. '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
     required: true
-    pattern: ^(?:\d{4}|\d{4}-\d{2}|\d{4}-\d{2}-\d{2})$|^Missing \- Unknown$|^Missing
-      \- Not collected$|^Missing \- Not provided$|^Missing \- Restricted access$
+    pattern: ^(?:\d{4})$|^Missing \- Unknown$|^Missing \- Not collected$|^Missing
+      \- Not provided$|^Missing \- Restricted access$
   race_another_racial_category:
     name: race_another_racial_category
     description: A response which does not fall into any of the previous racial reporting
@@ -2540,20 +3971,20 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   race_collect_method:
     name: race_collect_method
-    description: 'Studies must report how race data was collected
+    description: 'Studies must report how race data was collected.
 
-      . This is necessary to enable data aggregation, harmonization, and reproducibility.
+      This is necessary to enable data aggregation, harmonization, and reproducibility.
 
       Responses from prospective projects should always be self-identified.
 
       To respect participants'' autonomy and right to self-determination, as well
       as to avoid conflating differences in (genetic) population structure with socially
-      constructed racial categories,responses that were self-identified should not
+      constructed racial categories, responses that were self-identified should not
       be aggregated with responses that were socially assigned or derived.'
     title: race_collect_method
     notes:
@@ -2573,9 +4004,9 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   gender_collect_method:
     name: gender_collect_method
     description: 'Studies must report how the gender data was collected. This is necessary
@@ -2599,13 +4030,14 @@ slots:
     notes:
     - '
 
-      ethnicity_another_category must be populated when ethnicity is "Free text input".
+      ethnicity_another_category must be populated when ethnicity is “Another Ethnic
+      or Cultural Origin”.
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   ethnicity_collect_method:
     name: ethnicity_collect_method
     description: 'Studies must report how the ethnicity data was collected. This is
@@ -2627,13 +4059,13 @@ slots:
     notes:
     - '
 
-      sex_another_category must be populated when sex is "Another Sex"..
+      sex_another_category must be populated when sex is "Another Sex".
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   sex_collect_method:
     name: sex_collect_method
     description: 'Studies must report how the sex_at_birth data was collected. This
@@ -2650,7 +4082,20 @@ slots:
     required: true
   education:
     name: education
-    description: The highest level of education attained.
+    description: 'Refers to the highest level of education that a person has successfully
+      completed.
+
+      Successful completion of a level of education refers to the achievement of the
+      learning objectives of that level, typically validated through the assessment
+      of acquired knowledge, skills, and competencies.
+
+      [REF: Statistics Canada Departmental Standard, Educational attainment of person,
+      May 26, 2021].
+
+      ''Missing - Not applicable'' is provided as a valid response option when the
+      question is not appropriate to ask (for example, newborn studies).
+
+      This response option should NOT be provided to adult participants.'
     title: education
     notes:
     - '
@@ -2660,7 +4105,7 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: education_menu
     required: true
   education_collect_method:
@@ -2679,7 +4124,13 @@ slots:
     required: true
   personal_income:
     name: personal_income
-    description: Personal annual income from all sources after taxes.
+    description: 'Personal annual income from all sources after taxes.
+
+      ''Missing - Not applicable'' is provided as a valid response option when the
+      question of personal income is not appropriate to ask (for example, newborn
+      studies).
+
+      This response option should NOT be provided to adult participants.'
     title: personal_income
     notes:
     - '
@@ -2689,13 +4140,19 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: personal_income_menu
-    required: true
+    required: false
   personal_income_collect_method:
     name: personal_income_collect_method
     description: 'Studies must report how the personal_income data was collected.
-      This is necessary to enable data aggregation, harmonization, and reproducibility. '
+
+      This is necessary to enable data aggregation, harmonization, and reproducibility.
+
+      ''Missing - Not applicable'' is provided as a valid response option when the
+      question of income is not appropriate to ask (for example, newborn studies).
+
+      This response option should NOT be provided to adult participants.'
     title: personal_income_collect_method
     notes:
     - '
@@ -2705,10 +4162,11 @@ slots:
 
       '
     range: personal_income_collect_method_menu
-    required: true
+    required: false
   geographic_location:
     name: geographic_location
-    description: A participant's postal code at their current address of residence.
+    description: Refers to the person's current, usual place of residence, derived
+      from the postal code at their current address of residence.
     title: geographic_location
     notes:
     - '
@@ -2718,7 +4176,7 @@ slots:
 
       '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
     required: true
     pattern: ^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \- Unknown$|^Missing
@@ -2729,7 +4187,7 @@ slots:
       reported.
     title: geographic_location_additional
     range: string
-    required: false
+    required: true
   geographic_location_collect_method:
     name: geographic_location_collect_method
     description: 'Studies must report how the geographic_location data was collected.
@@ -2768,9 +4226,9 @@ slots:
       text used to collect the variable, including the response options or reporting
       categories made available to participants." '
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
-    required: false
+    required: true
   sociodem_notes:
     name: sociodem_notes
     description: Studies may choose to report whether potential bias may exist due
@@ -2782,7 +4240,7 @@ slots:
         \ per reporting option. \n\nOther examples may include inclusion/exclusion\
         \ criteria based on sociodemographic variables."
     exact_mappings:
-    - PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
+    - PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0
     range: string
     required: false
   radiation_modality_code:
@@ -2930,9 +4388,7 @@ slots:
     description: The high-level experiment design including layout, protocol.
     title: experiment_design
     notes:
-    - Added as a redundancy measure to prevent submission errors. Clinical API will
-      check study_id against user's selection. Also duplicates field study_id in Participant
-      b/c SONG's rigidity to rename
+    - N/A
     exact_mappings:
     - GA4GH.Experiment.Metadata.Checklist:design_description
     range: string
@@ -3503,6 +4959,342 @@ slots:
     - value: fr-ca
     range: string
     required: true
+  date_of_birth:
+    name: date_of_birth
+    description: 'Date of birth collected in format: YYYY-MM or YYYY'
+    title: date_of_birth
+    notes:
+    - 'Date of birth collected in format: YYYY-MM'
+    range: string
+    required: true
+    pattern: ^(?:\d{4}$|\d{4}-\d{2}$)
+  date_of_birth_collection_method:
+    name: date_of_birth_collection_method
+    description: 'Studies must report how the date_of_birth was collected. This is
+      necessary to enable data aggregation, harmonization, and reproducibility.
+
+      ''Self-identified'': The participant reported on their own behalf.
+
+      ''Derived'': When age is calculated (e.g. interval based methods).
+
+      ''Administratively collected'': Administrative methods of collection, for example
+      through electronic health records, health card, etc.
+
+      ''Another method of collection'': A response which does not fall into any of
+      the previous reporting categories.'
+    title: date_of_birth_collection_method
+    range: date_of_birth_collection_method_menu
+    required: true
+  place_of_birth:
+    name: place_of_birth
+    description: 'Refers to the name of the geographic location where the person was
+      born.
+
+      The geographic location is specified according to geographic boundaries current
+      at the time of data collection, not the geographic boundaries at the time of
+      birth.
+
+      [REF: Statistics Canada Departmental Standard, Place of birth of person, January
+      11, 2016]'
+    title: place_of_birth
+    range: place_of_birth_menu
+    required: false
+  pob_outside_canada:
+    name: pob_outside_canada
+    description: A response when a participant selected "Outside of Canada" to the
+      field place_of_birth
+    title: pob_outside_canada
+    range: string
+  arrival_in_canada:
+    name: arrival_in_canada
+    description: A response when a participant selected "Outside of Canada" to the
+      field place_of_birth
+    title: arrival_in_canada
+    range: arrival_in_canada_menu
+  parent1_place_of_birth:
+    name: parent1_place_of_birth
+    description: 'Refers to the name of the geographic location where the person''s
+      parent was born.
+
+      The geographic location is specified according to geographic boundaries current
+      at the time of data collection, not the geographic boundaries at the time of
+      birth.
+
+      [REF: Statistics Canada Departmental Standard, Place of birth of person, January
+      11, 2016]'
+    title: parent1_place_of_birth
+    range: place_of_birth_menu
+  parent1_another_pob:
+    name: parent1_another_pob
+    description: A response when a participant selected "Outside of Canada" to the
+      field parent1_place_of_birth
+    title: parent1_another_pob
+    range: string
+  parent2_place_of_birth:
+    name: parent2_place_of_birth
+    description: 'Refers to the name of the geographic location where the person''s
+      parent was born.
+
+      The geographic location is specified according to geographic boundaries current
+      at the time of data collection, not the geographic boundaries at the time of
+      birth.
+
+      [REF: Statistics Canada Departmental Standard, Place of birth of person, January
+      11, 2016]'
+    title: parent2_place_of_birth
+    range: place_of_birth_menu
+  parent2_another_pob:
+    name: parent2_another_pob
+    description: A response when a participant answered "Outside of Canada" to the
+      field parent2_place_of_birth
+    title: parent2_another_pob
+    range: string
+  first_language:
+    name: first_language
+    description: 'Refers to the first language learned at home in childhood and still
+      understood by the person at the time the data was collected.
+
+      If the person no longer understands the first language learned, the second language
+      learned may be specified.
+
+      For a person who learned more than one language at the same time in early childhood,
+      more than one entry can be made; or, the language this person spoke most often
+      at home before starting school may be uniquely entered.
+
+      [REF: Statistics Canada Departmental Standard, Mother tongue of person, July
+      29, 2022]'
+    title: first_language
+    range: first_language_menu
+  first_language_another_language:
+    name: first_language_another_language
+    description: 'Refers to the first language learned at home in childhood and still
+      understood by the person at the time the data was collected.
+
+      If the person no longer understands the first language learned, the second language
+      learned may be specified.
+
+      For a person who learned more than one language at the same time in early childhood,
+      more than one entry can be made; or, the language this person spoke most often
+      at home before starting school may be uniquely entered.
+
+      [REF: Statistics Canada Departmental Standard, Mother tongue of person, July
+      29, 2022]'
+    title: first_language_another_language
+    range: string
+  knowledge_official_languages:
+    name: knowledge_official_languages
+    description: 'Refers to whether a person can conduct a conversation in English,
+      French, or neither language.
+
+      For a child who has not yet learned to speak, this includes languages that the
+      child is learning to speak at home.
+
+      [REF: Statistics Canada Departmental Standard, Knowledge of official languages
+      of person, December 4, 2015].
+
+      To include multiple values, separate values with a pipe delimiter ''|'' within.'
+    title: knowledge_official_languages
+    range: knowledge_official_language_menu
+    multivalued: true
+  knowledge_non_official_language:
+    name: knowledge_non_official_language
+    description: A response when "Non-official language" was selected for field "knowledge_official_languages".
+    title: knowledge_non_official_language
+    range: string
+  knowledge_official_language_preference:
+    name: knowledge_official_language_preference
+    description: A response when "Non-official language" was selected for field "knowledge_official_languages".
+    title: knowledge_official_language_preference
+    range: knowledge_official_language_preference_menu
+  religion:
+    name: religion
+    description: 'Refers to a person''s self-identification as having a connection
+      or affiliation with any religious denomination, group, body, or other religiously
+      defined community or system of belief.
+
+      Religion is not limited to formal membership in a religious organization or
+      group.
+
+      For infants or children, religion refers to the specific religious group or
+      denomination in which they are being raised, if any.
+
+      Persons without a religious connection or affiliation can self-identify as atheist,
+      agnostic, or humanist, or can provide another applicable response. [REF: Statistics
+      Canada Departmental Standard, Religion of person, April 1, 2021].'
+    title: religion
+    range: religion_menu
+  religion_free_text_input:
+    name: religion_free_text_input
+    description: A response when "Religious" was selected for field "religion".
+    title: religion_free_text_input
+    range: string
+  sexual_orientation:
+    name: sexual_orientation
+    description: 'Refers to how a person describes their sexual identity.
+
+      For example, a person may describe their sexuality as heterosexual, lesbian,
+      gay, bisexual or pansexual (or another sexual orientation not included here).
+
+      [REF: Statistics Canada Recommended Standard, Sexual orientation of person,
+      June 13, 2023].
+
+
+      ''LGB+'': This reporting category includes persons whose reported sexual orientation
+      is lesbian, gay, bisexual, pansexual, or another sexual orientation that is
+      not heterosexual (i.e., a person of minority sexual orientation) [Statistics
+      Canada Recommended Standard, Classification of sexual orientation, June 13,
+      2023].
+
+
+      ''Heterosexual'': This reporting category includes persons whose reported sexual
+      orientation is heterosexual (i.e. a person who is not a minority sexual orientation)
+      [Statistics Canada Recommended Standard, Classification of sexual orientation,
+      June 13, 2023].
+
+
+      ''Missing - Not applicable'': Statistics Canada currently only collects data
+      on sexual orientation from people aged 15 years and older [Statistics Canada
+      Recommended Standard, Sexual orientation of person, June 13, 2023].'
+    title: sexual_orientation
+    range: sexual_orientation_menu
+  transgender:
+    name: transgender
+    description: 'A person whose gender identity differs from what is typically associated
+      with the sex they were assigned at birth.
+
+      [REF: https://www.canada.ca/en/women-gender-equality/free-to-be-me/2slgbtqi-plus-glossary.html].
+
+
+      ''Missing - Not applicable'' is provided as a valid response option when the
+      question of transgender is not appropriate to ask (for example, newborn studies).
+      This response option should NOT be provided to adult participants.'
+    title: transgender
+    range: transgender_menu
+  disability_status:
+    name: disability_status
+    description: 'Disability is the result of the interaction between a person''s
+      functional limitations and barriers in the environment, including social and
+      physical barriers that make it harder to function day-to-day.
+
+      Thus, a person with disability is a person with a social disadvantage that an
+      unsupportive environment imposes on top of their impairment.
+
+      [REF: Statistics Canada, Canadian Survey on Disability, 2022: Concepts and Methods
+      Guide, December 1, 2023].'
+    title: disability_status
+    range: disability_status_menu
+  total_income:
+    name: total_income
+    description: 'Refers to the sum of certain incomes before income taxes and deductions,
+      during a specified reference period.
+
+      The monetary receipts included are those that tend to be of a regular and recurring
+      nature.
+
+      [REF: Statistics Canada Departmental Standard, Total income of person, March
+      21, 2016]'
+    title: total_income
+    range: total_income_menu
+    required: true
+  total_income_support:
+    name: total_income_support
+    description: The number of people supported by the value entered in total_income
+    title: total_income_support
+    range: integer
+    required: true
+  total_income_collect_method:
+    name: total_income_collect_method
+    description: Studies must report how the total_income data was collected. This
+      is necessary to enable data aggregation, harmonization, and reproducibility.
+    title: total_income_collect_method
+    range: total_income_collect_method_menu
+    required: true
+  employment_status:
+    name: employment_status
+    description: 'Refers to the labour force status of those during the reference
+      period.
+
+      This may include those who, during the reference period did any work at all
+      at a job or business (that is, paid work in the context of an employer-employee
+      relationship, self-employment, or persons who did unpaid family work); had a
+      job but were not at work due to factors such as their own illness or disability,
+      personal or family responsibilities, vacation or a labour dispute; or, persons
+      who were not employed during the reference period (including persons who were
+      unemployed as well as those who were not in the labour force).
+
+      Participants may have multiple employment statuses. All categories selected
+      by the participants should be reported.
+
+      [Statistics Canada Departmental Standard, Employed person, June 21, 2010].
+
+
+      ''Missing - Not applicable'' is provided as a valid response option when the
+      question of employment_status is not appropriate to ask (for example, newborn
+      studies). This response option should NOT be provided to adult participants.
+
+      To include multiple values, separate values with a pipe delimiter ''|'' within.'
+    title: employment_status
+    range: employment_status_menu
+    multivalued: true
+  another_employment_status:
+    name: another_employment_status
+    description: A response which does not fall into any of the previous categories.
+      Provided when "Another status of employment" is selected in "employment_status"
+    title: another_employment_status
+    range: string
+  household_tenure:
+    name: household_tenure
+    description: 'Refers to whether the household (that is, a person or group of persons
+      who occupy the same dwelling) owns or rents their private dwelling.
+
+      The private dwelling may be situated on rented or leased land or be part of
+      a condominium.
+
+      A household is considered to own their dwelling if some member of the household
+      owns the dwelling even if it is not fully paid for, for example if there is
+      a mortgage or some other claim on it.
+
+      A household is considered to rent their dwelling if no member of the household
+      owns the dwelling, even if the dwelling is provided without cash rent or at
+      a reduced rent, or if the dwelling is part of a cooperative.
+
+      [REF: Statistics Canada Departmental Standard, Tenure of private household,
+      May 17, 2010]'
+    title: household_tenure
+    range: household_tenure_menu
+  another_household_tenure:
+    name: another_household_tenure
+    description: A response which does not fall into any of the previous categories.
+      Provided when "Another status of tenure" is selected in "household_tenure"
+    title: another_household_tenure
+    range: string
+  accommodation_type:
+    name: accommodation_type
+    description: 'Refers to the hospitality service provided in a dwelling where a
+      person may reside temporarily or permanently.
+
+      [REF: Statistics Canada Departmental Standards, Classification of residential
+      structures, September 11, 2013; Accommodation type of collective dwelling, September
+      24, 2021; ].'
+    title: accommodation_type
+    range: accommodation_type_menu
+  another_accommodation_type:
+    name: another_accommodation_type
+    description: A response which does not fall into any of the previous categories.
+      Provided when "Another accommodation type" is selected in "accommodation_type"
+    title: another_accommodation_type
+    range: string
+  accommodation_duration:
+    name: accommodation_duration
+    description: Years lived at current location specified in "geographic_location"
+    title: accommodation_duration
+    range: accommodation_duration_menu
+  accommodation_number_of_occupants:
+    name: accommodation_number_of_occupants
+    description: Counting themselves, the number of occupants living concurrently
+      at the location specified in "geographic_location"
+    title: accommodation_number_of_occupants
+    range: integer
 classes:
   Study:
     name: Study
@@ -3516,11 +5308,13 @@ classes:
     - dac_id
     - context
     - domain
+    - duo_permission
     - lead_organizations
     - principal_investigators
     - status
     - study_name
     - collaborators
+    - disease_specific_modifier
     - publication_links
     slot_usage:
       dac_id:
@@ -3535,37 +5329,64 @@ classes:
         name: domain
         rank: 3
         slot_group: Study
+      duo_permission:
+        name: duo_permission
+        rank: 4
+        slot_group: Study
       lead_organizations:
         name: lead_organizations
-        rank: 4
+        rank: 5
         slot_group: Study
       principal_investigators:
         name: principal_investigators
-        rank: 5
+        rank: 6
         slot_group: Study
       status:
         name: status
-        rank: 6
+        rank: 7
         slot_group: Study
       study_name:
         name: study_name
-        rank: 7
+        rank: 8
         slot_group: Study
       collaborators:
         name: collaborators
-        rank: 8
+        rank: 9
+        slot_group: Study
+      disease_specific_modifier:
+        name: disease_specific_modifier
+        rank: 10
         slot_group: Study
       publication_links:
         name: publication_links
-        rank: 9
+        rank: 11
         slot_group: Study
+    rules:
+    - preconditions:
+        description: If the duo_permission is DUO:0000007 (disease specific research),
+          then MONDO codes must be provided for disease_specific_modifier.
+        slot_conditions:
+          duo_permission:
+            name: duo_permission
+            equals_string: DUO:0000007 (disease specific research)
+      postconditions:
+        slot_conditions:
+          disease_specific_modifier:
+            name: disease_specific_modifier
+            required: true
+      elseconditions:
+        slot_conditions:
+          disease_specific_modifier:
+            name: disease_specific_modifier
+            required: false
+            value_presence: ABSENT
   Study_Translation:
     name: Study_Translation
-    description: Study_translation refers language-specific, localized representation
+    description: Study_translation refers yo language-specific, localized representation
       of a Study's descriptive metadata. It allows the descriptive and contextual
       information associated with a study to be presented in multiple languages, ensuring
       accessibility for diverse audiences.
-    title: study
+    title: study_translation
     slots:
     - language_id
     - funding_sources
@@ -3635,25 +5456,45 @@ classes:
     - '{"reference": "Phenopacket / GDC", "status": "v2"}'
     slots:
     - submitter_participant_id
-    - duo_permission
-    - disease_specific_modifier
-    - duo_modifier
+    - sex_another_category
+    - sex_at_birth
+    - sex_collect_method
+    - age_at_death
+    - age_at_enrollment
+    - cause_of_death
+    - vital_status
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
         rank: 1
         slot_group: Database Identifiers
-      duo_permission:
-        name: duo_permission
+      sex_another_category:
+        name: sex_another_category
         rank: 2
         slot_group: Participant
-      disease_specific_modifier:
-        name: disease_specific_modifier
+      sex_at_birth:
+        name: sex_at_birth
         rank: 3
         slot_group: Participant
-      duo_modifier:
-        name: duo_modifier
+      sex_collect_method:
+        name: sex_collect_method
         rank: 4
+        slot_group: Participant
+      age_at_death:
+        name: age_at_death
+        rank: 5
+        slot_group: Participant
+      age_at_enrollment:
+        name: age_at_enrollment
+        rank: 6
+        slot_group: Participant
+      cause_of_death:
+        name: cause_of_death
+        rank: 7
+        slot_group: Participant
+      vital_status:
+        name: vital_status
+        rank: 8
         slot_group: Participant
     unique_keys:
       main:
@@ -3662,22 +5503,36 @@ classes:
         - submitter_participant_id
     rules:
     - preconditions:
-        description: If the duo_permission is DUO:0000007 (disease specific research),
-          then MONDO codes must be provided for disease_specific_modifier.
+        description: cause_of_death populatable only if vital_status is deceased
         slot_conditions:
-          duo_permission:
-            name: duo_permission
-            equals_string: DUO:0000007 (disease specific research)
+          vital_status:
+            name: vital_status
+            equals_string: Deceased
       postconditions:
         slot_conditions:
-          disease_specific_modifier:
-            name: disease_specific_modifier
-            required: true
+          cause_of_death:
+            name: cause_of_death
+            required: false
       elseconditions:
         slot_conditions:
-          disease_specific_modifier:
-            name: disease_specific_modifier
+          cause_of_death:
+            name: cause_of_death
+            value_presence: ABSENT
+    - preconditions:
+        description: Age_at_death populatable only if vital_status is deceased
+        slot_conditions:
+          vital_status:
+            name: vital_status
+            equals_string: Deceased
+      postconditions:
+        slot_conditions:
+          age_at_death:
+            name: age_at_death
             required: false
+      elseconditions:
+        slot_conditions:
+          age_at_death:
+            name: age_at_death
             value_presence: ABSENT
   Sociodemographic:
     name: Sociodemographic
@@ -3691,30 +5546,60 @@ classes:
     - submitter_participant_id
     - submitter_sociodem_id
     - age_at_sociodem_collection
+    - age_at_sociodem_collection_missing_reason
+    - date_of_birth
+    - date_of_birth_collection_method
     - education
     - education_collect_method
     - ethnicity
+    - ethnicity_another_category
     - ethnicity_collect_method
     - gender
+    - gender_another_gender
     - gender_collect_method
     - geographic_location
+    - geographic_location_additional
     - geographic_location_collect_method
-    - personal_income
-    - personal_income_collect_method
     - race
+    - race_another_racial_category
     - race_collect_method
+    - sex_another_category
     - sex_at_birth
     - sex_collect_method
     - sociodem_date_collection
     - sociodem_question
-    - age_at_sociodem_collection_missing_reason
-    - ethnicity_another_category
-    - gender_another_gender
-    - geographic_location_additional
-    - race_another_racial_category
-    - sex_another_category
-    - sociodem_notes
     - sociodem_question_detail
+    - total_income
+    - total_income_collect_method
+    - total_income_support
+    - accommodation_duration
+    - accommodation_number_of_occupants
+    - accommodation_type
+    - another_accommodation_type
+    - another_employment_status
+    - another_household_tenure
+    - arrival_in_canada
+    - disability_status
+    - employment_status
+    - first_language
+    - first_language_another_language
+    - household_tenure
+    - knowledge_non_official_language
+    - knowledge_official_language_preference
+    - knowledge_official_languages
+    - parent1_another_pob
+    - parent1_place_of_birth
+    - parent2_another_pob
+    - parent2_place_of_birth
+    - personal_income
+    - personal_income_collect_method
+    - place_of_birth
+    - pob_outside_canada
+    - religion
+    - religion_free_text_input
+    - sexual_orientation
+    - sociodem_notes
+    - transgender
     slot_usage:
       submitter_participant_id:
         name: submitter_participant_id
@@ -3728,101 +5613,221 @@ classes:
         name: age_at_sociodem_collection
         rank: 3
         slot_group: Sociodemographic
+      age_at_sociodem_collection_missing_reason:
+        name: age_at_sociodem_collection_missing_reason
+        rank: 4
+        slot_group: Sociodemographic
+      date_of_birth:
+        name: date_of_birth
+        rank: 5
+        slot_group: Sociodemographic
+      date_of_birth_collection_method:
+        name: date_of_birth_collection_method
+        rank: 6
+        slot_group: Sociodemographic
       education:
         name: education
-        rank: 4
+        rank: 7
         slot_group: Sociodemographic
       education_collect_method:
         name: education_collect_method
-        rank: 5
+        rank: 8
         slot_group: Sociodemographic
       ethnicity:
         name: ethnicity
-        rank: 6
-        slot_group: Sociodemographic
-      ethnicity_collect_method:
-        name: ethnicity_collect_method
-        rank: 7
-        slot_group: Sociodemographic
-      gender:
-        name: gender
-        rank: 8
-        slot_group: Sociodemographic
-      gender_collect_method:
-        name: gender_collect_method
         rank: 9
-        slot_group: Sociodemographic
-      geographic_location:
-        name: geographic_location
-        rank: 10
-        slot_group: Sociodemographic
-      geographic_location_collect_method:
-        name: geographic_location_collect_method
-        rank: 11
-        slot_group: Sociodemographic
-      personal_income:
-        name: personal_income
-        rank: 12
-        slot_group: Sociodemographic
-      personal_income_collect_method:
-        name: personal_income_collect_method
-        rank: 13
-        slot_group: Sociodemographic
-      race:
-        name: race
-        rank: 14
-        slot_group: Sociodemographic
-      race_collect_method:
-        name: race_collect_method
-        rank: 15
-        slot_group: Sociodemographic
-      sex_at_birth:
-        name: sex_at_birth
-        rank: 16
-        slot_group: Sociodemographic
-      sex_collect_method:
-        name: sex_collect_method
-        rank: 17
-        slot_group: Sociodemographic
-      sociodem_date_collection:
-        name: sociodem_date_collection
-        rank: 18
-        slot_group: Sociodemographic
-      sociodem_question:
-        name: sociodem_question
-        rank: 19
-        slot_group: Sociodemographic
-      age_at_sociodem_collection_missing_reason:
-        name: age_at_sociodem_collection_missing_reason
-        rank: 20
         slot_group: Sociodemographic
       ethnicity_another_category:
         name: ethnicity_another_category
-        rank: 21
+        rank: 10
+        slot_group: Sociodemographic
+      ethnicity_collect_method:
+        name: ethnicity_collect_method
+        rank: 11
+        slot_group: Sociodemographic
+      gender:
+        name: gender
+        rank: 12
         slot_group: Sociodemographic
       gender_another_gender:
         name: gender_another_gender
-        rank: 22
+        rank: 13
+        slot_group: Sociodemographic
+      gender_collect_method:
+        name: gender_collect_method
+        rank: 14
+        slot_group: Sociodemographic
+      geographic_location:
+        name: geographic_location
+        rank: 15
         slot_group: Sociodemographic
       geographic_location_additional:
         name: geographic_location_additional
-        rank: 23
+        rank: 16
+        slot_group: Sociodemographic
+      geographic_location_collect_method:
+        name: geographic_location_collect_method
+        rank: 17
+        slot_group: Sociodemographic
+      race:
+        name: race
+        rank: 18
         slot_group: Sociodemographic
       race_another_racial_category:
         name: race_another_racial_category
-        rank: 24
+        rank: 19
+        slot_group: Sociodemographic
+      race_collect_method:
+        name: race_collect_method
+        rank: 20
         slot_group: Sociodemographic
       sex_another_category:
         name: sex_another_category
-        rank: 25
+        rank: 21
         slot_group: Sociodemographic
-      sociodem_notes:
-        name: sociodem_notes
-        rank: 26
+      sex_at_birth:
+        name: sex_at_birth
+        rank: 22
+        slot_group: Sociodemographic
+      sex_collect_method:
+        name: sex_collect_method
+        rank: 23
+        slot_group: Sociodemographic
+      sociodem_date_collection:
+        name: sociodem_date_collection
+        rank: 24
+        slot_group: Sociodemographic
+      sociodem_question:
+        name: sociodem_question
+        rank: 25
         slot_group: Sociodemographic
       sociodem_question_detail:
         name: sociodem_question_detail
+        rank: 26
+        slot_group: Sociodemographic
+      total_income:
+        name: total_income
         rank: 27
+        slot_group: Sociodemographic
+      total_income_collect_method:
+        name: total_income_collect_method
+        rank: 28
+        slot_group: Sociodemographic
+      total_income_support:
+        name: total_income_support
+        rank: 29
+        slot_group: Sociodemographic
+      accommodation_duration:
+        name: accommodation_duration
+        rank: 30
+        slot_group: Sociodemographic
+      accommodation_number_of_occupants:
+        name: accommodation_number_of_occupants
+        rank: 31
+        slot_group: Sociodemographic
+      accommodation_type:
+        name: accommodation_type
+        rank: 32
+        slot_group: Sociodemographic
+      another_accommodation_type:
+        name: another_accommodation_type
+        rank: 33
+        slot_group: Sociodemographic
+      another_employment_status:
+        name: another_employment_status
+        rank: 34
+        slot_group: Sociodemographic
+      another_household_tenure:
+        name: another_household_tenure
+        rank: 35
+        slot_group: Sociodemographic
+      arrival_in_canada:
+        name: arrival_in_canada
+        rank: 36
+        slot_group: Sociodemographic
+      disability_status:
+        name: disability_status
+        rank: 37
+        slot_group: Sociodemographic
+      employment_status:
+        name: employment_status
+        rank: 38
+        slot_group: Sociodemographic
+      first_language:
+        name: first_language
+        rank: 39
+        slot_group: Sociodemographic
+      first_language_another_language:
+        name: first_language_another_language
+        rank: 40
+        slot_group: Sociodemographic
+      household_tenure:
+        name: household_tenure
+        rank: 41
+        slot_group: Sociodemographic
+      knowledge_non_official_language:
+        name: knowledge_non_official_language
+        rank: 42
+        slot_group: Sociodemographic
+      knowledge_official_language_preference:
+        name: knowledge_official_language_preference
+        rank: 43
+        slot_group: Sociodemographic
+      knowledge_official_languages:
+        name: knowledge_official_languages
+        rank: 44
+        slot_group: Sociodemographic
+      parent1_another_pob:
+        name: parent1_another_pob
+        rank: 45
+        slot_group: Sociodemographic
+      parent1_place_of_birth:
+        name: parent1_place_of_birth
+        rank: 46
+        slot_group: Sociodemographic
+      parent2_another_pob:
+        name: parent2_another_pob
+        rank: 47
+        slot_group: Sociodemographic
+      parent2_place_of_birth:
+        name: parent2_place_of_birth
+        rank: 48
+        slot_group: Sociodemographic
+      personal_income:
+        name: personal_income
+        rank: 49
+        slot_group: Sociodemographic
+      personal_income_collect_method:
+        name: personal_income_collect_method
+        rank: 50
+        slot_group: Sociodemographic
+      place_of_birth:
+        name: place_of_birth
+        rank: 51
+        slot_group: Sociodemographic
+      pob_outside_canada:
+        name: pob_outside_canada
+        rank: 52
+        slot_group: Sociodemographic
+      religion:
+        name: religion
+        rank: 53
+        slot_group: Sociodemographic
+      religion_free_text_input:
+        name: religion_free_text_input
+        rank: 54
+        slot_group: Sociodemographic
+      sexual_orientation:
+        name: sexual_orientation
+        rank: 55
+        slot_group: Sociodemographic
+      sociodem_notes:
+        name: sociodem_notes
+        rank: 56
+        slot_group: Sociodemographic
+      transgender:
+        name: transgender
+        rank: 57
         slot_group: Sociodemographic
     unique_keys:
       main:
@@ -3933,73 +5938,6 @@ classes:
             name: sociodem_question_detail
             required: false
             value_presence: ABSENT
-  Demographic:
-    name: Demographic
-    description: Data for the characterization of the participant by means of segmenting
-      the population (e.g., characterization by age, sex, or race).
-    title: Demographic
-    todos:
-    - '{"reference": "GDC", "status": "v2"}'
-    slots:
-    - submitter_participant_id
-    - age_at_death
-    - age_at_enrollment
-    - cause_of_death
-    - vital_status
-    slot_usage:
-      submitter_participant_id:
-        name: submitter_participant_id
-        rank: 1
-        slot_group: Database Identifiers
-      age_at_death:
-        name: age_at_death
-        rank: 2
-        slot_group: Demographic
-      age_at_enrollment:
-        name: age_at_enrollment
-        rank: 3
-        slot_group: Demographic
-      cause_of_death:
-        name: cause_of_death
-        rank: 4
-        slot_group: Demographic
-      vital_status:
-        name: vital_status
-        rank: 5
-        slot_group: Demographic
-    rules:
-    - preconditions:
-        description: cause_of_death populatable only if vital_status is deceased
-        slot_conditions:
-          vital_status:
-            name: vital_status
-            equals_string: Deceased
-      postconditions:
-        slot_conditions:
-          cause_of_death:
-            name: cause_of_death
-            required: false
-      elseconditions:
-        slot_conditions:
-          cause_of_death:
-            name: cause_of_death
-            value_presence: ABSENT
-    - preconditions:
-        description: Age_at_death populatable only if vital_status is deceased
-        slot_conditions:
-          vital_status:
-            name: vital_status
-            equals_string: Deceased
-      postconditions:
-        slot_conditions:
-          age_at_death:
-            name: age_at_death
-            required: false
-      elseconditions:
-        slot_conditions:
-          age_at_death:
-            name: age_at_death
-            value_presence: ABSENT
   Diagnosis:
     name: Diagnosis
     description: The disease that is inferred to be present in the individual, family
@@ -4055,12 +5993,12 @@ classes:
     - submitter_participant_id
     - submitter_treatment_id
     - treatment_type
+    - treatment_type_other
     - age_at_treatment
     - treatment_duration
     - treatment_intent
     - treatment_response
     - treatment_status
-    - treatment_type_other
     slot_usage:
       submitter_diagnosis_id:
         name: submitter_diagnosis_id
@@ -4078,28 +6016,28 @@ classes:
         name: treatment_type
         rank: 4
         slot_group: Treatment
+      treatment_type_other:
+        name: treatment_type_other
+        rank: 5
+        slot_group: Treatment
       age_at_treatment:
         name: age_at_treatment
-        rank: 5
+        rank: 6
         slot_group: Treatment
       treatment_duration:
         name: treatment_duration
-        rank: 6
+        rank: 7
         slot_group: Treatment
       treatment_intent:
         name: treatment_intent
-        rank: 7
+        rank: 8
         slot_group: Treatment
       treatment_response:
         name: treatment_response
-        rank: 8
+        rank: 9
         slot_group: Treatment
       treatment_status:
         name: treatment_status
-        rank: 9
-        slot_group: Treatment
-      treatment_type_other:
-        name: treatment_type_other
         rank: 10
         slot_group: Treatment
     attributes:
