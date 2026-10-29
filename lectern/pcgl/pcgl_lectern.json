@@ -168,7 +168,27 @@
           "description": "If the permission is DUO:0000007 (disease specific research), then MONDO codes must be provided to specify which disease(s) apply.\nTo include multiple values, separate values with a pipe delimiter '|' within",
           "valueType": "string",
           "restrictions": {
-            "regex": "^MONDO:\\d{7}$"
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "duo_permission"
+                  ],
+                  "match": {
+                    "value": "DUO:0000007 (disease specific research)"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "regex": "^MONDO:\\d{7}$"
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
           },
           "isArray": true,
           "delimiter": "|"
@@ -642,7 +662,7 @@
           "description": "Date of birth collected in format: YYYY-MM or YYYY",
           "restrictions": {
             "required": true,
-            "regex": "^(?:\\d{4}$|\\d{4}-\\d{2}$)"
+            "regex": "^(?:\\d{4}$|\\d{4}-\\d{2}$)|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
           },
           "valueType": "string"
         },
@@ -728,7 +748,7 @@
             ]
           },
           "name": "ethnicity",
-          "description": "Refers to the ethnic or cultural origins the person's ancestors.\nAncestors may have Indigenous origins, or origins that refer to different countries, or other origins that may not refer to different countries.\nParticipants may have multiple ethnic and/or cultural identities. All categories entered by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' within.\n[REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of person, April 1, 2021]",
+          "description": "Refers to the ethnic or cultural origins the person's ancestors.\nAncestors may have Indigenous origins, or origins that refer to different countries, or other origins that may not refer to different countries.\nParticipants may have multiple ethnic and/or cultural identities. All categories entered by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of person, April 1, 2021]",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -1451,7 +1471,7 @@
             ]
           },
           "name": "race",
-          "description": "Refers to a person who identifies as a visible minority under the Employment Equity Act, and Indigenous Peoples.\nThe Employment Equity Act defines visible minorities as 'persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour'.\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' within.\n[REF: Statistics Canada Departmental Standard, Visible minority of person, August 25, 2021]",
+          "description": "Refers to a person who identifies as a visible minority under the Employment Equity Act, and Indigenous Peoples.\nThe Employment Equity Act defines visible minorities as 'persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour'.\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Visible minority of person, August 25, 2021]",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -1993,7 +2013,7 @@
             "displayName": "employment_status"
           },
           "name": "employment_status",
-          "description": "Refers to the labour force status of those during the reference period.\nThis may include those who, during the reference period did any work at all at a job or business (that is, paid work in the context of an employer-employee relationship, self-employment, or persons who did unpaid family work); had a job but were not at work due to factors such as their own illness or disability, personal or family responsibilities, vacation or a labour dispute; or, persons who were not employed during the reference period (including persons who were unemployed as well as those who were not in the labour force).\nParticipants may have multiple employment statuses. All categories selected by the participants should be reported.\n[Statistics Canada Departmental Standard, Employed person, June 21, 2010].\n\n'Missing - Not applicable' is provided as a valid response option when the question of employment_status is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.\nTo include multiple values, separate values with a pipe delimiter '|' within.",
+          "description": "Refers to the labour force status of those during the reference period.\nThis may include those who, during the reference period did any work at all at a job or business (that is, paid work in the context of an employer-employee relationship, self-employment, or persons who did unpaid family work); had a job but were not at work due to factors such as their own illness or disability, personal or family responsibilities, vacation or a labour dispute; or, persons who were not employed during the reference period (including persons who were unemployed as well as those who were not in the labour force).\nParticipants may have multiple employment statuses. All categories selected by the participants should be reported.\n[Statistics Canada Departmental Standard, Employed person, June 21, 2010].\n\n'Missing - Not applicable' is provided as a valid response option when the question of employment_status is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.\nTo include multiple values, separate values with a pipe delimiter '|' .",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -2169,7 +2189,7 @@
             "displayName": "knowledge_official_languages"
           },
           "name": "knowledge_official_languages",
-          "description": "Refers to whether a person can conduct a conversation in English, French, or neither language.\nFor a child who has not yet learned to speak, this includes languages that the child is learning to speak at home.\n[REF: Statistics Canada Departmental Standard, Knowledge of official languages of person, December 4, 2015].\nTo include multiple values, separate values with a pipe delimiter '|' within.",
+          "description": "Refers to whether a person can conduct a conversation in English, French, or neither language.\nFor a child who has not yet learned to speak, this includes languages that the child is learning to speak at home.\n[REF: Statistics Canada Departmental Standard, Knowledge of official languages of person, December 4, 2015].\nTo include multiple values, separate values with a pipe delimiter '|' .",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -3100,7 +3120,7 @@
             ]
           },
           "name": "procedure_body_site_code",
-          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of the procedure is Unknown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of the procedured when it occured. Please use C80.9 if the anatomic location of the procedure is Unknown.",
           "restrictions": {
             "required": true,
             "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"

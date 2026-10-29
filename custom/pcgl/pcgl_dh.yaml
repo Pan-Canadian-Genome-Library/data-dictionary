@@ -2628,7 +2628,7 @@ slots:
       Participants may have multiple ethnic and/or cultural identities. All categories
       entered by the participants should be reported.
 
-      To include multiple values, separate values with a pipe delimiter ''|'' within.
+      To include multiple values, separate values with a pipe delimiter ''|'' .
 
       [REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of
       person, April 1, 2021]'
@@ -2688,7 +2688,7 @@ slots:
 
       All categories selected by the participants should be reported.
 
-      To include multiple values, separate values with a pipe delimiter ''|'' within.
+      To include multiple values, separate values with a pipe delimiter ''|'' .
 
       [REF: Statistics Canada Departmental Standard, Visible minority of person, August
       25, 2021]'
@@ -2995,7 +2995,7 @@ slots:
         tag: specifications
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     description: Indicate the ICD-O-3 topography code or UBERON code for the anatomic
-      location of a specimen when it was collected. Please use C80.9 if the anatomic
+      location of the procedured when it occured. Please use C80.9 if the anatomic
       location of the procedure is Unknown.
     title: procedure_body_site_code
     notes:
@@ -4967,7 +4967,8 @@ slots:
     - 'Date of birth collected in format: YYYY-MM'
     range: string
     required: true
-    pattern: ^(?:\d{4}$|\d{4}-\d{2}$)
+    pattern: ^(?:\d{4}$|\d{4}-\d{2}$)|^Missing \- Unknown$|^Missing \- Not collected$|^Missing
+      \- Not provided$|^Missing \- Restricted access$
   date_of_birth_collection_method:
     name: date_of_birth_collection_method
     description: 'Studies must report how the date_of_birth was collected. This is
@@ -5092,7 +5093,7 @@ slots:
       [REF: Statistics Canada Departmental Standard, Knowledge of official languages
       of person, December 4, 2015].
 
-      To include multiple values, separate values with a pipe delimiter ''|'' within.'
+      To include multiple values, separate values with a pipe delimiter ''|'' .'
     title: knowledge_official_languages
     range: knowledge_official_language_menu
     multivalued: true
@@ -5232,7 +5233,7 @@ slots:
       question of employment_status is not appropriate to ask (for example, newborn
       studies). This response option should NOT be provided to adult participants.
 
-      To include multiple values, separate values with a pipe delimiter ''|'' within.'
+      To include multiple values, separate values with a pipe delimiter ''|'' .'
     title: employment_status
     range: employment_status_menu
     multivalued: true

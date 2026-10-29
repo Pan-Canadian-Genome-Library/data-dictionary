@@ -2587,7 +2587,7 @@ slots:
     required: false
   ethnicity:
     name: ethnicity
-    description: "Refers to the ethnic or cultural origins the person's ancestors.\nAncestors may have Indigenous origins, or origins that refer to different countries, or other origins that may not refer to different countries.\nParticipants may have multiple ethnic and/or cultural identities. All categories entered by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' within.\n[REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of person, April 1, 2021]"
+    description: "Refers to the ethnic or cultural origins the person's ancestors.\nAncestors may have Indigenous origins, or origins that refer to different countries, or other origins that may not refer to different countries.\nParticipants may have multiple ethnic and/or cultural identities. All categories entered by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of person, April 1, 2021]"
     title: Ethnicity
     notes: '"PCGL guidance documents provide further detail (e.g., PCGL Reference Survey
       v1.0, and PCGL Guidance Document for Participant Sociodemographic Data v1.0)
@@ -2621,7 +2621,7 @@ slots:
     required: true
   race:
     name: race
-    description: "Refers to a person who identifies as a visible minority under the Employment Equity Act, and Indigenous Peoples.\nThe Employment Equity Act defines visible minorities as 'persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour'.\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' within.\n[REF: Statistics Canada Departmental Standard, Visible minority of person, August 25, 2021]"
+    description: "Refers to a person who identifies as a visible minority under the Employment Equity Act, and Indigenous Peoples.\nThe Employment Equity Act defines visible minorities as 'persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour'.\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Visible minority of person, August 25, 2021]"
     title: Race
     comments:
     - EDI indicator
@@ -4578,7 +4578,7 @@ slots:
     notes: 'Date of birth collected in format: YYYY-MM'
     range: string
     required: true
-    pattern: ^(?:\d{4}$|\d{4}-\d{2}$)
+    pattern: ^(?:\d{4}$|\d{4}-\d{2}$)|^Missing \- Unknown$|^Missing \- Not collected$|^Missing \- Not provided$|^Missing \- Restricted access$
   date_of_birth_collection_method:
     description: "Studies must report how the date_of_birth was collected. This is necessary to enable data aggregation, harmonization, and reproducibility.\n'Self-identified': The participant reported on their own behalf.\n'Derived': When age is calculated (e.g. interval based methods).\n'Administratively collected': Administrative methods of collection, for example through electronic health records, health card, etc.\n'Another method of collection': A response which does not fall into any of the previous reporting categories."
     name: date_of_birth_collection_method
@@ -4632,7 +4632,7 @@ slots:
     title: First Language Another Language
     range : string
   knowledge_official_languages:
-    description: "Refers to whether a person can conduct a conversation in English, French, or neither language.\nFor a child who has not yet learned to speak, this includes languages that the child is learning to speak at home.\n[REF: Statistics Canada Departmental Standard, Knowledge of official languages of person, December 4, 2015].\nTo include multiple values, separate values with a pipe delimiter '|' within."
+    description: "Refers to whether a person can conduct a conversation in English, French, or neither language.\nFor a child who has not yet learned to speak, this includes languages that the child is learning to speak at home.\n[REF: Statistics Canada Departmental Standard, Knowledge of official languages of person, December 4, 2015].\nTo include multiple values, separate values with a pipe delimiter '|' ."
     name: knowledge_official_languages
     title: Knowledge Official Languages
     range: knowledge_official_language_menu
@@ -4691,7 +4691,7 @@ slots:
     required: true
     range: total_income_collect_method_menu
   employment_status:
-    description: "Refers to the labour force status of those during the reference period.\nThis may include those who, during the reference period did any work at all at a job or business (that is, paid work in the context of an employer-employee relationship, self-employment, or persons who did unpaid family work); had a job but were not at work due to factors such as their own illness or disability, personal or family responsibilities, vacation or a labour dispute; or, persons who were not employed during the reference period (including persons who were unemployed as well as those who were not in the labour force).\nParticipants may have multiple employment statuses. All categories selected by the participants should be reported.\n[Statistics Canada Departmental Standard, Employed person, June 21, 2010].\n\n'Missing - Not applicable' is provided as a valid response option when the question of employment_status is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.\nTo include multiple values, separate values with a pipe delimiter '|' within."
+    description: "Refers to the labour force status of those during the reference period.\nThis may include those who, during the reference period did any work at all at a job or business (that is, paid work in the context of an employer-employee relationship, self-employment, or persons who did unpaid family work); had a job but were not at work due to factors such as their own illness or disability, personal or family responsibilities, vacation or a labour dispute; or, persons who were not employed during the reference period (including persons who were unemployed as well as those who were not in the labour force).\nParticipants may have multiple employment statuses. All categories selected by the participants should be reported.\n[Statistics Canada Departmental Standard, Employed person, June 21, 2010].\n\n'Missing - Not applicable' is provided as a valid response option when the question of employment_status is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.\nTo include multiple values, separate values with a pipe delimiter '|' ."
     name: employment_status
     title: Employment Status
     range: employment_status_menu
