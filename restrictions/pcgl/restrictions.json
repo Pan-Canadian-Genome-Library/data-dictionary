@@ -6,21 +6,21 @@
             "name": "participant",
             "fields":[
                 {
-                    "name":"disease_specific_modifier",
+                    "name":"sex_another_category",
                     "valueType": "string",
                     "restrictions" : {
                         "if":{
                             "conditions": [
                                 {
-                                    "fields":["duo_permission"],
-                                    "match":{"value": "DUO:0000007 (disease specific research)"},
-                                    "case": "all"
+                                    "fields":["sex_at_birth"],
+                                    "match":{"value":"Another Sex"},
+                                    "case": "any"
                                 }
                             ]
 
                         },
-                        "then":{"required": true, "regex": "^MONDO:\\d{7}$"},
-                        "else":{"required": false, "empty": true}
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
                     }
                 }
             ]
@@ -59,7 +59,11 @@
                             ]
 
                         },
-                        "then":{"required": true}
+                        "then":{"required": false},
+                        "else":{
+                            "required": false,
+                            "empty": true
+                        }
                     }
                 }
             ]
@@ -147,7 +151,7 @@
                             "conditions": [
                                 {
                                     "fields":["ethnicity"],
-                                    "match":{"codeList": ["Free text input"]},
+                                    "match":{"codeList": ["Another Ethnic or Cultural Origin"]},
                                     "case": "any"
                                 }
                             ]
@@ -191,6 +195,252 @@
                         },
                         "then":{"required":true},
                         "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"another_employment_status",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["employment_status"],
+                                    "match":{"codeList":["Another status of employment"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"another_household_tenure",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["household_tenure"],
+                                    "match":{"codeList":["Another status of tenure"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"another_accommodation_type",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["accommodation_type"],
+                                    "match":{"codeList":["Another accommodation type"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"pob_outside_canada",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["place_of_birth"],
+                                    "match":{"codeList":["Outside of Canada"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"arrival_in_canada",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["place_of_birth"],
+                                    "match":{"codeList":["Outside of Canada"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{
+                            "required":true,
+                            "codeList": [
+                                "Less than 5 years",
+                                "5-9 years",
+                                "10 or more years",
+                                "Do not know",
+                                "Prefer not to answer",
+                                "Missing - Unknown",
+                                "Missing - Not collected",
+                                "Missing - Not provided",
+                                "Missing - Restricted access"
+                            ]
+                        },
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"parent1_another_pob",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["parent1_place_of_birth"],
+                                    "match":{"codeList":["Outside of Canada"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"parent2_another_pob",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["parent2_place_of_birth"],
+                                    "match":{"codeList":["Outside of Canada"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"first_language_another_language",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["first_language"],
+                                    "match":{"codeList":["Another Language"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"knowledge_non_official_language",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["knowledge_official_languages"],
+                                    "match":{"codeList":["Non-official language"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"knowledge_official_language_preference",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["knowledge_official_languages"],
+                                    "match":{"codeList":["Non-official language"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{
+                            "required":true,
+                            "codeList":[
+                                "English",
+                                "French",
+                                "Missing - Unknown",
+                                "Missing - Not collected",
+                                "Missing - Not provided",
+                                "Missing - Restricted access"
+                            ]
+                        },
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"geographic_location_additional",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "required": false
+                    }
+                },
+                {
+                    "name":"religion_free_text_input",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["religion"],
+                                    "match":{"codeList":["Religious"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":true},
+                        "else":{"required":false,"empty":true}
+                    }
+                },
+                {
+                    "name":"total_income_support",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["total_income_collect_method"],
+                                    "match":{"codeList":["Missing - Unknown","Missing - Not collected","Missing - Not provided","Missing - Restricted access"]},
+                                    "case": "any"
+                                }
+                            ]
+
+                        },
+                        "then":{"required":false,"empty":true},
+                        "else":{"required":true}
                     }
                 }
             ]
@@ -292,6 +542,29 @@
                         },
                         "then":{"required":false,"empty":true},
                         "else":{"required":true}
+                    }
+                }
+            ]
+        },
+        {
+            "name": "study",
+            "fields":[
+                {
+                    "name":"disease_specific_modifier",
+                    "valueType": "string",
+                    "restrictions" : {
+                        "if":{
+                            "conditions": [
+                                {
+                                    "fields":["duo_permission"],
+                                    "match":{"value": "DUO:0000007 (disease specific research)"},
+                                    "case": "all"
+                                }
+                            ]
+
+                        },
+                        "then":{"required": true, "regex": "^MONDO:\\d{7}$"},
+                        "else":{"required": false, "empty": true}
                     }
                 }
             ]

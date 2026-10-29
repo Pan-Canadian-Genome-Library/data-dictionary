@@ -1,10 +1,10 @@
 {
   "name": "Pan-Canadian Genome Library Data Dictionary",
   "description": "The PCGL Data Dictionary specifies the standardized data elements, controlled vocabulary, data types, validation rules, and interoperability mappings for all health and genomic data submitted to the Pan-Canadian Genome Library.",
-  "version": "1.1",
+  "version": "2.0",
   "meta": {
     "version": {
-      "base": "1.1",
+      "base": "2.0",
       "extension": "0.0"
     }
   },
@@ -66,6 +66,27 @@
           "valueType": "string",
           "isArray": true,
           "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "duo_permission",
+            "exact_mappings": {
+              "CQDG": "duo_permission"
+            }
+          },
+          "name": "duo_permission",
+          "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Study data.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "DUO:0000042 (general research use)",
+              "DUO:0000006 (health or medical or biomedical research)",
+              "DUO:0000007 (disease specific research)",
+              "DUO:0000011 (population origins or ancestry research only)",
+              "DUO:0000004 (no restriction)"
+            ]
+          },
+          "valueType": "string"
         },
         {
           "meta": {
@@ -138,6 +159,42 @@
         },
         {
           "meta": {
+            "displayName": "disease_specific_modifier",
+            "examples": [
+              "MONDO:0000001"
+            ]
+          },
+          "name": "disease_specific_modifier",
+          "description": "If the permission is DUO:0000007 (disease specific research), then MONDO codes must be provided to specify which disease(s) apply.\nTo include multiple values, separate values with a pipe delimiter '|' within",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "duo_permission"
+                  ],
+                  "match": {
+                    "value": "DUO:0000007 (disease specific research)"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "regex": "^MONDO:\\d{7}$"
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
             "displayName": "publication_links"
           },
           "name": "publication_links",
@@ -150,7 +207,7 @@
     },
     {
       "name": "study_translation",
-      "description": "Study_translation refers language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences.",
+      "description": "Study_translation refers yo language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences.",
       "fields": [
         {
           "meta": {
@@ -314,703 +371,13 @@
         },
         {
           "meta": {
-            "displayName": "duo_permission",
-            "exact_mappings": {
-              "CQDG": "duo_permission"
-            }
-          },
-          "name": "duo_permission",
-          "description": "Select one of the Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to indicate permitted uses or focused areas of research for the Participant data.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "DUO:0000042 (general research use)",
-              "DUO:0000006 (health or medical or biomedical research)",
-              "DUO:0000007 (disease specific research)",
-              "DUO:0000011 (population origins or ancestry research only)",
-              "DUO:0000004 (no restriction)"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "disease_specific_modifier",
-            "examples": [
-              "MONDO:0000001"
-            ]
-          },
-          "name": "disease_specific_modifier",
-          "description": "If the permission is DUO:0000007 (disease specific research), then MONDO codes must be provided to specify which disease(s) apply.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "duo_permission"
-                  ],
-                  "match": {
-                    "value": "DUO:0000007 (disease specific research)"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true,
-              "regex": "^MONDO:\\d{7}$"
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          },
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "duo_modifier",
-            "exact_mappings": {
-              "CQDG": "duo_modifier"
-            }
-          },
-          "name": "duo_modifier",
-          "description": "Collection of Data Use Ontology (DUO) codes in Compact URI (CURIE) pattern to add requirements, limitations, or prohibitions within the permitted boundary for the Participant data.",
-          "valueType": "string",
-          "restrictions": {
-            "codeList": [
-              "DUO:0000043 (clinical care use)",
-              "DUO:0000029 (return to database or resource)",
-              "DUO:0000028 (institution specific restriction)",
-              "DUO:0000027 (project specific restriction)",
-              "DUO:0000026 (user specific restriction)",
-              "DUO:0000025 (time limit on use)",
-              "DUO:0000024 (publication moratorium)",
-              "DUO:0000022 (geographical restriction)",
-              "DUO:0000021 (ethics approval required)",
-              "DUO:0000020 (collaboration required)",
-              "DUO:0000019 (publication required)",
-              "DUO:0000018 (not for profit, non commercial use only)",
-              "DUO:0000046 (non-commercial use only)",
-              "DUO:0000045 (not for profit organisation use only)",
-              "DUO:0000016 (genetic studies only)",
-              "DUO:0000015 (no general methods research)",
-              "DUO:0000012 (research specific restrictions)",
-              "DUO:00000044 (population origins or ancestry research prohibited)"
-            ]
-          },
-          "isArray": true,
-          "delimiter": "|"
-        }
-      ]
-    },
-    {
-      "name": "sociodemographic",
-      "description": "Captures sociodemographic characteristics of an individual that may vary over time and can influence health status, access to care, or disease outcomes. These factors are often collected longitudinally and reflect broader social determinants of health. The PCGL requires information on eight key sociodemographic variables defined by the Canadian Institute for Health Information (CIHI).",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "submitter_participant_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "donor.submitter_donor_id",
-              "Beacon.v2.2.0": "individual.id",
-              "CQDG": "submitter_participant_id",
-              "FHIR.v5.0.0": "Patient.identifier",
-              "mCODE.v4.0.0": "Patient.identifier",
-              "MOHCCN.v3.1": "Donor.submitter_donor_id",
-              "Phenopackets.v2.0": "Individual.id"
-            },
-            "specifications": [
-              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
-            ],
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "submitter_sociodem_id",
-            "examples": [
-              "90234",
-              "BLD_participant_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_sociodem_id",
-          "description": "Unique identifier for the sociodemographic record, assigned by the data provider.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
-          },
-          "valueType": "string",
-          "unique": true
-        },
-        {
-          "meta": {
-            "displayName": "age_at_sociodem_collection",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "age_at_sociodem_collection",
-          "description": "Age (in days) of the participant at the time of sociodemographic data collection",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "age_at_sociodem_collection_missing_reason"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          },
-          "valueType": "integer"
-        },
-        {
-          "meta": {
-            "displayName": "education",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "education",
-          "description": "The highest level of education attained.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "No formal education",
-              "Elementary school or equivalent",
-              "High school (secondary school) diploma or equivalency certificate",
-              "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
-              "College, CEGEP, or other non-university certificate or diploma",
-              "Bachelor's degree",
-              "Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD)",
-              "Prefer not to answer",
-              "Not applicable",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "education_collect_method"
-          },
-          "name": "education_collect_method",
-          "description": "Studies must report how the education data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Self-identified",
-              "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "ethnicity",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "comments": [
-              "EDI indicator"
-            ]
-          },
-          "name": "ethnicity",
-          "description": "Ethnicity is a 'multi-dimensional concept referring to community belonging and a shared cultural group membership.\nIt is related to sociodemographic characteristics, including language, religion, geographic origin, nationality, cultural traditions, ancestry and migration history, among others,'\n[REF: Canadian Institute for Health Information. Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada (2022)][REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada.(2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple ethnic and/or cultural identities.\nAll categories entered by the participants should be reported.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Free text input",
-              "Another Ethnic or Cultural Origin",
-              "Do not know",
-              "Prefer not to answer",
-              "Not applicable",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "ethnicity_collect_method"
-          },
-          "name": "ethnicity_collect_method",
-          "description": "Studies must report how the ethnicity data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Socially assigned",
-              "Self-identified",
-              "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "gender",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
-              "Phenopackets.v2.0": "Individual.gender"
-            },
-            "comments": [
-              "EDI indicator"
-            ]
-          },
-          "name": "gender",
-          "description": "Gender refers to the socially constructed roles, behaviours, expressions and identities of girls, women, boys, men, and gender diverse people.\nA person's gender may be the same as or different from their assigned sex at birth and may change over time.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Man",
-              "Woman",
-              "Another Gender",
-              "Prefer not to answer",
-              "Not applicable",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "gender_collect_method"
-          },
-          "name": "gender_collect_method",
-          "description": "Studies must report how the gender data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Self-identified",
-              "Other",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "geographic_location",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "geographic_location",
-          "description": "A participant's postal code at their current address of residence.",
-          "restrictions": {
-            "required": true,
-            "regex": "^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "geographic_location_collect_method"
-          },
-          "name": "geographic_location_collect_method",
-          "description": "Studies must report how the geographic_location data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Self-identified",
-              "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "personal_income",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "personal_income",
-          "description": "Personal annual income from all sources after taxes.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Less than $15,000",
-              "$ 15,000 - $ 19,999",
-              "$ 20,000 - $ 29,000",
-              "$ 30,000 - $ 49,999",
-              "$ 50,000 - $ 69,999",
-              "$ 70,000 - $ 84,999",
-              "$ 85,000 - $ 99,999",
-              "$ 100,000 - $ 124,999",
-              "$ 125,000 - $ 149,999",
-              "$ 150,000 or more",
-              "Prefer not to answer",
-              "Not applicable",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "personal_income_collect_method"
-          },
-          "name": "personal_income_collect_method",
-          "description": "Studies must report how the personal_income data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Self-identified",
-              "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "race",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "comments": [
-              "EDI indicator"
-            ]
-          },
-          "name": "race",
-          "description": "Race is a social construct used to judge and categorize people based on perceived differences in physical appearance in ways that create and maintain power differentials within social hierarchies.\nThere is no scientifically supported biological basis for discrete racial groups\n[REF: Canadian Institute for Health Information.Guidance on the Use of Standards for Race-Based and Indigenous Identity Data Collection and Health Reporting in Canada. (2022)](https://www.cihi.ca/sites/default/files/document/guidance-and-standards-for-race-based-and-indigenous-identity-data-en.pdf).\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Black",
-              "East Asian",
-              "Indigenous (First Nations, Inuk/Inuit, M\u00e9tis)",
-              "Latin American",
-              "Middle Eastern or North African",
-              "South Asian",
-              "Southeast Asian",
-              "White",
-              "Another Racial Category",
-              "Do not know",
-              "Prefer not to answer",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string",
-          "isArray": true,
-          "delimiter": "|"
-        },
-        {
-          "meta": {
-            "displayName": "race_collect_method"
-          },
-          "name": "race_collect_method",
-          "description": "Studies must report how race data was collected\n. This is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories,responses that were self-identified should not be aggregated with responses that were socially assigned or derived.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Socially assigned",
-              "Self-identified",
-              "Derived",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sex_at_birth",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
-              "Phenopackets.v2.0": "Individual.sex"
-            }
-          },
-          "name": "sex_at_birth",
-          "description": "Sex is a biological concept that has been historically defined solely based on external anatomy; however, sex is also influenced by our physiology, genes, and hormones.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Male",
-              "Female",
-              "Intersex",
-              "Another Sex",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sex_collect_method"
-          },
-          "name": "sex_collect_method",
-          "description": "Studies must report how the sex_at_birth data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "Self-identified",
-              "Clinician-recorded",
-              "Derived",
-              "Other",
-              "Missing - Unknown",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sociodem_date_collection",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "sociodem_date_collection",
-          "description": "Many sociodemographic variables are social constructs, and the way participants self-identify may evolve over time. \nPlease indicate the actual date when the data was collected in format: YYYY-MM-DD, if available. \nIf the exact day is unknown, partial dates are acceptable:\n- Use YYYY-MM if the day is unknown but the month and year are known\n- Use YYYY if only the year is known",
-          "restrictions": {
-            "required": true,
-            "regex": "^(?:\\d{4}|\\d{4}-\\d{2}|\\d{4}-\\d{2}-\\d{2})$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "sociodem_question"
-          },
-          "name": "sociodem_question",
-          "description": "Indicate whether the questions asked for the sociodemographic variable follow the PCGL reference question and standard reporting categories.",
-          "restrictions": {
-            "required": true,
-            "codeList": [
-              "PCGL reference question",
-              "Another question",
-              "Missing - Not collected",
-              "Missing - Not provided",
-              "Missing - Restricted access",
-              "Missing - Unknown"
-            ]
-          },
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "age_at_sociodem_collection_missing_reason",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "age_at_sociodem_collection_missing_reason",
-          "description": "Reason for why `age_at_sociodem_collection` is not provided",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "age_at_sociodem_collection"
-                  ],
-                  "match": {
-                    "exists": true
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": false,
-              "empty": true
-            },
-            "else": {
-              "required": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "ethnicity_another_category",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "ethnicity_another_category",
-          "description": "A response which does not fall into any of the previous categories. For example, a response of \u201cOther\u201d from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "ethnicity"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Free text input"
-                    ]
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "gender_another_gender",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "gender_another_gender",
-          "description": "A response which does not fall into any of the previous gender reporting categories.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "gender"
-                  ],
-                  "match": {
-                    "value": "Another Gender"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "geographic_location_additional"
-          },
-          "name": "geographic_location_additional",
-          "description": "When postal code is less specific, additional information may be reported.",
-          "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "race_another_racial_category",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            }
-          },
-          "name": "race_another_racial_category",
-          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "race"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "Another Racial Category"
-                    ]
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        },
-        {
-          "meta": {
             "displayName": "sex_another_category",
             "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             }
           },
           "name": "sex_another_category",
           "description": "A response which does not fall into any of the previous categories. ",
-          "valueType": "string",
           "restrictions": {
             "if": {
               "conditions": [
@@ -1032,103 +399,55 @@
               "required": false,
               "empty": true
             }
-          }
-        },
-        {
-          "meta": {
-            "displayName": "sociodem_notes",
-            "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
-            },
-            "examples": [
-              "For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
-            ]
           },
-          "name": "sociodem_notes",
-          "description": "Studies may choose to report whether potential bias may exist due to the way reporting categories were defined and handled.",
           "valueType": "string"
         },
         {
           "meta": {
-            "displayName": "sociodem_question_detail",
+            "displayName": "sex_at_birth",
             "exact_mappings": {
-              "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v1.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
+              "Phenopackets.v2.0": "Individual.sex"
             }
           },
-          "name": "sociodem_question_detail",
-          "description": "Report the questions asked for the sociodemographic variable, including the provided response options/reporting categories if it does not follow the PCGL reference question and standard reporting categories.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "sociodem_question"
-                  ],
-                  "match": {
-                    "codeList": [
-                      "PCGL reference question",
-                      "Another question"
-                    ]
-                  },
-                  "case": "any"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
-        }
-      ],
-      "restrictions": {
-        "foreignKey": [
-          {
-            "schema": "participant",
-            "mappings": [
-              {
-                "local": "submitter_participant_id",
-                "foreign": "submitter_participant_id"
-              }
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "demographic",
-      "description": "Data for the characterization of the participant by means of segmenting the population (e.g., characterization by age, sex, or race).",
-      "fields": [
-        {
-          "meta": {
-            "displayName": "submitter_participant_id",
-            "exact_mappings": {
-              "ARGO.v1.34": "donor.submitter_donor_id",
-              "Beacon.v2.2.0": "individual.id",
-              "CQDG": "submitter_participant_id",
-              "FHIR.v5.0.0": "Patient.identifier",
-              "mCODE.v4.0.0": "Patient.identifier",
-              "MOHCCN.v3.1": "Donor.submitter_donor_id",
-              "Phenopackets.v2.0": "Individual.id"
-            },
-            "specifications": [
-              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
-            ],
-            "examples": [
-              "90234",
-              "BLD_donor_89",
-              "AML-90"
-            ]
-          },
-          "name": "submitter_participant_id",
-          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "name": "sex_at_birth",
+          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics; however, sex is also influenced by our physiology, genes, and hormones.\n[REF: Statistics Canada Departmental Standard, Sex at birth of person, October 1, 2021]",
           "restrictions": {
             "required": true,
-            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+            "codeList": [
+              "Male",
+              "Female",
+              "Intersex",
+              "Another Sex",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sex_collect_method"
+          },
+          "name": "sex_collect_method",
+          "description": "Studies must report how the sex_at_birth data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Clinician-recorded",
+              "Socially assigned",
+              "Derived",
+              "Legal sex",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
           },
           "valueType": "string"
         },
@@ -1209,6 +528,1989 @@
               "Alive",
               "Deceased",
               "Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "sociodemographic",
+      "description": "Captures sociodemographic characteristics of an individual that may vary over time and can influence health status, access to care, or disease outcomes. These factors are often collected longitudinally and reflect broader social determinants of health. The PCGL requires information on eight key sociodemographic variables defined by the Canadian Institute for Health Information (CIHI).",
+      "fields": [
+        {
+          "meta": {
+            "displayName": "submitter_participant_id",
+            "exact_mappings": {
+              "ARGO.v1.34": "donor.submitter_donor_id",
+              "Beacon.v2.2.0": "individual.id",
+              "CQDG": "submitter_participant_id",
+              "FHIR.v5.0.0": "Patient.identifier",
+              "mCODE.v4.0.0": "Patient.identifier",
+              "MOHCCN.v3.1": "Donor.submitter_donor_id",
+              "Phenopackets.v2.0": "Individual.id"
+            },
+            "specifications": [
+              "FHIRSpec.v5.0.0:https://hl7.org/fhir/patient-definitions.html#Patient.identifier"
+            ],
+            "examples": [
+              "90234",
+              "BLD_donor_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_participant_id",
+          "description": "Unique identifier of the participant within the study, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "submitter_sociodem_id",
+            "examples": [
+              "90234",
+              "BLD_participant_89",
+              "AML-90"
+            ]
+          },
+          "name": "submitter_sociodem_id",
+          "description": "Unique identifier for the sociodemographic record, assigned by the data provider.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z0-9\\-\\._]{1,64}$"
+          },
+          "valueType": "string",
+          "unique": true
+        },
+        {
+          "meta": {
+            "displayName": "age_at_sociodem_collection",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "age_at_sociodem_collection",
+          "description": "Age (in days) of the participant at the time of sociodemographic data collection",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection_missing_reason"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "age_at_sociodem_collection_missing_reason",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "age_at_sociodem_collection_missing_reason",
+          "description": "Reason for why `age_at_sociodem_collection` is not provided",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "age_at_sociodem_collection"
+                  ],
+                  "match": {
+                    "exists": true
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "date_of_birth"
+          },
+          "name": "date_of_birth",
+          "description": "Date of birth collected in format: YYYY-MM or YYYY",
+          "restrictions": {
+            "required": true,
+            "regex": "^(?:\\d{4}$|\\d{4}-\\d{2}$)|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "date_of_birth_collection_method"
+          },
+          "name": "date_of_birth_collection_method",
+          "description": "Studies must report how the date_of_birth was collected. This is necessary to enable data aggregation, harmonization, and reproducibility.\n'Self-identified': The participant reported on their own behalf.\n'Derived': When age is calculated (e.g. interval based methods).\n'Administratively collected': Administrative methods of collection, for example through electronic health records, health card, etc.\n'Another method of collection': A response which does not fall into any of the previous reporting categories.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Derived",
+              "Administratively collected",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "education",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "education",
+          "description": "Refers to the highest level of education that a person has successfully completed.\nSuccessful completion of a level of education refers to the achievement of the learning objectives of that level, typically validated through the assessment of acquired knowledge, skills, and competencies.\n[REF: Statistics Canada Departmental Standard, Educational attainment of person, May 26, 2021].\n'Missing - Not applicable' is provided as a valid response option when the question is not appropriate to ask (for example, newborn studies).\nThis response option should NOT be provided to adult participants.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "No formal education",
+              "Elementary school or equivalent",
+              "High school (secondary school) diploma or equivalency certificate",
+              "Certificate of Apprenticeship, Certificate of Qualification (Journeyperson's designation), or other trades certificate or diploma",
+              "College, CEGEP, or other non-university certificate or diploma",
+              "Undergraduate degree",
+              "Postgraduate degree or other professional designation (e.g., Master's. PhD, MD, DDS. DMD, DVM, OD)",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "education_collect_method"
+          },
+          "name": "education_collect_method",
+          "description": "Studies must report how the education data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Administratively collected",
+              "Another method of collection",
+              "Derived",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "ethnicity",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "comments": [
+              "EDI indicator"
+            ]
+          },
+          "name": "ethnicity",
+          "description": "Refers to the ethnic or cultural origins the person's ancestors.\nAncestors may have Indigenous origins, or origins that refer to different countries, or other origins that may not refer to different countries.\nParticipants may have multiple ethnic and/or cultural identities. All categories entered by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Ethnic or cultural origins of person, April 1, 2021]",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Another Ethnic or Cultural Origin",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Abenaki",
+              "Ahousaht",
+              "Algonquin",
+              "Anishinaabe",
+              "Apache",
+              "Assiniboine",
+              "Atikamekw",
+              "Beaver (Dunne-za)",
+              "Blackfoot",
+              "Blood (Kainai)",
+              "Carrier (Dakelh)",
+              "Cayuga",
+              "Chemainus (Stzuminus)",
+              "Cherokee",
+              "Cheyenne",
+              "Chilcotin (Tsilhqotin)",
+              "Chipewyan (Denesuline)",
+              "Choctaw",
+              "Coast Salish",
+              "Cowichan",
+              "Cree",
+              "Crow",
+              "Dakota",
+              "Delaware (Lenape)",
+              "Dene",
+              "Dene Tha' (Slavey)",
+              "Ditidaht",
+              "Dzawada'enuxw",
+              "Ehattesaht",
+              "First Nations",
+              "Gitxsan",
+              "Gwa'sala",
+              "Gwich'in",
+              "Haida",
+              "Haisla",
+              "Halalt",
+              "Hän (Trondëk Hwëchin)",
+              "Heiltsuk",
+              "Hesquiaht",
+              "Homalco",
+              "Huron (Wendat)",
+              "Huu-ay-aht",
+              "Innu",
+              "Interior Salish",
+              "Inuit",
+              "Inuvialuit",
+              "Iroquois (Haudenosaunee)",
+              "Kaska",
+              "K'omoks",
+              "Ktunaxa (Kutenai)",
+              "Kwakiutl",
+              "Kwakwa̱ka̱ʼwakw",
+              "Kyuquot/Cheklesaht",
+              "Laich-kwil-tach",
+              "Lakota",
+              "Lekwungen",
+              "Malahat",
+              "Maliseet",
+              "Mamalilikulla",
+              "Métis",
+              "Mi'kmaq",
+              "Mohawk",
+              "Montagnais",
+              "Moose Cree",
+              "Mowachaht/Muchalaht",
+              "Musqueam",
+              "Nakwaxda'xw",
+              "'Namgis",
+              "Naskapi",
+              "Navajo",
+              "Nez Perce",
+              "Nisga'a",
+              "Nlaka'pamux (Thompson)",
+              "Nuchatlaht",
+              "Nuu-chah-nulth",
+              "Nuxalk",
+              "Odawa",
+              "Ojibway",
+              "Oji-Cree",
+              "Okanagan (Syilx)",
+              "Oneida",
+              "Onondaga",
+              "Passamaquoddy",
+              "Penelakut",
+              "Piikani",
+              "Plains Cree",
+              "Potawatomi",
+              "Qalipu Mi'kmaq",
+              "Quatsino",
+              "Sahtú (North Slavey)",
+              "Salish",
+              "Saulteaux",
+              "Secwepemc (Shuswap)",
+              "Seneca",
+              "Shawnee",
+              "Shishalh (Sechelt)",
+              "Siksika",
+              "Sioux",
+              "Snuneymuxw",
+              "Squamish",
+              "St'at'imc (Lillooet)",
+              "Stó:lō",
+              "Stoney (Nakoda)",
+              "Swampy Cree",
+              "Tagish",
+              "Tahltan",
+              "Tla'amin (Sliammon)",
+              "Tla-o-qui-aht",
+              "Tlatlasikwala",
+              "Tlicho (Dogrib)",
+              "Tlingit",
+              "Tlowitsis",
+              "Tsek'ene (Sekani)",
+              "Tseshaht",
+              "Tsimshian",
+              "T'Sou-ke",
+              "Tsuu T'ina (Sarcee)",
+              "Tuscarora",
+              "Tutchone",
+              "Ucluelet",
+              "Wet'suwet'en",
+              "Woodland Cree",
+              "W̱SÁNEĆ (Saanich)",
+              "Wuikinuxv",
+              "Afghan",
+              "Cuban",
+              "Japanese",
+              "Albanian",
+              "Cypriot",
+              "Jordanian",
+              "Algerian",
+              "Czech",
+              "Kazakh",
+              "American",
+              "Danish",
+              "Kenyan",
+              "Angolan",
+              "Djiboutian",
+              "Kittitian/Nevisian",
+              "Anguillan",
+              "Dominica Islander",
+              "Korean",
+              "Antiguan",
+              "Dominican",
+              "Kosovar",
+              "Argentinian",
+              "Dutch",
+              "Kuwaiti",
+              "Armenian",
+              "Ecuadorian",
+              "Kyrgyz",
+              "Aruban",
+              "Egyptian",
+              "Laotian",
+              "Australian",
+              "English",
+              "Latvian",
+              "Austrian",
+              "Eritrean",
+              "Lebanese",
+              "Azerbaijani",
+              "Estonian",
+              "Liberian",
+              "Azorean",
+              "Ethiopian",
+              "Libyan",
+              "Bahamian",
+              "Faroese",
+              "Liechtensteiner",
+              "Bahraini",
+              "Fijian",
+              "Lithuanian",
+              "Bangladeshi",
+              "Filipino",
+              "Luxembourger",
+              "Barbadian",
+              "Finnish",
+              "Macedonian",
+              "Belgian",
+              "French",
+              "Malagasy",
+              "Belizean",
+              "Gabonese",
+              "Malawian",
+              "Beninese",
+              "Gambian",
+              "Malaysian",
+              "Bermudian",
+              "Georgian",
+              "Malian",
+              "Bhutanese",
+              "German",
+              "Maltese",
+              "Bolivian",
+              "Ghanaian",
+              "Manx",
+              "Bosnian",
+              "Gibraltarian",
+              "Martinican",
+              "Brazilian",
+              "Greek",
+              "Mauritanian",
+              "Bruneian",
+              "Greenlandic",
+              "Mauritian",
+              "Bulgarian",
+              "Grenadian",
+              "Mexican",
+              "Burkinabe",
+              "Guadeloupean",
+              "Moldovan",
+              "Burmese",
+              "Guatemalan",
+              "Mongolian",
+              "Burundian",
+              "Guinean",
+              "Montenegrin",
+              "Byelorussian",
+              "Guyanese",
+              "Montserratan",
+              "Cambodian",
+              "Haitian",
+              "Moroccan",
+              "Cameroonian",
+              "Honduran",
+              "Mozambican",
+              "Canadian",
+              "Hong Konger",
+              "Namibian",
+              "Cape Verdean",
+              "Hungarian",
+              "Nepali",
+              "Caymanian",
+              "Icelandic",
+              "New Zealander",
+              "Central African",
+              "Indian (India)",
+              "Nicaraguan",
+              "Chadian",
+              "Indonesian",
+              "Nigerian",
+              "Chilean",
+              "Iranian",
+              "Nigerien",
+              "Chinese",
+              "Iraqi",
+              "Northern Irish",
+              "Colombian",
+              "Irish",
+              "Norwegian",
+              "Comorian",
+              "Israeli",
+              "Omani",
+              "Congolese",
+              "Italian",
+              "Pakistani",
+              "Costa Rican",
+              "Ivorian",
+              "Palestinian",
+              "Croatian",
+              "Jamaican",
+              "Panamanian",
+              "Papua New Guinean",
+              "Paraguayan",
+              "Peruvian",
+              "Polish",
+              "Portuguese",
+              "Puerto Rican",
+              "Réunionnais",
+              "Romanian",
+              "Russian",
+              "Rwandan",
+              "Saint Helenian",
+              "Salvadorean",
+              "Samoan",
+              "Saudi Arabian",
+              "Scottish",
+              "Senegalese",
+              "Serbian",
+              "Seychellois",
+              "Sierra Leonean",
+              "Singaporean",
+              "Slovak",
+              "Slovenian",
+              "Somali",
+              "South African",
+              "South Sudanese",
+              "Spanish",
+              "Sri Lankan",
+              "St. Lucian",
+              "Sudanese",
+              "Surinamese",
+              "Swazi",
+              "Swedish",
+              "Swiss",
+              "Syrian",
+              "Tahitian",
+              "Taiwanese",
+              "Tajik",
+              "Tanzanian",
+              "Thai",
+              "Togolese",
+              "Tongan",
+              "Trinidadian/Tobagonian",
+              "Tunisian",
+              "Turkish",
+              "Turkmen",
+              "Ugandan",
+              "Ukrainian",
+              "Uruguayan",
+              "Uzbek",
+              "Venezuelan",
+              "Vietnamese",
+              "Vincentian",
+              "Welsh",
+              "Yemeni",
+              "Zambian",
+              "Zimbabwean",
+              "Acadian",
+              "Afar",
+              "African",
+              "African American",
+              "African Canadian",
+              "African Caribbean",
+              "African Nova Scotian",
+              "Afrikaner",
+              "Akan",
+              "Albertan",
+              "Alsatian",
+              "Amhara",
+              "Amish",
+              "Anglo-Indian",
+              "Arab",
+              "Arawak",
+              "Ashanti",
+              "Asian",
+              "Assyrian",
+              "Baloch",
+              "Bambara",
+              "Bamileke",
+              "Bantu",
+              "Baoulé",
+              "Bashkir",
+              "Basque",
+              "Batswana",
+              "Bavarian",
+              "Bengali",
+              "Berber",
+              "Black",
+              "Bohemian",
+              "Bosniak",
+              "Breton",
+              "British",
+              "British Columbian",
+              "Buddhist",
+              "Cape Bretoner",
+              "Carib",
+              "Caribbean",
+              "Catalan",
+              "Caucasian (White)",
+              "Celtic",
+              "Central American",
+              "Central American Indian (Indigenous)",
+              "Central Asian",
+              "Chaldean",
+              "Channel Islander",
+              "Chechen",
+              "Chin",
+              "Christian",
+              "Circassian",
+              "Coptic",
+              "Cornish",
+              "Corsican",
+              "Creole",
+              "Czechoslovakian",
+              "Dinka",
+              "Doukhobor",
+              "East African",
+              "East Asian",
+              "Eastern European",
+              "Edo",
+              "Esan",
+              "Eurasian",
+              "European",
+              "Ewe",
+              "Fante",
+              "Flemish",
+              "Franco Ontarian",
+              "French Canadian",
+              "Frisian",
+              "Fulani",
+              "Ga-Adangbe",
+              "Galician",
+              "Gaspesian",
+              "Goan",
+              "Greek Cypriot",
+              "Gujarati",
+              "Harari",
+              "Hausa",
+              "Hawaiian",
+              "Hazara",
+              "Hindu",
+              "Hispanic",
+              "Hmong",
+              "Huguenot",
+              "Hutterite",
+              "Hutu",
+              "Igbo",
+              "Igorot",
+              "Ilocano",
+              "Indo-Caribbean",
+              "Indo-Fijian",
+              "Indo-Guyanese",
+              "Jatt",
+              "Javanese",
+              "Jewish",
+              "Kabyle",
+              "Karen",
+              "Kashmiri",
+              "Kashubian",
+              "Khmer",
+              "Kikuyu",
+              "Kurdish",
+              "Latin American",
+              "Luba",
+              "Luo",
+              "Maghrebi",
+              "Maharashtrian",
+              "Malay",
+              "Malayali",
+              "Malinké",
+              "Manitoban",
+              "Maori",
+              "Mapuche",
+              "Maroon",
+              "Mayan",
+              "Mennonite",
+              "Middle Eastern",
+              "Moravian",
+              "Mossi",
+              "Muslim",
+              "Ndebele",
+              "New Brunswicker",
+              "Newfoundlander",
+              "Norman",
+              "North African",
+              "North American",
+              "Northern European",
+              "Nova Scotian",
+              "Nubian",
+              "Oceanian",
+              "Ontarian",
+              "Orcadian",
+              "Oromo",
+              "Pacific Islander",
+              "Pashtun",
+              "Pennsylvania Dutch",
+              "Persian",
+              "Pipil",
+              "Polynesian",
+              "Prince Edward Islander",
+              "Punjabi",
+              "Québécois",
+              "Quechua",
+              "Rohingya",
+              "Roma",
+              "Ruthenian",
+              "Sami",
+              "Saskatchewanian",
+              "Scandinavian",
+              "Serer",
+              "Shona",
+              "Sicilian",
+              "Sikh",
+              "Sindhi",
+              "Sinhalese",
+              "Slavic",
+              "Soninke",
+              "South American",
+              "South American Indian (Indigenous)",
+              "South Asian",
+              "Southeast Asian",
+              "Southeast European",
+              "Southern European",
+              "Swahili",
+              "Tamil",
+              "Tatar",
+              "Telugu",
+              "Tibetan",
+              "Tigrian",
+              "Transylvanian",
+              "Tswana",
+              "Turkish Cypriot",
+              "Tutsi",
+              "Ulster Scot",
+              "United Empire Loyalist",
+              "Uyghur",
+              "Walloon",
+              "West African",
+              "West Asian",
+              "West Indian",
+              "Western European",
+              "Wolof",
+              "Xhosa",
+              "Yazidi",
+              "Yoruba",
+              "Yugoslavian",
+              "Zoroastrian",
+              "Zulu"
+            ]
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "ethnicity_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "ethnicity_another_category",
+          "description": "A response which does not fall into any of the previous categories. For example, a response of “Other” from retrospective studies. Prospective projects should instead allow participants to freely self-identify.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "ethnicity"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Ethnic or Cultural Origin"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "ethnicity_collect_method"
+          },
+          "name": "ethnicity_collect_method",
+          "description": "Studies must report how the ethnicity data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Socially assigned",
+              "Self-identified",
+              "Derived",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "gender",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
+              "Phenopackets.v2.0": "Individual.gender"
+            },
+            "comments": [
+              "EDI indicator"
+            ]
+          },
+          "name": "gender",
+          "description": "Refers to an individual's personal and social identity as a man, woman, or non-binary person (a person who is not exclusively a man or woman).\nA person's gender may differ from their sex at birth, and from what is indicated on their current identification or legal documents such as their birth certificate, passport or driver's license.\nA person's gender may change over time and some people may not identify with a specific gender.\n[REF: Statistics Canada Departmental Standard, Gender of person, October 1, 2021]",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Man",
+              "Woman",
+              "Another Gender",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "gender_another_gender",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "gender_another_gender",
+          "description": "A response which does not fall into any of the previous gender reporting categories.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "gender"
+                  ],
+                  "match": {
+                    "value": "Another Gender"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "gender_collect_method"
+          },
+          "name": "gender_collect_method",
+          "description": "Studies must report how the gender data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Socially assigned",
+              "Administrative gender",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "geographic_location",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "geographic_location",
+          "description": "Refers to the person's current, usual place of residence, derived from the postal code at their current address of residence.",
+          "restrictions": {
+            "required": true,
+            "regex": "^[A-Za-z][0-9][A-Za-z]([0-9][A-Za-z][0-9])?$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "geographic_location_additional"
+          },
+          "name": "geographic_location_additional",
+          "description": "When postal code is less specific, additional information may be reported.",
+          "restrictions": {
+            "required": false
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "geographic_location_collect_method"
+          },
+          "name": "geographic_location_collect_method",
+          "description": "Studies must report how the geographic_location data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Derived",
+              "Another method of collection",
+              "Administratively collected",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "race",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "comments": [
+              "EDI indicator"
+            ]
+          },
+          "name": "race",
+          "description": "Refers to a person who identifies as a visible minority under the Employment Equity Act, and Indigenous Peoples.\nThe Employment Equity Act defines visible minorities as 'persons, other than Aboriginal peoples, who are non-Caucasian in race or non-white in colour'.\nParticipants may have multiple racial identities.\nAll categories selected by the participants should be reported.\nTo include multiple values, separate values with a pipe delimiter '|' .\n[REF: Statistics Canada Departmental Standard, Visible minority of person, August 25, 2021]",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Black",
+              "East Asian",
+              "Indigenous (First Nations, Inuk/Inuit, Métis)",
+              "Latin American",
+              "Middle Eastern or North African",
+              "South Asian",
+              "Southeast Asian",
+              "White",
+              "Another Racial Category",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string",
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "race_another_racial_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "race_another_racial_category",
+          "description": "A response which does not fall into any of the previous racial reporting categories (e.g., Pacific Islander, Indigenous identities outside of North America, etc.).",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "race"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Racial Category"
+                    ]
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "race_collect_method"
+          },
+          "name": "race_collect_method",
+          "description": "Studies must report how race data was collected.\nThis is necessary to enable data aggregation, harmonization, and reproducibility.\nResponses from prospective projects should always be self-identified.\nTo respect participants' autonomy and right to self-determination, as well as to avoid conflating differences in (genetic) population structure with socially constructed racial categories, responses that were self-identified should not be aggregated with responses that were socially assigned or derived.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Socially assigned",
+              "Self-identified",
+              "Derived",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sex_another_category",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "sex_another_category",
+          "description": "A response which does not fall into any of the previous categories. ",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "sex_at_birth"
+                  ],
+                  "match": {
+                    "value": "Another Sex"
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sex_at_birth",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0",
+              "Phenopackets.v2.0": "Individual.sex"
+            }
+          },
+          "name": "sex_at_birth",
+          "description": "Refers to sex assigned at birth. Sex at birth is typically assigned based on a person's reproductive system and other physical characteristics; however, sex is also influenced by our physiology, genes, and hormones.\n[REF: Statistics Canada Departmental Standard, Sex at birth of person, October 1, 2021]",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Male",
+              "Female",
+              "Intersex",
+              "Another Sex",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sex_collect_method"
+          },
+          "name": "sex_collect_method",
+          "description": "Studies must report how the sex_at_birth data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility. ",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Clinician-recorded",
+              "Socially assigned",
+              "Derived",
+              "Legal sex",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_date_collection",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "sociodem_date_collection",
+          "description": "Many sociodemographic variables are social constructs, and the way participants self-identify may evolve over time. \nPlease indicate the actual date when the data was collected in format: YYYY, if available.",
+          "restrictions": {
+            "required": true,
+            "regex": "^(?:\\d{4})$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$"
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_question"
+          },
+          "name": "sociodem_question",
+          "description": "Indicate whether the questions asked for the sociodemographic variable follow the PCGL reference question and standard reporting categories.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "PCGL reference question",
+              "Another question",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_question_detail",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "sociodem_question_detail",
+          "description": "Report the questions asked for the sociodemographic variable, including the provided response options/reporting categories if it does not follow the PCGL reference question and standard reporting categories.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "sociodem_question"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "PCGL reference question",
+                      "Another question"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "total_income"
+          },
+          "name": "total_income",
+          "description": "Refers to the sum of certain incomes before income taxes and deductions, during a specified reference period.\nThe monetary receipts included are those that tend to be of a regular and recurring nature.\n[REF: Statistics Canada Departmental Standard, Total income of person, March 21, 2016]",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "$ 0 to $ 4,999",
+              "$ 5,000 to $ 9,999",
+              "$ 10,000 to $ 14,999",
+              "$ 15,000 to $ 19,999",
+              "$ 20,000 to $ 24,999",
+              "$ 25,000 to $ 34,999",
+              "$ 35,000 to $ 49,999",
+              "$ 50,000 to $ 74,999",
+              "$ 75,000 to $ 99,999",
+              "$ 100,000 to $ 149,999",
+              "$ 150,000 to $ 199,999",
+              "$ 200,000 to $ 249,999",
+              "$ 250,000 and over",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "total_income_collect_method"
+          },
+          "name": "total_income_collect_method",
+          "description": "Studies must report how the total_income data was collected. This is necessary to enable data aggregation, harmonization, and reproducibility.",
+          "restrictions": {
+            "required": true,
+            "codeList": [
+              "Self-identified",
+              "Derived",
+              "Administratively collected",
+              "Another method of collection",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "total_income_support"
+          },
+          "name": "total_income_support",
+          "description": "The number of people supported by the value entered in total_income",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "total_income_collect_method"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Missing - Unknown",
+                      "Missing - Not collected",
+                      "Missing - Not provided",
+                      "Missing - Restricted access"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": false,
+              "empty": true
+            },
+            "else": {
+              "required": true
+            }
+          },
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "accommodation_duration"
+          },
+          "name": "accommodation_duration",
+          "description": "Years lived at current location specified in \"geographic_location\"",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Less than 1 year",
+              "1 - 5 years",
+              "6 - 10 years",
+              "11 - 20 years",
+              "More than 20 years",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "accommodation_number_of_occupants"
+          },
+          "name": "accommodation_number_of_occupants",
+          "description": "Counting themselves, the number of occupants living concurrently at the location specified in \"geographic_location\"",
+          "valueType": "integer"
+        },
+        {
+          "meta": {
+            "displayName": "accommodation_type"
+          },
+          "name": "accommodation_type",
+          "description": "Refers to the hospitality service provided in a dwelling where a person may reside temporarily or permanently.\n[REF: Statistics Canada Departmental Standards, Classification of residential structures, September 11, 2013; Accommodation type of collective dwelling, September 24, 2021; ].",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Single-detached house",
+              "Single-attached house, semi-detached house or row house/townhouse",
+              "Apartment",
+              "Student housing",
+              "Mobile home and other movable dwellings (including houseboats or railroad cars)",
+              "Hospital, rehabilitation centre, drug treatment centre, or other related facilities",
+              "Correctional and custodial facilities",
+              "Transitional housing (including emergency shelters and shelters for the unhoused)",
+              "Service collective dwellings (including hotels, motels, and rooming houses)",
+              "Religious establishments (including convents, seminaries, and monasteries)",
+              "Work camps (such as accommodations provided to employees of an industry such as mining)",
+              "Military bases",
+              "Anywhere outside (for example, street, vehicle, abandoned building)",
+              "Another accommodation type",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "another_accommodation_type"
+          },
+          "name": "another_accommodation_type",
+          "description": "A response which does not fall into any of the previous categories. Provided when \"Another accommodation type\" is selected in \"accommodation_type\"",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "accommodation_type"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another accommodation type"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "another_employment_status"
+          },
+          "name": "another_employment_status",
+          "description": "A response which does not fall into any of the previous categories. Provided when \"Another status of employment\" is selected in \"employment_status\"",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "employment_status"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another status of employment"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "another_household_tenure"
+          },
+          "name": "another_household_tenure",
+          "description": "A response which does not fall into any of the previous categories. Provided when \"Another status of tenure\" is selected in \"household_tenure\"",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "household_tenure"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another status of tenure"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "arrival_in_canada"
+          },
+          "name": "arrival_in_canada",
+          "description": "A response when a participant selected \"Outside of Canada\" to the field place_of_birth",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "place_of_birth"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Outside of Canada"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "codeList": [
+                "Less than 5 years",
+                "5-9 years",
+                "10 or more years",
+                "Do not know",
+                "Prefer not to answer",
+                "Missing - Unknown",
+                "Missing - Not collected",
+                "Missing - Not provided",
+                "Missing - Restricted access"
+              ]
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "disability_status"
+          },
+          "name": "disability_status",
+          "description": "Disability is the result of the interaction between a person's functional limitations and barriers in the environment, including social and physical barriers that make it harder to function day-to-day.\nThus, a person with disability is a person with a social disadvantage that an unsupportive environment imposes on top of their impairment.\n[REF: Statistics Canada, Canadian Survey on Disability, 2022: Concepts and Methods Guide, December 1, 2023].",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Person with disability",
+              "Person without disability",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "employment_status"
+          },
+          "name": "employment_status",
+          "description": "Refers to the labour force status of those during the reference period.\nThis may include those who, during the reference period did any work at all at a job or business (that is, paid work in the context of an employer-employee relationship, self-employment, or persons who did unpaid family work); had a job but were not at work due to factors such as their own illness or disability, personal or family responsibilities, vacation or a labour dispute; or, persons who were not employed during the reference period (including persons who were unemployed as well as those who were not in the labour force).\nParticipants may have multiple employment statuses. All categories selected by the participants should be reported.\n[Statistics Canada Departmental Standard, Employed person, June 21, 2010].\n\n'Missing - Not applicable' is provided as a valid response option when the question of employment_status is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.\nTo include multiple values, separate values with a pipe delimiter '|' .",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Employed full-time",
+              "Employed part-time",
+              "Employed casual, on-call, temporary, or seasonal",
+              "Self-employed",
+              "Parental leave of absence",
+              "Out of work or unemployed for 1 year or more",
+              "Out of work or unemployed for less than 1 year",
+              "Looking after home and/or family",
+              "A student",
+              "Retired",
+              "Unable to work (for example, because of sickness or disability)",
+              "Another status of employment",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "first_language"
+          },
+          "name": "first_language",
+          "description": "Refers to the first language learned at home in childhood and still understood by the person at the time the data was collected.\nIf the person no longer understands the first language learned, the second language learned may be specified.\nFor a person who learned more than one language at the same time in early childhood, more than one entry can be made; or, the language this person spoke most often at home before starting school may be uniquely entered.\n[REF: Statistics Canada Departmental Standard, Mother tongue of person, July 29, 2022]",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "English",
+              "French",
+              "Another Language",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "first_language_another_language"
+          },
+          "name": "first_language_another_language",
+          "description": "Refers to the first language learned at home in childhood and still understood by the person at the time the data was collected.\nIf the person no longer understands the first language learned, the second language learned may be specified.\nFor a person who learned more than one language at the same time in early childhood, more than one entry can be made; or, the language this person spoke most often at home before starting school may be uniquely entered.\n[REF: Statistics Canada Departmental Standard, Mother tongue of person, July 29, 2022]",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "first_language"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Another Language"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "household_tenure"
+          },
+          "name": "household_tenure",
+          "description": "Refers to whether the household (that is, a person or group of persons who occupy the same dwelling) owns or rents their private dwelling.\nThe private dwelling may be situated on rented or leased land or be part of a condominium.\nA household is considered to own their dwelling if some member of the household owns the dwelling even if it is not fully paid for, for example if there is a mortgage or some other claim on it.\nA household is considered to rent their dwelling if no member of the household owns the dwelling, even if the dwelling is provided without cash rent or at a reduced rent, or if the dwelling is part of a cooperative.\n[REF: Statistics Canada Departmental Standard, Tenure of private household, May 17, 2010]",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Owner",
+              "Renter",
+              "Another status of tenure",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "knowledge_non_official_language"
+          },
+          "name": "knowledge_non_official_language",
+          "description": "A response when \"Non-official language\" was selected for field \"knowledge_official_languages\".",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "knowledge_official_languages"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Non-official language"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "knowledge_official_language_preference"
+          },
+          "name": "knowledge_official_language_preference",
+          "description": "A response when \"Non-official language\" was selected for field \"knowledge_official_languages\".",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "knowledge_official_languages"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Non-official language"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true,
+              "codeList": [
+                "English",
+                "French",
+                "Missing - Unknown",
+                "Missing - Not collected",
+                "Missing - Not provided",
+                "Missing - Restricted access"
+              ]
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "knowledge_official_languages"
+          },
+          "name": "knowledge_official_languages",
+          "description": "Refers to whether a person can conduct a conversation in English, French, or neither language.\nFor a child who has not yet learned to speak, this includes languages that the child is learning to speak at home.\n[REF: Statistics Canada Departmental Standard, Knowledge of official languages of person, December 4, 2015].\nTo include multiple values, separate values with a pipe delimiter '|' .",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "English",
+              "French",
+              "Non-official language",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          },
+          "isArray": true,
+          "delimiter": "|"
+        },
+        {
+          "meta": {
+            "displayName": "parent1_another_pob"
+          },
+          "name": "parent1_another_pob",
+          "description": "A response when a participant selected \"Outside of Canada\" to the field parent1_place_of_birth",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "parent1_place_of_birth"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Outside of Canada"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "parent1_place_of_birth"
+          },
+          "name": "parent1_place_of_birth",
+          "description": "Refers to the name of the geographic location where the person's parent was born.\nThe geographic location is specified according to geographic boundaries current at the time of data collection, not the geographic boundaries at the time of birth.\n[REF: Statistics Canada Departmental Standard, Place of birth of person, January 11, 2016]",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Canada",
+              "Outside of Canada",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "parent2_another_pob"
+          },
+          "name": "parent2_another_pob",
+          "description": "A response when a participant answered \"Outside of Canada\" to the field parent2_place_of_birth",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "parent2_place_of_birth"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Outside of Canada"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "parent2_place_of_birth"
+          },
+          "name": "parent2_place_of_birth",
+          "description": "Refers to the name of the geographic location where the person's parent was born.\nThe geographic location is specified according to geographic boundaries current at the time of data collection, not the geographic boundaries at the time of birth.\n[REF: Statistics Canada Departmental Standard, Place of birth of person, January 11, 2016]",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Canada",
+              "Outside of Canada",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "personal_income",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            }
+          },
+          "name": "personal_income",
+          "description": "Personal annual income from all sources after taxes.\n'Missing - Not applicable' is provided as a valid response option when the question of personal income is not appropriate to ask (for example, newborn studies).\nThis response option should NOT be provided to adult participants.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Less than $15,000",
+              "$ 15,000 - $ 19,999",
+              "$ 20,000 - $ 29,000",
+              "$ 30,000 - $ 49,999",
+              "$ 50,000 - $ 69,999",
+              "$ 70,000 - $ 84,999",
+              "$ 85,000 - $ 99,999",
+              "$ 100,000 - $ 124,999",
+              "$ 125,000 - $ 149,999",
+              "$ 150,000 or more",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "personal_income_collect_method"
+          },
+          "name": "personal_income_collect_method",
+          "description": "Studies must report how the personal_income data was collected.\nThis is necessary to enable data aggregation, harmonization, and reproducibility.\n'Missing - Not applicable' is provided as a valid response option when the question of income is not appropriate to ask (for example, newborn studies).\nThis response option should NOT be provided to adult participants.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Before taxes",
+              "After taxes",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "place_of_birth"
+          },
+          "name": "place_of_birth",
+          "description": "Refers to the name of the geographic location where the person was born.\nThe geographic location is specified according to geographic boundaries current at the time of data collection, not the geographic boundaries at the time of birth.\n[REF: Statistics Canada Departmental Standard, Place of birth of person, January 11, 2016]",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Canada",
+              "Outside of Canada",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "pob_outside_canada"
+          },
+          "name": "pob_outside_canada",
+          "description": "A response when a participant selected \"Outside of Canada\" to the field place_of_birth",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "place_of_birth"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Outside of Canada"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "religion"
+          },
+          "name": "religion",
+          "description": "Refers to a person's self-identification as having a connection or affiliation with any religious denomination, group, body, or other religiously defined community or system of belief.\nReligion is not limited to formal membership in a religious organization or group.\nFor infants or children, religion refers to the specific religious group or denomination in which they are being raised, if any.\nPersons without a religious connection or affiliation can self-identify as atheist, agnostic, or humanist, or can provide another applicable response. [REF: Statistics Canada Departmental Standard, Religion of person, April 1, 2021].",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Religious",
+              "Not religious",
+              "Do not know",
+              "Prefer not to answer",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "religion_free_text_input"
+          },
+          "name": "religion_free_text_input",
+          "description": "A response when \"Religious\" was selected for field \"religion\".",
+          "valueType": "string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "religion"
+                  ],
+                  "match": {
+                    "codeList": [
+                      "Religious"
+                    ]
+                  },
+                  "case": "any"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          }
+        },
+        {
+          "meta": {
+            "displayName": "sexual_orientation"
+          },
+          "name": "sexual_orientation",
+          "description": "Refers to how a person describes their sexual identity.\nFor example, a person may describe their sexuality as heterosexual, lesbian, gay, bisexual or pansexual (or another sexual orientation not included here).\n[REF: Statistics Canada Recommended Standard, Sexual orientation of person, June 13, 2023].\n\n'LGB+': This reporting category includes persons whose reported sexual orientation is lesbian, gay, bisexual, pansexual, or another sexual orientation that is not heterosexual (i.e., a person of minority sexual orientation) [Statistics Canada Recommended Standard, Classification of sexual orientation, June 13, 2023].\n\n'Heterosexual': This reporting category includes persons whose reported sexual orientation is heterosexual (i.e. a person who is not a minority sexual orientation) [Statistics Canada Recommended Standard, Classification of sexual orientation, June 13, 2023].\n\n'Missing - Not applicable': Statistics Canada currently only collects data on sexual orientation from people aged 15 years and older [Statistics Canada Recommended Standard, Sexual orientation of person, June 13, 2023].",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "LGB+",
+              "Heterosexual",
+              "Prefer not to answer",
+              "Missing - Not applicable",
+              "Missing - Unknown",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access"
+            ]
+          }
+        },
+        {
+          "meta": {
+            "displayName": "sociodem_notes",
+            "exact_mappings": {
+              "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
+            },
+            "examples": [
+              "For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
+            ]
+          },
+          "name": "sociodem_notes",
+          "description": "Studies may choose to report whether potential bias may exist due to the way reporting categories were defined and handled.",
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "transgender"
+          },
+          "name": "transgender",
+          "description": "A person whose gender identity differs from what is typically associated with the sex they were assigned at birth.\n[REF: https://www.canada.ca/en/women-gender-equality/free-to-be-me/2slgbtqi-plus-glossary.html].\n\n'Missing - Not applicable' is provided as a valid response option when the question of transgender is not appropriate to ask (for example, newborn studies). This response option should NOT be provided to adult participants.",
+          "valueType": "string",
+          "restrictions": {
+            "codeList": [
+              "Transgender person",
+              "Non-transgender person",
+              "Prefer not to answer",
+              "Missing - Not applicable",
               "Missing - Unknown",
               "Missing - Not collected",
               "Missing - Not provided",
@@ -1490,8 +2792,43 @@
               "Medication",
               "Procedure",
               "Radiation therapy",
-              "Other"
+              "Other",
+              "Missing - Not collected",
+              "Missing - Not provided",
+              "Missing - Restricted access",
+              "Missing - Unknown",
+              "Not applicable"
             ]
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
+            "displayName": "treatment_type_other"
+          },
+          "name": "treatment_type_other",
+          "description": "If the treatment type is 'other', please specify via free text string",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "treatment_type"
+                  ],
+                  "match": {
+                    "value": "Other"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": false
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
           },
           "valueType": "string"
         },
@@ -1621,32 +2958,6 @@
               "Missing - Unknown",
               "Not applicable"
             ]
-          }
-        },
-        {
-          "meta": {
-            "displayName": "treatment_type_other"
-          },
-          "name": "treatment_type_other",
-          "description": "If the treatment type is 'other', please specify via free text string",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "treatment_type"
-                  ],
-                  "match": {
-                    "value": "Other"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            }
           }
         }
       ],
@@ -1809,7 +3120,7 @@
             ]
           },
           "name": "procedure_body_site_code",
-          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of a specimen when it was collected. Please use C80.9 if the anatomic location of a specimen is Unknown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of the procedured when it occured. Please use C80.9 if the anatomic location of the procedure is Unknown.",
           "restrictions": {
             "required": true,
             "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
@@ -1854,7 +3165,7 @@
             ]
           },
           "name": "body_site_laterality",
-          "description": "Indicate which side on the procedure occured on.",
+          "description": "Indicate which side on the procedure occurred on.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -1973,12 +3284,12 @@
             "examples": [
               "rxnorm:221058",
               "kegg.drug:D00123",
-              "pubchem.compound:100101",
+              "pubchem.chem:100101",
               "NCIT:C138986"
             ]
           },
           "name": "drug_code",
-          "description": "Provide the standardized code from RxNorm, KEGG drug database, PubChem Compound or NCIt to represent the drug.\nProvide code in Compact URI (CURIE) pattern.\nRxNorm URL:\nhttps://rxnav.nlm.nih.gov/REST/rxcui/{code}\nKEGG URL:\nhttps://www.kegg.jp/entry/{code}\nPubChem URL:\nhttps://pubchem.ncbi.nlm.nih.gov/compound/{code}\nNCIt URL:\nhttps://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}'",
+          "description": "Provide the standardized code from RxNorm, KEGG drug database, PubChem Compound or NCIt to represent the drug.\nProvide code in Compact URI (CURIE) pattern.\nRxNorm URL:\nhttps://rxnav.nlm.nih.gov/REST/rxcui/{code}\nKEGG URL:\nhttps://www.kegg.jp/entry/{code}\nPubChem URL:\nhttps://pubchem.ncbi.nlm.nih.gov/compound/{code}\nNCIt URL:\nhttps://ncit.nci.nih.gov/ncitbrowser/ConceptReport.jsp?dictionary=NCI_Thesaurus&code=C{code}",
           "restrictions": {
             "required": true,
             "regex": "^rxnorm:\\d{1,8}$|^kegg\\.drug:D\\d+$|^pubchem\\.chem:\\d+$|^NCIT:C\\d{1,7}$"
@@ -3285,7 +4596,7 @@
             "displayName": "sample_status"
           },
           "name": "sample_status",
-          "description": "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to of the same type that does not meet the criteria, representing a normal or baseline state for comparison.",
+          "description": "Indicate the status of the sample for data analysis.\nCase sample refers to a sample that meets the disease or exposure criteria under investigation.\nControl sample refers to a sample of the same type that does not meet the criteria, representing a normal or baseline state for comparison.",
           "restrictions": {
             "required": true,
             "codeList": [
@@ -3952,7 +5263,7 @@
             ]
           },
           "name": "submitter_sample_ids",
-          "description": "List of Unique identifiers (min 1) for samples within the study, assigned by the data provider.\n",
+          "description": "List of Unique identifiers (min 1) for samples within the study, assigned by the data provider.",
           "restrictions": {
             "if": {
               "conditions": [
@@ -4123,6 +5434,9 @@
           },
           "name": "submitter_workflow_id",
           "description": "Indicate the unique identifier of the data processing workflow used in the analysis.",
+          "restrictions": {
+            "required": true
+          },
           "valueType": "string",
           "unique": true
         },
