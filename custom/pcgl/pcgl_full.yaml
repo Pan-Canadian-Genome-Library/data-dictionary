@@ -4527,7 +4527,7 @@ slots:
     exact_mappings:
     - ARGO:read_groups.file_r2
     range: string
-    required: false
+    required: true
   library_name:
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
@@ -4668,17 +4668,14 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: 'Indicates the type of data produced as outputs from the analysis.
-
-      If ''analysisType'' is ''sequenceExperiment'', ''dataType'' options are : ''Raw
-      Sequencing Reads''
-
-      If ''analysisType'' is ''sequenceAlignment'', ''dataType'' options are : ''Aligned
-      Reads'',''Aligned Reads Index''
-
-      If ''analysisType'' is ''variantCall'', dataType options are : ''Single Nucleotide
-      Variants (SNVs)'',''Insertions and Deletions (InDels)'',''Structural Variations
-      (SVs)'',''Copy Number Variations (CNVs)'',''Variant Calls Index'''
+    description: "Indicates the type of data produced as outputs from the analysis.\n\
+      To include multiple values, separate values with a pipe delimiter '|' within\
+      \ your file\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are\
+      \ :\n'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType'\
+      \ options are :\n'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is\
+      \ 'variantCall', dataType options are \n 'Single Nucleotide Variants (SNVs)','Insertions\
+      \ and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations\
+      \ (CNVs)','Variant Calls Index'"
     title: dataType
     range: data_type_menu
     required: true
@@ -5336,11 +5333,11 @@ classes:
         slot_group: Study
       lead_organizations:
         name: lead_organizations
-        rank: 5
+        rank: 4
         slot_group: Study
       principal_investigators:
         name: principal_investigators
-        rank: 6
+        rank: 5
         slot_group: Study
       status:
         name: status
@@ -6636,10 +6633,10 @@ classes:
     - submitter_experiment_id
     - submitter_read_group_id
     - file_r1
+    - file_r2
     - library_layout
     - library_name
     - platform_unit
-    - file_r2
     - insert_size
     - library_description
     - library_layout_source_text
@@ -6659,20 +6656,20 @@ classes:
         name: file_r1
         rank: 3
         slot_group: Read_Group
+      file_r2:
+        name: file_r2
+        rank: 4
+        slot_group: Read_Group
       library_layout:
         name: library_layout
-        rank: 4
+        rank: 5
         slot_group: Read_Group
       library_name:
         name: library_name
-        rank: 5
+        rank: 6
         slot_group: Read_Group
       platform_unit:
         name: platform_unit
-        rank: 6
-        slot_group: Read_Group
-      file_r2:
-        name: file_r2
         rank: 7
         slot_group: Read_Group
       insert_size:

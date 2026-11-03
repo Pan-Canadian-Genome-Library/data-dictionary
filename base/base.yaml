@@ -4198,7 +4198,7 @@ slots:
     exact_mappings:
     - ARGO:read_groups.file_r2
     range: string
-    required: false
+    required: true
   library_name:
     name: library_name
     description: Name of a sequencing library made from a molecular sample or a sample
@@ -4334,7 +4334,7 @@ slots:
     required: false
   dataType:
     name: dataType
-    description: "Indicates the type of data produced as outputs from the analysis.\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are : 'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are : 'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are : 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'"
+    description: "Indicates the type of data produced as outputs from the analysis.\nTo include multiple values, separate values with a pipe delimiter '|' within your file\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are :\n'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are :\n'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are \n 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'"
     title: DataType
     range: data_type_menu
     required: true
@@ -6345,8 +6345,8 @@ classes:
       - participant_criteria
       - keywords
       - program_name
-    title: study_translation
-    description: "Study_translation refers yo language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences."
+    title: study
+    description: "Study_translation refers language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences."
     slot_usage:
       language_id:
         name: language_id

@@ -207,7 +207,7 @@
     },
     {
       "name": "study_translation",
-      "description": "Study_translation refers yo language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences.",
+      "description": "Study_translation refers language-specific, localized representation of a Study's descriptive metadata. It allows the descriptive and contextual information associated with a study to be presented in multiple languages, ensuring accessibility for diverse audiences.",
       "fields": [
         {
           "meta": {
