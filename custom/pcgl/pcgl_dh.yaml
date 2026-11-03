@@ -1743,8 +1743,8 @@ enums:
         text: Less than $15,000
       $ 15,000 - $ 19,999:
         text: $ 15,000 - $ 19,999
-      $ 20,000 - $ 29,000:
-        text: $ 20,000 - $ 29,000
+      $ 20,000 - $ 29,999:
+        text: $ 20,000 - $ 29,999
       $ 30,000 - $ 49,999:
         text: $ 30,000 - $ 49,999
       $ 50,000 - $ 69,999:
@@ -2995,7 +2995,7 @@ slots:
         tag: specifications
         value: FHIRSpec.v5.0.0:https://hl7.org/fhir/procedure-definitions.html#Procedure.bodySite
     description: Indicate the ICD-O-3 topography code or UBERON code for the anatomic
-      location of the procedured when it occured. Please use C80.9 if the anatomic
+      location of the procedure when it occurred. Please use C80.9 if the anatomic
       location of the procedure is Unknown.
     title: procedure_body_site_code
     notes:
@@ -3212,7 +3212,7 @@ slots:
     required: false
   body_site_laterality:
     name: body_site_laterality
-    description: Indicate which side on the procedure occurred on.
+    description: Indicate which side the procedure occurred on.
     title: body_site_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
@@ -3220,7 +3220,7 @@ slots:
     required: false
   irradiated_site_laterality:
     name: irradiated_site_laterality
-    description: Indicate which side on the radiation procedure occured on.
+    description: Indicate which side the radiation procedure occurred on.
     title: irradiated_site_laterality
     comments:
     - Reference caDSR CDE ID 2007875 https://cdebrowser.nci.nih.gov/cdebrowserClient/cdeBrowser.html#/search?publicId=2007875&version=2.0
@@ -4236,7 +4236,7 @@ slots:
     title: sociodem_notes
     examples:
     - value: "For example, in the Canadian Census, the order of the provided response\
-        \ options for ethnicity were shown to influence number of received responses\
+        \ options for ethnicity was shown to influence number of received responses\
         \ per reporting option. \n\nOther examples may include inclusion/exclusion\
         \ criteria based on sociodemographic variables."
     exact_mappings:
@@ -4486,7 +4486,7 @@ slots:
     pattern: ^OBI:\d{7} \(.*\)$
   instrument_metadata:
     name: instrument_metadata
-    description: Captures metadata about sequencing instrument usage (e.g. instruments
+    description: Captures metadata about sequencing instrument usage (e.g. instrument
       parameters and usage conditions)
     title: instrument_metadata
     exact_mappings:
@@ -5333,11 +5333,11 @@ classes:
         slot_group: Study
       lead_organizations:
         name: lead_organizations
-        rank: 4
+        rank: 5
         slot_group: Study
       principal_investigators:
         name: principal_investigators
-        rank: 5
+        rank: 6
         slot_group: Study
       status:
         name: status
@@ -5381,11 +5381,11 @@ classes:
     is_a: dh_interface
   Study_Translation:
     name: Study_Translation
-    description: Study_translation refers yo language-specific, localized representation
+    description: Study_translation refers language-specific, localized representation
       of a Study's descriptive metadata. It allows the descriptive and contextual
       information associated with a study to be presented in multiple languages, ensuring
       accessibility for diverse audiences.
-    title: study_translation
+    title: study
     slots:
     - language_id
     - funding_sources

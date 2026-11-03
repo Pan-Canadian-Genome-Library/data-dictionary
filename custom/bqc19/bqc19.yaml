@@ -18,8 +18,6 @@ classes:
     is_a: base_Participant
   Sociodemographic:
     is_a: base_Sociodemographic
-  Demographic:
-    is_a: base_Demographic
   Diagnosis:
    is_a: base_Diagnosis
   Treatment:
@@ -42,6 +40,8 @@ classes:
    is_a: base_Exposure
   Specimen:
     is_a: base_Specimen
+  Workflow:
+    is_a: base_Workflow
   Sample:
     is_a: base_Sample
   Experiment:
