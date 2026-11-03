@@ -24,8 +24,6 @@ classes:
     is_a: base_Participant
   Sociodemographic:
     is_a: base_Sociodemographic
-  Demographic:
-    is_a: base_Demographic
   Diagnosis:
    is_a: base_Diagnosis
   Treatment:

@@ -74,8 +74,8 @@ def main():
 
     populateFieldRestrictionsProperties(restrictions,lectern)
 
-  with open("%s/%s" % (cli_input.output_directory,cli_input.custom_linkml.split("/")[-1].replace("_full.yaml","_lectern.json")), 'w') as fp:
-    json.dump(lectern, fp, indent=2)
+  with open("%s/%s" % (cli_input.output_directory,cli_input.custom_linkml.split("/")[-1].replace("_full.yaml","_lectern.json")), 'w',encoding='utf-8') as fp:
+    json.dump(lectern, fp, indent=2,ensure_ascii=False)
 
 
 def populateLecternProperties(model,lectern):
