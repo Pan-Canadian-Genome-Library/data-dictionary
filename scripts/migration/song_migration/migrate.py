@@ -41,13 +41,13 @@ import copy
 import importlib
 from datetime import date
 
+"""
+Within each version to version, specify the following:
+- studies
+- analysisTypes
+- per analysisType the prior and current versions
+"""
 version_to_version = {
-  """
-  Within each version to version, specify the following:
-  - studies
-  - analysisTypes
-  - per analysisType the prior and current versions
-  """
   "1.0to2.0" : {
     "studies" : [
         "PCGLST0001",
@@ -75,7 +75,7 @@ def check_url(url):
     """
     try:
         health_url="%s/isAlive" % (url)
-        response = requests.get(health_url, timeout=5)
+        response = requests.get(health_url, timeout=20)
         response.raise_for_status()
         print(f"{url} connection successful")
 
@@ -102,7 +102,7 @@ def load_functions(version):
     local_module = importlib.import_module("migration%s" % (version.replace('.','_')))
     return(local_module)
 
-def retrieve_records(url,token,versions):
+def retrieve_records(url,token,versions,record_limit):
     """
     Sets up record collection for downstream interactions
     First - establishes record and corresponding keys for tracking initial records, modified, confirmed successes and failures
@@ -128,7 +128,7 @@ def retrieve_records(url,token,versions):
         get_total_url="%s/studies/%s/analysis/paginated?analysisStates=PUBLISHED&limit=10&offset=1" % (url,study)
 
         try:
-            response = requests.get(get_total_url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5)
+            response = requests.get(get_total_url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20)
             if response.status_code!=200:
                 raise SystemExit(f"Server response {response.status_code}")
         except requests.exceptions.Timeout:
@@ -153,7 +153,7 @@ def retrieve_records(url,token,versions):
             get_analysis_url="%s/studies/%s/analysis/paginated?analysisStates=PUBLISHED&limit=%s&offset=%s" % (url,study,str(page_limit),str(page))
 
             try:
-                response = requests.get(get_analysis_url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5)
+                response = requests.get(get_analysis_url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20)
                 if response.status_code!=200:
                     raise SystemExit(f"Server response {response.status_code}")
                 if 'analyses' not in response.json().keys():
@@ -178,8 +178,9 @@ def retrieve_records(url,token,versions):
                     records[study]['invalid'][analysis['analysisId']]="Not a targeted analysis version"
                 else:
                     records[study]['valid'].append(analysis)
-        ###COMMENT THIS OUT FOR PRODUCTION - THIS IS TO LIMIT THE AMOUNT OF RECORDS MODIFIED IN DEV. DATA POVERTY.
-        records[study]['valid']=records[study]['valid'][:2]
+
+        if record_limit!=0:
+            records[study]['valid']=records[study]['valid'][:record_limit]
     return(records)
 
         
@@ -198,7 +199,7 @@ def unpublish_record(analysis,url,study,token,disable_dry_run):
     if disable_dry_run:
         print("...UNPUBLISHING",end="")
         try:
-            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5)
+            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20)
             if response.status_code!=200:
                 return(f"UNPUBLISH - Server response {response.status_code}")
         except Exception as e:
@@ -208,6 +209,7 @@ def unpublish_record(analysis,url,study,token,disable_dry_run):
     else:
         print("...UNPUBLISHING")
         print(url) 
+        return(False)
 
 
             
@@ -231,12 +233,13 @@ def remove_contents_record(analysis,disable_dry_run):
                 del analysis[key]
 
             del analysis['analysisType']['version']
+
+            return(False)
         except Exception as e:
             return(f"REMOVING - {type(e).__name__}: {e}")
     else:
         print("...REMOVING")
-        print("beep boop")
-        return(False,False)
+        return(False)
 
 def update_record(analysis,url,study,token,disable_dry_run,original_analysis):
     #PUT https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca/studies/ho/analysis/hi
@@ -245,7 +248,7 @@ def update_record(analysis,url,study,token,disable_dry_run,original_analysis):
     if disable_dry_run:
         print("...UPDATING",end="")
         try:
-            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5,json=analysis)
+            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20,json=analysis)
             if response.status_code!=200:
                 return(f"UPDATING - Server response {response.status_code}")
         except Exception as e:
@@ -255,7 +258,7 @@ def update_record(analysis,url,study,token,disable_dry_run,original_analysis):
     else:
         print("...UPDATING")
         print(url)
-        return(False,False)
+        return(False)
 
 
 
@@ -266,7 +269,7 @@ def publish_record(analysis,url,study,token,disable_dry_run):
     if disable_dry_run:
         print("...PUBLISHING",end="")
         try:
-            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5)
+            response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20)
             if response.status_code!=200:
                 return(f"PUBLISH - Server response {response.status_code}")
         except Exception as e:
@@ -276,7 +279,7 @@ def publish_record(analysis,url,study,token,disable_dry_run):
     else:
         print("...PUBLISHING")
         print(url)
-        return(False,False)
+        return(False)
 
 
 def verify_record(analysis,url,study,token,disable_dry_run):
@@ -286,7 +289,7 @@ def verify_record(analysis,url,study,token,disable_dry_run):
     if disable_dry_run:
         print("...VERIFYING")
         try:
-            response = requests.get(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=5)
+            response = requests.get(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20)
             if response.status_code!=200:
                 return(f"VERIFY - Server response {response.status_code}",False)
         except Exception as e:
@@ -360,7 +363,12 @@ def commit_records(records,url,token,disable_dry_run):
                 continue
 
             if success:
-                records[study]['verified'][analysis['analysisId']]="Success"           
+                records[study]['verified'][analysis['analysisId']]="Success"
+
+            if not disable_dry_run:
+                records[study]['uncomitted'][analysis['analysisId']]='Dry-run'
+                print("...ERR")
+                continue                  
 
 
     return()
@@ -374,18 +382,33 @@ def main():
     -t $token \
     -u https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca \
     -v "1.0to2.0"
+  Test samples example:
+  python scripts/migration/song_migration/migrate.py \
+    -t $token \
+    -u https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca \
+    -v "1.0to2.0" \
+    -n 5
   Live production example:
   python scripts/migration/song_migration/migrate.py \
     -t $token \
     -u https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca \
     -v "1.0to2.0" \
     --disable_dry_run
+  Live production example and remove backups:
+  python scripts/migration/song_migration/migrate.py \
+    -t $token \
+    -u https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca \
+    -v "1.0to2.0" \
+    --remove_original_backup \
+    --disable_dry_run
   """
   parser = argparse.ArgumentParser(description='The script aims to migrate SONG entries')
   parser.add_argument('-t', '--token', dest="token", help="PCGL API Token", required=True,type=str)
   parser.add_argument('-u', '--url', dest="url", help="Song URL", required=True,type=str)
   parser.add_argument('-v', '--version_to_version', dest="versions", help="String to track version to version specific modification", required=True,type=str)
-  parser.add_argument('--d', '--disable_dry_run', dest="disable_dry_run", help="Flag to force intentional commit",default=False,action="store_true")
+  parser.add_argument('-n', '--record_limit', dest="record_limit", help="Enforce a record limit per study. Default 0.",default=0,type=int)
+  parser.add_argument('-r', '--remove_original_backup', dest="remove_original_backup", help="By default retains original SONG records, enabling flag removes them.",default=False,action="store_true")
+  parser.add_argument('-d', '--disable_dry_run', dest="disable_dry_run", help="Flag to force intentional commit",default=False,action="store_true")
 
   args = parser.parse_args()
 
@@ -394,7 +417,7 @@ def main():
   ###Load functions
   conversion=load_functions(args.versions)
   ###Retrieve records
-  records=retrieve_records(args.url,args.token,args.versions)
+  records=retrieve_records(args.url,args.token,args.versions,args.record_limit)
 
   print ("# Status update - Post retrieval")
   for study in records.keys():
@@ -421,9 +444,10 @@ def main():
         print("##### %s : %s" % (key,len(records[study][key])))
 
   ### Remove bulky records
-  for study in records.keys():  
-    for key in ["valid","modified"]:
-        del records[study][key]
+  if args.remove_original_backup:
+    for study in records.keys():  
+        for key in ["valid","modified"]:
+            del records[study][key]
 
   ### Return results in JSON file
   with open(("%s_%s.json" % (date.today(),args.versions.replace('.','_'))), "w", encoding="utf-8") as file:
