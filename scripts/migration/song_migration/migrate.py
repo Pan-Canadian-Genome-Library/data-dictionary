@@ -39,7 +39,7 @@ import shutil
 import argparse
 import copy
 import importlib
-from datetime import date
+from datetime import datetime
 
 """
 Within each version to version, specify the following:
@@ -116,7 +116,6 @@ def retrieve_records(url,token,versions,record_limit):
             "invalid":{},
             "modified":[],
             "unmodified":{},
-            "committed": {},
             "uncomitted": {},
             "verified" : {}
             }
@@ -326,7 +325,7 @@ def commit_records(records,url,token,disable_dry_run):
             error=unpublish_record(tmp_analysis,url,study,token,disable_dry_run)
 
             if error:
-                records[study]['uncomitted'][analysis['analysisId']]=error
+                records[study]['unmodified'][analysis['analysisId']]=error
                 print("...ERR")
                 continue
 
@@ -334,7 +333,7 @@ def commit_records(records,url,token,disable_dry_run):
             error=remove_contents_record(tmp_analysis,disable_dry_run)
 
             if error:
-                records[study]['uncomitted'][analysis['analysisId']]=error
+                records[study]['unmodified'][analysis['analysisId']]=error
                 print("...ERR")
                 continue
 
@@ -367,7 +366,7 @@ def commit_records(records,url,token,disable_dry_run):
 
             if not disable_dry_run:
                 records[study]['uncomitted'][analysis['analysisId']]='Dry-run'
-                print("...ERR")
+                print("...OK (dry-run)")
                 continue                  
 
 
@@ -401,6 +400,17 @@ def main():
     -v "1.0to2.0" \
     --remove_original_backup \
     --disable_dry_run
+
+  Generates two files:
+  2026-11-04_14:54:11_1_0to2_0.json ### Tracks migration progress including successes and failures
+  2026-11-04_14:54:11_backups_1_0to2_0.json ### Back up of original files
+
+  026-11-04_14:54:11_1_0to2_0.json Contents:
+  Per study lists:
+    - "invalid": Analyses did not qualify for migration e.g. incorrect analysisType, version, UNPUBLISHED
+    - "unmodified": Tracks if analysis failed during UNPUBLISHING or REMOVAL
+    - "uncomitted": Tracks if analysis failed during UPDATE, PUBLISHING or VERIFYING
+    - "verified": Tracks if analysis migraiton was successful. Happy path.
   """
   parser = argparse.ArgumentParser(description='The script aims to migrate SONG entries')
   parser.add_argument('-t', '--token', dest="token", help="PCGL API Token", required=True,type=str)
@@ -425,6 +435,19 @@ def main():
     for key in records[study]:
         print("##### %s : %s" % (key,len(records[study][key])))
 
+  ### Remove bulky records
+  if args.remove_original_backup:
+    for study in records.keys():  
+        for key in ["valid","modified"]:
+            del records[study][key]
+
+  if not args.remove_original_backup:
+    with open(("%s_%s_backups_%s.json" % (datetime.now().strftime("%Y-%m-%d"),datetime.now().strftime("%H:%M:%S"),args.versions.replace('.','_'))), "w", encoding="utf-8") as file:
+        json.dump({study:records[study]['valid'] for study in records.keys()}, 
+                  file, 
+                  indent=4, 
+                  ensure_ascii=False)      
+
   ###Modify records
   conversion.modify(records)
 
@@ -444,13 +467,13 @@ def main():
         print("##### %s : %s" % (key,len(records[study][key])))
 
   ### Remove bulky records
-  if args.remove_original_backup:
-    for study in records.keys():  
-        for key in ["valid","modified"]:
-            del records[study][key]
+
+  for study in records.keys():  
+    for key in ["valid","modified"]:
+        del records[study][key]
 
   ### Return results in JSON file
-  with open(("%s_%s.json" % (date.today(),args.versions.replace('.','_'))), "w", encoding="utf-8") as file:
+  with open(("%s_%s_%s.json" % (datetime.now().strftime("%Y-%m-%d"),datetime.now().strftime("%H:%M:%S"),args.versions.replace('.','_'))), "w", encoding="utf-8") as file:
     json.dump(records, file, indent=4, ensure_ascii=False)
 
 if __name__ == "__main__":
