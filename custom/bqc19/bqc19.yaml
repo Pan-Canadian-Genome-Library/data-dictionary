@@ -40,8 +40,6 @@ classes:
    is_a: base_Exposure
   Specimen:
     is_a: base_Specimen
-  Workflow:
-    is_a: base_Workflow
   Sample:
     is_a: base_Sample
   Experiment:
