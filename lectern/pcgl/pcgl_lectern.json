@@ -2324,7 +2324,7 @@
             "codeList": [
               "Less than $15,000",
               "$ 15,000 - $ 19,999",
-              "$ 20,000 - $ 29,000",
+              "$ 20,000 - $ 29,999",
               "$ 30,000 - $ 49,999",
               "$ 50,000 - $ 69,999",
               "$ 70,000 - $ 84,999",
@@ -2491,7 +2491,7 @@
               "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0": "PCGL.Reference.Survey.v2.0.and.PCGL.Guidance.Document.for.Participant.Sociodemographic.Data.v1.0"
             },
             "examples": [
-              "For example, in the Canadian Census, the order of the provided response options for ethnicity were shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
+              "For example, in the Canadian Census, the order of the provided response options for ethnicity was shown to influence number of received responses per reporting option. \n\nOther examples may include inclusion/exclusion criteria based on sociodemographic variables."
             ]
           },
           "name": "sociodem_notes",
@@ -3120,7 +3120,7 @@
             ]
           },
           "name": "procedure_body_site_code",
-          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of the procedured when it occured. Please use C80.9 if the anatomic location of the procedure is Unknown.",
+          "description": "Indicate the ICD-O-3 topography code or UBERON code for the anatomic location of the procedure when it occurred. Please use C80.9 if the anatomic location of the procedure is Unknown.",
           "restrictions": {
             "required": true,
             "regex": "^ICDO3:C[0-9]{2}(\\.[0-9])?$|^UBERON:\\d{7,}$"
@@ -3165,7 +3165,7 @@
             ]
           },
           "name": "body_site_laterality",
-          "description": "Indicate which side on the procedure occurred on.",
+          "description": "Indicate which side the procedure occurred on.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -3486,7 +3486,7 @@
             ]
           },
           "name": "irradiated_site_laterality",
-          "description": "Indicate which side on the radiation procedure occured on.",
+          "description": "Indicate which side the radiation procedure occurred on.",
           "valueType": "string",
           "restrictions": {
             "codeList": [
@@ -4811,7 +4811,7 @@
             }
           },
           "name": "instrument_metadata",
-          "description": "Captures metadata about sequencing instrument usage (e.g. instruments parameters and usage conditions)",
+          "description": "Captures metadata about sequencing instrument usage (e.g. instrument parameters and usage conditions)",
           "valueType": "string"
         },
         {
@@ -4900,6 +4900,39 @@
         },
         {
           "meta": {
+            "displayName": "file_r2",
+            "exact_mappings": {
+              "ARGO": "read_groups.file_r2"
+            }
+          },
+          "name": "file_r2",
+          "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
+          "restrictions": {
+            "if": {
+              "conditions": [
+                {
+                  "fields": [
+                    "library_layout"
+                  ],
+                  "match": {
+                    "value": "OBI:0000722 (paired-end library)"
+                  },
+                  "case": "all"
+                }
+              ]
+            },
+            "then": {
+              "required": true
+            },
+            "else": {
+              "required": false,
+              "empty": true
+            }
+          },
+          "valueType": "string"
+        },
+        {
+          "meta": {
             "displayName": "library_layout",
             "exact_mappings": {
               "Beacon.v2.2.0": "runs.libraryLayout",
@@ -4946,39 +4979,6 @@
             "required": true
           },
           "valueType": "string"
-        },
-        {
-          "meta": {
-            "displayName": "file_r2",
-            "exact_mappings": {
-              "ARGO": "read_groups.file_r2"
-            }
-          },
-          "name": "file_r2",
-          "description": "Name of the sequencing file containing reads from the second end of a paired-end sequencing run. Required if and only if paired-end sequencing was done.",
-          "valueType": "string",
-          "restrictions": {
-            "if": {
-              "conditions": [
-                {
-                  "fields": [
-                    "library_layout"
-                  ],
-                  "match": {
-                    "value": "OBI:0000722 (paired-end library)"
-                  },
-                  "case": "all"
-                }
-              ]
-            },
-            "then": {
-              "required": true
-            },
-            "else": {
-              "required": false,
-              "empty": true
-            }
-          }
         },
         {
           "meta": {
@@ -5512,7 +5512,7 @@
             "displayName": "dataType"
           },
           "name": "dataType",
-          "description": "Indicates the type of data produced as outputs from the analysis.\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are : 'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are : 'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are : 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'",
+          "description": "Indicates the type of data produced as outputs from the analysis.\nTo include multiple values, separate values with a pipe delimiter '|' within your file\nIf 'analysisType' is 'sequenceExperiment', 'dataType' options are :\n'Raw Sequencing Reads'\nIf 'analysisType' is 'sequenceAlignment', 'dataType' options are :\n'Aligned Reads','Aligned Reads Index'\nIf 'analysisType' is 'variantCall', dataType options are \n 'Single Nucleotide Variants (SNVs)','Insertions and Deletions (InDels)','Structural Variations (SVs)','Copy Number Variations (CNVs)','Variant Calls Index'",
           "restrictions": {
             "required": true,
             "codeList": [

@@ -1,8 +1,8 @@
 classes:
   extension_Demographic:
-    is_a: base_Demographic
     name: extension_Demographic
     slots:
+    - submitter_participant_id
     - host_hospital
     - treat_hospital
     - outcome_self_care
