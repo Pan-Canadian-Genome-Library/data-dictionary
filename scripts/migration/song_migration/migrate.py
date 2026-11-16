@@ -259,7 +259,31 @@ def update_record(analysis,url,study,token,disable_dry_run,original_analysis):
         print(url)
         return(False)
 
-
+def update_file(analysis,url,study,token,disable_dry_run,original_analysis):
+    #https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca/studies/PCGLST0003/files/559d8eed-cda3-5406-8fe7-41a18e9e3239
+    errors=[]
+    for updated_file in analysis['files']:
+        if updated_file.get("modified",False):
+            url="%s/studies/%s/files/%s" % (url,study,updated_file['objectId'])
+            content=copy.deepcopy(updated_file)
+            del content['objectId']
+            del content['studyId']
+            del content['modified']
+            if disable_dry_run:
+                print("...UPDATING FILE",end="")
+                try:
+                    response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20,json=content)
+                    if response.status_code!=200:
+                        errors.append(f"UPDATING FILE - Server response {response.status_code}")
+                except Exception as e:
+                    errors.append(f"UPDATING FILE - {type(e).__name__}: {e}")
+            else:
+                print("...UPDATING FILE")
+                print(url)
+    if len(errors)>0:
+        return(";".join(errors))
+    else:
+        return(False)
 
 def publish_record(analysis,url,study,token,disable_dry_run):
     #PUT https://file-manager.submission.gateway.dev.k8s.pcgl.dev-sd4h.ca/studies/ho/analysis/publish/hi?ignoreUndefinedMd5=false
@@ -321,11 +345,21 @@ def commit_records(records,url,token,disable_dry_run):
         for analysis in records[study]["modified"]:
             print("Working on %s %s" % (study,analysis['analysisId']),end="")
             tmp_analysis=copy.deepcopy(analysis)#analysis.copy()
+  
             ### UNPUBLISH
             error=unpublish_record(tmp_analysis,url,study,token,disable_dry_run)
-
+            
             if error:
                 records[study]['unmodified'][analysis['analysisId']]=error
+                print("...ERR")
+                continue
+
+            ### UPDATE File
+            ### We update the file first otherwise `files` is removed in the next step
+            error=update_file(tmp_analysis,url,study,token,disable_dry_run,analysis)
+
+            if error:
+                records[study]['uncomitted'][analysis['analysisId']]=error
                 print("...ERR")
                 continue
 
@@ -469,7 +503,7 @@ def main():
   ### Remove bulky records
 
   for study in records.keys():  
-    for key in ["valid","modified"]:
+    for key in ["valid"]:
         del records[study][key]
 
   ### Return results in JSON file
