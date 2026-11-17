@@ -38,9 +38,9 @@ def remove_duo(record):
 
     return(True,updated_record,None)
 
-def  remove_demographic_fields(record):
+def remove_demographic_fields(record):
     """
-    Remove duo codes
+    Remove demographic fields. Hostseq still maintains demographic records as an extension so will have to alter them accordingly.
     """
     updated_record=copy.deepcopy(record)
     for col in ["age_at_death","age_at_enrollment","cause_of_death","vital_status"]:
@@ -53,14 +53,12 @@ def  remove_demographic_fields(record):
     return(True,updated_record,None)
 
 def find_participant_record(record,records,study,entity):
-    #print(records[study]['valid']['demographic'][record]['data'].get("pcgl_participant_id"))
+    """
+    Using PCGL ID find the corresponding participant record to the entity record in question
+    """
     try:
         participant_id=records[study]['invalid'][entity][record]['data'].get("pcgl_participant_id")
         for query_record in records[study]['modified']['participant'].keys():
-            #print(participant_id,query_record['data'].get("pcgl_participant_id"))
-            #print(participant_id)
-            #print(records[study]['modified']['participant'][query_record]['data'].get("pcgl_participant_id"))
-            #print(participant_id==records[study]['modified']['participant'][query_record]['data'].get("pcgl_participant_id"))
             if participant_id==records[study]['modified']['participant'][query_record]['data'].get("pcgl_participant_id"):
                 return(True,query_record,None)
 
@@ -72,20 +70,18 @@ def copy_demographic_fields(record,participant_record,records,study):
     """
     copying over demographic fields. B/c they're all optional
     """
-    #print(records[study]['valid']['demographic'][record][col])
     for col in ["age_at_death","age_at_enrollment","cause_of_death","vital_status"]:
-        #print(study,records[study]['invalid'].keys())
         if col in records[study]['invalid']['demographic'][record]['data'].keys():
             records[study]['modified']['participant'][participant_record]['data'][col]=records[study]['invalid']['demographic'][record]['data'][col]
 
-    # if len(error)>0:
-    #     return(False,";".join(error))
-    # else:
-    #     return(True,None)
 
 def copy_sociodemographic_fields(record,participant_record,records,study):
+    """
+    Copying existing nonsentiive sociodemographic date to participant record
+    """
+    error=[]
     for col in ["sex_at_birth","sex_collect_method","sex_another_category"]:
-        error=[]
+
         try:
             if col in records[study]['invalid']['sociodemographic'][record]['data'].keys():
                 records[study]['modified']['participant'][participant_record]['data'][col]=records[study]['invalid']['sociodemographic'][record]['data'][col]
@@ -103,6 +99,9 @@ def copy_sociodemographic_fields(record,participant_record,records,study):
         return(True,None)
 
 def add_sociodemographic_required_fields(record,records,study):
+    """
+    New required fields. Setting default to "Missing - Not Provided"
+    """
     error=[]
     updated_record=copy.deepcopy(records[study]['invalid']['sociodemographic'][record])
     for col in ["date_of_birth","date_of_birth_collection_method","total_income","total_income_collect_method"]:
@@ -118,6 +117,10 @@ def add_sociodemographic_required_fields(record,records,study):
         return(True,None)
     
 def fix_sociodemographic_values(record,records,study):
+    """
+    Broader category of fixing sociodemographic values. Some are important such as the migration from "Not Applicable" to "Missing - Not Applicable" and sociodem date resolution to YYYY
+    Other errors reflect staging data but are not consequential to Production (see individual comments)
+    """
     error=[]
 
     updated_record=copy.deepcopy(records[study]['modified']['sociodemographic'][record])
@@ -135,18 +138,16 @@ def fix_sociodemographic_values(record,records,study):
                         updated_record['data'][col][ind]="Missing - Not applicable"
         except:
             error.append("Unable update field %s to from 'Not applicable' to  Missing - Not applicable' in record '%s'" % (col,record))
-            #error.append(f"Unable to update field {col} in record '{record}': {type(e).__name__}: {e}")
+
     ### Reduce sociodem_date_collection resolution to YYYY
     if 'sociodem_date_collection' in updated_record['data'].keys():
         if re.search(r"\d{4}-\d{2}-\d{2}||\d{4}-\d{2}", updated_record['data']['sociodem_date_collection']):
             try:
                 updated_record['data']['sociodem_date_collection']=re.findall(r"\d{4}",updated_record['data']['socidem_date_collection'])[0]
-            except Exception as e:
-                    SystemExit(f'{e}')
-            #except:
-            #    error.append("Unable update field 'socidem_date_collection' to 'YYYY" % (col,record))
+            except:
+                error.append("Unable update field 'socidem_date_collection' to 'YYYY" % (col,record))
 
-    ### Need clarification should this info move to total_income?
+    ### Need clarification should this info move to total_income? Test data issue. In prod all values are "Not collected" not meaningful
     if 'personal_income_collect_method' in updated_record['data'].keys():
         if  updated_record['data']['personal_income_collect_method']=="Self-identified" or updated_record['data']['personal_income_collect_method']=="Derived":
             try:
@@ -154,7 +155,7 @@ def fix_sociodemographic_values(record,records,study):
             except:
                 error.append("Unable make %s into Missing - Not applicable' in record '%s'" % (col,record))                
 
-    ### Data generation error 
+    ### Test Data generation error 
     if  updated_record['data']['ethnicity']!="Another Ethnic or Cultural Origin":
         if "ethnicity_another_category" in updated_record['data'].keys():
             if updated_record['data']["ethnicity_another_category"]!=None:
@@ -204,7 +205,7 @@ def modify(records):
                         records[study]["unmodified"]['demographic'][record]=error
                     continue
 
-                #success,error=copy_demographic_fields(record,participant_record,records,study)
+
                 copy_demographic_fields(record,participant_record,records,study)
 
                 modified,updated_record,error=remove_demographic_fields(records[study]["invalid"]['demographic'][record])

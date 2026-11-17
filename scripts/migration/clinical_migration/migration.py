@@ -173,13 +173,13 @@ def retrieve_records(url,token,versions,record_limit):
                 if 'records' not in response.json().keys():
                     raise SystemExit(f"Improperly formated response {response.status_code}")
             except requests.exceptions.Timeout:
-                raise SystemExit(f"{get_total_url}: Timeout")
+                raise SystemExit(f"{get_records_url}: Timeout")
             except requests.exceptions.ConnectionError:
-                raise SystemExit(f"{get_total_url}: Connection failed")
+                raise SystemExit(f"{get_records_url}: Connection failed")
             except requests.exceptions.HTTPError as e:
-                raise SystemExit(f"{get_total_url}: HTTP {e.response.status_code}, body: {e.response.text}")
+                raise SystemExit(f"{get_records_url}: HTTP {e.response.status_code}, body: {e.response.text}")
             except requests.exceptions.RequestException as e:
-                raise SystemExit(f"{get_total_url}: {e}")
+                raise SystemExit(f"{get_records_url}: {e}")
 
             for record in response.json().get('records'):
                 ###Triage record according to validation status
@@ -258,7 +258,7 @@ def submit_modification(url,tsvs,category,token,study):
     }
 
     files = [
-    ("files", (entity+".tsv", io.BytesIO(df.head().to_csv(sep="\t", index=False).encode("utf-8")), "text/tab-separated-values"))
+    ("files", (entity+".tsv", io.BytesIO(df.to_csv(sep="\t", index=False).encode("utf-8")), "text/tab-separated-values"))
     #("files", (entity+".tsv", io.BytesIO(df.head().to_csv(sep="\t", index=False).encode("utf-8")), "text/tab-separated-values"))
     for entity, df in tsvs.items()
     ]
@@ -371,12 +371,37 @@ def summarize_errors(errors):
     print("summarizing errors")
     summary_errors={}
 
+    """
+    Example of details
+    {
+      "index": 0,
+      "errors": [
+        {
+          "message": "The value must match the regular expression.",
+          "restriction": {
+            "rule": "^(?:\\d{4})$|^Missing \\- Unknown$|^Missing \\- Not collected$|^Missing \\- Not provided$|^Missing \\- Restricted access$",
+            "type": "regex"
+          }
+        }
+      ],
+      "reason": "INVALID_BY_RESTRICTION",
+      "fieldName": "sociodem_date_collection",
+      "fieldValue": "2016-05-07"
+    }
+    Example without message
+    {
+      "index": 0,
+      "reason": "UNRECOGNIZED_FIELD",
+      "fieldName": "socidem_date_collection",
+      "fieldValue": "Missing - Not applicable"
+    },
+    """
+
     for error in errors:
         if error['fieldName'] not in summary_errors:
             summary_errors[error['fieldName']]={}
 
         if error['reason'] not in summary_errors[error['fieldName']]:
-            print(error)
             summary_errors[error['fieldName']][error['reason']]={
                 "error_counts":1,
                 "message": error.get('errors')[0].get('messsage',None) if "errors" in error.keys() else None ,
@@ -414,8 +439,6 @@ def main():
   parser.add_argument('-t', '--token', dest="token", help="PCGL API Token", required=True,type=str)
   parser.add_argument('-u', '--url', dest="url", help="Song URL", required=True,type=str)
   parser.add_argument('-v', '--version_to_version', dest="versions", help="String to track version to version specific modification", required=True,type=str)
-  parser.add_argument('-n', '--record_limit', dest="record_limit", help="Enforce a record limit per study. Default 0.",default=0,type=int)
-  parser.add_argument('-d', '--disable_dry_run', dest="disable_dry_run", help="Flag to force intentional commit",default=False,action="store_true")
 
   args = parser.parse_args()
 
