@@ -264,7 +264,7 @@ def update_file(analysis,url,study,token,disable_dry_run,original_analysis):
     errors=[]
     for updated_file in analysis['files']:
         if updated_file.get("modified",False):
-            url="%s/studies/%s/files/%s" % (url,study,updated_file['objectId'])
+            put_url="%s/studies/%s/files/%s" % (url,study,updated_file['objectId'])
             content=copy.deepcopy(updated_file)
             del content['objectId']
             del content['studyId']
@@ -272,14 +272,14 @@ def update_file(analysis,url,study,token,disable_dry_run,original_analysis):
             if disable_dry_run:
                 print("...UPDATING FILE",end="")
                 try:
-                    response = requests.put(url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20,json=content)
+                    response = requests.put(put_url,headers={"Authorization" : "Bearer %s" % (token)},timeout=20,json=content)
                     if response.status_code!=200:
                         errors.append(f"UPDATING FILE - Server response {response.status_code}")
                 except Exception as e:
                     errors.append(f"UPDATING FILE - {type(e).__name__}: {e}")
             else:
                 print("...UPDATING FILE")
-                print(url)
+                print(put_url)
     if len(errors)>0:
         return(";".join(errors))
     else:
@@ -468,12 +468,6 @@ def main():
     print("### %s" % (study))
     for key in records[study]:
         print("##### %s : %s" % (key,len(records[study][key])))
-
-  ### Remove bulky records
-  if args.remove_original_backup:
-    for study in records.keys():  
-        for key in ["valid","modified"]:
-            del records[study][key]
 
   if not args.remove_original_backup:
     with open(("%s_%s_backups_%s.json" % (datetime.now().strftime("%Y-%m-%d"),datetime.now().strftime("%H:%M:%S"),args.versions.replace('.','_'))), "w", encoding="utf-8") as file:
