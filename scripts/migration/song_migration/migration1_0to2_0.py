@@ -21,13 +21,14 @@
  * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 """
+import copy
 
 def experiment_submitter_id_to_submitter_ids(analysis):
     """
     Note the change was converting "submitter_experiment_id" to "submitter_experiment_ids".
     Originally the format was in string, so now have to convert to array of strings.
     """
-    updated_record=analysis.copy()
+    updated_record=copy.deepcopy(analysis)
     try:
         experiment=updated_record['submitter_experiment_id']
         del updated_record['submitter_experiment_id']
@@ -35,7 +36,27 @@ def experiment_submitter_id_to_submitter_ids(analysis):
         return(True,updated_record,None)
     except:   
         return(False,updated_record,"Unable to split 'submitter_experiment_id'")
-    
+
+def fix_aligned_reads(analysis):
+    """
+    A few records have "Analysis reads" instead of "Analysis Reads".
+    Add a temporary property that is used to track file modifications
+    """
+    updated_record=copy.deepcopy(analysis)
+    errors=[]
+    for ind,file in enumerate(analysis['files']):
+        if file['dataType']=="Aligned reads":
+            try:
+                updated_record['files'][ind]['dataType']="Aligned Reads"
+                updated_record['files'][ind]['modified']=True
+            except:   
+                errors.append("Unable to split 'Aligned reads' to 'Aligned Reads' for file ")
+
+    if len(errors)>0:
+        return(False,updated_record,";".join(errors))
+    else:
+        return(True,updated_record,None)
+
 def modify(records):
     """
     Generic function to be called by migrate.py. Iterate through analyses applying modifications
@@ -43,11 +64,21 @@ def modify(records):
     """
     for study in records.keys():
         for analysis in records[study]["valid"]:
-            modified,updated_record,reason=experiment_submitter_id_to_submitter_ids(analysis)
+            reasons=[]
+            modified_a,updated_record_a,reason_a=experiment_submitter_id_to_submitter_ids(analysis)
 
-            if modified:
-                records[study]['modified'].append(updated_record)
+            if not modified_a:
+                reasons.append(reason_a)
+
+            modified_b,updated_record_b,reason_b=fix_aligned_reads(updated_record_a)
+
+            if not modified_b:
+                reasons.append(reason_b)
+
+            if modified_a and modified_b:
+                records[study]['modified'].append(updated_record_b)
             else:
-                records[study]['unmodified'][analysis['analysisId']]=reason
+                records[study]['unmodified'][analysis['analysisId']]=";".join(reasons)
+
 
     return()
