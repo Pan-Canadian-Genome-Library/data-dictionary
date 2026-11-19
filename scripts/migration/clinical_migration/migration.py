@@ -404,12 +404,12 @@ def summarize_errors(errors):
         if error['reason'] not in summary_errors[error['fieldName']]:
             summary_errors[error['fieldName']][error['reason']]={
                 "error_counts":1,
-                "message": error.get('errors')[0].get('messsage',None) if "errors" in error.keys() else None ,
+                "message": error.get('errors')[0].get('message',None) if "errors" in error.keys() else None ,
                 "fieldValue": [error.get('fieldValue',None)]
             }
-
-        summary_errors[error['fieldName']][error['reason']]['error_counts']+=1
-        summary_errors[error['fieldName']][error['reason']]['fieldValue'].append(error.get('fieldValue',None))
+        else:
+            summary_errors[error['fieldName']][error['reason']]['error_counts']+=1
+            summary_errors[error['fieldName']][error['reason']]['fieldValue'].append(error.get('fieldValue',None))
 
     return(summary_errors)
 def main():
