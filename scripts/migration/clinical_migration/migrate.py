@@ -61,17 +61,28 @@ Within each version to version, specify the following:
 # }
 
 ### staging
+# version_to_version = {
+#   "1.1to2.0" : {
+#     "studies" : {
+#         "PCGLST0001": {"category":141,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","demographic","sociodemographic"]},
+#         #"PCGLST0111": {"category":141,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","demographic","sociodemographic"]},
+#         # "PCGLST0002": {"category":37,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
+#         # "PCGLST0003": {"category":72,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
+#         # "PCGLST0005": {"category":39,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
+#         # "PCGLST0007": {"category":107,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
+#         # "PCGLST0039": {"category":73,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
+#         # "PCGLST0040": {"category":74,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]}
+#         #"PCGLST0003" : {"category":1,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]}
+#     }
+#   }
+# }
+
+###Prod
 version_to_version = {
   "1.1to2.0" : {
     "studies" : {
-        "PCGLST0111": {"category":141,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","demographic","sociodemographic"]},
-        # "PCGLST0002": {"category":37,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
-        # "PCGLST0003": {"category":72,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
-        # "PCGLST0005": {"category":39,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
-        # "PCGLST0007": {"category":107,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
-        # "PCGLST0039": {"category":73,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]},
-        # "PCGLST0040": {"category":74,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]}
-        #"PCGLST0003" : {"category":1,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"]}
+        "PCGLST0001": {"category":2,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","sociodemographic"]},
+        "PCGLST0002": {"category":1,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","demographic","sociodemographic"]},
     }
   }
 }

@@ -47,22 +47,22 @@ Within each version to version, specify the following:
 - analysisTypes
 - per analysisType the prior and current versions
 """
+
 version_to_version = {
   "1.0to2.0" : {
     "studies" : [
         "PCGLST0001",
-        "PCGLST0003",
-        #"PCGLST0002"
+        "PCGLST0002"
     ],
     "analysisTypes" : {
       ###Prod values
-      #"variantCall" : {"old":3.0, "new": 4.0},
-      #"sequenceExperiment" : {"old":2.0, "new": 1.0},
-      #"sequenceAlignment" : {"old":2.0, "new": 1.0}
+      "variantCall" : {"old":3.0, "new": 4.0},
+      "sequenceExperiment" : {"old":2.0, "new": 3.0},
+      "sequenceAlignment" : {"old":2.0, "new": 3.0}
       ###Dev
-      "variantCall" : {"old":2.0, "new": 4.0},
-      "sequenceExperiment" : {"old":1.0, "new": 2.0}, #78
-      "sequenceAlignment" : {"old":1.0, "new": 4.0} #78
+      #"variantCall" : {"old":2.0, "new": 4.0},
+      #"sequenceExperiment" : {"old":1.0, "new": 2.0}, #78
+      #"sequenceAlignment" : {"old":1.0, "new": 4.0} #78
     }
 
   }
