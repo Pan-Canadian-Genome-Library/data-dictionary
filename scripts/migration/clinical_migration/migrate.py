@@ -83,7 +83,7 @@ version_to_version = {
     "studies" : {
         "PCGLST0001": {"category":2,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","sociodemographic"]},
         "PCGLST0002": {"category":1,"old":1.1, "new": 2.0,"entities": ["participant","demographic","sociodemographic"],"submit":["participant","demographic","sociodemographic"]},
-    }
+          }
   }
 }
 
@@ -121,7 +121,7 @@ def load_functions(version):
     local_module = importlib.import_module("migration%s" % (version.replace('.','_')))
     return(local_module)
 
-def retrieve_records(url,token,versions,record_limit):
+def retrieve_records(url,token,versions):
     """
     Sets up record collection for downstream interactions
     First - establishes record and corresponding keys for tracking initial records, modified, confirmed successes and failures
@@ -280,6 +280,7 @@ def submit_modification(url,tsvs,category,token,study):
         if response.status_code!=200:
             return(None,f"{modify_url} : Server response {response.status_code}")
         if 'submissionId' not in response.json().keys():
+            print(response.json())
             return(None,f"{modify_url} : Improperly formated response {response.status_code}")
     except requests.exceptions.Timeout:
         return(None,f"{modify_url} : Timeout")
@@ -290,7 +291,7 @@ def submit_modification(url,tsvs,category,token,study):
     except requests.exceptions.RequestException as e:
         return(None,f"{modify_url} : {e}")
 
-    print("HELLO",response.json()['batchErrors'])
+
 
     return(
         response.json()['submissionId'],
@@ -302,7 +303,7 @@ def verify_submission(url,category,token,study,submission_id):
     Return submission status
     """
     get_url="%s/submission/%s" % (url,submission_id)
-
+    
     headers={
     "accept": "application/json",
     "Authorization": f"Bearer {token}",
@@ -458,7 +459,7 @@ def main():
   ###Load functions
   conversion=load_functions(args.versions)
   ###Retrieve records
-  records=retrieve_records(args.url,args.token,args.versions,args.record_limit)
+  records=retrieve_records(args.url,args.token,args.versions)
 
   print ("# Status update - Post retrieval")
   for study in records.keys():
@@ -487,7 +488,9 @@ def main():
   for study in submittable_tsvs.keys():
       for entity in submittable_tsvs[study].keys():
           file_name="%s_%s.tsv" % (study,entity)
-          submittable_tsvs[study][entity].to_csv(file_name, encoding="utf-8",sep='\t',index=False) 
+          submittable_tsvs[study][entity].to_csv(file_name, encoding="utf-8",sep='\t',index=False)
+          file_name="%s_%s.csv" % (study,entity)
+          submittable_tsvs[study][entity].to_csv(file_name, encoding="utf-8",sep=',',index=False) 
 
   ###Submit modifications
   for study in submittable_tsvs.keys():
@@ -513,8 +516,7 @@ def main():
             study,
             records[study]['submission']['submission_id']
         )
-
-        records[study]['validation']['submission_id']=submission_id
+        records[study]['validation']['submission_id']=records[study]['submission']['submission_id']
         records[study]['validation']['errors']=errors
 
   ### Return results in JSON file
