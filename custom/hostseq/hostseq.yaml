@@ -48,8 +48,6 @@ classes:
     is_a: base_Experiment
   Read_Group:
     is_a: base_Read_Group
-  Workflow:
-    is_a: base_Workflow
   Household:
     is_a: extension_Household
   Hla:
