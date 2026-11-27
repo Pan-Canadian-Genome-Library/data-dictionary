@@ -204,6 +204,13 @@ def process_schema(input_file, top_class, options, schema_dir):
         "enum": data_type_enum,
         "not" : {}
     }
+    # Add PCGL ID field:
+    keys=[field for field in schema_clean['properties'].keys()]
+    for field in keys:
+        if field.startswith("submitter") and "analysis" not in field:
+            schema_clean['properties'][field.replace("submitter","pcgl")]=copy.deepcopy(schema_clean['properties'][field])
+            schema_clean['properties'][field.replace("submitter","pcgl")]['description']=schema_clean['properties'][field.replace("submitter","pcgl")]['description'].replace("assigned by the data provider.","assigned by the PCGL")
+            schema_clean["required"].append(field.replace("submitter","pcgl"))
     # Remove all "title" fields from the schema
     remove_titles(schema_clean)
     # Prepare output paths

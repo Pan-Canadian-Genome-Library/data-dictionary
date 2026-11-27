@@ -27,5 +27,8 @@
     "workflow_url": "<workflow_url>",
     "workflow_version": "<workflow_version>"
   },
-  "dataType": "<dataType>"
+  "dataType": "<dataType>",
+  "pcgl_experiment_ids": [
+    "<pcgl_experiment_ids>"
+  ]
 }

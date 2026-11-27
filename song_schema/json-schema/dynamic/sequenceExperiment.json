@@ -50,12 +50,23 @@
           "Raw Sequencing Reads"
         ],
         "not": {}
+      },
+      "pcgl_experiment_ids": {
+        "description": "A list of Unique identifiers (min 1) for experiments within the study, assigned by the PCGL",
+        "items": {
+          "pattern": "^[A-Za-z0-9\\-\\._]{1,64}$",
+          "type": "string"
+        },
+        "minItems": 1,
+        "type": "array",
+        "uniqueItems": true
       }
     },
     "required": [
       "submitter_experiment_ids",
       "submitter_analysis_id",
-      "data_category"
+      "data_category",
+      "pcgl_experiment_ids"
     ],
     "type": "object"
   }

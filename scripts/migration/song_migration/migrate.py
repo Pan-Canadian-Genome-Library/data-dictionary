@@ -64,7 +64,21 @@ version_to_version = {
       #"sequenceExperiment" : {"old":1.0, "new": 2.0}, #78
       #"sequenceAlignment" : {"old":1.0, "new": 4.0} #78
     }
-
+  },
+  "2.0to2.1" : {
+    "studies" : {
+        "PCGLST0003":4
+    },
+    "analysisTypes" : {
+      ###Prod values
+      "variantCall" : {"old":4.0, "new": 4.1},
+      "sequenceExperiment" : {"old":4.0, "new": 4.1},
+      "sequenceAlignment" : {"old":4.0, "new": 4.1}
+      ###Dev
+      #"variantCall" : {"old":2.0, "new": 4.0},
+      #"sequenceExperiment" : {"old":1.0, "new": 2.0}, #78
+      #"sequenceAlignment" : {"old":1.0, "new": 4.0} #78
+    }
   }
 }
 
@@ -184,7 +198,7 @@ def retrieve_records(url,token,versions,record_limit):
 
         
         
-def modify_records(records,versions):
+def modify_records(versions):
     """
     Apply changes to relevant records
     """
@@ -347,12 +361,12 @@ def commit_records(records,url,token,disable_dry_run):
             tmp_analysis=copy.deepcopy(analysis)#analysis.copy()
   
             ### UNPUBLISH
-            error=unpublish_record(tmp_analysis,url,study,token,disable_dry_run)
+            # error=unpublish_record(tmp_analysis,url,study,token,disable_dry_run)
             
-            if error:
-                records[study]['unmodified'][analysis['analysisId']]=error
-                print("...ERR")
-                continue
+            # if error:
+            #     records[study]['unmodified'][analysis['analysisId']]=error
+            #     print("...ERR")
+            #     continue
 
             ### UPDATE File
             ### We update the file first otherwise `files` is removed in the next step
@@ -379,13 +393,13 @@ def commit_records(records,url,token,disable_dry_run):
                 print("...ERR")
                 continue
 
-            ### PUBLISH
-            error=publish_record(analysis,url,study,token,disable_dry_run)
+            # ### PUBLISH
+            # error=publish_record(analysis,url,study,token,disable_dry_run)
 
-            if error:
-                records[study]['uncomitted'][analysis['analysisId']]=error
-                print("...ERR")
-                continue
+            # if error:
+            #     records[study]['uncomitted'][analysis['analysisId']]=error
+            #     print("...ERR")
+            #     continue
 
             ### VERIFY
             error,success=verify_record(analysis,url,study,token,disable_dry_run)
@@ -453,6 +467,8 @@ def main():
   parser.add_argument('-n', '--record_limit', dest="record_limit", help="Enforce a record limit per study. Default 0.",default=0,type=int)
   parser.add_argument('-r', '--remove_original_backup', dest="remove_original_backup", help="By default retains original SONG records, enabling flag removes them.",default=False,action="store_true")
   parser.add_argument('-d', '--disable_dry_run', dest="disable_dry_run", help="Flag to force intentional commit",default=False,action="store_true")
+  parser.add_argument('-c', '--clinical_url', dest="clinical", help="Clinical URL",required=False)
+
 
   args = parser.parse_args()
 
@@ -477,7 +493,7 @@ def main():
                   ensure_ascii=False)      
 
   ###Modify records
-  conversion.modify(records)
+  conversion.modify(records,args.clinical,version_to_version[args.versions],args.token)
 
   print ("# Status update - Post modification")
   for study in records.keys():
